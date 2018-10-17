@@ -1,2 +1,3 @@
-# lei
-Temporary location for LEI work.
+# LEI Definition Work
+
+TODO: write a README.
