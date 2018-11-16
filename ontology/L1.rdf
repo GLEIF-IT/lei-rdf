@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE rdf:RDF [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY dct "http://purl.org/dc/terms/" >
+    <!ENTITY gleif-root "https://www.gleif.org/lei/" >
+    <!ENTITY gleif-base "https://www.gleif.org/ontology/Base/">
+    <!ENTITY gleif-L1 "https://www.gleif.org/ontology/L1/" >
+    <!ENTITY gleif-ra "https://www.gleif.org/ontology/RegistrationAuthority/">
+    <!ENTITY lcc-3166-1-add "http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/" >
+    <!ENTITY lcc-3166-2-add "http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/" >
+
+    ]>
+<rdf:RDF 
+         xmlns:gleif-base="https://www.gleif.org/ontology/Base/"
+         xmlns:gleif-ra="https://www.gleif.org/ontology/RegistrationAuthority/"
+         xmlns:gleif-L1="https://www.gleif.org/ontology/L1/"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+         xmlns:dct="http://purl.org/dc/terms/"
+         xmlns:lcc-3166-1-add="http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/"
+         xmlns:lcc-3166-2-add="http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/"
+         xml:base="https://www.gleif.org/ontology/L1/">
+   <owl:Ontology rdf:about="&gleif-L1;">
+      <rdfs:label>GLEIF L1 Ontology</rdfs:label>
+      <rdfs:comment>Ontology generated from GLEIF L1 data in CDF 2.1 format</rdfs:comment>
+      <owl:imports rdf:resource="https://www.gleif.org/ontology/Base/"/>
+      <owl:imports rdf:resource="https://www.gleif.org/ontology/RegistrationAuthority/"/>
+      <owl:imports rdf:resource="http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/"/>
+      <owl:imports rdf:resource="http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/"/>
+   </owl:Ontology>
+   
+   <owl:Class rdf:about="&gleif-L1;LegalEntityIdentifier">
+		<rdfs:subClassOf rdf:resource="&gleif-base;OrganizationIdentifier"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&gleif-base;identifies"/>
+				<owl:onClass rdf:resource="&gleif-base;LegalPerson"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&gleif-base;hasScope"/>
+				<owl:someValuesFrom rdf:resource="&gleif-base;IdentifierScheme"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>legal entity identifier</rdfs:label>
+		<skos:definition>an organization identifier that uniquely identifies a legal person as defined in ISO 17442</skos:definition>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.iso.org/standard/59771.html</dct:source>
+	</owl:Class>
+  
+  <owl:ObjectProperty rdf:about="&gleif-L1;hasHeadquartersAddress">
+		<rdfs:subPropertyOf rdf:resource="&gleif-base;hasAddress"/>
+		<rdfs:label>has headquarters address</rdfs:label>
+		<skos:definition>identifies the headquarters address for the registered entity</skos:definition>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&gleif-L1;hasAddressOfLegalFormation">
+		<rdfs:subPropertyOf rdf:resource="&gleif-base;hasAddress"/>
+		<rdfs:label>has address of legal formation</rdfs:label>
+		<skos:definition>indicates the address of legal formation for the entity, in the jurisdiction in which the entity is established, used for registration purposes with respect to obtaining an LEI</skos:definition>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:ObjectProperty>
+  
+  <owl:Class rdf:about="&gleif-L1;LegalEntityIdentifierRegistryEntry">
+		<rdfs:subClassOf rdf:resource="&gleif-base;RegistryEntry"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&gleif-L1;hasValidationAuthority"/>
+				<owl:onClass rdf:resource="&gleif-base;RegistrationAuthority"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&gleif-base;hasRegistrationStatus"/>
+				<owl:someValuesFrom rdf:resource="&gleif-L1;LEIRegistrationStatus"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&gleif-L1;hasValidationLevel"/>
+				<owl:someValuesFrom rdf:resource="&gleif-L1;LEIValidationStatus"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&gleif-base;comprises"/>
+				<owl:someValuesFrom rdf:resource="&gleif-L1;LegalEntityIdentifier"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>legal entity identifier registry entry</rdfs:label>
+		<skos:definition>an entry in a legal entity identifier registry that conforms to ISO 17442 and the Global Legal Entity Identifier Foundation (GLEIF) Common Data Format (CDF)</skos:definition>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:Class>
+  
+  <owl:ObjectProperty rdf:about="&gleif-L1;hasValidationLevel">
+		<rdfs:label>has validation level</rdfs:label>
+		<rdfs:range rdf:resource="&gleif-L1;LEIValidationStatus"/>
+		<skos:definition>an indicator of the level of validation performed by the registrar with respect to the legal entity</skos:definition>
+	</owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="&gleif-L1;hasValidationAuthority">
+		<rdfs:label>has validation authority</rdfs:label>
+		<rdfs:range rdf:resource="&gleif-base;RegistrationAuthority"/>
+		<skos:definition>identifies the business registration authority for the legal entity, used by the Local Operating Unit (LOU) as the basis for validation, as defined in the GLEIF Registration Authorities List</skos:definition>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:ObjectProperty>
+
+
+
+  <owl:Class rdf:about="&gleif-L1;LEIRegistrationStatus">
+		<rdfs:subClassOf rdf:resource="&gleif-base;RegistrationStatus"/>
+		<rdfs:label>legal entity identifier registration status</rdfs:label>
+		<skos:definition>status of an entry in a legal entity identifier registry that conforms to ISO 17442 and the Global Legal Entity Identifier Foundation (GLEIF) Common Data Format (CDF)</skos:definition>
+  </owl:Class>
+
+  <owl:Class rdf:about="&gleif-L1;LEIValidationStatus">
+		<rdfs:subClassOf rdf:resource="&gleif-base;RegistrationStatus"/>
+		<rdfs:label>legal entity identifier validation status</rdfs:label>
+		<skos:definition>level of corroboration of an entry in a legal entity identifier registry that conforms to ISO 17442 and the Global Legal Entity Identifier Foundation (GLEIF) Common Data Format (CDF)</skos:definition>
+  </owl:Class>
+
+ 	<owl:NamedIndividual rdf:about="&gleif-L1;ActiveStatus">
+		<rdf:type rdf:resource="&gleif-L1;EntityStatus"/>
+		<rdfs:label>active status</rdfs:label>
+		<skos:definition>as of the last report or update, the entity was legally registered and operating</skos:definition>
+		<gleif-base:hasTag>ACTIVE</gleif-base:hasTag>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&gleif-L1;AnnulledStatus">
+		<rdf:type rdf:resource="&gleif-L1;LEIRegistrationStatus"/>
+		<rdfs:label>annulled status</rdfs:label>
+		<skos:definition>status indicating that the registration was determined to be erroneous or invalid after issuance</skos:definition>
+		<gleif-base:hasTag>ANNULLED</gleif-base:hasTag>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:NamedIndividual>
+
+	<owl:NamedIndividual rdf:about="&gleif-L1;CancelledStatus">
+		<rdf:type rdf:resource="&gleif-L1;LEIRegistrationStatus"/>
+		<rdfs:label>cancelled status</rdfs:label>
+		<skos:definition>status indicating that the registration was abandoned prior to issuance</skos:definition>
+		<gleif-base:hasTag>CANCELLED</gleif-base:hasTag>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&gleif-L1;DuplicateStatus">
+		<rdf:type rdf:resource="&gleif-L1;LEIRegistrationStatus"/>
+		<rdfs:label>duplicate status</rdfs:label>
+		<skos:definition>status indicating that the registration was determined to be a duplicate registration of the same entity as another registration; duplicate status is assigned to the non-surviving registration (i.e. the identifier that should no longer be used)</skos:definition>
+		<gleif-base:hasTag>DUPLICATE</gleif-base:hasTag>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:NamedIndividual>
+
+	<owl:NamedIndividual rdf:about="&gleif-L1;InactiveStatus">
+		<rdf:type rdf:resource="&gleif-L1;EntityStatus"/>
+		<rdfs:label>inactive status</rdfs:label>
+		<skos:definition>the entity that was assigned the identifier (business, LEI, or other) is no longer legally registered and/or operating, whether as a result of business closure, acquisition by or merger with another (or new) entity, or determination of illegitimacy</skos:definition>
+		<gleif-base:hasTag>INACTIVE</gleif-base:hasTag>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&gleif-L1;IssuedStatus">
+		<rdf:type rdf:resource="&gleif-L1;LEIRegistrationStatus"/>
+		<rdfs:label>issued status</rdfs:label>
+		<skos:definition>status indicating that the registration has been validated and issued, and which identifies an entity that was operating legally as of the last update</skos:definition>
+		<gleif-base:hasTag>ISSUED</gleif-base:hasTag>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&gleif-L1;LapsedStatus">
+		<rdf:type rdf:resource="&gleif-L1;LEIRegistrationStatus"/>
+		<rdfs:label>lapsed status</rdfs:label>
+		<skos:definition>status indicating that the registration that has not been renewed by the specified renewal date and is not known by public sources to have ceased operation as of the last update</skos:definition>
+		<gleif-base:hasTag>LAPSED</gleif-base:hasTag>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:NamedIndividual>
+
+	<owl:NamedIndividual rdf:about="&gleif-L1;MergedStatus">
+		<rdf:type rdf:resource="&gleif-L1;LEIRegistrationStatus"/>
+		<rdfs:label>merged status</rdfs:label>
+		<skos:definition>status indicating that the registration is for an entity that has been merged into another legal entity, such that this legal entity no longer exists as an independently operating entity</skos:definition>
+		<gleif-base:hasTag>MERGED</gleif-base:hasTag>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:NamedIndividual>
+
+ 	<owl:NamedIndividual rdf:about="&gleif-L1;PendingArchivalStatus">
+		<rdf:type rdf:resource="&gleif-L1;LEIRegistrationStatus"/>
+		<rdfs:label>pending archival status</rdfs:label>
+		<skos:definition>status indicating that the registration is about to be transferred to a different registration authority, after which its registration status will revert to a non-pending status</skos:definition>
+		<gleif-base:hasTag>PENDING_ARCHIVAL</gleif-base:hasTag>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&gleif-L1;PendingTransferStatus">
+		<rdf:type rdf:resource="&gleif-L1;LEIRegistrationStatus"/>
+		<rdfs:label>pending transfer status</rdfs:label>
+		<skos:definition>status indicating that the registration has requested transfer to a different registration authority, and for which transfer is in progress</skos:definition>
+		<gleif-base:hasTag>PENDING_TRANSFER</gleif-base:hasTag>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&gleif-L1;PendingValidationStatus">
+		<rdf:type rdf:resource="&gleif-L1;LEIRegistrationStatus"/>
+		<rdfs:label>pending validation status</rdfs:label>
+		<skos:definition>status indicating that an application for registration has been submitted and is in process, pending validation</skos:definition>
+		<gleif-base:hasTag>PENDING_VALIDATION</gleif-base:hasTag>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:NamedIndividual>
+ 
+	<owl:NamedIndividual rdf:about="&gleif-L1;RetiredStatus">
+		<rdf:type rdf:resource="&gleif-L1;LEIRegistrationStatus"/>
+		<rdfs:label>retired status</rdfs:label>
+		<skos:definition>status indicating that the registration is for an entity that has ceased operation, without having been merged into another entity</skos:definition>
+		<gleif-base:hasTag>RETIRED</gleif-base:hasTag>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="&gleif-L1;TransferredStatus">
+		<rdf:type rdf:resource="&gleif-L1;LEIRegistrationStatus"/>
+		<rdfs:label>transferred status</rdfs:label>
+		<skos:definition>status indicating that the registration that has been transferred to a different registration authority</skos:definition>
+		<gleif-base:hasTag>TRANSFERRED</gleif-base:hasTag>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="&gleif-L1;PendingStatus">
+		<rdf:type rdf:resource="&gleif-L1;LEIValidationStatus"/>
+		<rdfs:label>pending status</rdfs:label>
+		<skos:definition>The validation of the reference data provided by the registrant has not yet occurred..</skos:definition>
+		<gleif-base:hasTag>PENDING</gleif-base:hasTag>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:NamedIndividual>
+
+ 	<owl:NamedIndividual rdf:about="&gleif-L1;EntitySuppliedOnlyStatus">
+		<rdf:type rdf:resource="&gleif-L1;LEIValidationStatus"/>
+		<rdfs:label>entity supplied only status</rdfs:label>
+		<skos:definition>Based on the validation procedures in use by the LOU responsible for the record, the information associated with this record has significant reliance on the information that a submitter provided due to the unavailability of corroborating information.</skos:definition>
+		<gleif-base:hasTag>ENTITY SUPPLIED ONLY</gleif-base:hasTag>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:NamedIndividual>
+
+ 	<owl:NamedIndividual rdf:about="&gleif-L1;PartiallyCorroboratedStatus">
+		<rdf:type rdf:resource="&gleif-L1;LEIValidationStatus"/>
+		<rdfs:label>partially corroborated status</rdfs:label>
+		<skos:definition>Based on the validation procedures in use by the LOU responsible for the record, the information supplied by the registrant can be partially corroborated by public authoritative sources, while some of the record is dependent upon the information that the registrant submitted, either due to conflicts with authoritative information, or due to data unavailability.</skos:definition>
+		<gleif-base:hasTag>PARTIALLY CORROBORATED</gleif-base:hasTag>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:NamedIndividual>
+  
+ 	<owl:NamedIndividual rdf:about="&gleif-L1;FullyCorroboratedStatus">
+		<rdf:type rdf:resource="&gleif-L1;LEIValidationStatus"/>
+		<rdfs:label>fully corroborated status</rdfs:label>
+		<skos:definition>Based on the validation procedures in use by the LOU responsible for the record, there is sufficient information contained in authoritative public sources to corroborate the information that the submitter has provided for the record.</skos:definition>
+		<gleif-base:hasTag>FULLY CORROBORATED</gleif-base:hasTag>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:NamedIndividual>
+  
+  
+</rdf:RDF>
