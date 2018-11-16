@@ -1,7 +1,7 @@
 # LEI Definition Work
 
-TODO: write a README.
-
+See the following document for ongoing discussion and prioritization of work:
+https://docs.google.com/document/d/18wMhmESWnBKp5l3RPCXIZQO9KQK8HZ4S6R6ihWZLqrk/edit?usp=sharing
 
 
 ## Links to GLEIF data formats documentation:
