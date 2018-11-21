@@ -113,8 +113,6 @@
 		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
 	</owl:ObjectProperty>
 
-
-
   <owl:Class rdf:about="&gleif-L1;LEIRegistrationStatus">
 		<rdfs:subClassOf rdf:resource="&gleif-base;RegistrationStatus"/>
 		<rdfs:label>legal entity identifier registration status</rdfs:label>

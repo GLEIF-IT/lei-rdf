@@ -116,7 +116,7 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&gleif-base;isRecognizedIn"/>
-				<owl:someValuesFrom rdf:resource="&gleif-base;Jurisdiction"/>
+				<owl:someValuesFrom rdf:resource="&lcc-cr;GeographicRegion"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">legal person</rdfs:label>
@@ -130,7 +130,7 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&gleif-base;isOrganizedIn"/>
-				<owl:onClass rdf:resource="&gleif-base;Jurisdiction"/>
+				<owl:onClass rdf:resource="&lcc-cr;GeographicRegion"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -228,25 +228,10 @@
 		<skos:altLabel>juristic person</skos:altLabel>
 	</owl:Class>
 	
-
-  
-	<owl:Class rdf:about="&gleif-base;Jurisdiction">
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&gleif-base;hasReach"/>
-				<owl:someValuesFrom rdf:resource="&lcc-cr;GeographicRegion"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label xml:lang="en">jurisdiction</rdfs:label>
-		<skos:definition>the limits or territory within which authority may be exercised; the power, right, or authority to interpret and apply the law</skos:definition>
-		<dct:source>Merriam-Webster Online Dictionary</dct:source>
-	</owl:Class>
-
-	<owl:ObjectProperty rdf:about="&gleif-base;hasReach">
-		<rdfs:label>has reach</rdfs:label>
-		<rdfs:domain rdf:resource="&gleif-base;Jurisdiction"/>
+	<owl:ObjectProperty rdf:about="&gleif-base;hasCoverageArea">
+		<rdfs:label>has coverage area</rdfs:label>
 		<rdfs:range rdf:resource="&lcc-cr;GeographicRegion"/>
-		<skos:definition>indicates the geopolitical unit (country, federal province or municipality) or geophysical extent in which the jurisdiction has effect</skos:definition>
+		<skos:definition>indicates a geographic region in which some service is provided, or to which some policy applies, or in which something is available</skos:definition>
 	</owl:ObjectProperty>
 
   
@@ -254,14 +239,14 @@
 		<rdfs:subPropertyOf rdf:resource="&gleif-base;isRecognizedIn"/>
 		<rdfs:label>is organized in</rdfs:label>
 		<rdfs:domain rdf:resource="&gleif-base;LegalEntity"/>
-		<rdfs:range rdf:resource="&gleif-base;Jurisdiction"/>
+		<rdfs:range rdf:resource="&lcc-cr;GeographicRegion"/>
 		<skos:definition>indicates the jurisdiction whose laws a legal entity is organized under</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&gleif-base;isRecognizedIn">
 		<rdfs:label>is recognized in</rdfs:label>
 		<rdfs:domain rdf:resource="&gleif-base;LegalPerson"/>
-		<rdfs:range rdf:resource="&gleif-base;Jurisdiction"/>
+		<rdfs:range rdf:resource="&lcc-cr;GeographicRegion"/>
 		<skos:definition>indicates the jurisdiction in which a legal person is authorized to conduct business or an agreement may be acknowledged and possibly enforceable</skos:definition>
 	</owl:ObjectProperty>
 
@@ -272,6 +257,36 @@
 		<skos:definition>the name used to refer to an person or organization in legal communications</skos:definition>
 	</owl:DatatypeProperty>
 
+  <owl:DatatypeProperty rdf:about="&gleif-base;hasAdditionalName">
+		<rdfs:subPropertyOf rdf:resource="&gleif-base;hasName"/>
+		<rdfs:label>has legal name</rdfs:label>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>the name used to refer to an person or organization informally</skos:definition>
+	</owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="&gleif-base;hasTransliteratedName">
+		<rdfs:subPropertyOf rdf:resource="&gleif-base;hasAdditionalName"/>
+		<rdfs:label>has legal name</rdfs:label>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>the name used to refer to a person or organization in western text. Not generally the lgeal name</skos:definition>
+	</owl:DatatypeProperty>
+ 
+  <owl:DatatypeProperty rdf:about="&gleif-base;hasEnglishName">
+		<rdfs:subPropertyOf rdf:resource="&gleif-base;hasTransliteratedName"/>
+		<rdfs:label>has legal name</rdfs:label>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>the name used to refer to a person or organization in English. Transliterated by definition</skos:definition>
+	</owl:DatatypeProperty>
+  
+  
+  <owl:DatatypeProperty rdf:about="&gleif-base;hasLocalLegalName">
+		<rdfs:subPropertyOf rdf:resource="&gleif-base;hasLegalName"/>
+		<rdfs:label>has legal name</rdfs:label>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>the name used to refer to an person or organization in legal communications in local alphabet</skos:definition>
+	</owl:DatatypeProperty>
+
+  
   <owl:DatatypeProperty rdf:about="&gleif-base;hasName">
 		<rdfs:label>has name</rdfs:label>
 		<rdfs:range rdf:resource="&xsd;string"/>
