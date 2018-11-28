@@ -19,11 +19,11 @@
 	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
 	
-	<owl:Ontology rdf:about="https://www.gleif.org/ontology/base/">
+	<owl:Ontology rdf:about="https://www.gleif.org/ontology/Base/">
 		<rdfs:label>GLEIF Base Ontology</rdfs:label>
 		<dct:abstract>This ontology defines generic concepts for reuse by other GLEIF ontologies</dct:abstract>
 		<dct:license rdf:datatype="&xsd;anyURI">http://opensource.org/licenses/MIT</dct:license>
-		<dct:rights>Copyright (c) 2018 GLEIF</sm:copyright>
+		<dct:rights>Copyright (c) 2018 GLEIF</dct:rights>
     <owl:imports rdf:resource="http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/"/>
     <owl:imports rdf:resource="http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/"/>
 	</owl:Ontology>
@@ -102,7 +102,7 @@
 	</owl:Class>
 
   <owl:ObjectProperty rdf:about="&gleif-base;hasScope">
-		<rdfs:label>has definition</rdfs:label>
+		<rdfs:label>has scope</rdfs:label>
 		<owl:inverseOf rdf:resource="&gleif-base;scopes"/>
 		<skos:definition>specifies a form of words that conveys the meaning associated with something</skos:definition>
 	</owl:ObjectProperty>
@@ -110,7 +110,6 @@
 		<rdfs:label>scopes</rdfs:label>
 		<skos:definition>determines or identifies the essential qualities or meaning of, discovers and sets forth the meaning of, fixes or marks the limits of, demarcates</skos:definition>
 	</owl:ObjectProperty>
-
 
   <owl:Class rdf:about="&gleif-base;LegalPerson">
 		<rdfs:subClassOf>
@@ -181,6 +180,75 @@
 		<skos:example>This may be a business entity or a government, international or not-for-profit, or other unincorporated social organization.</skos:example>
 		<dct:source>https://www.iso.org/obp/ui/#iso:std:iso-iec:6523:-1:ed-1:v1:en</dct:source>
 	</owl:Class>
+  
+  <owl:Class rdf:about="&gleif-base;EntityStatus">
+		<rdfs:label>entity status</rdfs:label>
+		<skos:definition>a lifecycle stage indicating the operational and/or legal status of an entity as specified in a given business registry for that entity</skos:definition>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+		<skos:note>In some jurisdictions, there may be other possible values for entity status, such as suspended in the State of California, thus the individuals provided herein are not intended to be exhaustive.</skos:note>
+	</owl:Class>
+
+  <owl:DatatypeProperty rdf:about="&gleif-base;hasEntityExpirationDate">
+		<rdfs:label>has entity expiration date</rdfs:label>
+		<rdfs:domain rdf:resource="&gleif-base;LegalEntity"/>
+		<rdfs:range rdf:resource="&xsd;dateTime"/>
+		<skos:definition>the date that the legal entity ceased to operate, whether due to dissolution, merger or acquisition</skos:definition>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:DatatypeProperty>
+
+  <owl:ObjectProperty rdf:about="&gleif-base;hasEntityExpirationReason">
+		<rdfs:label>has entity expiration reason</rdfs:label>
+		<rdfs:domain rdf:resource="&gleif-base;LegalEntity"/>
+		<rdfs:range rdf:resource="&gleif-base;ExpirationReason"/>
+		<skos:definition>the reason that a legal entity ceased to exist and/or operate</skos:definition>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:ObjectProperty>
+
+  <owl:Class rdf:about="&gleif-base;EntityExpirationReason">
+		<rdfs:label>entity expiration reason</rdfs:label>
+		<skos:definition>the reason that a legal entity ceased to exist and/or operate</skos:definition>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:Class>
+ 
+  <gleif-base:EntityExpirationReason rdf:about="&gleif-base;EntityExpirationReasonDissolved">
+		<rdfs:label>DISSOLVED</rdfs:label>
+		<skos:definition>the entity ceased to operate</skos:definition>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</gleif-base:EntityExpirationReason>
+  <gleif-base:EntityExpirationReason rdf:about="&gleif-base;ExpirationReasonCorporateAction">
+		<rdfs:label>CORPORATE_ACTION</rdfs:label>
+		<skos:definition>the entity was acquired or merged with another entity</skos:definition>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</gleif-base:EntityExpirationReason>
+  <gleif-base:EntityExpirationReason rdf:about="&gleif-base;ExpirationReasonOther">
+		<rdfs:label>OTHER</rdfs:label>
+		<skos:definition>The reason for expiry is neither of DISSOLVED nor CORPORATE_ACTION</skos:definition>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</gleif-base:EntityExpirationReason>
+    
+  <owl:ObjectProperty rdf:about="&gleif-base;hasEntityStatus">
+		<rdfs:label>has entity status</rdfs:label>
+		<rdfs:domain rdf:resource="&gleif-base;LegalEntity"/>
+		<rdfs:range rdf:resource="&gleif-base;EntityStatus"/>
+		<skos:definition>indicates the status of the entity (i.e., active, inactive)</skos:definition>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:ObjectProperty>
+
+  <owl:NamedIndividual rdf:about="&gleif-base;ActiveStatus">
+		<rdf:type rdf:resource="&gleif-base;EntityStatus"/>
+		<rdfs:label>active status</rdfs:label>
+		<skos:definition>as of the last report or update, the entity was legally registered and operating</skos:definition>
+		<gleif-base:hasTag>ACTIVE</gleif-base:hasTag>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="&gleif-base;InactiveStatus">
+		<rdf:type rdf:resource="&gleif-base;EntityStatus"/>
+		<rdfs:label>inactive status</rdfs:label>
+		<skos:definition>the entity that was assigned the identifier (business, LEI, or other) is no longer legally registered and/or operating, whether as a result of business closure, acquisition by or merger with another (or new) entity, or determination of illegitimacy</skos:definition>
+		<gleif-base:hasTag>INACTIVE</gleif-base:hasTag>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:NamedIndividual>
 
  	<owl:ObjectProperty rdf:about="&gleif-base;hasMember">
 		<rdfs:label>has member</rdfs:label>
@@ -201,20 +269,12 @@
 		<dct:source>Stanford Encyclopedia of Philosophy at http://plato.stanford.edu/entries/mereology/</dct:source>
 		<skos:note>This property relates a thing to anything which is a proper part of that thing. This is not parthood in the sense of a the role of part which may be played by interchangeable things such as wheels; instead this property relates an independent thing to something which makes up a part of it.</skos:note>
 	</owl:ObjectProperty>
-
-  
+ 
   <owl:Class rdf:about="&gleif-base;FormalOrganization">
 		<rdfs:subClassOf rdf:resource="&gleif-base;Organization"/>
 		<rdfs:label>formal organization</rdfs:label>
 		<skos:definition>An Organization that is recognized in some legal jurisdiction, with associated rights and responsibilities. Examples include a Corporation, Charity, Government or Church.</skos:definition>
-		<skos:editorialNote>W3C Definition - An Organization which is recognized in the world at large, in particular in legal jurisdictions, with associated rights and responsibilities. Examples include a Corporation, Charity, Government or Church.</skos:editorialNote>
 		<dct:source>W3C Organization Ontology</dct:source>
-	</owl:Class>
-
-  <owl:Class rdf:about="&gleif-base;FormallyConstitutedOrganization">
-		<rdfs:subClassOf rdf:resource="&gleif-base;FormalOrganization"/>
-		<rdfs:label>formally constituted organization</rdfs:label>
-		<skos:definition>Any organization with some formal contractual agreement among its principals</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&gleif-base;JuridicalPerson">
@@ -233,7 +293,6 @@
 		<rdfs:range rdf:resource="&lcc-cr;GeographicRegion"/>
 		<skos:definition>indicates a geographic region in which some service is provided, or to which some policy applies, or in which something is available</skos:definition>
 	</owl:ObjectProperty>
-
   
   <owl:ObjectProperty rdf:about="&gleif-base;isOrganizedIn">
 		<rdfs:subPropertyOf rdf:resource="&gleif-base;isRecognizedIn"/>
@@ -245,7 +304,7 @@
 	
 	<owl:ObjectProperty rdf:about="&gleif-base;isRecognizedIn">
 		<rdfs:label>is recognized in</rdfs:label>
-		<rdfs:domain rdf:resource="&gleif-base;LegalPerson"/>
+		<rdfs:domain rdf:resource="&gleif-base;LegalEntity"/>
 		<rdfs:range rdf:resource="&lcc-cr;GeographicRegion"/>
 		<skos:definition>indicates the jurisdiction in which a legal person is authorized to conduct business or an agreement may be acknowledged and possibly enforceable</skos:definition>
 	</owl:ObjectProperty>
@@ -253,7 +312,6 @@
 	<owl:DatatypeProperty rdf:about="&gleif-base;hasLegalName">
 		<rdfs:subPropertyOf rdf:resource="&gleif-base;hasName"/>
 		<rdfs:label>has legal name</rdfs:label>
-		<rdfs:range rdf:resource="&xsd;string"/>
 		<skos:definition>the name used to refer to an person or organization in legal communications</skos:definition>
 	</owl:DatatypeProperty>
 
@@ -268,30 +326,32 @@
 		<rdfs:subPropertyOf rdf:resource="&gleif-base;hasAdditionalName"/>
 		<rdfs:label>has legal name</rdfs:label>
 		<rdfs:range rdf:resource="&xsd;string"/>
-		<skos:definition>the name used to refer to a person or organization in western text. Not generally the lgeal name</skos:definition>
+		<skos:definition>the name used to refer to a person or organization, converted from original to western text. Not generally the legal name</skos:definition>
 	</owl:DatatypeProperty>
- 
-  <owl:DatatypeProperty rdf:about="&gleif-base;hasEnglishName">
+
+  <owl:DatatypeProperty rdf:about="&gleif-base;hasASCIIName">
 		<rdfs:subPropertyOf rdf:resource="&gleif-base;hasTransliteratedName"/>
 		<rdfs:label>has legal name</rdfs:label>
 		<rdfs:range rdf:resource="&xsd;string"/>
-		<skos:definition>the name used to refer to a person or organization in English. Transliterated by definition</skos:definition>
+		<skos:definition>the name used to refer to a person or organization in 7 bit ASCII text (ISO 646); also valid UNICODE (ISO 10646)</skos:definition>
 	</owl:DatatypeProperty>
-  
+ 
+  <owl:DatatypeProperty rdf:about="&gleif-base;hasTranslatedEnglishName">
+		<rdfs:subPropertyOf rdf:resource="&gleif-base;hasTransliteratedName"/>
+		<rdfs:label>has legal name</rdfs:label>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>the name used to refer to a person or organization, translated into English. Transliterated by definition</skos:definition>
+	</owl:DatatypeProperty> 
   
   <owl:DatatypeProperty rdf:about="&gleif-base;hasLocalLegalName">
 		<rdfs:subPropertyOf rdf:resource="&gleif-base;hasLegalName"/>
 		<rdfs:label>has legal name</rdfs:label>
-		<rdfs:range rdf:resource="&xsd;string"/>
-		<skos:definition>the name used to refer to an person or organization in legal communications in local alphabet</skos:definition>
+		<skos:definition>the name used to refer to an person or organization in legal communications in local alphabet, which may be English</skos:definition>
 	</owl:DatatypeProperty>
-
   
   <owl:DatatypeProperty rdf:about="&gleif-base;hasName">
 		<rdfs:label>has name</rdfs:label>
-		<rdfs:range rdf:resource="&xsd;string"/>
 		<skos:definition>associates a name, reference name, or appellation with an individual concept</skos:definition>
-		<dct:source>ISO 639-3 Codes for the representation of names of languages - Part 3: Alpha-3 code for comprehensive coverage of languages, First edition, 2007-02-01</dct:source>
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&gleif-base;identifies">
@@ -309,8 +369,13 @@
   <owl:Class rdf:about="&gleif-base;PhysicalAddress">
 		<rdfs:label xml:lang="en">physical address</rdfs:label>
 		<skos:definition>a physical address where communications can be addressed, papers served or representatives located for any kind of organization or person</skos:definition>
-		<skos:editorialNote>There are existing international and regional standards for defining postal addresses.  This is a place holder for mapping to regional standards for postal address representation</skos:editorialNote>
 		<skos:scopeNote>An address is a collection of information, presented in a mostly fixed format, used for describing the location of a building, apartment, or other structure or a plot of land, generally using political boundaries and street names as references, along with other identifiers such as house or apartment numbers.  Some addresses also contain special codes to aid routing of mail and packages, such as a ZIP code or post code. (Wikipedia)</skos:scopeNote>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="gleif:base;hasCity"/>
+        <owl:cardinality>1</owl:cardinality>
+     </owl:Restriction>
+    </rdfs:subClassOf>
 	</owl:Class>
   
   <owl:ObjectProperty rdf:about="&gleif-base;hasAddress">
@@ -319,6 +384,29 @@
 		<skos:definition>has a means by which the entity may be located or contacted or may receive correspondence</skos:definition>
 	</owl:ObjectProperty>
 
+  <owl:DatatypeProperty rdf:about="&gleif-base;hasAddressNumber">
+		<rdfs:label>has address number</rdfs:label>
+		<rdfs:domain rdf:resource="&gleif-base;PhysicalAddress"/>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>optional, additional structured version of an external house number, or range of numbers, contained in one of the address line elements</skos:definition>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="&gleif-base;hasAddressNumberWithinBuilding">
+		<rdfs:label>has address number within building</rdfs:label>
+		<rdfs:domain rdf:resource="&gleif-base;PhysicalAddress"/>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>optional, additional structured version of an internal location number, or range of numbers, contained in one of the address line elements</skos:definition>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="&gleif-base;mailRouting">
+		<rdfs:label>mail routing</rdfs:label>
+		<rdfs:domain rdf:resource="&gleif-base;PhysicalAddress"/>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>optional free text address line to hold content from other address lines containing explicit routing information (this element&apos;s presence indicates that this address is a routing / &quot;care of&quot; address.</skos:definition>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:DatatypeProperty>
 
   <owl:DatatypeProperty rdf:about="&gleif-base;hasAddressLine1">
 		<rdfs:label>has address line 1</rdfs:label>
@@ -377,26 +465,6 @@
 		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
 	</owl:DatatypeProperty>
 
-	<owl:Class rdf:about="&gleif-base;RegistrationAuthority">
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&rdf;type"/>
-				<owl:onClass rdf:resource="&gleif-base;LegalEntity"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&gleif-base;manages"/>
-				<owl:someValuesFrom rdf:resource="&gleif-base;Registry"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>registration authority</rdfs:label>
-		<skos:definition>a formally constituted organization and legal entity that is responsible for maintaining a registry and provides registration services</skos:definition>
-		<fibo-fnd-utl-av:abbreviation>RA</fibo-fnd-utl-av:abbreviation>
-		<dct:source>ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15</dct:source>
-	</owl:Class>
-
   <owl:Class rdf:about="&gleif-base;Registry">
 		<rdfs:subClassOf>
 			<owl:Restriction>
@@ -418,7 +486,7 @@
  
 	<owl:ObjectProperty rdf:about="&gleif-base;isIncludedIn">
 		<rdfs:label>is included in</rdfs:label>
-		<owl:inverseOf rdf:resource="&fibo-fnd-rel-rel;comprises"/>
+		<owl:inverseOf rdf:resource="&gleif-base;comprises"/>
 		<skos:definition>relates something to something that contains it</skos:definition>
 	</owl:ObjectProperty>
 	<owl:ObjectProperty rdf:about="&gleif-base;comprises">
@@ -428,60 +496,41 @@
 		<skos:note>Note that something can be comprised of something(s) that may or may not be understood as separable parts, and thus is not defined as being explicitly transitive.</skos:note>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&fibo-fbc-fct-ra;isRegisteredBy">
-		<rdfs:label>is registered by</rdfs:label>
-		<rdfs:range rdf:resource="&fibo-fbc-fct-ra;RegistrationAuthority"/>
-		<skos:definition>indicates the registration authority that registers something</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&fibo-fbc-fct-ra;isRegisteredIn">
+	<owl:ObjectProperty rdf:about="&gleif-base;isRegisteredIn">
 		<rdfs:label>is registered in</rdfs:label>
-		<rdfs:range rdf:resource="&fibo-fbc-fct-ra;Registry"/>
+		<rdfs:range rdf:resource="&gleif-base;Registry"/>
 		<skos:definition>indicates the registry that something is registered in</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&fibo-fbc-fct-ra;registers">
-		<rdfs:label>registers</rdfs:label>
-		<rdfs:domain rdf:resource="&fibo-fbc-fct-ra;RegistrationAuthority"/>
-		<skos:definition>records something in a registry or archive</skos:definition>
-	</owl:ObjectProperty>
+	</owl:ObjectProperty>	
 	 
   <owl:Class rdf:about="&gleif-base;RegistryEntry">
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;isIncludedIn"/>
-				<owl:allValuesFrom rdf:resource="&fibo-fbc-fct-ra;Registry"/>
+				<owl:onProperty rdf:resource="&gleif-base;isIncludedIn"/>
+				<owl:allValuesFrom rdf:resource="&gleif-base;Registry"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;comprises"/>
-				<owl:someValuesFrom rdf:resource="&fibo-fbc-fct-ra;RegistryIdentifier"/>
+				<owl:onProperty rdf:resource="&gleif-base;comprises"/>
+				<owl:someValuesFrom rdf:resource="&gleif-base;RegistryIdentifier"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>registry entry</rdfs:label>
 		<skos:definition>an entry in a registry that specifies something about the thing that is registered</skos:definition>
-		<fibo-fnd-utl-av:adaptedFrom>ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15</fibo-fnd-utl-av:adaptedFrom>
+		<dct:source>ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15</dct:source>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&gleif-base;RegistryIdentifier">
 		<rdfs:subClassOf rdf:resource="&gleif-base;Identifier"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-fnd-arr-id;isIndexTo"/>
-				<owl:onClass rdf:resource="&gleif-base;Registry"/>
-				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-fbc-fct-ra;isRegisteredIn"/>
+				<owl:onProperty rdf:resource="&gleif-base;isRegisteredIn"/>
 				<owl:someValuesFrom rdf:resource="&gleif-base;Registry"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>registry identifier</rdfs:label>
 		<skos:definition>an identifier associated with an entry in a registry, i.e., one that provides an index to the registry for the identified item</skos:definition>
-		<fibo-fnd-utl-av:adaptedFrom>ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15</fibo-fnd-utl-av:adaptedFrom>
+		<dct:source>ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15</dct:source>
 	</owl:Class>
 	
 	<owl:DatatypeProperty rdf:about="&gleif-base;hasRegistrationDate">
@@ -500,8 +549,6 @@
 		</rdfs:range>
 		<skos:definition>the date or date and time on which something is recorded</skos:definition>
 	</owl:DatatypeProperty>
-	
-
 
   <owl:ObjectProperty rdf:about="&gleif-base;manages">
 		<rdfs:label>manages</rdfs:label>
@@ -531,7 +578,7 @@
 		<rdfs:label>has website</rdfs:label>
 		<rdfs:range rdf:resource="&xsd;anyURI"/>
 		<skos:definition>a website associated with something, including but not limited to an organization</skos:definition>
-		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/gleif-registration-authorities-list</fibo-fnd-utl-av:adaptedFrom>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/gleif-registration-authorities-list</dct:source>
 	</owl:DatatypeProperty>
 
 	

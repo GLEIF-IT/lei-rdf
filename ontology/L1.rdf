@@ -6,14 +6,14 @@
     <!ENTITY gleif-root "https://www.gleif.org/lei/" >
     <!ENTITY gleif-base "https://www.gleif.org/ontology/Base/">
     <!ENTITY gleif-L1 "https://www.gleif.org/ontology/L1/" >
-    <!ENTITY gleif-ra "https://www.gleif.org/ontology/RegistrationAuthority/">
+    <!ENTITY gleif-ra "https://www.gleif.org/ontology/RA/">
     <!ENTITY lcc-3166-1-add "http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/" >
     <!ENTITY lcc-3166-2-add "http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/" >
 
     ]>
 <rdf:RDF 
          xmlns:gleif-base="https://www.gleif.org/ontology/Base/"
-         xmlns:gleif-ra="https://www.gleif.org/ontology/RegistrationAuthority/"
+         xmlns:gleif-ra="https://www.gleif.org/ontology/RA/"
          xmlns:gleif-L1="https://www.gleif.org/ontology/L1/"
          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -28,7 +28,7 @@
       <rdfs:label>GLEIF L1 Ontology</rdfs:label>
       <rdfs:comment>Ontology generated from GLEIF L1 data in CDF 2.1 format</rdfs:comment>
       <owl:imports rdf:resource="https://www.gleif.org/ontology/Base/"/>
-      <owl:imports rdf:resource="https://www.gleif.org/ontology/RegistrationAuthority/"/>
+      <owl:imports rdf:resource="https://www.gleif.org/ontology/RA/"/>
       <owl:imports rdf:resource="http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/"/>
       <owl:imports rdf:resource="http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/"/>
    </owl:Ontology>
@@ -54,11 +54,38 @@
 		<dct:source rdf:datatype="&xsd;anyURI">https://www.iso.org/standard/59771.html</dct:source>
 	</owl:Class>
   
+  <owl:DatatypeProperty rdf:about="&gleif-L1;hasPriorLegalName">
+		<rdfs:subPropertyOf rdf:resource="&gleif-base;hasName"/>
+		<rdfs:label>has prior legal name</rdfs:label>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>a primary legal name that was used previously for the entity</skos:definition>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="&gleif-L1;hasTradingOrOperationalName">
+		<rdfs:subPropertyOf rdf:resource="&gleif-base;hasName"/>
+		<rdfs:label>has trading or operational name</rdfs:label>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>a name currently used by the entity in addition to, but not replacing, the (primary) legal, official registered name</skos:definition>
+    <skos:altLabel>trading as</skos:altLabel>
+    <skos:altLabel>brand name</skos:altLabel>
+    <skos:altLabel>doing business as</skos:altLabel>
+    <skos:altLabel>operating under</skos:altLabel>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:DatatypeProperty>
+
+  
   <owl:ObjectProperty rdf:about="&gleif-L1;hasHeadquartersAddress">
-		<rdfs:subPropertyOf rdf:resource="&gleif-base;hasAddress"/>
+		<rdfs:subPropertyOf rdf:resource="&gleif-base;hasOperatingAddress"/>
 		<rdfs:label>has headquarters address</rdfs:label>
 		<skos:definition>identifies the headquarters address for the registered entity</skos:definition>
 		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="&gleif-L1;hasOperatingAddress">
+		<rdfs:subPropertyOf rdf:resource="&gleif-base;hasAddress"/>
+		<rdfs:label>has operating address</rdfs:label>
+		<skos:definition>an address at which an organization carries out its operations</skos:definition>
 	</owl:ObjectProperty>
 
   <owl:ObjectProperty rdf:about="&gleif-L1;hasAddressOfLegalFormation">
@@ -100,6 +127,54 @@
 		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
 	</owl:Class>
   
+  <owl:Class rdf:about="&gleif-L1;SoleProprietorship">
+		<rdfs:subClassOf rdf:resource="&gleif-base;LegalEntity"/>
+		<rdfs:subClassOf rdf:resource="&gleif-base;NaturalPerson"/>
+		<rdfs:label>sole proprietorship</rdfs:label>
+		<skos:definition>The legal entity is an individual acting in a business capacity</skos:definition>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:Class>
+
+  <owl:Class rdf:about="&gleif-L1;Fund">
+		<rdfs:subClassOf rdf:resource="&gleif-base;LegalEntity"/>
+		<rdfs:label>fund</rdfs:label>
+		<skos:definition>The legal entity is a fund managed by another legal entity.</skos:definition>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&gleif-base;isManagedBy"/>
+				<owl:someValuesFrom rdf:resource="&gleif-L1;LegalEntity"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:Class>
+
+  <owl:Class rdf:about="&gleif-L1;Branch">
+		<rdfs:subClassOf rdf:resource="&gleif-base;LegalEntity"/>
+		<rdfs:label>fund</rdfs:label>
+		<skos:definition>The legal entity is a branch of another legal entity</skos:definition>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&gleif-base;isMemberOf"/>
+				<owl:someValuesFrom rdf:resource="&gleif-L1;LegalEntity"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:Class>
+  
+  <owl:Class rdf:about="&gleif-L1;LocalOperatingUnit">
+		<rdfs:subClassOf rdf:resource="&gleif-base;RegistrationAuthority"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&gleif-base;manages"/>
+				<owl:someValuesFrom rdf:resource="&gleif-L1;LegalEntityIdentifierRegistry"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>local operating unit</rdfs:label>
+		<skos:definition>a registration authority that issues legal entity identifiers and is authorized by the Global LEI Foundation to do so</skos:definition>
+		<skos:altLabel>LOU</skos:altLabel>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:Class>
+	 
   <owl:ObjectProperty rdf:about="&gleif-L1;hasValidationLevel">
 		<rdfs:label>has validation level</rdfs:label>
 		<rdfs:range rdf:resource="&gleif-L1;LEIValidationStatus"/>
@@ -113,6 +188,39 @@
 		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
 	</owl:ObjectProperty>
 
+  <owl:ObjectProperty rdf:about="&gleif-L1;hasValidationRegistryIdentifier">
+		<rdfs:label>has validation registry identifier</rdfs:label>
+		<rdfs:range rdf:resource="&gleif-ra;RegistryIdentifier"/>
+		<skos:definition>the identifier of the entity at the indicated registration authority</skos:definition>
+    <skos:note>Typically, the identifier of the legal entity as maintained by a business registry in the jurisdiction of legal registration, or if the entity is one that is not recorded in a business registry (e.g. one of the varieties of funds registered instead with financial regulators), the identifier of the entity in the appropriate registration authority.</skos:note>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:ObjectProperty>
+  
+  <owl:DatatypeProperty rdf:about="&gleif-L1;hasInitialRegistrationDate">
+		<rdfs:subPropertyOf rdf:resource="&gleif-base;hasRegistrationDate"/>
+		<rdfs:label>has initial registration date</rdfs:label>
+		<rdfs:range rdf:resource="&xsd;dateTime"/>
+		<skos:definition>the date on which an identifier or other registered item was first registered</skos:definition>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="&gleif-L1;hasRegistrationRevisionDate">
+		<rdfs:subPropertyOf rdf:resource="&gleif-base;hasRegistrationDate"/>
+		<rdfs:label>has registration revision date</rdfs:label>
+		<rdfs:range rdf:resource="&xsd;dateTime"/>
+		<skos:definition>the date that the detail of a specific registration in the registry was revised</skos:definition>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="&gleif-L1;hasRenewalDate">
+		<rdfs:subPropertyOf rdf:resource="&gleif-base;hasRegistrationDate"/>
+		<rdfs:label>has renewal date</rdfs:label>
+		<rdfs:range rdf:resource="&xsd;dateTime"/>
+		<skos:definition>the date by which a specific registration in the registry must be renewed or updated</skos:definition>
+		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+	</owl:DatatypeProperty>
+
+
   <owl:Class rdf:about="&gleif-L1;LEIRegistrationStatus">
 		<rdfs:subClassOf rdf:resource="&gleif-base;RegistrationStatus"/>
 		<rdfs:label>legal entity identifier registration status</rdfs:label>
@@ -125,14 +233,6 @@
 		<skos:definition>level of corroboration of an entry in a legal entity identifier registry that conforms to ISO 17442 and the Global Legal Entity Identifier Foundation (GLEIF) Common Data Format (CDF)</skos:definition>
   </owl:Class>
 
- 	<owl:NamedIndividual rdf:about="&gleif-L1;ActiveStatus">
-		<rdf:type rdf:resource="&gleif-L1;EntityStatus"/>
-		<rdfs:label>active status</rdfs:label>
-		<skos:definition>as of the last report or update, the entity was legally registered and operating</skos:definition>
-		<gleif-base:hasTag>ACTIVE</gleif-base:hasTag>
-		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
-	</owl:NamedIndividual>
-	
 	<owl:NamedIndividual rdf:about="&gleif-L1;AnnulledStatus">
 		<rdf:type rdf:resource="&gleif-L1;LEIRegistrationStatus"/>
 		<rdfs:label>annulled status</rdfs:label>
@@ -156,15 +256,7 @@
 		<gleif-base:hasTag>DUPLICATE</gleif-base:hasTag>
 		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
 	</owl:NamedIndividual>
-
-	<owl:NamedIndividual rdf:about="&gleif-L1;InactiveStatus">
-		<rdf:type rdf:resource="&gleif-L1;EntityStatus"/>
-		<rdfs:label>inactive status</rdfs:label>
-		<skos:definition>the entity that was assigned the identifier (business, LEI, or other) is no longer legally registered and/or operating, whether as a result of business closure, acquisition by or merger with another (or new) entity, or determination of illegitimacy</skos:definition>
-		<gleif-base:hasTag>INACTIVE</gleif-base:hasTag>
-		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
-	</owl:NamedIndividual>
-	
+  	
 	<owl:NamedIndividual rdf:about="&gleif-L1;IssuedStatus">
 		<rdf:type rdf:resource="&gleif-L1;LEIRegistrationStatus"/>
 		<rdfs:label>issued status</rdfs:label>

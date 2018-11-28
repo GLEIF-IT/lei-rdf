@@ -6,7 +6,7 @@
     <!ENTITY gleif-root "https://www.gleif.org/lei/" >
     <!ENTITY gleif-base "https://www.gleif.org/ontology/Base/">
     <!ENTITY gleif-L1 "https://www.gleif.org/ontology/L1/" >
-    <!ENTITY gleif-ra "https://www.gleif.org/ontology/RegistrationAuthorities/" >
+    <!ENTITY gleif-ra "https://www.gleif.org/ontology/RA/" >
     <!ENTITY L1-data "https://www.gleif.org/data/L1Data/" >
     <!ENTITY lcc-3166-1-add "http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/" >
     <!ENTITY lcc-3166-2-add "http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/" >
@@ -14,7 +14,7 @@
     ]>
 <rdf:RDF 
          xmlns:gleif-base="https://www.gleif.org/ontology/Base/"
-         xmlns:gleif-ra="https://www.gleif.org/ontology/RegistrationAuthorities/"
+         xmlns:gleif-ra="https://www.gleif.org/ontology/RA/"
          xmlns:gleif-L1="https://www.gleif.org/ontology/L1/"
          xmlns:gleif-L1-data="https://www.gleif.org/sample/L1Data/"
          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -31,7 +31,7 @@
       <rdfs:label>GLEIF L1 data</rdfs:label>
       <rdfs:comment>Ontology generated from GLEIF L1 data in CDF 2.1 format</rdfs:comment>
       <owl:imports rdf:resource="https://www.gleif.org/ontology/Base/"/>
-      <owl:imports rdf:resource="https://www.gleif.org/ontology/RegistrationAuthorities/"/>
+      <owl:imports rdf:resource="https://www.gleif.org/ontology/RA/"/>
       <owl:imports rdf:resource="https://www.gleif.org/ontology/L1/"/>
       <owl:imports rdf:resource="http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/"/>
       <owl:imports rdf:resource="http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/"/>
@@ -39,6 +39,7 @@
    
    <gleif-base:PhysicalAddress rdf:about="&L1-data;Leg-5493007CICYM7A0SZ714">
       <gleif-base:hasAddressLine1>ACCESO II 32</gleif-base:hasAddressLine1>
+      <gleif-base:hasAddressNumber>32</gleif-base:hasAddressNumber>
       <gleif-base:hasCity>Querétaro</gleif-base:hasCity>
       <gleif-base:hasSubdivision rdf:resource="&lcc-3166-2-add;REG-MX-QUE"/>
       <gleif-base:hasCountry rdf:resource="&lcc-3166-1-add;CTRY-MX"/>
@@ -46,6 +47,7 @@
    </gleif-base:PhysicalAddress>
    <gleif-base:PhysicalAddress rdf:about="&L1-data;HQ-5493007CICYM7A0SZ714">
       <gleif-base:hasAddressLine1>ACCESO II 32</gleif-base:hasAddressLine1>
+      <gleif-base:hasAddressNumber>32</gleif-base:hasAddressNumber>
       <gleif-base:hasCity>Querétaro</gleif-base:hasCity>
       <gleif-base:hasSubdivision rdf:resource="&lcc-3166-2-add;REG-MX-QUE"/>
       <gleif-base:hasCountry rdf:resource="&lcc-3166-1-add;CTRY-MX"/>
@@ -54,17 +56,32 @@
    <gleif-ra:RegistryIdentifier rdf:about="&L1-data;BID-RA000449-IKM981217SD5">
       <gleif-base:hasTag>IKM981217SD5</gleif-base:hasTag>
       <gleif-base:identifies rdf:resource="&L1-data;LE-5493007CICYM7A0SZ714"/>
-      <gleif-ra:isRegisteredIn rdf:resource="&BR;RA000449"/>
+      <gleif-ra:isRegisteredIn rdf:resource="&L1-data;RA000449"/>
    </gleif-ra:RegistryIdentifier>
    <gleif-base:LegalEntity rdf:about="&L1-data;LE-5493007CICYM7A0SZ714">
-      <gleif-base:hasLegalName>KI MEXICO S DE RL DE CV</gleif-base:hasLegalName>
+      <gleif-base:hasEntityStatus rdf:resource="&gleif-base;ActiveStatus"/>
+      <gleif-base:hasLocalLegalName xml:lang="es">KI MEXICO S DE RL DE CV</gleif-base:hasLocalLegalName>
+      <gleif-L1:hasPriorLegalName>INDUSTRIAS KI DE MEXICO S.R.L. DE C.V.</gleif-L1:hasPriorLegalName>
+      <gleif-L1:hasTradingOrOperationalName>KI MEXICO</gleif-L1:hasTradingOrOperationalName>
       <gleif-base:isOrganizedIn rdf:resource="&lcc-3166-1-add;CTRY-MX"/>
       <gleif-L1:hasAddressOfLegalFormation rdf:resource="&L1-data;Leg-5493007CICYM7A0SZ714"/>
       <gleif-L1:hasHeadquartersAddress rdf:resource="&L1-data;HQ-5493007CICYM7A0SZ714"/>
+      <!-- need ELF -->
    </gleif-base:LegalEntity>
    <gleif-L1:LegalEntityIdentifier rdf:about="&gleif-root;5493007CICYM7A0SZ714">
       <gleif-base:hasTag>5493007CICYM7A0SZ714</gleif-base:hasTag>
       <gleif-base:identifies rdf:resource="&L1-data;LE-5493007CICYM7A0SZ714"/>
    </gleif-L1:LegalEntityIdentifier>
+   <gleif-L1:LegalEntityIdentifierRegistryEntry rdf:about="&L1-data;LEE-5493007CICYM7A0SZ71">
+    <gleif-base:comprises rdf:resource="&gleif-root;5493007CICYM7A0SZ714"/>
+    <gleif-L1:hasInitialRegistrationDate rdf:datatype="&xsd;dateTime">2013-03-22T11:07:24.137-06:00</gleif-L1:hasInitialRegistrationDate>
+    <gleif-L1:hasRegistrationStatus rdf:resource="&gleif-L1;IssuedStatus"/>
+    <gleif-L1:hasRegistrationRevisionDate rdf:datatype="&xsd;dateTime">2018-02-28T11:40:04.012-06:00</gleif-L1:hasRegistrationRevisionDate>
+    <gleif-L1:hasRenewalDate rdf:datatype="&xsd;dateTime">2019-01-24T20:16:17.627-06:00</gleif-L1:hasRenewalDate>
+    <gleif-L1:hasValidationLevel rdf:resource="&gleif-L1;FullyCorroboratedStatus"/>
+    <gleif-L1:hasValidationAuthority rdf:resource="&L1-data;LE-5493007CICYM7A0SZ714"/>
+    <gleif-L1:hasValidationRegistryIdentifier rdf:resource="&L1-data;BID-RA000449-IKM981217SD5"/>
+   </gleif-L1:LegalEntityIdentifierRegistryEntry>
+   
 
  </rdf:RDF>

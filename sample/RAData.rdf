@@ -31,7 +31,7 @@
       <rdfs:label>GLEIF Registration Authority data</rdfs:label>
       <rdfs:comment>Ontology generated from GLEIF RA data in CDF 2.1 format</rdfs:comment>
       <owl:imports rdf:resource="https://www.gleif.org/ontology/Base/"/>
-      <owl:imports rdf:resource="https://www.gleif.org/ontology/RegistrationAuthorities/"/>
+      <owl:imports rdf:resource="https://www.gleif.org/ontology/RA/"/>
       <owl:imports rdf:resource="http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/"/>
       <owl:imports rdf:resource="http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/"/>
    </owl:Ontology>
@@ -39,10 +39,10 @@
    <gleif-ra:RegistrationAuthorityCode rdf:about="&RA-data;RA000189">
       <gleif-base:hasTag>RA000189</gleif-base:hasTag>
       <gleif-base:identifies rdf:resource="&RA-data;REG-RA000189"/>
-   </gleif-ra:RegistryIdentifier>
-   <gleif-ra:BusinessRegistry rdf:about="&RA-data;REG-RA000189">
-      <gleif-base:hasEnglishName>Register of Companies (Sirene)</gleif-base:hasLegalName>
-      <gleif-base:hasLocalName xml:lang="fr">Sirene</gleif-base:hasLegalName>
+   </gleif-ra:RegistrationAuthorityCode>
+   <gleif-ra:Registry rdf:about="&RA-data;REG-RA000189">
+      <gleif-base:hasEnglishName>Register of Companies (Sirene)</gleif-base:hasEnglishName>
+     <gleif-base:hasLocalLegalName xml:lang="fr">Sirene</gleif-base:hasLocalLegalName>
       <gleif-base:hasWebsite rdf:datatype="&xsd;anyURI">http://sirene.fr/sirene/public/accueil?sirene_locale=en</gleif-base:hasWebsite>
       <gleif-base:isManagedBy rdf:resource="&RA-data;ORG-RA000189"/>
       <gleif-base:hasCoverageArea rdf:resource="&lcc-3166-1-add;FR"/>
@@ -52,28 +52,27 @@
    </gleif-ra:Registry>
    <gleif-base:LegalEntity rdf:about="&RA-data;ORG-RA000189">
       <rdf:type rdf:resource="&gleif-ra;RegistrationAuthority"/>
-      <gleif-base:hasEnglishName>National Institute of Statistics and Economic Studies</gleif-base:hasLegalName>
-      <gleif-base:hasLocalLegalName>Institut National de la Statistique et des Études Économiques</gleif-base:hasLegalName>
+     <gleif-base:hasEnglishName>National Institute of Statistics and Economic Studies</gleif-base:hasEnglishName>
+     <gleif-base:hasLocalLegalName>Institut National de la Statistique et des Études Économiques</gleif-base:hasLocalLegalName>
    </gleif-base:LegalEntity>
 
    <gleif-ra:RegistrationAuthorityCode rdf:about="&RA-data;RA000585">
       <gleif-base:hasTag>RA000585</gleif-base:hasTag>
       <gleif-base:identifies rdf:resource="&RA-data;REG-RA000585"/>
-   </gleif-ra:RegistryIdentifier>
-   <gleif-ra:BusinessRegistry rdf:about="&RA-data;REG-RA000585">
-      <gleif-base:hasEnglishName>Companies Register</gleif-base:hasLegalName>
-      <gleif-base:hasLocalLegalName xml:lang="en">Companies Register</gleif-base:hasLegalName>
-      <gleif-base:hasWebsite rdf:datatype="&xsd;anyURI">www.companieshouse.gov.uk"</gleif-base:hasWebsite>
-      <gleif-base:isManagedBy rdf:resource="&RA-data;ORG-RA000585"/>
-      <gleif-base:hasCoverageArea rdf:resource="&lcc-3166-2-gb;EnglandAndWales"/> <!-- or &lcc-3166-2-add;GB-EAW -->
-      <gleif-base:hasCoverageArea rdf:resource="&lcc-3166-2-gb;NorthernIreland"/> <!-- or or &lcc-3166-2-add;GB-NIR -->
-      <gleif-base:hasCoverageArea rdf:resource="&lcc-3166-2-gb;Scotland"/> <!-- or &lcc-3166-2-add;GB-SCT -->
+   </gleif-ra:RegistrationAuthorityCode>
+   <gleif-ra:Registry rdf:about="&RA-data;REG-RA000585">
+     <gleif-base:hasEnglishName>Companies Register</gleif-base:hasEnglishName>
+     <gleif-base:hasLocalLegalName xml:lang="en">Companies Register</gleif-base:hasLocalLegalName>
+     <gleif-base:hasWebsite rdf:datatype="&xsd;anyURI">www.companieshouse.gov.uk</gleif-base:hasWebsite>
+     <gleif-base:isManagedBy rdf:resource="&RA-data;ORG-RA000585"/>
+     <gleif-base:hasCoverageArea rdf:resource="&lcc-3166-2-add;GB-EAW"/> <!-- or &lcc-3166-2-gb;EnglandAndWales -->
+     <gleif-base:hasCoverageArea rdf:resource="&lcc-3166-2-add;GB-NIR"/> <!-- or &lcc-3166-2-gb;NorthernIreland -->
+     <gleif-base:hasCoverageArea rdf:resource="&lcc-3166-2-add;GB-SCT"/> <!-- or &lcc-3166-2-gb;Scotland -->
    </gleif-ra:Registry>
    <gleif-base:LegalEntity rdf:about="&RA-data;ORG-RA000585">
       <rdf:type rdf:resource="&gleif-ra;RegistrationAuthority"/>
-      <gleif-base:hasEnglishName>Companies House</gleif-base:hasLegalName>
-      <gleif-base:hasLocalLegalName>Companies House</gleif-base:hasLegalName>
+     <gleif-base:hasEnglishName>Companies House</gleif-base:hasEnglishName>
+     <gleif-base:hasLocalLegalName>Companies House</gleif-base:hasLocalLegalName>
    </gleif-base:LegalEntity>
    
-   
- </rdf:RDF>
+</rdf:RDF>
