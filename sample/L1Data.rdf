@@ -8,7 +8,7 @@
     <!ENTITY gleif-L1 "https://www.gleif.org/ontology/L1/" >
     <!ENTITY gleif-ra "https://www.gleif.org/ontology/RA/" >
     <!ENTITY gleif-elf "https://www.gleif.org/ontology/ELF/" >
-    <!ENTITY L1-data "https://www.gleif.org/data/L1Data/" >
+    <!ENTITY L1-data "https://www.gleif.org/sample/L1Data/" >
     <!ENTITY lcc-3166-1-add "http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/" >
     <!ENTITY lcc-3166-2-add "http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/" >
 
@@ -77,6 +77,7 @@
    </gleif-L1:LegalEntityIdentifier>
    <gleif-L1:LegalEntityIdentifierRegistryEntry rdf:about="&L1-data;LEE-5493007CICYM7A0SZ71">
     <gleif-base:comprises rdf:resource="&gleif-root;5493007CICYM7A0SZ714"/>
+     <gleif-base:isManagedBy rdf:resource="&L1-data;LE-4469000001AVO26P9X86"/>
     <gleif-L1:hasInitialRegistrationDate rdf:datatype="&xsd;dateTime">2013-03-22T11:07:24.137-06:00</gleif-L1:hasInitialRegistrationDate>
     <gleif-base:hasRegistrationStatus rdf:resource="&gleif-L1;IssuedStatus"/>
     <gleif-base:hasRegistrationRevisionDate rdf:datatype="&xsd;dateTime">2018-02-28T11:40:04.012-06:00</gleif-base:hasRegistrationRevisionDate>
@@ -85,6 +86,56 @@
     <gleif-L1:hasValidationAuthority rdf:resource="&L1-data;LE-5493007CICYM7A0SZ714"/>
     <gleif-L1:hasValidationRegistryIdentifier rdf:resource="&L1-data;BID-RA000449-IKM981217SD5"/>
    </gleif-L1:LegalEntityIdentifierRegistryEntry>
-   
+  
+  <gleif-base:PhysicalAddress rdf:about="&L1-data;Leg-4469000001AVO26P9X86">
+    <gleif-base:hasAddressLine1>BOULEVARD TOLUCA 46</gleif-base:hasAddressLine1>
+    <gleif-base:hasAddressLine1>El Conde</gleif-base:hasAddressLine1>
+    <gleif-base:hasAddressLine1>Naucalpan de Juárez</gleif-base:hasAddressLine1>
+    <gleif-base:hasAddressNumber>46</gleif-base:hasAddressNumber>
+    <gleif-base:hasCity>Naucalpan de Juárez</gleif-base:hasCity>
+    <gleif-base:hasSubdivision rdf:resource="&lcc-3166-2-add;REG-MX-MEX"/>
+    <gleif-base:hasCountry rdf:resource="&lcc-3166-1-add;CTRY-MX"/>
+    <gleif-base:hasPostalCode>53500</gleif-base:hasPostalCode>
+  </gleif-base:PhysicalAddress>
+  <gleif-base:PhysicalAddress rdf:about="&L1-data;HQ-4469000001AVO26P9X86">
+    <gleif-base:hasAddressLine1>BOULEVARD TOLUCA 46</gleif-base:hasAddressLine1>
+    <gleif-base:hasAddressLine1>El Conde</gleif-base:hasAddressLine1>
+    <gleif-base:hasAddressLine1>Naucalpan de Juárez</gleif-base:hasAddressLine1>
+    <gleif-base:hasAddressNumber>46</gleif-base:hasAddressNumber>
+    <gleif-base:hasCity>Naucalpan de Juárez</gleif-base:hasCity>
+    <gleif-base:hasSubdivision rdf:resource="&lcc-3166-2-add;REG-MX-MEX"/>
+    <gleif-base:hasCountry rdf:resource="&lcc-3166-1-add;CTRY-MX"/>
+    <gleif-base:hasPostalCode>53500</gleif-base:hasPostalCode>
+  </gleif-base:PhysicalAddress>
+  <gleif-ra:RegistryIdentifier rdf:about="&L1-data;BID-RA000449-AME9806027F9">
+    <gleif-base:hasTag>AME9806027F9</gleif-base:hasTag>
+    <gleif-base:identifies rdf:resource="&L1-data;LE-4469000001AVO26P9X86"/>
+    <gleif-ra:isRegisteredIn rdf:resource="&L1-data;RA000449"/>
+  </gleif-ra:RegistryIdentifier>
+  <gleif-L1:LocalOperatingUnit rdf:about="&L1-data;LE-4469000001AVO26P9X86">
+    <gleif-base:hasEntityStatus rdf:resource="&gleif-base;ActiveStatus"/>
+    <gleif-base:hasLocalLegalName xml:lang="es">ASOCIACION MEXICANA DE ESTANDARES PARA EL COMERCIO ELECTRONICO AC</gleif-base:hasLocalLegalName>
+    <gleif-L1:hasTradingOrOperationalName>GS1 MÉXICO</gleif-L1:hasTradingOrOperationalName>
+    <gleif-base:isOrganizedIn rdf:resource="&lcc-3166-1-add;CTRY-MX"/>
+    <gleif-L1:hasAddressOfLegalFormation rdf:resource="&L1-data;Leg-4469000001AVO26P9X86"/>
+    <gleif-L1:hasHeadquartersAddress rdf:resource="&L1-data;HQ-4469000001AVO26P9X86"/>
+    <gleif-L1:hasLegalFormText rdf:datatype="&xsd;string">ASOCIACIÓN CIVIL</gleif-L1:hasLegalFormText>
+  </gleif-L1:LocalOperatingUnit>
+  <gleif-L1:LegalEntityIdentifier rdf:about="&gleif-root;4469000001AVO26P9X86">
+    <gleif-base:hasTag>4469000001AVO26P9X86</gleif-base:hasTag>
+    <gleif-base:identifies rdf:resource="&L1-data;LE-4469000001AVO26P9X86"/>
+  </gleif-L1:LegalEntityIdentifier>
+  <gleif-L1:LegalEntityIdentifierRegistryEntry rdf:about="&L1-data;LEE-4469000001AVO26P9X86">
+    <gleif-base:comprises rdf:resource="&gleif-root;4469000001AVO26P9X86"/>
+    <gleif-base:isManagedBy rdf:resource="&L1-data;LE-4469000001AVO26P9X86"/>
+    <gleif-L1:hasInitialRegistrationDate rdf:datatype="&xsd;dateTime">2017-02-01T19:37:30.514-06:00</gleif-L1:hasInitialRegistrationDate>
+    <gleif-base:hasRegistrationStatus rdf:resource="&gleif-L1;LapsedStatus"/>
+    <gleif-base:hasRegistrationRevisionDate rdf:datatype="&xsd;dateTime">2018-02-28T11:40:04.012-06:00</gleif-base:hasRegistrationRevisionDate>
+    <gleif-L1:hasRenewalDate rdf:datatype="&xsd;dateTime">2018-02-01T19:37:30.513-06:00</gleif-L1:hasRenewalDate>
+    <gleif-L1:hasValidationLevel rdf:resource="&gleif-L1;FullyCorroboratedStatus"/>
+    <gleif-L1:hasValidationAuthority rdf:resource="&L1-data;LE-5493007CICYM7A0SZ714"/>
+    <gleif-L1:hasValidationRegistryIdentifier rdf:resource="&L1-data;BID-RA000449-AME9806027F9"/>
+  </gleif-L1:LegalEntityIdentifierRegistryEntry>
+  
 
  </rdf:RDF>

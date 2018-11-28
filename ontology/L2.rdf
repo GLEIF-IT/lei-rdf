@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY dct "http://purl.org/dc/terms/" >
+    <!ENTITY gleif-root "https://www.gleif.org/lei/" >
+    <!ENTITY gleif-base "https://www.gleif.org/ontology/Base/">
+    <!ENTITY gleif-L1 "https://www.gleif.org/ontology/L1/" >
+    <!ENTITY gleif-L2 "https://www.gleif.org/ontology/L2/" >
+
+    ]>
+<rdf:RDF 
+  xmlns:gleif-base="https://www.gleif.org/ontology/Base/"
+  xmlns:gleif-L1="https://www.gleif.org/ontology/L1/"
+  xmlns:gleif-L2="https://www.gleif.org/ontology/L2/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xml:base="https://www.gleif.org/ontology/L2/">
+  
+  <owl:Ontology rdf:about="&gleif-L2;">
+    <rdfs:label>GLEIF L2 Ontology</rdfs:label>
+    <rdfs:comment>Ontology generated from GLEIF L1 data in CDF 2.1 format</rdfs:comment>
+    <owl:imports rdf:resource="https://www.gleif.org/ontology/Base/"/>
+    <owl:imports rdf:resource="https://www.gleif.org/ontology/L1/"/>
+  </owl:Ontology>
+  
+	
+	<owl:Class rdf:about="&gleif-L2;Ownership">
+		<rdfs:label>ownership</rdfs:label>
+		<skos:definition>abstract superclass to represent an ownership relationship</skos:definition>
+	</owl:Class>
+  
+	<owl:Class rdf:about="&gleif-L2;DirectOwnership">
+		<rdfs:subClassOf rdf:resource="&gleif-L2;Ownership"/>
+		<rdfs:label>direct ownership</rdfs:label>
+		<skos:definition>direct ownership relationship</skos:definition>
+	</owl:Class>
+
+	<owl:Class rdf:about="&gleif-L2;UltimateOwnership">
+		<rdfs:subClassOf rdf:resource="&gleif-L2;Ownership"/>
+		<rdfs:label>ultimate ownership</rdfs:label>
+		<skos:definition>ultimate ownership relationship</skos:definition>
+	</owl:Class>
+
+	<owl:Class rdf:about="&gleif-L2;PrimaryForeignBranchOwnership">
+		<rdfs:subClassOf rdf:resource="&gleif-L2;DirectOwnership"/>
+		<rdfs:label>primary foreign branch ownership</rdfs:label>
+		<skos:definition>abstract superclass to represent ownership of a foreign branch</skos:definition>
+	</owl:Class>
+  
+	<owl:Class rdf:about="&gleif-L2;AccountingSource">
+		<rdfs:label>accounting source</rdfs:label>
+		<skos:definition>the type of accounting standard used to source ownership information, which is based on reported accounting roll-ups</skos:definition>
+	</owl:Class>
+  
+ 	<owl:NamedIndividual rdf:about="&gleif-L2;IFRS">
+    <rdf:type rdf:resource="&gleif-L2;AccountingSource"/>
+		<rdfs:label>IFRS</rdfs:label>
+		<skos:definition>the IFRS accounting standard</skos:definition>
+	</owl:NamedIndividual>
+ 
+  <owl:NamedIndividual rdf:about="&gleif-L2;US_GAAP">
+    <rdf:type rdf:resource="&gleif-L2;AccountingSource"/>
+		<rdfs:label>US GAAP</rdfs:label>
+		<skos:definition>the US GAAP accounting standard</skos:definition>
+	</owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="&gleif-L2;OTHER_ACCOUNTING_STANDARD">
+    <rdf:type rdf:resource="&gleif-L2;AccountingSource"/>
+		<rdfs:label>other accounting standard</rdfs:label>
+		<skos:definition>another accounting standard (not IFRS or US GAAP)</skos:definition>
+	</owl:NamedIndividual>
+  
+  <owl:ObjectProperty rdf:about="&gleif-L2;hasOwner">
+		<rdfs:label>has owner</rdfs:label>
+		<rdfs:domain rdf:resource="&gleif-L2;Ownership"/>
+		<rdfs:range rdf:resource="&gleif-base;LegalEntity"/>
+		<skos:definition>the legal entity that plays the owner role</skos:definition>
+	</owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&gleif-L2;hasSubsidiary">
+    <rdfs:label>has subsidiary</rdfs:label>
+		<rdfs:domain rdf:resource="&gleif-L2;Ownership"/>
+    <rdfs:range rdf:resource="gleif-base;LegalEntity"/>
+		<skos:definition>the legal entity that plays the subsidiary role</skos:definition>
+	</owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&gleif-L2;acctgSource">
+		<rdfs:label>accounting source</rdfs:label>
+		<rdfs:domain rdf:resource="&gleif-L2;Ownership"/>
+		<rdfs:range rdf:resource="&gleif-L2;AccountingSource"/>
+		<skos:definition>the type of accounting source used for this ownership information</skos:definition>
+	</owl:ObjectProperty>
+  
+  <owl:DatatypeProperty rdf:about="&gleif-L2;ownPct">
+		<rdfs:label>owned percentage</rdfs:label>
+		<rdfs:domain rdf:resource="&gleif-L2;Ownership"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>the percentage of the subsidiary owned by the owner, if known</skos:definition>
+    <skos:editorialNote>Should be a subProperty of fibo-be-oac-cpty:hasPercentageControl but that needs fixing to be a datatypeproperty</skos:editorialNote>
+	</owl:DatatypeProperty>
+  
+ <!-- Inferrred info -->
+  <owl:ObjectProperty rdf:about="&gleif-L2;hasChildOwnership">
+    <rdfs:label>has child ownership</rdfs:label>
+    <rdfs:range rdf:resource="&gleif-L2;Ownership"/>
+    <rdfs:domain rdf:resource="gleif-base;LegalEntity"/>
+    <owl:inverseOf rdf:resource="&gleif-L2;hasOwner"/>
+    <skos:definition>child ownership</skos:definition>
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="&gleif-L2;hasParentOwnership">
+    <rdfs:label>has parent ownership</rdfs:label>
+    <rdfs:range rdf:resource="&gleif-L2;Ownership"/>
+    <rdfs:domain rdf:resource="gleif-base;LegalEntity"/>
+    <owl:inverseOf rdf:resource="&gleif-L2;hasSubsidiary"/>
+    <skos:definition>parent ownership</skos:definition>
+  </owl:ObjectProperty>
+
+
+  <rdf:Description rdf:about="&gleif-L2;hasParentEntity">
+    <rdfs:label>has parent entity</rdfs:label>
+    <owl:propertyChainAxiom rdf:parseType="Collection">
+      <owl:ObjectProperty rdf:about="&gleif-L2;hasParentOwnership"/>
+      <owl:ObjectProperty rdf:about="&gleif-L2;hasOwner"/>
+    </owl:propertyChainAxiom>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="&gleif-L2;hasChildEntity">
+    <rdfs:label>has child entity</rdfs:label>
+    <owl:propertyChainAxiom rdf:parseType="Collection">
+      <owl:ObjectProperty rdf:about="&gleif-L2;hasChildOwnership"/>
+      <owl:ObjectProperty rdf:about="&gleif-L2;hasSubsidiary"/>
+    </owl:propertyChainAxiom>
+  </rdf:Description> 
+  
+  <owl:Class rdf:about="&gleif-L2;Owner">
+    <rdfs:label>owner</rdfs:label>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gleif-L2;hasChildOwnership"/>
+        <owl:someValuesFrom rdf:resource="&gleif-L2;Ownership"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+  
+  <owl:Class rdf:about="&gleif-L2;UltimateOwner">
+    <rdfs:label>ultimate owner</rdfs:label>
+    <owl:equivalentClass>
+      <owl:Class>
+            <owl:intersectionOf rdf:parseType="Collection">
+                <owl:Class rdf:about="&gleif-L2;Owner"/>
+                <owl:Class>
+                    <owl:complementOf rdf:resource="&gleif-L2;Subsidiary"/>
+                </owl:Class>
+            </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  
+  <owl:Class rdf:about="&gleif-L2;Subsidiary">
+    <rdfs:label>subsidiary</rdfs:label>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gleif-L2;hasParentOwnership"/>
+        <owl:someValuesFrom rdf:resource="&gleif-L2;Ownership"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+  
+
+</rdf:RDF> 
+	
