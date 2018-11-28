@@ -7,6 +7,7 @@
     <!ENTITY gleif-base "https://www.gleif.org/ontology/Base/">
     <!ENTITY gleif-L1 "https://www.gleif.org/ontology/L1/" >
     <!ENTITY gleif-ra "https://www.gleif.org/ontology/RA/">
+    <!ENTITY gleif-elf "https://www.gleif.org/ontology/ELF/" >
     <!ENTITY lcc-3166-1-add "http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/" >
     <!ENTITY lcc-3166-2-add "http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/" >
 
@@ -14,6 +15,7 @@
 <rdf:RDF 
          xmlns:gleif-base="https://www.gleif.org/ontology/Base/"
          xmlns:gleif-ra="https://www.gleif.org/ontology/RA/"
+         xmlns:gleif-elf="https://www.gleif.org/ontology/ELF/"
          xmlns:gleif-L1="https://www.gleif.org/ontology/L1/"
          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -29,6 +31,7 @@
       <rdfs:comment>Ontology generated from GLEIF L1 data in CDF 2.1 format</rdfs:comment>
       <owl:imports rdf:resource="https://www.gleif.org/ontology/Base/"/>
       <owl:imports rdf:resource="https://www.gleif.org/ontology/RA/"/>
+      <owl:imports rdf:resource="https://www.gleif.org/ontology/ELF/"/>
       <owl:imports rdf:resource="http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/"/>
       <owl:imports rdf:resource="http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/"/>
    </owl:Ontology>
@@ -73,7 +76,6 @@
     <skos:altLabel>operating under</skos:altLabel>
 		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
 	</owl:DatatypeProperty>
-
   
   <owl:ObjectProperty rdf:about="&gleif-L1;hasHeadquartersAddress">
 		<rdfs:subPropertyOf rdf:resource="&gleif-base;hasOperatingAddress"/>
@@ -110,7 +112,14 @@
 				<owl:someValuesFrom rdf:resource="&gleif-L1;LEIRegistrationStatus"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gleif-base;hasRegistrationRevisionDate"/>
+        <owl:onDataRange rdf:resource="&xsd;dateTime"/>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&gleif-L1;hasValidationLevel"/>
 				<owl:someValuesFrom rdf:resource="&gleif-L1;LEIValidationStatus"/>
@@ -174,7 +183,22 @@
 		<skos:altLabel>LOU</skos:altLabel>
 		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
 	</owl:Class>
-	 
+
+  <owl:ObjectProperty rdf:about="&gleif-L1;hasLegalForm">
+    <rdfs:label>has legal form</rdfs:label>
+    <rdfs:domain rdf:resource="&gleif-base;LegalEntity"/>
+    <rdfs:range rdf:resource="&gleif-elf;EntityLegalForm"/>
+    <skos:definition>indicates the nature of the entity as defined from a legal or regulatory perspective in a given jurisdiction as registered in the official ELF list</skos:definition>
+  </owl:ObjectProperty>
+
+  <owl:DatatypeProperty rdf:about="&gleif-L1;hasLegalFormText">
+    <rdfs:label>has legal form</rdfs:label>
+    <rdfs:domain rdf:resource="&gleif-base;LegalEntity"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+    <skos:definition>indicates the nature of the entity as defined from a legal or regulatory perspective in a given jurisdiction where the legal form has not been registered or the registration code has not been used (code of 8888 or 9999)</skos:definition>
+  </owl:DatatypeProperty>
+  
+
   <owl:ObjectProperty rdf:about="&gleif-L1;hasValidationLevel">
 		<rdfs:label>has validation level</rdfs:label>
 		<rdfs:range rdf:resource="&gleif-L1;LEIValidationStatus"/>
@@ -201,14 +225,6 @@
 		<rdfs:label>has initial registration date</rdfs:label>
 		<rdfs:range rdf:resource="&xsd;dateTime"/>
 		<skos:definition>the date on which an identifier or other registered item was first registered</skos:definition>
-		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
-	</owl:DatatypeProperty>
-
-  <owl:DatatypeProperty rdf:about="&gleif-L1;hasRegistrationRevisionDate">
-		<rdfs:subPropertyOf rdf:resource="&gleif-base;hasRegistrationDate"/>
-		<rdfs:label>has registration revision date</rdfs:label>
-		<rdfs:range rdf:resource="&xsd;dateTime"/>
-		<skos:definition>the date that the detail of a specific registration in the registry was revised</skos:definition>
 		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
 	</owl:DatatypeProperty>
 

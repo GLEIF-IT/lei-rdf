@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE rdf:RDF [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY dct "http://purl.org/dc/terms/" >
+    <!ENTITY gleif-root "https://www.gleif.org/lei/" >
+    <!ENTITY gleif-base "https://www.gleif.org/ontology/Base/">
+    <!ENTITY gleif-elf "https://www.gleif.org/ontology/ELF/" >
+    <!ENTITY ELF-data "https://www.gleif.org/sample/RAData/" >
+    <!ENTITY lcc-3166-1-add "http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/" >
+    <!ENTITY lcc-3166-2-add "http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/" >
+
+    ]>
+<rdf:RDF 
+         xmlns:gleif-base="https://www.gleif.org/ontology/Base/"
+         xmlns:gleif-elf="https://www.gleif.org/ontology/ELF/"
+         xmlns:ELF-data="https://www.gleif.org/sample/ELFData/"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+         xmlns:dct="http://purl.org/dc/terms/"
+         xmlns:lcc-3166-1-add="http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/"
+         xmlns:lcc-3166-2-add="http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/"
+         xml:base="https://www.gleif.org/sample/L1Data/">
+
+   <owl:Ontology rdf:about="&ELF-data;">
+      <rdfs:label>GLEIF Entity Legal Forms data</rdfs:label>
+      <rdfs:comment>Ontology generated from GLEIF ELF data in CDF 2.1 format</rdfs:comment>
+      <owl:imports rdf:resource="https://www.gleif.org/ontology/Base/"/>
+      <owl:imports rdf:resource="https://www.gleif.org/ontology/RA/"/>
+      <owl:imports rdf:resource="http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/"/>
+      <owl:imports rdf:resource="http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/"/>
+   </owl:Ontology>
+   
+  <gleif-elf:EntityLegalFormIdentifier rdf:about="&ELF-data;ELF-2HBR">
+    <gleif-base:hasTag>2HBR</gleif-base:hasTag>
+    <gleif-base:identifies rdf:resource="&ELF-data;ELFE-2HBR"/>
+  </gleif-elf:EntityLegalFormIdentifier>
+  <gleif-elf:EntityLegalForm rdf:about="&ELF-data;ELFE-2HBR">
+    <gleif-base:hasTransliteratedName>Gesellschaft mit beschränkter Haftung</gleif-base:hasTransliteratedName>
+    <gleif-base:hasLocalName xml:lang="ge">Gesellschaft mit beschränkter Haftung</gleif-base:hasLocalName>
+    <gleif-base:hasTransliteratedAbbreviation>GmbH</gleif-base:hasTransliteratedAbbreviation>
+    <gleif-base:hasLocalAbbreviation xml:lang="ge">GmbH</gleif-base:hasLocalAbbreviation>
+    <gleif-base:hasCoverageArea rdf:resource="&lcc-3166-1-add;GE"/>
+    <gleif-base:hasRegistrationStatus rdf:resource="&gleif-elf;ActiveStatus"/>
+    <gleif-base:hasRegistrationRevisionDate rdf:datatype="&xsd;dateTime">2017-11-30T11:40:04.012-06:00</gleif-base:hasRegistrationRevisionDate>    
+  </gleif-elf:EntityLegalForm>
+
+  <gleif-elf:EntityLegalFormIdentifier rdf:about="&ELF-data;ELF-EZNQ">
+    <gleif-base:hasTag>EZNQ</gleif-base:hasTag>
+    <gleif-base:identifies rdf:resource="&ELF-data;ELFE-EZNQ"/>
+  </gleif-elf:EntityLegalFormIdentifier>
+  <gleif-elf:EntityLegalForm rdf:about="&ELF-data;ELFE-EZNQ">
+    <gleif-base:hasTransliteratedName>Limited Liability Company</gleif-base:hasTransliteratedName>
+    <gleif-base:hasLocalName xml:lang="ge">Limited Liability Company</gleif-base:hasLocalName>
+    <gleif-base:hasLocalAbbreviation xml:lang="ge">limited liability company</gleif-base:hasLocalAbbreviation>
+    <gleif-base:hasLocalAbbreviation xml:lang="ge">limited</gleif-base:hasLocalAbbreviation>
+    <gleif-base:hasLocalAbbreviation xml:lang="ge">LLC</gleif-base:hasLocalAbbreviation>
+    <gleif-base:hasLocalAbbreviation xml:lang="ge">L.L.C.</gleif-base:hasLocalAbbreviation>
+    <gleif-base:hasLocalAbbreviation xml:lang="ge">ltd.</gleif-base:hasLocalAbbreviation>
+    <gleif-base:hasLocalAbbreviation xml:lang="ge">ltd</gleif-base:hasLocalAbbreviation>
+    <gleif-base:hasCoverageArea rdf:resource="&lcc-3166-2-add;US-OH"/>
+    <gleif-base:hasRegistrationStatus rdf:resource="&gleif-elf;ActiveStatus"/>
+    <gleif-base:hasRegistrationRevisionDate rdf:datatype="&xsd;dateTime">2017-11-30T11:40:04.012-06:00</gleif-base:hasRegistrationRevisionDate>    
+  </gleif-elf:EntityLegalForm>
+  
+  
+</rdf:RDF>

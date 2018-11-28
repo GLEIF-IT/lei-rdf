@@ -317,7 +317,8 @@
 
   <owl:DatatypeProperty rdf:about="&gleif-base;hasAdditionalName">
 		<rdfs:subPropertyOf rdf:resource="&gleif-base;hasName"/>
-		<rdfs:label>has legal name</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="&skos;altLabel"/>
+    <rdfs:label>has legal name</rdfs:label>
 		<rdfs:range rdf:resource="&xsd;string"/>
 		<skos:definition>the name used to refer to an person or organization informally</skos:definition>
 	</owl:DatatypeProperty>
@@ -344,16 +345,42 @@
 	</owl:DatatypeProperty> 
   
   <owl:DatatypeProperty rdf:about="&gleif-base;hasLocalLegalName">
-		<rdfs:subPropertyOf rdf:resource="&gleif-base;hasLegalName"/>
-		<rdfs:label>has legal name</rdfs:label>
+		<rdfs:subPropertyOf rdf:resource="&gleif-base;hasLocalName"/>
+    <rdfs:subPropertyOf rdf:resource="&gleif-base;hasLegalName"/>
+    <rdfs:label>has legal name</rdfs:label>
 		<skos:definition>the name used to refer to an person or organization in legal communications in local alphabet, which may be English</skos:definition>
 	</owl:DatatypeProperty>
   
   <owl:DatatypeProperty rdf:about="&gleif-base;hasName">
 		<rdfs:label>has name</rdfs:label>
-		<skos:definition>associates a name, reference name, or appellation with an individual concept</skos:definition>
+    <rdfs:subPropertyOf rdf:resource="&rdfs;label"/>
+    <skos:definition>associates a name, reference name, or appellation with an individual concept</skos:definition>
 	</owl:DatatypeProperty>
-	
+  
+  <owl:DatatypeProperty rdf:about="&gleif-base;hasLocalName">
+    <rdfs:subPropertyOf rdf:resource="&gleif-base;hasName"/>
+    <rdfs:label>has name</rdfs:label>
+    <skos:definition>a name in a language local to the entity identified, may be English</skos:definition>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="&gleif-base;hasLocalAbbreviation">
+    <rdfs:subPropertyOf rdf:resource="&gleif-base;hasAbbreviation"/>
+    <rdfs:label>has name</rdfs:label>
+    <skos:definition>an abbreviation using a language local to the entity identified, may be English</skos:definition>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="&gleif-base;hasTransliteratedAbbreviation">
+    <rdfs:subPropertyOf rdf:resource="&gleif-base;hasAbbreviation"/>
+    <rdfs:label>has name</rdfs:label>
+    <skos:definition>an abbreviation transliterated into a Western alphabet</skos:definition>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="&gleif-base;hasAbbreviation">
+    <rdfs:subPropertyOf rdf:resource="skos:altLabel"/>
+    <rdfs:label>has abbreviation</rdfs:label>
+    <skos:definition>an abbreviation for the entity identified</skos:definition>
+  </owl:DatatypeProperty>
+  
 	<owl:ObjectProperty rdf:about="&gleif-base;identifies">
 		<rdfs:label>identifies</rdfs:label>
 		<skos:definition>is the relationship between something and that which provides a unique reference for it</skos:definition>
@@ -483,7 +510,21 @@
 		<skos:definition>a system, typically an information system, that records the registration of items</skos:definition>
 		<dct:source>ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15</dct:source>
 	</owl:Class>
- 
+
+  <owl:Class rdf:about="&gleif-base;RegistrationAuthority">
+    <rdfs:subClassOf rdf:resource="&gleif-base;LegalEntity"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gleif-base;manages"/>
+        <owl:someValuesFrom rdf:resource="&gleif-base;Registry"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label>registration authority</rdfs:label>
+    <skos:definition>a legal entity that is responsible for maintaining a registry and provides registration services</skos:definition>
+    <skos:altLabel>RA</skos:altLabel>
+    <dct:source>ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15</dct:source>
+  </owl:Class>
+  
 	<owl:ObjectProperty rdf:about="&gleif-base;isIncludedIn">
 		<rdfs:label>is included in</rdfs:label>
 		<owl:inverseOf rdf:resource="&gleif-base;comprises"/>
@@ -550,6 +591,15 @@
 		<skos:definition>the date or date and time on which something is recorded</skos:definition>
 	</owl:DatatypeProperty>
 
+  <owl:DatatypeProperty rdf:about="&gleif-base;hasRegistrationRevisionDate">
+    <rdfs:subPropertyOf rdf:resource="&gleif-base;hasRegistrationDate"/>
+    <rdfs:label>has registration revision date</rdfs:label>
+    <rdfs:range rdf:resource="&xsd;dateTime"/>
+    <skos:definition>the date that the detail of a specific registration in the registry was revised</skos:definition>
+    <dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+  </owl:DatatypeProperty>
+  
+  
   <owl:ObjectProperty rdf:about="&gleif-base;manages">
 		<rdfs:label>manages</rdfs:label>
 		<owl:inverseOf rdf:resource="&gleif-base;isManagedBy"/>
@@ -581,6 +631,13 @@
 		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/gleif-registration-authorities-list</dct:source>
 	</owl:DatatypeProperty>
 
+  <gleif-base:LegalEntity rdf:about="&gleif-base;GLEIF">
+    <rdf:type rdf:resource="&gleif-base;RegistrationAuthority"/>
+    <gleif-base:hasLegalName>Global Legal Entity Identifier Federation</gleif-base:hasLegalName>
+    <gleif-base:hasLocalLegalName>Global Legal Entity Identifier Federation</gleif-base:hasLocalLegalName>
+  </gleif-base:LegalEntity>
+  
+  
 	
 </rdf:RDF>	
 

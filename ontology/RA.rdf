@@ -23,7 +23,7 @@
 	
 	<owl:Ontology rdf:about="https://www.gleif.org/ontology/RA/">
 		<rdfs:label>GLEIF Registration Authority Ontology</rdfs:label>
-		<dct:abstract>This ontology defines concepts for Registration Authorities (Business Registries)</dct:abstract>
+		<dct:abstract>This ontology defines concepts for Registration Authority Code List (RAL) of Business Registries</dct:abstract>
 		<dct:license rdf:datatype="&xsd;anyURI">http://opensource.org/licenses/MIT</dct:license>
 		<dct:rights>Copyright (c) 2018 GLEIF</dct:rights>
     <owl:imports rdf:resource="https://www.gleif.org/ontology/Base/"/>
@@ -31,26 +31,12 @@
     <owl:imports rdf:resource="http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/"/>
 	</owl:Ontology>
 
-  <owl:Class rdf:about="&gleif-ra;RegistrationAuthority">
-		<rdfs:subClassOf rdf:resource="&gleif-base;LegalEntity"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&gleif-base;manages"/>
-				<owl:someValuesFrom rdf:resource="&gleif-base;Registry"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>registration authority</rdfs:label>
-		<skos:definition>a legal entity that is responsible for maintaining a registry and provides registration services</skos:definition>
-		<skos:altLabel>RA</skos:altLabel>
-		<dct:source>ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15</dct:source>
-	</owl:Class>
- 
 	<owl:Class rdf:about="&gleif-ra;RegistrationAuthorityCode">
 		<rdfs:subClassOf rdf:resource="&gleif-base;Identifier"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&gleif-base;identifies"/>
-				<owl:onClass rdf:resource="&gleif-base;Registry"/>
+				<owl:onClass rdf:resource="&gleif-ra;BusinessRegistry"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -64,31 +50,33 @@
 		<skos:definition>an identifier that uniquely identifies a business registry, and is associated with a registration authority and jurisdiction, issued by the Global Legal Entity Identifier Foundation (GLEIF)</skos:definition>
 		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/gleif-registration-authorities-list</dct:source>
 	</owl:Class>
-  	
-	<owl:Class rdf:about="&gleif-ra;BusinessRegistrationAuthority">
-		<rdfs:subClassOf rdf:resource="&gleif-base;RegistrationAuthority"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-			  <owl:onProperty rdf:resource="&gleif-base;manages"/>
-				<owl:someValuesFrom rdf:resource="&gleif-ra;Registry"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>business registration authority</rdfs:label>
-		<skos:definition>a registration authority that is responsible for maintaining a registry of business entities</skos:definition>
-		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/gleif-registration-authorities-list</dct:source>
-		<skos:note>A business registry may include any government-managed registry for registering a business, such as a state department of corporations in the US, as well as other registries such as a local operating unit (LOU) for registration of legal entity identifiers (LEIs).  Any sanctioned registration authority as defined by the Registration Authorities List, published by GLEIF, is a business registration authority in this sense.</skos:note>
-	</owl:Class>
-  
-  <gleif-ra:Registry rdf:about="&gleif-ra;RAregistry">
-    <gleif-base:hasEnglishName>GLEIF Registration Authorities List</gleif-base:hasEnglishName>
-      <gleif-base:hasLocalName xml:lang="en">GLEIF Registration Authorities List</gleif-base:hasLocalName>
-      <gleif-base:hasWebsite rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/code-lists/gleif-registration-authorities-list</gleif-base:hasWebsite>
-      <gleif-base:isManagedBy rdf:resource="&gleif-ra;GLEIF"/>
-   </gleif-ra:Registry>
-   <gleif-base:LegalEntity rdf:about="&gleif-ra;GLEIF">
-      <rdf:type rdf:resource="&gleif-ra;RegistrationAuthority"/>
-      <gleif-base:hasLegalName>Global Legal Entity Identifier Federation</gleif-base:hasLegalName>
-     <gleif-base:hasLocalLegalName>Global Legal Entity Identifier Federation</gleif-base:hasLocalLegalName>
-   </gleif-base:LegalEntity>
 
+  <owl:Class rdf:about="&gleif-ra;BusinessRegistry">
+    <rdfs:subClassOf rdf:resource="&gleif-base;Registry"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gleif-base;isManagedBy"/>
+        <owl:onClass rdf:resource="&gleif-base;RegistrationAuthority"/>
+        <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="gleif-base:hasCoverageArea"/>
+        <owl:someValuesFrom rdf:resource="&lcc-cr;GeographicRegion"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label>business registry</rdfs:label>
+    <skos:definition>a registry for registering and maintaining information about business entities</skos:definition>
+    <dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/gleif-registration-authorities-list</dct:source>
+  </owl:Class>
+  
+  <gleif-base:Registry rdf:about="&gleif-ra;RAregistry">
+    <rdfs:label>GLEIF Registration Authorities List</rdfs:label>
+    <skos:altLabel>RAL</skos:altLabel>
+    <gleif-base:hasLocalName xml:lang="en">GLEIF Registration Authorities List</gleif-base:hasLocalName>
+    <gleif-base:hasWebsite rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/code-lists/gleif-registration-authorities-list</gleif-base:hasWebsite>
+    <gleif-base:isManagedBy rdf:resource="&gleif-base;GLEIF"/>
+   </gleif-base:Registry>
+  
 </rdf:RDF>

@@ -6,7 +6,7 @@
     <!ENTITY gleif-root "https://www.gleif.org/lei/" >
     <!ENTITY gleif-base "https://www.gleif.org/ontology/Base/">
     <!ENTITY gleif-L1 "https://www.gleif.org/ontology/L1/" >
-    <!ENTITY gleif-ra "https://www.gleif.org/ontology/RegistrationAuthorities/" >
+    <!ENTITY gleif-ra "https://www.gleif.org/ontology/RA/" >
     <!ENTITY RA-data "https://www.gleif.org/sample/RAData/" >
     <!ENTITY lcc-3166-1-add "http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/" >
     <!ENTITY lcc-3166-2-add "http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/" >
@@ -14,7 +14,7 @@
     ]>
 <rdf:RDF 
          xmlns:gleif-base="https://www.gleif.org/ontology/Base/"
-         xmlns:gleif-ra="https://www.gleif.org/ontology/RegistrationAuthorities/"
+         xmlns:gleif-ra="https://www.gleif.org/ontology/RA/"
          xmlns:gleif-L1="https://www.gleif.org/ontology/L1/"
          xmlns:gleif-RA-data="https://www.gleif.org/sample/RAData/"
          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
