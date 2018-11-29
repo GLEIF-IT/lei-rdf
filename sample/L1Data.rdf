@@ -59,7 +59,7 @@
    <gleif-ra:RegistryIdentifier rdf:about="&L1-data;BID-RA000449-IKM981217SD5">
       <gleif-base:hasTag>IKM981217SD5</gleif-base:hasTag>
       <gleif-base:identifies rdf:resource="&L1-data;LE-5493007CICYM7A0SZ714"/>
-      <gleif-ra:isRegisteredIn rdf:resource="&L1-data;RA000449"/>
+      <gleif-base:isRegisteredIn rdf:resource="&L1-data;RA000449"/>
    </gleif-ra:RegistryIdentifier>
    <gleif-base:LegalEntity rdf:about="&L1-data;LE-5493007CICYM7A0SZ714">
       <gleif-base:hasEntityStatus rdf:resource="&gleif-base;ActiveStatus"/>
@@ -110,7 +110,7 @@
   <gleif-ra:RegistryIdentifier rdf:about="&L1-data;BID-RA000449-AME9806027F9">
     <gleif-base:hasTag>AME9806027F9</gleif-base:hasTag>
     <gleif-base:identifies rdf:resource="&L1-data;LE-4469000001AVO26P9X86"/>
-    <gleif-ra:isRegisteredIn rdf:resource="&L1-data;RA000449"/>
+    <gleif-base:isRegisteredIn rdf:resource="&L1-data;RA000449"/>
   </gleif-ra:RegistryIdentifier>
   <gleif-L1:LocalOperatingUnit rdf:about="&L1-data;LE-4469000001AVO26P9X86">
     <gleif-base:hasEntityStatus rdf:resource="&gleif-base;ActiveStatus"/>

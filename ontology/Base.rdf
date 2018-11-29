@@ -126,7 +126,8 @@
   
   <owl:Class rdf:about="&gleif-base;LegalEntity">
 		<rdfs:subClassOf rdf:resource="&gleif-base;LegalPerson"/>
-		<rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="&gleif-base;FormalOrganization"/>
+    <rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&gleif-base;isOrganizedIn"/>
 				<owl:onClass rdf:resource="&lcc-cr;GeographicRegion"/>
@@ -276,18 +277,7 @@
 		<skos:definition>An Organization that is recognized in some legal jurisdiction, with associated rights and responsibilities. Examples include a Corporation, Charity, Government or Church.</skos:definition>
 		<dct:source>W3C Organization Ontology</dct:source>
 	</owl:Class>
-	
-	<owl:Class rdf:about="&gleif-base;JuridicalPerson">
-		<rdfs:subClassOf rdf:resource="&gleif-base;LegalEntity"/>
-		<rdfs:subClassOf rdf:resource="&gleif-base;FormalOrganization"/>
-		<rdfs:label>juridical person</rdfs:label>
-		<skos:definition>an entity, as a firm, that is not a single natural person, as a human being, authorized by law with duties and rights, recognized as a legal authority having a distinct identity, a legal personality</skos:definition>
-		<dct:source>Black&apos;s Law Dictionary Free Online, see http://thelawdictionary.org/juridical-person/</dct:source>
-		<skos:altLabel>artificial person</skos:altLabel>
-		<skos:altLabel>juridical entity</skos:altLabel>
-		<skos:altLabel>juristic person</skos:altLabel>
-	</owl:Class>
-	
+		
 	<owl:ObjectProperty rdf:about="&gleif-base;hasCoverageArea">
 		<rdfs:label>has coverage area</rdfs:label>
 		<rdfs:range rdf:resource="&lcc-cr;GeographicRegion"/>
@@ -376,7 +366,7 @@
   </owl:DatatypeProperty>
 
   <owl:DatatypeProperty rdf:about="&gleif-base;hasAbbreviation">
-    <rdfs:subPropertyOf rdf:resource="skos:altLabel"/>
+    <rdfs:subPropertyOf rdf:resource="&skos;altLabel"/>
     <rdfs:label>has abbreviation</rdfs:label>
     <skos:definition>an abbreviation for the entity identified</skos:definition>
   </owl:DatatypeProperty>
@@ -399,7 +389,7 @@
 		<skos:scopeNote>An address is a collection of information, presented in a mostly fixed format, used for describing the location of a building, apartment, or other structure or a plot of land, generally using political boundaries and street names as references, along with other identifiers such as house or apartment numbers.  Some addresses also contain special codes to aid routing of mail and packages, such as a ZIP code or post code. (Wikipedia)</skos:scopeNote>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onProperty rdf:resource="gleif:base;hasCity"/>
+        <owl:onProperty rdf:resource="&gleif-base;hasCity"/>
         <owl:cardinality>1</owl:cardinality>
      </owl:Restriction>
     </rdfs:subClassOf>
@@ -477,7 +467,14 @@
 		<skos:note>This property should be used in cases where a formal individual for the business center or municipality is not available.  Note that Geonames could be used as a source, however, in cases where an individual is desired.</skos:note>
 	</owl:DatatypeProperty>
 	
-	<owl:ObjectProperty rdf:about="&gleif-base;hasCountry">
+  <owl:ObjectProperty rdf:about="&gleif-base;hasSubdivision">
+    <rdfs:label>has subdivision</rdfs:label>
+    <rdfs:range rdf:resource="&lcc-cr;CountrySubdivision"/>
+    <skos:definition>identifies the country subdivision (state, province, region, etc.) according to ISO 3166-2</skos:definition>
+    <dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="&gleif-base;hasCountry">
 		<rdfs:label>has country</rdfs:label>
 		<rdfs:range rdf:resource="&lcc-cr;Country"/>
 		<skos:definition>identifies the country according to ISO 3166-1</skos:definition>
@@ -631,11 +628,10 @@
 		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/gleif-registration-authorities-list</dct:source>
 	</owl:DatatypeProperty>
 
-  <gleif-base:LegalEntity rdf:about="&gleif-base;GLEIF">
-    <rdf:type rdf:resource="&gleif-base;RegistrationAuthority"/>
+  <gleif-base:RegistrationAuthority rdf:about="&gleif-base;GLEIF">
     <gleif-base:hasLegalName>Global Legal Entity Identifier Federation</gleif-base:hasLegalName>
     <gleif-base:hasLocalLegalName>Global Legal Entity Identifier Federation</gleif-base:hasLocalLegalName>
-  </gleif-base:LegalEntity>
+  </gleif-base:RegistrationAuthority>
   
   
 	

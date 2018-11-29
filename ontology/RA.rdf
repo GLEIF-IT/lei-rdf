@@ -62,7 +62,7 @@
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onProperty rdf:resource="gleif-base:hasCoverageArea"/>
+        <owl:onProperty rdf:resource="&gleif-base;hasCoverageArea"/>
         <owl:someValuesFrom rdf:resource="&lcc-cr;GeographicRegion"/>
       </owl:Restriction>
     </rdfs:subClassOf>

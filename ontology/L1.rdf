@@ -138,10 +138,16 @@
   
   <owl:Class rdf:about="&gleif-L1;SoleProprietorship">
 		<rdfs:subClassOf rdf:resource="&gleif-base;LegalEntity"/>
-		<rdfs:subClassOf rdf:resource="&gleif-base;NaturalPerson"/>
 		<rdfs:label>sole proprietorship</rdfs:label>
-		<skos:definition>The legal entity is an individual acting in a business capacity</skos:definition>
-		<dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
+		<skos:definition>The legal entity represents an individual acting in a business capacity</skos:definition>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gleif-base;hasMember"/>
+        <owl:onClass rdf:resource="&gleif-base;LegalEntity"/>
+        <owl:cardinality>1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <dct:source rdf:datatype="&xsd;anyURI">https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1</dct:source>
 	</owl:Class>
 
   <owl:Class rdf:about="&gleif-L1;Fund">

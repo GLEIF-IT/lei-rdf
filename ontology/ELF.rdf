@@ -49,7 +49,7 @@
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onProperty rdf:resource="&gleif-base;haslocalName"/>
+        <owl:onProperty rdf:resource="&gleif-base;hasLocalName"/>
         <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -61,7 +61,7 @@
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onProperty rdf:resource="gleif-base:hasCoverageArea"/>
+        <owl:onProperty rdf:resource="&gleif-base;hasCoverageArea"/>
         <owl:someValuesFrom rdf:resource="&lcc-cr;GeographicRegion"/>
       </owl:Restriction>
     </rdfs:subClassOf>
