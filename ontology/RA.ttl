@@ -1,0 +1,80 @@
+# baseURI: https://www.gleif.org/ontology/RA/
+# imports: http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/
+# imports: http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/
+# imports: https://www.gleif.org/ontology/Base/
+
+@base <https://www.gleif.org/ontology/RA/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
+@prefix gleif-ra: <https://www.gleif.org/ontology/RA/> .
+@prefix lcc-cr: <http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://www.gleif.org/ontology/RA/>
+	a owl:Ontology ;
+	rdfs:label "GLEIF Registration Authority Ontology" ;
+	dct:abstract "This ontology defines concepts for Registration Authority Code List (RAL) of Business Registries" ;
+	dct:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+	dct:rights "Copyright (c) 2018 GLEIF" ;
+	owl:imports
+		<http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> ,
+		<http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> ,
+		<https://www.gleif.org/ontology/Base/>
+		;
+	.
+
+gleif-ra:BusinessRegistry
+	a owl:Class ;
+	rdfs:subClassOf
+		gleif-base:Registry ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:isManagedBy ;
+			owl:onClass gleif-base:RegistrationAuthority ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasCoverageArea ;
+			owl:someValuesFrom lcc-cr:GeographicRegion ;
+		]
+		;
+	rdfs:label "business registry" ;
+	dct:source "https://www.gleif.org/en/about-lei/gleif-registration-authorities-list"^^xsd:anyURI ;
+	skos:definition "a registry for registering and maintaining information about business entities" ;
+	.
+
+gleif-ra:RAregistry
+	a gleif-base:Registry ;
+	rdfs:label "GLEIF Registration Authorities List" ;
+	skos:altLabel "RAL" ;
+	gleif-base:hasLocalName "GLEIF Registration Authorities List"@en ;
+	gleif-base:hasWebsite "https://www.gleif.org/en/about-lei/code-lists/gleif-registration-authorities-list"^^xsd:anyURI ;
+	gleif-base:isManagedBy gleif-base:GLEIF ;
+	.
+
+gleif-ra:RegistrationAuthorityCode
+	a owl:Class ;
+	rdfs:subClassOf
+		gleif-base:Identifier ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:identifies ;
+			owl:onClass gleif-ra:BusinessRegistry ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
+	rdfs:label "registration authority code" ;
+	dct:source "https://www.gleif.org/en/about-lei/gleif-registration-authorities-list"^^xsd:anyURI ;
+	owl:equivalentClass [
+		a owl:Restriction ;
+		owl:onProperty gleif-base:isRegisteredIn ;
+		owl:hasValue gleif-ra:RAregistry ;
+	] ;
+	skos:definition "an identifier that uniquely identifies a business registry, and is associated with a registration authority and jurisdiction, issued by the Global Legal Entity Identifier Foundation (GLEIF)" ;
+	.
+

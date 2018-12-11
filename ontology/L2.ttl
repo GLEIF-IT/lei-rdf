@@ -1,0 +1,188 @@
+# baseURI: https://www.gleif.org/ontology/L2/
+# imports: https://www.gleif.org/ontology/Base/
+# imports: https://www.gleif.org/ontology/L1/
+
+@base <https://www.gleif.org/ontology/L2/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix gleif-L1: <https://www.gleif.org/ontology/L1/> .
+@prefix gleif-L2: <https://www.gleif.org/ontology/L2/> .
+@prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+
+<https://www.gleif.org/ontology/L2/>
+	a owl:Ontology ;
+	rdfs:label "GLEIF L2 Ontology" ;
+	rdfs:comment "Ontology generated from GLEIF L1 data in CDF 2.1 format" ;
+	owl:imports
+		<https://www.gleif.org/ontology/Base/> ,
+		<https://www.gleif.org/ontology/L1/>
+		;
+	.
+
+gleif-L2:AccountingSource
+	a owl:Class ;
+	rdfs:label "accounting source" ;
+	skos:definition "the type of accounting standard used to source ownership information, which is based on reported accounting roll-ups" ;
+	.
+
+gleif-L2:DirectOwnership
+	a owl:Class ;
+	rdfs:subClassOf gleif-L2:Ownership ;
+	rdfs:label "direct ownership" ;
+	skos:definition "direct ownership relationship" ;
+	.
+
+gleif-L2:IFRS
+	a
+		owl:NamedIndividual ,
+		gleif-L2:AccountingSource
+		;
+	rdfs:label "IFRS" ;
+	skos:definition "the IFRS accounting standard" ;
+	.
+
+gleif-L2:OTHER_ACCOUNTING_STANDARD
+	a
+		owl:NamedIndividual ,
+		gleif-L2:AccountingSource
+		;
+	rdfs:label "other accounting standard" ;
+	skos:definition "another accounting standard (not IFRS or US GAAP)" ;
+	.
+
+gleif-L2:Owner
+	a owl:Class ;
+	rdfs:label "owner" ;
+	owl:equivalentClass [
+		a owl:Restriction ;
+		owl:onProperty gleif-L2:hasChildOwnership ;
+		owl:someValuesFrom gleif-L2:Ownership ;
+	] ;
+	.
+
+gleif-L2:Ownership
+	a owl:Class ;
+	rdfs:label "ownership" ;
+	skos:definition "abstract superclass to represent an ownership relationship" ;
+	.
+
+gleif-L2:PrimaryForeignBranchOwnership
+	a owl:Class ;
+	rdfs:subClassOf gleif-L2:DirectOwnership ;
+	rdfs:label "primary foreign branch ownership" ;
+	skos:definition "abstract superclass to represent ownership of a foreign branch" ;
+	.
+
+gleif-L2:Subsidiary
+	a owl:Class ;
+	rdfs:label "subsidiary" ;
+	owl:equivalentClass [
+		a owl:Restriction ;
+		owl:onProperty gleif-L2:hasParentOwnership ;
+		owl:someValuesFrom gleif-L2:Ownership ;
+	] ;
+	.
+
+gleif-L2:US_GAAP
+	a
+		owl:NamedIndividual ,
+		gleif-L2:AccountingSource
+		;
+	rdfs:label "US GAAP" ;
+	skos:definition "the US GAAP accounting standard" ;
+	.
+
+gleif-L2:UltimateOwner
+	a owl:Class ;
+	rdfs:label "ultimate owner" ;
+	owl:equivalentClass [
+		a owl:Class ;
+		owl:intersectionOf (
+			gleif-L2:Owner
+			[
+				a owl:Class ;
+				owl:complementOf gleif-L2:Subsidiary ;
+			]
+		) ;
+	] ;
+	.
+
+gleif-L2:UltimateOwnership
+	a owl:Class ;
+	rdfs:subClassOf gleif-L2:Ownership ;
+	rdfs:label "ultimate ownership" ;
+	skos:definition "ultimate ownership relationship" ;
+	.
+
+gleif-L2:acctgSource
+	a owl:ObjectProperty ;
+	rdfs:label "accounting source" ;
+	rdfs:domain gleif-L2:Ownership ;
+	rdfs:range gleif-L2:AccountingSource ;
+	skos:definition "the type of accounting source used for this ownership information" ;
+	.
+
+gleif-L2:hasChildEntity
+	rdfs:label "has child entity" ;
+	owl:propertyChainAxiom (
+		gleif-L2:hasChildOwnership
+		gleif-L2:hasSubsidiary
+	) ;
+	.
+
+gleif-L2:hasChildOwnership
+	a owl:ObjectProperty ;
+	rdfs:label "has child ownership" ;
+	rdfs:domain <gleif-base;LegalEntity> ;
+	rdfs:range gleif-L2:Ownership ;
+	owl:inverseOf gleif-L2:hasOwner ;
+	skos:definition "child ownership" ;
+	.
+
+gleif-L2:hasOwner
+	a owl:ObjectProperty ;
+	rdfs:label "has owner" ;
+	rdfs:domain gleif-L2:Ownership ;
+	rdfs:range gleif-base:LegalEntity ;
+	skos:definition "the legal entity that plays the owner role" ;
+	.
+
+gleif-L2:hasParentEntity
+	rdfs:label "has parent entity" ;
+	owl:propertyChainAxiom (
+		gleif-L2:hasParentOwnership
+		gleif-L2:hasOwner
+	) ;
+	.
+
+gleif-L2:hasParentOwnership
+	a owl:ObjectProperty ;
+	rdfs:label "has parent ownership" ;
+	rdfs:domain <gleif-base;LegalEntity> ;
+	rdfs:range gleif-L2:Ownership ;
+	owl:inverseOf gleif-L2:hasSubsidiary ;
+	skos:definition "parent ownership" ;
+	.
+
+gleif-L2:hasSubsidiary
+	a owl:ObjectProperty ;
+	rdfs:label "has subsidiary" ;
+	rdfs:domain gleif-L2:Ownership ;
+	rdfs:range <gleif-base;LegalEntity> ;
+	skos:definition "the legal entity that plays the subsidiary role" ;
+	.
+
+gleif-L2:ownPct
+	a owl:DatatypeProperty ;
+	rdfs:label "owned percentage" ;
+	rdfs:domain gleif-L2:Ownership ;
+	rdfs:range xs:decimal ;
+	skos:definition "the percentage of the subsidiary owned by the owner, if known" ;
+	skos:editorialNote "Should be a subProperty of fibo-be-oac-cpty:hasPercentageControl but that needs fixing to be a datatypeproperty" ;
+	.
+
