@@ -3,6 +3,8 @@
 See the following document for ongoing discussion and prioritization of work:
 https://docs.google.com/document/d/18wMhmESWnBKp5l3RPCXIZQO9KQK8HZ4S6R6ihWZLqrk/edit?usp=sharing
 
+## Issues
+We'll use the [Issues](https://github.com/GLEIF-IT/lei-rdf/issues) feature of GitHub for tracking workstreams.
 
 ## Links to GLEIF data formats documentation:
 
