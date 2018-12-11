@@ -1,0 +1,134 @@
+# baseURI: https://www.gleif.org/ontology/ELF/
+# imports: http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/
+# imports: http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/
+# imports: https://www.gleif.org/ontology/Base/
+
+@base <https://www.gleif.org/ontology/ELF/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
+@prefix gleif-elf: <https://www.gleif.org/ontology/ELF/> .
+@prefix lcc-cr: <http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://www.gleif.org/ontology/ELF/>
+	a owl:Ontology ;
+	rdfs:label "GLEIF Entity Legal Form Ontology" ;
+	dct:abstract "This ontology defines concepts for Entity Legal Forms" ;
+	dct:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+	dct:rights "Copyright (c) 2018 GLEIF" ;
+	owl:imports
+		<http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> ,
+		<http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> ,
+		<https://www.gleif.org/ontology/Base/>
+		;
+	.
+
+gleif-elf:ActiveStatus
+	a
+		owl:NamedIndividual ,
+		gleif-elf:ELFRegistrationStatus
+		;
+	rdfs:label "active status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	skos:definition "status indicating that the registration is active" ;
+	gleif-base:hasTag "ACTV" ;
+	.
+
+gleif-elf:ELFRegistrationStatus
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:RegistrationStatus ;
+	rdfs:label "ELF registration status" ;
+	skos:definition "status of an entry in a entity legal form registry that conforms to ISO 20275 and the Global Legal Entity Identifier Foundation (GLEIF) Common Data Format (CDF)" ;
+	.
+
+gleif-elf:ELFregistry
+	a gleif-base:Registry ;
+	rdfs:label "GLEIF Entity Legal Forms List" ;
+	skos:altLabel "ELF" ;
+	gleif-base:hasWebsite "https://www.gleif.org/en/about-lei/code-lists/iso-20275-entity-legal-forms-code-list"^^xsd:anyURI ;
+	gleif-base:isManagedBy gleif-base:GLEIF ;
+	.
+
+gleif-elf:EntityLegalForm
+	a owl:Class ;
+	rdfs:subClassOf
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasRegistrationRevisionDate ;
+			owl:cardinality "1"^^xsd:nonNegativeInteger ;
+			owl:onDataRange xsd:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasLocalName ;
+			owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasTransliteratedName ;
+			owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasLocalAbbreviation ;
+			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+			owl:onDataRange xsd:string ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasTransliteratedAbbreviation ;
+			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+			owl:onDataRange xsd:string ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasCoverageArea ;
+			owl:someValuesFrom lcc-cr:GeographicRegion ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasRegistrationStatus ;
+			owl:someValuesFrom gleif-elf:ELFRegistrationStatus ;
+		]
+		;
+	rdfs:label "entity legal form" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	skos:definition "a classifier for a legal entity that indicates the nature of that entity as defined from a legal or regulatory perspective, in the jurisdiction in which it was established" ;
+	.
+
+gleif-elf:EntityLegalFormIdentifier
+	a owl:Class ;
+	rdfs:subClassOf
+		gleif-base:Identifier ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:identifies ;
+			owl:onClass gleif-elf:EntityLegalForm ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
+	rdfs:label "entity legal form identifier" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	owl:equivalentClass [
+		a owl:Restriction ;
+		owl:onProperty gleif-base:isRegisteredIn ;
+		owl:hasValue gleif-elf:ELFregistry ;
+	] ;
+	skos:definition "a code that uniquely identifies an entity legal form as defined in ISO 20275" ;
+	.
+
+gleif-elf:InactiveStatus
+	a
+		owl:NamedIndividual ,
+		gleif-elf:ELFRegistrationStatus
+		;
+	rdfs:label "inactive status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	skos:definition "status indicating that the registration is inactive" ;
+	gleif-base:hasTag "INAC" ;
+	.
+

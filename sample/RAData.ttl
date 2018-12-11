@@ -1,0 +1,89 @@
+# baseURI: https://www.gleif.org/sample/RAData/
+# imports: http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/
+# imports: http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/
+# imports: https://www.gleif.org/ontology/Base/
+# imports: https://www.gleif.org/ontology/RA/
+
+@base <https://www.gleif.org/sample/RAData/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix gleif-L1: <https://www.gleif.org/ontology/L1/> .
+@prefix gleif-RA-data: <https://www.gleif.org/sample/RAData/> .
+@prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
+@prefix gleif-ra: <https://www.gleif.org/ontology/RA/> .
+@prefix lcc-3166-1-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> .
+@prefix lcc-3166-2-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+
+<https://www.gleif.org/sample/RAData/>
+	a owl:Ontology ;
+	rdfs:label "GLEIF Registration Authority data" ;
+	rdfs:comment "Ontology generated from GLEIF RA data in CDF 2.1 format" ;
+	owl:imports
+		<http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> ,
+		<http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> ,
+		<https://www.gleif.org/ontology/Base/> ,
+		<https://www.gleif.org/ontology/RA/>
+		;
+	.
+
+gleif-RA-data:ORG-RA000189
+	a
+		gleif-base:LegalEntity ,
+		gleif-ra:RegistrationAuthority
+		;
+	gleif-base:hasEnglishName "National Institute of Statistics and Economic Studies" ;
+	gleif-base:hasLocalLegalName "Institut National de la Statistique et des Études Économiques" ;
+	.
+
+gleif-RA-data:ORG-RA000585
+	a
+		gleif-base:LegalEntity ,
+		gleif-ra:RegistrationAuthority
+		;
+	gleif-base:hasEnglishName "Companies House" ;
+	gleif-base:hasLocalLegalName "Companies House" ;
+	.
+
+gleif-RA-data:RA000189
+	a gleif-ra:RegistrationAuthorityCode ;
+	gleif-base:hasTag "RA000189" ;
+	gleif-base:identifies gleif-RA-data:REG-RA000189 ;
+	.
+
+gleif-RA-data:RA000585
+	a gleif-ra:RegistrationAuthorityCode ;
+	gleif-base:hasTag "RA000585" ;
+	gleif-base:identifies gleif-RA-data:REG-RA000585 ;
+	.
+
+gleif-RA-data:REG-RA000189
+	a gleif-ra:Registry ;
+	gleif-base:hasCoverageArea
+		lcc-3166-1-add:FR ,
+		lcc-3166-1-add:GF ,
+		lcc-3166-1-add:GP
+		;
+	gleif-base:hasEnglishName "Register of Companies (Sirene)" ;
+	gleif-base:hasLocalLegalName "Sirene"@fr ;
+	gleif-base:hasWebsite "http://sirene.fr/sirene/public/accueil?sirene_locale=en"^^xs:anyURI ;
+	gleif-base:isManagedBy gleif-RA-data:ORG-RA000189 ;
+	.
+
+gleif-RA-data:REG-RA000585
+	a gleif-ra:Registry ;
+	gleif-base:hasCoverageArea
+		lcc-3166-2-add:GB-EAW ,
+		lcc-3166-2-add:GB-NIR ,
+		lcc-3166-2-add:GB-SCT
+		;
+	gleif-base:hasEnglishName "Companies Register" ;
+	gleif-base:hasLocalLegalName "Companies Register"@en ;
+	gleif-base:hasWebsite "www.companieshouse.gov.uk"^^xs:anyURI ;
+	gleif-base:isManagedBy gleif-RA-data:ORG-RA000585 ;
+	.
+

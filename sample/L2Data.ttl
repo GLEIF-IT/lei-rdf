@@ -1,0 +1,43 @@
+# baseURI: https://www.gleif.org/sample/L2Data/
+# imports: https://www.gleif.org/ontology/Base/
+# imports: https://www.gleif.org/ontology/L1/
+# imports: https://www.gleif.org/ontology/L2/
+# imports: https://www.gleif.org/sample/L1Data/
+
+@base <https://www.gleif.org/sample/L2Data/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix gleif-L1: <https://www.gleif.org/ontology/L1/> .
+@prefix gleif-L1-data: <https://www.gleif.org/sample/L1Data/> .
+@prefix gleif-L2: <https://www.gleif.org/ontology/L2/> .
+@prefix gleif-L2-data: <https://www.gleif.org/sample/L2Data/> .
+@prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+
+<https://www.gleif.org/sample/L2Data/>
+	a owl:Ontology ;
+	rdfs:label "GLEIF L2 data" ;
+	rdfs:comment "Ontology generated from GLEIF L1 data in CDF 2.1 format" ;
+	owl:imports
+		<https://www.gleif.org/ontology/Base/> ,
+		<https://www.gleif.org/ontology/L1/> ,
+		<https://www.gleif.org/ontology/L2/> ,
+		<https://www.gleif.org/sample/L1Data/>
+		;
+	.
+
+gleif-L2-data:OR-4469000001BFY38CWR75-95980020140006006514
+	a
+		gleif-L2:DirectOwnership ,
+		gleif-L2:UltimateOwnership
+		;
+	gleif-L2:acctgSource gleif-L2:IFRS ;
+	gleif-L2:hasOwner gleif-L1-data:LE-95980020140006006514 ;
+	gleif-L2:hasSubsidiary gleif-L1-data:LE-4469000001BFY38CWR75 ;
+	gleif-L2:ownPct "99.99"^^xs:decimal ;
+	.
+
