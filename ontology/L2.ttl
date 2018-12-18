@@ -106,7 +106,56 @@ gleif-L2:PrimaryForeignBranchOwnership
 	skos:definition "abstract superclass to represent ownership of a foreign branch" ;
 	.
 
-gleif-L2:Subsidiary
+gleif-L2:RelationshipRegistryEntry
+	a owl:Class ;
+	rdfs:subClassOf
+		gleif-base:RegistryEntry ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasInitialRegistrationDate ;
+			owl:cardinality "1"^^xs:nonNegativeInteger ;
+			owl:onDataRange xs:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasRegistrationRevisionDate ;
+			owl:cardinality "1"^^xs:nonNegativeInteger ;
+			owl:onDataRange xs:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasRenewalDate ;
+			owl:cardinality "1"^^xs:nonNegativeInteger ;
+			owl:onDataRange xs:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasValidationAuthority ;
+			owl:onClass gleif-base:RegistrationAuthority ;
+			owl:minQualifiedCardinality "0"^^xs:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:comprises ;
+			owl:someValuesFrom gleif-L1:LegalEntityIdentifier ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasRegistrationStatus ;
+			owl:someValuesFrom gleif-L1:LEIRegistrationStatus ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasValidationLevel ;
+			owl:someValuesFrom gleif-L1:LEIValidationStatus ;
+		]
+		;
+	rdfs:label "legal entity identifier registry entry" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "an entry in a legal entity identifier registry that conforms to ISO 17442 and the Global Legal Entity Identifier Foundation (GLEIF) Common Data Format (CDF)" ;
+	.
+
+  gleif-L2:Subsidiary
 	a owl:Class ;
 	rdfs:label "subsidiary" ;
 	owl:equivalentClass [

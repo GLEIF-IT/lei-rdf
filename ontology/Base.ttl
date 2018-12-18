@@ -488,6 +488,15 @@ gleif-base:hasEntityStatus
 	skos:definition "indicates the status of the entity (i.e., active, inactive)" ;
 	.
 
+gleif-base:hasInitialRegistrationDate
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf gleif-base:hasRegistrationDate ;
+	rdfs:label "has initial registration date" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	rdfs:range xs:dateTime ;
+	skos:definition "the date on which an identifier or other registered item was first registered" ;
+	.
+
 gleif-base:hasLegalName
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasName ;
@@ -586,6 +595,15 @@ gleif-base:hasScope
 	rdfs:label "has scope" ;
 	owl:inverseOf gleif-base:scopes ;
 	skos:definition "specifies a form of words that conveys the meaning associated with something" ;
+	.
+
+gleif-base:hasRenewalDate
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf gleif-base:hasRegistrationDate ;
+	rdfs:label "has renewal date" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	rdfs:range xs:dateTime ;
+	skos:definition "the date by which a specific registration in the registry must be renewed or updated" ;
 	.
 
 gleif-base:hasSubdivision
