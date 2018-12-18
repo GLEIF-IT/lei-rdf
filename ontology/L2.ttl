@@ -17,7 +17,7 @@
 <https://www.gleif.org/ontology/L2/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF L2 Ontology" ;
-	rdfs:comment "Ontology generated from GLEIF L1 data in CDF 2.1 format" ;
+	rdfs:comment "Ontology generated from GLEIF L2 data in CDF 2.1 format" ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/>
@@ -46,6 +46,28 @@ gleif-L2:IFRS
 	skos:definition "the IFRS accounting standard" ;
 	.
 
+gleif-L2:ActiveStatus
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipStatus
+		;
+	rdfs:label "active status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	skos:definition "As of the last report or update, the reporting legal entity reported that it is legally registered and/or operating, AND that the relationship detailed in this  <code>RelationshipRecord</code> is still valid." ;
+	gleif-base:hasTag "ACTIVE" ;
+	.
+  
+gleif-L2:InactiveStatus
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipStatus
+		;
+	rdfs:label "inactive status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	skos:definition "It has been determined that the relationship ended, e.g. because entity that reported this relationship is no longer legally registered and/or operating; or the relationship is no longer valid for other reasons" ;
+	gleif-base:hasTag "INACTIVE" ;
+	.
+  
 gleif-L2:OTHER_ACCOUNTING_STANDARD
 	a
 		owl:NamedIndividual ,
@@ -65,10 +87,16 @@ gleif-L2:Owner
 	] ;
 	.
 
-gleif-L2:Ownership
+gleif-L2:Relationship
 	a owl:Class ;
-	rdfs:label "ownership" ;
-	skos:definition "abstract superclass to represent an ownership relationship" ;
+	rdfs:label "relationship" ;
+	skos:definition "abstract superclass to represent a relationship" ;
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L2:hasRelationshpStatus ;
+			owl:onClass gleif-L2:RelationshpStatus ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
 	.
 
 gleif-L2:PrimaryForeignBranchOwnership
@@ -167,6 +195,15 @@ gleif-L2:hasParentOwnership
 	rdfs:range gleif-L2:Ownership ;
 	owl:inverseOf gleif-L2:hasSubsidiary ;
 	skos:definition "parent ownership" ;
+	.
+  
+gleif-L2:hasRelationshipStatus
+	a owl:ObjectProperty ;
+	rdfs:label "has relationship status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:range gleif-L2:RelationshipStatus ;
+	skos:definition "indicates the status of the relationship (i.e., active, inactive)" ;
 	.
 
 gleif-L2:hasSubsidiary
