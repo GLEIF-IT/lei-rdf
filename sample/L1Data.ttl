@@ -2,17 +2,17 @@
 # imports: http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/
 # imports: http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/
 # imports: https://www.gleif.org/ontology/Base/
-# imports: https://www.gleif.org/ontology/ELF/
+# imports: https://www.gleif.org/ontology/EntityLegalForm/
 # imports: https://www.gleif.org/ontology/L1/
-# imports: https://www.gleif.org/ontology/RA/
+# imports: https://www.gleif.org/ontology/RegistrationAuthority/
 
 @base <https://www.gleif.org/sample/L1Data/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix gleif-L1: <https://www.gleif.org/ontology/L1/> .
 @prefix gleif-L1-data: <https://www.gleif.org/sample/L1Data/> .
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
-@prefix gleif-elf: <https://www.gleif.org/ontology/ELF/> .
-@prefix gleif-ra: <https://www.gleif.org/ontology/RA/> .
+@prefix gleif-elf: <https://www.gleif.org/ontology/EntityLegalForm/> .
+@prefix gleif-ra: <https://www.gleif.org/ontology/RegistrationAuthority/> .
 @prefix lcc-3166-1-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> .
 @prefix lcc-3166-2-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -30,9 +30,9 @@
 		<http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> ,
 		<http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> ,
 		<https://www.gleif.org/ontology/Base/> ,
-		<https://www.gleif.org/ontology/ELF/> ,
+		<https://www.gleif.org/ontology/EntityLegalForm/> ,
 		<https://www.gleif.org/ontology/L1/> ,
-		<https://www.gleif.org/ontology/RA/>
+		<https://www.gleif.org/ontology/RegistrationAuthority/>
 		;
 	.
 

@@ -1,14 +1,14 @@
-# baseURI: https://www.gleif.org/sample/ELFData/
+# baseURI: https://www.gleif.org/sample/EntityLegalFormData/
 # imports: http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/
 # imports: http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/
 # imports: https://www.gleif.org/ontology/Base/
-# imports: https://www.gleif.org/ontology/ELF/
+# imports: https://www.gleif.org/ontology/EntityLegalForm/
 
-@base <https://www.gleif.org/sample/ELFData/> .
-@prefix ELF-data: <https://www.gleif.org/sample/ELFData/> .
+@base <https://www.gleif.org/sample/EntityLegalFormData/> .
+@prefix ELF-data: <https://www.gleif.org/sample/EntityLegalFormData/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
-@prefix gleif-elf: <https://www.gleif.org/ontology/ELF/> .
+@prefix gleif-elf: <https://www.gleif.org/ontology/EntityLegalForm/> .
 @prefix lcc-3166-1-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> .
 @prefix lcc-3166-2-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -18,7 +18,7 @@
 @prefix xs: <http://www.w3.org/2001/XMLSchema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema> .
 
-<https://www.gleif.org/sample/ELFData/>
+<https://www.gleif.org/sample/EntityLegalFormData/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF Entity Legal Forms data" ;
 	rdfs:comment "Ontology generated from GLEIF ELF data in CDF 2.1 format" ;
@@ -26,7 +26,7 @@
 		<http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> ,
 		<http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> ,
 		<https://www.gleif.org/ontology/Base/> ,
-		<https://www.gleif.org/ontology/ELF/>
+		<https://www.gleif.org/ontology/EntityLegalForm/>
 		;
 	.
 
