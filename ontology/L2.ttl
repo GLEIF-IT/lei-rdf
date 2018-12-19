@@ -17,7 +17,7 @@
 <https://www.gleif.org/ontology/L2/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF L2 Ontology" ;
-	rdfs:comment "Ontology generated from GLEIF L1 data in CDF 2.1 format" ;
+	rdfs:comment "Ontology generated from GLEIF L2 data in CDF 2.1 format" ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/>
@@ -27,14 +27,14 @@
 gleif-L2:AccountingSource
 	a owl:Class ;
 	rdfs:label "accounting source" ;
-	skos:definition "the type of accounting standard used to source ownership information, which is based on reported accounting roll-ups" ;
+	skos:definition "the type of accounting standard used to source consolidation information, which is based on reported accounting roll-ups" ;
 	.
 
-gleif-L2:DirectOwnership
+gleif-L2:DirectConsolidation
 	a owl:Class ;
-	rdfs:subClassOf gleif-L2:Ownership ;
-	rdfs:label "direct ownership" ;
-	skos:definition "direct ownership relationship" ;
+	rdfs:subClassOf gleif-L2:AccountingConsolidation ;
+	rdfs:label "direct consolidation" ;
+	skos:definition "direct consolidation relationship" ;
 	.
 
 gleif-L2:IFRS
@@ -46,6 +46,28 @@ gleif-L2:IFRS
 	skos:definition "the IFRS accounting standard" ;
 	.
 
+gleif-L2:ActiveStatus
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipStatus
+		;
+	rdfs:label "active status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	skos:definition "As of the last report or update, the reporting legal entity reported that it is legally registered and/or operating, AND that the relationship detailed in this  <code>RelationshipRecord</code> is still valid." ;
+	gleif-base:hasTag "ACTIVE" ;
+	.
+  
+gleif-L2:InactiveStatus
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipStatus
+		;
+	rdfs:label "inactive status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	skos:definition "It has been determined that the relationship ended, e.g. because entity that reported this relationship is no longer legally registered and/or operating; or the relationship is no longer valid for other reasons" ;
+	gleif-base:hasTag "INACTIVE" ;
+	.
+  
 gleif-L2:OTHER_ACCOUNTING_STANDARD
 	a
 		owl:NamedIndividual ,
@@ -60,31 +82,186 @@ gleif-L2:Owner
 	rdfs:label "owner" ;
 	owl:equivalentClass [
 		a owl:Restriction ;
-		owl:onProperty gleif-L2:hasChildOwnership ;
-		owl:someValuesFrom gleif-L2:Ownership ;
+		owl:onProperty gleif-L2:hasChildConsolidation ;
+		owl:someValuesFrom gleif-L2:AccountingConsolidation ;
 	] ;
 	.
 
-gleif-L2:Ownership
-	a owl:Class ;
-	rdfs:label "ownership" ;
-	skos:definition "abstract superclass to represent an ownership relationship" ;
+gleif-L2:AnnulledStatus
+	a
+		owl:NamedIndividual ,
+		gleif-L2:LEIRegistrationStatus
+		;
+	rdfs:label "annulled status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "A relationship data report that was marked as erroneous or invalid after it was published. The relationship report is kept in publication for historical audit trail purposes only (so that data recipients can correct their local data)." ;
+	gleif-base:hasTag "ANNULLED" ;
 	.
 
-gleif-L2:PrimaryForeignBranchOwnership
-	a owl:Class ;
-	rdfs:subClassOf gleif-L2:DirectOwnership ;
-	rdfs:label "primary foreign branch ownership" ;
-	skos:definition "abstract superclass to represent ownership of a foreign branch" ;
+gleif-L2:DuplicateStatus
+	a
+		owl:NamedIndividual ,
+		gleif-L2:LEIRegistrationStatus
+		;
+	rdfs:label "duplicate status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "A relationship data report that has been determined to be a  duplicate registration of the same relationship. In many cases this will mean more than one report with e.g. the same 2 entity IDs, the same relationship type, certain status values and the same relationship date(s), but this determination will depend on the relationship type in question." ;
+	gleif-base:hasTag "DUPLICATE" ;
 	.
 
+gleif-L2:LapsedStatus
+	a
+		owl:NamedIndividual ,
+		gleif-L2:LEIRegistrationStatus
+		;
+	rdfs:label "lapsed status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "A relationship data report that has not been renewed by the NextRenewalDate" ;
+	gleif-base:hasTag "LAPSED" ;
+	.
+
+gleif-L2:PendingArchivalStatus
+	a
+		owl:NamedIndividual ,
+		gleif-L2:LEIRegistrationStatus
+		;
+	rdfs:label "pending archival status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "This relationship data report is about to be transferred to a different LOU, after which its registration status will revert to a non-pending status. The PENDING_ARCHIVAL status serves to inform recipients of LOU-provided data files that a relationship record will be removed from that LOU’s published file after the transfer is complete" ;
+	gleif-base:hasTag "PENDING_ARCHIVAL" ;
+	.
+
+gleif-L2:PendingTransferStatus
+	a
+		owl:NamedIndividual ,
+		gleif-L2:LEIRegistrationStatus
+		;
+	rdfs:label "pending transfer status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "A relationship data report for which a transfer to another LOU has been requested. The request is being processed at the sending LOU. When the receiving LOU is ready, the status will be changed to PENDING_ARCHIVAL by the sending LOU prior to completion of the transfer." ;
+	gleif-base:hasTag "PENDING_TRANSFER" ;
+	.
+
+gleif-L2:PendingValidationStatus
+	a
+		owl:NamedIndividual ,
+		gleif-L2:LEIRegistrationStatus
+		;
+	rdfs:label "pending validation status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "A relationship data report that has been submitted to the LOU and which is being processed and validated, prior to publication." ;
+	gleif-base:hasTag "PENDING_VALIDATION" ;
+	.
+
+gleif-L2:PublishedStatus
+	a
+		owl:NamedIndividual ,
+		gleif-L2:LEIRegistrationStatus
+		;
+	rdfs:label "published status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "A relationship data report that has been validated and published, and which is reported by an entity that was an operating legal entity as of the last update." ;
+	gleif-base:hasTag "PUBLISHED" ;
+	.
+
+gleif-L2:RetiredStatus
+	a
+		owl:NamedIndividual ,
+		gleif-L2:LEIRegistrationStatus
+		;
+	rdfs:label "retired status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "status indicating that the registration is for an entity that has ceased operation, without having been merged into another entity" ;
+	gleif-base:hasTag "RETIRED" ;
+  .  
+  
+gleif-L2:TransferredStatus
+	a
+		owl:NamedIndividual ,
+		gleif-L2:LEIRegistrationStatus
+		;
+	rdfs:label "transferred status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "The relationship is considered to have ended, but the relationship report is kept in publication for historical audit trail purposes." ;
+	gleif-base:hasTag "TRANSFERRED" ;
+	.
+
+gleif-L2:AccountingConsolidation
+	a owl:Class ;
+  rdfs:subClassOf gleif-base:LegalEntityRelationship ;
+	rdfs:label "accounting consolidation" ;
+	skos:definition "abstract superclass to represent an accounting consolidation relationship" ;
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L2:hasRelationshipStatus ;
+			owl:onClass gleif-L2:RelationshipStatus ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+	.
+
+gleif-L2:PrimaryForeignBranchConsolidation
+	a owl:Class ;
+	rdfs:subClassOf gleif-L2:DirectConsolidation ;
+	rdfs:label "primary foreign branch consolidation" ;
+	skos:definition "abstract superclass to represent consolidation of a foreign branch" ;
+	.
+
+gleif-L2:LegalEntityRelationshipRecord
+	a owl:Class ;
+	rdfs:subClassOf
+		gleif-base:RegistryEntry ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasInitialRegistrationDate ;
+			owl:cardinality "1"^^xs:nonNegativeInteger ;
+			owl:onDataRange xs:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasRegistrationRevisionDate ;
+			owl:cardinality "1"^^xs:nonNegativeInteger ;
+			owl:onDataRange xs:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasRenewalDate ;
+			owl:cardinality "1"^^xs:nonNegativeInteger ;
+			owl:onDataRange xs:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasValidationAuthority ;
+			owl:onClass gleif-base:RegistrationAuthority ;
+			owl:minQualifiedCardinality "0"^^xs:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:comprises ;
+			owl:someValuesFrom gleif-L1:LegalEntityIdentifier ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasRegistrationStatus ;
+			owl:someValuesFrom gleif-L2:RegistrationStatus ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasValidationLevel ;
+			owl:someValuesFrom gleif-L1:LEIValidationStatus ;
+		]
+		;
+	rdfs:label "legal entity relationship record" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "an entry in a legal entity identifier registry that conforms to ISO 17442 and the Global Legal Entity Identifier Foundation (GLEIF) Common Data Format (CDF)" ;
+	.
+  
 gleif-L2:Subsidiary
 	a owl:Class ;
 	rdfs:label "subsidiary" ;
 	owl:equivalentClass [
 		a owl:Restriction ;
-		owl:onProperty gleif-L2:hasParentOwnership ;
-		owl:someValuesFrom gleif-L2:Ownership ;
+		owl:onProperty gleif-L2:hasParentConsolidation ;
+		owl:someValuesFrom gleif-L2:AccountingConsolidation ;
 	] ;
 	.
 
@@ -112,77 +289,218 @@ gleif-L2:UltimateOwner
 	] ;
 	.
 
-gleif-L2:UltimateOwnership
+gleif-L2:UltimateConsolidation
 	a owl:Class ;
-	rdfs:subClassOf gleif-L2:Ownership ;
-	rdfs:label "ultimate ownership" ;
-	skos:definition "ultimate ownership relationship" ;
+	rdfs:subClassOf gleif-L2:AccountingConsolidation ;
+	rdfs:label "ultimate consolidation" ;
+	skos:definition "ultimate consolidation relationship" ;
 	.
 
-gleif-L2:acctgSource
+gleif-L2:hasAccountingSource
 	a owl:ObjectProperty ;
-	rdfs:label "accounting source" ;
-	rdfs:domain gleif-L2:Ownership ;
+	rdfs:label "has accounting source" ;
+	rdfs:domain gleif-L2:AccountingConsolidation ;
 	rdfs:range gleif-L2:AccountingSource ;
-	skos:definition "the type of accounting source used for this ownership information" ;
+	skos:definition "the type of accounting source used for this Consolidation information" ;
 	.
 
 gleif-L2:hasChildEntity
 	rdfs:label "has child entity" ;
 	owl:propertyChainAxiom (
-		gleif-L2:hasChildOwnership
-		gleif-L2:hasSubsidiary
+		gleif-L2:hasChildConsolidation
+		gleif-base:hasSubsidiary
 	) ;
 	.
 
-gleif-L2:hasChildOwnership
+gleif-L2:hasChildConsolidation
 	a owl:ObjectProperty ;
-	rdfs:label "has child ownership" ;
-	rdfs:domain <gleif-base;LegalEntity> ;
-	rdfs:range gleif-L2:Ownership ;
-	owl:inverseOf gleif-L2:hasOwner ;
-	skos:definition "child ownership" ;
-	.
-
-gleif-L2:hasOwner
-	a owl:ObjectProperty ;
-	rdfs:label "has owner" ;
-	rdfs:domain gleif-L2:Ownership ;
-	rdfs:range gleif-base:LegalEntity ;
-	skos:definition "the legal entity that plays the owner role" ;
+	rdfs:label "has child consolidation" ;
+	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:range gleif-L2:AccountingConsolidation ;
+	owl:inverseOf gleif-base:hasOwner ;
+	skos:definition "child consolidation" ;
 	.
 
 gleif-L2:hasParentEntity
 	rdfs:label "has parent entity" ;
 	owl:propertyChainAxiom (
-		gleif-L2:hasParentOwnership
-		gleif-L2:hasOwner
+		gleif-L2:hasParentConsolidation
+		gleif-base:hasOwner
 	) ;
 	.
 
-gleif-L2:hasParentOwnership
+gleif-L2:hasParentConsolidation
 	a owl:ObjectProperty ;
-	rdfs:label "has parent ownership" ;
-	rdfs:domain <gleif-base;LegalEntity> ;
-	rdfs:range gleif-L2:Ownership ;
-	owl:inverseOf gleif-L2:hasSubsidiary ;
-	skos:definition "parent ownership" ;
+	rdfs:label "has parent consolidation" ;
+	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:range gleif-L2:AccountingConsolidation ;
+	owl:inverseOf gleif-base:hasSubsidiary ;
+	skos:definition "parent consolidation" ;
+	.
+  
+gleif-L2:hasRelationshipStatus
+	a owl:ObjectProperty ;
+	rdfs:label "has relationship status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:range gleif-L2:RelationshipStatus ;
+	skos:definition "indicates the status of the relationship (i.e., active, inactive)" ;
 	.
 
-gleif-L2:hasSubsidiary
+gleif-L2:hasRelationshipPeriod
 	a owl:ObjectProperty ;
-	rdfs:label "has subsidiary" ;
-	rdfs:domain gleif-L2:Ownership ;
-	rdfs:range <gleif-base;LegalEntity> ;
-	skos:definition "the legal entity that plays the subsidiary role" ;
+	rdfs:label "has relationship period" ;
+	rdfs:domain gleif-L2:LegalEntityRelationship ;
+	rdfs:range gleif-base:Period ;
+	skos:definition "the period of validity of the relationship itself; lack of an end indicates a continuing relationship as of the time of reporting" ;
+  .
+  
+gleif-L2:hasAccountingPeriod
+	a owl:ObjectProperty ;
+	rdfs:label "has accounting period" ;
+	rdfs:domain gleif-L2:LegalEntityRelationshipRecord ;
+	rdfs:range gleif-base:Period ;
+	skos:definition "the accounting period covered by the most recent validation documents for this relationship." ;
+  .
+  
+gleif-L2:hasDocumentFilingPeriod
+	a owl:ObjectProperty ;
+	rdfs:label "has document filing period" ;
+	rdfs:domain gleif-L2:LegalEntityRelationshipRecord ;
+	rdfs:range gleif-base:Period ;
+	skos:definition "the validity period of a regulatory filing, accounting document, or other document demonstrating the validity of the relationship." ;
+  .
+  
+gleif-L2:hasValidationSources
+	a owl:ObjectProperty ;
+	rdfs:label "has validation sources" ;
+	rdfs:domain gleif-L2:LegalEntityRelationshipRecord ;
+	rdfs:range gleif-L2:RelationshipValidationSourceKind ;
+	skos:definition "Level of relationship validation." ;
+  .
+  
+gleif-L2:RelationshipValidationSourceKind
+  a owl:Class ;
+	rdfs:label "relationship validation source kind" ;
+	skos:definition "Level of relationship validation." ;
+  .  
+  
+gleif-L2:EntitySuppliedOnlySource
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipValidationSourceKind
+		;
+	rdfs:label "entity supplied only source" ;
+	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, the information associated with this record has significant reliance on the information that a submitter provided due to the unavailability of corroborating information." ;
+	gleif-base:hasTag "ENTITY SUPPLIED ONLY" ;
 	.
 
-gleif-L2:ownPct
+gleif-L2:FullyCorroboratedSource
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipValidationSourceKind
+		;
+	rdfs:label "fully corroborated source" ;
+	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, there is sufficient information contained in authoritative public sources to corroborate the information that the submitter has provided for the record." ;
+	gleif-base:hasTag "FULLY CORROBORATED" ;
+	.
+
+gleif-L2:PendingSource
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipValidationSourceKind
+		;
+	rdfs:label "pending source" ;
+	skos:definition "The validation of the relationship data provided by the registrant has not yet occurred. Records with this ValidationSources value MUST not be published." ;
+	gleif-base:hasTag "PENDING" ;
+	.
+
+gleif-L2:PartiallyCorroboratedSource
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipValidationSourceKind
+		;
+	rdfs:label "partially corroborated source" ;
+	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, there is sufficient information contained in authoritative public sources to corroborate the information that the submitter has provided for the record." ;
+	gleif-base:hasTag "PARTIALLY CORROBORATED" ;
+	.
+
+gleif-L2:hasValidationReference
+	a owl:DatatypeProperty ;
+	rdfs:label "has validation reference" ;
+	rdfs:domain gleif-L2:LegalEntityRelationshipRecord ;
+	skos:definition "A reference to a specfic document or other source used as the basis of relationship validation for this relationship record." ;
+  .
+  
+gleif-L2:hasValidationDocuments
+	a owl:ObjectProperty ;
+	rdfs:label "has validation documents" ;
+	rdfs:domain gleif-L2:LegalEntityRelationshipRecord ;
+	rdfs:range gleif-L2:RelationshipValidationDocumentsKind ;
+	skos:definition "Type of source document(s) used for validating the relationship." ;
+  .
+
+gleif-L2:RelationshipValidationDocumentsKind
+  a owl:Class ;
+	rdfs:label "relationship validation documents kind" ;
+	skos:definition "Type of source document(s) used for validating the relationship." ;
+  .  
+
+gleif-L2:AccountsFilingDocuments
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipValidationDocumentsKind
+		;
+	rdfs:label "accounts filing documents" ;
+	skos:definition "A consolidated financial (accounting) statement, prepared and submitted to the relevant authority." ;
+	gleif-base:hasTag "ACCOUNTS_FILING" ;
+	.
+  
+gleif-L2:RegulatoryFilingDocuments
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipValidationDocumentsKind
+		;
+	rdfs:label "regulatory filing documents" ;
+	skos:definition "An annual regulatory filing providing public information on parent relationships" ;
+	gleif-base:hasTag "REGULATORY_FILING" ;
+	.
+  
+gleif-L2:SupportingDocuments
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipValidationDocumentsKind
+		;
+	rdfs:label "supporting documents" ;
+	skos:definition "Other documents supporting the preparation of consolidated financial statements." ;
+	gleif-base:hasTag "SUPPORTING_DOCUMENTS" ;
+	.
+  
+gleif-L2:ContractsDocuments
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipValidationDocumentsKind
+		;
+	rdfs:label "contracts documents" ;
+	skos:definition "Other documents supporting the preparation of consolidated financial statements." ;
+	gleif-base:hasTag "ACCOUNTS_FILING" ;
+	.
+
+gleif-L2:OtherOfficialDocuments
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipValidationDocumentsKind
+		;
+	rdfs:label "other official documents" ;
+	skos:definition "Other official document(s) attesting to the validity of the relationship." ;
+	gleif-base:hasTag "ACCOUNTS_FILING" ;
+	.
+  
+gleif-L2:ownedPercentage
 	a owl:DatatypeProperty ;
 	rdfs:label "owned percentage" ;
-	rdfs:domain gleif-L2:Ownership ;
+	rdfs:domain gleif-L2:AccountingConsolidation ;
 	rdfs:range xs:decimal ;
 	skos:definition "the percentage of the subsidiary owned by the owner, if known" ;
-	skos:editorialNote "Should be a subProperty of fibo-be-oac-cpty:hasPercentageControl but that needs fixing to be a datatypeproperty" ;
 	.
 

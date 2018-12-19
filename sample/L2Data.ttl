@@ -32,12 +32,39 @@
 
 gleif-L2-data:OR-4469000001BFY38CWR75-95980020140006006514
 	a
-		gleif-L2:DirectOwnership ,
-		gleif-L2:UltimateOwnership
+		gleif-L2:DirectConsolidation ,
+		gleif-L2:UltimateConsolidation
 		;
-	gleif-L2:acctgSource gleif-L2:IFRS ;
+	gleif-L2:hasAccountingSource gleif-L2:IFRS ;
 	gleif-L2:hasOwner gleif-L1-data:LE-95980020140006006514 ;
+  gleif-L2:hasRelationshipStatus gleif-L2:ActiveStatus;
 	gleif-L2:hasSubsidiary gleif-L1-data:LE-4469000001BFY38CWR75 ;
-	gleif-L2:ownPct "99.99"^^xs:decimal ;
+	gleif-L2:ownedPercentage "99.99"^^xs:decimal ;
+  gleif-L2:hasRelationshipPeriod
+    [
+      a gleif-base:Period ;
+      gleif-base:hasStart "2016-01-01T00:00:00-06:00"^^xs:dateTime ;
+    ]
+    ;
+	.
+
+gleif-L2-data:OR-4469000001BFY38CWR75-95980020140006006514
+	a
+		gleif-L2:LegalEntityRelationshipRecord ;
+  gleif-L2:records gleif-L2-data:OR-4469000001BFY38CWR75-95980020140006006514;
+	gleif-base:hasInitialRegistrationDate "2017-10-24T10:12:06.363-05:00"^^xs:dateTime ;
+	gleif-base:hasRegistrationRevisionDate "2018-11-01T00:15:17.506-06:00"^^xs:dateTime ;
+	gleif-base:hasRenewalDate "2018-10-31T18:15:49.463-06:00"^^xs:dateTime ;
+	gleif-base:hasRegistrationStatus gleif-L2:LapsedStatus ;
+	gleif-base:isManagedBy gleif-L1-data:LE-4469000001AVO26P9X86 ;
+	gleif-L2:hasValidationSources gleif-L2:FullyCorroboratedSource ;
+	gleif-L2:hasValidationDocuments gleif-L2:AccountsFilingDocuments ;
+  gleif-L2:hasAccountingPeriod
+    [
+      a gleif-base:Period ;
+      gleif-base:hasStart "2016-01-01T00:00:00-06:00"^^xs:dateTime ;
+      gleif-base:hasEnd "2016-12-01T00:00:00-06:00"^^xs:dateTime ;
+    ]
+    ;
 	.
 

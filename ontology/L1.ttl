@@ -184,7 +184,19 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 		gleif-base:RegistryEntry ,
 		[
 			a owl:Restriction ;
+			owl:onProperty gleif-base:hasInitialRegistrationDate ;
+			owl:cardinality "1"^^xs:nonNegativeInteger ;
+			owl:onDataRange xs:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
 			owl:onProperty gleif-base:hasRegistrationRevisionDate ;
+			owl:cardinality "1"^^xs:nonNegativeInteger ;
+			owl:onDataRange xs:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasRenewalDate ;
 			owl:cardinality "1"^^xs:nonNegativeInteger ;
 			owl:onDataRange xs:dateTime ;
 		] ,
@@ -351,15 +363,6 @@ gleif-L1:hasHeadquartersAddress
 	skos:definition "identifies the headquarters address for the registered entity" ;
 	.
 
-gleif-L1:hasInitialRegistrationDate
-	a owl:DatatypeProperty ;
-	rdfs:subPropertyOf gleif-base:hasRegistrationDate ;
-	rdfs:label "has initial registration date" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	rdfs:range xs:dateTime ;
-	skos:definition "the date on which an identifier or other registered item was first registered" ;
-	.
-
 gleif-L1:hasLegalForm
 	a owl:ObjectProperty ;
 	rdfs:label "has legal form" ;
@@ -390,15 +393,6 @@ gleif-L1:hasPriorLegalName
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	rdfs:range xs:string ;
 	skos:definition "a primary legal name that was used previously for the entity" ;
-	.
-
-gleif-L1:hasRenewalDate
-	a owl:DatatypeProperty ;
-	rdfs:subPropertyOf gleif-base:hasRegistrationDate ;
-	rdfs:label "has renewal date" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	rdfs:range xs:dateTime ;
-	skos:definition "the date by which a specific registration in the registry must be renewed or updated" ;
 	.
 
 gleif-L1:hasTradingOrOperationalName

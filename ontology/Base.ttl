@@ -167,6 +167,26 @@ gleif-base:LegalEntity
 	skos:scopeNote "The term 'legal entities' includes, but is not limited to, unique parties that are legally or financially responsible for the performance of financial transactions or have the legal right in their jurisdiction to enter independently into legal contracts, regardless of whether they are incorporated or constituted in some other way (e.g. trust, partnership, contractual). It excludes natural persons, but includes governmental organizations and supranationals." ;
 	.
 
+gleif-base:LegalEntityRelationship
+	a owl:Class ;
+	rdfs:label "legal entity relationship" ;
+	skos:definition "abstract superclass to represent a reified directed relationship" ;
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasSubsidiary ;
+			owl:onClass gleif-base:LegalEntity ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ;
+    [
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasParent ;
+			owl:onClass gleif-base:LegalEntity ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+
+	.
+
+  
 gleif-base:LegalPerson
 	a owl:Class ;
 	rdfs:subClassOf [
@@ -250,6 +270,34 @@ gleif-base:OrganizationIdentifier
 	skos:definition "an identifier assigned to an organization within an organization identification scheme, and unique within that scheme" ;
 	.
 
+gleif-base:Period
+	a owl:Class ;
+	rdfs:subClassOf [
+		a owl:Restriction ;
+		owl:onProperty gleif-base:hasStart ;
+		owl:cardinality "1" ;
+	] ;
+	rdfs:label "period"@en ;
+	skos:definition "a period of time, with at least a start time, and possibly an end." ;
+	.
+
+gleif-base:hasStart
+  a owl:DatatypeProperty ;
+	rdfs:label "has start"@en ;
+	skos:definition "the start time of a period." ;
+  rdfs:domain gleif-base:Period;
+  rdfs:range xs:dateTime;
+  .
+
+gleif-base:hasEnd
+  a owl:DatatypeProperty ;
+	rdfs:label "has end"@en ;
+	skos:definition "the end time of a period." ;
+  rdfs:domain gleif-base:Period;
+  rdfs:range xs:dateTime;
+  .  
+  
+  
 gleif-base:PhysicalAddress
 	a owl:Class ;
 	rdfs:subClassOf [
@@ -348,6 +396,13 @@ gleif-base:comprises
 	skos:note "Note that something can be comprised of something(s) that may or may not be understood as separable parts, and thus is not defined as being explicitly transitive." ;
 	.
 
+gleif-base:records
+	a owl:ObjectProperty ;
+	rdfs:label "records" ;
+  rdfs:domain gleif-base:RegistryEntry ;
+	skos:definition "the thing which the registry entry is a record of" ;
+	. 
+  
 gleif-base:hasASCIIName
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasTransliteratedName ;
@@ -488,6 +543,15 @@ gleif-base:hasEntityStatus
 	skos:definition "indicates the status of the entity (i.e., active, inactive)" ;
 	.
 
+gleif-base:hasInitialRegistrationDate
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf gleif-base:hasRegistrationDate ;
+	rdfs:label "has initial registration date" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	rdfs:range xs:dateTime ;
+	skos:definition "the date on which an identifier or other registered item was first registered" ;
+	.
+
 gleif-base:hasLegalName
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasName ;
@@ -588,6 +652,15 @@ gleif-base:hasScope
 	skos:definition "specifies a form of words that conveys the meaning associated with something" ;
 	.
 
+gleif-base:hasRenewalDate
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf gleif-base:hasRegistrationDate ;
+	rdfs:label "has renewal date" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	rdfs:range xs:dateTime ;
+	skos:definition "the date by which a specific registration in the registry must be renewed or updated" ;
+	.
+
 gleif-base:hasSubdivision
 	a owl:ObjectProperty ;
 	rdfs:label "has subdivision" ;
@@ -595,6 +668,23 @@ gleif-base:hasSubdivision
 	rdfs:range lcc-cr:CountrySubdivision ;
 	skos:definition "identifies the country subdivision (state, province, region, etc.) according to ISO 3166-2" ;
 	.
+  
+gleif-base:hasOwner
+	a owl:ObjectProperty ;
+	rdfs:label "has owner" ;
+	rdfs:domain gleif-L2:LegalEntityRelationship ;
+	rdfs:range gleif-base:LegalEntity ;
+	skos:definition "the legal entity that plays the owner role" ;
+	.
+  
+gleif-base:hasSubsidiary
+	a owl:ObjectProperty ;
+	rdfs:label "has subsidiary" ;
+	rdfs:domain gleif-L2:LegalEntityRelationship ;
+	rdfs:range <gleif-base;LegalEntity> ;
+	skos:definition "the legal entity that plays the subsidiary role" ;
+	.
+
 
 gleif-base:hasTag
 	a
