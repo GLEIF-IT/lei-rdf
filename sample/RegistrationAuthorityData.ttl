@@ -1,15 +1,15 @@
-# baseURI: https://www.gleif.org/sample/RAData/
+# baseURI: https://www.gleif.org/sample/RegistrationAuthorityData/
 # imports: http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/
 # imports: http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/
 # imports: https://www.gleif.org/ontology/Base/
-# imports: https://www.gleif.org/ontology/RA/
+# imports: https://www.gleif.org/ontology/RegistrationAuthority/
 
-@base <https://www.gleif.org/sample/RAData/> .
+@base <https://www.gleif.org/sample/RegistrationAuthorityData/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix gleif-L1: <https://www.gleif.org/ontology/L1/> .
-@prefix gleif-RA-data: <https://www.gleif.org/sample/RAData/> .
+@prefix gleif-RA-data: <https://www.gleif.org/sample/RegistrationAuthorityData/> .
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
-@prefix gleif-ra: <https://www.gleif.org/ontology/RA/> .
+@prefix gleif-ra: <https://www.gleif.org/ontology/RegistrationAuthority/> .
 @prefix lcc-3166-1-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> .
 @prefix lcc-3166-2-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -19,7 +19,7 @@
 @prefix xs: <http://www.w3.org/2001/XMLSchema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema> .
 
-<https://www.gleif.org/sample/RAData/>
+<https://www.gleif.org/sample/RegistrationAuthorityData/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF Registration Authority data" ;
 	rdfs:comment "Ontology generated from GLEIF RA data in CDF 2.1 format" ;
@@ -27,7 +27,7 @@
 		<http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> ,
 		<http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> ,
 		<https://www.gleif.org/ontology/Base/> ,
-		<https://www.gleif.org/ontology/RA/>
+		<https://www.gleif.org/ontology/RegistrationAuthority/>
 		;
 	.
 
