@@ -270,6 +270,34 @@ gleif-base:OrganizationIdentifier
 	skos:definition "an identifier assigned to an organization within an organization identification scheme, and unique within that scheme" ;
 	.
 
+gleif-base:Period
+	a owl:Class ;
+	rdfs:subClassOf [
+		a owl:Restriction ;
+		owl:onProperty gleif-base:hasStart ;
+		owl:cardinality "1" ;
+	] ;
+	rdfs:label "period"@en ;
+	skos:definition "a period of time, with at least a start time, and possibly an end." ;
+	.
+
+gleif-base:hasStart
+  a owl:DatatypeProperty ;
+	rdfs:label "has start"@en ;
+	skos:definition "the start time of a period." ;
+  rdfs:domain gleif-base:Period;
+  rdfs:range xs:dateTime;
+  .
+
+gleif-base:hasEnd
+  a owl:DatatypeProperty ;
+	rdfs:label "has end"@en ;
+	skos:definition "the end time of a period." ;
+  rdfs:domain gleif-base:Period;
+  rdfs:range xs:dateTime;
+  .  
+  
+  
 gleif-base:PhysicalAddress
 	a owl:Class ;
 	rdfs:subClassOf [
@@ -368,6 +396,13 @@ gleif-base:comprises
 	skos:note "Note that something can be comprised of something(s) that may or may not be understood as separable parts, and thus is not defined as being explicitly transitive." ;
 	.
 
+gleif-base:records
+	a owl:ObjectProperty ;
+	rdfs:label "records" ;
+  rdfs:domain gleif-base:RegistryEntry ;
+	skos:definition "the thing which the registry entry is a record of" ;
+	. 
+  
 gleif-base:hasASCIIName
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasTransliteratedName ;
