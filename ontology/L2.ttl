@@ -27,14 +27,14 @@
 gleif-L2:AccountingSource
 	a owl:Class ;
 	rdfs:label "accounting source" ;
-	skos:definition "the type of accounting standard used to source ownership information, which is based on reported accounting roll-ups" ;
+	skos:definition "the type of accounting standard used to source consolidation information, which is based on reported accounting roll-ups" ;
 	.
 
-gleif-L2:DirectOwnership
+gleif-L2:DirectConsolidation
 	a owl:Class ;
-	rdfs:subClassOf gleif-L2:Ownership ;
-	rdfs:label "direct ownership" ;
-	skos:definition "direct ownership relationship" ;
+	rdfs:subClassOf gleif-L2:AccountingConsolidation ;
+	rdfs:label "direct consolidation" ;
+	skos:definition "direct consolidation relationship" ;
 	.
 
 gleif-L2:IFRS
@@ -82,8 +82,8 @@ gleif-L2:Owner
 	rdfs:label "owner" ;
 	owl:equivalentClass [
 		a owl:Restriction ;
-		owl:onProperty gleif-L2:hasChildOwnership ;
-		owl:someValuesFrom gleif-L2:Ownership ;
+		owl:onProperty gleif-L2:hasChildConsolidation ;
+		owl:someValuesFrom gleif-L2:AccountingConsolidation ;
 	] ;
 	.
 
@@ -186,26 +186,27 @@ gleif-L2:TransferredStatus
 	gleif-base:hasTag "TRANSFERRED" ;
 	.
 
-gleif-L2:Relationship
+gleif-L2:AccountingConsolidation
 	a owl:Class ;
-	rdfs:label "relationship" ;
-	skos:definition "abstract superclass to represent a relationship" ;
+  rdfs:subClassOf gleif-base:LegalEntityRelationship ;
+	rdfs:label "accountign consolidation" ;
+	skos:definition "abstract superclass to represent an accounting consildation relationship" ;
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L2:hasRelationshpStatus ;
-			owl:onClass gleif-L2:RelationshpStatus ;
+			owl:onClass gleif-L2:RelationshipStatus ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
 	.
 
-gleif-L2:PrimaryForeignBranchOwnership
+gleif-L2:PrimaryForeignBranchConsolidation
 	a owl:Class ;
-	rdfs:subClassOf gleif-L2:DirectOwnership ;
-	rdfs:label "primary foreign branch ownership" ;
-	skos:definition "abstract superclass to represent ownership of a foreign branch" ;
+	rdfs:subClassOf gleif-L2:DirectConsolidation ;
+	rdfs:label "primary foreign branch consolidation" ;
+	skos:definition "abstract superclass to represent consolidation of a foreign branch" ;
 	.
 
-gleif-L2:RelationshipRegistryEntry
+gleif-L2:LegalEntityRelationshipRegistryEntry
 	a owl:Class ;
 	rdfs:subClassOf
 		gleif-base:RegistryEntry ,
@@ -249,7 +250,7 @@ gleif-L2:RelationshipRegistryEntry
 			owl:someValuesFrom gleif-L1:LEIValidationStatus ;
 		]
 		;
-	rdfs:label "legal entity identifier registry entry" ;
+	rdfs:label "legal entity relationship registry entry" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "an entry in a legal entity identifier registry that conforms to ISO 17442 and the Global Legal Entity Identifier Foundation (GLEIF) Common Data Format (CDF)" ;
 	.
@@ -259,8 +260,8 @@ gleif-L2:Subsidiary
 	rdfs:label "subsidiary" ;
 	owl:equivalentClass [
 		a owl:Restriction ;
-		owl:onProperty gleif-L2:hasParentOwnership ;
-		owl:someValuesFrom gleif-L2:Ownership ;
+		owl:onProperty gleif-L2:hasParentConsolidation ;
+		owl:someValuesFrom gleif-L2:AccountingConsolidation ;
 	] ;
 	.
 
@@ -288,61 +289,53 @@ gleif-L2:UltimateOwner
 	] ;
 	.
 
-gleif-L2:UltimateOwnership
+gleif-L2:UltimateConsolidation
 	a owl:Class ;
-	rdfs:subClassOf gleif-L2:Ownership ;
-	rdfs:label "ultimate ownership" ;
-	skos:definition "ultimate ownership relationship" ;
+	rdfs:subClassOf gleif-L2:AccountingConsolidation ;
+	rdfs:label "ultimate consolidation" ;
+	skos:definition "ultimate consolidation relationship" ;
 	.
 
 gleif-L2:acctgSource
 	a owl:ObjectProperty ;
 	rdfs:label "accounting source" ;
-	rdfs:domain gleif-L2:Ownership ;
+	rdfs:domain gleif-L2:AccountingConsolidation ;
 	rdfs:range gleif-L2:AccountingSource ;
-	skos:definition "the type of accounting source used for this ownership information" ;
+	skos:definition "the type of accounting source used for this Consolidation information" ;
 	.
 
 gleif-L2:hasChildEntity
 	rdfs:label "has child entity" ;
 	owl:propertyChainAxiom (
-		gleif-L2:hasChildOwnership
-		gleif-L2:hasSubsidiary
+		gleif-L2:hasChildConsolidation
+		gleif-base:hasSubsidiary
 	) ;
 	.
 
-gleif-L2:hasChildOwnership
+gleif-L2:hasChildConsolidation
 	a owl:ObjectProperty ;
-	rdfs:label "has child ownership" ;
-	rdfs:domain <gleif-base;LegalEntity> ;
-	rdfs:range gleif-L2:Ownership ;
-	owl:inverseOf gleif-L2:hasOwner ;
-	skos:definition "child ownership" ;
-	.
-
-gleif-L2:hasOwner
-	a owl:ObjectProperty ;
-	rdfs:label "has owner" ;
-	rdfs:domain gleif-L2:Ownership ;
-	rdfs:range gleif-base:LegalEntity ;
-	skos:definition "the legal entity that plays the owner role" ;
+	rdfs:label "has child consolidation" ;
+	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:range gleif-L2:AccountingConsolidation ;
+	owl:inverseOf gleif-base:hasOwner ;
+	skos:definition "child consolidation" ;
 	.
 
 gleif-L2:hasParentEntity
 	rdfs:label "has parent entity" ;
 	owl:propertyChainAxiom (
-		gleif-L2:hasParentOwnership
-		gleif-L2:hasOwner
+		gleif-L2:hasParentConsolidation
+		gleif-base:hasOwner
 	) ;
 	.
 
-gleif-L2:hasParentOwnership
+gleif-L2:hasParentConsolidation
 	a owl:ObjectProperty ;
-	rdfs:label "has parent ownership" ;
-	rdfs:domain <gleif-base;LegalEntity> ;
-	rdfs:range gleif-L2:Ownership ;
-	owl:inverseOf gleif-L2:hasSubsidiary ;
-	skos:definition "parent ownership" ;
+	rdfs:label "has parent consolidation" ;
+	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:range gleif-L2:AccountingConsolidation ;
+	owl:inverseOf gleif-base:hasSubsidiary ;
+	skos:definition "parent consolidation" ;
 	.
   
 gleif-L2:hasRelationshipStatus
@@ -354,20 +347,13 @@ gleif-L2:hasRelationshipStatus
 	skos:definition "indicates the status of the relationship (i.e., active, inactive)" ;
 	.
 
-gleif-L2:hasSubsidiary
-	a owl:ObjectProperty ;
-	rdfs:label "has subsidiary" ;
-	rdfs:domain gleif-L2:Ownership ;
-	rdfs:range <gleif-base;LegalEntity> ;
-	skos:definition "the legal entity that plays the subsidiary role" ;
-	.
 
 gleif-L2:ownPct
 	a owl:DatatypeProperty ;
 	rdfs:label "owned percentage" ;
-	rdfs:domain gleif-L2:Ownership ;
+	rdfs:domain gleif-L2:AccountingConsolidation ;
 	rdfs:range xs:decimal ;
 	skos:definition "the percentage of the subsidiary owned by the owner, if known" ;
-	skos:editorialNote "Should be a subProperty of fibo-be-oac-cpty:hasPercentageControl but that needs fixing to be a datatypeproperty" ;
+	skos:editorialNote "Should be a subProperty of fibo-be-oac-cpty:hasPercentageControl but that needs fixing to be a datatypeProperty" ;
 	.
 
