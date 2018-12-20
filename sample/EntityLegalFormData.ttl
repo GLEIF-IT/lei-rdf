@@ -47,7 +47,7 @@
 	gleif-base:hasCoverageArea lcc-3166-1-add:GE ;
 	gleif-base:hasLocalAbbreviation "GmbH"@ge ;
 	gleif-base:hasLocalName "Gesellschaft mit beschränkter Haftung"@ge ;
-	gleif-base:hasRegistrationRevisionDate "2017-11-30T11:40:04.012-06:00"^^xs:dateTime ;
+	gleif-base:hasLastModificationDate "2017-11-30T11:40:04.012-06:00"^^xs:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-elf:ActiveStatus ;
 	gleif-base:hasTransliteratedAbbreviation "GmbH" ;
 	gleif-base:hasTransliteratedName "Gesellschaft mit beschränkter Haftung" ;
@@ -65,7 +65,7 @@
 		"ltd."@ge
 		;
 	gleif-base:hasLocalName "Limited Liability Company"@ge ;
-	gleif-base:hasRegistrationRevisionDate "2017-11-30T11:40:04.012-06:00"^^xs:dateTime ;
+	gleif-base:hasLastModificationDate "2017-11-30T11:40:04.012-06:00"^^xs:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-elf:ActiveStatus ;
 	gleif-base:hasTransliteratedName "Limited Liability Company" ;
 	.

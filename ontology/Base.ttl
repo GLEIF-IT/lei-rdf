@@ -629,13 +629,13 @@ gleif-base:hasRegistrationDate
 	skos:definition "the date or date and time on which something is recorded" ;
 	.
 
-gleif-base:hasRegistrationRevisionDate
+gleif-base:hasLastModificationDate
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasRegistrationDate ;
-	rdfs:label "has registration revision date" ;
+	rdfs:label "has last modification date" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:range xsd:dateTime ;
-	skos:definition "the date that the detail of a specific registration in the registry was revised" ;
+	skos:definition "the date that the detail of a specific registration in the registry was last revised" ;
 	.
 
 gleif-base:hasRegistrationStatus

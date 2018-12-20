@@ -218,7 +218,7 @@ gleif-L2:LegalEntityRelationshipRecord
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasRegistrationRevisionDate ;
+			owl:onProperty gleif-base:hasLastModificationDate ;
 			owl:cardinality "1"^^xs:nonNegativeInteger ;
 			owl:onDataRange xs:dateTime ;
 		] ,

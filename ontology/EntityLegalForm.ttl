@@ -58,7 +58,7 @@ gleif-elf:EntityLegalForm
 	rdfs:subClassOf
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasRegistrationRevisionDate ;
+			owl:onProperty gleif-base:hasLastModificationDate ;
 			owl:cardinality "1"^^xsd:nonNegativeInteger ;
 			owl:onDataRange xsd:dateTime ;
 		] ,
