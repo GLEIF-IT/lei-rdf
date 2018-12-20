@@ -91,7 +91,7 @@ gleif-L1-data:LE-4469000001AVO26P9X86
 	gleif-base:hasEntityStatus gleif-base:ActiveStatus ;
 	gleif-base:hasLocalLegalName "ASOCIACION MEXICANA DE ESTANDARES PARA EL COMERCIO ELECTRONICO AC"@es ;
 	gleif-base:isOrganizedIn lcc-3166-1-add:CTRY-MX ;
-	gleif-L1:hasAddressOfLegalFormation gleif-L1-data:Leg-4469000001AVO26P9X86 ;
+	gleif-L1:hasLegalAddress gleif-L1-data:Leg-4469000001AVO26P9X86 ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:HQ-4469000001AVO26P9X86 ;
 	gleif-L1:hasLegalFormText "ASOCIACIÓN CIVIL" ;
 	gleif-L1:hasTradingOrOperationalName "GS1 MÉXICO" ;
@@ -102,7 +102,7 @@ gleif-L1-data:LE-5493007CICYM7A0SZ714
 	gleif-base:hasEntityStatus gleif-base:ActiveStatus ;
 	gleif-base:hasLocalLegalName "KI MEXICO S DE RL DE CV"@es ;
 	gleif-base:isOrganizedIn lcc-3166-1-add:CTRY-MX ;
-	gleif-L1:hasAddressOfLegalFormation gleif-L1-data:Leg-5493007CICYM7A0SZ714 ;
+	gleif-L1:hasLegalAddress gleif-L1-data:Leg-5493007CICYM7A0SZ714 ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:HQ-5493007CICYM7A0SZ714 ;
 	gleif-L1:hasLegalFormText "SOCIEDAD DE RESPONSABILIDAD LIMITADA DE CAPITAL VARIABLE" ;
 	gleif-L1:hasPriorLegalName "INDUSTRIAS KI DE MEXICO S.R.L. DE C.V." ;
