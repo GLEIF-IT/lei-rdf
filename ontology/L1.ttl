@@ -190,13 +190,13 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasRegistrationRevisionDate ;
+			owl:onProperty gleif-base:hasLastModificationDate ;
 			owl:cardinality "1"^^xs:nonNegativeInteger ;
 			owl:onDataRange xs:dateTime ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasRenewalDate ;
+			owl:onProperty gleif-base:hasNextRenewalDate ;
 			owl:cardinality "1"^^xs:nonNegativeInteger ;
 			owl:onDataRange xs:dateTime ;
 		] ,
@@ -347,12 +347,12 @@ gleif-L1:TransferredStatus
 	gleif-base:hasTag "TRANSFERRED" ;
 	.
 
-gleif-L1:hasAddressOfLegalFormation
+gleif-L1:hasLegalAddress
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf gleif-base:hasAddress ;
-	rdfs:label "has address of legal formation" ;
+	rdfs:label "has legal address" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "indicates the address of legal formation for the entity, in the jurisdiction in which the entity is established, used for registration purposes with respect to obtaining an LEI" ;
+	skos:definition "The address of the entity as recorded in the registration of the entity in its legal jurisdiction." ;
 	.
 
 gleif-L1:hasHeadquartersAddress
