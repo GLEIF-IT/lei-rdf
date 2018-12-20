@@ -179,7 +179,7 @@ gleif-base:LegalEntityRelationship
 		] ,
     [
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasParent ;
+			owl:onProperty gleif-base:hasOwner ;
 			owl:onClass gleif-base:LegalEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]

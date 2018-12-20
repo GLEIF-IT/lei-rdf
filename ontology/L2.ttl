@@ -215,19 +215,19 @@ gleif-L2:LegalEntityRelationshipRecord
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasInitialRegistrationDate ;
-			owl:cardinality "1"^^xs:nonNegativeInteger ;
+			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
 			owl:onDataRange xs:dateTime ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasRegistrationRevisionDate ;
-			owl:cardinality "1"^^xs:nonNegativeInteger ;
+			owl:onProperty gleif-base:hasLastModificationDate ;
+			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
 			owl:onDataRange xs:dateTime ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasRenewalDate ;
-			owl:cardinality "1"^^xs:nonNegativeInteger ;
+			owl:onProperty gleif-base:hasNextRenewalDate ;
+			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
 			owl:onDataRange xs:dateTime ;
 		] ,
 		[

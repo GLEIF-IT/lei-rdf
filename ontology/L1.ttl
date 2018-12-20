@@ -190,13 +190,13 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasRegistrationRevisionDate ;
+			owl:onProperty gleif-base:hasLastModificationDate ;
 			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
 			owl:onDataRange xs:dateTime ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasRenewalDate ;
+			owl:onProperty gleif-base:hasNextRenewalDate ;
 			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
 			owl:onDataRange xs:dateTime ;
 		] ,
