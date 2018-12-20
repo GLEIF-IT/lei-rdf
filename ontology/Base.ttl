@@ -652,10 +652,10 @@ gleif-base:hasScope
 	skos:definition "specifies a form of words that conveys the meaning associated with something" ;
 	.
 
-gleif-base:hasRenewalDate
+gleif-base:hasNextRenewalDate
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasRegistrationDate ;
-	rdfs:label "has renewal date" ;
+	rdfs:label "has next renewal date" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	rdfs:range xs:dateTime ;
 	skos:definition "the date by which a specific registration in the registry must be renewed or updated" ;

@@ -54,7 +54,7 @@ gleif-L2-data:OR-4469000001BFY38CWR75-95980020140006006514
   gleif-L2:records gleif-L2-data:OR-4469000001BFY38CWR75-95980020140006006514;
 	gleif-base:hasInitialRegistrationDate "2017-10-24T10:12:06.363-05:00"^^xs:dateTime ;
 	gleif-base:hasRegistrationRevisionDate "2018-11-01T00:15:17.506-06:00"^^xs:dateTime ;
-	gleif-base:hasRenewalDate "2018-10-31T18:15:49.463-06:00"^^xs:dateTime ;
+	gleif-base:hasNextRenewalDate "2018-10-31T18:15:49.463-06:00"^^xs:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L2:LapsedStatus ;
 	gleif-base:isManagedBy gleif-L1-data:LE-4469000001AVO26P9X86 ;
 	gleif-L2:hasValidationSources gleif-L2:FullyCorroboratedSource ;

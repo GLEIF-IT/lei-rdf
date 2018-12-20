@@ -115,7 +115,7 @@ gleif-L1-data:LEE-4469000001AVO26P9X86
 	gleif-base:comprises <https://www.gleif.org/lei/4469000001AVO26P9X86> ;
 	gleif-base:hasInitialRegistrationDate "2017-02-01T19:37:30.514-06:00"^^xs:dateTime ;
 	gleif-base:hasRegistrationRevisionDate "2018-02-28T11:40:04.012-06:00"^^xs:dateTime ;
-	gleif-base:hasRenewalDate "2018-02-01T19:37:30.513-06:00"^^xs:dateTime ;
+	gleif-base:hasNextRenewalDate "2018-02-01T19:37:30.513-06:00"^^xs:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L1:LapsedStatus ;
 	gleif-base:isManagedBy gleif-L1-data:LE-4469000001AVO26P9X86 ;
 	gleif-L1:hasValidationAuthority gleif-L1-data:LE-5493007CICYM7A0SZ714 ;
@@ -129,7 +129,7 @@ gleif-L1-data:LEE-5493007CICYM7A0SZ71
 	gleif-base:comprises <https://www.gleif.org/lei/5493007CICYM7A0SZ714> ;
 	gleif-base:hasInitialRegistrationDate "2013-03-22T11:07:24.137-06:00"^^xs:dateTime ;
 	gleif-base:hasRegistrationRevisionDate "2018-02-28T11:40:04.012-06:00"^^xs:dateTime ;
-	gleif-base:hasRenewalDate "2019-01-24T20:16:17.627-06:00"^^xs:dateTime ;
+	gleif-base:hasNextRenewalDate "2019-01-24T20:16:17.627-06:00"^^xs:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L1:IssuedStatus ;
 	gleif-base:isManagedBy gleif-L1-data:LE-4469000001AVO26P9X86 ;
 	gleif-L1:hasValidationAuthority gleif-L1-data:LE-5493007CICYM7A0SZ714 ;
