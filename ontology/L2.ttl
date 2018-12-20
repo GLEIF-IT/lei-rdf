@@ -496,9 +496,9 @@ gleif-L2:OtherOfficialDocuments
 	gleif-base:hasTag "ACCOUNTS_FILING" ;
 	.
   
-gleif-L2:ownedPercentage
+gleif-L2:hasOwnershipPercentage
 	a owl:DatatypeProperty ;
-	rdfs:label "owned percentage" ;
+	rdfs:label "has ownership percentage" ;
 	rdfs:domain gleif-L2:AccountingConsolidation ;
 	rdfs:range xs:decimal ;
 	skos:definition "the percentage of the subsidiary owned by the owner, if known" ;
