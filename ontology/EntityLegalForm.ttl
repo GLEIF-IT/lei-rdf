@@ -59,7 +59,7 @@ gleif-elf:EntityLegalForm
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasRegistrationRevisionDate ;
-			owl:cardinality "1"^^xsd:nonNegativeInteger ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 			owl:onDataRange xsd:dateTime ;
 		] ,
 		[

@@ -352,7 +352,7 @@ gleif-L2:hasRelationshipStatus
 gleif-L2:hasRelationshipPeriod
 	a owl:ObjectProperty ;
 	rdfs:label "has relationship period" ;
-	rdfs:domain gleif-L2:LegalEntityRelationship ;
+	rdfs:domain gleif-base:LegalEntityRelationship ;
 	rdfs:range gleif-base:Period ;
 	skos:definition "the period of validity of the relationship itself; lack of an end indicates a continuing relationship as of the time of reporting" ;
   .

@@ -275,7 +275,8 @@ gleif-base:Period
 	rdfs:subClassOf [
 		a owl:Restriction ;
 		owl:onProperty gleif-base:hasStart ;
-		owl:cardinality "1" ;
+		owl:qualifiedCardinality "1" ;
+    owl:onDataRange xsd:dateTime ;
 	] ;
 	rdfs:label "period"@en ;
 	skos:definition "a period of time, with at least a start time, and possibly an end." ;
@@ -296,7 +297,6 @@ gleif-base:hasEnd
   rdfs:domain gleif-base:Period;
   rdfs:range xsd:dateTime;
   .  
-  
   
 gleif-base:PhysicalAddress
 	a owl:Class ;
