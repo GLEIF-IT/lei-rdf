@@ -191,12 +191,14 @@ gleif-L2:AccountingConsolidation
   rdfs:subClassOf gleif-base:LegalEntityRelationship ;
 	rdfs:label "accounting consolidation" ;
 	skos:definition "abstract superclass to represent an accounting consolidation relationship" ;
+	rdfs:subClassOf
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L2:hasRelationshipStatus ;
 			owl:onClass gleif-L2:RelationshipStatus ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
+    ;
 	.
 
 gleif-L2:PrimaryForeignBranchConsolidation
