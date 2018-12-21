@@ -182,15 +182,9 @@ gleif-base:LegalEntityRelationship
 		]
 
 	.
-
   
 gleif-base:LegalPerson
 	a owl:Class ;
-	rdfs:subClassOf [
-		a owl:Restriction ;
-		owl:onProperty gleif-base:isRecognizedIn ;
-		owl:someValuesFrom lcc-cr:GeographicRegion ;
-	] ;
 	rdfs:label "legal person"@en ;
 	dct:source "http://en.wikipedia.org/wiki/Legal_personality"^^xsd:anyURI ;
 	skos:definition "any entity which can incur legal obligation and can be sued at law" ;
@@ -706,19 +700,10 @@ gleif-base:isMemberOf
 
 gleif-base:isOrganizedIn
 	a owl:ObjectProperty ;
-	rdfs:subPropertyOf gleif-base:isRecognizedIn ;
 	rdfs:label "is organized in" ;
 	rdfs:domain gleif-base:LegalEntity ;
 	rdfs:range lcc-cr:GeographicRegion ;
 	skos:definition "indicates the jurisdiction whose laws a legal entity is organized under" ;
-	.
-
-gleif-base:isRecognizedIn
-	a owl:ObjectProperty ;
-	rdfs:label "is recognized in" ;
-	rdfs:domain gleif-base:LegalEntity ;
-	rdfs:range lcc-cr:GeographicRegion ;
-	skos:definition "indicates the jurisdiction in which a legal person is authorized to conduct business or an agreement may be acknowledged and possibly enforceable" ;
 	.
 
 gleif-base:isRegisteredIn
