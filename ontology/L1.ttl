@@ -155,7 +155,7 @@ gleif-L1:LegalEntityIdentifier
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:identifies ;
-			owl:onClass gleif-base:LegalPerson ;
+			owl:onClass gleif-base:LegalEntity ;
 			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
 		] ,
 		[

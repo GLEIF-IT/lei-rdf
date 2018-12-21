@@ -69,14 +69,6 @@ gleif-base:ExpirationReasonOther
 	skos:definition "The reason for expiry is neither of DISSOLVED nor CORPORATE_ACTION" ;
 	.
 
-gleif-base:FormalOrganization
-	a owl:Class ;
-	rdfs:subClassOf gleif-base:Organization ;
-	rdfs:label "formal organization" ;
-	dct:source "W3C Organization Ontology" ;
-	skos:definition "An Organization that is recognized in some legal jurisdiction, with associated rights and responsibilities. Examples include a Corporation, Charity, Government or Church." ;
-	.
-
 gleif-base:GLEIF
 	a gleif-base:RegistrationAuthority ;
 	gleif-base:hasLegalName "Global Legal Entity Identifier Federation" ;
@@ -137,8 +129,6 @@ gleif-base:InactiveStatus
 gleif-base:LegalEntity
 	a owl:Class ;
 	rdfs:subClassOf
-		gleif-base:FormalOrganization ,
-		gleif-base:LegalPerson ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:isOrganizedIn ;
@@ -151,7 +141,6 @@ gleif-base:LegalEntity
 		"Barron's Dictionary of Banking Terms, Sixth Edition, 2012, definition of legal entity" ,
 		"ISO 17442, Financial services - Legal Entity Identifier (LEI), first edition, 2012-06-01, section 3.1"
 		;
-	owl:disjointWith gleif-base:NaturalPerson ;
 	skos:definition "a partnership, corporation, or other organization having the capacity to negotiate contracts, assume financial obligations, and pay off debts, organized under the laws of some jurisdiction" ;
 	skos:example """Examples of eligible legal entities include, without limitation:
 -   all financial intermediaries;
@@ -183,47 +172,6 @@ gleif-base:LegalEntityRelationship
 
 	.
   
-gleif-base:LegalPerson
-	a owl:Class ;
-	rdfs:label "legal person"@en ;
-	dct:source "http://en.wikipedia.org/wiki/Legal_personality"^^xsd:anyURI ;
-	skos:definition "any entity which can incur legal obligation and can be sued at law" ;
-	skos:note "To have legal personality means to be capable of having legal rights and duties within a certain legal system, such as to enter into contracts, sue, and be sued. Legal personality is a prerequisite to legal capacity, the ability of any legal person to amend (enter into, transfer, etc.) rights and obligations." ;
-	.
-
-gleif-base:NaturalPerson
-	a owl:Class ;
-	rdfs:subClassOf gleif-base:LegalPerson ;
-	rdfs:label "natural person"@en ;
-	skos:definition "A person of maturity who in the eyes of the law is able to assume obligations." ;
-	.
-
-gleif-base:Organization
-	a owl:Class ;
-	rdfs:subClassOf
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasMember ;
-			owl:allValuesFrom gleif-base:LegalPerson ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasPart ;
-			owl:allValuesFrom gleif-base:Organization ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasAddress ;
-			owl:onClass gleif-base:PhysicalAddress ;
-			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-		]
-		;
-	rdfs:label "organization"@en ;
-	dct:source "https://www.iso.org/obp/ui/#iso:std:iso-iec:6523:-1:ed-1:v1:en" ;
-	skos:definition "a unique framework of authority within which a person or persons act, or are designated to act, towards some purpose, such as to meet a need or pursue collective goals on a continuing basis" ;
-	skos:example "This may be a business entity or a government, international or not-for-profit, or other unincorporated social organization." ;
-	.
-
 gleif-base:Period
 	a owl:Class ;
 	rdfs:subClassOf [
@@ -557,14 +505,6 @@ gleif-base:hasName
 	rdfs:subPropertyOf rdfs:label ;
 	rdfs:label "has name" ;
 	skos:definition "associates a name, reference name, or appellation with an individual concept" ;
-	.
-
-gleif-base:hasPart
-	a owl:ObjectProperty ;
-	rdfs:label "has part" ;
-	dct:source "Stanford Encyclopedia of Philosophy at http://plato.stanford.edu/entries/mereology/" ;
-	skos:definition "indicates any portion of a thing, regardless of whether the portion itself is attached to the remainder or detached; cognitively salient or arbitrarily demarcated; self-connected or disconnected; homogeneous or gerrymandered; material or immaterial; extended or unextended; spatial or temporal" ;
-	skos:note "This property relates a thing to anything which is a proper part of that thing. This is not parthood in the sense of a the role of part which may be played by interchangeable things such as wheels; instead this property relates an independent thing to something which makes up a part of it." ;
 	.
 
 gleif-base:hasPostalCode
