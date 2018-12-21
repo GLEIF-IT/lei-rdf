@@ -45,7 +45,7 @@ gleif-L1:Branch
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:isMemberOf ;
-			owl:someValuesFrom gleif-L1:LegalEntity ;
+			owl:someValuesFrom gleif-base:LegalEntity ;
 		]
 		;
 	rdfs:label "fund" ;
@@ -104,7 +104,7 @@ gleif-L1:Fund
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:isManagedBy ;
-			owl:someValuesFrom gleif-L1:LegalEntity ;
+			owl:someValuesFrom gleif-base:LegalEntity ;
 		]
 		;
 	rdfs:label "fund" ;
