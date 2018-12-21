@@ -317,13 +317,7 @@ gleif-L1:RetiredStatus
 gleif-L1:SoleProprietorship
 	a owl:Class ;
 	rdfs:subClassOf
-		gleif-base:LegalEntity ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasMember ;
-			owl:onClass gleif-base:LegalEntity ;
-			owl:qualifiedCardinality "1" ;
-		]
+		gleif-base:LegalEntity
 		;
 	rdfs:label "sole proprietorship" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
