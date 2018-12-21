@@ -681,7 +681,7 @@ gleif-base:hasSubsidiary
 	a owl:ObjectProperty ;
 	rdfs:label "has subsidiary" ;
 	rdfs:domain gleif-base:LegalEntityRelationship ;
-	rdfs:range <gleif-base;LegalEntity> ;
+	rdfs:range gleif-base:LegalEntity ;
 	skos:definition "the legal entity that plays the subsidiary role" ;
 	.
 
