@@ -29,10 +29,9 @@
 	owl:imports
 		<http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> ,
 		<http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> ,
-		<https://www.gleif.org/ontology/Base/> ,
-		<https://www.gleif.org/ontology/EntityLegalForm/> ,
 		<https://www.gleif.org/ontology/L1/> ,
-		<https://www.gleif.org/ontology/RegistrationAuthority/>
+		<https://www.gleif.org/sample/EntityLegalFormData/>
+		<https://www.gleif.org/sample/RegistrationAuthorityData/>
 		;
 	.
 
