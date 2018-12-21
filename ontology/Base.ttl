@@ -396,6 +396,14 @@ gleif-base:comprises
 	skos:note "Note that something can be comprised of something(s) that may or may not be understood as separable parts, and thus is not defined as being explicitly transitive." ;
 	.
 
+gleif-base:hasSuccessor
+	a owl:ObjectProperty ;
+	rdfs:label "has successor" ;
+  rdfs:domain gleif-base:LegalEntity ;
+  rdfs:range gleif-base:LegalEntity ;
+	skos:definition "The surviving/new legal entity which continues/replaces this registration." ;
+	. 
+
 gleif-base:records
 	a owl:ObjectProperty ;
 	rdfs:label "records" ;
