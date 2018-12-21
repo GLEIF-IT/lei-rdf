@@ -33,13 +33,13 @@
 gleif-ELF-data:ELF-2HBR
 	a gleif-elf:EntityLegalFormIdentifier ;
 	gleif-base:hasTag "2HBR" ;
-	gleif-base:identifies <ELFE-2HBR> ;
+	gleif-base:identifies gleif-ELF-data:ELFREC-2HBR ;
 	.
 
 gleif-ELF-data:ELF-EZNQ
 	a gleif-elf:EntityLegalFormIdentifier ;
 	gleif-base:hasTag "EZNQ" ;
-	gleif-base:identifies gleif-ELF-data:ELFE-EZNQ ;
+	gleif-base:identifies gleif-ELF-data:ELFREC-EZNQ ;
 	.
 
 gleif-ELF-data:ELFREC-2HBR
@@ -47,7 +47,7 @@ gleif-ELF-data:ELFREC-2HBR
 	gleif-base:hasCoverageArea lcc-3166-1-add:GE ;
 	gleif-base:hasLocalAbbreviation "GmbH"@ge ;
 	gleif-base:hasLocalName "Gesellschaft mit beschränkter Haftung"@ge ;
-	gleif-base:hasLastModificationDate "2017-11-30T11:40:04.012-06:00"^^xs:dateTime ;
+	gleif-base:hasInitialRegistrationDate "2017-11-30T00:00:00Z"^^xs:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-elf:ActiveStatus ;
 	gleif-base:hasTransliteratedAbbreviation "GmbH" ;
 	gleif-base:hasTransliteratedName "Gesellschaft mit beschränkter Haftung" ;
@@ -65,8 +65,28 @@ gleif-ELF-data:ELFREC-EZNQ
 		"ltd."@ge
 		;
 	gleif-base:hasLocalName "Limited Liability Company"@ge ;
-	gleif-base:hasLastModificationDate "2017-11-30T11:40:04.012-06:00"^^xs:dateTime ;
+	gleif-base:hasInitialRegistrationDate "2017-11-30T00:00:00Z"^^xs:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-elf:ActiveStatus ;
 	gleif-base:hasTransliteratedName "Limited Liability Company" ;
+	.
+
+gleif-ELF-data:ELF-H0PO
+	a gleif-elf:EntityLegalFormIdentifier ;
+	gleif-base:hasTag "H0PO" ;
+	gleif-base:identifies gleif-ELF-data:ELFREC-H0PO ;
+	.
+
+gleif-ELF-data:ELFREC-H0PO
+	a gleif-elf:EntityLegalForm ;
+	gleif-base:hasCoverageArea lcc-3166-1-add:GB ;
+	gleif-base:hasLocalAbbreviation
+		"LTD"@en ,
+		"LTD."@en ,
+		"ltd"@en ,
+		"ltd."@en
+		;
+	gleif-base:hasLocalName "Private Limited Company"@en ;
+	gleif-base:hasInitialRegistrationDate "2017-11-30T00:00:00Z"^^xs:dateTime ;
+	gleif-base:hasRegistrationStatus gleif-elf:ActiveStatus ;
 	.
 
