@@ -5,7 +5,7 @@
 # imports: https://www.gleif.org/ontology/EntityLegalForm/
 
 @base <https://www.gleif.org/sample/EntityLegalFormData/> .
-@prefix ELF-data: <https://www.gleif.org/sample/EntityLegalFormData/> .
+@prefix gleif-ELF-data: <https://www.gleif.org/sample/EntityLegalFormData/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
 @prefix gleif-elf: <https://www.gleif.org/ontology/EntityLegalForm/> .
@@ -30,19 +30,19 @@
 		;
 	.
 
-<ELF-2HBR>
+gleif-ELF-data:ELF-2HBR
 	a gleif-elf:EntityLegalFormIdentifier ;
 	gleif-base:hasTag "2HBR" ;
 	gleif-base:identifies <ELFE-2HBR> ;
 	.
 
-<ELF-EZNQ>
+gleif-ELF-data:ELF-EZNQ
 	a gleif-elf:EntityLegalFormIdentifier ;
 	gleif-base:hasTag "EZNQ" ;
-	gleif-base:identifies <ELFE-EZNQ> ;
+	gleif-base:identifies gleif-ELF-data:ELFE-EZNQ ;
 	.
 
-<ELFE-2HBR>
+gleif-ELF-data:ELFREC-2HBR
 	a gleif-elf:EntityLegalForm ;
 	gleif-base:hasCoverageArea lcc-3166-1-add:GE ;
 	gleif-base:hasLocalAbbreviation "GmbH"@ge ;
@@ -53,7 +53,7 @@
 	gleif-base:hasTransliteratedName "Gesellschaft mit beschränkter Haftung" ;
 	.
 
-<ELFE-EZNQ>
+gleif-ELF-data:ELFREC-EZNQ
 	a gleif-elf:EntityLegalForm ;
 	gleif-base:hasCoverageArea lcc-3166-2-add:US-OH ;
 	gleif-base:hasLocalAbbreviation
