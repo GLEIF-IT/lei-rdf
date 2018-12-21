@@ -171,15 +171,15 @@ gleif-base:LegalEntityRelationship
 	a owl:Class ;
 	rdfs:label "legal entity relationship" ;
 	skos:definition "abstract superclass to represent a reified directed relationship" ;
-		[
+	rdfs:subClassOf		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasSubsidiary ;
 			owl:onClass gleif-base:LegalEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ;
+		] ,
     [
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasParent ;
+			owl:onProperty gleif-base:hasOwner ;
 			owl:onClass gleif-base:LegalEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
@@ -275,7 +275,8 @@ gleif-base:Period
 	rdfs:subClassOf [
 		a owl:Restriction ;
 		owl:onProperty gleif-base:hasStart ;
-		owl:cardinality "1" ;
+		owl:qualifiedCardinality "1" ;
+    owl:onDataRange xsd:dateTime ;
 	] ;
 	rdfs:label "period"@en ;
 	skos:definition "a period of time, with at least a start time, and possibly an end." ;
@@ -286,7 +287,7 @@ gleif-base:hasStart
 	rdfs:label "has start"@en ;
 	skos:definition "the start time of a period." ;
   rdfs:domain gleif-base:Period;
-  rdfs:range xs:dateTime;
+  rdfs:range xsd:dateTime;
   .
 
 gleif-base:hasEnd
@@ -294,9 +295,8 @@ gleif-base:hasEnd
 	rdfs:label "has end"@en ;
 	skos:definition "the end time of a period." ;
   rdfs:domain gleif-base:Period;
-  rdfs:range xs:dateTime;
+  rdfs:range xsd:dateTime;
   .  
-  
   
 gleif-base:PhysicalAddress
 	a owl:Class ;
@@ -547,8 +547,8 @@ gleif-base:hasInitialRegistrationDate
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasRegistrationDate ;
 	rdfs:label "has initial registration date" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	rdfs:range xs:dateTime ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	rdfs:range xsd:dateTime ;
 	skos:definition "the date on which an identifier or other registered item was first registered" ;
 	.
 
@@ -656,8 +656,8 @@ gleif-base:hasNextRenewalDate
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasRegistrationDate ;
 	rdfs:label "has next renewal date" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	rdfs:range xs:dateTime ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	rdfs:range xsd:dateTime ;
 	skos:definition "the date by which a specific registration in the registry must be renewed or updated" ;
 	.
 
@@ -672,7 +672,7 @@ gleif-base:hasSubdivision
 gleif-base:hasOwner
 	a owl:ObjectProperty ;
 	rdfs:label "has owner" ;
-	rdfs:domain gleif-L2:LegalEntityRelationship ;
+	rdfs:domain gleif-base:LegalEntityRelationship ;
 	rdfs:range gleif-base:LegalEntity ;
 	skos:definition "the legal entity that plays the owner role" ;
 	.
@@ -680,7 +680,7 @@ gleif-base:hasOwner
 gleif-base:hasSubsidiary
 	a owl:ObjectProperty ;
 	rdfs:label "has subsidiary" ;
-	rdfs:domain gleif-L2:LegalEntityRelationship ;
+	rdfs:domain gleif-base:LegalEntityRelationship ;
 	rdfs:range <gleif-base;LegalEntity> ;
 	skos:definition "the legal entity that plays the subsidiary role" ;
 	.

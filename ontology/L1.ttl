@@ -185,19 +185,19 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasInitialRegistrationDate ;
-			owl:cardinality "1"^^xs:nonNegativeInteger ;
+			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
 			owl:onDataRange xs:dateTime ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasLastModificationDate ;
-			owl:cardinality "1"^^xs:nonNegativeInteger ;
+			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
 			owl:onDataRange xs:dateTime ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasNextRenewalDate ;
-			owl:cardinality "1"^^xs:nonNegativeInteger ;
+			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
 			owl:onDataRange xs:dateTime ;
 		] ,
 		[
@@ -328,7 +328,7 @@ gleif-L1:SoleProprietorship
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasMember ;
 			owl:onClass gleif-base:LegalEntity ;
-			owl:cardinality "1" ;
+			owl:qualifiedCardinality "1" ;
 		]
 		;
 	rdfs:label "sole proprietorship" ;

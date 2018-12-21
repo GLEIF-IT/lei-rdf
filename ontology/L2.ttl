@@ -191,12 +191,14 @@ gleif-L2:AccountingConsolidation
   rdfs:subClassOf gleif-base:LegalEntityRelationship ;
 	rdfs:label "accounting consolidation" ;
 	skos:definition "abstract superclass to represent an accounting consolidation relationship" ;
+	rdfs:subClassOf
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L2:hasRelationshipStatus ;
 			owl:onClass gleif-L2:RelationshipStatus ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
+    ;
 	.
 
 gleif-L2:PrimaryForeignBranchConsolidation
@@ -213,19 +215,19 @@ gleif-L2:LegalEntityRelationshipRecord
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasInitialRegistrationDate ;
-			owl:cardinality "1"^^xs:nonNegativeInteger ;
+			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
 			owl:onDataRange xs:dateTime ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasLastModificationDate ;
-			owl:cardinality "1"^^xs:nonNegativeInteger ;
+			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
 			owl:onDataRange xs:dateTime ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasNextRenewalDate ;
-			owl:cardinality "1"^^xs:nonNegativeInteger ;
+			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
 			owl:onDataRange xs:dateTime ;
 		] ,
 		[
@@ -350,7 +352,7 @@ gleif-L2:hasRelationshipStatus
 gleif-L2:hasRelationshipPeriod
 	a owl:ObjectProperty ;
 	rdfs:label "has relationship period" ;
-	rdfs:domain gleif-L2:LegalEntityRelationship ;
+	rdfs:domain gleif-base:LegalEntityRelationship ;
 	rdfs:range gleif-base:Period ;
 	skos:definition "the period of validity of the relationship itself; lack of an end indicates a continuing relationship as of the time of reporting" ;
   .
