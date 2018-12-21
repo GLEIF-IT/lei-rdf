@@ -231,43 +231,6 @@ gleif-base:Organization
 	skos:example "This may be a business entity or a government, international or not-for-profit, or other unincorporated social organization." ;
 	.
 
-gleif-base:OrganizationIdentificationScheme
-	a owl:Class ;
-	rdfs:subClassOf
-		gleif-base:IdentificationScheme ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:scopes ;
-			owl:allValuesFrom gleif-base:OrganizationIdentifier ;
-		]
-		;
-	rdfs:label "organization identification scheme" ;
-	dct:source "https://www.iso.org/obp/ui/#iso:std:iso-iec:6523:-1:ed-1:v1:en"^^xsd:anyURI ;
-	skos:definition "an identification scheme dedicated to the unique identification of organizations" ;
-	.
-
-gleif-base:OrganizationIdentifier
-	a owl:Class ;
-	rdfs:subClassOf
-		gleif-base:Identifier ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:identifies ;
-			owl:onClass gleif-base:Organization ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasScope ;
-			owl:onClass gleif-base:OrganizationIdentificationScheme ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		]
-		;
-	rdfs:label "organization identifier" ;
-	dct:source "https://www.iso.org/obp/ui/#iso:std:iso-iec:6523:-1:ed-1:v1:en"^^xsd:anyURI ;
-	skos:definition "an identifier assigned to an organization within an organization identification scheme, and unique within that scheme" ;
-	.
-
 gleif-base:Period
 	a owl:Class ;
 	rdfs:subClassOf [

@@ -151,7 +151,7 @@ gleif-L1:LapsedStatus
 gleif-L1:LegalEntityIdentifier
 	a owl:Class ;
 	rdfs:subClassOf
-		gleif-base:OrganizationIdentifier ,
+		gleif-base:Identifier ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:identifies ;
