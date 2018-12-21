@@ -175,6 +175,7 @@ gleif-L1-data:LEE-213800YK2FEXWNMT3R12
 	gleif-base:hasLastModificationDate "2018-09-14T14:37:15.170Z"^^xs:dateTime ;
 	gleif-base:hasNextRenewalDate "2019-11-01T00:00:00Z"^^xs:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L1:MergedStatus ;
+	gleif-base:hasSuccessor gleif-L1-data:LE-213800YK2FEXWNMT3R12 ;
 	gleif-base:isManagedBy gleif-L1-data:LE-213800WAVVOPS85N2205 ;
 	gleif-L1:hasValidationAuthority gleif-RA-data:RA000585 ;
 	gleif-L1:hasValidationLevel gleif-L1:FullyCorroboratedStatus ;
