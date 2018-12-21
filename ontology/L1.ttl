@@ -228,7 +228,7 @@ gleif-L1:LocalOperatingUnit
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:manages ;
-			owl:someValuesFrom gleif-L1:LegalEntityIdentifierRegistry ;
+			owl:someValuesFrom gleif-base:Registry ;
 		]
 		;
 	rdfs:label "local operating unit" ;
