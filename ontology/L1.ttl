@@ -161,7 +161,7 @@ gleif-L1:LegalEntityIdentifier
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasScope ;
-			owl:someValuesFrom gleif-base:IdentifierScheme ;
+			owl:someValuesFrom gleif-base:IdentificationScheme ;
 		]
 		;
 	rdfs:label "legal entity identifier" ;

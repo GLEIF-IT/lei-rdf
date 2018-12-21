@@ -86,7 +86,6 @@ gleif-base:GLEIF
 gleif-base:IdentificationScheme
 	a owl:Class ;
 	rdfs:subClassOf
-		gleif-base:Scheme ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:scopes ;
