@@ -417,7 +417,7 @@ gleif-L1:hasValidationRegistryIdentifier
 	a owl:ObjectProperty ;
 	rdfs:label "has validation registry identifier" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	rdfs:range gleif-ra:RegistryIdentifier ;
+	rdfs:range gleif-base:RegistryIdentifier ;
 	skos:definition "the identifier of the entity at the indicated registration authority" ;
 	skos:note "Typically, the identifier of the legal entity as maintained by a business registry in the jurisdiction of legal registration, or if the entity is one that is not recorded in a business registry (e.g. one of the varieties of funds registered instead with financial regulators), the identifier of the entity in the appropriate registration authority." ;
 	.
