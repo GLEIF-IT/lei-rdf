@@ -178,27 +178,27 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 		gleif-base:RegistryEntry ,
 		[
 			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasValidationAuthority ;
+			owl:onClass gleif-base:RegistrationAuthority ;
+			owl:minQualifiedCardinality "0"^^xs:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
 			owl:onProperty gleif-base:hasInitialRegistrationDate ;
-			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
 			owl:onDataRange xs:dateTime ;
+			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasLastModificationDate ;
-			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
 			owl:onDataRange xs:dateTime ;
+			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasNextRenewalDate ;
-			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
 			owl:onDataRange xs:dateTime ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasValidationAuthority ;
-			owl:onClass gleif-base:RegistrationAuthority ;
-			owl:minQualifiedCardinality "0"^^xs:nonNegativeInteger ;
+			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
@@ -316,9 +316,7 @@ gleif-L1:RetiredStatus
 
 gleif-L1:SoleProprietorship
 	a owl:Class ;
-	rdfs:subClassOf
-		gleif-base:LegalEntity
-		;
+	rdfs:subClassOf gleif-base:LegalEntity ;
 	rdfs:label "sole proprietorship" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "The legal entity represents an individual acting in a business capacity" ;
@@ -335,20 +333,20 @@ gleif-L1:TransferredStatus
 	gleif-base:hasTag "TRANSFERRED" ;
 	.
 
+gleif-L1:hasHeadquartersAddress
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf gleif-L1:hasOperatingAddress ;
+	rdfs:label "has headquarters address" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "identifies the headquarters address for the registered entity" ;
+	.
+
 gleif-L1:hasLegalAddress
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf gleif-base:hasAddress ;
 	rdfs:label "has legal address" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "The address of the entity as recorded in the registration of the entity in its legal jurisdiction." ;
-	.
-
-gleif-L1:hasHeadquartersAddress
-	a owl:ObjectProperty ;
-	rdfs:subPropertyOf gleif-base:hasOperatingAddress ;
-	rdfs:label "has headquarters address" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "identifies the headquarters address for the registered entity" ;
 	.
 
 gleif-L1:hasLegalForm
