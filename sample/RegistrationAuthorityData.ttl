@@ -62,7 +62,7 @@ gleif-RA-data:RA000585
 	.
 
 gleif-RA-data:REG-RA000189
-	a gleif-ra:Registry ;
+	a gleif-ra:BusinessRegistry ;
 	gleif-base:hasCoverageArea
 		lcc-3166-1-add:FR ,
 		lcc-3166-1-add:GF ,
@@ -75,7 +75,7 @@ gleif-RA-data:REG-RA000189
 	.
 
 gleif-RA-data:REG-RA000585
-	a gleif-ra:Registry ;
+	a gleif-ra:BusinessRegistry ;
 	gleif-base:hasCoverageArea
 		lcc-3166-2-add:GB-EAW ,
 		lcc-3166-2-add:GB-NIR ,

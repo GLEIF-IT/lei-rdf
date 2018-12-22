@@ -1,6 +1,4 @@
 # baseURI: https://www.gleif.org/ontology/L1/
-# imports: http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/
-# imports: http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/
 # imports: https://www.gleif.org/ontology/Base/
 # imports: https://www.gleif.org/ontology/EntityLegalForm/
 # imports: https://www.gleif.org/ontology/RegistrationAuthority/
@@ -11,8 +9,6 @@
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
 @prefix gleif-elf: <https://www.gleif.org/ontology/EntityLegalForm/> .
 @prefix gleif-ra: <https://www.gleif.org/ontology/RegistrationAuthority/> .
-@prefix lcc-3166-1-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> .
-@prefix lcc-3166-2-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -25,8 +21,6 @@
 	rdfs:label "GLEIF L1 Ontology" ;
 	rdfs:comment "Ontology generated from GLEIF L1 data in CDF 2.1 format" ;
 	owl:imports
-		<http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> ,
-		<http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> ,
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/EntityLegalForm/> ,
 		<https://www.gleif.org/ontology/RegistrationAuthority/>
@@ -51,7 +45,7 @@ gleif-L1:Branch
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:isMemberOf ;
-			owl:someValuesFrom gleif-L1:LegalEntity ;
+			owl:someValuesFrom gleif-base:LegalEntity ;
 		]
 		;
 	rdfs:label "fund" ;
@@ -110,7 +104,7 @@ gleif-L1:Fund
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:isManagedBy ;
-			owl:someValuesFrom gleif-L1:LegalEntity ;
+			owl:someValuesFrom gleif-base:LegalEntity ;
 		]
 		;
 	rdfs:label "fund" ;
@@ -157,17 +151,17 @@ gleif-L1:LapsedStatus
 gleif-L1:LegalEntityIdentifier
 	a owl:Class ;
 	rdfs:subClassOf
-		gleif-base:OrganizationIdentifier ,
+		gleif-base:Identifier ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:identifies ;
-			owl:onClass gleif-base:LegalPerson ;
+			owl:onClass gleif-base:LegalEntity ;
 			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasScope ;
-			owl:someValuesFrom gleif-base:IdentifierScheme ;
+			owl:someValuesFrom gleif-base:IdentificationScheme ;
 		]
 		;
 	rdfs:label "legal entity identifier" ;
@@ -234,7 +228,7 @@ gleif-L1:LocalOperatingUnit
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:manages ;
-			owl:someValuesFrom gleif-L1:LegalEntityIdentifierRegistry ;
+			owl:someValuesFrom gleif-base:Registry ;
 		]
 		;
 	rdfs:label "local operating unit" ;
@@ -323,13 +317,7 @@ gleif-L1:RetiredStatus
 gleif-L1:SoleProprietorship
 	a owl:Class ;
 	rdfs:subClassOf
-		gleif-base:LegalEntity ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasMember ;
-			owl:onClass gleif-base:LegalEntity ;
-			owl:qualifiedCardinality "1" ;
-		]
+		gleif-base:LegalEntity
 		;
 	rdfs:label "sole proprietorship" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
@@ -429,7 +417,7 @@ gleif-L1:hasValidationRegistryIdentifier
 	a owl:ObjectProperty ;
 	rdfs:label "has validation registry identifier" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	rdfs:range gleif-ra:RegistryIdentifier ;
+	rdfs:range gleif-base:RegistryIdentifier ;
 	skos:definition "the identifier of the entity at the indicated registration authority" ;
 	skos:note "Typically, the identifier of the legal entity as maintained by a business registry in the jurisdiction of legal registration, or if the entity is one that is not recorded in a business registry (e.g. one of the varieties of funds registered instead with financial regulators), the identifier of the entity in the appropriate registration authority." ;
 	.

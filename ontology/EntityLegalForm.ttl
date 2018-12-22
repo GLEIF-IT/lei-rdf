@@ -1,6 +1,5 @@
 # baseURI: https://www.gleif.org/ontology/EntityLegalForm/
-# imports: http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/
-# imports: http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/
+# imports: http://www.omg.org/spec/LCC/Countries/CountryRepresentation/ .
 # imports: https://www.gleif.org/ontology/Base/
 
 @base <https://www.gleif.org/ontology/EntityLegalForm/> .
@@ -21,8 +20,7 @@
 	dct:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
 	dct:rights "Copyright (c) 2018 GLEIF" ;
 	owl:imports
-		<http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> ,
-		<http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> ,
+    <http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ,
 		<https://www.gleif.org/ontology/Base/>
 		;
 	.

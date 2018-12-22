@@ -17,7 +17,7 @@
 <https://www.gleif.org/ontology/L2/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF L2 Ontology" ;
-	rdfs:comment "Ontology generated from GLEIF L2 data in CDF 2.1 format" ;
+	rdfs:comment "Ontology generated from GLEIF L2 data in RR 1.1 format" ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/>
@@ -87,10 +87,17 @@ gleif-L2:Owner
 	] ;
 	.
 
+gleif-L2:RelationshipRegistrationStatus
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:RegistrationStatus ;
+	rdfs:label "relationship registration status" ;
+	skos:definition "status of an entry in a relationship registry that conforms to ISO 17442 and the Global Legal Entity Identifier Foundation (GLEIF) Relationship Format (RR)" ;
+	.
+  
 gleif-L2:AnnulledStatus
 	a
 		owl:NamedIndividual ,
-		gleif-L2:LEIRegistrationStatus
+		gleif-L2:RelationshipRegistrationStatus
 		;
 	rdfs:label "annulled status" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
@@ -101,7 +108,7 @@ gleif-L2:AnnulledStatus
 gleif-L2:DuplicateStatus
 	a
 		owl:NamedIndividual ,
-		gleif-L2:LEIRegistrationStatus
+		gleif-L2:RelationshipRegistrationStatus
 		;
 	rdfs:label "duplicate status" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
@@ -112,7 +119,7 @@ gleif-L2:DuplicateStatus
 gleif-L2:LapsedStatus
 	a
 		owl:NamedIndividual ,
-		gleif-L2:LEIRegistrationStatus
+		gleif-L2:RelationshipRegistrationStatus
 		;
 	rdfs:label "lapsed status" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
@@ -123,7 +130,7 @@ gleif-L2:LapsedStatus
 gleif-L2:PendingArchivalStatus
 	a
 		owl:NamedIndividual ,
-		gleif-L2:LEIRegistrationStatus
+		gleif-L2:RelationshipRegistrationStatus
 		;
 	rdfs:label "pending archival status" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
@@ -134,7 +141,7 @@ gleif-L2:PendingArchivalStatus
 gleif-L2:PendingTransferStatus
 	a
 		owl:NamedIndividual ,
-		gleif-L2:LEIRegistrationStatus
+		gleif-L2:RelationshipRegistrationStatus
 		;
 	rdfs:label "pending transfer status" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
@@ -145,7 +152,7 @@ gleif-L2:PendingTransferStatus
 gleif-L2:PendingValidationStatus
 	a
 		owl:NamedIndividual ,
-		gleif-L2:LEIRegistrationStatus
+		gleif-L2:RelationshipRegistrationStatus
 		;
 	rdfs:label "pending validation status" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
@@ -156,7 +163,7 @@ gleif-L2:PendingValidationStatus
 gleif-L2:PublishedStatus
 	a
 		owl:NamedIndividual ,
-		gleif-L2:LEIRegistrationStatus
+		gleif-L2:RelationshipRegistrationStatus
 		;
 	rdfs:label "published status" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
@@ -167,7 +174,7 @@ gleif-L2:PublishedStatus
 gleif-L2:RetiredStatus
 	a
 		owl:NamedIndividual ,
-		gleif-L2:LEIRegistrationStatus
+		gleif-L2:RelationshipRegistrationStatus
 		;
 	rdfs:label "retired status" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
@@ -178,7 +185,7 @@ gleif-L2:RetiredStatus
 gleif-L2:TransferredStatus
 	a
 		owl:NamedIndividual ,
-		gleif-L2:LEIRegistrationStatus
+		gleif-L2:RelationshipRegistrationStatus
 		;
 	rdfs:label "transferred status" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
@@ -244,13 +251,8 @@ gleif-L2:LegalEntityRelationshipRecord
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasRegistrationStatus ;
-			owl:someValuesFrom gleif-L2:RegistrationStatus ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasValidationLevel ;
-			owl:someValuesFrom gleif-L1:LEIValidationStatus ;
-		]
+			owl:someValuesFrom gleif-L2:RelationshipRegistrationStatus ;
+		] 
 		;
 	rdfs:label "legal entity relationship record" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
