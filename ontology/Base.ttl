@@ -17,9 +17,7 @@
 	dct:abstract "This ontology defines generic concepts for reuse by other GLEIF ontologies" ;
 	dct:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
 	dct:rights "Copyright (c) 2018 GLEIF" ;
-	owl:imports
-    <http://www.omg.org/spec/LCC/Countries/CountryRepresentation/>
-		;
+	owl:imports <http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ;
 	.
 
 gleif-base:ActiveStatus
@@ -77,13 +75,11 @@ gleif-base:GLEIF
 
 gleif-base:IdentificationScheme
 	a owl:Class ;
-	rdfs:subClassOf
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:scopes ;
-			owl:someValuesFrom gleif-base:Identifier ;
-		]
-		;
+	rdfs:subClassOf [
+		a owl:Restriction ;
+		owl:onProperty gleif-base:scopes ;
+		owl:someValuesFrom gleif-base:Identifier ;
+	] ;
 	rdfs:label "identification scheme" ;
 	dct:source "ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15" ;
 	skos:definition "system for allocating identifiers to objects" ;
@@ -128,14 +124,12 @@ gleif-base:InactiveStatus
 
 gleif-base:LegalEntity
 	a owl:Class ;
-	rdfs:subClassOf
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:isOrganizedIn ;
-			owl:onClass lcc-cr:GeographicRegion ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		]
-		;
+	rdfs:subClassOf [
+		a owl:Restriction ;
+		owl:onProperty gleif-base:isOrganizedIn ;
+		owl:onClass lcc-cr:GeographicRegion ;
+		owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	] ;
 	rdfs:label "legal entity" ;
 	dct:source
 		"Barron's Dictionary of Banking Terms, Sixth Edition, 2012, definition of legal entity" ,
@@ -155,51 +149,36 @@ gleif-base:LegalEntity
 
 gleif-base:LegalEntityRelationship
 	a owl:Class ;
-	rdfs:label "legal entity relationship" ;
-	skos:definition "abstract superclass to represent a reified directed relationship" ;
-	rdfs:subClassOf		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasSubsidiary ;
-			owl:onClass gleif-base:LegalEntity ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-    [
+	rdfs:subClassOf
+		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasOwner ;
 			owl:onClass gleif-base:LegalEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasSubsidiary ;
+			owl:onClass gleif-base:LegalEntity ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
-
+		;
+	rdfs:label "legal entity relationship" ;
+	skos:definition "abstract superclass to represent a reified directed relationship" ;
 	.
-  
+
 gleif-base:Period
 	a owl:Class ;
 	rdfs:subClassOf [
 		a owl:Restriction ;
 		owl:onProperty gleif-base:hasStart ;
+		owl:onDataRange xsd:dateTime ;
 		owl:qualifiedCardinality "1" ;
-    owl:onDataRange xsd:dateTime ;
 	] ;
 	rdfs:label "period"@en ;
 	skos:definition "a period of time, with at least a start time, and possibly an end." ;
 	.
 
-gleif-base:hasStart
-  a owl:DatatypeProperty ;
-	rdfs:label "has start"@en ;
-	skos:definition "the start time of a period." ;
-  rdfs:domain gleif-base:Period;
-  rdfs:range xsd:dateTime;
-  .
-
-gleif-base:hasEnd
-  a owl:DatatypeProperty ;
-	rdfs:label "has end"@en ;
-	skos:definition "the end time of a period." ;
-  rdfs:domain gleif-base:Period;
-  rdfs:range xsd:dateTime;
-  .  
-  
 gleif-base:PhysicalAddress
 	a owl:Class ;
 	rdfs:subClassOf [
@@ -298,21 +277,6 @@ gleif-base:comprises
 	skos:note "Note that something can be comprised of something(s) that may or may not be understood as separable parts, and thus is not defined as being explicitly transitive." ;
 	.
 
-gleif-base:hasSuccessor
-	a owl:ObjectProperty ;
-	rdfs:label "has successor" ;
-  rdfs:domain gleif-base:LegalEntity ;
-  rdfs:range gleif-base:LegalEntity ;
-	skos:definition "The surviving/new legal entity which continues/replaces this registration." ;
-	. 
-
-gleif-base:records
-	a owl:ObjectProperty ;
-	rdfs:label "records" ;
-  rdfs:domain gleif-base:RegistryEntry ;
-	skos:definition "the thing which the registry entry is a record of" ;
-	. 
-  
 gleif-base:hasASCIIName
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasTransliteratedName ;
@@ -426,6 +390,14 @@ gleif-base:hasCoverageArea
 	skos:definition "indicates a geographic region in which some service is provided, or to which some policy applies, or in which something is available" ;
 	.
 
+gleif-base:hasEnd
+	a owl:DatatypeProperty ;
+	rdfs:label "has end"@en ;
+	rdfs:domain gleif-base:Period ;
+	rdfs:range xsd:dateTime ;
+	skos:definition "the end time of a period." ;
+	.
+
 gleif-base:hasEntityExpirationDate
 	a owl:DatatypeProperty ;
 	rdfs:label "has entity expiration date" ;
@@ -440,7 +412,7 @@ gleif-base:hasEntityExpirationReason
 	rdfs:label "has entity expiration reason" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:domain gleif-base:LegalEntity ;
-	rdfs:range gleif-base:ExpirationReason ;
+	rdfs:range gleif-base:EntityExpirationReason ;
 	skos:definition "the reason that a legal entity ceased to exist and/or operate" ;
 	.
 
@@ -459,6 +431,14 @@ gleif-base:hasInitialRegistrationDate
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:range xsd:dateTime ;
 	skos:definition "the date on which an identifier or other registered item was first registered" ;
+	.
+
+gleif-base:hasLastModificationDate
+	a owl:DatatypeProperty ;
+	rdfs:label "has last modification date" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	rdfs:range xsd:dateTime ;
+	skos:definition "the date that the detail of a specific registration in the registry was last revised" ;
 	.
 
 gleif-base:hasLegalName
@@ -507,6 +487,22 @@ gleif-base:hasName
 	skos:definition "associates a name, reference name, or appellation with an individual concept" ;
 	.
 
+gleif-base:hasNextRenewalDate
+	a owl:DatatypeProperty ;
+	rdfs:label "has next renewal date" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	rdfs:range xsd:dateTime ;
+	skos:definition "the date by which a specific registration in the registry must be renewed or updated" ;
+	.
+
+gleif-base:hasOwner
+	a owl:ObjectProperty ;
+	rdfs:label "has owner" ;
+	rdfs:domain gleif-base:LegalEntityRelationship ;
+	rdfs:range gleif-base:LegalEntity ;
+	skos:definition "the legal entity that plays the owner role" ;
+	.
+
 gleif-base:hasPostalCode
 	a owl:DatatypeProperty ;
 	rdfs:label "has postal code" ;
@@ -514,14 +510,6 @@ gleif-base:hasPostalCode
 	rdfs:domain gleif-base:PhysicalAddress ;
 	rdfs:range xsd:string ;
 	skos:definition "the postal code of this address as specified by the local postal service" ;
-	.
-
-gleif-base:hasLastModificationDate
-	a owl:DatatypeProperty ;
-	rdfs:label "has last modification date" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
-	rdfs:range xsd:dateTime ;
-	skos:definition "the date that the detail of a specific registration in the registry was last revised" ;
 	.
 
 gleif-base:hasRegistrationStatus
@@ -538,12 +526,12 @@ gleif-base:hasScope
 	skos:definition "specifies a form of words that conveys the meaning associated with something" ;
 	.
 
-gleif-base:hasNextRenewalDate
+gleif-base:hasStart
 	a owl:DatatypeProperty ;
-	rdfs:label "has next renewal date" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	rdfs:label "has start"@en ;
+	rdfs:domain gleif-base:Period ;
 	rdfs:range xsd:dateTime ;
-	skos:definition "the date by which a specific registration in the registry must be renewed or updated" ;
+	skos:definition "the start time of a period." ;
 	.
 
 gleif-base:hasSubdivision
@@ -553,15 +541,7 @@ gleif-base:hasSubdivision
 	rdfs:range lcc-cr:CountrySubdivision ;
 	skos:definition "identifies the country subdivision (state, province, region, etc.) according to ISO 3166-2" ;
 	.
-  
-gleif-base:hasOwner
-	a owl:ObjectProperty ;
-	rdfs:label "has owner" ;
-	rdfs:domain gleif-base:LegalEntityRelationship ;
-	rdfs:range gleif-base:LegalEntity ;
-	skos:definition "the legal entity that plays the owner role" ;
-	.
-  
+
 gleif-base:hasSubsidiary
 	a owl:ObjectProperty ;
 	rdfs:label "has subsidiary" ;
@@ -570,6 +550,13 @@ gleif-base:hasSubsidiary
 	skos:definition "the legal entity that plays the subsidiary role" ;
 	.
 
+gleif-base:hasSuccessor
+	a owl:ObjectProperty ;
+	rdfs:label "has successor" ;
+	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:range gleif-base:LegalEntity ;
+	skos:definition "The surviving/new legal entity which continues/replaces this registration." ;
+	.
 
 gleif-base:hasTag
 	a
@@ -667,6 +654,13 @@ gleif-base:manages
 	rdfs:label "manages" ;
 	owl:inverseOf gleif-base:isManagedBy ;
 	skos:definition "relates an autonomous agent to something that it directs in some way" ;
+	.
+
+gleif-base:records
+	a owl:ObjectProperty ;
+	rdfs:label "records" ;
+	rdfs:domain gleif-base:RegistryEntry ;
+	skos:definition "the thing which the registry entry is a record of" ;
 	.
 
 gleif-base:scopes
