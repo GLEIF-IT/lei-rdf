@@ -419,6 +419,7 @@ gleif-L2:hasAccountingPeriod
 
 gleif-L2:hasAccountingSource
 	a owl:ObjectProperty ;
+	rdfs:subPropertyOf gleif-base:isQualifiedBy ;
 	rdfs:label "has accounting source" ;
 	rdfs:domain gleif-L2:AccountingConsolidation ;
 	rdfs:range gleif-L2:AccountingSource ;
@@ -452,6 +453,7 @@ gleif-L2:hasDocumentFilingPeriod
 
 gleif-L2:hasOwnershipPercentage
 	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf gleif-base:isQuantifiedBy ;
 	rdfs:label "has ownership percentage" ;
 	rdfs:domain gleif-L2:AccountingConsolidation ;
 	rdfs:range xs:decimal ;

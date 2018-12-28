@@ -633,6 +633,23 @@ gleif-base:isOrganizedIn
 	skos:definition "indicates the jurisdiction whose laws a legal entity is organized under" ;
 	.
 
+gleif-base:isQualifiedBy
+	a owl:ObjectProperty ;
+	rdfs:label "is qualified by" ;
+	rdfs:domain gleif-base:LegalEntityRelationship ;
+	skos:definition "Any additional qualitative properties that help to categorize the relationship." ;
+	.
+
+gleif-base:isQuantifiedBy
+	a owl:DatatypeProperty ;
+	rdfs:label "is quantified by" ;
+	rdfs:domain
+		xsd:decimal ,
+		gleif-base:LegalEntityRelationship
+		;
+	skos:definition "Any additional quantitative properties that help to categorize the relationship." ;
+	.
+
 gleif-base:isRegisteredIn
 	a owl:ObjectProperty ;
 	rdfs:label "is registered in" ;
