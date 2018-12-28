@@ -59,7 +59,7 @@ gleif-L2-data:REC-4469000001BFY38CWR75-95980020140006006514
 		gleif-base:hasEnd "2016-12-01T00:00:00-06:00"^^xs:dateTime ;
 		gleif-base:hasStart "2016-01-01T00:00:00-06:00"^^xs:dateTime ;
 	] ;
-	gleif-L2:hasValidationDocuments gleif-L2:AccountsFilingDocuments ;
+	gleif-L2:hasValidationDocuments gleif-L2:RelationshipValidationDocumentsKindAccountsFiling ;
 	gleif-L2:hasValidationSources gleif-L2:RelationshipValidationSourceKindFullyCorroborated ;
 	.
 

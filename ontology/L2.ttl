@@ -45,26 +45,6 @@ gleif-L2:AccountingSource
 	skos:definition "the type of accounting standard used to source consolidation information, which is based on reported accounting roll-ups" ;
 	.
 
-gleif-L2:AccountsFilingDocuments
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipValidationDocumentsKind
-		;
-	rdfs:label "accounts filing documents" ;
-	skos:definition "A consolidated financial (accounting) statement, prepared and submitted to the relevant authority." ;
-	gleif-base:hasTag "ACCOUNTS_FILING" ;
-	.
-
-gleif-L2:ContractsDocuments
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipValidationDocumentsKind
-		;
-	rdfs:label "contracts documents" ;
-	skos:definition "Other documents supporting the preparation of consolidated financial statements." ;
-	gleif-base:hasTag "ACCOUNTS_FILING" ;
-	.
-
 gleif-L2:DirectConsolidation
 	a owl:Class ;
 	rdfs:subClassOf gleif-L2:AccountingConsolidation ;
@@ -134,16 +114,6 @@ gleif-L2:OTHER_ACCOUNTING_STANDARD
 	skos:definition "another accounting standard (not IFRS or US GAAP)" ;
 	.
 
-gleif-L2:OtherOfficialDocuments
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipValidationDocumentsKind
-		;
-	rdfs:label "other official documents" ;
-	skos:definition "Other official document(s) attesting to the validity of the relationship." ;
-	gleif-base:hasTag "ACCOUNTS_FILING" ;
-	.
-
 gleif-L2:Owner
 	a owl:Class ;
 	rdfs:label "owner" ;
@@ -159,16 +129,6 @@ gleif-L2:PrimaryForeignBranchConsolidation
 	rdfs:subClassOf gleif-L2:DirectConsolidation ;
 	rdfs:label "primary foreign branch consolidation" ;
 	skos:definition "abstract superclass to represent consolidation of a foreign branch" ;
-	.
-
-gleif-L2:RegulatoryFilingDocuments
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipValidationDocumentsKind
-		;
-	rdfs:label "regulatory filing documents" ;
-	skos:definition "An annual regulatory filing providing public information on parent relationships" ;
-	gleif-base:hasTag "REGULATORY_FILING" ;
 	.
 
 gleif-L2:RelationshipRegistrationStatus
@@ -312,6 +272,56 @@ gleif-L2:RelationshipValidationDocumentsKind
 	skos:definition "Type of source document(s) used for validating the relationship." ;
 	.
 
+gleif-L2:RelationshipValidationDocumentsKindAccountsFiling
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipValidationDocumentsKind
+		;
+	rdfs:label "accounts filing" ;
+	skos:definition "A consolidated financial (accounting) statement, prepared and submitted to the relevant authority." ;
+	gleif-base:hasTag "ACCOUNTS_FILING" ;
+	.
+
+gleif-L2:RelationshipValidationDocumentsKindContracts
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipValidationDocumentsKind
+		;
+	rdfs:label "contracts" ;
+	skos:definition "Other documents supporting the preparation of consolidated financial statements." ;
+	gleif-base:hasTag "CONTRACTS" ;
+	.
+
+gleif-L2:RelationshipValidationDocumentsKindOtherOfficialDocuments
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipValidationDocumentsKind
+		;
+	rdfs:label "other official documents" ;
+	skos:definition "Other official document(s) attesting to the validity of the relationship." ;
+	gleif-base:hasTag "OTHER_OFFICIAL_DOCUMENTS" ;
+	.
+
+gleif-L2:RelationshipValidationDocumentsKindRegulatoryFiling
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipValidationDocumentsKind
+		;
+	rdfs:label "regulatory filing" ;
+	skos:definition "An annual regulatory filing providing public information on parent relationships" ;
+	gleif-base:hasTag "REGULATORY_FILING" ;
+	.
+
+gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipValidationDocumentsKind
+		;
+	rdfs:label "supporting documents" ;
+	skos:definition "Other documents supporting the preparation of consolidated financial statements." ;
+	gleif-base:hasTag "SUPPORTING_DOCUMENTS" ;
+	.
+
 gleif-L2:RelationshipValidationSourceKind
 	a owl:Class ;
 	rdfs:label "relationship validation source kind" ;
@@ -366,16 +376,6 @@ gleif-L2:Subsidiary
 		owl:onProperty gleif-L2:hasParentConsolidation ;
 		owl:someValuesFrom gleif-L2:AccountingConsolidation ;
 	] ;
-	.
-
-gleif-L2:SupportingDocuments
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipValidationDocumentsKind
-		;
-	rdfs:label "supporting documents" ;
-	skos:definition "Other documents supporting the preparation of consolidated financial statements." ;
-	gleif-base:hasTag "SUPPORTING_DOCUMENTS" ;
 	.
 
 gleif-L2:US_GAAP
