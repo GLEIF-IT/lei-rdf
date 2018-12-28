@@ -55,17 +55,6 @@ gleif-L2:AccountsFilingDocuments
 	gleif-base:hasTag "ACCOUNTS_FILING" ;
 	.
 
-gleif-L2:ActiveStatus
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipStatus
-		;
-	rdfs:label "active status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
-	skos:definition "As of the last report or update, the reporting legal entity reported that it is legally registered and/or operating, AND that the relationship detailed in this  <code>RelationshipRecord</code> is still valid." ;
-	gleif-base:hasTag "ACTIVE" ;
-	.
-
 gleif-L2:AnnulledStatus
 	a
 		owl:NamedIndividual ,
@@ -132,17 +121,6 @@ gleif-L2:IFRS
 		;
 	rdfs:label "IFRS" ;
 	skos:definition "the IFRS accounting standard" ;
-	.
-
-gleif-L2:InactiveStatus
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipStatus
-		;
-	rdfs:label "inactive status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
-	skos:definition "It has been determined that the relationship ended, e.g. because entity that reported this relationship is no longer legally registered and/or operating; or the relationship is no longer valid for other reasons" ;
-	gleif-base:hasTag "INACTIVE" ;
 	.
 
 gleif-L2:LapsedStatus
@@ -322,6 +300,28 @@ gleif-L2:RelationshipStatus
 	rdfs:subClassOf owl:Thing ;
 	rdfs:label "Relationship status" ;
 	skos:definition "indicates the status of the relationship (i.e., active, inactive)" ;
+	.
+
+gleif-L2:RelationshipStatusActive
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipStatus
+		;
+	rdfs:label "active status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	skos:definition "As of the last report or update, the reporting legal entity reported that it is legally registered and/or operating, AND that the relationship detailed in this  <code>RelationshipRecord</code> is still valid." ;
+	gleif-base:hasTag "ACTIVE" ;
+	.
+
+gleif-L2:RelationshipStatusInactive
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipStatus
+		;
+	rdfs:label "inactive status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	skos:definition "It has been determined that the relationship ended, e.g. because entity that reported this relationship is no longer legally registered and/or operating; or the relationship is no longer valid for other reasons" ;
+	gleif-base:hasTag "INACTIVE" ;
 	.
 
 gleif-L2:RelationshipValidationDocumentsKind
