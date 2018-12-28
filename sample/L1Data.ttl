@@ -40,6 +40,12 @@
 	gleif-base:identifies gleif-L1-data:LE-213800YK2FEXWNMT3R12 ;
 	.
 
+<https://www.gleif.org/lei/25490050856CG53NAC28>
+	a gleif-L1:LegalEntityIdentifier ;
+	gleif-base:hasTag "25490050856CG53NAC28" ;
+	gleif-base:identifies gleif-L1-data:LE-25490050856CG53NAC28 ;
+	.
+
 <https://www.gleif.org/lei/4469000001AVO26P9X86>
 	a gleif-L1:LegalEntityIdentifier ;
 	gleif-base:hasTag "4469000001AVO26P9X86" ;
@@ -64,6 +70,31 @@ gleif-L1-data:BID-RA000449-IKM981217SD5
 	gleif-base:hasTag "IKM981217SD5" ;
 	gleif-base:identifies gleif-L1-data:LE-5493007CICYM7A0SZ714 ;
 	gleif-base:isRegisteredIn gleif-RA-data:RA000449 ;
+	.
+
+gleif-L1-data:BID-RA000598-201725900005
+	a gleif-base:RegistryIdentifier ;
+	gleif-base:hasTag "201725900005" ;
+	gleif-base:identifies gleif-L1-data:LE-25490050856CG53NAC28 ;
+	gleif-base:isRegisteredIn gleif-RA-data:RA000598 ;
+	.
+
+gleif-L1-data:BID-RA000602-6534941
+	a gleif-base:RegistryIdentifier ;
+	gleif-base:hasTag "6534941" ;
+	gleif-base:identifies gleif-L1-data:LE-25490050856CG53NAC28 ;
+	gleif-base:isRegisteredIn gleif-RA-data:RA000602 ;
+	.
+
+gleif-L1-data:HQ-25490050856CG53NAC28
+	a gleif-base:PhysicalAddress ;
+	gleif-base:hasAddressLine1 "12011 San Vicente Boulevard" ;
+	gleif-base:hasAddressLine2 "Suite 700" ;
+	gleif-base:hasAddressNumber "12011" ;
+	gleif-base:hasCity "Los Angeles" ;
+	gleif-base:hasCountry lcc-3166-1-add:CTRY-US ;
+	gleif-base:hasPostalCode "90049" ;
+	gleif-base:hasSubdivision lcc-3166-2-add:REG-US-CA ;
 	.
 
 gleif-L1-data:HQ-4469000001AVO26P9X86
@@ -99,6 +130,17 @@ gleif-L1-data:LE-213800YK2FEXWNMT3R12
 	gleif-L1:hasLegalAddress gleif-L1-data:Leg-213800YK2FEXWNMT3R12 ;
 	gleif-L1:hasLegalForm gleif-ELF-data:ELFREC-H0PO ;
 	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000585-03193392 ;
+	.
+
+gleif-L1-data:LE-25490050856CG53NAC28
+	a gleif-base:LegalEntity ;
+	gleif-base:hasEntityStatus gleif-base:ActiveStatus ;
+	gleif-base:hasLocalLegalName "5210 Concourse, LP"@en ;
+	gleif-base:isOrganizedIn lcc-3166-2-add:REG-US-DE ;
+	gleif-L1:hasHeadquartersAddress gleif-L1-data:HQ-25490050856CG53NAC28 ;
+	gleif-L1:hasLegalAddress gleif-L1-data:Leg-25490050856CG53NAC28 ;
+	gleif-L1:hasLegalFormText "Limited Partnership"@en ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000602-6534941 ;
 	.
 
 gleif-L1-data:LE-4469000001AVO26P9X86
@@ -140,6 +182,20 @@ gleif-L1-data:LEE-213800YK2FEXWNMT3R12
 	gleif-L1:hasValidationLevel gleif-L1:FullyCorroboratedStatus ;
 	.
 
+gleif-L1-data:LEE-25490050856CG53NAC28
+	a gleif-L1:LegalEntityIdentifierRegistryEntry ;
+	gleif-base:comprises <https://www.gleif.org/lei/25490050856CG53NAC28> ;
+	gleif-base:hasInitialRegistrationDate "2017-10-30T16:31:12.342Z"^^xs:dateTime ;
+	gleif-base:hasLastModificationDate "2018-10-31T13:32:11.732Z"^^xs:dateTime ;
+	gleif-base:hasNextRenewalDate "2018-10-30T16:31:12.342Z"^^xs:dateTime ;
+	gleif-base:hasRegistrationStatus gleif-L1:LapsedStatus ;
+	gleif-base:isManagedBy gleif-L1-data:LE-5493001KJTIIGC8Y1R12 ;
+	gleif-base:records gleif-L1-data:LE-25490050856CG53NAC28 ;
+	gleif-L1:hasAdditionalValidationIdentifier gleif-L1-data:BID-RA000598-201725900005 ;
+	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000602-6534941 ;
+	gleif-L1:hasValidationLevel gleif-L1:FullyCorroboratedStatus ;
+	.
+
 gleif-L1-data:LEE-4469000001AVO26P9X86
 	a gleif-L1:LegalEntityIdentifierRegistryEntry ;
 	gleif-base:comprises <https://www.gleif.org/lei/4469000001AVO26P9X86> ;
@@ -174,6 +230,18 @@ gleif-L1-data:Leg-213800YK2FEXWNMT3R12
 	gleif-base:hasCountry lcc-3166-1-add:CTRY-GB ;
 	gleif-base:hasPostalCode "PR9 0QA" ;
 	gleif-base:hasSubdivision lcc-3166-2-add:REG-GB-LIV ;
+	.
+
+gleif-L1-data:Leg-25490050856CG53NAC28
+	a gleif-base:PhysicalAddress ;
+	gleif-base:hasAddressLine1 "c/o Cogency Global Inc." ;
+	gleif-base:hasAddressLine2 "850 New Burton Road" ;
+	gleif-base:hasAddressLine3 "Suite 201" ;
+	gleif-base:hasAddressNumber "850" ;
+	gleif-base:hasCity "Dover" ;
+	gleif-base:hasCountry lcc-3166-1-add:CTRY-US ;
+	gleif-base:hasPostalCode "19904" ;
+	gleif-base:hasSubdivision lcc-3166-2-add:REG-US-DE ;
 	.
 
 gleif-L1-data:Leg-4469000001AVO26P9X86
