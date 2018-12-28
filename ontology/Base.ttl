@@ -20,17 +20,6 @@
 	owl:imports <http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ;
 	.
 
-gleif-base:ActiveStatus
-	a
-		owl:NamedIndividual ,
-		gleif-base:EntityStatus
-		;
-	rdfs:label "active status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
-	skos:definition "as of the last report or update, the entity was legally registered and operating" ;
-	gleif-base:hasTag "ACTIVE" ;
-	.
-
 gleif-base:EntityExpirationReason
 	a owl:Class ;
 	rdfs:label "entity expiration reason" ;
@@ -51,6 +40,28 @@ gleif-base:EntityStatus
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	skos:definition "a lifecycle stage indicating the operational and/or legal status of an entity as specified in a given business registry for that entity" ;
 	skos:note "In some jurisdictions, there may be other possible values for entity status, such as suspended in the State of California, thus the individuals provided herein are not intended to be exhaustive." ;
+	.
+
+gleif-base:EntityStatusActive
+	a
+		owl:NamedIndividual ,
+		gleif-base:EntityStatus
+		;
+	rdfs:label "active status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	skos:definition "as of the last report or update, the entity was legally registered and operating" ;
+	gleif-base:hasTag "ACTIVE" ;
+	.
+
+gleif-base:EntityStatusInactive
+	a
+		owl:NamedIndividual ,
+		gleif-base:EntityStatus
+		;
+	rdfs:label "inactive status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	skos:definition "the entity that was assigned the identifier (business, LEI, or other) is no longer legally registered and/or operating, whether as a result of business closure, acquisition by or merger with another (or new) entity, or determination of illegitimacy" ;
+	gleif-base:hasTag "INACTIVE" ;
 	.
 
 gleif-base:ExpirationReasonCorporateAction
@@ -109,17 +120,6 @@ gleif-base:Identifier
 	rdfs:label "identifier" ;
 	dct:source "ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15" ;
 	skos:definition "sequence of characters, capable of uniquely identifying that with which it is associated, within a specified context" ;
-	.
-
-gleif-base:InactiveStatus
-	a
-		owl:NamedIndividual ,
-		gleif-base:EntityStatus
-		;
-	rdfs:label "inactive status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
-	skos:definition "the entity that was assigned the identifier (business, LEI, or other) is no longer legally registered and/or operating, whether as a result of business closure, acquisition by or merger with another (or new) entity, or determination of illegitimacy" ;
-	gleif-base:hasTag "INACTIVE" ;
 	.
 
 gleif-base:LegalEntity

@@ -123,7 +123,7 @@ gleif-L1-data:LE-213800YK2FEXWNMT3R12
 	a gleif-base:LegalEntity ;
 	gleif-base:hasEntityExpirationDate "2018-09-28T00:00:00Z"^^xs:dateTime ;
 	gleif-base:hasEntityExpirationReason gleif-base:ExpirationReasonCorporateAction ;
-	gleif-base:hasEntityStatus gleif-base:InactiveStatus ;
+	gleif-base:hasEntityStatus gleif-base:EntityStatusInactive ;
 	gleif-base:hasLocalLegalName "LUDLOW (FYLDE) LIMITED"@en ;
 	gleif-base:isOrganizedIn lcc-3166-1-add:CTRY-GB ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:Leg-213800YK2FEXWNMT3R12 ;
@@ -134,7 +134,7 @@ gleif-L1-data:LE-213800YK2FEXWNMT3R12
 
 gleif-L1-data:LE-25490050856CG53NAC28
 	a gleif-base:LegalEntity ;
-	gleif-base:hasEntityStatus gleif-base:ActiveStatus ;
+	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
 	gleif-base:hasLocalLegalName "5210 Concourse, LP"@en ;
 	gleif-base:isOrganizedIn lcc-3166-2-add:REG-US-DE ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:HQ-25490050856CG53NAC28 ;
@@ -145,7 +145,7 @@ gleif-L1-data:LE-25490050856CG53NAC28
 
 gleif-L1-data:LE-4469000001AVO26P9X86
 	a gleif-L1:LocalOperatingUnit ;
-	gleif-base:hasEntityStatus gleif-base:ActiveStatus ;
+	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
 	gleif-base:hasLocalLegalName "ASOCIACION MEXICANA DE ESTANDARES PARA EL COMERCIO ELECTRONICO AC"@es ;
 	gleif-base:isOrganizedIn lcc-3166-1-add:CTRY-MX ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:HQ-4469000001AVO26P9X86 ;
@@ -157,7 +157,7 @@ gleif-L1-data:LE-4469000001AVO26P9X86
 
 gleif-L1-data:LE-5493007CICYM7A0SZ714
 	a gleif-base:LegalEntity ;
-	gleif-base:hasEntityStatus gleif-base:ActiveStatus ;
+	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
 	gleif-base:hasLocalLegalName "KI MEXICO S DE RL DE CV"@es ;
 	gleif-base:isOrganizedIn lcc-3166-1-add:CTRY-MX ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:HQ-5493007CICYM7A0SZ714 ;
