@@ -27,17 +27,6 @@
 		;
 	.
 
-gleif-L1:AnnulledStatus
-	a
-		owl:NamedIndividual ,
-		gleif-L1:LEIRegistrationStatus
-		;
-	rdfs:label "annulled status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "status indicating that the registration was determined to be erroneous or invalid after issuance" ;
-	gleif-base:hasTag "ANNULLED" ;
-	.
-
 gleif-L1:Branch
 	a owl:Class ;
 	rdfs:subClassOf
@@ -51,28 +40,6 @@ gleif-L1:Branch
 	rdfs:label "fund" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "The legal entity is a branch of another legal entity" ;
-	.
-
-gleif-L1:CancelledStatus
-	a
-		owl:NamedIndividual ,
-		gleif-L1:LEIRegistrationStatus
-		;
-	rdfs:label "cancelled status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "status indicating that the registration was abandoned prior to issuance" ;
-	gleif-base:hasTag "CANCELLED" ;
-	.
-
-gleif-L1:DuplicateStatus
-	a
-		owl:NamedIndividual ,
-		gleif-L1:LEIRegistrationStatus
-		;
-	rdfs:label "duplicate status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "status indicating that the registration was determined to be a duplicate registration of the same entity as another registration; duplicate status is assigned to the non-surviving registration (i.e. the identifier that should no longer be used)" ;
-	gleif-base:hasTag "DUPLICATE" ;
 	.
 
 gleif-L1:EntitySuppliedOnlyStatus
@@ -112,7 +79,47 @@ gleif-L1:Fund
 	skos:definition "The legal entity is a fund managed by another legal entity." ;
 	.
 
-gleif-L1:IssuedStatus
+gleif-L1:LEIRegistrationStatus
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:RegistrationStatus ;
+	rdfs:label "legal entity identifier registration status" ;
+	skos:definition "status of an entry in a legal entity identifier registry that conforms to ISO 17442 and the Global Legal Entity Identifier Foundation (GLEIF) Common Data Format (CDF)" ;
+	.
+
+gleif-L1:LEIRegistrationStatusAnnulled
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LEIRegistrationStatus
+		;
+	rdfs:label "annulled status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "status indicating that the registration was determined to be erroneous or invalid after issuance" ;
+	gleif-base:hasTag "ANNULLED" ;
+	.
+
+gleif-L1:LEIRegistrationStatusCancelled
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LEIRegistrationStatus
+		;
+	rdfs:label "cancelled status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "status indicating that the registration was abandoned prior to issuance" ;
+	gleif-base:hasTag "CANCELLED" ;
+	.
+
+gleif-L1:LEIRegistrationStatusDuplicate
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LEIRegistrationStatus
+		;
+	rdfs:label "duplicate status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "status indicating that the registration was determined to be a duplicate registration of the same entity as another registration; duplicate status is assigned to the non-surviving registration (i.e. the identifier that should no longer be used)" ;
+	gleif-base:hasTag "DUPLICATE" ;
+	.
+
+gleif-L1:LEIRegistrationStatusIssued
 	a
 		owl:NamedIndividual ,
 		gleif-L1:LEIRegistrationStatus
@@ -123,21 +130,7 @@ gleif-L1:IssuedStatus
 	gleif-base:hasTag "ISSUED" ;
 	.
 
-gleif-L1:LEIRegistrationStatus
-	a owl:Class ;
-	rdfs:subClassOf gleif-base:RegistrationStatus ;
-	rdfs:label "legal entity identifier registration status" ;
-	skos:definition "status of an entry in a legal entity identifier registry that conforms to ISO 17442 and the Global Legal Entity Identifier Foundation (GLEIF) Common Data Format (CDF)" ;
-	.
-
-gleif-L1:LEIValidationStatus
-	a owl:Class ;
-	rdfs:subClassOf gleif-base:RegistrationStatus ;
-	rdfs:label "legal entity identifier validation status" ;
-	skos:definition "level of corroboration of an entry in a legal entity identifier registry that conforms to ISO 17442 and the Global Legal Entity Identifier Foundation (GLEIF) Common Data Format (CDF)" ;
-	.
-
-gleif-L1:LapsedStatus
+gleif-L1:LEIRegistrationStatusLapsed
 	a
 		owl:NamedIndividual ,
 		gleif-L1:LEIRegistrationStatus
@@ -146,6 +139,68 @@ gleif-L1:LapsedStatus
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "status indicating that the registration that has not been renewed by the specified renewal date and is not known by public sources to have ceased operation as of the last update" ;
 	gleif-base:hasTag "LAPSED" ;
+	.
+
+gleif-L1:LEIRegistrationStatusMerged
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LEIRegistrationStatus
+		;
+	rdfs:label "merged status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "status indicating that the registration is for an entity that has been merged into another legal entity, such that this legal entity no longer exists as an independently operating entity" ;
+	gleif-base:hasTag "MERGED" ;
+	.
+
+gleif-L1:LEIRegistrationStatusPendingArchival
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LEIRegistrationStatus
+		;
+	rdfs:label "pending archival status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "status indicating that the registration is about to be transferred to a different registration authority, after which its registration status will revert to a non-pending status" ;
+	gleif-base:hasTag "PENDING_ARCHIVAL" ;
+	.
+
+gleif-L1:LEIRegistrationStatusPendingTransfer
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LEIRegistrationStatus
+		;
+	rdfs:label "pending transfer status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "status indicating that the registration has requested transfer to a different registration authority, and for which transfer is in progress" ;
+	gleif-base:hasTag "PENDING_TRANSFER" ;
+	.
+
+gleif-L1:LEIRegistrationStatusRetired
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LEIRegistrationStatus
+		;
+	rdfs:label "retired status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "status indicating that the registration is for an entity that has ceased operation, without having been merged into another entity" ;
+	gleif-base:hasTag "RETIRED" ;
+	.
+
+gleif-L1:LEIRegistrationStatusTransferred
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LEIRegistrationStatus
+		;
+	rdfs:label "transferred status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "status indicating that the registration that has been transferred to a different registration authority" ;
+	gleif-base:hasTag "TRANSFERRED" ;
+	.
+
+gleif-L1:LEIValidationStatus
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:RegistrationStatus ;
+	rdfs:label "legal entity identifier validation status" ;
+	skos:definition "level of corroboration of an entry in a legal entity identifier registry that conforms to ISO 17442 and the Global Legal Entity Identifier Foundation (GLEIF) Common Data Format (CDF)" ;
 	.
 
 gleif-L1:LegalEntityIdentifier
@@ -237,17 +292,6 @@ gleif-L1:LocalOperatingUnit
 	skos:definition "a registration authority that issues legal entity identifiers and is authorized by the Global LEI Foundation to do so" ;
 	.
 
-gleif-L1:MergedStatus
-	a
-		owl:NamedIndividual ,
-		gleif-L1:LEIRegistrationStatus
-		;
-	rdfs:label "merged status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "status indicating that the registration is for an entity that has been merged into another legal entity, such that this legal entity no longer exists as an independently operating entity" ;
-	gleif-base:hasTag "MERGED" ;
-	.
-
 gleif-L1:PartiallyCorroboratedStatus
 	a
 		owl:NamedIndividual ,
@@ -257,17 +301,6 @@ gleif-L1:PartiallyCorroboratedStatus
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, the information supplied by the registrant can be partially corroborated by public authoritative sources, while some of the record is dependent upon the information that the registrant submitted, either due to conflicts with authoritative information, or due to data unavailability." ;
 	gleif-base:hasTag "PARTIALLY CORROBORATED" ;
-	.
-
-gleif-L1:PendingArchivalStatus
-	a
-		owl:NamedIndividual ,
-		gleif-L1:LEIRegistrationStatus
-		;
-	rdfs:label "pending archival status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "status indicating that the registration is about to be transferred to a different registration authority, after which its registration status will revert to a non-pending status" ;
-	gleif-base:hasTag "PENDING_ARCHIVAL" ;
 	.
 
 gleif-L1:PendingStatus
@@ -281,17 +314,6 @@ gleif-L1:PendingStatus
 	gleif-base:hasTag "PENDING" ;
 	.
 
-gleif-L1:PendingTransferStatus
-	a
-		owl:NamedIndividual ,
-		gleif-L1:LEIRegistrationStatus
-		;
-	rdfs:label "pending transfer status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "status indicating that the registration has requested transfer to a different registration authority, and for which transfer is in progress" ;
-	gleif-base:hasTag "PENDING_TRANSFER" ;
-	.
-
 gleif-L1:PendingValidationStatus
 	a
 		owl:NamedIndividual ,
@@ -303,34 +325,12 @@ gleif-L1:PendingValidationStatus
 	gleif-base:hasTag "PENDING_VALIDATION" ;
 	.
 
-gleif-L1:RetiredStatus
-	a
-		owl:NamedIndividual ,
-		gleif-L1:LEIRegistrationStatus
-		;
-	rdfs:label "retired status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "status indicating that the registration is for an entity that has ceased operation, without having been merged into another entity" ;
-	gleif-base:hasTag "RETIRED" ;
-	.
-
 gleif-L1:SoleProprietorship
 	a owl:Class ;
 	rdfs:subClassOf gleif-base:LegalEntity ;
 	rdfs:label "sole proprietorship" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "The legal entity represents an individual acting in a business capacity" ;
-	.
-
-gleif-L1:TransferredStatus
-	a
-		owl:NamedIndividual ,
-		gleif-L1:LEIRegistrationStatus
-		;
-	rdfs:label "transferred status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "status indicating that the registration that has been transferred to a different registration authority" ;
-	gleif-base:hasTag "TRANSFERRED" ;
 	.
 
 gleif-L1:hasAdditionalValidationIdentifier

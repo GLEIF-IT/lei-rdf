@@ -55,17 +55,6 @@ gleif-L2:AccountsFilingDocuments
 	gleif-base:hasTag "ACCOUNTS_FILING" ;
 	.
 
-gleif-L2:AnnulledStatus
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipRegistrationStatus
-		;
-	rdfs:label "annulled status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "A relationship data report that was marked as erroneous or invalid after it was published. The relationship report is kept in publication for historical audit trail purposes only (so that data recipients can correct their local data)." ;
-	gleif-base:hasTag "ANNULLED" ;
-	.
-
 gleif-L2:ContractsDocuments
 	a
 		owl:NamedIndividual ,
@@ -81,17 +70,6 @@ gleif-L2:DirectConsolidation
 	rdfs:subClassOf gleif-L2:AccountingConsolidation ;
 	rdfs:label "direct consolidation" ;
 	skos:definition "direct consolidation relationship" ;
-	.
-
-gleif-L2:DuplicateStatus
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipRegistrationStatus
-		;
-	rdfs:label "duplicate status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "A relationship data report that has been determined to be a  duplicate registration of the same relationship. In many cases this will mean more than one report with e.g. the same 2 entity IDs, the same relationship type, certain status values and the same relationship date(s), but this determination will depend on the relationship type in question." ;
-	gleif-base:hasTag "DUPLICATE" ;
 	.
 
 gleif-L2:EntitySuppliedOnlySource
@@ -121,17 +99,6 @@ gleif-L2:IFRS
 		;
 	rdfs:label "IFRS" ;
 	skos:definition "the IFRS accounting standard" ;
-	.
-
-gleif-L2:LapsedStatus
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipRegistrationStatus
-		;
-	rdfs:label "lapsed status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "A relationship data report that has not been renewed by the NextRenewalDate" ;
-	gleif-base:hasTag "LAPSED" ;
 	.
 
 gleif-L2:LegalEntityRelationshipRecord
@@ -217,17 +184,6 @@ gleif-L2:PartiallyCorroboratedSource
 	gleif-base:hasTag "PARTIALLY CORROBORATED" ;
 	.
 
-gleif-L2:PendingArchivalStatus
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipRegistrationStatus
-		;
-	rdfs:label "pending archival status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "This relationship data report is about to be transferred to a different LOU, after which its registration status will revert to a non-pending status. The PENDING_ARCHIVAL status serves to inform recipients of LOU-provided data files that a relationship record will be removed from that LOU’s published file after the transfer is complete" ;
-	gleif-base:hasTag "PENDING_ARCHIVAL" ;
-	.
-
 gleif-L2:PendingSource
 	a
 		owl:NamedIndividual ,
@@ -236,17 +192,6 @@ gleif-L2:PendingSource
 	rdfs:label "pending source" ;
 	skos:definition "The validation of the relationship data provided by the registrant has not yet occurred. Records with this ValidationSources value MUST not be published." ;
 	gleif-base:hasTag "PENDING" ;
-	.
-
-gleif-L2:PendingTransferStatus
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipRegistrationStatus
-		;
-	rdfs:label "pending transfer status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "A relationship data report for which a transfer to another LOU has been requested. The request is being processed at the sending LOU. When the receiving LOU is ready, the status will be changed to PENDING_ARCHIVAL by the sending LOU prior to completion of the transfer." ;
-	gleif-base:hasTag "PENDING_TRANSFER" ;
 	.
 
 gleif-L2:PendingValidationStatus
@@ -267,17 +212,6 @@ gleif-L2:PrimaryForeignBranchConsolidation
 	skos:definition "abstract superclass to represent consolidation of a foreign branch" ;
 	.
 
-gleif-L2:PublishedStatus
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipRegistrationStatus
-		;
-	rdfs:label "published status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "A relationship data report that has been validated and published, and which is reported by an entity that was an operating legal entity as of the last update." ;
-	gleif-base:hasTag "PUBLISHED" ;
-	.
-
 gleif-L2:RegulatoryFilingDocuments
 	a
 		owl:NamedIndividual ,
@@ -293,6 +227,94 @@ gleif-L2:RelationshipRegistrationStatus
 	rdfs:subClassOf gleif-base:RegistrationStatus ;
 	rdfs:label "relationship registration status" ;
 	skos:definition "status of an entry in a relationship registry that conforms to ISO 17442 and the Global Legal Entity Identifier Foundation (GLEIF) Relationship Format (RR)" ;
+	.
+
+gleif-L2:RelationshipRegistrationStatusAnnulled
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipRegistrationStatus
+		;
+	rdfs:label "annulled status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "A relationship data report that was marked as erroneous or invalid after it was published. The relationship report is kept in publication for historical audit trail purposes only (so that data recipients can correct their local data)." ;
+	gleif-base:hasTag "ANNULLED" ;
+	.
+
+gleif-L2:RelationshipRegistrationStatusDuplicate
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipRegistrationStatus
+		;
+	rdfs:label "duplicate status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "A relationship data report that has been determined to be a  duplicate registration of the same relationship. In many cases this will mean more than one report with e.g. the same 2 entity IDs, the same relationship type, certain status values and the same relationship date(s), but this determination will depend on the relationship type in question." ;
+	gleif-base:hasTag "DUPLICATE" ;
+	.
+
+gleif-L2:RelationshipRegistrationStatusLapsed
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipRegistrationStatus
+		;
+	rdfs:label "lapsed status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "A relationship data report that has not been renewed by the NextRenewalDate" ;
+	gleif-base:hasTag "LAPSED" ;
+	.
+
+gleif-L2:RelationshipRegistrationStatusPendingArchival
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipRegistrationStatus
+		;
+	rdfs:label "pending archival status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "This relationship data report is about to be transferred to a different LOU, after which its registration status will revert to a non-pending status. The PENDING_ARCHIVAL status serves to inform recipients of LOU-provided data files that a relationship record will be removed from that LOU’s published file after the transfer is complete" ;
+	gleif-base:hasTag "PENDING_ARCHIVAL" ;
+	.
+
+gleif-L2:RelationshipRegistrationStatusPendingTransfer
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipRegistrationStatus
+		;
+	rdfs:label "pending transfer status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "A relationship data report for which a transfer to another LOU has been requested. The request is being processed at the sending LOU. When the receiving LOU is ready, the status will be changed to PENDING_ARCHIVAL by the sending LOU prior to completion of the transfer." ;
+	gleif-base:hasTag "PENDING_TRANSFER" ;
+	.
+
+gleif-L2:RelationshipRegistrationStatusPublished
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipRegistrationStatus
+		;
+	rdfs:label "published status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "A relationship data report that has been validated and published, and which is reported by an entity that was an operating legal entity as of the last update." ;
+	gleif-base:hasTag "PUBLISHED" ;
+	.
+
+gleif-L2:RelationshipRegistrationStatusRetired
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipRegistrationStatus
+		;
+	rdfs:label "retired status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "status indicating that the registration is for an entity that has ceased operation, without having been merged into another entity" ;
+	gleif-base:hasTag "RETIRED" ;
+	.
+
+gleif-L2:RelationshipRegistrationStatusTransferred
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipRegistrationStatus
+		;
+	rdfs:label "transferred status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "The relationship is considered to have ended, but the relationship report is kept in publication for historical audit trail purposes." ;
+	gleif-base:hasTag "TRANSFERRED" ;
 	.
 
 gleif-L2:RelationshipStatus
@@ -336,17 +358,6 @@ gleif-L2:RelationshipValidationSourceKind
 	skos:definition "Level of relationship validation." ;
 	.
 
-gleif-L2:RetiredStatus
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipRegistrationStatus
-		;
-	rdfs:label "retired status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "status indicating that the registration is for an entity that has ceased operation, without having been merged into another entity" ;
-	gleif-base:hasTag "RETIRED" ;
-	.
-
 gleif-L2:Subsidiary
 	a owl:Class ;
 	rdfs:label "subsidiary" ;
@@ -365,17 +376,6 @@ gleif-L2:SupportingDocuments
 	rdfs:label "supporting documents" ;
 	skos:definition "Other documents supporting the preparation of consolidated financial statements." ;
 	gleif-base:hasTag "SUPPORTING_DOCUMENTS" ;
-	.
-
-gleif-L2:TransferredStatus
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipRegistrationStatus
-		;
-	rdfs:label "transferred status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "The relationship is considered to have ended, but the relationship report is kept in publication for historical audit trail purposes." ;
-	gleif-base:hasTag "TRANSFERRED" ;
 	.
 
 gleif-L2:US_GAAP
