@@ -5,8 +5,8 @@
 # imports: https://www.gleif.org/ontology/EntityLegalForm/
 
 @base <https://www.gleif.org/sample/EntityLegalFormData/> .
-@prefix gleif-ELF-data: <https://www.gleif.org/sample/EntityLegalFormData/> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix gleif-ELF-data: <https://www.gleif.org/sample/EntityLegalFormData/> .
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
 @prefix gleif-elf: <https://www.gleif.org/ontology/EntityLegalForm/> .
 @prefix lcc-3166-1-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> .
@@ -42,13 +42,19 @@ gleif-ELF-data:ELF-EZNQ
 	gleif-base:identifies gleif-ELF-data:ELFREC-EZNQ ;
 	.
 
+gleif-ELF-data:ELF-H0PO
+	a gleif-elf:EntityLegalFormIdentifier ;
+	gleif-base:hasTag "H0PO" ;
+	gleif-base:identifies gleif-ELF-data:ELFREC-H0PO ;
+	.
+
 gleif-ELF-data:ELFREC-2HBR
 	a gleif-elf:EntityLegalForm ;
 	gleif-base:hasCoverageArea lcc-3166-1-add:GE ;
+	gleif-base:hasInitialRegistrationDate "2017-11-30T00:00:00Z"^^xs:dateTime ;
 	gleif-base:hasLocalAbbreviation "GmbH"@ge ;
 	gleif-base:hasLocalName "Gesellschaft mit beschränkter Haftung"@ge ;
-	gleif-base:hasInitialRegistrationDate "2017-11-30T00:00:00Z"^^xs:dateTime ;
-	gleif-base:hasRegistrationStatus gleif-elf:ActiveStatus ;
+	gleif-base:hasRegistrationStatus gleif-elf:ELFRegistrationStatusActive ;
 	gleif-base:hasTransliteratedAbbreviation "GmbH" ;
 	gleif-base:hasTransliteratedName "Gesellschaft mit beschränkter Haftung" ;
 	.
@@ -56,6 +62,7 @@ gleif-ELF-data:ELFREC-2HBR
 gleif-ELF-data:ELFREC-EZNQ
 	a gleif-elf:EntityLegalForm ;
 	gleif-base:hasCoverageArea lcc-3166-2-add:US-OH ;
+	gleif-base:hasInitialRegistrationDate "2017-11-30T00:00:00Z"^^xs:dateTime ;
 	gleif-base:hasLocalAbbreviation
 		"L.L.C."@ge ,
 		"LLC"@ge ,
@@ -65,20 +72,14 @@ gleif-ELF-data:ELFREC-EZNQ
 		"ltd."@ge
 		;
 	gleif-base:hasLocalName "Limited Liability Company"@ge ;
-	gleif-base:hasInitialRegistrationDate "2017-11-30T00:00:00Z"^^xs:dateTime ;
-	gleif-base:hasRegistrationStatus gleif-elf:ActiveStatus ;
+	gleif-base:hasRegistrationStatus gleif-elf:ELFRegistrationStatusActive ;
 	gleif-base:hasTransliteratedName "Limited Liability Company" ;
-	.
-
-gleif-ELF-data:ELF-H0PO
-	a gleif-elf:EntityLegalFormIdentifier ;
-	gleif-base:hasTag "H0PO" ;
-	gleif-base:identifies gleif-ELF-data:ELFREC-H0PO ;
 	.
 
 gleif-ELF-data:ELFREC-H0PO
 	a gleif-elf:EntityLegalForm ;
 	gleif-base:hasCoverageArea lcc-3166-1-add:GB ;
+	gleif-base:hasInitialRegistrationDate "2017-11-30T00:00:00Z"^^xs:dateTime ;
 	gleif-base:hasLocalAbbreviation
 		"LTD"@en ,
 		"LTD."@en ,
@@ -86,7 +87,6 @@ gleif-ELF-data:ELFREC-H0PO
 		"ltd."@en
 		;
 	gleif-base:hasLocalName "Private Limited Company"@en ;
-	gleif-base:hasInitialRegistrationDate "2017-11-30T00:00:00Z"^^xs:dateTime ;
-	gleif-base:hasRegistrationStatus gleif-elf:ActiveStatus ;
+	gleif-base:hasRegistrationStatus gleif-elf:ELFRegistrationStatusActive ;
 	.
 
