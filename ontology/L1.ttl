@@ -42,28 +42,6 @@ gleif-L1:Branch
 	skos:definition "The legal entity is a branch of another legal entity" ;
 	.
 
-gleif-L1:EntitySuppliedOnlyStatus
-	a
-		owl:NamedIndividual ,
-		gleif-L1:LEIValidationStatus
-		;
-	rdfs:label "entity supplied only status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, the information associated with this record has significant reliance on the information that a submitter provided due to the unavailability of corroborating information." ;
-	gleif-base:hasTag "ENTITY SUPPLIED ONLY" ;
-	.
-
-gleif-L1:FullyCorroboratedStatus
-	a
-		owl:NamedIndividual ,
-		gleif-L1:LEIValidationStatus
-		;
-	rdfs:label "fully corroborated status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, there is sufficient information contained in authoritative public sources to corroborate the information that the submitter has provided for the record." ;
-	gleif-base:hasTag "FULLY CORROBORATED" ;
-	.
-
 gleif-L1:Fund
 	a owl:Class ;
 	rdfs:subClassOf
@@ -203,6 +181,39 @@ gleif-L1:LEIValidationStatus
 	skos:definition "level of corroboration of an entry in a legal entity identifier registry that conforms to ISO 17442 and the Global Legal Entity Identifier Foundation (GLEIF) Common Data Format (CDF)" ;
 	.
 
+gleif-L1:LEIValidationStatusEntitySuppliedOnly
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LEIValidationStatus
+		;
+	rdfs:label "entity supplied only" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, the information associated with this record has significant reliance on the information that a submitter provided due to the unavailability of corroborating information." ;
+	gleif-base:hasTag "ENTITY_SUPPLIED_ONLY" ;
+	.
+
+gleif-L1:LEIValidationStatusFullyCorroborated
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LEIValidationStatus
+		;
+	rdfs:label "fully corroborated" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, there is sufficient information contained in authoritative public sources to corroborate the information that the submitter has provided for the record." ;
+	gleif-base:hasTag "FULLY_CORROBORATED" ;
+	.
+
+gleif-L1:LEIValidationStatusPartiallyCorroborated
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LEIValidationStatus
+		;
+	rdfs:label "partially corroborated" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, the information supplied by the registrant can be partially corroborated by public authoritative sources, while some of the record is dependent upon the information that the registrant submitted, either due to conflicts with authoritative information, or due to data unavailability." ;
+	gleif-base:hasTag "PARTIALLY_CORROBORATED" ;
+	.
+
 gleif-L1:LegalEntityIdentifier
 	a owl:Class ;
 	rdfs:subClassOf
@@ -290,17 +301,6 @@ gleif-L1:LocalOperatingUnit
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:altLabel "LOU" ;
 	skos:definition "a registration authority that issues legal entity identifiers and is authorized by the Global LEI Foundation to do so" ;
-	.
-
-gleif-L1:PartiallyCorroboratedStatus
-	a
-		owl:NamedIndividual ,
-		gleif-L1:LEIValidationStatus
-		;
-	rdfs:label "partially corroborated status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, the information supplied by the registrant can be partially corroborated by public authoritative sources, while some of the record is dependent upon the information that the registrant submitted, either due to conflicts with authoritative information, or due to data unavailability." ;
-	gleif-base:hasTag "PARTIALLY CORROBORATED" ;
 	.
 
 gleif-L1:PendingStatus

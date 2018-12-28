@@ -179,7 +179,7 @@ gleif-L1-data:LEE-213800YK2FEXWNMT3R12
 	gleif-base:isManagedBy gleif-L1-data:LE-213800WAVVOPS85N2205 ;
 	gleif-base:records gleif-L1-data:LE-213800YK2FEXWNMT3R12 ;
 	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000585-03193392 ;
-	gleif-L1:hasValidationLevel gleif-L1:FullyCorroboratedStatus ;
+	gleif-L1:hasValidationLevel gleif-L1:LEIValidationStatusFullyCorroborated ;
 	.
 
 gleif-L1-data:LEE-25490050856CG53NAC28
@@ -193,7 +193,7 @@ gleif-L1-data:LEE-25490050856CG53NAC28
 	gleif-base:records gleif-L1-data:LE-25490050856CG53NAC28 ;
 	gleif-L1:hasAdditionalValidationIdentifier gleif-L1-data:BID-RA000598-201725900005 ;
 	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000602-6534941 ;
-	gleif-L1:hasValidationLevel gleif-L1:FullyCorroboratedStatus ;
+	gleif-L1:hasValidationLevel gleif-L1:LEIValidationStatusFullyCorroborated ;
 	.
 
 gleif-L1-data:LEE-4469000001AVO26P9X86
@@ -206,7 +206,7 @@ gleif-L1-data:LEE-4469000001AVO26P9X86
 	gleif-base:isManagedBy gleif-L1-data:LE-4469000001AVO26P9X86 ;
 	gleif-base:records gleif-L1-data:LE-5493007CICYM7A0SZ714 ;
 	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000449-AME9806027F9 ;
-	gleif-L1:hasValidationLevel gleif-L1:FullyCorroboratedStatus ;
+	gleif-L1:hasValidationLevel gleif-L1:LEIValidationStatusFullyCorroborated ;
 	.
 
 gleif-L1-data:LEE-5493007CICYM7A0SZ71
@@ -219,7 +219,7 @@ gleif-L1-data:LEE-5493007CICYM7A0SZ71
 	gleif-base:isManagedBy gleif-L1-data:LE-4469000001AVO26P9X86 ;
 	gleif-base:records gleif-L1-data:LE-5493007CICYM7A0SZ714 ;
 	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000449-IKM981217SD5 ;
-	gleif-L1:hasValidationLevel gleif-L1:FullyCorroboratedStatus ;
+	gleif-L1:hasValidationLevel gleif-L1:LEIValidationStatusFullyCorroborated ;
 	.
 
 gleif-L1-data:Leg-213800YK2FEXWNMT3R12
