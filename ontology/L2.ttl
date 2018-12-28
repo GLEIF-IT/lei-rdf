@@ -45,20 +45,41 @@ gleif-L2:AccountingSource
 	skos:definition "the type of accounting standard used to source consolidation information, which is based on reported accounting roll-ups" ;
 	.
 
-gleif-L2:DirectConsolidation
-	a owl:Class ;
-	rdfs:subClassOf gleif-L2:AccountingConsolidation ;
-	rdfs:label "direct consolidation" ;
-	skos:definition "direct consolidation relationship" ;
-	.
-
-gleif-L2:IFRS
+gleif-L2:AccountingSourceIFRS
 	a
 		owl:NamedIndividual ,
 		gleif-L2:AccountingSource
 		;
 	rdfs:label "IFRS" ;
-	skos:definition "the IFRS accounting standard" ;
+	skos:definition "the International Financial Reporting Standards (IFRS) accounting standard" ;
+	gleif-base:hasTag "IFRS" ;
+	.
+
+gleif-L2:AccountingSourceOtherAccountingStandard
+	a
+		owl:NamedIndividual ,
+		gleif-L2:AccountingSource
+		;
+	rdfs:label "other accounting standard" ;
+	skos:definition "another accounting standard (not IFRS or US GAAP)" ;
+	gleif-base:hasTag "OTHER_ACCOUNTING_STANDARD" ;
+	.
+
+gleif-L2:AccountingSourceUSGAAP
+	a
+		owl:NamedIndividual ,
+		gleif-L2:AccountingSource
+		;
+	rdfs:label "US GAAP" ;
+	skos:definition "the US Generally Accepted Accounting Principles (GAAP) accounting standard" ;
+	gleif-base:hasTag "US_GAAP" ;
+	.
+
+gleif-L2:DirectConsolidation
+	a owl:Class ;
+	rdfs:subClassOf gleif-L2:AccountingConsolidation ;
+	rdfs:label "direct consolidation" ;
+	skos:definition "direct consolidation relationship" ;
 	.
 
 gleif-L2:LegalEntityRelationshipRecord
@@ -103,15 +124,6 @@ gleif-L2:LegalEntityRelationshipRecord
 	rdfs:label "legal entity relationship record" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "an entry in a legal entity identifier registry that conforms to ISO 17442 and the Global Legal Entity Identifier Foundation (GLEIF) Common Data Format (CDF)" ;
-	.
-
-gleif-L2:OTHER_ACCOUNTING_STANDARD
-	a
-		owl:NamedIndividual ,
-		gleif-L2:AccountingSource
-		;
-	rdfs:label "other accounting standard" ;
-	skos:definition "another accounting standard (not IFRS or US GAAP)" ;
 	.
 
 gleif-L2:Owner
@@ -376,15 +388,6 @@ gleif-L2:Subsidiary
 		owl:onProperty gleif-L2:hasParentConsolidation ;
 		owl:someValuesFrom gleif-L2:AccountingConsolidation ;
 	] ;
-	.
-
-gleif-L2:US_GAAP
-	a
-		owl:NamedIndividual ,
-		gleif-L2:AccountingSource
-		;
-	rdfs:label "US GAAP" ;
-	skos:definition "the US GAAP accounting standard" ;
 	.
 
 gleif-L2:UltimateConsolidation

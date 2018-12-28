@@ -37,7 +37,7 @@ gleif-L2-data:OR-4469000001BFY38CWR75-95980020140006006514
 		;
 	gleif-base:hasOwner gleif-L1-data:LE-95980020140006006514 ;
 	gleif-base:hasSubsidiary gleif-L1-data:LE-4469000001BFY38CWR75 ;
-	gleif-L2:hasAccountingSource gleif-L2:IFRS ;
+	gleif-L2:hasAccountingSource gleif-L2:AccountingSourceIFRS ;
 	gleif-L2:hasOwnershipPercentage "99.99"^^xs:decimal ;
 	gleif-L2:hasRelationshipPeriod [
 		a gleif-base:Period ;
