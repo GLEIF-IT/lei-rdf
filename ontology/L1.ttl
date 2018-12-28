@@ -333,6 +333,13 @@ gleif-L1:TransferredStatus
 	gleif-base:hasTag "TRANSFERRED" ;
 	.
 
+gleif-L1:hasAdditionalValidationIdentifier
+	a owl:ObjectProperty ;
+	rdfs:label "has validation identifier" ;
+	rdfs:range gleif-base:RegistryIdentifier ;
+	skos:definition "An optional list of additional registrations used by the LEI Issuer to validate the entity data." ;
+	.
+
 gleif-L1:hasHeadquartersAddress
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf gleif-L1:hasOperatingAddress ;
@@ -381,6 +388,13 @@ gleif-L1:hasPriorLegalName
 	skos:definition "a primary legal name that was used previously for the entity" ;
 	.
 
+gleif-L1:hasRegistrationIdentifier
+	a owl:ObjectProperty ;
+	rdfs:label "has registration identifier" ;
+	rdfs:range gleif-base:RegistryIdentifier ;
+	skos:definition "An identifier for the legal entity in a business registry in the jurisdiction of legal registration, or in the appropriate registration authority." ;
+	.
+
 gleif-L1:hasTradingOrOperationalName
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasName ;
@@ -396,12 +410,11 @@ gleif-L1:hasTradingOrOperationalName
 	skos:definition "a name currently used by the entity in addition to, but not replacing, the (primary) legal, official registered name" ;
 	.
 
-gleif-L1:hasValidationAuthority
+gleif-L1:hasValidationIdentifier
 	a owl:ObjectProperty ;
-	rdfs:label "has validation authority" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	rdfs:range gleif-base:RegistrationAuthority ;
-	skos:definition "identifies the business registration authority for the legal entity, used by the Local Operating Unit (LOU) as the basis for validation, as defined in the GLEIF Registration Authorities List" ;
+	rdfs:label "has validation identifier" ;
+	rdfs:range gleif-base:RegistryIdentifier ;
+	skos:definition "The (primary) registration used by the LOU to validate the entity data." ;
 	.
 
 gleif-L1:hasValidationLevel
@@ -409,14 +422,5 @@ gleif-L1:hasValidationLevel
 	rdfs:label "has validation level" ;
 	rdfs:range gleif-L1:LEIValidationStatus ;
 	skos:definition "an indicator of the level of validation performed by the registrar with respect to the legal entity" ;
-	.
-
-gleif-L1:hasValidationRegistryIdentifier
-	a owl:ObjectProperty ;
-	rdfs:label "has validation registry identifier" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	rdfs:range gleif-base:RegistryIdentifier ;
-	skos:definition "the identifier of the entity at the indicated registration authority" ;
-	skos:note "Typically, the identifier of the legal entity as maintained by a business registry in the jurisdiction of legal registration, or if the entity is one that is not recorded in a business registry (e.g. one of the varieties of funds registered instead with financial regulators), the identifier of the entity in the appropriate registration authority." ;
 	.
 
