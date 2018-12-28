@@ -20,6 +20,7 @@
 	a owl:Ontology ;
 	rdfs:label "GLEIF L1 Ontology" ;
 	rdfs:comment "Ontology generated from GLEIF L1 data in CDF 2.1 format" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/EntityLegalForm/> ,
@@ -38,7 +39,6 @@ gleif-L1:Branch
 		]
 		;
 	rdfs:label "fund" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "The legal entity is a branch of another legal entity" ;
 	.
 
@@ -53,7 +53,6 @@ gleif-L1:Fund
 		]
 		;
 	rdfs:label "fund" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "The legal entity is a fund managed by another legal entity." ;
 	.
 
@@ -61,7 +60,7 @@ gleif-L1:LEIRegistrationStatus
 	a owl:Class ;
 	rdfs:subClassOf gleif-base:RegistrationStatus ;
 	rdfs:label "legal entity identifier registration status" ;
-	skos:definition "status of an entry in a legal entity identifier registry that conforms to ISO 17442 and the Global Legal Entity Identifier Foundation (GLEIF) Common Data Format (CDF)" ;
+	skos:definition "The status of the legal entity's LEI registration with the Managing LOU." ;
 	.
 
 gleif-L1:LEIRegistrationStatusAnnulled
@@ -70,8 +69,7 @@ gleif-L1:LEIRegistrationStatusAnnulled
 		gleif-L1:LEIRegistrationStatus
 		;
 	rdfs:label "annulled" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "status indicating that the registration was determined to be erroneous or invalid after issuance" ;
+	skos:definition "An LEI registration that was marked as erroneous or invalid after it was issued." ;
 	gleif-base:hasTag "ANNULLED" ;
 	.
 
@@ -81,8 +79,7 @@ gleif-L1:LEIRegistrationStatusCancelled
 		gleif-L1:LEIRegistrationStatus
 		;
 	rdfs:label "cancelled" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "status indicating that the registration was abandoned prior to issuance" ;
+	skos:definition "An LEI registration that was abandoned prior to issuance of an LEI." ;
 	gleif-base:hasTag "CANCELLED" ;
 	.
 
@@ -92,8 +89,7 @@ gleif-L1:LEIRegistrationStatusDuplicate
 		gleif-L1:LEIRegistrationStatus
 		;
 	rdfs:label "duplicate" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "status indicating that the registration was determined to be a duplicate registration of the same entity as another registration; duplicate status is assigned to the non-surviving registration (i.e. the identifier that should no longer be used)" ;
+	skos:definition "An LEI Registration that has been determined to be a duplicate registration of the same legal entity as another LEI Registration; the DUPLICATE status is assigned to the non-surviving registration (i.e. the LEI that should no longer be used)." ;
 	gleif-base:hasTag "DUPLICATE" ;
 	.
 
@@ -103,8 +99,7 @@ gleif-L1:LEIRegistrationStatusIssued
 		gleif-L1:LEIRegistrationStatus
 		;
 	rdfs:label "issued" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "status indicating that the registration has been validated and issued, and which identifies an entity that was operating legally as of the last update" ;
+	skos:definition "An LEI Registration that has been validated and issued, and which identifies an entity that was an operating legal entity as of the last update." ;
 	gleif-base:hasTag "ISSUED" ;
 	.
 
@@ -114,8 +109,7 @@ gleif-L1:LEIRegistrationStatusLapsed
 		gleif-L1:LEIRegistrationStatus
 		;
 	rdfs:label "lapsed" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "status indicating that the registration that has not been renewed by the specified renewal date and is not known by public sources to have ceased operation as of the last update" ;
+	skos:definition "An LEI Registration that has not been renewed by the specified next renewal date and is not known by public sources to have ceased operation." ;
 	gleif-base:hasTag "LAPSED" ;
 	.
 
@@ -125,8 +119,7 @@ gleif-L1:LEIRegistrationStatusMerged
 		gleif-L1:LEIRegistrationStatus
 		;
 	rdfs:label "merged" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "status indicating that the registration is for an entity that has been merged into another legal entity, such that this legal entity no longer exists as an independently operating entity" ;
+	skos:definition "An LEI registration for an entity that has been merged into another legal entity, such that this legal entity no longer exists as an operating entity." ;
 	gleif-base:hasTag "MERGED" ;
 	.
 
@@ -136,8 +129,7 @@ gleif-L1:LEIRegistrationStatusPendingArchival
 		gleif-L1:LEIRegistrationStatus
 		;
 	rdfs:label "pending archival" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "status indicating that the registration is about to be transferred to a different registration authority, after which its registration status will revert to a non-pending status" ;
+	skos:definition "An LEI registration is about to be transferred to a different LOU, after which its registration status will revert to a non-pending status." ;
 	gleif-base:hasTag "PENDING_ARCHIVAL" ;
 	.
 
@@ -147,8 +139,7 @@ gleif-L1:LEIRegistrationStatusPendingTransfer
 		gleif-L1:LEIRegistrationStatus
 		;
 	rdfs:label "pending transfer" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "status indicating that the registration has requested transfer to a different registration authority, and for which transfer is in progress" ;
+	skos:definition "An LEI registration that has been requested to be transferred to another LOU. The request is being processed at the sending LOU." ;
 	gleif-base:hasTag "PENDING_TRANSFER" ;
 	.
 
@@ -158,8 +149,7 @@ gleif-L1:LEIRegistrationStatusPendingValidation
 		gleif-L1:LEIRegistrationStatus
 		;
 	rdfs:label "pending validation" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "status indicating that an application for registration has been submitted and is in process, pending validation" ;
+	skos:definition "An application for an LEI that has been submitted and which is being processed and validated." ;
 	gleif-base:hasTag "PENDING_VALIDATION" ;
 	.
 
@@ -169,8 +159,7 @@ gleif-L1:LEIRegistrationStatusRetired
 		gleif-L1:LEIRegistrationStatus
 		;
 	rdfs:label "retired" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "status indicating that the registration is for an entity that has ceased operation, without having been merged into another entity" ;
+	skos:definition "An LEI registration for an entity that has ceased operation, without having been merged into another entity." ;
 	gleif-base:hasTag "RETIRED" ;
 	.
 
@@ -180,55 +169,51 @@ gleif-L1:LEIRegistrationStatusTransferred
 		gleif-L1:LEIRegistrationStatus
 		;
 	rdfs:label "transferred" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "status indicating that the registration that has been transferred to a different registration authority" ;
+	skos:definition "An LEI registration that has been transferred to a different LOU as the managing LOU." ;
 	gleif-base:hasTag "TRANSFERRED" ;
 	.
 
-gleif-L1:LEIValidationStatus
+gleif-L1:LEIValidationSourceKind
 	a owl:Class ;
 	rdfs:subClassOf gleif-base:RegistrationStatus ;
-	rdfs:label "legal entity identifier validation status" ;
-	skos:definition "level of corroboration of an entry in a legal entity identifier registry that conforms to ISO 17442 and the Global Legal Entity Identifier Foundation (GLEIF) Common Data Format (CDF)" ;
+	rdfs:label "LEI validation source kind" ;
+	skos:definition "The level of validation of the reference data provided by the registrant." ;
 	.
 
-gleif-L1:LEIValidationStatusEntitySuppliedOnly
+gleif-L1:LEIValidationSourceKindEntitySuppliedOnly
 	a
 		owl:NamedIndividual ,
-		gleif-L1:LEIValidationStatus
+		gleif-L1:LEIValidationSourceKind
 		;
 	rdfs:label "entity supplied only" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, the information associated with this record has significant reliance on the information that a submitter provided due to the unavailability of corroborating information." ;
 	gleif-base:hasTag "ENTITY_SUPPLIED_ONLY" ;
 	.
 
-gleif-L1:LEIValidationStatusFullyCorroborated
+gleif-L1:LEIValidationSourceKindFullyCorroborated
 	a
 		owl:NamedIndividual ,
-		gleif-L1:LEIValidationStatus
+		gleif-L1:LEIValidationSourceKind
 		;
 	rdfs:label "fully corroborated" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, there is sufficient information contained in authoritative public sources to corroborate the information that the submitter has provided for the record." ;
 	gleif-base:hasTag "FULLY_CORROBORATED" ;
 	.
 
-gleif-L1:LEIValidationStatusPartiallyCorroborated
+gleif-L1:LEIValidationSourceKindPartiallyCorroborated
 	a
 		owl:NamedIndividual ,
-		gleif-L1:LEIValidationStatus
+		gleif-L1:LEIValidationSourceKind
 		;
 	rdfs:label "partially corroborated" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, the information supplied by the registrant can be partially corroborated by public authoritative sources, while some of the record is dependent upon the information that the registrant submitted, either due to conflicts with authoritative information, or due to data unavailability." ;
 	gleif-base:hasTag "PARTIALLY_CORROBORATED" ;
 	.
 
-gleif-L1:LEIValidationStatusPending
+gleif-L1:LEIValidationSourceKindPending
 	a
 		owl:NamedIndividual ,
-		gleif-L1:LEIValidationStatus
+		gleif-L1:LEIValidationSourceKind
 		;
 	rdfs:label "pending" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
@@ -253,11 +238,7 @@ gleif-L1:LegalEntityIdentifier
 		]
 		;
 	rdfs:label "legal entity identifier" ;
-	dct:source
-		"https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ,
-		"https://www.iso.org/standard/59771.html"^^xs:anyURI
-		;
-	skos:definition "an organization identifier that uniquely identifies a legal person as defined in ISO 17442" ;
+	skos:definition "The ISO 17442 compatible identifier for the legal entity referenced." ;
 	.
 
 gleif-L1:LegalEntityIdentifierRegistryEntry
@@ -300,13 +281,12 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasValidationLevel ;
-			owl:someValuesFrom gleif-L1:LEIValidationStatus ;
+			owl:onProperty gleif-L1:hasValidationSources ;
+			owl:someValuesFrom gleif-L1:LEIValidationSourceKind ;
 		]
 		;
 	rdfs:label "legal entity identifier registry entry" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "an entry in a legal entity identifier registry that conforms to ISO 17442 and the Global Legal Entity Identifier Foundation (GLEIF) Common Data Format (CDF)" ;
+	skos:definition "The Registration container element which contains all information on the legal entity's LEI registration with the Managing LOU.>" ;
 	.
 
 gleif-L1:LocalOperatingUnit
@@ -320,7 +300,6 @@ gleif-L1:LocalOperatingUnit
 		]
 		;
 	rdfs:label "local operating unit" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:altLabel "LOU" ;
 	skos:definition "a registration authority that issues legal entity identifiers and is authorized by the Global LEI Foundation to do so" ;
 	.
@@ -329,7 +308,6 @@ gleif-L1:SoleProprietorship
 	a owl:Class ;
 	rdfs:subClassOf gleif-base:LegalEntity ;
 	rdfs:label "sole proprietorship" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "The legal entity represents an individual acting in a business capacity" ;
 	.
 
@@ -342,17 +320,14 @@ gleif-L1:hasAdditionalValidationIdentifier
 
 gleif-L1:hasHeadquartersAddress
 	a owl:ObjectProperty ;
-	rdfs:subPropertyOf gleif-L1:hasOperatingAddress ;
 	rdfs:label "has headquarters address" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "identifies the headquarters address for the registered entity" ;
+	skos:definition "The address of the headquarters of the Entity." ;
 	.
 
 gleif-L1:hasLegalAddress
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf gleif-base:hasAddress ;
 	rdfs:label "has legal address" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "The address of the entity as recorded in the registration of the entity in its legal jurisdiction." ;
 	.
 
@@ -361,7 +336,7 @@ gleif-L1:hasLegalForm
 	rdfs:label "has legal form" ;
 	rdfs:domain gleif-base:LegalEntity ;
 	rdfs:range gleif-elf:EntityLegalForm ;
-	skos:definition "indicates the nature of the entity as defined from a legal or regulatory perspective in a given jurisdiction as registered in the official ELF list" ;
+	skos:definition "The legal form of the entity, taken from the ISO Entity Legal Form (ELF) data set maintained by GLEIF." ;
 	.
 
 gleif-L1:hasLegalFormText
@@ -369,23 +344,15 @@ gleif-L1:hasLegalFormText
 	rdfs:label "has legal form" ;
 	rdfs:domain gleif-base:LegalEntity ;
 	rdfs:range xs:string ;
-	skos:definition "indicates the nature of the entity as defined from a legal or regulatory perspective in a given jurisdiction where the legal form has not been registered or the registration code has not been used (code of 8888 or 9999)" ;
+	skos:definition "A legacy code or textual description for the legal entity's legal form, used until a current code from the GLEIF-maintained list can be used." ;
 	.
 
-gleif-L1:hasOperatingAddress
-	a owl:ObjectProperty ;
-	rdfs:subPropertyOf gleif-base:hasAddress ;
-	rdfs:label "has operating address" ;
-	skos:definition "an address at which an organization carries out its operations" ;
-	.
-
-gleif-L1:hasPriorLegalName
+gleif-L1:hasPreviousLegalName
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasName ;
-	rdfs:label "has prior legal name" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	rdfs:label "has previous legal name" ;
 	rdfs:range xs:string ;
-	skos:definition "a primary legal name that was used previously for the entity" ;
+	skos:definition "A primary legal name previously used by this entity." ;
 	.
 
 gleif-L1:hasRegistrationIdentifier
@@ -399,7 +366,6 @@ gleif-L1:hasTradingOrOperationalName
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasName ;
 	rdfs:label "has trading or operational name" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	rdfs:range xs:string ;
 	skos:altLabel
 		"brand name" ,
@@ -407,7 +373,7 @@ gleif-L1:hasTradingOrOperationalName
 		"operating under" ,
 		"trading as"
 		;
-	skos:definition "a name currently used by the entity in addition to, but not replacing, the (primary) legal, official registered name" ;
+	skos:definition "A 'trading as', 'brand name' or 'operating under' name currently used by this entity in addition to, but not replacing, the (primary) legal, official registered name" ;
 	.
 
 gleif-L1:hasValidationIdentifier
@@ -417,10 +383,10 @@ gleif-L1:hasValidationIdentifier
 	skos:definition "The (primary) registration used by the LOU to validate the entity data." ;
 	.
 
-gleif-L1:hasValidationLevel
+gleif-L1:hasValidationSources
 	a owl:ObjectProperty ;
-	rdfs:label "has validation level" ;
-	rdfs:range gleif-L1:LEIValidationStatus ;
-	skos:definition "an indicator of the level of validation performed by the registrar with respect to the legal entity" ;
+	rdfs:label "has validation sources" ;
+	rdfs:range gleif-L1:LEIValidationSourceKind ;
+	skos:definition "The level of validation of the reference data provided by the registrant." ;
 	.
 
