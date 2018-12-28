@@ -72,26 +72,6 @@ gleif-L2:DirectConsolidation
 	skos:definition "direct consolidation relationship" ;
 	.
 
-gleif-L2:EntitySuppliedOnlySource
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipValidationSourceKind
-		;
-	rdfs:label "entity supplied only source" ;
-	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, the information associated with this record has significant reliance on the information that a submitter provided due to the unavailability of corroborating information." ;
-	gleif-base:hasTag "ENTITY SUPPLIED ONLY" ;
-	.
-
-gleif-L2:FullyCorroboratedSource
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipValidationSourceKind
-		;
-	rdfs:label "fully corroborated source" ;
-	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, there is sufficient information contained in authoritative public sources to corroborate the information that the submitter has provided for the record." ;
-	gleif-base:hasTag "FULLY CORROBORATED" ;
-	.
-
 gleif-L2:IFRS
 	a
 		owl:NamedIndividual ,
@@ -174,37 +154,6 @@ gleif-L2:Owner
 	] ;
 	.
 
-gleif-L2:PartiallyCorroboratedSource
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipValidationSourceKind
-		;
-	rdfs:label "partially corroborated source" ;
-	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, there is sufficient information contained in authoritative public sources to corroborate the information that the submitter has provided for the record." ;
-	gleif-base:hasTag "PARTIALLY CORROBORATED" ;
-	.
-
-gleif-L2:PendingSource
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipValidationSourceKind
-		;
-	rdfs:label "pending source" ;
-	skos:definition "The validation of the relationship data provided by the registrant has not yet occurred. Records with this ValidationSources value MUST not be published." ;
-	gleif-base:hasTag "PENDING" ;
-	.
-
-gleif-L2:PendingValidationStatus
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipRegistrationStatus
-		;
-	rdfs:label "pending validation status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "A relationship data report that has been submitted to the LOU and which is being processed and validated, prior to publication." ;
-	gleif-base:hasTag "PENDING_VALIDATION" ;
-	.
-
 gleif-L2:PrimaryForeignBranchConsolidation
 	a owl:Class ;
 	rdfs:subClassOf gleif-L2:DirectConsolidation ;
@@ -284,6 +233,17 @@ gleif-L2:RelationshipRegistrationStatusPendingTransfer
 	gleif-base:hasTag "PENDING_TRANSFER" ;
 	.
 
+gleif-L2:RelationshipRegistrationStatusPendingValidation
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipRegistrationStatus
+		;
+	rdfs:label "pending validation status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "A relationship data report that has been submitted to the LOU and which is being processed and validated, prior to publication." ;
+	gleif-base:hasTag "PENDING_VALIDATION" ;
+	.
+
 gleif-L2:RelationshipRegistrationStatusPublished
 	a
 		owl:NamedIndividual ,
@@ -356,6 +316,46 @@ gleif-L2:RelationshipValidationSourceKind
 	a owl:Class ;
 	rdfs:label "relationship validation source kind" ;
 	skos:definition "Level of relationship validation." ;
+	.
+
+gleif-L2:RelationshipValidationSourceKindEntitySuppliedOnly
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipValidationSourceKind
+		;
+	rdfs:label "entity supplied only" ;
+	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, the information associated with this record has significant reliance on the information that a submitter provided due to the unavailability of corroborating information." ;
+	gleif-base:hasTag "ENTITY SUPPLIED ONLY" ;
+	.
+
+gleif-L2:RelationshipValidationSourceKindFullyCorroborated
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipValidationSourceKind
+		;
+	rdfs:label "fully corroborated" ;
+	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, there is sufficient information contained in authoritative public sources to corroborate the information that the submitter has provided for the record." ;
+	gleif-base:hasTag "FULLY CORROBORATED" ;
+	.
+
+gleif-L2:RelationshipValidationSourceKindPartiallyCorroborated
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipValidationSourceKind
+		;
+	rdfs:label "partially corroborated" ;
+	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, there is sufficient information contained in authoritative public sources to corroborate the information that the submitter has provided for the record." ;
+	gleif-base:hasTag "PARTIALLY CORROBORATED" ;
+	.
+
+gleif-L2:RelationshipValidationSourceKindPending
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipValidationSourceKind
+		;
+	rdfs:label "pending" ;
+	skos:definition "The validation of the relationship data provided by the registrant has not yet occurred. Records with this ValidationSources value MUST not be published." ;
+	gleif-base:hasTag "PENDING" ;
 	.
 
 gleif-L2:Subsidiary

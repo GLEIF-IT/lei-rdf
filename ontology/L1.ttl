@@ -152,6 +152,17 @@ gleif-L1:LEIRegistrationStatusPendingTransfer
 	gleif-base:hasTag "PENDING_TRANSFER" ;
 	.
 
+gleif-L1:LEIRegistrationStatusPendingValidation
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LEIRegistrationStatus
+		;
+	rdfs:label "pending validation status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "status indicating that an application for registration has been submitted and is in process, pending validation" ;
+	gleif-base:hasTag "PENDING_VALIDATION" ;
+	.
+
 gleif-L1:LEIRegistrationStatusRetired
 	a
 		owl:NamedIndividual ,
@@ -212,6 +223,17 @@ gleif-L1:LEIValidationStatusPartiallyCorroborated
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, the information supplied by the registrant can be partially corroborated by public authoritative sources, while some of the record is dependent upon the information that the registrant submitted, either due to conflicts with authoritative information, or due to data unavailability." ;
 	gleif-base:hasTag "PARTIALLY_CORROBORATED" ;
+	.
+
+gleif-L1:LEIValidationStatusPending
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LEIValidationStatus
+		;
+	rdfs:label "pending status" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
+	skos:definition "The validation of the reference data provided by the registrant has not yet occurred." ;
+	gleif-base:hasTag "PENDING" ;
 	.
 
 gleif-L1:LegalEntityIdentifier
@@ -301,28 +323,6 @@ gleif-L1:LocalOperatingUnit
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:altLabel "LOU" ;
 	skos:definition "a registration authority that issues legal entity identifiers and is authorized by the Global LEI Foundation to do so" ;
-	.
-
-gleif-L1:PendingStatus
-	a
-		owl:NamedIndividual ,
-		gleif-L1:LEIValidationStatus
-		;
-	rdfs:label "pending status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "The validation of the reference data provided by the registrant has not yet occurred.." ;
-	gleif-base:hasTag "PENDING" ;
-	.
-
-gleif-L1:PendingValidationStatus
-	a
-		owl:NamedIndividual ,
-		gleif-L1:LEIRegistrationStatus
-		;
-	rdfs:label "pending validation status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
-	skos:definition "status indicating that an application for registration has been submitted and is in process, pending validation" ;
-	gleif-base:hasTag "PENDING_VALIDATION" ;
 	.
 
 gleif-L1:SoleProprietorship
