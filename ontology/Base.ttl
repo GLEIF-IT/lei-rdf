@@ -27,11 +27,25 @@ gleif-base:EntityExpirationReason
 	skos:definition "the reason that a legal entity ceased to exist and/or operate" ;
 	.
 
+gleif-base:EntityExpirationReasonCorporateAction
+	a gleif-base:EntityExpirationReason ;
+	rdfs:label "CORPORATE_ACTION" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	skos:definition "the entity was acquired or merged with another entity" ;
+	.
+
 gleif-base:EntityExpirationReasonDissolved
 	a gleif-base:EntityExpirationReason ;
 	rdfs:label "DISSOLVED" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	skos:definition "the entity ceased to operate" ;
+	.
+
+gleif-base:EntityExpirationReasonOther
+	a gleif-base:EntityExpirationReason ;
+	rdfs:label "OTHER" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	skos:definition "The reason for expiry is neither of DISSOLVED nor CORPORATE_ACTION" ;
 	.
 
 gleif-base:EntityStatus
@@ -62,20 +76,6 @@ gleif-base:EntityStatusInactive
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	skos:definition "the entity that was assigned the identifier (business, LEI, or other) is no longer legally registered and/or operating, whether as a result of business closure, acquisition by or merger with another (or new) entity, or determination of illegitimacy" ;
 	gleif-base:hasTag "INACTIVE" ;
-	.
-
-gleif-base:ExpirationReasonCorporateAction
-	a gleif-base:EntityExpirationReason ;
-	rdfs:label "CORPORATE_ACTION" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
-	skos:definition "the entity was acquired or merged with another entity" ;
-	.
-
-gleif-base:ExpirationReasonOther
-	a gleif-base:EntityExpirationReason ;
-	rdfs:label "OTHER" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
-	skos:definition "The reason for expiry is neither of DISSOLVED nor CORPORATE_ACTION" ;
 	.
 
 gleif-base:GLEIF
