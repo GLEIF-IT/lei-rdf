@@ -69,7 +69,7 @@ gleif-L1:LEIRegistrationStatusAnnulled
 		owl:NamedIndividual ,
 		gleif-L1:LEIRegistrationStatus
 		;
-	rdfs:label "annulled status" ;
+	rdfs:label "annulled" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "status indicating that the registration was determined to be erroneous or invalid after issuance" ;
 	gleif-base:hasTag "ANNULLED" ;
@@ -80,7 +80,7 @@ gleif-L1:LEIRegistrationStatusCancelled
 		owl:NamedIndividual ,
 		gleif-L1:LEIRegistrationStatus
 		;
-	rdfs:label "cancelled status" ;
+	rdfs:label "cancelled" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "status indicating that the registration was abandoned prior to issuance" ;
 	gleif-base:hasTag "CANCELLED" ;
@@ -91,7 +91,7 @@ gleif-L1:LEIRegistrationStatusDuplicate
 		owl:NamedIndividual ,
 		gleif-L1:LEIRegistrationStatus
 		;
-	rdfs:label "duplicate status" ;
+	rdfs:label "duplicate" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "status indicating that the registration was determined to be a duplicate registration of the same entity as another registration; duplicate status is assigned to the non-surviving registration (i.e. the identifier that should no longer be used)" ;
 	gleif-base:hasTag "DUPLICATE" ;
@@ -102,7 +102,7 @@ gleif-L1:LEIRegistrationStatusIssued
 		owl:NamedIndividual ,
 		gleif-L1:LEIRegistrationStatus
 		;
-	rdfs:label "issued status" ;
+	rdfs:label "issued" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "status indicating that the registration has been validated and issued, and which identifies an entity that was operating legally as of the last update" ;
 	gleif-base:hasTag "ISSUED" ;
@@ -113,7 +113,7 @@ gleif-L1:LEIRegistrationStatusLapsed
 		owl:NamedIndividual ,
 		gleif-L1:LEIRegistrationStatus
 		;
-	rdfs:label "lapsed status" ;
+	rdfs:label "lapsed" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "status indicating that the registration that has not been renewed by the specified renewal date and is not known by public sources to have ceased operation as of the last update" ;
 	gleif-base:hasTag "LAPSED" ;
@@ -124,7 +124,7 @@ gleif-L1:LEIRegistrationStatusMerged
 		owl:NamedIndividual ,
 		gleif-L1:LEIRegistrationStatus
 		;
-	rdfs:label "merged status" ;
+	rdfs:label "merged" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "status indicating that the registration is for an entity that has been merged into another legal entity, such that this legal entity no longer exists as an independently operating entity" ;
 	gleif-base:hasTag "MERGED" ;
@@ -135,7 +135,7 @@ gleif-L1:LEIRegistrationStatusPendingArchival
 		owl:NamedIndividual ,
 		gleif-L1:LEIRegistrationStatus
 		;
-	rdfs:label "pending archival status" ;
+	rdfs:label "pending archival" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "status indicating that the registration is about to be transferred to a different registration authority, after which its registration status will revert to a non-pending status" ;
 	gleif-base:hasTag "PENDING_ARCHIVAL" ;
@@ -146,7 +146,7 @@ gleif-L1:LEIRegistrationStatusPendingTransfer
 		owl:NamedIndividual ,
 		gleif-L1:LEIRegistrationStatus
 		;
-	rdfs:label "pending transfer status" ;
+	rdfs:label "pending transfer" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "status indicating that the registration has requested transfer to a different registration authority, and for which transfer is in progress" ;
 	gleif-base:hasTag "PENDING_TRANSFER" ;
@@ -157,7 +157,7 @@ gleif-L1:LEIRegistrationStatusPendingValidation
 		owl:NamedIndividual ,
 		gleif-L1:LEIRegistrationStatus
 		;
-	rdfs:label "pending validation status" ;
+	rdfs:label "pending validation" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "status indicating that an application for registration has been submitted and is in process, pending validation" ;
 	gleif-base:hasTag "PENDING_VALIDATION" ;
@@ -168,7 +168,7 @@ gleif-L1:LEIRegistrationStatusRetired
 		owl:NamedIndividual ,
 		gleif-L1:LEIRegistrationStatus
 		;
-	rdfs:label "retired status" ;
+	rdfs:label "retired" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "status indicating that the registration is for an entity that has ceased operation, without having been merged into another entity" ;
 	gleif-base:hasTag "RETIRED" ;
@@ -179,7 +179,7 @@ gleif-L1:LEIRegistrationStatusTransferred
 		owl:NamedIndividual ,
 		gleif-L1:LEIRegistrationStatus
 		;
-	rdfs:label "transferred status" ;
+	rdfs:label "transferred" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "status indicating that the registration that has been transferred to a different registration authority" ;
 	gleif-base:hasTag "TRANSFERRED" ;
@@ -230,7 +230,7 @@ gleif-L1:LEIValidationStatusPending
 		owl:NamedIndividual ,
 		gleif-L1:LEIValidationStatus
 		;
-	rdfs:label "pending status" ;
+	rdfs:label "pending" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xs:anyURI ;
 	skos:definition "The validation of the reference data provided by the registrant has not yet occurred." ;
 	gleif-base:hasTag "PENDING" ;

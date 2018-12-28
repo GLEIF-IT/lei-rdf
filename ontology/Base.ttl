@@ -61,7 +61,7 @@ gleif-base:EntityStatusActive
 		owl:NamedIndividual ,
 		gleif-base:EntityStatus
 		;
-	rdfs:label "active status" ;
+	rdfs:label "active" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	skos:definition "as of the last report or update, the entity was legally registered and operating" ;
 	gleif-base:hasTag "ACTIVE" ;
@@ -72,7 +72,7 @@ gleif-base:EntityStatusInactive
 		owl:NamedIndividual ,
 		gleif-base:EntityStatus
 		;
-	rdfs:label "inactive status" ;
+	rdfs:label "inactive" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	skos:definition "the entity that was assigned the identifier (business, LEI, or other) is no longer legally registered and/or operating, whether as a result of business closure, acquisition by or merger with another (or new) entity, or determination of illegitimacy" ;
 	gleif-base:hasTag "INACTIVE" ;

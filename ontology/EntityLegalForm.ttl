@@ -37,7 +37,7 @@ gleif-elf:ELFRegistrationStatusActive
 		owl:NamedIndividual ,
 		gleif-elf:ELFRegistrationStatus
 		;
-	rdfs:label "active status" ;
+	rdfs:label "active" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	skos:definition "status indicating that the registration is active" ;
 	gleif-base:hasTag "ACTV" ;
@@ -48,7 +48,7 @@ gleif-elf:ELFRegistrationStatusInactive
 		owl:NamedIndividual ,
 		gleif-elf:ELFRegistrationStatus
 		;
-	rdfs:label "inactive status" ;
+	rdfs:label "inactive" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	skos:definition "status indicating that the registration is inactive" ;
 	gleif-base:hasTag "INAC" ;
