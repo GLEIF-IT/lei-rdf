@@ -94,7 +94,7 @@ gleif-L1-data:HQ-25490050856CG53NAC28
 	gleif-base:hasCity "Los Angeles" ;
 	gleif-base:hasCountry lcc-3166-1-add:CTRY-US ;
 	gleif-base:hasPostalCode "90049" ;
-	gleif-base:hasSubdivision lcc-3166-2-add:REG-US-CA ;
+	gleif-base:hasRegion lcc-3166-2-add:REG-US-CA ;
 	.
 
 gleif-L1-data:HQ-4469000001AVO26P9X86
@@ -106,7 +106,7 @@ gleif-L1-data:HQ-4469000001AVO26P9X86
 	gleif-base:hasCity "Naucalpan de Juárez" ;
 	gleif-base:hasCountry lcc-3166-1-add:CTRY-MX ;
 	gleif-base:hasPostalCode "53500" ;
-	gleif-base:hasSubdivision lcc-3166-2-add:REG-MX-MEX ;
+	gleif-base:hasRegion lcc-3166-2-add:REG-MX-MEX ;
 	.
 
 gleif-L1-data:HQ-5493007CICYM7A0SZ714
@@ -116,7 +116,7 @@ gleif-L1-data:HQ-5493007CICYM7A0SZ714
 	gleif-base:hasCity "Querétaro" ;
 	gleif-base:hasCountry lcc-3166-1-add:CTRY-MX ;
 	gleif-base:hasPostalCode "76120" ;
-	gleif-base:hasSubdivision lcc-3166-2-add:REG-MX-QUE ;
+	gleif-base:hasRegion lcc-3166-2-add:REG-MX-QUE ;
 	.
 
 gleif-L1-data:LE-213800YK2FEXWNMT3R12
@@ -124,8 +124,8 @@ gleif-L1-data:LE-213800YK2FEXWNMT3R12
 	gleif-base:hasEntityExpirationDate "2018-09-28T00:00:00Z"^^xs:dateTime ;
 	gleif-base:hasEntityExpirationReason gleif-base:EntityExpirationReasonCorporateAction ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusInactive ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-GB ;
 	gleif-base:hasLocalLegalName "LUDLOW (FYLDE) LIMITED"@en ;
-	gleif-base:isOrganizedIn lcc-3166-1-add:CTRY-GB ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:Leg-213800YK2FEXWNMT3R12 ;
 	gleif-L1:hasLegalAddress gleif-L1-data:Leg-213800YK2FEXWNMT3R12 ;
 	gleif-L1:hasLegalForm gleif-ELF-data:ELFREC-H0PO ;
@@ -135,8 +135,8 @@ gleif-L1-data:LE-213800YK2FEXWNMT3R12
 gleif-L1-data:LE-25490050856CG53NAC28
 	a gleif-base:LegalEntity ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
+	gleif-base:hasLegalJurisdiction lcc-3166-2-add:REG-US-DE ;
 	gleif-base:hasLocalLegalName "5210 Concourse, LP"@en ;
-	gleif-base:isOrganizedIn lcc-3166-2-add:REG-US-DE ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:HQ-25490050856CG53NAC28 ;
 	gleif-L1:hasLegalAddress gleif-L1-data:Leg-25490050856CG53NAC28 ;
 	gleif-L1:hasLegalFormText "Limited Partnership"@en ;
@@ -146,8 +146,8 @@ gleif-L1-data:LE-25490050856CG53NAC28
 gleif-L1-data:LE-4469000001AVO26P9X86
 	a gleif-L1:LocalOperatingUnit ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-MX ;
 	gleif-base:hasLocalLegalName "ASOCIACION MEXICANA DE ESTANDARES PARA EL COMERCIO ELECTRONICO AC"@es ;
-	gleif-base:isOrganizedIn lcc-3166-1-add:CTRY-MX ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:HQ-4469000001AVO26P9X86 ;
 	gleif-L1:hasLegalAddress gleif-L1-data:Leg-4469000001AVO26P9X86 ;
 	gleif-L1:hasLegalFormText "ASOCIACIÓN CIVIL" ;
@@ -158,8 +158,8 @@ gleif-L1-data:LE-4469000001AVO26P9X86
 gleif-L1-data:LE-5493007CICYM7A0SZ714
 	a gleif-base:LegalEntity ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-MX ;
 	gleif-base:hasLocalLegalName "KI MEXICO S DE RL DE CV"@es ;
-	gleif-base:isOrganizedIn lcc-3166-1-add:CTRY-MX ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:HQ-5493007CICYM7A0SZ714 ;
 	gleif-L1:hasLegalAddress gleif-L1-data:Leg-5493007CICYM7A0SZ714 ;
 	gleif-L1:hasLegalFormText "SOCIEDAD DE RESPONSABILIDAD LIMITADA DE CAPITAL VARIABLE" ;
@@ -229,7 +229,7 @@ gleif-L1-data:Leg-213800YK2FEXWNMT3R12
 	gleif-base:hasCity "SOUTHPORT" ;
 	gleif-base:hasCountry lcc-3166-1-add:CTRY-GB ;
 	gleif-base:hasPostalCode "PR9 0QA" ;
-	gleif-base:hasSubdivision lcc-3166-2-add:REG-GB-LIV ;
+	gleif-base:hasRegion lcc-3166-2-add:REG-GB-LIV ;
 	.
 
 gleif-L1-data:Leg-25490050856CG53NAC28
@@ -241,7 +241,7 @@ gleif-L1-data:Leg-25490050856CG53NAC28
 	gleif-base:hasCity "Dover" ;
 	gleif-base:hasCountry lcc-3166-1-add:CTRY-US ;
 	gleif-base:hasPostalCode "19904" ;
-	gleif-base:hasSubdivision lcc-3166-2-add:REG-US-DE ;
+	gleif-base:hasRegion lcc-3166-2-add:REG-US-DE ;
 	.
 
 gleif-L1-data:Leg-4469000001AVO26P9X86
@@ -253,7 +253,7 @@ gleif-L1-data:Leg-4469000001AVO26P9X86
 	gleif-base:hasCity "Naucalpan de Juárez" ;
 	gleif-base:hasCountry lcc-3166-1-add:CTRY-MX ;
 	gleif-base:hasPostalCode "53500" ;
-	gleif-base:hasSubdivision lcc-3166-2-add:REG-MX-MEX ;
+	gleif-base:hasRegion lcc-3166-2-add:REG-MX-MEX ;
 	.
 
 gleif-L1-data:Leg-5493007CICYM7A0SZ714
@@ -263,6 +263,6 @@ gleif-L1-data:Leg-5493007CICYM7A0SZ714
 	gleif-base:hasCity "Querétaro" ;
 	gleif-base:hasCountry lcc-3166-1-add:CTRY-MX ;
 	gleif-base:hasPostalCode "76120" ;
-	gleif-base:hasSubdivision lcc-3166-2-add:REG-MX-QUE ;
+	gleif-base:hasRegion lcc-3166-2-add:REG-MX-QUE ;
 	.
 
