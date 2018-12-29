@@ -20,7 +20,7 @@
 	dct:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
 	dct:rights "Copyright (c) 2018 GLEIF" ;
 	owl:imports
-    <http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ,
+		<http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ,
 		<https://www.gleif.org/ontology/Base/>
 		;
 	.
@@ -73,6 +73,6 @@ gleif-ra:RegistrationAuthorityCode
 		owl:onProperty gleif-base:isRegisteredIn ;
 		owl:hasValue gleif-ra:RAregistry ;
 	] ;
-	skos:definition "an identifier that uniquely identifies a business registry, and is associated with a registration authority and jurisdiction, issued by the Global Legal Entity Identifier Foundation (GLEIF)" ;
+	skos:definition "The reference code of the registration authority, taken from the Registration Authorities Code List maintained by GLEIF." ;
 	.
 
