@@ -1,5 +1,5 @@
 # baseURI: https://www.gleif.org/ontology/EntityLegalForm/
-# imports: http://www.omg.org/spec/LCC/Countries/CountryRepresentation/ .
+# imports: http://www.omg.org/spec/LCC/Countries/CountryRepresentation/
 # imports: https://www.gleif.org/ontology/Base/
 
 @base <https://www.gleif.org/ontology/EntityLegalForm/> .
@@ -19,28 +19,38 @@
 	dct:abstract "This ontology defines concepts for Entity Legal Forms" ;
 	dct:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
 	dct:rights "Copyright (c) 2018 GLEIF" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	owl:imports
-    <http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ,
+		<http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ,
 		<https://www.gleif.org/ontology/Base/>
 		;
-	.
-
-gleif-elf:ActiveStatus
-	a
-		owl:NamedIndividual ,
-		gleif-elf:ELFRegistrationStatus
-		;
-	rdfs:label "active status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
-	skos:definition "status indicating that the registration is active" ;
-	gleif-base:hasTag "ACTV" ;
 	.
 
 gleif-elf:ELFRegistrationStatus
 	a owl:Class ;
 	rdfs:subClassOf gleif-base:RegistrationStatus ;
 	rdfs:label "ELF registration status" ;
-	skos:definition "status of an entry in a entity legal form registry that conforms to ISO 20275 and the Global Legal Entity Identifier Foundation (GLEIF) Common Data Format (CDF)" ;
+	skos:definition "Status of an entry in a entity legal form registry that conforms to ISO 20275" ;
+	.
+
+gleif-elf:ELFRegistrationStatusActive
+	a
+		owl:NamedIndividual ,
+		gleif-elf:ELFRegistrationStatus
+		;
+	rdfs:label "active" ;
+	skos:definition "status indicating that the registration is active" ;
+	gleif-base:hasTag "ACTV" ;
+	.
+
+gleif-elf:ELFRegistrationStatusInactive
+	a
+		owl:NamedIndividual ,
+		gleif-elf:ELFRegistrationStatus
+		;
+	rdfs:label "inactive" ;
+	skos:definition "status indicating that the registration is inactive" ;
+	gleif-base:hasTag "INAC" ;
 	.
 
 gleif-elf:ELFregistry
@@ -54,12 +64,6 @@ gleif-elf:ELFregistry
 gleif-elf:EntityLegalForm
 	a owl:Class ;
 	rdfs:subClassOf
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasLastModificationDate ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-			owl:onDataRange xsd:dateTime ;
-		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasLocalName ;
@@ -84,6 +88,12 @@ gleif-elf:EntityLegalForm
 		] ,
 		[
 			a owl:Restriction ;
+			owl:onProperty gleif-base:hasLastModificationDate ;
+			owl:onDataRange xsd:dateTime ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
 			owl:onProperty gleif-base:hasCoverageArea ;
 			owl:someValuesFrom lcc-cr:GeographicRegion ;
 		] ,
@@ -94,8 +104,7 @@ gleif-elf:EntityLegalForm
 		]
 		;
 	rdfs:label "entity legal form" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
-	skos:definition "a classifier for a legal entity that indicates the nature of that entity as defined from a legal or regulatory perspective, in the jurisdiction in which it was established" ;
+	skos:definition "The legal form of the entity, taken from the ISO Entity Legal Form (ELF) code list maintained by GLEIF. " ;
 	.
 
 gleif-elf:EntityLegalFormIdentifier
@@ -110,23 +119,11 @@ gleif-elf:EntityLegalFormIdentifier
 		]
 		;
 	rdfs:label "entity legal form identifier" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	owl:equivalentClass [
 		a owl:Restriction ;
 		owl:onProperty gleif-base:isRegisteredIn ;
 		owl:hasValue gleif-elf:ELFregistry ;
 	] ;
-	skos:definition "a code that uniquely identifies an entity legal form as defined in ISO 20275" ;
-	.
-
-gleif-elf:InactiveStatus
-	a
-		owl:NamedIndividual ,
-		gleif-elf:ELFRegistrationStatus
-		;
-	rdfs:label "inactive status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
-	skos:definition "status indicating that the registration is inactive" ;
-	gleif-base:hasTag "INAC" ;
+	skos:definition "A current code from the GLEIF-maintained list MUST be used. Values of the LegalFormEnum code list are maintained by GLEIF on behalf of ISO through the Entity Legal Form (ELF) as defined in ISO 20275." ;
 	.
 
