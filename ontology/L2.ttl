@@ -482,7 +482,7 @@ gleif-L2:hasRelationshipStatus
 	a owl:ObjectProperty ;
 	rdfs:label "has relationship status" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
-	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:domain gleif-base:LegalEntityRelationship ;
 	rdfs:range gleif-L2:RelationshipStatus ;
 	skos:definition "indicates the status of the relationship (i.e., active, inactive)" ;
 	.
