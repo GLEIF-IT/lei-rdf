@@ -41,16 +41,16 @@ gleif-L2:AccountingConsolidation
 	skos:definition "Accounting consolidation holds when '[in the] financial statements of a group [...] the assets, liabilities, equity, income, expenses and cash flows of the parent and its subsidiaries are presented as those of a single economic entity'." ;
 	.
 
-gleif-L2:AccountingSource
+gleif-L2:AccountingStandard
 	a owl:Class ;
-	rdfs:label "accounting source" ;
+	rdfs:label "accounting standard" ;
 	skos:definition "the type of accounting standard used to source consolidation information, which is based on reported accounting roll-ups" ;
 	.
 
-gleif-L2:AccountingSourceIFRS
+gleif-L2:AccountingStandardIFRS
 	a
 		owl:NamedIndividual ,
-		gleif-L2:AccountingSource
+		gleif-L2:AccountingStandard
 		;
 	rdfs:label "IFRS" ;
 	dct:source "http://www.ifrs.org"^^xs:anyURI ;
@@ -58,20 +58,20 @@ gleif-L2:AccountingSourceIFRS
 	gleif-base:hasTag "IFRS" ;
 	.
 
-gleif-L2:AccountingSourceOtherAccountingStandard
+gleif-L2:AccountingStandardOtherAccountingStandard
 	a
 		owl:NamedIndividual ,
-		gleif-L2:AccountingSource
+		gleif-L2:AccountingStandard
 		;
 	rdfs:label "other accounting standard" ;
 	skos:definition "A financial reporting (accounting) standard not otherwise listed in the latest version of the relationship data file format." ;
 	gleif-base:hasTag "OTHER_ACCOUNTING_STANDARD" ;
 	.
 
-gleif-L2:AccountingSourceUSGAAP
+gleif-L2:AccountingStandardUSGAAP
 	a
 		owl:NamedIndividual ,
-		gleif-L2:AccountingSource
+		gleif-L2:AccountingStandard
 		;
 	rdfs:label "US GAAP" ;
 	skos:definition "United States-Generally Accepted Accounting Principles." ;
@@ -410,12 +410,12 @@ gleif-L2:hasAccountingPeriod
 	skos:definition "The dates in this Period indicate the accounting period covered by the most recent validation documents for this relationship." ;
 	.
 
-gleif-L2:hasAccountingSource
+gleif-L2:hasAccountingStandard
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf gleif-base:isQualifiedBy ;
-	rdfs:label "has accounting source" ;
+	rdfs:label "has accounting standard" ;
 	rdfs:domain gleif-L2:AccountingConsolidation ;
-	rdfs:range gleif-L2:AccountingSource ;
+	rdfs:range gleif-L2:AccountingStandard ;
 	skos:definition "The accounting standard applied to determine the definition of e.g. ultimate or direct accounting consolidating parent for the relationship. The relevant accounting standard is that applicable to the owner (the 'parent' entity)." ;
 	.
 
