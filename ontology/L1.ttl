@@ -30,15 +30,8 @@
 
 gleif-L1:Branch
 	a owl:Class ;
-	rdfs:subClassOf
-		gleif-base:LegalEntity ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:isMemberOf ;
-			owl:someValuesFrom gleif-base:LegalEntity ;
-		]
-		;
-	rdfs:label "fund" ;
+	rdfs:subClassOf gleif-base:LegalEntity ;
+	rdfs:label "branch" ;
 	skos:definition "The legal entity is a branch of another legal entity" ;
 	.
 
