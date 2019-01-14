@@ -320,6 +320,7 @@ gleif-L1:hasAdditionalValidationIdentifier
 
 gleif-L1:hasHeadquartersAddress
 	a owl:ObjectProperty ;
+	rdfs:subPropertyOf gleif-base:hasAddress ;
 	rdfs:label "has headquarters address" ;
 	skos:definition "The address of the headquarters of the Entity." ;
 	.
