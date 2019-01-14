@@ -286,7 +286,7 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 		]
 		;
 	rdfs:label "legal entity identifier registry entry" ;
-	skos:definition "The Registration container element which contains all information on the legal entity's LEI registration with the Managing LOU.>" ;
+	skos:definition "The Registration container element which contains all information on the legal entity's LEI registration with the Managing LOU." ;
 	.
 
 gleif-L1:LocalOperatingUnit
