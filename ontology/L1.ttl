@@ -53,6 +53,18 @@ gleif-L1:LEIRegistrationStatus
 	a owl:Class ;
 	rdfs:subClassOf gleif-base:RegistrationStatus ;
 	rdfs:label "legal entity identifier registration status" ;
+	owl:oneOf (
+		gleif-L1:LEIRegistrationStatusAnnulled
+		gleif-L1:LEIRegistrationStatusCancelled
+		gleif-L1:LEIRegistrationStatusDuplicate
+		gleif-L1:LEIRegistrationStatusIssued
+		gleif-L1:LEIRegistrationStatusLapsed
+		gleif-L1:LEIRegistrationStatusMerged
+		gleif-L1:LEIRegistrationStatusPendingArchival
+		gleif-L1:LEIRegistrationStatusPendingValidation
+		gleif-L1:LEIRegistrationStatusRetired
+		gleif-L1:LEIRegistrationStatusTransferred
+	) ;
 	skos:definition "The status of the legal entity's LEI registration with the Managing LOU." ;
 	.
 
@@ -170,6 +182,12 @@ gleif-L1:LEIValidationSourceKind
 	a owl:Class ;
 	rdfs:subClassOf gleif-base:RegistrationStatus ;
 	rdfs:label "LEI validation source kind" ;
+	owl:oneOf (
+		gleif-L1:LEIValidationSourceKindEntitySuppliedOnly
+		gleif-L1:LEIValidationSourceKindFullyCorroborated
+		gleif-L1:LEIValidationSourceKindPartiallyCorroborated
+		gleif-L1:LEIValidationSourceKindPending
+	) ;
 	skos:definition "The level of validation of the reference data provided by the registrant." ;
 	.
 
@@ -382,5 +400,31 @@ gleif-L1:hasValidationSources
 	rdfs:label "has validation sources" ;
 	rdfs:range gleif-L1:LEIValidationSourceKind ;
 	skos:definition "The level of validation of the reference data provided by the registrant." ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-L1:LEIRegistrationStatusAnnulled
+		gleif-L1:LEIRegistrationStatusCancelled
+		gleif-L1:LEIRegistrationStatusDuplicate
+		gleif-L1:LEIRegistrationStatusIssued
+		gleif-L1:LEIRegistrationStatusLapsed
+		gleif-L1:LEIRegistrationStatusMerged
+		gleif-L1:LEIRegistrationStatusPendingArchival
+		gleif-L1:LEIRegistrationStatusPendingValidation
+		gleif-L1:LEIRegistrationStatusRetired
+		gleif-L1:LEIRegistrationStatusTransferred
+	) ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-L1:LEIValidationSourceKindEntitySuppliedOnly
+		gleif-L1:LEIValidationSourceKindFullyCorroborated
+		gleif-L1:LEIValidationSourceKindPartiallyCorroborated
+		gleif-L1:LEIValidationSourceKindPending
+	) ;
 	.
 
