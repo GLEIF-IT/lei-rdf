@@ -34,22 +34,23 @@ gleif-base:EntityExpirationReason
 
 gleif-base:EntityExpirationReasonCorporateAction
 	a gleif-base:EntityExpirationReason ;
-	rdfs:label "CORPORATE_ACTION" ;
+	rdfs:label "corporate action" ;
 	skos:definition "The entity was acquired or merged with another entity." ;
+	gleif-base:hasTag "CORPORATE_ACTION" ;
 	.
 
 gleif-base:EntityExpirationReasonDissolved
 	a gleif-base:EntityExpirationReason ;
-	rdfs:label "DISSOLVED" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	rdfs:label "dissolved" ;
 	skos:definition "The entity ceased to operate." ;
+	gleif-base:hasTag "DISSOLVED" ;
 	.
 
 gleif-base:EntityExpirationReasonOther
 	a gleif-base:EntityExpirationReason ;
-	rdfs:label "OTHER" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
-	skos:definition "The reason for expiry is neither of DISSOLVED nor CORPORATE_ACTION." ;
+	rdfs:label "other" ;
+	skos:definition "The reason for expiry is neither of dissolved nor corporate action." ;
+	gleif-base:hasTag "OTHER" ;
 	.
 
 gleif-base:EntityStatus
