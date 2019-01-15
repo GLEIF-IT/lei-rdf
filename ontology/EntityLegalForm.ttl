@@ -30,6 +30,10 @@ gleif-elf:ELFRegistrationStatus
 	a owl:Class ;
 	rdfs:subClassOf gleif-base:RegistrationStatus ;
 	rdfs:label "ELF registration status" ;
+	owl:oneOf (
+		gleif-elf:ELFRegistrationStatusActive
+		gleif-elf:ELFRegistrationStatusInactive
+	) ;
 	skos:definition "Status of an entry in a entity legal form registry that conforms to ISO 20275" ;
 	.
 
@@ -125,5 +129,13 @@ gleif-elf:EntityLegalFormIdentifier
 		owl:hasValue gleif-elf:ELFregistry ;
 	] ;
 	skos:definition "A current code from the GLEIF-maintained list MUST be used. Values of the LegalFormEnum code list are maintained by GLEIF on behalf of ISO through the Entity Legal Form (ELF) as defined in ISO 20275." ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-elf:ELFRegistrationStatusActive
+		gleif-elf:ELFRegistrationStatusInactive
+	) ;
 	.
 

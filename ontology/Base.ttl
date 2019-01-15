@@ -24,6 +24,11 @@
 gleif-base:EntityExpirationReason
 	a owl:Class ;
 	rdfs:label "entity expiration reason" ;
+	owl:oneOf (
+		gleif-base:EntityExpirationReasonCorporateAction
+		gleif-base:EntityExpirationReasonDissolved
+		gleif-base:EntityExpirationReasonOther
+	) ;
 	skos:definition "The reason that a legal entity ceased to exist and/or operate." ;
 	.
 
@@ -50,6 +55,10 @@ gleif-base:EntityExpirationReasonOther
 gleif-base:EntityStatus
 	a owl:Class ;
 	rdfs:label "entity status" ;
+	owl:oneOf (
+		gleif-base:EntityStatusActive
+		gleif-base:EntityStatusInactive
+	) ;
 	skos:definition "The operational and/or legal registration status of the entity (may be ACTIVE or INACTIVE)" ;
 	.
 
@@ -670,5 +679,22 @@ gleif-base:scopes
 	a owl:ObjectProperty ;
 	rdfs:label "scopes" ;
 	skos:definition "determines or identifies the essential qualities or meaning of, discovers and sets forth the meaning of, fixes or marks the limits of, demarcates" ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-base:EntityExpirationReasonCorporateAction
+		gleif-base:EntityExpirationReasonDissolved
+		gleif-base:EntityExpirationReasonOther
+	) ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-base:EntityStatusActive
+		gleif-base:EntityStatusInactive
+	) ;
 	.
 
