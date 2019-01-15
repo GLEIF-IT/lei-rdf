@@ -44,6 +44,11 @@ gleif-L2:AccountingConsolidation
 gleif-L2:AccountingStandard
 	a owl:Class ;
 	rdfs:label "accounting standard" ;
+	owl:oneOf (
+		gleif-L2:AccountingStandardIFRS
+		gleif-L2:AccountingStandardOtherAccountingStandard
+		gleif-L2:AccountingStandardUSGAAP
+	) ;
 	skos:definition "the type of accounting standard used to source consolidation information, which is based on reported accounting roll-ups" ;
 	.
 
@@ -149,6 +154,17 @@ gleif-L2:RelationshipRegistrationStatus
 	a owl:Class ;
 	rdfs:subClassOf gleif-base:RegistrationStatus ;
 	rdfs:label "relationship registration status" ;
+	owl:oneOf (
+		gleif-L2:RelationshipRegistrationStatusAnnulled
+		gleif-L2:RelationshipRegistrationStatusDuplicate
+		gleif-L2:RelationshipRegistrationStatusLapsed
+		gleif-L2:RelationshipRegistrationStatusPendingArchival
+		gleif-L2:RelationshipRegistrationStatusPendingTransfer
+		gleif-L2:RelationshipRegistrationStatusPendingValidation
+		gleif-L2:RelationshipRegistrationStatusPublished
+		gleif-L2:RelationshipRegistrationStatusRetired
+		gleif-L2:RelationshipRegistrationStatusTransferred
+	) ;
 	skos:definition "The status of the legal entity's relationship record registration with the Managing LOU." ;
 	.
 
@@ -245,6 +261,10 @@ gleif-L2:RelationshipRegistrationStatusTransferred
 gleif-L2:RelationshipStatus
 	a owl:Class ;
 	rdfs:label "relationship status" ;
+	owl:oneOf (
+		gleif-L2:RelationshipStatusActive
+		gleif-L2:RelationshipStatusInactive
+	) ;
 	skos:definition "The status of the legal entities' relationship itself: active or inactive." ;
 	.
 
@@ -271,6 +291,13 @@ gleif-L2:RelationshipStatusInactive
 gleif-L2:RelationshipValidationDocumentsKind
 	a owl:Class ;
 	rdfs:label "relationship validation documents kind" ;
+	owl:oneOf (
+		gleif-L2:RelationshipValidationDocumentsKindAccountsFiling
+		gleif-L2:RelationshipValidationDocumentsKindContracts
+		gleif-L2:RelationshipValidationDocumentsKindOtherOfficialDocuments
+		gleif-L2:RelationshipValidationDocumentsKindRegulatoryFiling
+		gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments
+	) ;
 	skos:definition "Type of source document(s) used for validating the relationship." ;
 	.
 
@@ -327,6 +354,12 @@ gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments
 gleif-L2:RelationshipValidationSourceKind
 	a owl:Class ;
 	rdfs:label "relationship validation source kind" ;
+	owl:oneOf (
+		gleif-L2:RelationshipValidationSourceKindEntitySuppliedOnly
+		gleif-L2:RelationshipValidationSourceKindFullyCorroborated
+		gleif-L2:RelationshipValidationSourceKindPartiallyCorroborated
+		gleif-L2:RelationshipValidationSourceKindPending
+	) ;
 	skos:definition "Level of relationship validation." ;
 	.
 
@@ -508,5 +541,58 @@ gleif-L2:hasValidationSources
 	rdfs:domain gleif-L2:LegalEntityRelationshipRecord ;
 	rdfs:range gleif-L2:RelationshipValidationSourceKind ;
 	skos:definition "Level of relationship validation." ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-L2:AccountingStandardIFRS
+		gleif-L2:AccountingStandardOtherAccountingStandard
+		gleif-L2:AccountingStandardUSGAAP
+	) ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-L2:RelationshipRegistrationStatusAnnulled
+		gleif-L2:RelationshipRegistrationStatusDuplicate
+		gleif-L2:RelationshipRegistrationStatusLapsed
+		gleif-L2:RelationshipRegistrationStatusPendingArchival
+		gleif-L2:RelationshipRegistrationStatusPendingTransfer
+		gleif-L2:RelationshipRegistrationStatusPendingValidation
+		gleif-L2:RelationshipRegistrationStatusPublished
+		gleif-L2:RelationshipRegistrationStatusRetired
+		gleif-L2:RelationshipRegistrationStatusTransferred
+	) ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-L2:RelationshipStatusActive
+		gleif-L2:RelationshipStatusInactive
+	) ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-L2:RelationshipValidationDocumentsKindAccountsFiling
+		gleif-L2:RelationshipValidationDocumentsKindContracts
+		gleif-L2:RelationshipValidationDocumentsKindOtherOfficialDocuments
+		gleif-L2:RelationshipValidationDocumentsKindRegulatoryFiling
+		gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments
+	) ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-L2:RelationshipValidationSourceKindEntitySuppliedOnly
+		gleif-L2:RelationshipValidationSourceKindFullyCorroborated
+		gleif-L2:RelationshipValidationSourceKindPartiallyCorroborated
+		gleif-L2:RelationshipValidationSourceKindPending
+	) ;
 	.
 
