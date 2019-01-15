@@ -137,12 +137,6 @@ gleif-base:LegalEntity
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasLegalJurisdiction ;
-			owl:onClass lcc-cr:GeographicRegion ;
-			owl:maxQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
 			owl:onProperty gleif-base:hasEntityExpirationReason ;
 			owl:onClass gleif-base:EntityExpirationReason ;
 			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -151,7 +145,19 @@ gleif-base:LegalEntity
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasEntityExpirationDate ;
 			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-			owl:onDatatype xsd:dateTime ;
+			owl:onDataRange xsd:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasLegalJurisdiction ;
+			owl:onClass lcc-cr:GeographicRegion ;
+			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasSuccessor ;
+			owl:onClass gleif-base:LegalEntity ;
+			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
@@ -248,6 +254,11 @@ gleif-base:PhysicalAddress
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasAddressNumber ;
+			owl:maxCardinality "1" ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasAddressNumberWithinBuilding ;
 			owl:maxCardinality "1" ;
 		] ,
 		[
@@ -453,6 +464,7 @@ gleif-base:hasCity
 	a owl:DatatypeProperty ;
 	rdfs:label "has city" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	rdfs:domain gleif-base:PhysicalAddress ;
 	rdfs:range xsd:string ;
 	skos:definition "The mandatory name of the city." ;
 	.
@@ -461,6 +473,7 @@ gleif-base:hasCountry
 	a owl:ObjectProperty ;
 	rdfs:label "has country" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	rdfs:domain gleif-base:PhysicalAddress ;
 	rdfs:range lcc-cr:Country ;
 	skos:definition "The country, based on the 2-character ISO 3166-1 country code." ;
 	.
@@ -561,6 +574,15 @@ gleif-base:hasLocalName
 	rdfs:subPropertyOf gleif-base:hasName ;
 	rdfs:label "has name" ;
 	skos:definition "a name in a language local to the entity identified, may be English" ;
+	.
+
+gleif-base:hasMailRouting
+	a owl:DatatypeProperty ;
+	rdfs:label "mail routing" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	rdfs:domain gleif-base:PhysicalAddress ;
+	rdfs:range xsd:string ;
+	skos:definition "Optional free text address line to hold content from other address lines containing explicit routing information (this element's presence indicates that this address is a routing / 'care of' address)." ;
 	.
 
 gleif-base:hasMember
@@ -733,15 +755,6 @@ gleif-base:isRegisteredIn
 	rdfs:label "is registered in" ;
 	rdfs:range gleif-base:Registry ;
 	skos:definition "indicates the registry that something is registered in" ;
-	.
-
-gleif-base:mailRouting
-	a owl:DatatypeProperty ;
-	rdfs:label "mail routing" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
-	rdfs:domain gleif-base:PhysicalAddress ;
-	rdfs:range xsd:string ;
-	skos:definition "Optional free text address line to hold content from other address lines containing explicit routing information (this element's presence indicates that this address is a routing / 'care of' address)." ;
 	.
 
 gleif-base:manages

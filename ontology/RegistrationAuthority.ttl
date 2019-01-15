@@ -31,6 +31,16 @@ gleif-ra:BusinessRegistry
 		gleif-base:Registry ,
 		[
 			a owl:Restriction ;
+			owl:onProperty gleif-base:hasLocalLegalName ;
+			owl:cardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasTranslatedEnglishName ;
+			owl:cardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
 			owl:onProperty gleif-base:hasWebsite ;
 			owl:minCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
@@ -44,16 +54,6 @@ gleif-ra:BusinessRegistry
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasCoverageArea ;
 			owl:someValuesFrom lcc-cr:GeographicRegion ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasEnglishName ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasLocalLegalName ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
 		;
 	rdfs:label "business registry" ;

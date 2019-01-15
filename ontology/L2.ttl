@@ -38,17 +38,17 @@ gleif-L2:AccountingConsolidation
 			a owl:Restriction ;
 			owl:onProperty gleif-L2:hasOwnershipPercentage ;
 			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-			owl:onDatatype xsd:decimal ;
+			owl:onDataRange xsd:decimal ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L2:hasOwner ;
+			owl:onProperty gleif-base:hasOwner ;
 			owl:onClass gleif-base:LegalEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L2:hasSubsidiary ;
+			owl:onProperty gleif-base:hasSubsidiary ;
 			owl:onClass gleif-base:LegalEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
@@ -125,13 +125,13 @@ gleif-L2:LegalEntityRelationshipRecord
 		gleif-base:RegistryEntry ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasAccountingPeriod ;
+			owl:onProperty gleif-L2:hasAccountingPeriod ;
 			owl:onClass gleif-base:Period ;
 			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasDocumentFilingPeriod ;
+			owl:onProperty gleif-L2:hasDocumentFilingPeriod ;
 			owl:onClass gleif-base:Period ;
 			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
@@ -145,12 +145,6 @@ gleif-L2:LegalEntityRelationshipRecord
 			a owl:Restriction ;
 			owl:onProperty gleif-L2:hasValidationReference ;
 			owl:minCardinality "0"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasValidationAuthority ;
-			owl:onClass gleif-base:RegistrationAuthority ;
-			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
