@@ -179,6 +179,12 @@ gleif-L2:LegalEntityRelationshipRecord
 		] ,
 		[
 			a owl:Restriction ;
+			owl:onProperty gleif-base:hasRegistrationStatus ;
+			owl:onClass gleif-L2:RelationshipRegistrationStatus ;
+			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
 			owl:onProperty gleif-base:hasInitialRegistrationDate ;
 			owl:onDataRange xs:dateTime ;
 			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
@@ -188,11 +194,6 @@ gleif-L2:LegalEntityRelationshipRecord
 			owl:onProperty gleif-base:hasLastModificationDate ;
 			owl:onDataRange xs:dateTime ;
 			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasRegistrationStatus ;
-			owl:someValuesFrom gleif-L2:RelationshipRegistrationStatus ;
 		]
 		;
 	rdfs:label "legal entity relationship record" ;

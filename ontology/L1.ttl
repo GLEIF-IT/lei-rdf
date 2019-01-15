@@ -28,6 +28,46 @@
 		;
 	.
 
+gleif-base:LegalEntity
+	a owl:Class ;
+	rdfs:subClassOf
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasLegalFormText ;
+			owl:maxCardinality "1"^^xs:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasRegistrationIdentifier ;
+			owl:onClass gleif-base:RegistryIdentifier ;
+			owl:maxQualifiedCardinality "1"^^xs:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasLegalForm ;
+			owl:onClass gleif-elf:EntityLegalForm ;
+			owl:maxQualifiedCardinality "1"^^xs:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasTradingOrOperationalName ;
+			owl:minCardinality "0"^^xs:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasHeadquartersAddress ;
+			owl:onClass gleif-base:PhysicalAddress ;
+			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasLegalAddress ;
+			owl:onClass gleif-base:PhysicalAddress ;
+			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
+		]
+		;
+	.
+
 gleif-L1:Branch
 	a owl:Class ;
 	rdfs:subClassOf gleif-base:LegalEntity ;
@@ -258,9 +298,51 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 		gleif-base:RegistryEntry ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasValidationAuthority ;
-			owl:onClass gleif-base:RegistrationAuthority ;
+			owl:onProperty gleif-base:hasNextRenewalDate ;
+			owl:maxQualifiedCardinality "0"^^xs:nonNegativeInteger ;
+			owl:onDataRange xs:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasValidationIdentifier ;
+			owl:onClass gleif-base:RegistryIdentifier ;
+			owl:maxQualifiedCardinality "1"^^xs:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasAdditionalValidationIdentifier ;
+			owl:onClass gleif-base:RegistryIdentifier ;
 			owl:minQualifiedCardinality "0"^^xs:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasValidationSources ;
+			owl:onClass gleif-L1:LEIValidationSourceKind ;
+			owl:minQualifiedCardinality "1"^^xs:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:records ;
+			owl:onClass gleif-base:LegalEntity ;
+			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasRegistrationStatus ;
+			owl:onClass gleif-L1:LEIRegistrationStatus ;
+			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:comprises ;
+			owl:onClass gleif-L1:LegalEntityIdentifier ;
+			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:isManagedBy ;
+			owl:onClass gleif-L1:LocalOperatingUnit ;
+			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
@@ -273,27 +355,6 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 			owl:onProperty gleif-base:hasLastModificationDate ;
 			owl:onDataRange xs:dateTime ;
 			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasNextRenewalDate ;
-			owl:onDataRange xs:dateTime ;
-			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:comprises ;
-			owl:someValuesFrom gleif-L1:LegalEntityIdentifier ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasRegistrationStatus ;
-			owl:someValuesFrom gleif-L1:LEIRegistrationStatus ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasValidationSources ;
-			owl:someValuesFrom gleif-L1:LEIValidationSourceKind ;
 		]
 		;
 	rdfs:label "legal entity identifier registry entry" ;

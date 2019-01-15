@@ -138,7 +138,19 @@ gleif-base:LegalEntity
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasLegalJurisdiction ;
 			owl:onClass lcc-cr:GeographicRegion ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:maxQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEntityExpirationReason ;
+			owl:onClass gleif-base:EntityExpirationReason ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEntityExpirationDate ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:onDatatype xsd:dateTime ;
 		] ,
 		[
 			a owl:Restriction ;
