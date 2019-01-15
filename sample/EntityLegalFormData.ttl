@@ -15,8 +15,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://www.gleif.org/sample/EntityLegalFormData/>
 	a owl:Ontology ;
@@ -51,7 +50,7 @@ gleif-ELF-data:ELF-H0PO
 gleif-ELF-data:ELFREC-2HBR
 	a gleif-elf:EntityLegalForm ;
 	gleif-base:hasCoverageArea lcc-3166-1-add:GE ;
-	gleif-base:hasInitialRegistrationDate "2017-11-30T00:00:00Z"^^xs:dateTime ;
+	gleif-base:hasInitialRegistrationDate "2017-11-30T00:00:00Z"^^xsd:dateTime ;
 	gleif-base:hasLocalAbbreviation "GmbH"@ge ;
 	gleif-base:hasLocalName "Gesellschaft mit beschränkter Haftung"@ge ;
 	gleif-base:hasRegistrationStatus gleif-elf:ELFRegistrationStatusActive ;
@@ -62,7 +61,7 @@ gleif-ELF-data:ELFREC-2HBR
 gleif-ELF-data:ELFREC-EZNQ
 	a gleif-elf:EntityLegalForm ;
 	gleif-base:hasCoverageArea lcc-3166-2-add:US-OH ;
-	gleif-base:hasInitialRegistrationDate "2017-11-30T00:00:00Z"^^xs:dateTime ;
+	gleif-base:hasInitialRegistrationDate "2017-11-30T00:00:00Z"^^xsd:dateTime ;
 	gleif-base:hasLocalAbbreviation
 		"L.L.C."@ge ,
 		"LLC"@ge ,
@@ -79,7 +78,7 @@ gleif-ELF-data:ELFREC-EZNQ
 gleif-ELF-data:ELFREC-H0PO
 	a gleif-elf:EntityLegalForm ;
 	gleif-base:hasCoverageArea lcc-3166-1-add:GB ;
-	gleif-base:hasInitialRegistrationDate "2017-11-30T00:00:00Z"^^xs:dateTime ;
+	gleif-base:hasInitialRegistrationDate "2017-11-30T00:00:00Z"^^xsd:dateTime ;
 	gleif-base:hasLocalAbbreviation
 		"LTD"@en ,
 		"LTD."@en ,

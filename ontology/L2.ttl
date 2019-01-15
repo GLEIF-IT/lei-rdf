@@ -11,14 +11,13 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://www.gleif.org/ontology/L2/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF L2 Ontology" ;
 	rdfs:comment "Ontology generated from GLEIF L2 data in RR 1.1 format" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#"^^xs:anyURI ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#"^^xsd:anyURI ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/>
@@ -67,7 +66,7 @@ gleif-L2:AccountingConsolidation
 		]
 		;
 	rdfs:label "accounting consolidation" ;
-	dct:source "http://www.iasplus.com/en/standards/ias/ias27-2011"^^xs:anyURI ;
+	dct:source "http://www.iasplus.com/en/standards/ias/ias27-2011"^^xsd:anyURI ;
 	skos:definition "Accounting consolidation holds when '[in the] financial statements of a group [...] the assets, liabilities, equity, income, expenses and cash flows of the parent and its subsidiaries are presented as those of a single economic entity'." ;
 	.
 
@@ -88,7 +87,7 @@ gleif-L2:AccountingStandardIFRS
 		gleif-L2:AccountingStandard
 		;
 	rdfs:label "IFRS" ;
-	dct:source "http://www.ifrs.org"^^xs:anyURI ;
+	dct:source "http://www.ifrs.org"^^xsd:anyURI ;
 	skos:definition "International Financial Reporting Standard (developed by the International Accounting Standards Board – IASB)" ;
 	gleif-base:hasTag "IFRS" ;
 	.
@@ -128,72 +127,72 @@ gleif-L2:LegalEntityRelationshipRecord
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasAccountingPeriod ;
 			owl:onClass gleif-base:Period ;
-			owl:maxQualifiedCardinality "1"^^xs:nonNegativeInteger ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasDocumentFilingPeriod ;
 			owl:onClass gleif-base:Period ;
-			owl:maxQualifiedCardinality "1"^^xs:nonNegativeInteger ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasNextRenewalDate ;
-			owl:maxQualifiedCardinality "1"^^xs:nonNegativeInteger ;
-			owl:onDataRange xs:dateTime ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:onDataRange xsd:dateTime ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L2:hasValidationReference ;
-			owl:minCardinality "0"^^xs:nonNegativeInteger ;
+			owl:minCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasValidationAuthority ;
 			owl:onClass gleif-base:RegistrationAuthority ;
-			owl:minQualifiedCardinality "0"^^xs:nonNegativeInteger ;
+			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L2:hasValidationDocuments ;
 			owl:onClass gleif-L2:RelationshipValidationDocumentsKind ;
-			owl:minQualifiedCardinality "1"^^xs:nonNegativeInteger ;
+			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L2:hasValidationSources ;
 			owl:onClass gleif-L2:RelationshipValidationSourceKind ;
-			owl:minQualifiedCardinality "1"^^xs:nonNegativeInteger ;
+			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:records ;
 			owl:onClass gleif-base:LegalEntityRelationship ;
-			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:isManagedBy ;
 			owl:onClass gleif-L1:LocalOperatingUnit ;
-			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasRegistrationStatus ;
 			owl:onClass gleif-L2:RelationshipRegistrationStatus ;
-			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasInitialRegistrationDate ;
-			owl:onDataRange xs:dateTime ;
-			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
+			owl:onDataRange xsd:dateTime ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasLastModificationDate ;
-			owl:onDataRange xs:dateTime ;
-			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
+			owl:onDataRange xsd:dateTime ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
 		;
 	rdfs:label "legal entity relationship record" ;
@@ -549,7 +548,7 @@ gleif-L2:hasOwnershipPercentage
 	rdfs:subPropertyOf gleif-base:isQuantifiedBy ;
 	rdfs:label "has ownership percentage" ;
 	rdfs:domain gleif-L2:AccountingConsolidation ;
-	rdfs:range xs:decimal ;
+	rdfs:range xsd:decimal ;
 	skos:definition "the percentage of the subsidiary owned by the owner, if known" ;
 	.
 
