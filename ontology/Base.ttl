@@ -128,12 +128,25 @@ gleif-base:Identifier
 
 gleif-base:LegalEntity
 	a owl:Class ;
-	rdfs:subClassOf [
-		a owl:Restriction ;
-		owl:onProperty gleif-base:hasLegalJurisdiction ;
-		owl:onClass lcc-cr:GeographicRegion ;
-		owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-	] ;
+	rdfs:subClassOf
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasLocalLegalName ;
+			owl:cardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasLegalJurisdiction ;
+			owl:onClass lcc-cr:GeographicRegion ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEntityStatus ;
+			owl:onClass gleif-base:LegalEntityStatus ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
 	rdfs:label "legal entity" ;
 	dct:source
 		"Barron's Dictionary of Banking Terms, Sixth Edition, 2012, definition of legal entity" ,
@@ -173,23 +186,80 @@ gleif-base:LegalEntityRelationship
 
 gleif-base:Period
 	a owl:Class ;
-	rdfs:subClassOf [
-		a owl:Restriction ;
-		owl:onProperty gleif-base:hasStart ;
-		owl:onDataRange xsd:dateTime ;
-		owl:qualifiedCardinality "1" ;
-	] ;
+	rdfs:subClassOf
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEnd ;
+			owl:maxQualifiedCardinality "1" ;
+			owl:onDataRange xsd:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasStart ;
+			owl:onDataRange xsd:dateTime ;
+			owl:qualifiedCardinality "1" ;
+		]
+		;
 	rdfs:label "period"@en ;
 	skos:definition "A period of time, with at least a start time, and possibly an end." ;
 	.
 
 gleif-base:PhysicalAddress
 	a owl:Class ;
-	rdfs:subClassOf [
-		a owl:Restriction ;
-		owl:onProperty gleif-base:hasCity ;
-		owl:cardinality "1" ;
-	] ;
+	rdfs:subClassOf
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasAddressLine1 ;
+			owl:cardinality "1" ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasCity ;
+			owl:cardinality "1" ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasAddressLine2 ;
+			owl:maxCardinality "1" ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasAddressLine3 ;
+			owl:maxCardinality "1" ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasAddressLine4 ;
+			owl:maxCardinality "1" ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasAddressNumber ;
+			owl:maxCardinality "1" ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasMailRouting ;
+			owl:maxCardinality "1" ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasPostalCode ;
+			owl:maxCardinality "1" ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasRegion ;
+			owl:onClass lcc-cr:Region ;
+			owl:maxQualifiedCardinality "1" ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasCountry ;
+			owl:onClass lcc-cr:Country ;
+			owl:qualifiedCardinality "1" ;
+		]
+		;
 	rdfs:label "physical address"@en ;
 	skos:definition "a physical address where communications can be addressed, papers served or representatives located for any kind of organization or person" ;
 	skos:scopeNote "An address is a collection of information, presented in a mostly fixed format, used for describing the location of a building, apartment, or other structure or a plot of land, generally using political boundaries and street names as references, along with other identifiers such as house or apartment numbers.  Some addresses also contain special codes to aid routing of mail and packages, such as a ZIP code or post code. (Wikipedia)" ;
