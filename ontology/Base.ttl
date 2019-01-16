@@ -381,6 +381,26 @@ gleif-base:hasASCIIName
 	skos:definition "the name used to refer to a person or organization in 7 bit ASCII text (ISO 646); also valid UNICODE (ISO 10646)" ;
 	.
 
+gleif-base:hasASCIINameAutomatic
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf
+		gleif-base:hasASCIIName ,
+		gleif-base:hasLegalName
+		;
+	rdfs:label "has ASCII name automatic" ;
+	skos:definition "Legal name of the entity transliterated to ASCII characters, auto-transliterated by the managing LOU." ;
+	.
+
+gleif-base:hasASCIINamePreferred
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf
+		gleif-base:hasASCIIName ,
+		gleif-base:hasLegalName
+		;
+	rdfs:label "has ASCII name preferred" ;
+	skos:definition "Legal name of the entity transliterated to ASCII characters, provided by the entity for this purpose." ;
+	.
+
 gleif-base:hasAbbreviation
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf skos:altLabel ;
@@ -640,7 +660,7 @@ gleif-base:hasStart
 	rdfs:label "has start"@en ;
 	rdfs:domain gleif-base:Period ;
 	rdfs:range xsd:dateTime ;
-	skos:definition "the start time of a period." ;
+	skos:definition "The start time of a period." ;
 	.
 
 gleif-base:hasSubsidiary
@@ -666,28 +686,28 @@ gleif-base:hasTag
 		;
 	rdfs:label "has tag" ;
 	rdfs:range xsd:string ;
-	skos:definition "has a unique combination of alphanumeric characters or binary representation corresponding to the identifier, code, or other element to which it applies" ;
+	skos:definition "Has a unique combination of alphanumeric characters or binary representation corresponding to the identifier, code, or other element to which it applies." ;
 	.
 
 gleif-base:hasTranslatedEnglishName
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasTransliteratedName ;
 	rdfs:label "has legal name" ;
-	skos:definition "the name used to refer to a person or organization, translated into English. Transliterated by definition" ;
+	skos:definition "The name used to refer to a person or organization, translated into English. Transliterated by definition." ;
 	.
 
 gleif-base:hasTransliteratedAbbreviation
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasAbbreviation ;
 	rdfs:label "has name" ;
-	skos:definition "an abbreviation transliterated into a Western alphabet" ;
+	skos:definition "An abbreviation transliterated into a Western alphabet." ;
 	.
 
 gleif-base:hasTransliteratedName
 	a owl:DatatypeProperty ;
-	rdfs:subPropertyOf gleif-base:hasAdditionalName ;
-	rdfs:label "has legal name" ;
-	skos:definition "the name used to refer to a person or organization, converted from original to western text. Not generally the legal name" ;
+	rdfs:subPropertyOf gleif-base:hasASCIIName ;
+	rdfs:label "has transliterated name" ;
+	skos:definition "The name used to refer to a person or organization, converted from original to western text. Not generally the legal name." ;
 	.
 
 gleif-base:hasWebsite
