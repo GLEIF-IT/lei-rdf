@@ -170,13 +170,13 @@ gleif-base:LegalEntityRelationship
 	rdfs:subClassOf
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasOwner ;
+			owl:onProperty gleif-base:hasChild ;
 			owl:onClass gleif-base:LegalEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasSubsidiary ;
+			owl:onProperty gleif-base:hasParent ;
 			owl:onClass gleif-base:LegalEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
@@ -454,6 +454,14 @@ gleif-base:hasAddressNumberWithinBuilding
 	skos:definition "Optional, additional structured version of an internal location number, or range of numbers, contained in one of the address line elements." ;
 	.
 
+gleif-base:hasChild
+	a owl:ObjectProperty ;
+	rdfs:label "has child" ;
+	rdfs:domain gleif-base:LegalEntityRelationship ;
+	rdfs:range gleif-base:LegalEntity ;
+	skos:definition "the legal entity that plays the child role" ;
+	.
+
 gleif-base:hasCity
 	a owl:DatatypeProperty ;
 	rdfs:label "has city" ;
@@ -592,12 +600,12 @@ gleif-base:hasNextRenewalDate
 	skos:definition "the date by which a specific registration in the registry must be renewed or updated" ;
 	.
 
-gleif-base:hasOwner
+gleif-base:hasParent
 	a owl:ObjectProperty ;
-	rdfs:label "has owner" ;
+	rdfs:label "has parent" ;
 	rdfs:domain gleif-base:LegalEntityRelationship ;
 	rdfs:range gleif-base:LegalEntity ;
-	skos:definition "the legal entity that plays the owner role" ;
+	skos:definition "the legal entity that plays the parent role" ;
 	.
 
 gleif-base:hasPostalCode
@@ -628,14 +636,6 @@ gleif-base:hasStart
 	rdfs:domain gleif-base:Period ;
 	rdfs:range xsd:dateTime ;
 	skos:definition "The start time of a period." ;
-	.
-
-gleif-base:hasSubsidiary
-	a owl:ObjectProperty ;
-	rdfs:label "has subsidiary" ;
-	rdfs:domain gleif-base:LegalEntityRelationship ;
-	rdfs:range gleif-base:LegalEntity ;
-	skos:definition "the legal entity that plays the subsidiary role" ;
 	.
 
 gleif-base:hasSuccessor
