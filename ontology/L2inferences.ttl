@@ -1,0 +1,79 @@
+# baseURI: https://www.gleif.org/ontology/L2inferences/
+# imports: https://www.gleif.org/ontology/Base/
+# imports: https://www.gleif.org/ontology/L1/
+# imports: https://www.gleif.org/ontology/L2/
+
+@base <https://www.gleif.org/ontology/L2inferences/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix gleif-L1: <https://www.gleif.org/ontology/L1/> .
+@prefix gleif-L2: <https://www.gleif.org/ontology/L2/> .
+@prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://www.gleif.org/ontology/L2inferences/>
+	a owl:Ontology ;
+	rdfs:label "GLEIF L2 Ontology Inferences" ;
+	rdfs:comment "Ontology that builds on GLEIF L2 ontology to infer additional information" ;
+	owl:imports
+		<https://www.gleif.org/ontology/Base/> ,
+		<https://www.gleif.org/ontology/L1/> ,
+		<https://www.gleif.org/ontology/L2/>
+		;
+	.
+
+gleif-L2:Child
+	a owl:Class ;
+	rdfs:label "child" ;
+	owl:equivalentClass [
+		a owl:Restriction ;
+		owl:onProperty gleif-L2:hasParentConsolidation ;
+		owl:someValuesFrom gleif-L2:AccountingConsolidation ;
+	] ;
+	.
+
+gleif-L2:Parent
+	a owl:Class ;
+	rdfs:label "parent" ;
+	owl:equivalentClass [
+		a owl:Restriction ;
+		owl:onProperty gleif-L2:hasChildConsolidation ;
+		owl:someValuesFrom gleif-L2:AccountingConsolidation ;
+	] ;
+	.
+
+gleif-L2:UltimateParent
+	a owl:Class ;
+	rdfs:label "ultimate parent" ;
+	owl:equivalentClass [
+		a owl:Class ;
+		owl:intersectionOf (
+			gleif-L2:Parent
+			[
+				a owl:Class ;
+				owl:complementOf gleif-L2:Child ;
+			]
+		) ;
+	] ;
+	.
+
+gleif-L2:hasChildConsolidation
+	a owl:ObjectProperty ;
+	rdfs:label "has child consolidation" ;
+	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:range gleif-L2:AccountingConsolidation ;
+	owl:inverseOf gleif-base:hasParent ;
+	skos:definition "child consolidation" ;
+	.
+
+gleif-L2:hasChildEntity
+	rdfs:label "has child entity" ;
+	owl:propertyChainAxiom (
+		gleif-L2:hasChildConsolidation
+		gleif-base:hasChild
+	) ;
+	.
+
