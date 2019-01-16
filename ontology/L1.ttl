@@ -415,7 +415,6 @@ gleif-L1:hasLegalFormText
 	a owl:DatatypeProperty ;
 	rdfs:label "has legal form" ;
 	rdfs:domain gleif-base:LegalEntity ;
-	rdfs:range xsd:string ;
 	skos:definition "A legacy code or textual description for the legal entity's legal form, used until a current code from the GLEIF-maintained list can be used." ;
 	.
 
@@ -423,7 +422,6 @@ gleif-L1:hasPreviousLegalName
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasName ;
 	rdfs:label "has previous legal name" ;
-	rdfs:range xsd:string ;
 	skos:definition "A primary legal name previously used by this entity." ;
 	.
 
@@ -438,7 +436,6 @@ gleif-L1:hasTradingOrOperationalName
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasName ;
 	rdfs:label "has trading or operational name" ;
-	rdfs:range xsd:string ;
 	skos:altLabel
 		"brand name" ,
 		"doing business as" ,
