@@ -89,18 +89,6 @@ gleif-base:GLEIF
 	gleif-base:hasLocalLegalName "Global Legal Entity Identifier Federation" ;
 	.
 
-gleif-base:IdentificationScheme
-	a owl:Class ;
-	rdfs:subClassOf [
-		a owl:Restriction ;
-		owl:onProperty gleif-base:scopes ;
-		owl:someValuesFrom gleif-base:Identifier ;
-	] ;
-	rdfs:label "identification scheme" ;
-	dct:source "ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15" ;
-	skos:definition "system for allocating identifiers to objects" ;
-	.
-
 gleif-base:Identifier
 	a owl:Class ;
 	rdfs:subClassOf
@@ -108,12 +96,6 @@ gleif-base:Identifier
 			a owl:Restriction ;
 			owl:onProperty gleif-base:identifies ;
 			owl:cardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasScope ;
-			owl:onClass gleif-base:IdentificationScheme ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
@@ -648,13 +630,6 @@ gleif-base:hasRegistrationStatus
 	skos:definition "indicates the status of a specific registration, such as for an identifier or license" ;
 	.
 
-gleif-base:hasScope
-	a owl:ObjectProperty ;
-	rdfs:label "has scope" ;
-	owl:inverseOf gleif-base:scopes ;
-	skos:definition "specifies a form of words that conveys the meaning associated with something" ;
-	.
-
 gleif-base:hasStart
 	a owl:DatatypeProperty ;
 	rdfs:label "has start"@en ;
@@ -776,12 +751,6 @@ gleif-base:records
 	rdfs:label "records" ;
 	rdfs:domain gleif-base:RegistryEntry ;
 	skos:definition "the thing which the registry entry is a record of" ;
-	.
-
-gleif-base:scopes
-	a owl:ObjectProperty ;
-	rdfs:label "scopes" ;
-	skos:definition "determines or identifies the essential qualities or meaning of, discovers and sets forth the meaning of, fixes or marks the limits of, demarcates" ;
 	.
 
 []
