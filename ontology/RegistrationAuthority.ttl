@@ -31,6 +31,21 @@ gleif-ra:BusinessRegistry
 		gleif-base:Registry ,
 		[
 			a owl:Restriction ;
+			owl:onProperty gleif-base:hasLocalLegalName ;
+			owl:cardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasTranslatedEnglishName ;
+			owl:cardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasWebsite ;
+			owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
 			owl:onProperty gleif-base:isManagedBy ;
 			owl:onClass gleif-base:RegistrationAuthority ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;

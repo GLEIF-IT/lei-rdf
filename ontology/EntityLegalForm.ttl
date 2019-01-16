@@ -30,6 +30,10 @@ gleif-elf:ELFRegistrationStatus
 	a owl:Class ;
 	rdfs:subClassOf gleif-base:RegistrationStatus ;
 	rdfs:label "ELF registration status" ;
+	owl:oneOf (
+		gleif-elf:ELFRegistrationStatusActive
+		gleif-elf:ELFRegistrationStatusInactive
+	) ;
 	skos:definition "Status of an entry in a entity legal form registry that conforms to ISO 20275" ;
 	.
 
@@ -66,6 +70,16 @@ gleif-elf:EntityLegalForm
 	rdfs:subClassOf
 		[
 			a owl:Restriction ;
+			owl:onProperty gleif-base:hasLocalAbbreviation ;
+			owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasTransliteratedAbbreviation ;
+			owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
 			owl:onProperty gleif-base:hasLocalName ;
 			owl:minCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
@@ -76,31 +90,26 @@ gleif-elf:EntityLegalForm
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasLocalAbbreviation ;
-			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-			owl:onDataRange xsd:string ;
+			owl:onProperty gleif-base:hasRegistrationStatus ;
+			owl:onClass gleif-elf:ELFRegistrationStatus ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasTransliteratedAbbreviation ;
-			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-			owl:onDataRange xsd:string ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasLastModificationDate ;
+			owl:onProperty gleif-base:hasInitialRegistrationDate ;
 			owl:onDataRange xsd:dateTime ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasCoverageArea ;
-			owl:someValuesFrom lcc-cr:GeographicRegion ;
+			owl:onProperty gleif-base:hasLastModificationDate ;
+			owl:onDataRange xsd:dateTime ;
+			owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasRegistrationStatus ;
-			owl:someValuesFrom gleif-elf:ELFRegistrationStatus ;
+			owl:onProperty gleif-base:hasCoverageArea ;
+			owl:someValuesFrom lcc-cr:GeographicRegion ;
 		]
 		;
 	rdfs:label "entity legal form" ;
@@ -125,5 +134,13 @@ gleif-elf:EntityLegalFormIdentifier
 		owl:hasValue gleif-elf:ELFregistry ;
 	] ;
 	skos:definition "A current code from the GLEIF-maintained list MUST be used. Values of the LegalFormEnum code list are maintained by GLEIF on behalf of ISO through the Entity Legal Form (ELF) as defined in ISO 20275." ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-elf:ELFRegistrationStatusActive
+		gleif-elf:ELFRegistrationStatusInactive
+	) ;
 	.
 

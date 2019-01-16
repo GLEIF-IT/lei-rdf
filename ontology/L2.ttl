@@ -11,14 +11,13 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://www.gleif.org/ontology/L2/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF L2 Ontology" ;
 	rdfs:comment "Ontology generated from GLEIF L2 data in RR 1.1 format" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#"^^xs:anyURI ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#"^^xsd:anyURI ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/>
@@ -31,47 +30,82 @@ gleif-L2:AccountingConsolidation
 		gleif-base:LegalEntityRelationship ,
 		[
 			a owl:Restriction ;
+			owl:onProperty gleif-L2:hasRelationshipPeriod ;
+			owl:onClass gleif-base:Period ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L2:hasOwnershipPercentage ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:onDataRange xsd:decimal ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasOwner ;
+			owl:onClass gleif-base:LegalEntity ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasSubsidiary ;
+			owl:onClass gleif-base:LegalEntity ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L2:hasAccountingStandard ;
+			owl:onClass gleif-L2:AccountingStandard ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
 			owl:onProperty gleif-L2:hasRelationshipStatus ;
 			owl:onClass gleif-L2:RelationshipStatus ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
 		;
 	rdfs:label "accounting consolidation" ;
-	dct:source "http://www.iasplus.com/en/standards/ias/ias27-2011"^^xs:anyURI ;
+	dct:source "http://www.iasplus.com/en/standards/ias/ias27-2011"^^xsd:anyURI ;
 	skos:definition "Accounting consolidation holds when '[in the] financial statements of a group [...] the assets, liabilities, equity, income, expenses and cash flows of the parent and its subsidiaries are presented as those of a single economic entity'." ;
 	.
 
-gleif-L2:AccountingSource
+gleif-L2:AccountingStandard
 	a owl:Class ;
-	rdfs:label "accounting source" ;
+	rdfs:label "accounting standard" ;
+	owl:oneOf (
+		gleif-L2:AccountingStandardIFRS
+		gleif-L2:AccountingStandardOtherAccountingStandard
+		gleif-L2:AccountingStandardUSGAAP
+	) ;
 	skos:definition "the type of accounting standard used to source consolidation information, which is based on reported accounting roll-ups" ;
 	.
 
-gleif-L2:AccountingSourceIFRS
+gleif-L2:AccountingStandardIFRS
 	a
 		owl:NamedIndividual ,
-		gleif-L2:AccountingSource
+		gleif-L2:AccountingStandard
 		;
 	rdfs:label "IFRS" ;
-	dct:source "http://www.ifrs.org"^^xs:anyURI ;
+	dct:source "http://www.ifrs.org"^^xsd:anyURI ;
 	skos:definition "International Financial Reporting Standard (developed by the International Accounting Standards Board – IASB)" ;
 	gleif-base:hasTag "IFRS" ;
 	.
 
-gleif-L2:AccountingSourceOtherAccountingStandard
+gleif-L2:AccountingStandardOtherAccountingStandard
 	a
 		owl:NamedIndividual ,
-		gleif-L2:AccountingSource
+		gleif-L2:AccountingStandard
 		;
 	rdfs:label "other accounting standard" ;
 	skos:definition "A financial reporting (accounting) standard not otherwise listed in the latest version of the relationship data file format." ;
 	gleif-base:hasTag "OTHER_ACCOUNTING_STANDARD" ;
 	.
 
-gleif-L2:AccountingSourceUSGAAP
+gleif-L2:AccountingStandardUSGAAP
 	a
 		owl:NamedIndividual ,
-		gleif-L2:AccountingSource
+		gleif-L2:AccountingStandard
 		;
 	rdfs:label "US GAAP" ;
 	skos:definition "United States-Generally Accepted Accounting Principles." ;
@@ -91,37 +125,68 @@ gleif-L2:LegalEntityRelationshipRecord
 		gleif-base:RegistryEntry ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasValidationAuthority ;
-			owl:onClass gleif-base:RegistrationAuthority ;
-			owl:minQualifiedCardinality "0"^^xs:nonNegativeInteger ;
+			owl:onProperty gleif-L2:hasAccountingPeriod ;
+			owl:onClass gleif-base:Period ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasInitialRegistrationDate ;
-			owl:onDataRange xs:dateTime ;
-			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasLastModificationDate ;
-			owl:onDataRange xs:dateTime ;
-			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
+			owl:onProperty gleif-L2:hasDocumentFilingPeriod ;
+			owl:onClass gleif-base:Period ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasNextRenewalDate ;
-			owl:onDataRange xs:dateTime ;
-			owl:qualifiedCardinality "1"^^xs:nonNegativeInteger ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:onDataRange xsd:dateTime ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:comprises ;
-			owl:someValuesFrom gleif-L1:LegalEntityIdentifier ;
+			owl:onProperty gleif-L2:hasValidationReference ;
+			owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L2:hasValidationDocuments ;
+			owl:onClass gleif-L2:RelationshipValidationDocumentsKind ;
+			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L2:hasValidationSources ;
+			owl:onClass gleif-L2:RelationshipValidationSourceKind ;
+			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:records ;
+			owl:onClass gleif-base:LegalEntityRelationship ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:isManagedBy ;
+			owl:onClass gleif-L1:LocalOperatingUnit ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasRegistrationStatus ;
-			owl:someValuesFrom gleif-L2:RelationshipRegistrationStatus ;
+			owl:onClass gleif-L2:RelationshipRegistrationStatus ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasInitialRegistrationDate ;
+			owl:onDataRange xsd:dateTime ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasLastModificationDate ;
+			owl:onDataRange xsd:dateTime ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
 		;
 	rdfs:label "legal entity relationship record" ;
@@ -149,6 +214,17 @@ gleif-L2:RelationshipRegistrationStatus
 	a owl:Class ;
 	rdfs:subClassOf gleif-base:RegistrationStatus ;
 	rdfs:label "relationship registration status" ;
+	owl:oneOf (
+		gleif-L2:RelationshipRegistrationStatusAnnulled
+		gleif-L2:RelationshipRegistrationStatusDuplicate
+		gleif-L2:RelationshipRegistrationStatusLapsed
+		gleif-L2:RelationshipRegistrationStatusPendingArchival
+		gleif-L2:RelationshipRegistrationStatusPendingTransfer
+		gleif-L2:RelationshipRegistrationStatusPendingValidation
+		gleif-L2:RelationshipRegistrationStatusPublished
+		gleif-L2:RelationshipRegistrationStatusRetired
+		gleif-L2:RelationshipRegistrationStatusTransferred
+	) ;
 	skos:definition "The status of the legal entity's relationship record registration with the Managing LOU." ;
 	.
 
@@ -245,6 +321,10 @@ gleif-L2:RelationshipRegistrationStatusTransferred
 gleif-L2:RelationshipStatus
 	a owl:Class ;
 	rdfs:label "relationship status" ;
+	owl:oneOf (
+		gleif-L2:RelationshipStatusActive
+		gleif-L2:RelationshipStatusInactive
+	) ;
 	skos:definition "The status of the legal entities' relationship itself: active or inactive." ;
 	.
 
@@ -271,6 +351,13 @@ gleif-L2:RelationshipStatusInactive
 gleif-L2:RelationshipValidationDocumentsKind
 	a owl:Class ;
 	rdfs:label "relationship validation documents kind" ;
+	owl:oneOf (
+		gleif-L2:RelationshipValidationDocumentsKindAccountsFiling
+		gleif-L2:RelationshipValidationDocumentsKindContracts
+		gleif-L2:RelationshipValidationDocumentsKindOtherOfficialDocuments
+		gleif-L2:RelationshipValidationDocumentsKindRegulatoryFiling
+		gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments
+	) ;
 	skos:definition "Type of source document(s) used for validating the relationship." ;
 	.
 
@@ -327,6 +414,12 @@ gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments
 gleif-L2:RelationshipValidationSourceKind
 	a owl:Class ;
 	rdfs:label "relationship validation source kind" ;
+	owl:oneOf (
+		gleif-L2:RelationshipValidationSourceKindEntitySuppliedOnly
+		gleif-L2:RelationshipValidationSourceKindFullyCorroborated
+		gleif-L2:RelationshipValidationSourceKindPartiallyCorroborated
+		gleif-L2:RelationshipValidationSourceKindPending
+	) ;
 	skos:definition "Level of relationship validation." ;
 	.
 
@@ -410,12 +503,12 @@ gleif-L2:hasAccountingPeriod
 	skos:definition "The dates in this Period indicate the accounting period covered by the most recent validation documents for this relationship." ;
 	.
 
-gleif-L2:hasAccountingSource
+gleif-L2:hasAccountingStandard
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf gleif-base:isQualifiedBy ;
-	rdfs:label "has accounting source" ;
+	rdfs:label "has accounting standard" ;
 	rdfs:domain gleif-L2:AccountingConsolidation ;
-	rdfs:range gleif-L2:AccountingSource ;
+	rdfs:range gleif-L2:AccountingStandard ;
 	skos:definition "The accounting standard applied to determine the definition of e.g. ultimate or direct accounting consolidating parent for the relationship. The relevant accounting standard is that applicable to the owner (the 'parent' entity)." ;
 	.
 
@@ -449,7 +542,7 @@ gleif-L2:hasOwnershipPercentage
 	rdfs:subPropertyOf gleif-base:isQuantifiedBy ;
 	rdfs:label "has ownership percentage" ;
 	rdfs:domain gleif-L2:AccountingConsolidation ;
-	rdfs:range xs:decimal ;
+	rdfs:range xsd:decimal ;
 	skos:definition "the percentage of the subsidiary owned by the owner, if known" ;
 	.
 
@@ -482,7 +575,7 @@ gleif-L2:hasRelationshipStatus
 	a owl:ObjectProperty ;
 	rdfs:label "has relationship status" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
-	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:domain gleif-base:LegalEntityRelationship ;
 	rdfs:range gleif-L2:RelationshipStatus ;
 	skos:definition "indicates the status of the relationship (i.e., active, inactive)" ;
 	.
@@ -508,5 +601,58 @@ gleif-L2:hasValidationSources
 	rdfs:domain gleif-L2:LegalEntityRelationshipRecord ;
 	rdfs:range gleif-L2:RelationshipValidationSourceKind ;
 	skos:definition "Level of relationship validation." ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-L2:AccountingStandardIFRS
+		gleif-L2:AccountingStandardOtherAccountingStandard
+		gleif-L2:AccountingStandardUSGAAP
+	) ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-L2:RelationshipRegistrationStatusAnnulled
+		gleif-L2:RelationshipRegistrationStatusDuplicate
+		gleif-L2:RelationshipRegistrationStatusLapsed
+		gleif-L2:RelationshipRegistrationStatusPendingArchival
+		gleif-L2:RelationshipRegistrationStatusPendingTransfer
+		gleif-L2:RelationshipRegistrationStatusPendingValidation
+		gleif-L2:RelationshipRegistrationStatusPublished
+		gleif-L2:RelationshipRegistrationStatusRetired
+		gleif-L2:RelationshipRegistrationStatusTransferred
+	) ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-L2:RelationshipStatusActive
+		gleif-L2:RelationshipStatusInactive
+	) ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-L2:RelationshipValidationDocumentsKindAccountsFiling
+		gleif-L2:RelationshipValidationDocumentsKindContracts
+		gleif-L2:RelationshipValidationDocumentsKindOtherOfficialDocuments
+		gleif-L2:RelationshipValidationDocumentsKindRegulatoryFiling
+		gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments
+	) ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-L2:RelationshipValidationSourceKindEntitySuppliedOnly
+		gleif-L2:RelationshipValidationSourceKindFullyCorroborated
+		gleif-L2:RelationshipValidationSourceKindPartiallyCorroborated
+		gleif-L2:RelationshipValidationSourceKindPending
+	) ;
 	.
 

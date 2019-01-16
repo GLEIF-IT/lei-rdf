@@ -24,32 +24,42 @@
 gleif-base:EntityExpirationReason
 	a owl:Class ;
 	rdfs:label "entity expiration reason" ;
+	owl:oneOf (
+		gleif-base:EntityExpirationReasonCorporateAction
+		gleif-base:EntityExpirationReasonDissolved
+		gleif-base:EntityExpirationReasonOther
+	) ;
 	skos:definition "The reason that a legal entity ceased to exist and/or operate." ;
 	.
 
 gleif-base:EntityExpirationReasonCorporateAction
 	a gleif-base:EntityExpirationReason ;
-	rdfs:label "CORPORATE_ACTION" ;
+	rdfs:label "corporate action" ;
 	skos:definition "The entity was acquired or merged with another entity." ;
+	gleif-base:hasTag "CORPORATE_ACTION" ;
 	.
 
 gleif-base:EntityExpirationReasonDissolved
 	a gleif-base:EntityExpirationReason ;
-	rdfs:label "DISSOLVED" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	rdfs:label "dissolved" ;
 	skos:definition "The entity ceased to operate." ;
+	gleif-base:hasTag "DISSOLVED" ;
 	.
 
 gleif-base:EntityExpirationReasonOther
 	a gleif-base:EntityExpirationReason ;
-	rdfs:label "OTHER" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
-	skos:definition "The reason for expiry is neither of DISSOLVED nor CORPORATE_ACTION." ;
+	rdfs:label "other" ;
+	skos:definition "The reason for expiry is neither of dissolved nor corporate action." ;
+	gleif-base:hasTag "OTHER" ;
 	.
 
 gleif-base:EntityStatus
 	a owl:Class ;
 	rdfs:label "entity status" ;
+	owl:oneOf (
+		gleif-base:EntityStatusActive
+		gleif-base:EntityStatusInactive
+	) ;
 	skos:definition "The operational and/or legal registration status of the entity (may be ACTIVE or INACTIVE)" ;
 	.
 
@@ -119,12 +129,43 @@ gleif-base:Identifier
 
 gleif-base:LegalEntity
 	a owl:Class ;
-	rdfs:subClassOf [
-		a owl:Restriction ;
-		owl:onProperty gleif-base:hasLegalJurisdiction ;
-		owl:onClass lcc-cr:GeographicRegion ;
-		owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-	] ;
+	rdfs:subClassOf
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasLocalLegalName ;
+			owl:cardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEntityExpirationReason ;
+			owl:onClass gleif-base:EntityExpirationReason ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEntityExpirationDate ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:onDataRange xsd:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasLegalJurisdiction ;
+			owl:onClass lcc-cr:GeographicRegion ;
+			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasSuccessor ;
+			owl:onClass gleif-base:LegalEntity ;
+			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEntityStatus ;
+			owl:onClass gleif-base:LegalEntityStatus ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
 	rdfs:label "legal entity" ;
 	dct:source
 		"Barron's Dictionary of Banking Terms, Sixth Edition, 2012, definition of legal entity" ,
@@ -164,23 +205,85 @@ gleif-base:LegalEntityRelationship
 
 gleif-base:Period
 	a owl:Class ;
-	rdfs:subClassOf [
-		a owl:Restriction ;
-		owl:onProperty gleif-base:hasStart ;
-		owl:onDataRange xsd:dateTime ;
-		owl:qualifiedCardinality "1" ;
-	] ;
+	rdfs:subClassOf
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEnd ;
+			owl:maxQualifiedCardinality "1" ;
+			owl:onDataRange xsd:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasStart ;
+			owl:onDataRange xsd:dateTime ;
+			owl:qualifiedCardinality "1" ;
+		]
+		;
 	rdfs:label "period"@en ;
 	skos:definition "A period of time, with at least a start time, and possibly an end." ;
 	.
 
 gleif-base:PhysicalAddress
 	a owl:Class ;
-	rdfs:subClassOf [
-		a owl:Restriction ;
-		owl:onProperty gleif-base:hasCity ;
-		owl:cardinality "1" ;
-	] ;
+	rdfs:subClassOf
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasAddressLine1 ;
+			owl:cardinality "1" ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasCity ;
+			owl:cardinality "1" ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasAddressLine2 ;
+			owl:maxCardinality "1" ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasAddressLine3 ;
+			owl:maxCardinality "1" ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasAddressLine4 ;
+			owl:maxCardinality "1" ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasAddressNumber ;
+			owl:maxCardinality "1" ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasAddressNumberWithinBuilding ;
+			owl:maxCardinality "1" ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasMailRouting ;
+			owl:maxCardinality "1" ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasPostalCode ;
+			owl:maxCardinality "1" ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasRegion ;
+			owl:onClass lcc-cr:Region ;
+			owl:maxQualifiedCardinality "1" ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasCountry ;
+			owl:onClass lcc-cr:Country ;
+			owl:qualifiedCardinality "1" ;
+		]
+		;
 	rdfs:label "physical address"@en ;
 	skos:definition "a physical address where communications can be addressed, papers served or representatives located for any kind of organization or person" ;
 	skos:scopeNote "An address is a collection of information, presented in a mostly fixed format, used for describing the location of a building, apartment, or other structure or a plot of land, generally using political boundaries and street names as references, along with other identifiers such as house or apartment numbers.  Some addresses also contain special codes to aid routing of mail and packages, such as a ZIP code or post code. (Wikipedia)" ;
@@ -361,6 +464,7 @@ gleif-base:hasCity
 	a owl:DatatypeProperty ;
 	rdfs:label "has city" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	rdfs:domain gleif-base:PhysicalAddress ;
 	rdfs:range xsd:string ;
 	skos:definition "The mandatory name of the city." ;
 	.
@@ -369,6 +473,7 @@ gleif-base:hasCountry
 	a owl:ObjectProperty ;
 	rdfs:label "has country" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	rdfs:domain gleif-base:PhysicalAddress ;
 	rdfs:range lcc-cr:Country ;
 	skos:definition "The country, based on the 2-character ISO 3166-1 country code." ;
 	.
@@ -469,6 +574,15 @@ gleif-base:hasLocalName
 	rdfs:subPropertyOf gleif-base:hasName ;
 	rdfs:label "has name" ;
 	skos:definition "a name in a language local to the entity identified, may be English" ;
+	.
+
+gleif-base:hasMailRouting
+	a owl:DatatypeProperty ;
+	rdfs:label "mail routing" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	rdfs:domain gleif-base:PhysicalAddress ;
+	rdfs:range xsd:string ;
+	skos:definition "Optional free text address line to hold content from other address lines containing explicit routing information (this element's presence indicates that this address is a routing / 'care of' address)." ;
 	.
 
 gleif-base:hasMember
@@ -643,15 +757,6 @@ gleif-base:isRegisteredIn
 	skos:definition "indicates the registry that something is registered in" ;
 	.
 
-gleif-base:mailRouting
-	a owl:DatatypeProperty ;
-	rdfs:label "mail routing" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
-	rdfs:domain gleif-base:PhysicalAddress ;
-	rdfs:range xsd:string ;
-	skos:definition "Optional free text address line to hold content from other address lines containing explicit routing information (this element's presence indicates that this address is a routing / 'care of' address." ;
-	.
-
 gleif-base:manages
 	a owl:ObjectProperty ;
 	rdfs:label "manages" ;
@@ -670,5 +775,22 @@ gleif-base:scopes
 	a owl:ObjectProperty ;
 	rdfs:label "scopes" ;
 	skos:definition "determines or identifies the essential qualities or meaning of, discovers and sets forth the meaning of, fixes or marks the limits of, demarcates" ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-base:EntityExpirationReasonCorporateAction
+		gleif-base:EntityExpirationReasonDissolved
+		gleif-base:EntityExpirationReasonOther
+	) ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-base:EntityStatusActive
+		gleif-base:EntityStatusInactive
+	) ;
 	.
 
