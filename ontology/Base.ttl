@@ -690,13 +690,6 @@ gleif-base:identifies
 	skos:definition "is the relationship between something and that which provides a unique reference for it" ;
 	.
 
-gleif-base:isIncludedIn
-	a owl:ObjectProperty ;
-	rdfs:label "is included in" ;
-	owl:inverseOf gleif-base:comprises ;
-	skos:definition "relates something to something that contains it" ;
-	.
-
 gleif-base:isManagedBy
 	a owl:ObjectProperty ;
 	rdfs:label "is managed by" ;
@@ -723,13 +716,6 @@ gleif-base:isRegisteredIn
 	rdfs:label "is registered in" ;
 	rdfs:range gleif-base:Registry ;
 	skos:definition "indicates the registry that something is registered in" ;
-	.
-
-gleif-base:manages
-	a owl:ObjectProperty ;
-	rdfs:label "manages" ;
-	owl:inverseOf gleif-base:isManagedBy ;
-	skos:definition "relates an autonomous agent to something that it directs in some way" ;
 	.
 
 gleif-base:records
