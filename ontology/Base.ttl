@@ -577,14 +577,6 @@ gleif-base:hasMailRouting
 	skos:definition "Optional free text address line to hold content from other address lines containing explicit routing information (this element's presence indicates that this address is a routing / 'care of' address)." ;
 	.
 
-gleif-base:hasMember
-	a owl:ObjectProperty ;
-	rdfs:label "has member" ;
-	owl:inverseOf gleif-base:isMemberOf ;
-	skos:definition "relates something, typically a group or organization, to some discrete thing identified as a part (member) of it" ;
-	skos:note "This property should be read as being the property of a logical union of group and organization (not shown)." ;
-	.
-
 gleif-base:hasName
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf rdfs:label ;
@@ -709,12 +701,6 @@ gleif-base:isManagedBy
 	a owl:ObjectProperty ;
 	rdfs:label "is managed by" ;
 	skos:definition "relates something to another thing that has some role in directing its affairs" ;
-	.
-
-gleif-base:isMemberOf
-	a owl:ObjectProperty ;
-	rdfs:label "is member of" ;
-	skos:definition "belonging, either individually or collectively, to a group" ;
 	.
 
 gleif-base:isQualifiedBy
