@@ -33,6 +33,7 @@ gleif-L2:Child
 		owl:onProperty gleif-L2:hasParentConsolidation ;
 		owl:someValuesFrom gleif-L2:AccountingConsolidation ;
 	] ;
+	skos:definition "An entity which is the child of another (i.e. it has a parent)." ;
 	.
 
 gleif-L2:Parent
@@ -43,6 +44,7 @@ gleif-L2:Parent
 		owl:onProperty gleif-L2:hasChildConsolidation ;
 		owl:someValuesFrom gleif-L2:AccountingConsolidation ;
 	] ;
+	skos:definition "An entity which is the parent of at least one other." ;
 	.
 
 gleif-L2:UltimateParent
@@ -58,6 +60,7 @@ gleif-L2:UltimateParent
 			]
 		) ;
 	] ;
+	skos:definition "An entity which is the ultimate parent of at least one other." ;
 	.
 
 gleif-L2:hasChildConsolidation
@@ -66,7 +69,7 @@ gleif-L2:hasChildConsolidation
 	rdfs:domain gleif-base:LegalEntity ;
 	rdfs:range gleif-L2:AccountingConsolidation ;
 	owl:inverseOf gleif-base:hasParent ;
-	skos:definition "child consolidation" ;
+	skos:definition "The relationships for which this entity is the parent." ;
 	.
 
 gleif-L2:hasChildEntity
@@ -75,5 +78,24 @@ gleif-L2:hasChildEntity
 		gleif-L2:hasChildConsolidation
 		gleif-base:hasChild
 	) ;
+	skos:definition "The direct children for this entity." ;
+	.
+
+gleif-L2:hasParentConsolidation
+	a owl:ObjectProperty ;
+	rdfs:label "has parent consolidation" ;
+	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:range gleif-L2:AccountingConsolidation ;
+	owl:inverseOf gleif-base:hasChild ;
+	skos:definition "The relationships for which this entity is the child." ;
+	.
+
+gleif-L2:hasParentEntity
+	rdfs:label "has parent entity" ;
+	owl:propertyChainAxiom (
+		gleif-L2:hasParentConsolidation
+		gleif-base:hasParent
+	) ;
+	skos:definition "The direct parent for this entity." ;
 	.
 
