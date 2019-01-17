@@ -266,7 +266,6 @@ gleif-L1:LEIValidationSourceKindPending
 		gleif-L1:LEIValidationSourceKind
 		;
 	rdfs:label "pending" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	skos:definition "The validation of the reference data provided by the registrant has not yet occurred." ;
 	gleif-base:hasTag "PENDING" ;
 	.

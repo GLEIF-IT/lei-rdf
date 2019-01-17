@@ -290,7 +290,6 @@ gleif-base:RegistrationAuthority
 gleif-base:RegistrationStatus
 	a owl:Class ;
 	rdfs:label "registration status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	skos:definition "a lifecycle stage indicating the status of a given registration of something, such as a business or legal entity, as specified by the registration authority" ;
 	.
 
@@ -441,7 +440,6 @@ gleif-base:hasAddressLine4
 gleif-base:hasAddressNumber
 	a owl:DatatypeProperty ;
 	rdfs:label "has address number" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:domain gleif-base:PhysicalAddress ;
 	skos:definition "Optional, additional structured version of an external house number, or range of numbers, contained in one of the address line elements." ;
 	.
@@ -449,7 +447,6 @@ gleif-base:hasAddressNumber
 gleif-base:hasAddressNumberWithinBuilding
 	a owl:DatatypeProperty ;
 	rdfs:label "has address number within building" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:domain gleif-base:PhysicalAddress ;
 	skos:definition "Optional, additional structured version of an internal location number, or range of numbers, contained in one of the address line elements." ;
 	.
@@ -465,7 +462,6 @@ gleif-base:hasChild
 gleif-base:hasCity
 	a owl:DatatypeProperty ;
 	rdfs:label "has city" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:domain gleif-base:PhysicalAddress ;
 	skos:definition "The mandatory name of the city." ;
 	.
@@ -473,7 +469,6 @@ gleif-base:hasCity
 gleif-base:hasCountry
 	a owl:ObjectProperty ;
 	rdfs:label "has country" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:domain gleif-base:PhysicalAddress ;
 	rdfs:range lcc-cr:Country ;
 	skos:definition "The country, based on the 2-character ISO 3166-1 country code." ;
@@ -497,7 +492,6 @@ gleif-base:hasEnd
 gleif-base:hasEntityExpirationDate
 	a owl:DatatypeProperty ;
 	rdfs:label "has entity expiration date" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:domain gleif-base:LegalEntity ;
 	rdfs:range xsd:dateTime ;
 	skos:definition "The date that the legal entity ceased to operate, whether due to dissolution, merger or acquisition" ;
@@ -506,7 +500,6 @@ gleif-base:hasEntityExpirationDate
 gleif-base:hasEntityExpirationReason
 	a owl:ObjectProperty ;
 	rdfs:label "has entity expiration reason" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:domain gleif-base:LegalEntity ;
 	rdfs:range gleif-base:EntityExpirationReason ;
 	skos:definition "the reason that a legal entity ceased to exist and/or operate" ;
@@ -515,7 +508,6 @@ gleif-base:hasEntityExpirationReason
 gleif-base:hasEntityStatus
 	a owl:ObjectProperty ;
 	rdfs:label "has entity status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:domain gleif-base:LegalEntity ;
 	rdfs:range gleif-base:EntityStatus ;
 	skos:definition "indicates the status of the entity (i.e., active, inactive)" ;
@@ -524,7 +516,6 @@ gleif-base:hasEntityStatus
 gleif-base:hasInitialRegistrationDate
 	a owl:DatatypeProperty ;
 	rdfs:label "has initial registration date" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:range xsd:dateTime ;
 	skos:definition "the date on which an identifier or other registered item was first registered" ;
 	.
@@ -532,7 +523,6 @@ gleif-base:hasInitialRegistrationDate
 gleif-base:hasLastModificationDate
 	a owl:DatatypeProperty ;
 	rdfs:label "has last modification date" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:range xsd:dateTime ;
 	skos:definition "the date that the detail of a specific registration in the registry was last revised" ;
 	.
@@ -580,7 +570,6 @@ gleif-base:hasLocalName
 gleif-base:hasMailRouting
 	a owl:DatatypeProperty ;
 	rdfs:label "mail routing" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:domain gleif-base:PhysicalAddress ;
 	skos:definition "Optional free text address line to hold content from other address lines containing explicit routing information (this element's presence indicates that this address is a routing / 'care of' address)." ;
 	.
@@ -595,7 +584,6 @@ gleif-base:hasName
 gleif-base:hasNextRenewalDate
 	a owl:DatatypeProperty ;
 	rdfs:label "has next renewal date" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:range xsd:dateTime ;
 	skos:definition "the date by which a specific registration in the registry must be renewed or updated" ;
 	.

@@ -19,6 +19,7 @@
 	dct:abstract "This ontology defines concepts for Registration Authority Code List (RAL) of Business Registries" ;
 	dct:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
 	dct:rights "Copyright (c) 2018 GLEIF" ;
+	dct:source "https://www.gleif.org/en/about-lei/gleif-registration-authorities-list"^^xsd:anyURI ;
 	owl:imports
 		<http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ,
 		<https://www.gleif.org/ontology/Base/>
@@ -57,7 +58,6 @@ gleif-ra:BusinessRegistry
 		]
 		;
 	rdfs:label "business registry" ;
-	dct:source "https://www.gleif.org/en/about-lei/gleif-registration-authorities-list"^^xsd:anyURI ;
 	skos:definition "a registry for registering and maintaining information about business entities" ;
 	.
 
@@ -82,7 +82,6 @@ gleif-ra:RegistrationAuthorityCode
 		]
 		;
 	rdfs:label "registration authority code" ;
-	dct:source "https://www.gleif.org/en/about-lei/gleif-registration-authorities-list"^^xsd:anyURI ;
 	owl:equivalentClass [
 		a owl:Restriction ;
 		owl:onProperty gleif-base:isRegisteredIn ;
