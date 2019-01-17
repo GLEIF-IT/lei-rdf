@@ -100,6 +100,7 @@ gleif-L1:LEIRegistrationStatus
 		gleif-L1:LEIRegistrationStatusLapsed
 		gleif-L1:LEIRegistrationStatusMerged
 		gleif-L1:LEIRegistrationStatusPendingArchival
+		gleif-L1:LEIRegistrationStatusPendingTransfer
 		gleif-L1:LEIRegistrationStatusPendingValidation
 		gleif-L1:LEIRegistrationStatusRetired
 		gleif-L1:LEIRegistrationStatusTransferred
@@ -291,15 +292,15 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 		gleif-base:RegistryEntry ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasNextRenewalDate ;
-			owl:maxQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-			owl:onDataRange xsd:dateTime ;
-		] ,
-		[
-			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasValidationIdentifier ;
 			owl:onClass gleif-base:RegistryIdentifier ;
 			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasNextRenewalDate ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:onDataRange xsd:dateTime ;
 		] ,
 		[
 			a owl:Restriction ;
@@ -463,6 +464,7 @@ gleif-L1:hasValidationSources
 		gleif-L1:LEIRegistrationStatusLapsed
 		gleif-L1:LEIRegistrationStatusMerged
 		gleif-L1:LEIRegistrationStatusPendingArchival
+		gleif-L1:LEIRegistrationStatusPendingTransfer
 		gleif-L1:LEIRegistrationStatusPendingValidation
 		gleif-L1:LEIRegistrationStatusRetired
 		gleif-L1:LEIRegistrationStatusTransferred
