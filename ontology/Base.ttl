@@ -395,7 +395,7 @@ gleif-base:hasAdditionalName
 		skos:altLabel ,
 		gleif-base:hasName
 		;
-	rdfs:label "has legal name" ;
+	rdfs:label "has additional name" ;
 	skos:definition "the name used to refer to an person or organization informally" ;
 	.
 
@@ -646,9 +646,9 @@ gleif-base:hasTag
 
 gleif-base:hasTranslatedEnglishName
 	a owl:DatatypeProperty ;
-	rdfs:subPropertyOf gleif-base:hasTransliteratedName ;
+	rdfs:subPropertyOf gleif-base:hasASCIIName ;
 	rdfs:label "has legal name" ;
-	skos:definition "The name used to refer to a person or organization, translated into English. Transliterated by definition." ;
+	skos:definition "The name used to refer to a person or organization, translated into English. Transliterated to ASCII by definition." ;
 	.
 
 gleif-base:hasTransliteratedAbbreviation
@@ -660,7 +660,7 @@ gleif-base:hasTransliteratedAbbreviation
 
 gleif-base:hasTransliteratedName
 	a owl:DatatypeProperty ;
-	rdfs:subPropertyOf gleif-base:hasASCIIName ;
+	rdfs:subPropertyOf gleif-base:hasName ;
 	rdfs:label "has transliterated name" ;
 	skos:definition "The name used to refer to a person or organization, converted from original to western text. Not generally the legal name." ;
 	.

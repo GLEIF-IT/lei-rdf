@@ -377,6 +377,16 @@ gleif-L1:SoleProprietorship
 	skos:definition "The legal entity represents an individual acting in a business capacity" ;
 	.
 
+gleif-L1:hasAdditionalLocalLegalName
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf
+		gleif-base:hasAdditionalName ,
+		gleif-base:hasLocalLegalName
+		;
+	rdfs:label "has additional local legal name" ;
+	skos:definition "Registered name of the entity in an alternative language in the legal jurisdiction in which the entity is registered." ;
+	.
+
 gleif-L1:hasAdditionalValidationIdentifier
 	a owl:ObjectProperty ;
 	rdfs:label "has validation identifier" ;
@@ -415,7 +425,7 @@ gleif-L1:hasLegalFormText
 
 gleif-L1:hasPreviousLegalName
 	a owl:DatatypeProperty ;
-	rdfs:subPropertyOf gleif-base:hasName ;
+	rdfs:subPropertyOf gleif-base:hasAdditionalName ;
 	rdfs:label "has previous legal name" ;
 	skos:definition "A primary legal name previously used by this entity." ;
 	.
@@ -427,10 +437,10 @@ gleif-L1:hasRegistrationIdentifier
 	skos:definition "An identifier for the legal entity in a business registry in the jurisdiction of legal registration, or in the appropriate registration authority." ;
 	.
 
-gleif-L1:hasTradingOrOperationalName
+gleif-L1:hasTradingOrOperatingName
 	a owl:DatatypeProperty ;
-	rdfs:subPropertyOf gleif-base:hasName ;
-	rdfs:label "has trading or operational name" ;
+	rdfs:subPropertyOf gleif-base:hasAdditionalName ;
+	rdfs:label "has trading or operating name" ;
 	skos:altLabel
 		"brand name" ,
 		"doing business as" ,
