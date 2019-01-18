@@ -1,9 +1,9 @@
-# baseURI: https://www.gleif.org/ontology/L2inferences/
+# baseURI: https://www.gleif.org/ontology/L1inferences/
 # imports: https://www.gleif.org/ontology/Base/
 # imports: https://www.gleif.org/ontology/L1/
 # imports: https://www.gleif.org/ontology/L2/
 
-@base <https://www.gleif.org/ontology/L2inferences/> .
+@base <https://www.gleif.org/ontology/L1inferences/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix gleif-L1: <https://www.gleif.org/ontology/L1/> .
 @prefix gleif-L1-infer: <https://www.gleif.org/ontology/L1inferences/> .
@@ -14,10 +14,10 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://www.gleif.org/ontology/L2inferences/>
+<https://www.gleif.org/ontology/L1inferences/>
 	a owl:Ontology ;
-	rdfs:label "GLEIF L2 Ontology Inferences" ;
-	rdfs:comment "Ontology that builds on GLEIF L2 ontology to infer additional information" ;
+	rdfs:label "GLEIF L1 Ontology Inferences" ;
+	rdfs:comment "Ontology that builds on GLEIF L1 ontology to infer additional information" ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/> ,
