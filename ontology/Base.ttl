@@ -389,6 +389,13 @@ gleif-base:hasAbbreviation
 	skos:definition "an abbreviation for the entity identified" ;
 	.
 
+gleif-base:hasAdditionalAddressLine
+	a owl:DatatypeProperty ;
+	rdfs:label "has additional address line" ;
+	rdfs:domain gleif-base:PhysicalAddress ;
+	skos:definition "Means to collect the one to three specifically-named optional additional address line elements." ;
+	.
+
 gleif-base:hasAdditionalName
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf
@@ -410,12 +417,12 @@ gleif-base:hasAddressLine1
 	a owl:DatatypeProperty ;
 	rdfs:label "has address line 1" ;
 	rdfs:domain gleif-base:PhysicalAddress ;
-	skos:altLabel "has first address line" ;
 	skos:definition "The mandatory first address line element." ;
 	.
 
 gleif-base:hasAddressLine2
 	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf gleif-base:hasAdditionalAddressLine ;
 	rdfs:label "has address line 2" ;
 	rdfs:domain gleif-base:PhysicalAddress ;
 	skos:definition "The second line of the one to three optional additional address line elements." ;
@@ -423,6 +430,7 @@ gleif-base:hasAddressLine2
 
 gleif-base:hasAddressLine3
 	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf gleif-base:hasAdditionalAddressLine ;
 	rdfs:label "has address line 3" ;
 	rdfs:domain gleif-base:PhysicalAddress ;
 	skos:definition "The third line of the one to three optional additional address line elements." ;
@@ -431,6 +439,7 @@ gleif-base:hasAddressLine3
 
 gleif-base:hasAddressLine4
 	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf gleif-base:hasAdditionalAddressLine ;
 	rdfs:label "has address line 4" ;
 	rdfs:domain gleif-base:PhysicalAddress ;
 	skos:definition "The fourth line of the one to three optional additional address line elements." ;
@@ -511,6 +520,15 @@ gleif-base:hasEntityStatus
 	rdfs:domain gleif-base:LegalEntity ;
 	rdfs:range gleif-base:EntityStatus ;
 	skos:definition "indicates the status of the entity (i.e., active, inactive)" ;
+	.
+
+gleif-base:hasFirstAddressLine
+	a owl:DatatypeProperty ;
+	rdfs:label "has first address line" ;
+	rdfs:domain gleif-base:PhysicalAddress ;
+	owl:equivalentProperty gleif-base:hasAddressLine1 ;
+	skos:altLabel "has first address line" ;
+	skos:definition "The mandatory first address line element." ;
 	.
 
 gleif-base:hasInitialRegistrationDate

@@ -370,6 +370,27 @@ gleif-L1:LocalOperatingUnit
 	skos:definition "a registration authority that issues legal entity identifiers and is authorized by the Global LEI Foundation to do so" ;
 	.
 
+gleif-L1:PhysicalAddressAutomaticASCII
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:PhysicalAddress ;
+	rdfs:label "physical address automatic ASCII" ;
+	skos:definition "An address of an entity, transliterated to ASCII characters, auto-transliterated by the managing LOU." ;
+	.
+
+gleif-L1:PhysicalAddressLocal
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:PhysicalAddress ;
+	rdfs:label "physical address local" ;
+	skos:definition "An address as represented in the local language and character set." ;
+	.
+
+gleif-L1:PhysicalAddressPreferredASCII
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:PhysicalAddress ;
+	rdfs:label "physical address preferred ASCII" ;
+	skos:definition "An address of an entity, transliterated to ASCII characters, provided by the entity for a purpose." ;
+	.
+
 gleif-L1:SoleProprietorship
 	a owl:Class ;
 	rdfs:subClassOf gleif-base:LegalEntity ;

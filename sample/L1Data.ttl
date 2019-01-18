@@ -222,7 +222,7 @@ gleif-L1-data:LEE-5493007CICYM7A0SZ71
 	.
 
 gleif-L1-data:Leg-213800YK2FEXWNMT3R12
-	a gleif-base:PhysicalAddress ;
+	a gleif-base:PhysicalAddressLocal ;
 	gleif-base:hasAddressLine1 "172 LORD STREET" ;
 	gleif-base:hasAddressNumber "172" ;
 	gleif-base:hasCity "SOUTHPORT" ;
@@ -232,7 +232,7 @@ gleif-L1-data:Leg-213800YK2FEXWNMT3R12
 	.
 
 gleif-L1-data:Leg-25490050856CG53NAC28
-	a gleif-base:PhysicalAddress ;
+	a gleif-base:PhysicalAddressLocal ;
 	gleif-base:hasAddressLine1 "c/o Cogency Global Inc." ;
 	gleif-base:hasAddressLine2 "850 New Burton Road" ;
 	gleif-base:hasAddressLine3 "Suite 201" ;
@@ -244,7 +244,7 @@ gleif-L1-data:Leg-25490050856CG53NAC28
 	.
 
 gleif-L1-data:Leg-4469000001AVO26P9X86
-	a gleif-base:PhysicalAddress ;
+	a gleif-base:PhysicalAddressLocal ;
 	gleif-base:hasAddressLine1 "BOULEVARD TOLUCA 46" ;
 	gleif-base:hasAddressLine2 "El Conde" ;
 	gleif-base:hasAddressLine3 "Naucalpan de Juárez" ;
@@ -256,7 +256,7 @@ gleif-L1-data:Leg-4469000001AVO26P9X86
 	.
 
 gleif-L1-data:Leg-5493007CICYM7A0SZ714
-	a gleif-base:PhysicalAddress ;
+	a gleif-base:PhysicalAddressLocal ;
 	gleif-base:hasAddressLine1 "ACCESO II 32" ;
 	gleif-base:hasAddressNumber "32" ;
 	gleif-base:hasCity "Querétaro" ;
