@@ -398,16 +398,6 @@ gleif-L1:SoleProprietorship
 	skos:definition "The legal entity represents an individual acting in a business capacity" ;
 	.
 
-gleif-L1:hasAdditionalLocalLegalName
-	a owl:DatatypeProperty ;
-	rdfs:subPropertyOf
-		gleif-base:hasAdditionalName ,
-		gleif-base:hasLocalLegalName
-		;
-	rdfs:label "has additional local legal name" ;
-	skos:definition "Registered name of the entity in an alternative language in the legal jurisdiction in which the entity is registered." ;
-	.
-
 gleif-L1:hasAdditionalValidationIdentifier
 	a owl:ObjectProperty ;
 	rdfs:label "has validation identifier" ;
@@ -444,24 +434,27 @@ gleif-L1:hasLegalFormText
 	skos:definition "A legacy code or textual description for the legal entity's legal form, used until a current code from the GLEIF-maintained list can be used." ;
 	.
 
-gleif-L1:hasPreviousLegalName
+gleif-L1:hasNameAdditionalLocal
 	a owl:DatatypeProperty ;
-	rdfs:subPropertyOf gleif-base:hasAdditionalName ;
-	rdfs:label "has previous legal name" ;
+	rdfs:subPropertyOf
+		gleif-base:hasNameAdditional ,
+		gleif-base:hasNameLocal
+		;
+	rdfs:label "has name additional local" ;
+	skos:definition "Registered name of the entity in an alternative language in the legal jurisdiction in which the entity is registered." ;
+	.
+
+gleif-L1:hasNamePreviousLegal
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf gleif-base:hasNameAdditional ;
+	rdfs:label "has name previous legal" ;
 	skos:definition "A primary legal name previously used by this entity." ;
 	.
 
-gleif-L1:hasRegistrationIdentifier
-	a owl:ObjectProperty ;
-	rdfs:label "has registration identifier" ;
-	rdfs:range gleif-base:RegistryIdentifier ;
-	skos:definition "An identifier for the legal entity in a business registry in the jurisdiction of legal registration, or in the appropriate registration authority." ;
-	.
-
-gleif-L1:hasTradingOrOperatingName
+gleif-L1:hasNameTradingOrOperating
 	a owl:DatatypeProperty ;
-	rdfs:subPropertyOf gleif-base:hasAdditionalName ;
-	rdfs:label "has trading or operating name" ;
+	rdfs:subPropertyOf gleif-base:hasNameAdditional ;
+	rdfs:label "has name trading or operating" ;
 	skos:altLabel
 		"brand name" ,
 		"doing business as" ,
@@ -469,6 +462,13 @@ gleif-L1:hasTradingOrOperatingName
 		"trading as"
 		;
 	skos:definition "A 'trading as', 'brand name' or 'operating under' name currently used by this entity in addition to, but not replacing, the (primary) legal, official registered name" ;
+	.
+
+gleif-L1:hasRegistrationIdentifier
+	a owl:ObjectProperty ;
+	rdfs:label "has registration identifier" ;
+	rdfs:range gleif-base:RegistryIdentifier ;
+	skos:definition "An identifier for the legal entity in a business registry in the jurisdiction of legal registration, or in the appropriate registration authority." ;
 	.
 
 gleif-L1:hasValidationIdentifier
