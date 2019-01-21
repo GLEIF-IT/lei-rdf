@@ -13,12 +13,14 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://www.gleif.org/ontology/L2inferences/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF L2 Ontology Inferences" ;
 	rdfs:comment "Ontology that builds on GLEIF L2 ontology to infer additional information" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2inferences/> ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/> ,
@@ -29,6 +31,7 @@
 gleif-L2-infer:Child
 	a owl:Class ;
 	rdfs:label "child" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2inferences/> ;
 	owl:equivalentClass [
 		a owl:Restriction ;
 		owl:onProperty gleif-L2-infer:hasParentConsolidation ;
@@ -40,6 +43,7 @@ gleif-L2-infer:Child
 gleif-L2-infer:Parent
 	a owl:Class ;
 	rdfs:label "parent" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2inferences/> ;
 	owl:equivalentClass [
 		a owl:Restriction ;
 		owl:onProperty gleif-L2-infer:hasChildConsolidation ;
@@ -51,6 +55,7 @@ gleif-L2-infer:Parent
 gleif-L2-infer:UltimateParent
 	a owl:Class ;
 	rdfs:label "ultimate parent" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2inferences/> ;
 	owl:equivalentClass [
 		a owl:Class ;
 		owl:intersectionOf (
@@ -68,6 +73,7 @@ gleif-L2-infer:hasChildConsolidation
 	a owl:ObjectProperty ;
 	rdfs:label "has child consolidation" ;
 	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2inferences/> ;
 	rdfs:range gleif-L2:AccountingConsolidation ;
 	owl:inverseOf gleif-base:hasParent ;
 	skos:definition "The relationships for which this entity is the parent." ;
@@ -86,6 +92,7 @@ gleif-L2-infer:hasParentConsolidation
 	a owl:ObjectProperty ;
 	rdfs:label "has parent consolidation" ;
 	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2inferences/> ;
 	rdfs:range gleif-L2:AccountingConsolidation ;
 	owl:inverseOf gleif-base:hasChild ;
 	skos:definition "The relationships for which this entity is the child." ;

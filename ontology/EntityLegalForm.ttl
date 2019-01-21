@@ -11,6 +11,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://www.gleif.org/ontology/EntityLegalForm/>
@@ -20,6 +21,7 @@
 	dct:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
 	dct:rights "Copyright (c) 2018 GLEIF" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/EntityLegalForm/> ;
 	owl:imports
 		<http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ,
 		<https://www.gleif.org/ontology/Base/>
@@ -30,6 +32,7 @@ gleif-elf:ELFRegistrationStatus
 	a owl:Class ;
 	rdfs:subClassOf gleif-base:RegistrationStatus ;
 	rdfs:label "ELF registration status" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/EntityLegalForm/> ;
 	owl:oneOf (
 		gleif-elf:ELFRegistrationStatusActive
 		gleif-elf:ELFRegistrationStatusInactive
@@ -43,6 +46,7 @@ gleif-elf:ELFRegistrationStatusActive
 		gleif-elf:ELFRegistrationStatus
 		;
 	rdfs:label "active" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/EntityLegalForm/> ;
 	skos:definition "status indicating that the registration is active" ;
 	gleif-base:hasTag "ACTV" ;
 	.
@@ -53,6 +57,7 @@ gleif-elf:ELFRegistrationStatusInactive
 		gleif-elf:ELFRegistrationStatus
 		;
 	rdfs:label "inactive" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/EntityLegalForm/> ;
 	skos:definition "status indicating that the registration is inactive" ;
 	gleif-base:hasTag "INAC" ;
 	.
@@ -60,6 +65,7 @@ gleif-elf:ELFRegistrationStatusInactive
 gleif-elf:ELFregistry
 	a gleif-base:Registry ;
 	rdfs:label "GLEIF Entity Legal Forms List" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/EntityLegalForm/> ;
 	skos:altLabel "ELF" ;
 	gleif-base:hasWebsite "https://www.gleif.org/en/about-lei/code-lists/iso-20275-entity-legal-forms-code-list"^^xsd:anyURI ;
 	gleif-base:isManagedBy gleif-base:GLEIF ;
@@ -113,6 +119,7 @@ gleif-elf:EntityLegalForm
 		]
 		;
 	rdfs:label "entity legal form" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/EntityLegalForm/> ;
 	skos:definition "The legal form of the entity, taken from the ISO Entity Legal Form (ELF) code list maintained by GLEIF. " ;
 	.
 
@@ -128,6 +135,7 @@ gleif-elf:EntityLegalFormIdentifier
 		]
 		;
 	rdfs:label "entity legal form identifier" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/EntityLegalForm/> ;
 	owl:equivalentClass [
 		a owl:Restriction ;
 		owl:onProperty gleif-base:isRegisteredIn ;
