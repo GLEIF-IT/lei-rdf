@@ -1,0 +1,102 @@
+# baseURI: https://www.gleif.org/ontology/L2inferences/
+# imports: https://www.gleif.org/ontology/Base/
+# imports: https://www.gleif.org/ontology/L1/
+# imports: https://www.gleif.org/ontology/L2/
+
+@base <https://www.gleif.org/ontology/L2inferences/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix gleif-L1: <https://www.gleif.org/ontology/L1/> .
+@prefix gleif-L2: <https://www.gleif.org/ontology/L2/> .
+@prefix gleif-L2-infer: <https://www.gleif.org/ontology/L2inferences/> .
+@prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://www.gleif.org/ontology/L2inferences/>
+	a owl:Ontology ;
+	rdfs:label "GLEIF L2 Ontology Inferences" ;
+	rdfs:comment "Ontology that builds on GLEIF L2 ontology to infer additional information" ;
+	owl:imports
+		<https://www.gleif.org/ontology/Base/> ,
+		<https://www.gleif.org/ontology/L1/> ,
+		<https://www.gleif.org/ontology/L2/>
+		;
+	.
+
+gleif-L2-infer:Child
+	a owl:Class ;
+	rdfs:label "child" ;
+	owl:equivalentClass [
+		a owl:Restriction ;
+		owl:onProperty gleif-L2-infer:hasParentConsolidation ;
+		owl:someValuesFrom gleif-L2:AccountingConsolidation ;
+	] ;
+	skos:definition "An entity which is the child of another (i.e. it has a parent)." ;
+	.
+
+gleif-L2-infer:Parent
+	a owl:Class ;
+	rdfs:label "parent" ;
+	owl:equivalentClass [
+		a owl:Restriction ;
+		owl:onProperty gleif-L2-infer:hasChildConsolidation ;
+		owl:someValuesFrom gleif-L2:AccountingConsolidation ;
+	] ;
+	skos:definition "An entity which is the parent of at least one other." ;
+	.
+
+gleif-L2-infer:UltimateParent
+	a owl:Class ;
+	rdfs:label "ultimate parent" ;
+	owl:equivalentClass [
+		a owl:Class ;
+		owl:intersectionOf (
+			gleif-L2-infer:Parent
+			[
+				a owl:Class ;
+				owl:complementOf gleif-L2-infer:Child ;
+			]
+		) ;
+	] ;
+	skos:definition "An entity which is the ultimate parent of at least one other." ;
+	.
+
+gleif-L2-infer:hasChildConsolidation
+	a owl:ObjectProperty ;
+	rdfs:label "has child consolidation" ;
+	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:range gleif-L2:AccountingConsolidation ;
+	owl:inverseOf gleif-base:hasParent ;
+	skos:definition "The relationships for which this entity is the parent." ;
+	.
+
+gleif-L2-infer:hasChildEntity
+	rdfs:label "has child entity" ;
+	owl:propertyChainAxiom (
+		gleif-L2-infer:hasChildConsolidation
+		gleif-base:hasChild
+	) ;
+	skos:definition "The direct children for this entity." ;
+	.
+
+gleif-L2-infer:hasParentConsolidation
+	a owl:ObjectProperty ;
+	rdfs:label "has parent consolidation" ;
+	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:range gleif-L2:AccountingConsolidation ;
+	owl:inverseOf gleif-base:hasChild ;
+	skos:definition "The relationships for which this entity is the child." ;
+	.
+
+gleif-L2-infer:hasParentEntity
+	rdfs:label "has parent entity" ;
+	owl:propertyChainAxiom (
+		gleif-L2:hasParentConsolidation
+		gleif-base:hasParent
+	) ;
+	skos:definition "The direct parent for this entity." ;
+	.
+

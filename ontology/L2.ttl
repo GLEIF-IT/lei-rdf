@@ -42,13 +42,13 @@ gleif-L2:AccountingConsolidation
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasOwner ;
+			owl:onProperty gleif-base:hasChild ;
 			owl:onClass gleif-base:LegalEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasSubsidiary ;
+			owl:onProperty gleif-base:hasParent ;
 			owl:onClass gleif-base:LegalEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
@@ -116,7 +116,7 @@ gleif-L2:DirectConsolidation
 	a owl:Class ;
 	rdfs:subClassOf gleif-L2:AccountingConsolidation ;
 	rdfs:label "direct consolidation" ;
-	skos:definition "Subsidiary (child) is directly consolidated by Owner (parent). The 'child' entity has its accounts fully consolidated by the 'parent' entity, in the sense given by the accounting standard(s) specified; the owner entity is the closest fully consolidating parent to the subsidiary entity in any applicable hierarchical ownership structure." ;
+	skos:definition "The 'child' entity has its accounts fully consolidated by the 'parent' entity, in the sense given by the accounting standard(s) specified; the parent entity is the closest fully consolidating parent to the child entity in any applicable hierarchical ownership structure." ;
 	.
 
 gleif-L2:LegalEntityRelationshipRecord
@@ -193,21 +193,11 @@ gleif-L2:LegalEntityRelationshipRecord
 	skos:definition "The Registration container element contains information specifying the LOU's administration of the relationship report." ;
 	.
 
-gleif-L2:Owner
-	a owl:Class ;
-	rdfs:label "owner" ;
-	owl:equivalentClass [
-		a owl:Restriction ;
-		owl:onProperty gleif-L2:hasChildConsolidation ;
-		owl:someValuesFrom gleif-L2:AccountingConsolidation ;
-	] ;
-	.
-
 gleif-L2:PrimaryForeignBranchConsolidation
 	a owl:Class ;
 	rdfs:subClassOf gleif-L2:DirectConsolidation ;
 	rdfs:label "primary foreign branch consolidation" ;
-	skos:definition "Subsidiary is an international branch of the legal entity designated by Owner (in jurisdiction country of Subsidiary). The Owner is the Head Office and MUST have an LEI." ;
+	skos:definition "Child is an international branch of the legal entity designated by Parent (in jurisdiction country of Child). The Parent is the Head Office and MUST have an LEI." ;
 	.
 
 gleif-L2:RelationshipRegistrationStatus
@@ -463,36 +453,11 @@ gleif-L2:RelationshipValidationSourceKindPending
 	gleif-base:hasTag "PENDING" ;
 	.
 
-gleif-L2:Subsidiary
-	a owl:Class ;
-	rdfs:label "subsidiary" ;
-	owl:equivalentClass [
-		a owl:Restriction ;
-		owl:onProperty gleif-L2:hasParentConsolidation ;
-		owl:someValuesFrom gleif-L2:AccountingConsolidation ;
-	] ;
-	.
-
 gleif-L2:UltimateConsolidation
 	a owl:Class ;
 	rdfs:subClassOf gleif-L2:AccountingConsolidation ;
 	rdfs:label "ultimate consolidation" ;
-	skos:definition "Subsidiary (child) is ultimately consolidated by Owner (parent). The 'child' entity has its accounts fully consolidated by the 'parent' entity, in the sense given by the accounting standard(s) specified; the Owner entity is the most distant fully consolidating parent from the Subsidiary entity in any applicable hierarchical ownership structure." ;
-	.
-
-gleif-L2:UltimateOwner
-	a owl:Class ;
-	rdfs:label "ultimate owner" ;
-	owl:equivalentClass [
-		a owl:Class ;
-		owl:intersectionOf (
-			gleif-L2:Owner
-			[
-				a owl:Class ;
-				owl:complementOf gleif-L2:Subsidiary ;
-			]
-		) ;
-	] ;
+	skos:definition "The 'child' entity has its accounts fully consolidated by the 'parent' entity, in the sense given by the accounting standard(s) specified; the child entity is the most distant fully consolidating parent from the child entity in any applicable hierarchical ownership structure." ;
 	.
 
 gleif-L2:hasAccountingPeriod
@@ -509,24 +474,7 @@ gleif-L2:hasAccountingStandard
 	rdfs:label "has accounting standard" ;
 	rdfs:domain gleif-L2:AccountingConsolidation ;
 	rdfs:range gleif-L2:AccountingStandard ;
-	skos:definition "The accounting standard applied to determine the definition of e.g. ultimate or direct accounting consolidating parent for the relationship. The relevant accounting standard is that applicable to the owner (the 'parent' entity)." ;
-	.
-
-gleif-L2:hasChildConsolidation
-	a owl:ObjectProperty ;
-	rdfs:label "has child consolidation" ;
-	rdfs:domain gleif-base:LegalEntity ;
-	rdfs:range gleif-L2:AccountingConsolidation ;
-	owl:inverseOf gleif-base:hasOwner ;
-	skos:definition "child consolidation" ;
-	.
-
-gleif-L2:hasChildEntity
-	rdfs:label "has child entity" ;
-	owl:propertyChainAxiom (
-		gleif-L2:hasChildConsolidation
-		gleif-base:hasSubsidiary
-	) ;
+	skos:definition "The accounting standard applied to determine the definition of e.g. ultimate or direct accounting consolidating parent for the relationship. The relevant accounting standard is that applicable to the 'parent' entity." ;
 	.
 
 gleif-L2:hasDocumentFilingPeriod
@@ -543,24 +491,7 @@ gleif-L2:hasOwnershipPercentage
 	rdfs:label "has ownership percentage" ;
 	rdfs:domain gleif-L2:AccountingConsolidation ;
 	rdfs:range xsd:decimal ;
-	skos:definition "the percentage of the subsidiary owned by the owner, if known" ;
-	.
-
-gleif-L2:hasParentConsolidation
-	a owl:ObjectProperty ;
-	rdfs:label "has parent consolidation" ;
-	rdfs:domain gleif-base:LegalEntity ;
-	rdfs:range gleif-L2:AccountingConsolidation ;
-	owl:inverseOf gleif-base:hasSubsidiary ;
-	skos:definition "parent consolidation" ;
-	.
-
-gleif-L2:hasParentEntity
-	rdfs:label "has parent entity" ;
-	owl:propertyChainAxiom (
-		gleif-L2:hasParentConsolidation
-		gleif-base:hasOwner
-	) ;
+	skos:definition "the percentage of the child owned by the parent, if known" ;
 	.
 
 gleif-L2:hasRelationshipPeriod
@@ -574,7 +505,6 @@ gleif-L2:hasRelationshipPeriod
 gleif-L2:hasRelationshipStatus
 	a owl:ObjectProperty ;
 	rdfs:label "has relationship status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:domain gleif-base:LegalEntityRelationship ;
 	rdfs:range gleif-L2:RelationshipStatus ;
 	skos:definition "indicates the status of the relationship (i.e., active, inactive)" ;

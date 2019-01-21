@@ -49,7 +49,7 @@ gleif-base:LegalEntity
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasTradingOrOperationalName ;
+			owl:onProperty gleif-L1:hasTradingOrOperatingName ;
 			owl:minCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -100,6 +100,7 @@ gleif-L1:LEIRegistrationStatus
 		gleif-L1:LEIRegistrationStatusLapsed
 		gleif-L1:LEIRegistrationStatusMerged
 		gleif-L1:LEIRegistrationStatusPendingArchival
+		gleif-L1:LEIRegistrationStatusPendingTransfer
 		gleif-L1:LEIRegistrationStatusPendingValidation
 		gleif-L1:LEIRegistrationStatusRetired
 		gleif-L1:LEIRegistrationStatusTransferred
@@ -266,7 +267,6 @@ gleif-L1:LEIValidationSourceKindPending
 		gleif-L1:LEIValidationSourceKind
 		;
 	rdfs:label "pending" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	skos:definition "The validation of the reference data provided by the registrant has not yet occurred." ;
 	gleif-base:hasTag "PENDING" ;
 	.
@@ -280,11 +280,6 @@ gleif-L1:LegalEntityIdentifier
 			owl:onProperty gleif-base:identifies ;
 			owl:onClass gleif-base:LegalEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasScope ;
-			owl:someValuesFrom gleif-base:IdentificationScheme ;
 		]
 		;
 	rdfs:label "legal entity identifier" ;
@@ -297,15 +292,15 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 		gleif-base:RegistryEntry ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasNextRenewalDate ;
-			owl:maxQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-			owl:onDataRange xsd:dateTime ;
-		] ,
-		[
-			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasValidationIdentifier ;
 			owl:onClass gleif-base:RegistryIdentifier ;
 			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasNextRenewalDate ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:onDataRange xsd:dateTime ;
 		] ,
 		[
 			a owl:Restriction ;
@@ -375,11 +370,42 @@ gleif-L1:LocalOperatingUnit
 	skos:definition "a registration authority that issues legal entity identifiers and is authorized by the Global LEI Foundation to do so" ;
 	.
 
+gleif-L1:PhysicalAddressAutomaticASCII
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:PhysicalAddress ;
+	rdfs:label "physical address automatic ASCII" ;
+	skos:definition "An address of an entity, transliterated to ASCII characters, auto-transliterated by the managing LOU." ;
+	.
+
+gleif-L1:PhysicalAddressLocal
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:PhysicalAddress ;
+	rdfs:label "physical address local" ;
+	skos:definition "An address as represented in the local language and character set." ;
+	.
+
+gleif-L1:PhysicalAddressPreferredASCII
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:PhysicalAddress ;
+	rdfs:label "physical address preferred ASCII" ;
+	skos:definition "An address of an entity, transliterated to ASCII characters, provided by the entity for a purpose." ;
+	.
+
 gleif-L1:SoleProprietorship
 	a owl:Class ;
 	rdfs:subClassOf gleif-base:LegalEntity ;
 	rdfs:label "sole proprietorship" ;
 	skos:definition "The legal entity represents an individual acting in a business capacity" ;
+	.
+
+gleif-L1:hasAdditionalLocalLegalName
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf
+		gleif-base:hasAdditionalName ,
+		gleif-base:hasLocalLegalName
+		;
+	rdfs:label "has additional local legal name" ;
+	skos:definition "Registered name of the entity in an alternative language in the legal jurisdiction in which the entity is registered." ;
 	.
 
 gleif-L1:hasAdditionalValidationIdentifier
@@ -415,15 +441,13 @@ gleif-L1:hasLegalFormText
 	a owl:DatatypeProperty ;
 	rdfs:label "has legal form" ;
 	rdfs:domain gleif-base:LegalEntity ;
-	rdfs:range xsd:string ;
 	skos:definition "A legacy code or textual description for the legal entity's legal form, used until a current code from the GLEIF-maintained list can be used." ;
 	.
 
 gleif-L1:hasPreviousLegalName
 	a owl:DatatypeProperty ;
-	rdfs:subPropertyOf gleif-base:hasName ;
+	rdfs:subPropertyOf gleif-base:hasAdditionalName ;
 	rdfs:label "has previous legal name" ;
-	rdfs:range xsd:string ;
 	skos:definition "A primary legal name previously used by this entity." ;
 	.
 
@@ -434,11 +458,10 @@ gleif-L1:hasRegistrationIdentifier
 	skos:definition "An identifier for the legal entity in a business registry in the jurisdiction of legal registration, or in the appropriate registration authority." ;
 	.
 
-gleif-L1:hasTradingOrOperationalName
+gleif-L1:hasTradingOrOperatingName
 	a owl:DatatypeProperty ;
-	rdfs:subPropertyOf gleif-base:hasName ;
-	rdfs:label "has trading or operational name" ;
-	rdfs:range xsd:string ;
+	rdfs:subPropertyOf gleif-base:hasAdditionalName ;
+	rdfs:label "has trading or operating name" ;
 	skos:altLabel
 		"brand name" ,
 		"doing business as" ,
@@ -472,6 +495,7 @@ gleif-L1:hasValidationSources
 		gleif-L1:LEIRegistrationStatusLapsed
 		gleif-L1:LEIRegistrationStatusMerged
 		gleif-L1:LEIRegistrationStatusPendingArchival
+		gleif-L1:LEIRegistrationStatusPendingTransfer
 		gleif-L1:LEIRegistrationStatusPendingValidation
 		gleif-L1:LEIRegistrationStatusRetired
 		gleif-L1:LEIRegistrationStatusTransferred

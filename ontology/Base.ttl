@@ -89,18 +89,6 @@ gleif-base:GLEIF
 	gleif-base:hasLocalLegalName "Global Legal Entity Identifier Federation" ;
 	.
 
-gleif-base:IdentificationScheme
-	a owl:Class ;
-	rdfs:subClassOf [
-		a owl:Restriction ;
-		owl:onProperty gleif-base:scopes ;
-		owl:someValuesFrom gleif-base:Identifier ;
-	] ;
-	rdfs:label "identification scheme" ;
-	dct:source "ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15" ;
-	skos:definition "system for allocating identifiers to objects" ;
-	.
-
 gleif-base:Identifier
 	a owl:Class ;
 	rdfs:subClassOf
@@ -108,12 +96,6 @@ gleif-base:Identifier
 			a owl:Restriction ;
 			owl:onProperty gleif-base:identifies ;
 			owl:cardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasScope ;
-			owl:onClass gleif-base:IdentificationScheme ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
@@ -188,13 +170,13 @@ gleif-base:LegalEntityRelationship
 	rdfs:subClassOf
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasOwner ;
+			owl:onProperty gleif-base:hasChild ;
 			owl:onClass gleif-base:LegalEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasSubsidiary ;
+			owl:onProperty gleif-base:hasParent ;
 			owl:onClass gleif-base:LegalEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
@@ -308,7 +290,6 @@ gleif-base:RegistrationAuthority
 gleif-base:RegistrationStatus
 	a owl:Class ;
 	rdfs:label "registration status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	skos:definition "a lifecycle stage indicating the status of a given registration of something, such as a business or legal entity, as specified by the registration authority" ;
 	.
 
@@ -378,8 +359,27 @@ gleif-base:hasASCIIName
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasTransliteratedName ;
 	rdfs:label "has legal name" ;
-	rdfs:range xsd:string ;
 	skos:definition "the name used to refer to a person or organization in 7 bit ASCII text (ISO 646); also valid UNICODE (ISO 10646)" ;
+	.
+
+gleif-base:hasASCIINameAutomatic
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf
+		gleif-base:hasASCIIName ,
+		gleif-base:hasLegalName
+		;
+	rdfs:label "has ASCII name automatic" ;
+	skos:definition "Legal name of the entity transliterated to ASCII characters, auto-transliterated by the managing LOU." ;
+	.
+
+gleif-base:hasASCIINamePreferred
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf
+		gleif-base:hasASCIIName ,
+		gleif-base:hasLegalName
+		;
+	rdfs:label "has ASCII name preferred" ;
+	skos:definition "Legal name of the entity transliterated to ASCII characters, provided by the entity for this purpose." ;
 	.
 
 gleif-base:hasAbbreviation
@@ -389,14 +389,20 @@ gleif-base:hasAbbreviation
 	skos:definition "an abbreviation for the entity identified" ;
 	.
 
+gleif-base:hasAdditionalAddressLine
+	a owl:DatatypeProperty ;
+	rdfs:label "has additional address line" ;
+	rdfs:domain gleif-base:PhysicalAddress ;
+	skos:definition "Means to collect the one to three specifically-named optional additional address line elements." ;
+	.
+
 gleif-base:hasAdditionalName
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf
 		skos:altLabel ,
 		gleif-base:hasName
 		;
-	rdfs:label "has legal name" ;
-	rdfs:range xsd:string ;
+	rdfs:label "has additional name" ;
 	skos:definition "the name used to refer to an person or organization informally" ;
 	.
 
@@ -411,33 +417,31 @@ gleif-base:hasAddressLine1
 	a owl:DatatypeProperty ;
 	rdfs:label "has address line 1" ;
 	rdfs:domain gleif-base:PhysicalAddress ;
-	rdfs:range xsd:string ;
-	skos:altLabel "has first address line" ;
 	skos:definition "The mandatory first address line element." ;
 	.
 
 gleif-base:hasAddressLine2
 	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf gleif-base:hasAdditionalAddressLine ;
 	rdfs:label "has address line 2" ;
 	rdfs:domain gleif-base:PhysicalAddress ;
-	rdfs:range xsd:string ;
 	skos:definition "The second line of the one to three optional additional address line elements." ;
 	.
 
 gleif-base:hasAddressLine3
 	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf gleif-base:hasAdditionalAddressLine ;
 	rdfs:label "has address line 3" ;
 	rdfs:domain gleif-base:PhysicalAddress ;
-	rdfs:range xsd:string ;
 	skos:definition "The third line of the one to three optional additional address line elements." ;
 	skos:note "This element SHALL be omitted if address line 2 is omitted." ;
 	.
 
 gleif-base:hasAddressLine4
 	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf gleif-base:hasAdditionalAddressLine ;
 	rdfs:label "has address line 4" ;
 	rdfs:domain gleif-base:PhysicalAddress ;
-	rdfs:range xsd:string ;
 	skos:definition "The fourth line of the one to three optional additional address line elements." ;
 	skos:note "This element SHALL be omitted if address line 3 is omitted." ;
 	.
@@ -445,34 +449,35 @@ gleif-base:hasAddressLine4
 gleif-base:hasAddressNumber
 	a owl:DatatypeProperty ;
 	rdfs:label "has address number" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:domain gleif-base:PhysicalAddress ;
-	rdfs:range xsd:string ;
 	skos:definition "Optional, additional structured version of an external house number, or range of numbers, contained in one of the address line elements." ;
 	.
 
 gleif-base:hasAddressNumberWithinBuilding
 	a owl:DatatypeProperty ;
 	rdfs:label "has address number within building" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:domain gleif-base:PhysicalAddress ;
-	rdfs:range xsd:string ;
 	skos:definition "Optional, additional structured version of an internal location number, or range of numbers, contained in one of the address line elements." ;
+	.
+
+gleif-base:hasChild
+	a owl:ObjectProperty ;
+	rdfs:label "has child" ;
+	rdfs:domain gleif-base:LegalEntityRelationship ;
+	rdfs:range gleif-base:LegalEntity ;
+	skos:definition "the legal entity that plays the child role" ;
 	.
 
 gleif-base:hasCity
 	a owl:DatatypeProperty ;
 	rdfs:label "has city" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:domain gleif-base:PhysicalAddress ;
-	rdfs:range xsd:string ;
 	skos:definition "The mandatory name of the city." ;
 	.
 
 gleif-base:hasCountry
 	a owl:ObjectProperty ;
 	rdfs:label "has country" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:domain gleif-base:PhysicalAddress ;
 	rdfs:range lcc-cr:Country ;
 	skos:definition "The country, based on the 2-character ISO 3166-1 country code." ;
@@ -496,7 +501,6 @@ gleif-base:hasEnd
 gleif-base:hasEntityExpirationDate
 	a owl:DatatypeProperty ;
 	rdfs:label "has entity expiration date" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:domain gleif-base:LegalEntity ;
 	rdfs:range xsd:dateTime ;
 	skos:definition "The date that the legal entity ceased to operate, whether due to dissolution, merger or acquisition" ;
@@ -505,7 +509,6 @@ gleif-base:hasEntityExpirationDate
 gleif-base:hasEntityExpirationReason
 	a owl:ObjectProperty ;
 	rdfs:label "has entity expiration reason" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:domain gleif-base:LegalEntity ;
 	rdfs:range gleif-base:EntityExpirationReason ;
 	skos:definition "the reason that a legal entity ceased to exist and/or operate" ;
@@ -514,16 +517,23 @@ gleif-base:hasEntityExpirationReason
 gleif-base:hasEntityStatus
 	a owl:ObjectProperty ;
 	rdfs:label "has entity status" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:domain gleif-base:LegalEntity ;
 	rdfs:range gleif-base:EntityStatus ;
 	skos:definition "indicates the status of the entity (i.e., active, inactive)" ;
 	.
 
+gleif-base:hasFirstAddressLine
+	a owl:DatatypeProperty ;
+	rdfs:label "has first address line" ;
+	rdfs:domain gleif-base:PhysicalAddress ;
+	owl:equivalentProperty gleif-base:hasAddressLine1 ;
+	skos:altLabel "has first address line" ;
+	skos:definition "The mandatory first address line element." ;
+	.
+
 gleif-base:hasInitialRegistrationDate
 	a owl:DatatypeProperty ;
 	rdfs:label "has initial registration date" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:range xsd:dateTime ;
 	skos:definition "the date on which an identifier or other registered item was first registered" ;
 	.
@@ -531,7 +541,6 @@ gleif-base:hasInitialRegistrationDate
 gleif-base:hasLastModificationDate
 	a owl:DatatypeProperty ;
 	rdfs:label "has last modification date" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:range xsd:dateTime ;
 	skos:definition "the date that the detail of a specific registration in the registry was last revised" ;
 	.
@@ -579,18 +588,8 @@ gleif-base:hasLocalName
 gleif-base:hasMailRouting
 	a owl:DatatypeProperty ;
 	rdfs:label "mail routing" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:domain gleif-base:PhysicalAddress ;
-	rdfs:range xsd:string ;
 	skos:definition "Optional free text address line to hold content from other address lines containing explicit routing information (this element's presence indicates that this address is a routing / 'care of' address)." ;
-	.
-
-gleif-base:hasMember
-	a owl:ObjectProperty ;
-	rdfs:label "has member" ;
-	owl:inverseOf gleif-base:isMemberOf ;
-	skos:definition "relates something, typically a group or organization, to some discrete thing identified as a part (member) of it" ;
-	skos:note "This property should be read as being the property of a logical union of group and organization (not shown)." ;
 	.
 
 gleif-base:hasName
@@ -603,24 +602,22 @@ gleif-base:hasName
 gleif-base:hasNextRenewalDate
 	a owl:DatatypeProperty ;
 	rdfs:label "has next renewal date" ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	rdfs:range xsd:dateTime ;
 	skos:definition "the date by which a specific registration in the registry must be renewed or updated" ;
 	.
 
-gleif-base:hasOwner
+gleif-base:hasParent
 	a owl:ObjectProperty ;
-	rdfs:label "has owner" ;
+	rdfs:label "has parent" ;
 	rdfs:domain gleif-base:LegalEntityRelationship ;
 	rdfs:range gleif-base:LegalEntity ;
-	skos:definition "the legal entity that plays the owner role" ;
+	skos:definition "the legal entity that plays the parent role" ;
 	.
 
 gleif-base:hasPostalCode
 	a owl:DatatypeProperty ;
 	rdfs:label "has postal code" ;
 	rdfs:domain gleif-base:PhysicalAddress ;
-	rdfs:range xsd:string ;
 	skos:definition "The (optional) postal code of this address as specified by the local postal service." ;
 	.
 
@@ -639,27 +636,12 @@ gleif-base:hasRegistrationStatus
 	skos:definition "indicates the status of a specific registration, such as for an identifier or license" ;
 	.
 
-gleif-base:hasScope
-	a owl:ObjectProperty ;
-	rdfs:label "has scope" ;
-	owl:inverseOf gleif-base:scopes ;
-	skos:definition "specifies a form of words that conveys the meaning associated with something" ;
-	.
-
 gleif-base:hasStart
 	a owl:DatatypeProperty ;
 	rdfs:label "has start"@en ;
 	rdfs:domain gleif-base:Period ;
 	rdfs:range xsd:dateTime ;
-	skos:definition "the start time of a period." ;
-	.
-
-gleif-base:hasSubsidiary
-	a owl:ObjectProperty ;
-	rdfs:label "has subsidiary" ;
-	rdfs:domain gleif-base:LegalEntityRelationship ;
-	rdfs:range gleif-base:LegalEntity ;
-	skos:definition "the legal entity that plays the subsidiary role" ;
+	skos:definition "The start time of a period." ;
 	.
 
 gleif-base:hasSuccessor
@@ -677,30 +659,28 @@ gleif-base:hasTag
 		;
 	rdfs:label "has tag" ;
 	rdfs:range xsd:string ;
-	skos:definition "has a unique combination of alphanumeric characters or binary representation corresponding to the identifier, code, or other element to which it applies" ;
+	skos:definition "Has a unique combination of alphanumeric characters or binary representation corresponding to the identifier, code, or other element to which it applies." ;
 	.
 
 gleif-base:hasTranslatedEnglishName
 	a owl:DatatypeProperty ;
-	rdfs:subPropertyOf gleif-base:hasTransliteratedName ;
+	rdfs:subPropertyOf gleif-base:hasASCIIName ;
 	rdfs:label "has legal name" ;
-	rdfs:range xsd:string ;
-	skos:definition "the name used to refer to a person or organization, translated into English. Transliterated by definition" ;
+	skos:definition "The name used to refer to a person or organization, translated into English. Transliterated to ASCII by definition." ;
 	.
 
 gleif-base:hasTransliteratedAbbreviation
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasAbbreviation ;
 	rdfs:label "has name" ;
-	skos:definition "an abbreviation transliterated into a Western alphabet" ;
+	skos:definition "An abbreviation transliterated into a Western alphabet." ;
 	.
 
 gleif-base:hasTransliteratedName
 	a owl:DatatypeProperty ;
-	rdfs:subPropertyOf gleif-base:hasAdditionalName ;
-	rdfs:label "has legal name" ;
-	rdfs:range xsd:string ;
-	skos:definition "the name used to refer to a person or organization, converted from original to western text. Not generally the legal name" ;
+	rdfs:subPropertyOf gleif-base:hasName ;
+	rdfs:label "has transliterated name" ;
+	skos:definition "The name used to refer to a person or organization, converted from original to western text. Not generally the legal name." ;
 	.
 
 gleif-base:hasWebsite
@@ -716,23 +696,10 @@ gleif-base:identifies
 	skos:definition "is the relationship between something and that which provides a unique reference for it" ;
 	.
 
-gleif-base:isIncludedIn
-	a owl:ObjectProperty ;
-	rdfs:label "is included in" ;
-	owl:inverseOf gleif-base:comprises ;
-	skos:definition "relates something to something that contains it" ;
-	.
-
 gleif-base:isManagedBy
 	a owl:ObjectProperty ;
 	rdfs:label "is managed by" ;
 	skos:definition "relates something to another thing that has some role in directing its affairs" ;
-	.
-
-gleif-base:isMemberOf
-	a owl:ObjectProperty ;
-	rdfs:label "is member of" ;
-	skos:definition "belonging, either individually or collectively, to a group" ;
 	.
 
 gleif-base:isQualifiedBy
@@ -757,24 +724,11 @@ gleif-base:isRegisteredIn
 	skos:definition "indicates the registry that something is registered in" ;
 	.
 
-gleif-base:manages
-	a owl:ObjectProperty ;
-	rdfs:label "manages" ;
-	owl:inverseOf gleif-base:isManagedBy ;
-	skos:definition "relates an autonomous agent to something that it directs in some way" ;
-	.
-
 gleif-base:records
 	a owl:ObjectProperty ;
 	rdfs:label "records" ;
 	rdfs:domain gleif-base:RegistryEntry ;
 	skos:definition "the thing which the registry entry is a record of" ;
-	.
-
-gleif-base:scopes
-	a owl:ObjectProperty ;
-	rdfs:label "scopes" ;
-	skos:definition "determines or identifies the essential qualities or meaning of, discovers and sets forth the meaning of, fixes or marks the limits of, demarcates" ;
 	.
 
 []
