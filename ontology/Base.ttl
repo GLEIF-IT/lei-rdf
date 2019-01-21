@@ -547,7 +547,7 @@ gleif-base:hasName
 
 gleif-base:hasNameASCII
 	a owl:DatatypeProperty ;
-	rdfs:subPropertyOf gleif-base:hasTransliteratedName ;
+	rdfs:subPropertyOf gleif-base:hasNameTransliterated ;
 	rdfs:label "has name ASCII" ;
 	skos:definition "the name used to refer to a person or organization in 7 bit ASCII text (ISO 646); also valid UNICODE (ISO 10646)" ;
 	.
@@ -555,8 +555,8 @@ gleif-base:hasNameASCII
 gleif-base:hasNameASCIIAutomatic
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf
-		gleif-base:hasASCIIName ,
-		gleif-base:hasLegalName
+		gleif-base:hasNameASCII ,
+		gleif-base:hasNameLegal
 		;
 	rdfs:label "has name ASCII automatic" ;
 	skos:definition "Legal name of the entity transliterated to ASCII characters, auto-transliterated by the managing LOU." ;
@@ -565,8 +565,8 @@ gleif-base:hasNameASCIIAutomatic
 gleif-base:hasNameASCIIPreferred
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf
-		gleif-base:hasASCIIName ,
-		gleif-base:hasLegalName
+		gleif-base:hasNameASCII ,
+		gleif-base:hasNameLegal
 		;
 	rdfs:label "has name ASCII preferred" ;
 	skos:definition "Legal name of the entity transliterated to ASCII characters, provided by the entity for this purpose." ;
@@ -592,8 +592,8 @@ gleif-base:hasNameLegal
 gleif-base:hasNameLegalLocal
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf
-		gleif-base:hasLegalName ,
-		gleif-base:hasLocalName
+		gleif-base:hasNameLegal ,
+		gleif-base:hasNameLocal
 		;
 	rdfs:label "has name legal local" ;
 	skos:definition "the name used to refer to an person or organization in legal communications in local alphabet, which may be English" ;
@@ -604,6 +604,13 @@ gleif-base:hasNameLocal
 	rdfs:subPropertyOf gleif-base:hasName ;
 	rdfs:label "has name local" ;
 	skos:definition "a name in a language local to the entity identified, may be English" ;
+	.
+
+gleif-base:hasNameTranslatedEnglish
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf gleif-base:hasNameASCII ;
+	rdfs:label "has legal name" ;
+	skos:definition "The name used to refer to a person or organization, translated into English. Transliterated to ASCII by definition." ;
 	.
 
 gleif-base:hasNameTransliterated
@@ -674,13 +681,6 @@ gleif-base:hasTag
 	rdfs:label "has tag" ;
 	rdfs:range xsd:string ;
 	skos:definition "Has a unique combination of alphanumeric characters or binary representation corresponding to the identifier, code, or other element to which it applies." ;
-	.
-
-gleif-base:hasTranslatedEnglishName
-	a owl:DatatypeProperty ;
-	rdfs:subPropertyOf gleif-base:hasASCIIName ;
-	rdfs:label "has legal name" ;
-	skos:definition "The name used to refer to a person or organization, translated into English. Transliterated to ASCII by definition." ;
 	.
 
 gleif-base:hasWebsite
