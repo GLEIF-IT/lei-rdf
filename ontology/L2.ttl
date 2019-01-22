@@ -25,10 +25,9 @@
 		;
 	.
 
-gleif-L2:AccountingConsolidation
+gleif-base:LegalEntityRelationship
 	a owl:Class ;
 	rdfs:subClassOf
-		gleif-base:LegalEntityRelationship ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L2:hasRelationshipPeriod ;
@@ -66,8 +65,12 @@ gleif-L2:AccountingConsolidation
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
 		;
+	.
+
+gleif-L2:AccountingConsolidation
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:LegalEntityRelationship ;
 	rdfs:label "accounting consolidation" ;
-	dct:source "http://www.iasplus.com/en/standards/ias/ias27-2011"^^xsd:anyURI ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:definition "Accounting consolidation holds when '[in the] financial statements of a group [...] the assets, liabilities, equity, income, expenses and cash flows of the parent and its subsidiaries are presented as those of a single economic entity'." ;
 	.
@@ -124,6 +127,16 @@ gleif-L2:DirectConsolidation
 	rdfs:label "direct consolidation" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:definition "The 'child' entity has its accounts fully consolidated by the 'parent' entity, in the sense given by the accounting standard(s) specified; the parent entity is the closest fully consolidating parent to the child entity in any applicable hierarchical ownership structure." ;
+	.
+
+gleif-L2:InternationalBranchRelationship
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:LegalEntityRelationship ;
+	rdfs:label "international branch relationship" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
+	skos:altLabel "foreign branch relationship" ;
+	skos:definition "Child is a lead international branch or international branch network outside of the head office’s jurisdiction. The Parent is the Head Office and MUST have an LEI." ;
+	skos:note "A non-incorporated establishment of a head office legal entity, when this establishment is located in a separate jurisdiction from the jurisdiction in which the head office legal entity is located, i.e., in a host jurisdiction outside of its home jurisdiction. Under this definition, an establishment may consist of a single office or other business premises, or of several offices (i.e., a branch network) in different locations of the same host jurisdiction: even in the latter case, only one LEI would be issued per host jurisdiction, essentially amounting to, “one country-one LEI.” Unlike foreign subsidiaries of a parent entity, which are separately incorporated or organised under the laws of the host jurisdictions, an international branch, as defined here, is legally dependent on the head office legal entity and cannot exist without its head office legal entity " ;
 	.
 
 gleif-L2:LegalEntityRelationshipRecord
@@ -199,14 +212,6 @@ gleif-L2:LegalEntityRelationshipRecord
 	rdfs:label "legal entity relationship record" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:definition "The Registration container element contains information specifying the LOU's administration of the relationship report." ;
-	.
-
-gleif-L2:PrimaryForeignBranchConsolidation
-	a owl:Class ;
-	rdfs:subClassOf gleif-L2:DirectConsolidation ;
-	rdfs:label "primary foreign branch consolidation" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	skos:definition "Child is an international branch of the legal entity designated by Parent (in jurisdiction country of Child). The Parent is the Head Office and MUST have an LEI." ;
 	.
 
 gleif-L2:RelationshipRegistrationStatus
