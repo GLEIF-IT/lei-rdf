@@ -234,64 +234,6 @@ gleif-L1:LEIRegistrationStatusTransferred
 	gleif-base:hasTag "TRANSFERRED" ;
 	.
 
-gleif-L1:LEIValidationSourceKind
-	a owl:Class ;
-	rdfs:subClassOf gleif-base:RegistrationStatus ;
-	rdfs:label "LEI validation source kind" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	owl:oneOf (
-		gleif-L1:LEIValidationSourceKindEntitySuppliedOnly
-		gleif-L1:LEIValidationSourceKindFullyCorroborated
-		gleif-L1:LEIValidationSourceKindPartiallyCorroborated
-		gleif-L1:LEIValidationSourceKindPending
-	) ;
-	skos:definition "The level of validation of the reference data provided by the registrant." ;
-	.
-
-gleif-L1:LEIValidationSourceKindEntitySuppliedOnly
-	a
-		owl:NamedIndividual ,
-		gleif-L1:LEIValidationSourceKind
-		;
-	rdfs:label "entity supplied only" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, the information associated with this record has significant reliance on the information that a submitter provided due to the unavailability of corroborating information." ;
-	gleif-base:hasTag "ENTITY_SUPPLIED_ONLY" ;
-	.
-
-gleif-L1:LEIValidationSourceKindFullyCorroborated
-	a
-		owl:NamedIndividual ,
-		gleif-L1:LEIValidationSourceKind
-		;
-	rdfs:label "fully corroborated" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, there is sufficient information contained in authoritative public sources to corroborate the information that the submitter has provided for the record." ;
-	gleif-base:hasTag "FULLY_CORROBORATED" ;
-	.
-
-gleif-L1:LEIValidationSourceKindPartiallyCorroborated
-	a
-		owl:NamedIndividual ,
-		gleif-L1:LEIValidationSourceKind
-		;
-	rdfs:label "partially corroborated" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, the information supplied by the registrant can be partially corroborated by public authoritative sources, while some of the record is dependent upon the information that the registrant submitted, either due to conflicts with authoritative information, or due to data unavailability." ;
-	gleif-base:hasTag "PARTIALLY_CORROBORATED" ;
-	.
-
-gleif-L1:LEIValidationSourceKindPending
-	a
-		owl:NamedIndividual ,
-		gleif-L1:LEIValidationSourceKind
-		;
-	rdfs:label "pending" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "The validation of the reference data provided by the registrant has not yet occurred." ;
-	gleif-base:hasTag "PENDING" ;
-	.
-
 gleif-L1:LegalEntityIdentifier
 	a owl:Class ;
 	rdfs:subClassOf
@@ -333,7 +275,7 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasValidationSources ;
-			owl:onClass gleif-L1:LEIValidationSourceKind ;
+			owl:onClass gleif-L1:ValidationSourceKind ;
 			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -424,6 +366,64 @@ gleif-L1:SoleProprietorship
 	rdfs:label "sole proprietorship" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "The legal entity represents an individual acting in a business capacity" ;
+	.
+
+gleif-L1:ValidationSourceKind
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:RegistrationStatus ;
+	rdfs:label "LEI validation source kind" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	owl:oneOf (
+		gleif-L1:ValidationSourceKindEntitySuppliedOnly
+		gleif-L1:ValidationSourceKindFullyCorroborated
+		gleif-L1:ValidationSourceKindPartiallyCorroborated
+		gleif-L1:ValidationSourceKindPending
+	) ;
+	skos:definition "The level of validation of the reference data provided by the registrant." ;
+	.
+
+gleif-L1:ValidationSourceKindEntitySuppliedOnly
+	a
+		owl:NamedIndividual ,
+		gleif-L1:ValidationSourceKind
+		;
+	rdfs:label "entity supplied only" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, the information associated with this record has significant reliance on the information that a submitter provided due to the unavailability of corroborating information." ;
+	gleif-base:hasTag "ENTITY_SUPPLIED_ONLY" ;
+	.
+
+gleif-L1:ValidationSourceKindFullyCorroborated
+	a
+		owl:NamedIndividual ,
+		gleif-L1:ValidationSourceKind
+		;
+	rdfs:label "fully corroborated" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, there is sufficient information contained in authoritative public sources to corroborate the information that the submitter has provided for the record." ;
+	gleif-base:hasTag "FULLY_CORROBORATED" ;
+	.
+
+gleif-L1:ValidationSourceKindPartiallyCorroborated
+	a
+		owl:NamedIndividual ,
+		gleif-L1:ValidationSourceKind
+		;
+	rdfs:label "partially corroborated" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, the information supplied by the registrant can be partially corroborated by public authoritative sources, while some of the record is dependent upon the information that the registrant submitted, either due to conflicts with authoritative information, or due to data unavailability." ;
+	gleif-base:hasTag "PARTIALLY_CORROBORATED" ;
+	.
+
+gleif-L1:ValidationSourceKindPending
+	a
+		owl:NamedIndividual ,
+		gleif-L1:ValidationSourceKind
+		;
+	rdfs:label "pending" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "The validation of the reference data provided by the registrant has not yet occurred." ;
+	gleif-base:hasTag "PENDING" ;
 	.
 
 gleif-L1:hasAdditionalValidationIdentifier
@@ -520,7 +520,7 @@ gleif-L1:hasValidationSources
 	a owl:ObjectProperty ;
 	rdfs:label "has validation sources" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	rdfs:range gleif-L1:LEIValidationSourceKind ;
+	rdfs:range gleif-L1:ValidationSourceKind ;
 	skos:definition "The level of validation of the reference data provided by the registrant." ;
 	.
 
@@ -544,10 +544,10 @@ gleif-L1:hasValidationSources
 []
 	a owl:AllDifferent ;
 	owl:members (
-		gleif-L1:LEIValidationSourceKindEntitySuppliedOnly
-		gleif-L1:LEIValidationSourceKindFullyCorroborated
-		gleif-L1:LEIValidationSourceKindPartiallyCorroborated
-		gleif-L1:LEIValidationSourceKindPending
+		gleif-L1:ValidationSourceKindEntitySuppliedOnly
+		gleif-L1:ValidationSourceKindFullyCorroborated
+		gleif-L1:ValidationSourceKindPartiallyCorroborated
+		gleif-L1:ValidationSourceKindPending
 	) ;
 	.
 

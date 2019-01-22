@@ -155,14 +155,14 @@ gleif-L2:LegalEntityRelationshipRecord
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L2:hasValidationDocuments ;
-			owl:onClass gleif-L2:RelationshipValidationDocumentsKind ;
+			owl:onProperty gleif-L2:hasValidationSources ;
+			owl:onClass gleif-L1:ValidationSourceKind ;
 			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L2:hasValidationSources ;
-			owl:onClass gleif-L2:RelationshipValidationSourceKind ;
+			owl:onProperty gleif-L2:hasValidationDocuments ;
+			owl:onClass gleif-L2:RelationshipValidationDocumentsKind ;
 			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -429,63 +429,6 @@ gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments
 	gleif-base:hasTag "SUPPORTING_DOCUMENTS" ;
 	.
 
-gleif-L2:RelationshipValidationSourceKind
-	a owl:Class ;
-	rdfs:label "relationship validation source kind" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	owl:oneOf (
-		gleif-L2:RelationshipValidationSourceKindEntitySuppliedOnly
-		gleif-L2:RelationshipValidationSourceKindFullyCorroborated
-		gleif-L2:RelationshipValidationSourceKindPartiallyCorroborated
-		gleif-L2:RelationshipValidationSourceKindPending
-	) ;
-	skos:definition "Level of relationship validation." ;
-	.
-
-gleif-L2:RelationshipValidationSourceKindEntitySuppliedOnly
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipValidationSourceKind
-		;
-	rdfs:label "entity supplied only" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, the information associated with this record has significant reliance on the information that a submitter provided due to the unavailability of corroborating information." ;
-	gleif-base:hasTag "ENTITY SUPPLIED ONLY" ;
-	.
-
-gleif-L2:RelationshipValidationSourceKindFullyCorroborated
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipValidationSourceKind
-		;
-	rdfs:label "fully corroborated" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, there is sufficient information contained in authoritative public sources to corroborate the information that the submitter has provided for the record." ;
-	gleif-base:hasTag "FULLY CORROBORATED" ;
-	.
-
-gleif-L2:RelationshipValidationSourceKindPartiallyCorroborated
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipValidationSourceKind
-		;
-	rdfs:label "partially corroborated" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, there is sufficient information contained in authoritative public sources to corroborate the information that the submitter has provided for the record." ;
-	gleif-base:hasTag "PARTIALLY CORROBORATED" ;
-	.
-
-gleif-L2:RelationshipValidationSourceKindPending
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipValidationSourceKind
-		;
-	rdfs:label "pending" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	skos:definition "The validation of the relationship data provided by the registrant has not yet occurred. Records with this ValidationSources value MUST not be published." ;
-	gleif-base:hasTag "PENDING" ;
-	.
-
 gleif-L2:UltimateConsolidation
 	a owl:Class ;
 	rdfs:subClassOf gleif-L2:AccountingConsolidation ;
@@ -572,7 +515,7 @@ gleif-L2:hasValidationSources
 	rdfs:label "has validation sources" ;
 	rdfs:domain gleif-L2:LegalEntityRelationshipRecord ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	rdfs:range gleif-L2:RelationshipValidationSourceKind ;
+	rdfs:range gleif-L1:ValidationSourceKind ;
 	skos:definition "Level of relationship validation." ;
 	.
 
@@ -616,16 +559,6 @@ gleif-L2:hasValidationSources
 		gleif-L2:RelationshipValidationDocumentsKindOtherOfficialDocuments
 		gleif-L2:RelationshipValidationDocumentsKindRegulatoryFiling
 		gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments
-	) ;
-	.
-
-[]
-	a owl:AllDifferent ;
-	owl:members (
-		gleif-L2:RelationshipValidationSourceKindEntitySuppliedOnly
-		gleif-L2:RelationshipValidationSourceKindFullyCorroborated
-		gleif-L2:RelationshipValidationSourceKindPartiallyCorroborated
-		gleif-L2:RelationshipValidationSourceKindPending
 	) ;
 	.
 
