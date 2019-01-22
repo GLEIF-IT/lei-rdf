@@ -19,7 +19,6 @@
 	a owl:Ontology ;
 	rdfs:label "GLEIF L1 Ontology Inferences" ;
 	rdfs:comment "Ontology that builds on GLEIF L1 ontology to infer additional information" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1inferences/> ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/> ,

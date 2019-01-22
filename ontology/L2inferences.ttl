@@ -20,7 +20,6 @@
 	a owl:Ontology ;
 	rdfs:label "GLEIF L2 Ontology Inferences" ;
 	rdfs:comment "Ontology that builds on GLEIF L2 ontology to infer additional information" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2inferences/> ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/> ,
