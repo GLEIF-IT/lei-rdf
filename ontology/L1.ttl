@@ -268,7 +268,7 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasAdditionalValidationIdentifier ;
+			owl:onProperty gleif-L1:hasOtherValidationIdentifier ;
 			owl:onClass gleif-base:RegistryIdentifier ;
 			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
@@ -419,14 +419,6 @@ gleif-L1:ValidationSourceKindPending
 	gleif-base:hasTag "PENDING" ;
 	.
 
-gleif-L1:hasAdditionalValidationIdentifier
-	a owl:ObjectProperty ;
-	rdfs:label "has validation identifier" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	rdfs:range gleif-base:RegistryIdentifier ;
-	skos:definition "An optional list of additional registrations used by the LEI Issuer to validate the entity data." ;
-	.
-
 gleif-L1:hasHeadquartersAddress
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf gleif-base:hasAddress ;
@@ -501,6 +493,15 @@ gleif-L1:hasNameTradingOrOperating
 		"trading as"
 		;
 	skos:definition "A 'trading as', 'brand name' or 'operating under' name currently used by this entity in addition to, but not replacing, the (primary) legal, official registered name" ;
+	.
+
+gleif-L1:hasOtherValidationIdentifier
+	a owl:ObjectProperty ;
+	rdfs:label "has other validation identifier" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	rdfs:range gleif-base:RegistryIdentifier ;
+	skos:altLabel "has additional validation identifier" ;
+	skos:definition "An optional list of additional registrations used by the LEI Issuer to validate the entity data." ;
 	.
 
 gleif-L1:hasRegistrationIdentifier
