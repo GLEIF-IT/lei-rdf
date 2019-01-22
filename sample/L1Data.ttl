@@ -173,7 +173,7 @@ gleif-L1-data:LEE-213800YK2FEXWNMT3R12
 	gleif-base:hasInitialRegistrationDate "2017-11-01T00:00:00Z"^^xsd:dateTime ;
 	gleif-base:hasLastUpdateDate "2018-09-14T14:37:15.170Z"^^xsd:dateTime ;
 	gleif-base:hasNextRenewalDate "2019-11-01T00:00:00Z"^^xsd:dateTime ;
-	gleif-base:hasRegistrationStatus gleif-L1:LEIRegistrationStatusMerged ;
+	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusMerged ;
 	gleif-base:hasSuccessor gleif-L1-data:LE-213800YK2FEXWNMT3R12 ;
 	gleif-base:records gleif-L1-data:LE-213800YK2FEXWNMT3R12 ;
 	gleif-L1:hasManagingLOU gleif-L1-data:LE-213800WAVVOPS85N2205 ;
@@ -187,7 +187,7 @@ gleif-L1-data:LEE-25490050856CG53NAC28
 	gleif-base:hasInitialRegistrationDate "2017-10-30T16:31:12.342Z"^^xsd:dateTime ;
 	gleif-base:hasLastUpdateDate "2018-10-31T13:32:11.732Z"^^xsd:dateTime ;
 	gleif-base:hasNextRenewalDate "2018-10-30T16:31:12.342Z"^^xsd:dateTime ;
-	gleif-base:hasRegistrationStatus gleif-L1:LEIRegistrationStatusLapsed ;
+	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusLapsed ;
 	gleif-base:records gleif-L1-data:LE-25490050856CG53NAC28 ;
 	gleif-L1:hasManagingLOU gleif-L1-data:LE-5493001KJTIIGC8Y1R12 ;
 	gleif-L1:hasOtherValidationIdentifier gleif-L1-data:BID-RA000598-201725900005 ;
@@ -201,7 +201,7 @@ gleif-L1-data:LEE-4469000001AVO26P9X86
 	gleif-base:hasInitialRegistrationDate "2017-02-01T19:37:30.514-06:00"^^xsd:dateTime ;
 	gleif-base:hasLastUpdateDate "2018-02-28T11:40:04.012-06:00"^^xsd:dateTime ;
 	gleif-base:hasNextRenewalDate "2018-02-01T19:37:30.513-06:00"^^xsd:dateTime ;
-	gleif-base:hasRegistrationStatus gleif-L1:LEIRegistrationStatusLapsed ;
+	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusLapsed ;
 	gleif-base:records gleif-L1-data:LE-5493007CICYM7A0SZ714 ;
 	gleif-L1:hasManagingLOU gleif-L1-data:LE-4469000001AVO26P9X86 ;
 	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000449-AME9806027F9 ;
@@ -214,7 +214,7 @@ gleif-L1-data:LEE-5493007CICYM7A0SZ714
 	gleif-base:hasInitialRegistrationDate "2013-03-22T11:07:24.137-06:00"^^xsd:dateTime ;
 	gleif-base:hasLastUpdateDate "2018-02-28T11:40:04.012-06:00"^^xsd:dateTime ;
 	gleif-base:hasNextRenewalDate "2019-01-24T20:16:17.627-06:00"^^xsd:dateTime ;
-	gleif-base:hasRegistrationStatus gleif-L1:LEIRegistrationStatusIssued ;
+	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
 	gleif-base:records gleif-L1-data:LE-5493007CICYM7A0SZ714 ;
 	gleif-L1:hasManagingLOU gleif-L1-data:LE-4469000001AVO26P9X86 ;
 	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000449-IKM981217SD5 ;
