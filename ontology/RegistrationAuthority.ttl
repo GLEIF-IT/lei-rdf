@@ -58,12 +58,14 @@ gleif-ra:BusinessRegistry
 		]
 		;
 	rdfs:label "business registry" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/RegistrationAuthority/> ;
 	skos:definition "a registry for registering and maintaining information about business entities" ;
 	.
 
 gleif-ra:RAregistry
 	a gleif-base:Registry ;
 	rdfs:label "GLEIF Registration Authorities List" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/RegistrationAuthority/> ;
 	skos:altLabel "RAL" ;
 	gleif-base:hasLocalName "GLEIF Registration Authorities List"@en ;
 	gleif-base:hasWebsite "https://www.gleif.org/en/about-lei/code-lists/gleif-registration-authorities-list"^^xsd:anyURI ;
@@ -82,6 +84,7 @@ gleif-ra:RegistrationAuthorityCode
 		]
 		;
 	rdfs:label "registration authority code" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/RegistrationAuthority/> ;
 	owl:equivalentClass [
 		a owl:Restriction ;
 		owl:onProperty gleif-base:isRegisteredIn ;
