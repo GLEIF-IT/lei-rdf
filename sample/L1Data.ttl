@@ -208,7 +208,7 @@ gleif-L1-data:LEE-4469000001AVO26P9X86
 	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
 	.
 
-gleif-L1-data:LEE-5493007CICYM7A0SZ71
+gleif-L1-data:LEE-5493007CICYM7A0SZ714
 	a gleif-L1:LegalEntityIdentifierRegistryEntry ;
 	gleif-base:comprises <https://www.gleif.org/lei/5493007CICYM7A0SZ714> ;
 	gleif-base:hasInitialRegistrationDate "2013-03-22T11:07:24.137-06:00"^^xsd:dateTime ;
