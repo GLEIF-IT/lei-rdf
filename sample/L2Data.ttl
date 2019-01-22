@@ -51,8 +51,8 @@ gleif-L2-data:REC-4469000001BFY38CWR75-95980020140006006514
 	gleif-base:hasLastModificationDate "2018-11-01T00:15:17.506-06:00"^^xsd:dateTime ;
 	gleif-base:hasNextRenewalDate "2018-10-31T18:15:49.463-06:00"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L2:RelationshipRegistrationStatusLapsed ;
-	gleif-base:isManagedBy gleif-L1-data:LE-4469000001AVO26P9X86 ;
 	gleif-base:records gleif-L2-data:OR-4469000001BFY38CWR75-95980020140006006514 ;
+	gleif-L1:hasManagingLOU gleif-L1-data:LE-4469000001AVO26P9X86 ;
 	gleif-L2:hasAccountingPeriod [
 		a gleif-base:Period ;
 		gleif-base:hasEnd "2016-12-01T00:00:00-06:00"^^xsd:dateTime ;

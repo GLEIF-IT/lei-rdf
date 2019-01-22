@@ -287,26 +287,18 @@ gleif-base:PhysicalAddress
 
 gleif-base:RegistrationAuthority
 	a owl:Class ;
-	rdfs:subClassOf
-		gleif-base:LegalEntity ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:manages ;
-			owl:someValuesFrom gleif-base:Registry ;
-		]
-		;
+	rdfs:subClassOf gleif-base:LegalEntity ;
 	rdfs:label "registration authority" ;
-	dct:source "ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	skos:altLabel "RA" ;
-	skos:definition "A legal entity that is responsible for maintaining a registry and provides registration services." ;
+	skos:definition "An organization that is responsible for maintaining a registry and provides registration services." ;
 	.
 
 gleif-base:RegistrationStatus
 	a owl:Class ;
 	rdfs:label "registration status" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	skos:definition "a lifecycle stage indicating the status of a given registration of something, such as a business or legal entity, as specified by the registration authority" ;
+	skos:definition "A lifecycle stage indicating the status of a given registration of something, such as a business or legal entity." ;
 	.
 
 gleif-base:Registry
@@ -315,7 +307,7 @@ gleif-base:Registry
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:isManagedBy ;
-			owl:onClass gleif-base:RegistrationAuthority ;
+			owl:onClass gleif-base:LegalEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -325,9 +317,8 @@ gleif-base:Registry
 		]
 		;
 	rdfs:label "registry" ;
-	dct:source "ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	skos:definition "a system, typically an information system, that records the registration of items" ;
+	skos:definition "A system, typically an information system, that records the registration of items." ;
 	.
 
 gleif-base:RegistryEntry

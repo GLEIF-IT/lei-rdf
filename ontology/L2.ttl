@@ -173,7 +173,7 @@ gleif-L2:LegalEntityRelationshipRecord
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:isManagedBy ;
+			owl:onProperty gleif-L1:hasManagingLOU ;
 			owl:onClass gleif-L1:LocalOperatingUnit ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,

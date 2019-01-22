@@ -298,7 +298,7 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:isManagedBy ;
+			owl:onProperty gleif-L1:hasManagingLOU ;
 			owl:onClass gleif-L1:LocalOperatingUnit ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
@@ -322,18 +322,11 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 
 gleif-L1:LocalOperatingUnit
 	a owl:Class ;
-	rdfs:subClassOf
-		gleif-base:RegistrationAuthority ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:manages ;
-			owl:someValuesFrom gleif-base:Registry ;
-		]
-		;
+	rdfs:subClassOf gleif-base:LegalEntity ;
 	rdfs:label "local operating unit" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:altLabel "LOU" ;
-	skos:definition "a registration authority that issues legal entity identifiers and is authorized by the Global LEI Foundation to do so" ;
+	skos:definition "An entity that supplies registration, renewal and other services, and acts as the primary interface for legal entities wishing to obtain an LEI. Only organizations duly accredited by the Global Legal Entity Identifier Foundation (GLEIF) are authorized to issue LEIs." ;
 	.
 
 gleif-L1:PhysicalAddressAutomaticASCII
@@ -465,6 +458,16 @@ gleif-L1:hasLegalFormText
 	rdfs:domain gleif-base:LegalEntity ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "A legacy code or textual description for the legal entity's legal form, used until a current code from the GLEIF-maintained list can be used." ;
+	.
+
+gleif-L1:hasManagingLOU
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf gleif-base:isManagedBy ;
+	rdfs:label "has managing LOU" ;
+	rdfs:domain gleif-L1:LegalEntityIdentifierRegistryEntry ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	rdfs:range gleif-L1:LocalOperatingUnit ;
+	skos:definition "The legal form of the entity, taken from the ISO Entity Legal Form (ELF) data set maintained by GLEIF." ;
 	.
 
 gleif-L1:hasNameAdditionalLocal
