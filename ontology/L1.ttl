@@ -310,7 +310,7 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasLastModificationDate ;
+			owl:onProperty gleif-base:hasLastUpdateDate ;
 			owl:onDataRange xsd:dateTime ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]

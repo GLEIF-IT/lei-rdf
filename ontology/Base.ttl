@@ -547,7 +547,7 @@ gleif-base:hasInitialRegistrationDate
 	skos:definition "the date on which an identifier or other registered item was first registered" ;
 	.
 
-gleif-base:hasLastModificationDate
+gleif-base:hasLastUpdateDate
 	a owl:DatatypeProperty ;
 	rdfs:label "has last modification date" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;

@@ -171,7 +171,7 @@ gleif-L1-data:LEE-213800YK2FEXWNMT3R12
 	a gleif-L1:LegalEntityIdentifierRegistryEntry ;
 	gleif-base:comprises <https://www.gleif.org/lei/213800YK2FEXWNMT3R12> ;
 	gleif-base:hasInitialRegistrationDate "2017-11-01T00:00:00Z"^^xsd:dateTime ;
-	gleif-base:hasLastModificationDate "2018-09-14T14:37:15.170Z"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2018-09-14T14:37:15.170Z"^^xsd:dateTime ;
 	gleif-base:hasNextRenewalDate "2019-11-01T00:00:00Z"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L1:LEIRegistrationStatusMerged ;
 	gleif-base:hasSuccessor gleif-L1-data:LE-213800YK2FEXWNMT3R12 ;
@@ -185,7 +185,7 @@ gleif-L1-data:LEE-25490050856CG53NAC28
 	a gleif-L1:LegalEntityIdentifierRegistryEntry ;
 	gleif-base:comprises <https://www.gleif.org/lei/25490050856CG53NAC28> ;
 	gleif-base:hasInitialRegistrationDate "2017-10-30T16:31:12.342Z"^^xsd:dateTime ;
-	gleif-base:hasLastModificationDate "2018-10-31T13:32:11.732Z"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2018-10-31T13:32:11.732Z"^^xsd:dateTime ;
 	gleif-base:hasNextRenewalDate "2018-10-30T16:31:12.342Z"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L1:LEIRegistrationStatusLapsed ;
 	gleif-base:records gleif-L1-data:LE-25490050856CG53NAC28 ;
@@ -199,7 +199,7 @@ gleif-L1-data:LEE-4469000001AVO26P9X86
 	a gleif-L1:LegalEntityIdentifierRegistryEntry ;
 	gleif-base:comprises <https://www.gleif.org/lei/4469000001AVO26P9X86> ;
 	gleif-base:hasInitialRegistrationDate "2017-02-01T19:37:30.514-06:00"^^xsd:dateTime ;
-	gleif-base:hasLastModificationDate "2018-02-28T11:40:04.012-06:00"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2018-02-28T11:40:04.012-06:00"^^xsd:dateTime ;
 	gleif-base:hasNextRenewalDate "2018-02-01T19:37:30.513-06:00"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L1:LEIRegistrationStatusLapsed ;
 	gleif-base:records gleif-L1-data:LE-5493007CICYM7A0SZ714 ;
@@ -212,7 +212,7 @@ gleif-L1-data:LEE-5493007CICYM7A0SZ71
 	a gleif-L1:LegalEntityIdentifierRegistryEntry ;
 	gleif-base:comprises <https://www.gleif.org/lei/5493007CICYM7A0SZ714> ;
 	gleif-base:hasInitialRegistrationDate "2013-03-22T11:07:24.137-06:00"^^xsd:dateTime ;
-	gleif-base:hasLastModificationDate "2018-02-28T11:40:04.012-06:00"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2018-02-28T11:40:04.012-06:00"^^xsd:dateTime ;
 	gleif-base:hasNextRenewalDate "2019-01-24T20:16:17.627-06:00"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L1:LEIRegistrationStatusIssued ;
 	gleif-base:records gleif-L1-data:LE-5493007CICYM7A0SZ714 ;
