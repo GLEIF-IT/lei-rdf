@@ -27,40 +27,6 @@
 		;
 	.
 
-gleif-elf:ELFRegistrationStatus
-	a owl:Class ;
-	rdfs:subClassOf gleif-base:RegistrationStatus ;
-	rdfs:label "ELF registration status" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/EntityLegalForm/> ;
-	owl:oneOf (
-		gleif-elf:ELFRegistrationStatusActive
-		gleif-elf:ELFRegistrationStatusInactive
-	) ;
-	skos:definition "Status of an entry in a entity legal form registry that conforms to ISO 20275" ;
-	.
-
-gleif-elf:ELFRegistrationStatusActive
-	a
-		owl:NamedIndividual ,
-		gleif-elf:ELFRegistrationStatus
-		;
-	rdfs:label "active" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/EntityLegalForm/> ;
-	skos:definition "status indicating that the registration is active" ;
-	gleif-base:hasTag "ACTV" ;
-	.
-
-gleif-elf:ELFRegistrationStatusInactive
-	a
-		owl:NamedIndividual ,
-		gleif-elf:ELFRegistrationStatus
-		;
-	rdfs:label "inactive" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/EntityLegalForm/> ;
-	skos:definition "status indicating that the registration is inactive" ;
-	gleif-base:hasTag "INAC" ;
-	.
-
 gleif-elf:ELFregistry
 	a gleif-base:Registry ;
 	rdfs:label "GLEIF Entity Legal Forms List" ;
@@ -95,24 +61,6 @@ gleif-elf:EntityLegalForm
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasRegistrationStatus ;
-			owl:onClass gleif-elf:ELFRegistrationStatus ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasInitialRegistrationDate ;
-			owl:onDataRange xsd:dateTime ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasLastUpdateDate ;
-			owl:onDataRange xsd:dateTime ;
-			owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
 			owl:onProperty gleif-base:hasCoverageArea ;
 			owl:someValuesFrom lcc-cr:GeographicRegion ;
 		]
@@ -141,13 +89,5 @@ gleif-elf:EntityLegalFormIdentifier
 		owl:hasValue gleif-elf:ELFregistry ;
 	] ;
 	skos:definition "A current code from the GLEIF-maintained list MUST be used. Values of the LegalFormEnum code list are maintained by GLEIF on behalf of ISO through the Entity Legal Form (ELF) as defined in ISO 20275." ;
-	.
-
-[]
-	a owl:AllDifferent ;
-	owl:members (
-		gleif-elf:ELFRegistrationStatusActive
-		gleif-elf:ELFRegistrationStatusInactive
-	) ;
 	.
 
