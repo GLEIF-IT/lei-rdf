@@ -41,22 +41,22 @@ gleif-elf:EntityLegalForm
 	rdfs:subClassOf
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasLocalAbbreviation ;
+			owl:onProperty gleif-base:hasAbbreviationLocal ;
 			owl:minCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasTransliteratedAbbreviation ;
+			owl:onProperty gleif-base:hasAbbreviationTransliterated ;
 			owl:minCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasLocalName ;
+			owl:onProperty gleif-base:hasNameLocal ;
 			owl:minCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasTransliteratedName ;
+			owl:onProperty gleif-base:hasNameTransliterated ;
 			owl:minCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[

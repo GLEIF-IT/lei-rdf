@@ -124,7 +124,7 @@ gleif-L1-data:LE-213800YK2FEXWNMT3R12
 	gleif-base:hasEntityExpirationReason gleif-base:EntityExpirationReasonCorporateAction ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusInactive ;
 	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-GB ;
-	gleif-base:hasLocalLegalName "LUDLOW (FYLDE) LIMITED"@en ;
+	gleif-base:hasNameLegalLocal "LUDLOW (FYLDE) LIMITED"@en ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:Leg-213800YK2FEXWNMT3R12 ;
 	gleif-L1:hasLegalAddress gleif-L1-data:Leg-213800YK2FEXWNMT3R12 ;
 	gleif-L1:hasLegalForm gleif-ELF-data:ELFREC-H0PO ;
@@ -135,7 +135,7 @@ gleif-L1-data:LE-25490050856CG53NAC28
 	a gleif-base:LegalEntity ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
 	gleif-base:hasLegalJurisdiction lcc-3166-2-add:REG-US-DE ;
-	gleif-base:hasLocalLegalName "5210 Concourse, LP"@en ;
+	gleif-base:hasNameLegalLocal "5210 Concourse, LP"@en ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:HQ-25490050856CG53NAC28 ;
 	gleif-L1:hasLegalAddress gleif-L1-data:Leg-25490050856CG53NAC28 ;
 	gleif-L1:hasLegalFormText "Limited Partnership"@en ;
@@ -146,25 +146,25 @@ gleif-L1-data:LE-4469000001AVO26P9X86
 	a gleif-L1:LocalOperatingUnit ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
 	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-MX ;
-	gleif-base:hasLocalLegalName "ASOCIACION MEXICANA DE ESTANDARES PARA EL COMERCIO ELECTRONICO AC"@es ;
+	gleif-base:hasNameLegalLocal "ASOCIACION MEXICANA DE ESTANDARES PARA EL COMERCIO ELECTRONICO AC"@es ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:HQ-4469000001AVO26P9X86 ;
 	gleif-L1:hasLegalAddress gleif-L1-data:Leg-4469000001AVO26P9X86 ;
 	gleif-L1:hasLegalFormText "ASOCIACIÓN CIVIL" ;
+	gleif-L1:hasNameTradingOrOperating "GS1 MÉXICO" ;
 	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000449-AME9806027F9 ;
-	gleif-L1:hasTradingOrOperatingName "GS1 MÉXICO" ;
 	.
 
 gleif-L1-data:LE-5493007CICYM7A0SZ714
 	a gleif-base:LegalEntity ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
 	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-MX ;
-	gleif-base:hasLocalLegalName "KI MEXICO S DE RL DE CV"@es ;
+	gleif-base:hasNameLegalLocal "KI MEXICO S DE RL DE CV"@es ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:HQ-5493007CICYM7A0SZ714 ;
 	gleif-L1:hasLegalAddress gleif-L1-data:Leg-5493007CICYM7A0SZ714 ;
 	gleif-L1:hasLegalFormText "SOCIEDAD DE RESPONSABILIDAD LIMITADA DE CAPITAL VARIABLE" ;
+	gleif-L1:hasNameTradingOrOperating "KI MEXICO" ;
 	gleif-L1:hasPreviousLegalName "INDUSTRIAS KI DE MEXICO S.R.L. DE C.V." ;
 	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000449-IKM981217SD5 ;
-	gleif-L1:hasTradingOrOperatingName "KI MEXICO" ;
 	.
 
 gleif-L1-data:LEE-213800YK2FEXWNMT3R12

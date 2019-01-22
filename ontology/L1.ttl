@@ -50,7 +50,7 @@ gleif-base:LegalEntity
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasTradingOrOperatingName ;
+			owl:onProperty gleif-L1:hasNameTradingOrOperating ;
 			owl:minCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
 		[

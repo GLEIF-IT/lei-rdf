@@ -32,12 +32,12 @@ gleif-ra:BusinessRegistry
 		gleif-base:Registry ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasLocalLegalName ;
+			owl:onProperty gleif-base:hasNameLegalLocal ;
 			owl:cardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasTranslatedEnglishName ;
+			owl:onProperty gleif-base:hasNameTranslatedEnglish ;
 			owl:cardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -67,7 +67,7 @@ gleif-ra:RAregistry
 	rdfs:label "GLEIF Registration Authorities List" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/RegistrationAuthority/> ;
 	skos:altLabel "RAL" ;
-	gleif-base:hasLocalName "GLEIF Registration Authorities List"@en ;
+	gleif-base:hasNameLocal "GLEIF Registration Authorities List"@en ;
 	gleif-base:hasWebsite "https://www.gleif.org/en/about-lei/code-lists/gleif-registration-authorities-list"^^xsd:anyURI ;
 	gleif-base:isManagedBy gleif-base:GLEIF ;
 	.
