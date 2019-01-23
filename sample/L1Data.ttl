@@ -22,8 +22,8 @@
 
 <https://www.gleif.org/sample/L1Data/>
 	a owl:Ontology ;
-	rdfs:label "GLEIF L1 data" ;
-	rdfs:comment "Ontology generated from GLEIF L1 data in CDF 2.1 format" ;
+	rdfs:label "GLEIF L1 sample data" ;
+	rdfs:comment "Sample data for GLEIF L1 ontology" ;
 	owl:imports
 		<http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> ,
 		<http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> ,

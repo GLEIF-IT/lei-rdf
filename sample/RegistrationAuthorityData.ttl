@@ -20,8 +20,8 @@
 
 <https://www.gleif.org/sample/RegistrationAuthorityData/>
 	a owl:Ontology ;
-	rdfs:label "GLEIF Registration Authority data" ;
-	rdfs:comment "Ontology generated from GLEIF RA data in CDF 2.1 format" ;
+	rdfs:label "GLEIF Registration Authority sample data" ;
+	rdfs:comment "Sample data for Registration Authority Codes" ;
 	owl:imports
 		<http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> ,
 		<http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> ,
