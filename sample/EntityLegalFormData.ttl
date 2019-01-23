@@ -30,34 +30,24 @@
 	.
 
 gleif-ELF-data:ELF-2HBR
-	a gleif-elf:EntityLegalFormIdentifier ;
-	gleif-base:hasTag "2HBR" ;
-	gleif-base:identifies gleif-ELF-data:ELFREC-2HBR ;
-	.
-
-gleif-ELF-data:ELF-EZNQ
-	a gleif-elf:EntityLegalFormIdentifier ;
-	gleif-base:hasTag "EZNQ" ;
-	gleif-base:identifies gleif-ELF-data:ELFREC-EZNQ ;
-	.
-
-gleif-ELF-data:ELF-H0PO
-	a gleif-elf:EntityLegalFormIdentifier ;
-	gleif-base:hasTag "H0PO" ;
-	gleif-base:identifies gleif-ELF-data:ELFREC-H0PO ;
-	.
-
-gleif-ELF-data:ELFREC-2HBR
-	a gleif-elf:EntityLegalForm ;
+	a
+		gleif-elf:EntityLegalForm ,
+		gleif-elf:EntityLegalFormIdentifier
+		;
 	gleif-base:hasAbbreviationLocal "GmbH"@ge ;
 	gleif-base:hasAbbreviationTransliterated "GmbH" ;
 	gleif-base:hasCoverageArea lcc-3166-1-add:GE ;
 	gleif-base:hasNameLocal "Gesellschaft mit beschränkter Haftung"@ge ;
 	gleif-base:hasNameTransliterated "Gesellschaft mit beschränkter Haftung" ;
+	gleif-base:hasTag "2HBR" ;
+	gleif-base:identifies gleif-ELF-data:ELF-2HBR ;
 	.
 
-gleif-ELF-data:ELFREC-EZNQ
-	a gleif-elf:EntityLegalForm ;
+gleif-ELF-data:ELF-EZNQ
+	a
+		gleif-elf:EntityLegalForm ,
+		gleif-elf:EntityLegalFormIdentifier
+		;
 	gleif-base:hasAbbreviationLocal
 		"L.L.C."@ge ,
 		"LLC"@ge ,
@@ -69,10 +59,15 @@ gleif-ELF-data:ELFREC-EZNQ
 	gleif-base:hasCoverageArea lcc-3166-2-add:US-OH ;
 	gleif-base:hasNameLocal "Limited Liability Company"@ge ;
 	gleif-base:hasNameTransliterated "Limited Liability Company" ;
+	gleif-base:hasTag "EZNQ" ;
+	gleif-base:identifies gleif-ELF-data:ELF-EZNQ ;
 	.
 
-gleif-ELF-data:ELFREC-H0PO
-	a gleif-elf:EntityLegalForm ;
+gleif-ELF-data:ELF-H0PO
+	a
+		gleif-elf:EntityLegalForm ,
+		gleif-elf:EntityLegalFormIdentifier
+		;
 	gleif-base:hasAbbreviationLocal
 		"LTD"@en ,
 		"LTD."@en ,
@@ -81,5 +76,7 @@ gleif-ELF-data:ELFREC-H0PO
 		;
 	gleif-base:hasCoverageArea lcc-3166-1-add:GB ;
 	gleif-base:hasNameLocal "Private Limited Company"@en ;
+	gleif-base:hasTag "H0PO" ;
+	gleif-base:identifies gleif-ELF-data:ELF-H0PO ;
 	.
 
