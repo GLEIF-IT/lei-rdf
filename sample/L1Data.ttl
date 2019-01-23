@@ -127,7 +127,7 @@ gleif-L1-data:LE-213800YK2FEXWNMT3R12
 	gleif-base:hasNameLegalLocal "LUDLOW (FYLDE) LIMITED"@en ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:Leg-213800YK2FEXWNMT3R12 ;
 	gleif-L1:hasLegalAddress gleif-L1-data:Leg-213800YK2FEXWNMT3R12 ;
-	gleif-L1:hasLegalForm gleif-ELF-data:ELFREC-H0PO ;
+	gleif-L1:hasLegalForm gleif-ELF-data:ELF-H0PO ;
 	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000585-03193392 ;
 	.
 
