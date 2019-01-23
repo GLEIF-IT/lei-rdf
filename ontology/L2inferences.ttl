@@ -33,8 +33,8 @@ gleif-L2-infer:Child
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2inferences/> ;
 	owl:equivalentClass [
 		a owl:Restriction ;
-		owl:onProperty gleif-L2-infer:hasParentConsolidation ;
-		owl:someValuesFrom gleif-L2:AccountingConsolidation ;
+		owl:onProperty gleif-L2-infer:hasParentRelationship ;
+		owl:someValuesFrom gleif-base:LegalEntityRelationship ;
 	] ;
 	skos:definition "An entity which is the child of another (i.e. it has a parent)." ;
 	.
@@ -45,8 +45,8 @@ gleif-L2-infer:Parent
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2inferences/> ;
 	owl:equivalentClass [
 		a owl:Restriction ;
-		owl:onProperty gleif-L2-infer:hasChildConsolidation ;
-		owl:someValuesFrom gleif-L2:AccountingConsolidation ;
+		owl:onProperty gleif-L2-infer:hasChildRelationship ;
+		owl:someValuesFrom gleif-base:LegalEntityRelationship ;
 	] ;
 	skos:definition "An entity which is the parent of at least one other." ;
 	.
@@ -68,41 +68,41 @@ gleif-L2-infer:UltimateParent
 	skos:definition "An entity which is the ultimate parent of at least one other." ;
 	.
 
-gleif-L2-infer:hasChildConsolidation
-	a owl:ObjectProperty ;
-	rdfs:label "has child consolidation" ;
-	rdfs:domain gleif-base:LegalEntity ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2inferences/> ;
-	rdfs:range gleif-L2:AccountingConsolidation ;
-	owl:inverseOf gleif-base:hasParent ;
-	skos:definition "The relationships for which this entity is the parent." ;
-	.
-
 gleif-L2-infer:hasChildEntity
 	rdfs:label "has child entity" ;
 	owl:propertyChainAxiom (
-		gleif-L2-infer:hasChildConsolidation
+		gleif-L2-infer:hasChildRelationship
 		gleif-base:hasChild
 	) ;
 	skos:definition "The direct children for this entity." ;
 	.
 
-gleif-L2-infer:hasParentConsolidation
+gleif-L2-infer:hasChildRelationship
 	a owl:ObjectProperty ;
-	rdfs:label "has parent consolidation" ;
+	rdfs:label "has child relationship" ;
 	rdfs:domain gleif-base:LegalEntity ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2inferences/> ;
-	rdfs:range gleif-L2:AccountingConsolidation ;
-	owl:inverseOf gleif-base:hasChild ;
-	skos:definition "The relationships for which this entity is the child." ;
+	rdfs:range gleif-base:LegalEntityRelationship ;
+	owl:inverseOf gleif-base:hasParent ;
+	skos:definition "The relationships for which this entity is the parent." ;
 	.
 
 gleif-L2-infer:hasParentEntity
 	rdfs:label "has parent entity" ;
 	owl:propertyChainAxiom (
-		gleif-L2:hasParentConsolidation
+		gleif-L2-infer:hasParentRelationship
 		gleif-base:hasParent
 	) ;
 	skos:definition "The direct parent for this entity." ;
+	.
+
+gleif-L2-infer:hasParentRelationship
+	a owl:ObjectProperty ;
+	rdfs:label "has parent relationship" ;
+	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2inferences/> ;
+	rdfs:range gleif-base:LegalEntityRelationship ;
+	owl:inverseOf gleif-base:hasChild ;
+	skos:definition "The relationships for which this entity is the child." ;
 	.
 
