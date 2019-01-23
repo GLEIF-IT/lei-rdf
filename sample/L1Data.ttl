@@ -43,25 +43,25 @@
 <https://www.gleif.org/lei/213800YK2FEXWNMT3R12>
 	a gleif-L1:LegalEntityIdentifier ;
 	gleif-base:hasTag "213800YK2FEXWNMT3R12" ;
-	gleif-base:identifies gleif-L1-data:LE-213800YK2FEXWNMT3R12 ;
+	gleif-base:identifies gleif-L1-data:213800YK2FEXWNMT3R12-LE ;
 	.
 
 <https://www.gleif.org/lei/25490050856CG53NAC28>
 	a gleif-L1:LegalEntityIdentifier ;
 	gleif-base:hasTag "25490050856CG53NAC28" ;
-	gleif-base:identifies gleif-L1-data:LE-25490050856CG53NAC28 ;
+	gleif-base:identifies gleif-L1-data:25490050856CG53NAC28-LE ;
 	.
 
 <https://www.gleif.org/lei/4469000001AVO26P9X86>
 	a gleif-L1:LegalEntityIdentifier ;
 	gleif-base:hasTag "4469000001AVO26P9X86" ;
-	gleif-base:identifies gleif-L1-data:LE-4469000001AVO26P9X86 ;
+	gleif-base:identifies gleif-L1-data:4469000001AVO26P9X86-LE ;
 	.
 
 <https://www.gleif.org/lei/5493007CICYM7A0SZ714>
 	a gleif-L1:LegalEntityIdentifier ;
 	gleif-base:hasTag "5493007CICYM7A0SZ714" ;
-	gleif-base:identifies gleif-L1-data:LE-5493007CICYM7A0SZ714 ;
+	gleif-base:identifies gleif-L1-data:5493007CICYM7A0SZ714-LE ;
 	.
 
 gleif-L1-data:213800YK2FEXWNMT3R12
