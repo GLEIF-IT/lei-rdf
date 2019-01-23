@@ -33,19 +33,31 @@ gleif-base:LegalEntity
 	rdfs:subClassOf
 		[
 			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasHeadquartersAddress ;
+			owl:onClass gleif-L1:PhysicalAddressASCII ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasLegalAddress ;
+			owl:onClass gleif-L1:PhysicalAddressASCII ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasNameTradingOrOperating ;
 			owl:minCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasHeadquartersAddress ;
-			owl:onClass gleif-base:PhysicalAddress ;
+			owl:onClass gleif-L1:PhysicalAddressLocal ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasLegalAddress ;
-			owl:onClass gleif-base:PhysicalAddress ;
+			owl:onClass gleif-L1:PhysicalAddressLocal ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -208,9 +220,17 @@ gleif-L1:LocalOperatingUnit
 	skos:definition "An entity that supplies registration, renewal and other services, and acts as the primary interface for legal entities wishing to obtain an LEI. Only organizations duly accredited by the Global Legal Entity Identifier Foundation (GLEIF) are authorized to issue LEIs." ;
 	.
 
-gleif-L1:PhysicalAddressASCIIAutomatic
+gleif-L1:PhysicalAddressASCII
 	a owl:Class ;
 	rdfs:subClassOf gleif-base:PhysicalAddress ;
+	rdfs:label "physical address ASCII" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "An address of an entity, transliterated to ASCII characters; not to be used directly in favor of its subclasses." ;
+	.
+
+gleif-L1:PhysicalAddressASCIIAutomatic
+	a owl:Class ;
+	rdfs:subClassOf gleif-L1:PhysicalAddressASCII ;
 	rdfs:label "physical address ASCII automatic" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "An address of an entity, transliterated to ASCII characters, auto-transliterated by the managing LOU." ;
@@ -218,7 +238,7 @@ gleif-L1:PhysicalAddressASCIIAutomatic
 
 gleif-L1:PhysicalAddressASCIIPreferred
 	a owl:Class ;
-	rdfs:subClassOf gleif-base:PhysicalAddress ;
+	rdfs:subClassOf gleif-base:PhysicalAddressASCII ;
 	rdfs:label "physical address ASCII preferred" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "An address of an entity, transliterated to ASCII characters, provided by the entity for a purpose." ;
