@@ -33,10 +33,72 @@
 		;
 	skos:note """There are 4 categories of individual:
     1) The LegalEntityIdentifier and LegalEntityRegistryEntry. The URI is the LEI but with the namespace of this ontology.
-    2) The PhysicalAddress (subclass) which is the Headquarters of an entity. The URI is that of the LegalEntityRegistryEntry followed by -HQ and one of L, A, P for Local, Auto-transliterated, Preferred-transliterated respectively.
-    3) The PhysicalAddress (subclass) which is the Legal Address of an entity. The URI is that of the LegalEntityRegistryEntry followed by -LA and one of L, A, P for Local, Auto-transliterated, Preferred-transliterated respectively.
+    2) The PhysicalAddress (subclass) which is the Legal Address of an entity. The URI is that of the LegalEntityRegistryEntry followed by -LA and one of L, A, P for Local, Auto-transliterated, Preferred-transliterated respectively.
+    3) The PhysicalAddress (subclass) which is the Headquarters Address of an entity (ONLY PRESENT IF IT IS DIFFERENT FROM THE LEGAL ADDRESS). The URI is that of the LegalEntityRegistryEntry followed by -HQ and one of L, A, P for Local, Auto-transliterated, Preferred-transliterated respectively.
     4) The RegistryIdentifier of an entity in a business registry. The URI is BID- followed by the Registry code - and the identifier of the entity within the registry.
     """ ;
+	.
+
+gleif-L1-data:213800PRXJ7WA41AIN67
+	a
+		gleif-L1:LegalEntityIdentifier ,
+		gleif-L1:LegalEntityIdentifierRegistryEntry
+		;
+	gleif-base:comprises gleif-L1-data:213800PRXJ7WA41AIN67 ;
+	gleif-base:hasInitialRegistrationDate "2015-09-23T19:00:00-05:00"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2018-05-10T16:56:42.829-05:00"^^xsd:dateTime ;
+	gleif-base:hasNextRenewalDate "2019-01-17T18:54:02.53-06:00"^^xsd:dateTime ;
+	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
+	gleif-base:hasTag "213800PRXJ7WA41AIN67" ;
+	gleif-base:identifies gleif-L1-data:213800PRXJ7WA41AIN67-LE ;
+	gleif-base:records gleif-L1-data:213800PRXJ7WA41AIN67-LE ;
+	gleif-L1:hasManagingLOU gleif-L1-data:4469000001AVO26P9X86-LE ;
+	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000449-BTM960401DV7 ;
+	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
+	.
+
+gleif-L1-data:213800PRXJ7WA41AIN67-LAA
+	a gleif-L1:gleif-L1:PhysicalAddressASCIIAutomatic ;
+	gleif-base:hasAddressLine1 "AVENIDA PASEO DE LA REFORMA 250 PISO 11 TORRE A"@es ;
+	gleif-base:hasAddressLine2 "Juarez"@es ;
+	gleif-base:hasAddressLine3 "Cuauhtemoc"@es ;
+	gleif-base:hasAddressNumber "250" ;
+	gleif-base:hasAddressNumberWithinBuilding "PISO 11 TORRE A"@es ;
+	gleif-base:hasCity "Ciudad de Mexico"@es ;
+	gleif-base:hasCountry lcc-3166-1-add:CTRY-MX ;
+	gleif-base:hasPostalCode "06600" ;
+	gleif-base:hasRegion lcc-3166-2-add:REG-MX-CMX ;
+	.
+
+gleif-L1-data:213800PRXJ7WA41AIN67-LAL
+	a gleif-L1:PhysicalAddressLocal ;
+	gleif-base:hasAddressLine1 "AVENIDA PASEO DE LA REFORMA 250 PISO 11 TORRE A"@es ;
+	gleif-base:hasAddressLine2 "Juárez"@es ;
+	gleif-base:hasAddressLine3 "Cuauhtémoc"@es ;
+	gleif-base:hasAddressNumber "250" ;
+	gleif-base:hasAddressNumberWithinBuilding "PISO 11 TORRE A"@es ;
+	gleif-base:hasCity "Ciudad de México"@es ;
+	gleif-base:hasCountry lcc-3166-1-add:CTRY-MX ;
+	gleif-base:hasPostalCode "06600" ;
+	gleif-base:hasRegion lcc-3166-2-add:REG-MX-CMX ;
+	.
+
+gleif-L1-data:213800PRXJ7WA41AIN67-LE
+	a gleif-base:LegalEntity ;
+	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-MX ;
+	gleif-base:hasNameLegalLocal "MUFG BANK MEXICO SOCIEDAD ANONIMA INSTITUCION DE BANCA MULTIPLE FILIAL"@es ;
+	gleif-base:hasNamePreviousLegal "BANK OF TOKYO-MITSUBISHI UFJ (MEXICO) SOCIEDAD ANONIMA INSTITUCION DE BANCA MULTIPLE FILIAL"@es ;
+	gleif-L1:hasHeadquartersAddress
+		gleif-L1-data:213800PRXJ7WA41AIN67-LAA ,
+		gleif-L1-data:213800PRXJ7WA41AIN67-LAL
+		;
+	gleif-L1:hasLegalAddress
+		gleif-L1-data:213800PRXJ7WA41AIN67-LAA ,
+		gleif-L1-data:213800PRXJ7WA41AIN67-LAL
+		;
+	gleif-L1:hasLegalFormText "SOCIEDAD ANONIMA" ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000449-BTM960401DV7 ;
 	.
 
 gleif-L1-data:213800YK2FEXWNMT3R12
@@ -242,28 +304,35 @@ gleif-L1-data:5493007CICYM7A0SZ714-LE
 gleif-L1-data:BID-RA000449-AME9806027F9
 	a gleif-base:RegistryIdentifier ;
 	gleif-base:hasTag "AME9806027F9" ;
-	gleif-base:identifies gleif-L1-data:LE-4469000001AVO26P9X86 ;
+	gleif-base:identifies gleif-L1-data:4469000001AVO26P9X86-LE ;
+	gleif-base:isRegisteredIn gleif-RA-data:RA000449 ;
+	.
+
+gleif-L1-data:BID-RA000449-BTM960401DV7
+	a gleif-base:RegistryIdentifier ;
+	gleif-base:hasTag "BTM960401DV7" ;
+	gleif-base:identifies gleif-L1-data:213800PRXJ7WA41AIN67-LE ;
 	gleif-base:isRegisteredIn gleif-RA-data:RA000449 ;
 	.
 
 gleif-L1-data:BID-RA000449-IKM981217SD5
 	a gleif-base:RegistryIdentifier ;
 	gleif-base:hasTag "IKM981217SD5" ;
-	gleif-base:identifies gleif-L1-data:LE-5493007CICYM7A0SZ714 ;
+	gleif-base:identifies gleif-L1-data:5493007CICYM7A0SZ714-LE ;
 	gleif-base:isRegisteredIn gleif-RA-data:RA000449 ;
 	.
 
 gleif-L1-data:BID-RA000598-201725900005
 	a gleif-base:RegistryIdentifier ;
 	gleif-base:hasTag "201725900005" ;
-	gleif-base:identifies gleif-L1-data:LE-25490050856CG53NAC28 ;
+	gleif-base:identifies gleif-L1-data:25490050856CG53NAC28-LE ;
 	gleif-base:isRegisteredIn gleif-RA-data:RA000598 ;
 	.
 
 gleif-L1-data:BID-RA000602-6534941
 	a gleif-base:RegistryIdentifier ;
 	gleif-base:hasTag "6534941" ;
-	gleif-base:identifies gleif-L1-data:LE-25490050856CG53NAC28 ;
+	gleif-base:identifies gleif-L1-data:25490050856CG53NAC28-LE ;
 	gleif-base:isRegisteredIn gleif-RA-data:RA000602 ;
 	.
 
