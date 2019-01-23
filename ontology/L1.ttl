@@ -238,7 +238,7 @@ gleif-L1:PhysicalAddressASCIIAutomatic
 
 gleif-L1:PhysicalAddressASCIIPreferred
 	a owl:Class ;
-	rdfs:subClassOf gleif-base:PhysicalAddressASCII ;
+	rdfs:subClassOf gleif-L1:PhysicalAddressASCII ;
 	rdfs:label "physical address ASCII preferred" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "An address of an entity, transliterated to ASCII characters, provided by the entity for a purpose." ;
