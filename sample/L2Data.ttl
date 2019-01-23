@@ -27,15 +27,15 @@
 		<https://www.gleif.org/ontology/L2/> ,
 		<https://www.gleif.org/sample/L1Data/>
 		;
-	skos:note """There are 2 classes of individual:
+	skos:note """There are 2 categories of individual:
     1) The LegalEntityRelationship (or a subclass). The URI is a prefix of R- followed by LEIs of child then parent separated by - followed by a suffix of one of -D, -U or -I for Direct, Ultimate or International Branch relationships respectively.
     2) The LegalEntityRelationshipRecord. The URI is that of the LegalEntityRelationship followed by -REC.""" ;
 	.
 
 gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-D
 	a gleif-L2:DirectConsolidation ;
-	gleif-base:hasChild gleif-L1-data:LE-4469000001BFY38CWR75 ;
-	gleif-base:hasParent gleif-L1-data:LE-95980020140006006514 ;
+	gleif-base:hasChild gleif-L1-data:4469000001BFY38CWR75-LE ;
+	gleif-base:hasParent gleif-L1-data:95980020140006006514-LE ;
 	gleif-L2:hasAccountingStandard gleif-L2:AccountingStandardIFRS ;
 	gleif-L2:hasOwnershipPercentage "99.99"^^xsd:decimal ;
 	gleif-L2:hasRelationshipPeriod [
@@ -52,7 +52,7 @@ gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-D-REC
 	gleif-base:hasNextRenewalDate "2018-10-31T18:15:49.463-06:00"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L2:RegistrationStatusPublished ;
 	gleif-base:records gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-D ;
-	gleif-L1:hasManagingLOU gleif-L1-data:LE-4469000001AVO26P9X86 ;
+	gleif-L1:hasManagingLOU gleif-L1-data:4469000001AVO26P9X86-LE ;
 	gleif-L2:hasAccountingPeriod [
 		a gleif-base:Period ;
 		gleif-base:hasEnd "2016-12-31T00:00:00-06:00"^^xsd:dateTime ;
@@ -64,8 +64,8 @@ gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-D-REC
 
 gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-U
 	a gleif-L2:UltimateConsolidation ;
-	gleif-base:hasChild gleif-L1-data:LE-4469000001BFY38CWR75 ;
-	gleif-base:hasParent gleif-L1-data:LE-95980020140006006514 ;
+	gleif-base:hasChild gleif-L1-data:4469000001BFY38CWR75-LE ;
+	gleif-base:hasParent gleif-L1-data:95980020140006006514-LE ;
 	gleif-L2:hasAccountingStandard gleif-L2:AccountingStandardIFRS ;
 	gleif-L2:hasOwnershipPercentage "99.99"^^xsd:decimal ;
 	gleif-L2:hasRelationshipPeriod [
@@ -82,7 +82,7 @@ gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-U-REC
 	gleif-base:hasNextRenewalDate "2018-10-31T18:15:49.463-06:00"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L2:RegistrationStatusPublished ;
 	gleif-base:records gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-U ;
-	gleif-L1:hasManagingLOU gleif-L1-data:LE-4469000001AVO26P9X86 ;
+	gleif-L1:hasManagingLOU gleif-L1-data:4469000001AVO26P9X86-LE ;
 	gleif-L2:hasAccountingPeriod [
 		a gleif-base:Period ;
 		gleif-base:hasEnd "2016-12-01T00:00:00-06:00"^^xsd:dateTime ;
