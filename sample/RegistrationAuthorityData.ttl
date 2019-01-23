@@ -35,8 +35,8 @@ gleif-RA-data:ORG-RA000189
 		gleif-base:LegalEntity ,
 		gleif-ra:RegistrationAuthority
 		;
-	gleif-base:hasLocalLegalName "Institut National de la Statistique et des Études Économiques" ;
-	gleif-base:hasTranslatedEnglishName "National Institute of Statistics and Economic Studies" ;
+	gleif-base:hasNameLegalLocal "Institut National de la Statistique et des Études Économiques" ;
+	gleif-base:hasNameTranslatedEnglish "National Institute of Statistics and Economic Studies" ;
 	.
 
 gleif-RA-data:ORG-RA000585
@@ -44,8 +44,8 @@ gleif-RA-data:ORG-RA000585
 		gleif-base:LegalEntity ,
 		gleif-ra:RegistrationAuthority
 		;
-	gleif-base:hasLocalLegalName "Companies House" ;
-	gleif-base:hasTranslatedEnglishName "Companies House" ;
+	gleif-base:hasNameLegalLocal "Companies House" ;
+	gleif-base:hasNameTranslatedEnglish "Companies House" ;
 	.
 
 gleif-RA-data:RA000189
@@ -67,8 +67,8 @@ gleif-RA-data:REG-RA000189
 		lcc-3166-1-add:GF ,
 		lcc-3166-1-add:GP
 		;
-	gleif-base:hasLocalLegalName "Sirene"@fr ;
-	gleif-base:hasTranslatedEnglishName "Register of Companies (Sirene)" ;
+	gleif-base:hasNameLegalLocal "Sirene"@fr ;
+	gleif-base:hasNameTranslatedEnglish "Register of Companies (Sirene)" ;
 	gleif-base:hasWebsite "http://sirene.fr/sirene/public/accueil?sirene_locale=en"^^xsd:anyURI ;
 	gleif-base:isManagedBy gleif-RA-data:ORG-RA000189 ;
 	.
@@ -80,8 +80,8 @@ gleif-RA-data:REG-RA000585
 		lcc-3166-2-add:GB-NIR ,
 		lcc-3166-2-add:GB-SCT
 		;
-	gleif-base:hasLocalLegalName "Companies Register"@en ;
-	gleif-base:hasTranslatedEnglishName "Companies Register" ;
+	gleif-base:hasNameLegalLocal "Companies Register"@en ;
+	gleif-base:hasNameTranslatedEnglish "Companies Register" ;
 	gleif-base:hasWebsite "www.companieshouse.gov.uk"^^xsd:anyURI ;
 	gleif-base:isManagedBy gleif-RA-data:ORG-RA000585 ;
 	.

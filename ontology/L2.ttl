@@ -25,10 +25,9 @@
 		;
 	.
 
-gleif-L2:AccountingConsolidation
+gleif-base:LegalEntityRelationship
 	a owl:Class ;
 	rdfs:subClassOf
-		gleif-base:LegalEntityRelationship ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L2:hasRelationshipPeriod ;
@@ -66,8 +65,12 @@ gleif-L2:AccountingConsolidation
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
 		;
+	.
+
+gleif-L2:AccountingConsolidation
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:LegalEntityRelationship ;
 	rdfs:label "accounting consolidation" ;
-	dct:source "http://www.iasplus.com/en/standards/ias/ias27-2011"^^xsd:anyURI ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:definition "Accounting consolidation holds when '[in the] financial statements of a group [...] the assets, liabilities, equity, income, expenses and cash flows of the parent and its subsidiaries are presented as those of a single economic entity'." ;
 	.
@@ -126,6 +129,16 @@ gleif-L2:DirectConsolidation
 	skos:definition "The 'child' entity has its accounts fully consolidated by the 'parent' entity, in the sense given by the accounting standard(s) specified; the parent entity is the closest fully consolidating parent to the child entity in any applicable hierarchical ownership structure." ;
 	.
 
+gleif-L2:InternationalBranchRelationship
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:LegalEntityRelationship ;
+	rdfs:label "international branch relationship" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
+	skos:altLabel "foreign branch relationship" ;
+	skos:definition "Child is a lead international branch or international branch network outside of the head office’s jurisdiction. The Parent is the Head Office and MUST have an LEI." ;
+	skos:note "A non-incorporated establishment of a head office legal entity, when this establishment is located in a separate jurisdiction from the jurisdiction in which the head office legal entity is located, i.e., in a host jurisdiction outside of its home jurisdiction. Under this definition, an establishment may consist of a single office or other business premises, or of several offices (i.e., a branch network) in different locations of the same host jurisdiction: even in the latter case, only one LEI would be issued per host jurisdiction, essentially amounting to, “one country-one LEI.” Unlike foreign subsidiaries of a parent entity, which are separately incorporated or organised under the laws of the host jurisdictions, an international branch, as defined here, is legally dependent on the head office legal entity and cannot exist without its head office legal entity " ;
+	.
+
 gleif-L2:LegalEntityRelationshipRecord
 	a owl:Class ;
 	rdfs:subClassOf
@@ -155,14 +168,14 @@ gleif-L2:LegalEntityRelationshipRecord
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L2:hasValidationDocuments ;
-			owl:onClass gleif-L2:RelationshipValidationDocumentsKind ;
+			owl:onProperty gleif-L2:hasValidationSources ;
+			owl:onClass gleif-L1:ValidationSourceKind ;
 			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L2:hasValidationSources ;
-			owl:onClass gleif-L2:RelationshipValidationSourceKind ;
+			owl:onProperty gleif-L2:hasValidationDocuments ;
+			owl:onClass gleif-L2:RelationshipValidationDocumentsKind ;
 			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -173,14 +186,14 @@ gleif-L2:LegalEntityRelationshipRecord
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:isManagedBy ;
+			owl:onProperty gleif-L1:hasManagingLOU ;
 			owl:onClass gleif-L1:LocalOperatingUnit ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasRegistrationStatus ;
-			owl:onClass gleif-L2:RelationshipRegistrationStatus ;
+			owl:onClass gleif-L2:RegistrationStatus ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -191,7 +204,7 @@ gleif-L2:LegalEntityRelationshipRecord
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasLastModificationDate ;
+			owl:onProperty gleif-base:hasLastUpdateDate ;
 			owl:onDataRange xsd:dateTime ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
@@ -201,37 +214,29 @@ gleif-L2:LegalEntityRelationshipRecord
 	skos:definition "The Registration container element contains information specifying the LOU's administration of the relationship report." ;
 	.
 
-gleif-L2:PrimaryForeignBranchConsolidation
-	a owl:Class ;
-	rdfs:subClassOf gleif-L2:DirectConsolidation ;
-	rdfs:label "primary foreign branch consolidation" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	skos:definition "Child is an international branch of the legal entity designated by Parent (in jurisdiction country of Child). The Parent is the Head Office and MUST have an LEI." ;
-	.
-
-gleif-L2:RelationshipRegistrationStatus
+gleif-L2:RegistrationStatus
 	a owl:Class ;
 	rdfs:subClassOf gleif-base:RegistrationStatus ;
 	rdfs:label "relationship registration status" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	owl:oneOf (
-		gleif-L2:RelationshipRegistrationStatusAnnulled
-		gleif-L2:RelationshipRegistrationStatusDuplicate
-		gleif-L2:RelationshipRegistrationStatusLapsed
-		gleif-L2:RelationshipRegistrationStatusPendingArchival
-		gleif-L2:RelationshipRegistrationStatusPendingTransfer
-		gleif-L2:RelationshipRegistrationStatusPendingValidation
-		gleif-L2:RelationshipRegistrationStatusPublished
-		gleif-L2:RelationshipRegistrationStatusRetired
-		gleif-L2:RelationshipRegistrationStatusTransferred
+		gleif-L2:RegistrationStatusAnnulled
+		gleif-L2:RegistrationStatusDuplicate
+		gleif-L2:RegistrationStatusLapsed
+		gleif-L2:RegistrationStatusPendingArchival
+		gleif-L2:RegistrationStatusPendingTransfer
+		gleif-L2:RegistrationStatusPendingValidation
+		gleif-L2:RegistrationStatusPublished
+		gleif-L2:RegistrationStatusRetired
+		gleif-L2:RegistrationStatusTransferred
 	) ;
 	skos:definition "The status of the legal entity's relationship record registration with the Managing LOU." ;
 	.
 
-gleif-L2:RelationshipRegistrationStatusAnnulled
+gleif-L2:RegistrationStatusAnnulled
 	a
 		owl:NamedIndividual ,
-		gleif-L2:RelationshipRegistrationStatus
+		gleif-L2:RegistrationStatus
 		;
 	rdfs:label "annulled" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
@@ -239,10 +244,10 @@ gleif-L2:RelationshipRegistrationStatusAnnulled
 	gleif-base:hasTag "ANNULLED" ;
 	.
 
-gleif-L2:RelationshipRegistrationStatusDuplicate
+gleif-L2:RegistrationStatusDuplicate
 	a
 		owl:NamedIndividual ,
-		gleif-L2:RelationshipRegistrationStatus
+		gleif-L2:RegistrationStatus
 		;
 	rdfs:label "duplicate" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
@@ -250,10 +255,10 @@ gleif-L2:RelationshipRegistrationStatusDuplicate
 	gleif-base:hasTag "DUPLICATE" ;
 	.
 
-gleif-L2:RelationshipRegistrationStatusLapsed
+gleif-L2:RegistrationStatusLapsed
 	a
 		owl:NamedIndividual ,
-		gleif-L2:RelationshipRegistrationStatus
+		gleif-L2:RegistrationStatus
 		;
 	rdfs:label "lapsed" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
@@ -261,10 +266,10 @@ gleif-L2:RelationshipRegistrationStatusLapsed
 	gleif-base:hasTag "LAPSED" ;
 	.
 
-gleif-L2:RelationshipRegistrationStatusPendingArchival
+gleif-L2:RegistrationStatusPendingArchival
 	a
 		owl:NamedIndividual ,
-		gleif-L2:RelationshipRegistrationStatus
+		gleif-L2:RegistrationStatus
 		;
 	rdfs:label "pending archival" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
@@ -272,10 +277,10 @@ gleif-L2:RelationshipRegistrationStatusPendingArchival
 	gleif-base:hasTag "PENDING_ARCHIVAL" ;
 	.
 
-gleif-L2:RelationshipRegistrationStatusPendingTransfer
+gleif-L2:RegistrationStatusPendingTransfer
 	a
 		owl:NamedIndividual ,
-		gleif-L2:RelationshipRegistrationStatus
+		gleif-L2:RegistrationStatus
 		;
 	rdfs:label "pending transfer" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
@@ -283,10 +288,10 @@ gleif-L2:RelationshipRegistrationStatusPendingTransfer
 	gleif-base:hasTag "PENDING_TRANSFER" ;
 	.
 
-gleif-L2:RelationshipRegistrationStatusPendingValidation
+gleif-L2:RegistrationStatusPendingValidation
 	a
 		owl:NamedIndividual ,
-		gleif-L2:RelationshipRegistrationStatus
+		gleif-L2:RegistrationStatus
 		;
 	rdfs:label "pending validation" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
@@ -294,10 +299,10 @@ gleif-L2:RelationshipRegistrationStatusPendingValidation
 	gleif-base:hasTag "PENDING_VALIDATION" ;
 	.
 
-gleif-L2:RelationshipRegistrationStatusPublished
+gleif-L2:RegistrationStatusPublished
 	a
 		owl:NamedIndividual ,
-		gleif-L2:RelationshipRegistrationStatus
+		gleif-L2:RegistrationStatus
 		;
 	rdfs:label "published" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
@@ -305,10 +310,10 @@ gleif-L2:RelationshipRegistrationStatusPublished
 	gleif-base:hasTag "PUBLISHED" ;
 	.
 
-gleif-L2:RelationshipRegistrationStatusRetired
+gleif-L2:RegistrationStatusRetired
 	a
 		owl:NamedIndividual ,
-		gleif-L2:RelationshipRegistrationStatus
+		gleif-L2:RegistrationStatus
 		;
 	rdfs:label "retired" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
@@ -316,10 +321,10 @@ gleif-L2:RelationshipRegistrationStatusRetired
 	gleif-base:hasTag "RETIRED" ;
 	.
 
-gleif-L2:RelationshipRegistrationStatusTransferred
+gleif-L2:RegistrationStatusTransferred
 	a
 		owl:NamedIndividual ,
-		gleif-L2:RelationshipRegistrationStatus
+		gleif-L2:RegistrationStatus
 		;
 	rdfs:label "transferred" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
@@ -429,63 +434,6 @@ gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments
 	gleif-base:hasTag "SUPPORTING_DOCUMENTS" ;
 	.
 
-gleif-L2:RelationshipValidationSourceKind
-	a owl:Class ;
-	rdfs:label "relationship validation source kind" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	owl:oneOf (
-		gleif-L2:RelationshipValidationSourceKindEntitySuppliedOnly
-		gleif-L2:RelationshipValidationSourceKindFullyCorroborated
-		gleif-L2:RelationshipValidationSourceKindPartiallyCorroborated
-		gleif-L2:RelationshipValidationSourceKindPending
-	) ;
-	skos:definition "Level of relationship validation." ;
-	.
-
-gleif-L2:RelationshipValidationSourceKindEntitySuppliedOnly
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipValidationSourceKind
-		;
-	rdfs:label "entity supplied only" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, the information associated with this record has significant reliance on the information that a submitter provided due to the unavailability of corroborating information." ;
-	gleif-base:hasTag "ENTITY SUPPLIED ONLY" ;
-	.
-
-gleif-L2:RelationshipValidationSourceKindFullyCorroborated
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipValidationSourceKind
-		;
-	rdfs:label "fully corroborated" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, there is sufficient information contained in authoritative public sources to corroborate the information that the submitter has provided for the record." ;
-	gleif-base:hasTag "FULLY CORROBORATED" ;
-	.
-
-gleif-L2:RelationshipValidationSourceKindPartiallyCorroborated
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipValidationSourceKind
-		;
-	rdfs:label "partially corroborated" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, there is sufficient information contained in authoritative public sources to corroborate the information that the submitter has provided for the record." ;
-	gleif-base:hasTag "PARTIALLY CORROBORATED" ;
-	.
-
-gleif-L2:RelationshipValidationSourceKindPending
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RelationshipValidationSourceKind
-		;
-	rdfs:label "pending" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	skos:definition "The validation of the relationship data provided by the registrant has not yet occurred. Records with this ValidationSources value MUST not be published." ;
-	gleif-base:hasTag "PENDING" ;
-	.
-
 gleif-L2:UltimateConsolidation
 	a owl:Class ;
 	rdfs:subClassOf gleif-L2:AccountingConsolidation ;
@@ -572,7 +520,7 @@ gleif-L2:hasValidationSources
 	rdfs:label "has validation sources" ;
 	rdfs:domain gleif-L2:LegalEntityRelationshipRecord ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	rdfs:range gleif-L2:RelationshipValidationSourceKind ;
+	rdfs:range gleif-L1:ValidationSourceKind ;
 	skos:definition "Level of relationship validation." ;
 	.
 
@@ -588,15 +536,15 @@ gleif-L2:hasValidationSources
 []
 	a owl:AllDifferent ;
 	owl:members (
-		gleif-L2:RelationshipRegistrationStatusAnnulled
-		gleif-L2:RelationshipRegistrationStatusDuplicate
-		gleif-L2:RelationshipRegistrationStatusLapsed
-		gleif-L2:RelationshipRegistrationStatusPendingArchival
-		gleif-L2:RelationshipRegistrationStatusPendingTransfer
-		gleif-L2:RelationshipRegistrationStatusPendingValidation
-		gleif-L2:RelationshipRegistrationStatusPublished
-		gleif-L2:RelationshipRegistrationStatusRetired
-		gleif-L2:RelationshipRegistrationStatusTransferred
+		gleif-L2:RegistrationStatusAnnulled
+		gleif-L2:RegistrationStatusDuplicate
+		gleif-L2:RegistrationStatusLapsed
+		gleif-L2:RegistrationStatusPendingArchival
+		gleif-L2:RegistrationStatusPendingTransfer
+		gleif-L2:RegistrationStatusPendingValidation
+		gleif-L2:RegistrationStatusPublished
+		gleif-L2:RegistrationStatusRetired
+		gleif-L2:RegistrationStatusTransferred
 	) ;
 	.
 
@@ -616,16 +564,6 @@ gleif-L2:hasValidationSources
 		gleif-L2:RelationshipValidationDocumentsKindOtherOfficialDocuments
 		gleif-L2:RelationshipValidationDocumentsKindRegulatoryFiling
 		gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments
-	) ;
-	.
-
-[]
-	a owl:AllDifferent ;
-	owl:members (
-		gleif-L2:RelationshipValidationSourceKindEntitySuppliedOnly
-		gleif-L2:RelationshipValidationSourceKindFullyCorroborated
-		gleif-L2:RelationshipValidationSourceKindPartiallyCorroborated
-		gleif-L2:RelationshipValidationSourceKindPending
 	) ;
 	.
 

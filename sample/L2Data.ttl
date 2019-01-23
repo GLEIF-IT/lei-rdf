@@ -48,17 +48,17 @@ gleif-L2-data:OR-4469000001BFY38CWR75-95980020140006006514
 gleif-L2-data:REC-4469000001BFY38CWR75-95980020140006006514
 	a gleif-L2:LegalEntityRelationshipRecord ;
 	gleif-base:hasInitialRegistrationDate "2017-10-24T10:12:06.363-05:00"^^xsd:dateTime ;
-	gleif-base:hasLastModificationDate "2018-11-01T00:15:17.506-06:00"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2018-11-01T00:15:17.506-06:00"^^xsd:dateTime ;
 	gleif-base:hasNextRenewalDate "2018-10-31T18:15:49.463-06:00"^^xsd:dateTime ;
-	gleif-base:hasRegistrationStatus gleif-L2:RelationshipRegistrationStatusLapsed ;
-	gleif-base:isManagedBy gleif-L1-data:LE-4469000001AVO26P9X86 ;
+	gleif-base:hasRegistrationStatus gleif-L2:RegistrationStatusLapsed ;
 	gleif-base:records gleif-L2-data:OR-4469000001BFY38CWR75-95980020140006006514 ;
+	gleif-L1:hasManagingLOU gleif-L1-data:LE-4469000001AVO26P9X86 ;
 	gleif-L2:hasAccountingPeriod [
 		a gleif-base:Period ;
 		gleif-base:hasEnd "2016-12-01T00:00:00-06:00"^^xsd:dateTime ;
 		gleif-base:hasStart "2016-01-01T00:00:00-06:00"^^xsd:dateTime ;
 	] ;
 	gleif-L2:hasValidationDocuments gleif-L2:RelationshipValidationDocumentsKindAccountsFiling ;
-	gleif-L2:hasValidationSources gleif-L2:RelationshipValidationSourceKindFullyCorroborated ;
+	gleif-L2:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
 	.
 
