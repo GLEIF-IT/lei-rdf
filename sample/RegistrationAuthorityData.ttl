@@ -28,6 +28,9 @@
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/RegistrationAuthority/>
 		;
+	skos:note """There are 2 classes of individual:
+    1) The BusinessRegistry and RACode. The URI is the RA code.
+    2) The RegistrationAuthority organization. The URI is that of the BusinessRegistry followed by -ORG.""" ;
 	.
 
 gleif-RA-data:RA000189
