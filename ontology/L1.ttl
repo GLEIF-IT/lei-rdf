@@ -393,10 +393,10 @@ gleif-L1:RegistrationStatusTransferred
 	gleif-base:hasTag "TRANSFERRED" ;
 	.
 
-gleif-L1:SoleProprietorship
+gleif-L1:SoleProprietor
 	a owl:Class ;
 	rdfs:subClassOf gleif-base:LegalEntity ;
-	rdfs:label "sole proprietorship" ;
+	rdfs:label "sole proprietor" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "The legal entity represents an individual acting in a business capacity" ;
 	.
