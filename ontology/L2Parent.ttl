@@ -1,0 +1,215 @@
+# baseURI: https://www.gleif.org/ontology/L2Parent/
+# imports: https://www.gleif.org/ontology/Base/
+# imports: https://www.gleif.org/ontology/L1/
+
+@base <https://www.gleif.org/ontology/L2Parent/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix gleif-L1: <https://www.gleif.org/ontology/L1/> .
+@prefix gleif-L2parent: <https://www.gleif.org/ontology/L2Parent/> .
+@prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
+@prefix gleif-elf: <https://www.gleif.org/ontology/EntityLegalForm/> .
+@prefix gleif-ra: <https://www.gleif.org/ontology/RegistrationAuthority/> .
+@prefix lcc-cr: <http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://www.gleif.org/ontology/L2Parent/>
+	a owl:Ontology ;
+	rdfs:label "GLEIF L2 Parent Reference Data Format Ontology" ;
+	rdfs:comment "Ontology generated from GLEIF L2 Parent Reference Data Format" ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/parent-reference-data-format#"^^xsd:anyURI ;
+	owl:imports
+		<https://www.gleif.org/ontology/Base/> ,
+		<https://www.gleif.org/ontology/L1/>
+		;
+	skos:note "If the direct and / or ultimate parents of an LEI registrant do not have an LEI, the following applies: The child legal entity will be obliged to report reference data on its direct and ultimate parents to the LEI issuing organization in accordance with the document, titled Parent Reference Data Format. " ;
+	.
+
+gleif-L2parent:LegalEntityWithoutLEI
+	a owl:Class ;
+	rdfs:subClassOf
+		gleif-base:LegalEntity ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEntityExpirationReason ;
+			owl:onClass gleif-base:EntityExpirationReason ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasSuccessor ;
+			owl:onClass gleif-base:LegalEntity ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasHeadquartersAddress ;
+			owl:onClass gleif-L1:PhysicalAddressASCII ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasLegalAddress ;
+			owl:onClass gleif-L1:PhysicalAddressASCII ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEntityExpirationDate ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:onDataRange xsd:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasNameAdditional ;
+			owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasLegalJurisdiction ;
+			owl:onClass lcc-cr:GeographicRegion ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEntityStatus ;
+			owl:onClass gleif-base:EntityStatus ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasRegistrationIdentifier ;
+			owl:onClass gleif-base:RegistryIdentifier ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasHeadquartersAddress ;
+			owl:onClass gleif-L1:PhysicalAddressLocal ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasLegalAddress ;
+			owl:onClass gleif-L1:PhysicalAddressLocal ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			owl:intersectionOf (
+				[
+					a owl:Class ;
+					owl:unionOf (
+						[
+							a owl:Restriction ;
+							owl:onProperty gleif-L1:hasLegalForm ;
+							owl:onClass gleif-elf:EntityLegalForm ;
+							owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+						]
+						[
+							a owl:Restriction ;
+							owl:onProperty gleif-L1:hasLegalFormText ;
+							owl:cardinality "1"^^xsd:nonNegativeInteger ;
+						]
+					) ;
+				]
+				[
+					a owl:Class ;
+					owl:complementOf [
+						a owl:Class ;
+						owl:intersectionOf (
+							[
+								a owl:Restriction ;
+								owl:onProperty gleif-L1:hasLegalForm ;
+								owl:someValuesFrom gleif-elf:EntityLegalForm ;
+							]
+							[
+								a owl:Restriction ;
+								owl:onProperty gleif-L1:hasLegalFormText ;
+								owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+							]
+						) ;
+					] ;
+				]
+			) ;
+		]
+		;
+	.
+
+gleif-L2parent:ParentLegalEntityRegistryEntry
+	a owl:Class ;
+	rdfs:subClassOf
+		gleif-base:RegistryEntry ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasNextRenewalDate ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:onDataRange xsd:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasValidationSources ;
+			owl:onClass gleif-L1:ValidationSourceKind ;
+			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:records ;
+			owl:onClass gleif-base:LegalEntity ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasManagingLOU ;
+			owl:onClass gleif-L1:LocalOperatingUnit ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasRegistrationStatus ;
+			owl:onClass gleif-L1:RegistrationStatus ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasInitialRegistrationDate ;
+			owl:onDataRange xsd:dateTime ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasLastUpdateDate ;
+			owl:onDataRange xsd:dateTime ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
+	rdfs:label "parent legal entity registry entry" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2Parent/> ;
+	skos:definition "The Registration container element which contains all information on the legal entity's parent registration with the Managing LOU." ;
+	.
+
+gleif-L2parent:RegistrationStatus
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:RegistrationStatus ;
+	rdfs:label "parent registration status" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2Parent/> ;
+	owl:oneOf (
+		gleif-L2parent:RegistrationStatusPendingValidation
+	) ;
+	skos:definition "The status of the parent legal entity's registration with the Managing LOU." ;
+	.
+
+gleif-L2parent:RegistrationStatusPendingValidation
+	a
+		owl:NamedIndividual ,
+		gleif-L1:RegistrationStatus
+		;
+	rdfs:label "pending validation" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2Parent//> ;
+	skos:definition "An application for an LEI that has been submitted and which is being processed and validated." ;
+	gleif-base:hasTag "PENDING_VALIDATION" ;
+	.
+
