@@ -9,6 +9,7 @@
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
 @prefix gleif-elf: <https://www.gleif.org/ontology/EntityLegalForm/> .
 @prefix gleif-ra: <https://www.gleif.org/ontology/RegistrationAuthority/> .
+@prefix lcc-cr: <http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -33,6 +34,18 @@ gleif-base:LegalEntity
 	rdfs:subClassOf
 		[
 			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEntityExpirationReason ;
+			owl:onClass gleif-base:EntityExpirationReason ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasSuccessor ;
+			owl:onClass gleif-base:LegalEntity ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasHeadquartersAddress ;
 			owl:onClass gleif-L1:PhysicalAddressASCII ;
 			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -45,8 +58,26 @@ gleif-base:LegalEntity
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasNameTradingOrOperating ;
+			owl:onProperty gleif-base:hasEntityExpirationDate ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:onDataRange xsd:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasNameAdditional ;
 			owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasLegalJurisdiction ;
+			owl:onClass lcc-cr:GeographicRegion ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEntityStatus ;
+			owl:onClass gleif-base:EntityStatus ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;

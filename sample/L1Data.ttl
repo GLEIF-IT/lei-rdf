@@ -111,7 +111,6 @@ gleif-L1-data:213800YK2FEXWNMT3R12
 	gleif-base:hasLastUpdateDate "2018-09-14T14:37:15.170Z"^^xsd:dateTime ;
 	gleif-base:hasNextRenewalDate "2019-11-01T00:00:00Z"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusMerged ;
-	gleif-base:hasSuccessor gleif-L1-data:213800YK2FEXWNMT3R12-LE ;
 	gleif-base:hasTag "213800YK2FEXWNMT3R12" ;
 	gleif-base:identifies gleif-L1-data:213800YK2FEXWNMT3R12-LE ;
 	gleif-base:records gleif-L1-data:213800YK2FEXWNMT3R12-LE ;
@@ -137,6 +136,7 @@ gleif-L1-data:213800YK2FEXWNMT3R12-LE
 	gleif-base:hasEntityStatus gleif-base:EntityStatusInactive ;
 	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-GB ;
 	gleif-base:hasNameLegalLocal "LUDLOW (FYLDE) LIMITED"@en ;
+	gleif-base:hasSuccessor gleif-L1-data:213800YK2FEXWNMT3R12-LE ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:213800YK2FEXWNMT3R12-LAL ;
 	gleif-L1:hasLegalAddress gleif-L1-data:213800YK2FEXWNMT3R12-LAL ;
 	gleif-L1:hasLegalForm gleif-ELF-data:ELF-H0PO ;
