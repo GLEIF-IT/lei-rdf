@@ -65,7 +65,7 @@ gleif-L2parent:LegalEntityWithoutLEI
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasNameAdditional ;
+			owl:onProperty gleif-base:hasNameAdditional ;
 			owl:minCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
 		[
