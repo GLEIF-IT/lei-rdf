@@ -99,7 +99,6 @@ gleif-base:LegalEntity
 			) ;
 		]
 		;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	.
 
 gleif-L1:Branch
