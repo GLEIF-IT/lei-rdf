@@ -19,23 +19,23 @@
 
 <https://www.gleif.org/sample/L2Data/>
 	a owl:Ontology ;
-	rdfs:label "GLEIF L2 data" ;
-	rdfs:comment "Ontology generated from GLEIF L1 data in CDF 2.1 format" ;
+	rdfs:label "GLEIF L2 sample data" ;
+	rdfs:comment "Sample data for GLEIF L2 ontology" ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/> ,
 		<https://www.gleif.org/ontology/L2/> ,
 		<https://www.gleif.org/sample/L1Data/>
 		;
+	skos:note """There are 2 categories of individual:
+    1) The LegalEntityRelationship (or a subclass). The URI is a prefix of R- followed by LEIs of child then parent separated by - followed by a suffix of one of -D, -U or -I for Direct, Ultimate or International Branch relationships respectively.
+    2) The LegalEntityRelationshipRecord. The URI is that of the LegalEntityRelationship followed by -REC.""" ;
 	.
 
-gleif-L2-data:OR-4469000001BFY38CWR75-95980020140006006514
-	a
-		gleif-L2:DirectConsolidation ,
-		gleif-L2:UltimateConsolidation
-		;
-	gleif-base:hasChild gleif-L1-data:LE-4469000001BFY38CWR75 ;
-	gleif-base:hasParent gleif-L1-data:LE-95980020140006006514 ;
+gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-D
+	a gleif-L2:DirectConsolidation ;
+	gleif-base:hasChild gleif-L1-data:4469000001BFY38CWR75-LE ;
+	gleif-base:hasParent gleif-L1-data:95980020140006006514-LE ;
 	gleif-L2:hasAccountingStandard gleif-L2:AccountingStandardIFRS ;
 	gleif-L2:hasOwnershipPercentage "99.99"^^xsd:decimal ;
 	gleif-L2:hasRelationshipPeriod [
@@ -45,14 +45,44 @@ gleif-L2-data:OR-4469000001BFY38CWR75-95980020140006006514
 	gleif-L2:hasRelationshipStatus gleif-L2:RelationshipStatusActive ;
 	.
 
-gleif-L2-data:REC-4469000001BFY38CWR75-95980020140006006514
+gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-D-REC
 	a gleif-L2:LegalEntityRelationshipRecord ;
 	gleif-base:hasInitialRegistrationDate "2017-10-24T10:12:06.363-05:00"^^xsd:dateTime ;
-	gleif-base:hasLastUpdateDate "2018-11-01T00:15:17.506-06:00"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2018-02-28T11:40:04.012-06:00"^^xsd:dateTime ;
 	gleif-base:hasNextRenewalDate "2018-10-31T18:15:49.463-06:00"^^xsd:dateTime ;
-	gleif-base:hasRegistrationStatus gleif-L2:RegistrationStatusLapsed ;
-	gleif-base:records gleif-L2-data:OR-4469000001BFY38CWR75-95980020140006006514 ;
-	gleif-L1:hasManagingLOU gleif-L1-data:LE-4469000001AVO26P9X86 ;
+	gleif-base:hasRegistrationStatus gleif-L2:RegistrationStatusPublished ;
+	gleif-base:records gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-D ;
+	gleif-L1:hasManagingLOU gleif-L1-data:4469000001AVO26P9X86-LE ;
+	gleif-L2:hasAccountingPeriod [
+		a gleif-base:Period ;
+		gleif-base:hasEnd "2016-12-31T00:00:00-06:00"^^xsd:dateTime ;
+		gleif-base:hasStart "2016-01-01T00:00:00-06:00"^^xsd:dateTime ;
+	] ;
+	gleif-L2:hasValidationDocuments gleif-L2:RelationshipValidationDocumentsKindAccountsFiling ;
+	gleif-L2:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
+	.
+
+gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-U
+	a gleif-L2:UltimateConsolidation ;
+	gleif-base:hasChild gleif-L1-data:4469000001BFY38CWR75-LE ;
+	gleif-base:hasParent gleif-L1-data:95980020140006006514-LE ;
+	gleif-L2:hasAccountingStandard gleif-L2:AccountingStandardIFRS ;
+	gleif-L2:hasOwnershipPercentage "99.99"^^xsd:decimal ;
+	gleif-L2:hasRelationshipPeriod [
+		a gleif-base:Period ;
+		gleif-base:hasStart "2016-01-01T00:00:00-06:00"^^xsd:dateTime ;
+	] ;
+	gleif-L2:hasRelationshipStatus gleif-L2:RelationshipStatusActive ;
+	.
+
+gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-U-REC
+	a gleif-L2:LegalEntityRelationshipRecord ;
+	gleif-base:hasInitialRegistrationDate "2017-10-24T10:12:06.363-05:00"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2018-02-28T11:40:04.012-06:00"^^xsd:dateTime ;
+	gleif-base:hasNextRenewalDate "2018-10-31T18:15:49.463-06:00"^^xsd:dateTime ;
+	gleif-base:hasRegistrationStatus gleif-L2:RegistrationStatusPublished ;
+	gleif-base:records gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-U ;
+	gleif-L1:hasManagingLOU gleif-L1-data:4469000001AVO26P9X86-LE ;
 	gleif-L2:hasAccountingPeriod [
 		a gleif-base:Period ;
 		gleif-base:hasEnd "2016-12-01T00:00:00-06:00"^^xsd:dateTime ;

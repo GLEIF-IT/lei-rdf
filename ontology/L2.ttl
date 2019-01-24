@@ -93,7 +93,6 @@ gleif-L2:AccountingStandardIFRS
 		gleif-L2:AccountingStandard
 		;
 	rdfs:label "IFRS" ;
-	dct:source "http://www.ifrs.org"^^xsd:anyURI ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:definition "International Financial Reporting Standard (developed by the International Accounting Standards Board – IASB)" ;
 	gleif-base:hasTag "IFRS" ;

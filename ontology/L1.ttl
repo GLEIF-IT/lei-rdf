@@ -9,6 +9,7 @@
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
 @prefix gleif-elf: <https://www.gleif.org/ontology/EntityLegalForm/> .
 @prefix gleif-ra: <https://www.gleif.org/ontology/RegistrationAuthority/> .
+@prefix lcc-cr: <http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -33,40 +34,108 @@ gleif-base:LegalEntity
 	rdfs:subClassOf
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasLegalFormText ;
-			owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:onProperty gleif-base:hasEntityExpirationReason ;
+			owl:onClass gleif-base:EntityExpirationReason ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasSuccessor ;
+			owl:onClass gleif-base:LegalEntity ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasHeadquartersAddress ;
+			owl:onClass gleif-L1:PhysicalAddressASCII ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasLegalAddress ;
+			owl:onClass gleif-L1:PhysicalAddressASCII ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEntityExpirationDate ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:onDataRange xsd:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasNameAdditional ;
+			owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasLegalJurisdiction ;
+			owl:onClass lcc-cr:GeographicRegion ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEntityStatus ;
+			owl:onClass gleif-base:EntityStatus ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasRegistrationIdentifier ;
 			owl:onClass gleif-base:RegistryIdentifier ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasLegalForm ;
-			owl:onClass gleif-elf:EntityLegalForm ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasNameTradingOrOperating ;
-			owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasHeadquartersAddress ;
-			owl:onClass gleif-base:PhysicalAddress ;
+			owl:onClass gleif-L1:PhysicalAddressLocal ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasLegalAddress ;
-			owl:onClass gleif-base:PhysicalAddress ;
+			owl:onClass gleif-L1:PhysicalAddressLocal ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			owl:intersectionOf (
+				[
+					a owl:Class ;
+					owl:unionOf (
+						[
+							a owl:Restriction ;
+							owl:onProperty gleif-L1:hasLegalForm ;
+							owl:onClass gleif-elf:EntityLegalForm ;
+							owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+						]
+						[
+							a owl:Restriction ;
+							owl:onProperty gleif-L1:hasLegalFormText ;
+							owl:cardinality "1"^^xsd:nonNegativeInteger ;
+						]
+					) ;
+				]
+				[
+					a owl:Class ;
+					owl:complementOf [
+						a owl:Class ;
+						owl:intersectionOf (
+							[
+								a owl:Restriction ;
+								owl:onProperty gleif-L1:hasLegalForm ;
+								owl:someValuesFrom gleif-elf:EntityLegalForm ;
+							]
+							[
+								a owl:Restriction ;
+								owl:onProperty gleif-L1:hasLegalFormText ;
+								owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+							]
+						) ;
+					] ;
+				]
+			) ;
 		]
 		;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	.
 
 gleif-L1:Branch
@@ -187,12 +256,28 @@ gleif-L1:LocalOperatingUnit
 	skos:definition "An entity that supplies registration, renewal and other services, and acts as the primary interface for legal entities wishing to obtain an LEI. Only organizations duly accredited by the Global Legal Entity Identifier Foundation (GLEIF) are authorized to issue LEIs." ;
 	.
 
-gleif-L1:PhysicalAddressAutomaticASCII
+gleif-L1:PhysicalAddressASCII
 	a owl:Class ;
 	rdfs:subClassOf gleif-base:PhysicalAddress ;
-	rdfs:label "physical address automatic ASCII" ;
+	rdfs:label "physical address ASCII" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "An address of an entity, transliterated to ASCII characters; not to be used directly in favor of its subclasses." ;
+	.
+
+gleif-L1:PhysicalAddressASCIIAutomatic
+	a owl:Class ;
+	rdfs:subClassOf gleif-L1:PhysicalAddressASCII ;
+	rdfs:label "physical address ASCII automatic" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "An address of an entity, transliterated to ASCII characters, auto-transliterated by the managing LOU." ;
+	.
+
+gleif-L1:PhysicalAddressASCIIPreferred
+	a owl:Class ;
+	rdfs:subClassOf gleif-L1:PhysicalAddressASCII ;
+	rdfs:label "physical address ASCII preferred" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "An address of an entity, transliterated to ASCII characters, provided by the entity for a purpose." ;
 	.
 
 gleif-L1:PhysicalAddressLocal
@@ -201,14 +286,6 @@ gleif-L1:PhysicalAddressLocal
 	rdfs:label "physical address local" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "An address as represented in the local language and character set." ;
-	.
-
-gleif-L1:PhysicalAddressPreferredASCII
-	a owl:Class ;
-	rdfs:subClassOf gleif-base:PhysicalAddress ;
-	rdfs:label "physical address preferred ASCII" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "An address of an entity, transliterated to ASCII characters, provided by the entity for a purpose." ;
 	.
 
 gleif-L1:RegistrationStatus
@@ -353,10 +430,10 @@ gleif-L1:RegistrationStatusTransferred
 	gleif-base:hasTag "TRANSFERRED" ;
 	.
 
-gleif-L1:SoleProprietorship
+gleif-L1:SoleProprietor
 	a owl:Class ;
 	rdfs:subClassOf gleif-base:LegalEntity ;
-	rdfs:label "sole proprietorship" ;
+	rdfs:label "sole proprietor" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "The legal entity represents an individual acting in a business capacity" ;
 	.
@@ -509,6 +586,7 @@ gleif-L1:hasRegistrationIdentifier
 	rdfs:label "has registration identifier" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	rdfs:range gleif-base:RegistryIdentifier ;
+	skos:altLabel "has business register entity ID" ;
 	skos:definition "An identifier for the legal entity in a business registry in the jurisdiction of legal registration, or in the appropriate registration authority." ;
 	.
 

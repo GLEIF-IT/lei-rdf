@@ -114,9 +114,8 @@ gleif-base:Identifier
 		]
 		;
 	rdfs:label "identifier" ;
-	dct:source "ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	skos:definition "sequence of characters, capable of uniquely identifying that with which it is associated, within a specified context" ;
+	skos:definition "Sequence of characters, capable of uniquely identifying that with which it is associated, within a specified context." ;
 	.
 
 gleif-base:LegalEntity
@@ -159,10 +158,6 @@ gleif-base:LegalEntity
 		]
 		;
 	rdfs:label "legal entity" ;
-	dct:source
-		"Barron's Dictionary of Banking Terms, Sixth Edition, 2012, definition of legal entity" ,
-		"ISO 17442, Financial services - Legal Entity Identifier (LEI), first edition, 2012-06-01, section 3.1"
-		;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	skos:definition "a partnership, corporation, or other organization having the capacity to negotiate contracts, assume financial obligations, and pay off debts, organized under the laws of some jurisdiction" ;
 	skos:example """Examples of eligible legal entities include, without limitation:
@@ -336,9 +331,8 @@ gleif-base:RegistryEntry
 		]
 		;
 	rdfs:label "registry entry" ;
-	dct:source "ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	skos:definition "an entry in a registry that specifies something about the thing that is registered" ;
+	skos:definition "An entry in a registry that specifies something about the thing that is recorded." ;
 	.
 
 gleif-base:RegistryIdentifier
@@ -352,18 +346,15 @@ gleif-base:RegistryIdentifier
 		]
 		;
 	rdfs:label "registry identifier" ;
-	dct:source "ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	skos:definition "an identifier associated with an entry in a registry, i.e., one that provides an index to the registry for the identified item" ;
+	skos:definition "An identifier associated with an entry in a registry, i.e., one that provides an index to the registry for the recorded item." ;
 	.
 
 gleif-base:comprises
 	a owl:ObjectProperty ;
 	rdfs:label "comprises" ;
-	dct:source "https://www.merriam-webster.com/dictionary/comprise"^^xsd:anyURI ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	skos:definition "includes, especially within a particular scope, is made up of" ;
-	skos:note "Note that something can be comprised of something(s) that may or may not be understood as separable parts, and thus is not defined as being explicitly transitive." ;
+	skos:definition "Includes, especially within a particular scope, is made up of." ;
 	.
 
 gleif-base:hasAbbreviation
@@ -788,7 +779,7 @@ gleif-base:records
 	rdfs:label "records" ;
 	rdfs:domain gleif-base:RegistryEntry ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	skos:definition "the thing which the registry entry is a record of" ;
+	skos:definition "The thing which the registry entry is a record of." ;
 	.
 
 []
