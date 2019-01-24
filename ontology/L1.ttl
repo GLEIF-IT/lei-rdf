@@ -81,6 +81,12 @@ gleif-base:LegalEntity
 		] ,
 		[
 			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasRegistrationIdentifier ;
+			owl:onClass gleif-base:RegistryIdentifier ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasHeadquartersAddress ;
 			owl:onClass gleif-L1:PhysicalAddressLocal ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -580,6 +586,7 @@ gleif-L1:hasRegistrationIdentifier
 	rdfs:label "has registration identifier" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	rdfs:range gleif-base:RegistryIdentifier ;
+	skos:altLabel "has business register entity ID" ;
 	skos:definition "An identifier for the legal entity in a business registry in the jurisdiction of legal registration, or in the appropriate registration authority." ;
 	.
 
