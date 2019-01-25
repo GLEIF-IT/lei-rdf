@@ -84,7 +84,7 @@ gleif-L1-data:213800PRXJ7WA41AIN67-LAL
 	.
 
 gleif-L1-data:213800PRXJ7WA41AIN67-LE
-	a gleif-base:LegalEntity ;
+	a gleif-L1:LegalEntity ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
 	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-MX ;
 	gleif-base:hasNameLegalLocal "MUFG BANK MEXICO SOCIEDAD ANONIMA INSTITUCION DE BANCA MULTIPLE FILIAL"@es ;
@@ -130,7 +130,7 @@ gleif-L1-data:213800YK2FEXWNMT3R12-LAL
 	.
 
 gleif-L1-data:213800YK2FEXWNMT3R12-LE
-	a gleif-base:LegalEntity ;
+	a gleif-L1:LegalEntity ;
 	gleif-base:hasEntityExpirationDate "2018-09-28T00:00:00Z"^^xsd:dateTime ;
 	gleif-base:hasEntityExpirationReason gleif-base:EntityExpirationReasonCorporateAction ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusInactive ;
@@ -186,7 +186,7 @@ gleif-L1-data:25490050856CG53NAC28-LAL
 	.
 
 gleif-L1-data:25490050856CG53NAC28-LE
-	a gleif-base:LegalEntity ;
+	a gleif-L1:LegalEntity ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
 	gleif-base:hasLegalJurisdiction lcc-3166-2-add:REG-US-DE ;
 	gleif-base:hasNameLegalLocal "5210 Concourse, LP"@en ;
@@ -289,7 +289,7 @@ gleif-L1-data:5493007CICYM7A0SZ714-LAL
 	.
 
 gleif-L1-data:5493007CICYM7A0SZ714-LE
-	a gleif-base:LegalEntity ;
+	a gleif-L1:LegalEntity ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
 	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-MX ;
 	gleif-base:hasNameLegalLocal "KI MEXICO S DE RL DE CV"@es ;
