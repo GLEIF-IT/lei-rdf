@@ -59,7 +59,7 @@ gleif-ELF-data:ELF-EZNQ
 		"ltd."@ge
 		;
 	gleif-base:hasCoverageArea lcc-3166-2-add:US-OH ;
-	gleif-base:hasNameLocal "Limited Liability Company"@ge ;
+	gleif-base:hasNameLegalLocal "Limited Liability Company"@ge ;
 	gleif-base:hasNameTransliterated "Limited Liability Company" ;
 	gleif-base:hasTag "EZNQ" ;
 	gleif-base:identifies gleif-ELF-data:ELF-EZNQ ;
@@ -77,7 +77,7 @@ gleif-ELF-data:ELF-H0PO
 		"ltd."@en
 		;
 	gleif-base:hasCoverageArea lcc-3166-1-add:GB ;
-	gleif-base:hasNameLocal "Private Limited Company"@en ;
+	gleif-base:hasNameLegalLocal "Private Limited Company"@en ;
 	gleif-base:hasTag "H0PO" ;
 	gleif-base:identifies gleif-ELF-data:ELF-H0PO ;
 	.

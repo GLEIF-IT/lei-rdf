@@ -51,7 +51,7 @@ gleif-elf:EntityLegalForm
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasNameLocal ;
+			owl:onProperty gleif-base:hasNameLegalLocal ;
 			owl:minCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
