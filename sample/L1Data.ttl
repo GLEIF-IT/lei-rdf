@@ -49,11 +49,11 @@ gleif-L1-data:213800PRXJ7WA41AIN67
 	gleif-base:hasNextRenewalDate "2019-01-17T18:54:02.53-06:00"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
 	gleif-base:hasTag "213800PRXJ7WA41AIN67" ;
-	gleif-base:identifiesAndRecords gleif-L1-data:213800PRXJ7WA41AIN67-LE ;
 	gleif-base:records gleif-L1-data:213800PRXJ7WA41AIN67-LE ;
 	gleif-L1:hasManagingLOU gleif-L1-data:4469000001AVO26P9X86-LE ;
 	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000449-BTM960401DV7 ;
 	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
+	gleif-L1:identifiesAndRecords gleif-L1-data:213800PRXJ7WA41AIN67-LE ;
 	.
 
 gleif-L1-data:213800PRXJ7WA41AIN67-LAA
@@ -110,11 +110,11 @@ gleif-L1-data:213800YK2FEXWNMT3R12
 	gleif-base:hasNextRenewalDate "2019-11-01T00:00:00Z"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusMerged ;
 	gleif-base:hasTag "213800YK2FEXWNMT3R12" ;
-	gleif-base:identifiesAndRecords gleif-L1-data:213800YK2FEXWNMT3R12-LE ;
 	gleif-base:records gleif-L1-data:213800YK2FEXWNMT3R12-LE ;
 	gleif-L1:hasManagingLOU gleif-L1-data:213800WAVVOPS85N2205-LE ;
 	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000585-03193392 ;
 	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
+	gleif-L1:identifiesAndRecords gleif-L1-data:213800YK2FEXWNMT3R12-LE ;
 	.
 
 gleif-L1-data:213800YK2FEXWNMT3R12-LAL
@@ -151,12 +151,12 @@ gleif-L1-data:25490050856CG53NAC28
 	gleif-base:hasNextRenewalDate "2018-10-30T16:31:12.342Z"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusLapsed ;
 	gleif-base:hasTag "25490050856CG53NAC28" ;
-	gleif-base:identifiesAndRecords gleif-L1-data:25490050856CG53NAC28-LE ;
 	gleif-base:records gleif-L1-data:25490050856CG53NAC28-LE ;
 	gleif-L1:hasManagingLOU gleif-L1-data:5493001KJTIIGC8Y1R12-LE ;
 	gleif-L1:hasOtherValidationIdentifier gleif-L1-data:BID-RA000598-201725900005 ;
 	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000602-6534941 ;
 	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
+	gleif-L1:identifiesAndRecords gleif-L1-data:25490050856CG53NAC28-LE ;
 	.
 
 gleif-L1-data:25490050856CG53NAC28-HQL
@@ -203,11 +203,11 @@ gleif-L1-data:4469000001AVO26P9X86
 	gleif-base:hasNextRenewalDate "2018-02-01T19:37:30.513-06:00"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusLapsed ;
 	gleif-base:hasTag "4469000001AVO26P9X86" ;
-	gleif-base:identifiesAndRecords gleif-L1-data:4469000001AVO26P9X86-LE ;
 	gleif-base:records gleif-L1-data:5493007CICYM7A0SZ714-LE ;
 	gleif-L1:hasManagingLOU gleif-L1-data:4469000001AVO26P9X86-LE ;
 	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000449-AME9806027F9 ;
 	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
+	gleif-L1:identifiesAndRecords gleif-L1-data:4469000001AVO26P9X86-LE ;
 	.
 
 gleif-L1-data:4469000001AVO26P9X86-HQL
@@ -256,11 +256,11 @@ gleif-L1-data:5493007CICYM7A0SZ714
 	gleif-base:hasNextRenewalDate "2019-01-24T20:16:17.627-06:00"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
 	gleif-base:hasTag "5493007CICYM7A0SZ714" ;
-	gleif-base:identifiesAndRecords gleif-L1-data:5493007CICYM7A0SZ714-LE ;
 	gleif-base:records gleif-L1-data:5493007CICYM7A0SZ714-LE ;
 	gleif-L1:hasManagingLOU gleif-L1-data:4469000001AVO26P9X86-LE ;
 	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000449-IKM981217SD5 ;
 	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
+	gleif-L1:identifiesAndRecords gleif-L1-data:5493007CICYM7A0SZ714-LE ;
 	.
 
 gleif-L1-data:5493007CICYM7A0SZ714-HQL
