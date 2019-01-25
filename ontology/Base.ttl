@@ -532,6 +532,7 @@ gleif-base:hasFirstAddressLine
 
 gleif-base:hasInitialRegistrationDate
 	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf dct:created ;
 	rdfs:label "has initial registration date" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range xsd:dateTime ;
@@ -540,6 +541,7 @@ gleif-base:hasInitialRegistrationDate
 
 gleif-base:hasLastUpdateDate
 	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf dct:modified ;
 	rdfs:label "has last modification date" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range xsd:dateTime ;
@@ -725,6 +727,7 @@ gleif-base:hasTag
 		owl:DatatypeProperty ,
 		owl:FunctionalProperty
 		;
+	rdfs:subPropertyOf skos:notation ;
 	rdfs:label "has tag" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range xsd:string ;
