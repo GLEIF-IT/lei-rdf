@@ -29,9 +29,33 @@
 		;
 	.
 
-gleif-base:LegalEntity
+gleif-L1:Branch
+	a owl:Class ;
+	rdfs:subClassOf gleif-L1:LegalEntity ;
+	rdfs:label "branch" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "The legal entity is a branch of another legal entity" ;
+	.
+
+gleif-L1:Fund
 	a owl:Class ;
 	rdfs:subClassOf
+		gleif-L1:LegalEntity ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:isManagedBy ;
+			owl:someValuesFrom gleif-L1:LegalEntity ;
+		]
+		;
+	rdfs:label "fund" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "The legal entity is a fund managed by another legal entity." ;
+	.
+
+gleif-L1:LegalEntity
+	a owl:Class ;
+	rdfs:subClassOf
+		gleif-base:Entity ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasEntityExpirationReason ;
@@ -41,7 +65,7 @@ gleif-base:LegalEntity
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasSuccessor ;
-			owl:onClass gleif-base:LegalEntity ;
+			owl:onClass gleif-L1:LegalEntity ;
 			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -136,29 +160,7 @@ gleif-base:LegalEntity
 			) ;
 		]
 		;
-	.
-
-gleif-L1:Branch
-	a owl:Class ;
-	rdfs:subClassOf gleif-base:LegalEntity ;
-	rdfs:label "branch" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "The legal entity is a branch of another legal entity" ;
-	.
-
-gleif-L1:Fund
-	a owl:Class ;
-	rdfs:subClassOf
-		gleif-base:LegalEntity ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:isManagedBy ;
-			owl:someValuesFrom gleif-base:LegalEntity ;
-		]
-		;
-	rdfs:label "fund" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "The legal entity is a fund managed by another legal entity." ;
 	.
 
 gleif-L1:LegalEntityIdentifier
@@ -168,7 +170,7 @@ gleif-L1:LegalEntityIdentifier
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:identifies ;
-			owl:onClass gleif-base:LegalEntity ;
+			owl:onClass gleif-L1:LegalEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
 		;
@@ -208,7 +210,7 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:records ;
-			owl:onClass gleif-base:LegalEntity ;
+			owl:onClass gleif-L1:LegalEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -249,7 +251,7 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 
 gleif-L1:LocalOperatingUnit
 	a owl:Class ;
-	rdfs:subClassOf gleif-base:LegalEntity ;
+	rdfs:subClassOf gleif-L1:LegalEntity ;
 	rdfs:label "local operating unit" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:altLabel "LOU" ;
@@ -432,7 +434,7 @@ gleif-L1:RegistrationStatusTransferred
 
 gleif-L1:SoleProprietor
 	a owl:Class ;
-	rdfs:subClassOf gleif-base:LegalEntity ;
+	rdfs:subClassOf gleif-L1:LegalEntity ;
 	rdfs:label "sole proprietor" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "The legal entity represents an individual acting in a business capacity" ;
@@ -515,7 +517,7 @@ gleif-L1:hasLegalAddress
 gleif-L1:hasLegalForm
 	a owl:ObjectProperty ;
 	rdfs:label "has legal form" ;
-	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:domain gleif-base:Entity ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	rdfs:range gleif-elf:EntityLegalForm ;
 	skos:definition "The legal form of the entity, taken from the ISO Entity Legal Form (ELF) data set maintained by GLEIF." ;
@@ -524,7 +526,7 @@ gleif-L1:hasLegalForm
 gleif-L1:hasLegalFormText
 	a owl:DatatypeProperty ;
 	rdfs:label "has legal form" ;
-	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:domain gleif-base:Entity ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "A legacy code or textual description for the legal entity's legal form, used until a current code from the GLEIF-maintained list can be used." ;
 	.

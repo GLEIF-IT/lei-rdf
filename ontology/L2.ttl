@@ -42,14 +42,14 @@ gleif-base:LegalEntityRelationship
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasChild ;
-			owl:onClass gleif-base:LegalEntity ;
+			owl:onProperty gleif-base:hasParent ;
+			owl:onClass gleif-base:Entity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasParent ;
-			owl:onClass gleif-base:LegalEntity ;
+			owl:onProperty gleif-base:hasChild ;
+			owl:onClass gleif-L1:LegalEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[

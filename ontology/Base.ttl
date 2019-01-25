@@ -22,6 +22,59 @@
 	owl:imports <http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ;
 	.
 
+gleif-base:Entity
+	a owl:Class ;
+	rdfs:subClassOf
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasNameLegalLocal ;
+			owl:cardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEntityExpirationReason ;
+			owl:onClass gleif-base:EntityExpirationReason ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEntityExpirationDate ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:onDataRange xsd:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasLegalJurisdiction ;
+			owl:onClass lcc-cr:GeographicRegion ;
+			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasSuccessor ;
+			owl:onClass gleif-base:Entity ;
+			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEntityStatus ;
+			owl:onClass gleif-base:EntityStatus ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
+	rdfs:label "entity" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:definition "a partnership, corporation, or other organization having the capacity to negotiate contracts, assume financial obligations, and pay off debts, organized under the laws of some jurisdiction" ;
+	skos:example """Examples of eligible legal entities include, without limitation:
+-   all financial intermediaries;
+-   banks and finance companies;
+-   all entities that issue equity, debt or other securities for other capital structures;
+-   all entities listed on an exchange;
+-   all entities that trade stock or debt, investment vehicles, including mutual funds, pension funds and alternative investment vehicles constituted as corporate entities or collective investment agreements (including umbrella funds as well as funds under an umbrella structure, hedge funds, private equity funds, etc.);
+-   all entities under the purview of a financial regulator and their affiliates, subsidiaries and holding companies;
+-   counterparties to financial transactions.""" ;
+	skos:scopeNote "The term 'legal entities' includes, but is not limited to, unique parties that are legally or financially responsible for the performance of financial transactions or have the legal right in their jurisdiction to enter independently into legal contracts, regardless of whether they are incorporated or constituted in some other way (e.g. trust, partnership, contractual). It excludes natural persons, but includes governmental organizations and supranationals." ;
+	.
+
 gleif-base:EntityExpirationReason
 	a owl:Class ;
 	rdfs:label "entity expiration reason" ;
@@ -31,7 +84,7 @@ gleif-base:EntityExpirationReason
 		gleif-base:EntityExpirationReasonDissolved
 		gleif-base:EntityExpirationReasonOther
 	) ;
-	skos:definition "The reason that a legal entity ceased to exist and/or operate." ;
+	skos:definition "The reason that an entity ceased to exist and/or operate." ;
 	.
 
 gleif-base:EntityExpirationReasonCorporateAction
@@ -76,7 +129,7 @@ gleif-base:EntityStatusActive
 		;
 	rdfs:label "active" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	skos:definition "As of the last report or update, the legal entity reported that it was legally registered and operating." ;
+	skos:definition "As of the last report or update, the entity reported that it was legally registered and operating." ;
 	gleif-base:hasTag "ACTIVE" ;
 	.
 
@@ -118,72 +171,19 @@ gleif-base:Identifier
 	skos:definition "Sequence of characters, capable of uniquely identifying that with which it is associated, within a specified context." ;
 	.
 
-gleif-base:LegalEntity
-	a owl:Class ;
-	rdfs:subClassOf
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasNameLegalLocal ;
-			owl:cardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasEntityExpirationReason ;
-			owl:onClass gleif-base:EntityExpirationReason ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasEntityExpirationDate ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-			owl:onDataRange xsd:dateTime ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasLegalJurisdiction ;
-			owl:onClass lcc-cr:GeographicRegion ;
-			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasSuccessor ;
-			owl:onClass gleif-base:LegalEntity ;
-			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasEntityStatus ;
-			owl:onClass gleif-base:LegalEntityStatus ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		]
-		;
-	rdfs:label "legal entity" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	skos:definition "a partnership, corporation, or other organization having the capacity to negotiate contracts, assume financial obligations, and pay off debts, organized under the laws of some jurisdiction" ;
-	skos:example """Examples of eligible legal entities include, without limitation:
--   all financial intermediaries;
--   banks and finance companies;
--   all entities that issue equity, debt or other securities for other capital structures;
--   all entities listed on an exchange;
--   all entities that trade stock or debt, investment vehicles, including mutual funds, pension funds and alternative investment vehicles constituted as corporate entities or collective investment agreements (including umbrella funds as well as funds under an umbrella structure, hedge funds, private equity funds, etc.);
--   all entities under the purview of a financial regulator and their affiliates, subsidiaries and holding companies;
--   counterparties to financial transactions.""" ;
-	skos:scopeNote "The term 'legal entities' includes, but is not limited to, unique parties that are legally or financially responsible for the performance of financial transactions or have the legal right in their jurisdiction to enter independently into legal contracts, regardless of whether they are incorporated or constituted in some other way (e.g. trust, partnership, contractual). It excludes natural persons, but includes governmental organizations and supranationals." ;
-	.
-
 gleif-base:LegalEntityRelationship
 	a owl:Class ;
 	rdfs:subClassOf
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasChild ;
-			owl:onClass gleif-base:LegalEntity ;
+			owl:onClass gleif-base:Entity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasParent ;
-			owl:onClass gleif-base:LegalEntity ;
+			owl:onClass gleif-base:Entity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
 		;
@@ -282,7 +282,7 @@ gleif-base:PhysicalAddress
 
 gleif-base:RegistrationAuthority
 	a owl:Class ;
-	rdfs:subClassOf gleif-base:LegalEntity ;
+	rdfs:subClassOf gleif-base:Entity ;
 	rdfs:label "registration authority" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	skos:altLabel "RA" ;
@@ -302,7 +302,7 @@ gleif-base:Registry
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:isManagedBy ;
-			owl:onClass gleif-base:LegalEntity ;
+			owl:onClass gleif-base:Entity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -455,8 +455,8 @@ gleif-base:hasChild
 	rdfs:label "has child" ;
 	rdfs:domain gleif-base:LegalEntityRelationship ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	rdfs:range gleif-base:LegalEntity ;
-	skos:definition "the legal entity that plays the child role" ;
+	rdfs:range gleif-base:Entity ;
+	skos:definition "the entity that plays the child role" ;
 	.
 
 gleif-base:hasCity
@@ -496,25 +496,25 @@ gleif-base:hasEnd
 gleif-base:hasEntityExpirationDate
 	a owl:DatatypeProperty ;
 	rdfs:label "has entity expiration date" ;
-	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:domain gleif-base:Entity ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range xsd:dateTime ;
-	skos:definition "The date that the legal entity ceased to operate, whether due to dissolution, merger or acquisition" ;
+	skos:definition "The date that the entity ceased to operate, whether due to dissolution, merger or acquisition" ;
 	.
 
 gleif-base:hasEntityExpirationReason
 	a owl:ObjectProperty ;
 	rdfs:label "has entity expiration reason" ;
-	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:domain gleif-base:Entity ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range gleif-base:EntityExpirationReason ;
-	skos:definition "the reason that a legal entity ceased to exist and/or operate" ;
+	skos:definition "the reason that an entity ceased to exist and/or operate" ;
 	.
 
 gleif-base:hasEntityStatus
 	a owl:ObjectProperty ;
 	rdfs:label "has entity status" ;
-	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:domain gleif-base:Entity ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range gleif-base:EntityStatus ;
 	skos:definition "indicates the status of the entity (i.e., active, inactive)" ;
@@ -549,7 +549,7 @@ gleif-base:hasLastUpdateDate
 gleif-base:hasLegalJurisdiction
 	a owl:ObjectProperty ;
 	rdfs:label "has legal jurisdiction" ;
-	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:domain gleif-base:Entity ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range lcc-cr:GeographicRegion ;
 	skos:altLabel "is organized in" ;
@@ -669,8 +669,8 @@ gleif-base:hasParent
 	rdfs:label "has parent" ;
 	rdfs:domain gleif-base:LegalEntityRelationship ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	rdfs:range gleif-base:LegalEntity ;
-	skos:definition "the legal entity that plays the parent role" ;
+	rdfs:range gleif-base:Entity ;
+	skos:definition "the entity that plays the parent role" ;
 	.
 
 gleif-base:hasPostalCode
@@ -710,10 +710,10 @@ gleif-base:hasStart
 gleif-base:hasSuccessor
 	a owl:ObjectProperty ;
 	rdfs:label "has successor" ;
-	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:domain gleif-base:Entity ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	rdfs:range gleif-base:LegalEntity ;
-	skos:definition "The surviving/new legal entity which continues/replaces this registration." ;
+	rdfs:range gleif-base:Entity ;
+	skos:definition "The surviving/new entity which continues/replaces this registration." ;
 	.
 
 gleif-base:hasTag

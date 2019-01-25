@@ -80,7 +80,7 @@ gleif-L2-infer:hasChildEntity
 gleif-L2-infer:hasChildRelationship
 	a owl:ObjectProperty ;
 	rdfs:label "has child relationship" ;
-	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:domain gleif-base:Entity ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2inferences/> ;
 	rdfs:range gleif-base:LegalEntityRelationship ;
 	owl:inverseOf gleif-base:hasParent ;
@@ -99,7 +99,7 @@ gleif-L2-infer:hasParentEntity
 gleif-L2-infer:hasParentRelationship
 	a owl:ObjectProperty ;
 	rdfs:label "has parent relationship" ;
-	rdfs:domain gleif-base:LegalEntity ;
+	rdfs:domain gleif-L1:LegalEntity ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2inferences/> ;
 	rdfs:range gleif-base:LegalEntityRelationship ;
 	owl:inverseOf gleif-base:hasChild ;
