@@ -20,7 +20,7 @@
 <https://www.gleif.org/sample/EntityLegalFormData/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF Entity Legal Forms sample data" ;
-	rdfs:comment "Sample data for Entity Legal Form codes." ;
+	dct:abstract "Sample data for Entity Legal Form codes." ;
 	owl:imports
 		<http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> ,
 		<http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> ,

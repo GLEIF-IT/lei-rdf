@@ -20,7 +20,7 @@
 <https://www.gleif.org/sample/L2Data/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF L2 sample data" ;
-	rdfs:comment "Sample data for GLEIF L2 ontology" ;
+	dct:abstract "Sample data for GLEIF L2 ontology" ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/> ,
