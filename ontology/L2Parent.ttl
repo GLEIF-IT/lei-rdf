@@ -29,20 +29,20 @@
 	skos:note "If the direct and / or ultimate parents of an LEI registrant do not have an LEI, the following applies: The child legal entity will be obliged to report reference data on its direct and ultimate parents to the LEI issuing organization in accordance with the document, titled Parent Reference Data Format. " ;
 	.
 
-gleif-L2parent:LegalEntityWithoutLEI
+gleif-L2parent:EntityWithoutLEI
 	a owl:Class ;
 	rdfs:subClassOf
-		gleif-base:LegalEntity ,
+		gleif-base:Entity ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasEntityExpirationReason ;
-			owl:onClass gleif-base:EntityExpirationReason ;
+			owl:onProperty gleif-base:hasSuccessor ;
+			owl:onClass gleif-base:Entity ;
 			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasSuccessor ;
-			owl:onClass gleif-base:LegalEntity ;
+			owl:onProperty gleif-base:hasEntityExpirationReason ;
+			owl:onClass gleif-base:EntityExpirationReason ;
 			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -139,7 +139,7 @@ gleif-L2parent:LegalEntityWithoutLEI
 		;
 	.
 
-gleif-L2parent:ParentLegalEntityRegistryEntry
+gleif-L2parent:ParentEntityRegistryEntry
 	a owl:Class ;
 	rdfs:subClassOf
 		gleif-base:RegistryEntry ,
@@ -157,12 +157,6 @@ gleif-L2parent:ParentLegalEntityRegistryEntry
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:records ;
-			owl:onClass gleif-base:LegalEntity ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasManagingLOU ;
 			owl:onClass gleif-L1:LocalOperatingUnit ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -171,6 +165,12 @@ gleif-L2parent:ParentLegalEntityRegistryEntry
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasRegistrationStatus ;
 			owl:onClass gleif-L1:RegistrationStatus ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:records ;
+			owl:onClass gleif-L2parent:EntityWithoutLEI ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -186,7 +186,7 @@ gleif-L2parent:ParentLegalEntityRegistryEntry
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
 		;
-	rdfs:label "parent legal entity registry entry" ;
+	rdfs:label "parent entity registry entry" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2Parent/> ;
 	skos:definition "The Registration container element which contains all information on the legal entity's parent registration with the Managing LOU." ;
 	.
@@ -209,7 +209,7 @@ gleif-L2parent:RegistrationStatusPendingValidation
 		;
 	rdfs:label "pending validation" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2Parent//> ;
-	skos:definition "An application for an LEI that has been submitted and which is being processed and validated." ;
+	skos:definition "Entity information that has been submitted and which is being processed and validated." ;
 	gleif-base:hasTag "PENDING_VALIDATION" ;
 	.
 
