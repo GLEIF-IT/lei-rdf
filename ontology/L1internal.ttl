@@ -1,0 +1,236 @@
+# baseURI: https://www.gleif.org/ontology/L1internal/
+# imports: https://www.gleif.org/ontology/Base/
+# imports: https://www.gleif.org/ontology/L1/
+
+@base <https://www.gleif.org/ontology/L1internal/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix gleif-L1: <https://www.gleif.org/ontology/L1/> .
+@prefix gleif-L1internal: <https://www.gleif.org/ontology/L1internal/> .
+@prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://www.gleif.org/ontology/L1internal/>
+	a owl:Ontology ;
+	rdfs:label "GLEIF L1 Internal Ontology" ;
+	dct:abstract "Ontology that builds on GLEIF L1 ontology to add information for GLEIF internal maintenance purposes." ;
+	owl:imports
+		<https://www.gleif.org/ontology/Base/> ,
+		<https://www.gleif.org/ontology/L1/>
+		;
+	.
+
+gleif-L1internal:LegalEntityIdentifierRegistryEntry
+	a owl:Class ;
+	rdfs:subClassOf
+		gleif-base:RegistryEntry ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasValidationIdentifier ;
+			owl:onClass gleif-base:RegistryIdentifier ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasNextRenewalDate ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:onDataRange xsd:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasOtherValidationIdentifier ;
+			owl:onClass gleif-base:RegistryIdentifier ;
+			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasValidationSources ;
+			owl:onClass [
+				a owl:Class ;
+				owl:oneOf (
+					gleif-L1:ValidationSourceKindEntitySuppliedOnly
+					gleif-L1:ValidationSourceKindFullyCorroborated
+					gleif-L1:ValidationSourceKindPartiallyCorroborated
+					gleif-L1internal:ValidationSourceKindPending
+				) ;
+			] ;
+			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:records ;
+			owl:onClass gleif-L1:LegalEntity ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:comprises ;
+			owl:onClass gleif-L1:LegalEntityIdentifier ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasManagingLOU ;
+			owl:onClass gleif-L1:LocalOperatingUnit ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasRegistrationStatus ;
+			owl:onClass [
+				a owl:Class ;
+				owl:oneOf (
+					gleif-L1:RegistrationStatusAnnulled
+					gleif-L1:RegistrationStatusCancelled
+					gleif-L1:RegistrationStatusDuplicate
+					gleif-L1:RegistrationStatusIssued
+					gleif-L1:RegistrationStatusLapsed
+					gleif-L1:RegistrationStatusMerged
+					gleif-L1internal:RegistrationStatusPendingArchival
+					gleif-L1internal:RegistrationStatusPendingTransfer
+					gleif-L1internal:RegistrationStatusPendingValidation
+					gleif-L1:RegistrationStatusRetired
+					gleif-L1internal:RegistrationStatusTransferred
+				) ;
+			] ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasInitialRegistrationDate ;
+			owl:onDataRange xsd:dateTime ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasLastUpdateDate ;
+			owl:onDataRange xsd:dateTime ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
+	rdfs:label "legal entity identifier registry entry" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "The extended Registration container element which contains all information on the legal entity's LEI registration with the Managing LOU." ;
+	.
+
+gleif-L1internal:RegistrationStatus
+	a owl:Class ;
+	rdfs:subClassOf gleif-L1:RegistrationStatus ;
+	rdfs:label "registration status" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1internal/> ;
+	owl:oneOf (
+		gleif-L1:RegistrationStatusAnnulled
+		gleif-L1:RegistrationStatusCancelled
+		gleif-L1:RegistrationStatusDuplicate
+		gleif-L1:RegistrationStatusIssued
+		gleif-L1:RegistrationStatusLapsed
+		gleif-L1:RegistrationStatusMerged
+		gleif-L1internal:RegistrationStatusPendingArchival
+		gleif-L1internal:RegistrationStatusPendingTransfer
+		gleif-L1internal:RegistrationStatusPendingValidation
+		gleif-L1:RegistrationStatusRetired
+		gleif-L1internal:RegistrationStatusTransferred
+	) ;
+	skos:definition "The status of the legal entity's LEI registration with the Managing LOU, including internal-only values." ;
+	.
+
+gleif-L1internal:RegistrationStatusPendingArchival
+	a
+		owl:NamedIndividual ,
+		gleif-L1internal:RegistrationStatus
+		;
+	rdfs:label "pending archival" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1internal/> ;
+	skos:definition "An LEI registration is about to be transferred to a different LOU, after which its registration status will revert to a non-pending status." ;
+	gleif-base:hasTag "PENDING_ARCHIVAL" ;
+	.
+
+gleif-L1internal:RegistrationStatusPendingTransfer
+	a
+		owl:NamedIndividual ,
+		gleif-L1internal:RegistrationStatus
+		;
+	rdfs:label "pending transfer" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1internal/> ;
+	skos:definition "An LEI registration that has been requested to be transferred to another LOU. The request is being processed at the sending LOU." ;
+	gleif-base:hasTag "PENDING_TRANSFER" ;
+	.
+
+gleif-L1internal:RegistrationStatusPendingValidation
+	a
+		owl:NamedIndividual ,
+		gleif-L1internal:RegistrationStatus
+		;
+	rdfs:label "pending validation" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1internal/> ;
+	skos:definition "An application for an LEI that has been submitted and which is being processed and validated." ;
+	gleif-base:hasTag "PENDING_VALIDATION" ;
+	.
+
+gleif-L1internal:RegistrationStatusTransferred
+	a
+		owl:NamedIndividual ,
+		gleif-L1internal:RegistrationStatus
+		;
+	rdfs:label "transferred" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1internal/> ;
+	skos:definition "An LEI registration that has been transferred to a different LOU as the managing LOU." ;
+	gleif-base:hasTag "TRANSFERRED" ;
+	.
+
+gleif-L1internal:ValidationSourceKind
+	a owl:Class ;
+	rdfs:subClassOf gleif-L1:ValidationSourceKind ;
+	rdfs:label "LEI validation source kind" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1internal/> ;
+	owl:oneOf (
+		gleif-L1:ValidationSourceKindEntitySuppliedOnly
+		gleif-L1:ValidationSourceKindFullyCorroborated
+		gleif-L1:ValidationSourceKindPartiallyCorroborated
+		gleif-L1internal:ValidationSourceKindPending
+	) ;
+	skos:definition "The level of validation of the reference data provided by the registrant, including internal-only values." ;
+	.
+
+gleif-L1internal:ValidationSourceKindPending
+	a
+		owl:NamedIndividual ,
+		gleif-L1internal:ValidationSourceKind
+		;
+	rdfs:label "pending" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1internal/> ;
+	skos:definition "The validation of the reference data provided by the registrant has not yet occurred." ;
+	gleif-base:hasTag "PENDING" ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-L1:RegistrationStatusAnnulled
+		gleif-L1:RegistrationStatusCancelled
+		gleif-L1:RegistrationStatusDuplicate
+		gleif-L1:RegistrationStatusIssued
+		gleif-L1:RegistrationStatusLapsed
+		gleif-L1:RegistrationStatusMerged
+		gleif-L1internal:RegistrationStatusPendingArchival
+		gleif-L1internal:RegistrationStatusPendingTransfer
+		gleif-L1internal:RegistrationStatusPendingValidation
+		gleif-L1:RegistrationStatusRetired
+		gleif-L1internal:RegistrationStatusTransferred
+	) ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-L1:ValidationSourceKindEntitySuppliedOnly
+		gleif-L1:ValidationSourceKindFullyCorroborated
+		gleif-L1:ValidationSourceKindPartiallyCorroborated
+		gleif-L1internal:ValidationSourceKindPending
+	) ;
+	.
+
