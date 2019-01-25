@@ -304,19 +304,12 @@ gleif-base:RegistrationStatus
 
 gleif-base:Registry
 	a owl:Class ;
-	rdfs:subClassOf
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:isManagedBy ;
-			owl:onClass gleif-base:Entity ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:comprises ;
-			owl:someValuesFrom gleif-base:RegistryEntry ;
-		]
-		;
+	rdfs:subClassOf [
+		a owl:Restriction ;
+		owl:onProperty gleif-base:isManagedBy ;
+		owl:onClass gleif-base:Entity ;
+		owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	] ;
 	rdfs:label "registry" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	skos:definition "A system, typically an information system, that records the registration of items." ;
@@ -324,18 +317,6 @@ gleif-base:Registry
 
 gleif-base:RegistryEntry
 	a owl:Class ;
-	rdfs:subClassOf
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:isIncludedIn ;
-			owl:allValuesFrom gleif-base:Registry ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:comprises ;
-			owl:someValuesFrom gleif-base:RegistryIdentifier ;
-		]
-		;
 	rdfs:label "registry entry" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	skos:definition "An entry in a registry that specifies something about the thing that is recorded." ;
@@ -354,13 +335,6 @@ gleif-base:RegistryIdentifier
 	rdfs:label "registry identifier" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	skos:definition "An identifier associated with an entry in a registry, i.e., one that provides an index to the registry for the recorded item." ;
-	.
-
-gleif-base:comprises
-	a owl:ObjectProperty ;
-	rdfs:label "comprises" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	skos:definition "Includes, especially within a particular scope, is made up of." ;
 	.
 
 gleif-base:hasAbbreviation

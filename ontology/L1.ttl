@@ -216,14 +216,8 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:records ;
+			owl:onProperty gleif-L1:identifiesAndRecords ;
 			owl:onClass gleif-L1:LegalEntity ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:comprises ;
-			owl:onClass gleif-L1:LegalEntityIdentifier ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -550,6 +544,18 @@ gleif-L1:hasValidationSources
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	rdfs:range gleif-L1:ValidationSourceKind ;
 	skos:definition "The level of validation of the reference data provided by the registrant." ;
+	.
+
+gleif-L1:identifiesAndRecords
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf
+		gleif-base:identifies ,
+		gleif-base:records
+		;
+	rdfs:label "identifies and records" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	rdfs:range gleif-L1:LegalEntity ;
+	skos:definition "The legal entity that is recorded by this registry entry and identified by the LEI." ;
 	.
 
 []

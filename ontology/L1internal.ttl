@@ -62,14 +62,8 @@ gleif-L1internal:LegalEntityIdentifierRegistryEntry
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:records ;
+			owl:onProperty gleif-L1:identifiesAndRecords ;
 			owl:onClass gleif-L1:LegalEntity ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:comprises ;
-			owl:onClass gleif-L1:LegalEntityIdentifier ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
