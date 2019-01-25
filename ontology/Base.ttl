@@ -624,6 +624,7 @@ gleif-base:hasNameLegal
 gleif-base:hasNameLegalLocal
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf
+		skos:prefLabel ,
 		gleif-base:hasNameLegal ,
 		gleif-base:hasNameLocal
 		;
@@ -650,7 +651,10 @@ gleif-base:hasNameTranslatedEnglish
 
 gleif-base:hasNameTransliterated
 	a owl:DatatypeProperty ;
-	rdfs:subPropertyOf gleif-base:hasName ;
+	rdfs:subPropertyOf
+		skos:altLabel ,
+		gleif-base:hasName
+		;
 	rdfs:label "has name transliterated" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	skos:definition "The name used to refer to a person or organization, converted from original to western text. Not generally the legal name." ;
