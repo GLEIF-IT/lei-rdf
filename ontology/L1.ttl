@@ -20,7 +20,7 @@
 <https://www.gleif.org/ontology/L1/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF L1 Ontology" ;
-	rdfs:comment "Ontology generated from GLEIF L1 data in CDF 2.1 format" ;
+	dct:abstract "Ontology generated from GLEIF L1 data in CDF 2.1 format" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
@@ -204,19 +204,20 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasValidationSources ;
-			owl:onClass gleif-L1:ValidationSourceKind ;
+			owl:onClass [
+				a owl:Class ;
+				owl:oneOf (
+					gleif-L1:ValidationSourceKindEntitySuppliedOnly
+					gleif-L1:ValidationSourceKindFullyCorroborated
+					gleif-L1:ValidationSourceKindPartiallyCorroborated
+				) ;
+			] ;
 			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:records ;
+			owl:onProperty gleif-L1:identifiesAndRecords ;
 			owl:onClass gleif-L1:LegalEntity ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:comprises ;
-			owl:onClass gleif-L1:LegalEntityIdentifier ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -228,7 +229,18 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasRegistrationStatus ;
-			owl:onClass gleif-L1:RegistrationStatus ;
+			owl:onClass [
+				a owl:Class ;
+				owl:oneOf (
+					gleif-L1:RegistrationStatusAnnulled
+					gleif-L1:RegistrationStatusCancelled
+					gleif-L1:RegistrationStatusDuplicate
+					gleif-L1:RegistrationStatusIssued
+					gleif-L1:RegistrationStatusLapsed
+					gleif-L1:RegistrationStatusMerged
+					gleif-L1:RegistrationStatusRetired
+				) ;
+			] ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -295,19 +307,6 @@ gleif-L1:RegistrationStatus
 	rdfs:subClassOf gleif-base:RegistrationStatus ;
 	rdfs:label "legal entity identifier registration status" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	owl:oneOf (
-		gleif-L1:RegistrationStatusAnnulled
-		gleif-L1:RegistrationStatusCancelled
-		gleif-L1:RegistrationStatusDuplicate
-		gleif-L1:RegistrationStatusIssued
-		gleif-L1:RegistrationStatusLapsed
-		gleif-L1:RegistrationStatusMerged
-		gleif-L1:RegistrationStatusPendingArchival
-		gleif-L1:RegistrationStatusPendingTransfer
-		gleif-L1:RegistrationStatusPendingValidation
-		gleif-L1:RegistrationStatusRetired
-		gleif-L1:RegistrationStatusTransferred
-	) ;
 	skos:definition "The status of the legal entity's LEI registration with the Managing LOU." ;
 	.
 
@@ -377,39 +376,6 @@ gleif-L1:RegistrationStatusMerged
 	gleif-base:hasTag "MERGED" ;
 	.
 
-gleif-L1:RegistrationStatusPendingArchival
-	a
-		owl:NamedIndividual ,
-		gleif-L1:RegistrationStatus
-		;
-	rdfs:label "pending archival" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "An LEI registration is about to be transferred to a different LOU, after which its registration status will revert to a non-pending status." ;
-	gleif-base:hasTag "PENDING_ARCHIVAL" ;
-	.
-
-gleif-L1:RegistrationStatusPendingTransfer
-	a
-		owl:NamedIndividual ,
-		gleif-L1:RegistrationStatus
-		;
-	rdfs:label "pending transfer" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "An LEI registration that has been requested to be transferred to another LOU. The request is being processed at the sending LOU." ;
-	gleif-base:hasTag "PENDING_TRANSFER" ;
-	.
-
-gleif-L1:RegistrationStatusPendingValidation
-	a
-		owl:NamedIndividual ,
-		gleif-L1:RegistrationStatus
-		;
-	rdfs:label "pending validation" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "An application for an LEI that has been submitted and which is being processed and validated." ;
-	gleif-base:hasTag "PENDING_VALIDATION" ;
-	.
-
 gleif-L1:RegistrationStatusRetired
 	a
 		owl:NamedIndividual ,
@@ -419,17 +385,6 @@ gleif-L1:RegistrationStatusRetired
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "An LEI registration for an entity that has ceased operation, without having been merged into another entity." ;
 	gleif-base:hasTag "RETIRED" ;
-	.
-
-gleif-L1:RegistrationStatusTransferred
-	a
-		owl:NamedIndividual ,
-		gleif-L1:RegistrationStatus
-		;
-	rdfs:label "transferred" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "An LEI registration that has been transferred to a different LOU as the managing LOU." ;
-	gleif-base:hasTag "TRANSFERRED" ;
 	.
 
 gleif-L1:SoleProprietor
@@ -445,12 +400,6 @@ gleif-L1:ValidationSourceKind
 	rdfs:subClassOf gleif-base:RegistrationStatus ;
 	rdfs:label "LEI validation source kind" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	owl:oneOf (
-		gleif-L1:ValidationSourceKindEntitySuppliedOnly
-		gleif-L1:ValidationSourceKindFullyCorroborated
-		gleif-L1:ValidationSourceKindPartiallyCorroborated
-		gleif-L1:ValidationSourceKindPending
-	) ;
 	skos:definition "The level of validation of the reference data provided by the registrant." ;
 	.
 
@@ -485,17 +434,6 @@ gleif-L1:ValidationSourceKindPartiallyCorroborated
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, the information supplied by the registrant can be partially corroborated by public authoritative sources, while some of the record is dependent upon the information that the registrant submitted, either due to conflicts with authoritative information, or due to data unavailability." ;
 	gleif-base:hasTag "PARTIALLY_CORROBORATED" ;
-	.
-
-gleif-L1:ValidationSourceKindPending
-	a
-		owl:NamedIndividual ,
-		gleif-L1:ValidationSourceKind
-		;
-	rdfs:label "pending" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "The validation of the reference data provided by the registrant has not yet occurred." ;
-	gleif-base:hasTag "PENDING" ;
 	.
 
 gleif-L1:hasHeadquartersAddress
@@ -608,6 +546,18 @@ gleif-L1:hasValidationSources
 	skos:definition "The level of validation of the reference data provided by the registrant." ;
 	.
 
+gleif-L1:identifiesAndRecords
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf
+		gleif-base:identifies ,
+		gleif-base:records
+		;
+	rdfs:label "identifies and records" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	rdfs:range gleif-L1:LegalEntity ;
+	skos:definition "The legal entity that is recorded by this registry entry and identified by the LEI." ;
+	.
+
 []
 	a owl:AllDifferent ;
 	owl:members (
@@ -617,11 +567,7 @@ gleif-L1:hasValidationSources
 		gleif-L1:RegistrationStatusIssued
 		gleif-L1:RegistrationStatusLapsed
 		gleif-L1:RegistrationStatusMerged
-		gleif-L1:RegistrationStatusPendingArchival
-		gleif-L1:RegistrationStatusPendingTransfer
-		gleif-L1:RegistrationStatusPendingValidation
 		gleif-L1:RegistrationStatusRetired
-		gleif-L1:RegistrationStatusTransferred
 	) ;
 	.
 
@@ -631,7 +577,6 @@ gleif-L1:hasValidationSources
 		gleif-L1:ValidationSourceKindEntitySuppliedOnly
 		gleif-L1:ValidationSourceKindFullyCorroborated
 		gleif-L1:ValidationSourceKindPartiallyCorroborated
-		gleif-L1:ValidationSourceKindPending
 	) ;
 	.
 

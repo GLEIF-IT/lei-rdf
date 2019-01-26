@@ -20,7 +20,7 @@
 <https://www.gleif.org/ontology/L2Parent/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF L2 Parent Reference Data Format Ontology" ;
-	rdfs:comment "Ontology generated from GLEIF L2 Parent Reference Data Format" ;
+	dct:abstract "Ontology generated from GLEIF L2 Parent Reference Data Format" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/parent-reference-data-format#"^^xsd:anyURI ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,

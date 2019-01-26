@@ -17,7 +17,7 @@
 <https://www.gleif.org/ontology/L2/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF L2 Ontology" ;
-	rdfs:comment "Ontology generated from GLEIF L2 data in RR 1.1 format" ;
+	dct:abstract "Ontology generated from GLEIF L2 data in RR 1.1 format" ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#"^^xsd:anyURI ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
@@ -167,14 +167,21 @@ gleif-L2:LegalEntityRelationshipRecord
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L2:hasValidationSources ;
-			owl:onClass gleif-L1:ValidationSourceKind ;
+			owl:onProperty gleif-L2:hasValidationDocuments ;
+			owl:onClass gleif-L2:RelationshipValidationDocumentsKind ;
 			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L2:hasValidationDocuments ;
-			owl:onClass gleif-L2:RelationshipValidationDocumentsKind ;
+			owl:onProperty gleif-L2:hasValidationSources ;
+			owl:onClass [
+				a owl:Class ;
+				owl:oneOf (
+					gleif-L1:ValidationSourceKindEntitySuppliedOnly
+					gleif-L1:ValidationSourceKindFullyCorroborated
+					gleif-L1:ValidationSourceKindPartiallyCorroborated
+				) ;
+			] ;
 			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -192,7 +199,16 @@ gleif-L2:LegalEntityRelationshipRecord
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasRegistrationStatus ;
-			owl:onClass gleif-L2:RegistrationStatus ;
+			owl:onClass [
+				a owl:Class ;
+				owl:oneOf (
+					gleif-L2:RegistrationStatusAnnulled
+					gleif-L2:RegistrationStatusDuplicate
+					gleif-L2:RegistrationStatusLapsed
+					gleif-L2:RegistrationStatusPublished
+					gleif-L2:RegistrationStatusRetired
+				) ;
+			] ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -218,17 +234,6 @@ gleif-L2:RegistrationStatus
 	rdfs:subClassOf gleif-base:RegistrationStatus ;
 	rdfs:label "relationship registration status" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	owl:oneOf (
-		gleif-L2:RegistrationStatusAnnulled
-		gleif-L2:RegistrationStatusDuplicate
-		gleif-L2:RegistrationStatusLapsed
-		gleif-L2:RegistrationStatusPendingArchival
-		gleif-L2:RegistrationStatusPendingTransfer
-		gleif-L2:RegistrationStatusPendingValidation
-		gleif-L2:RegistrationStatusPublished
-		gleif-L2:RegistrationStatusRetired
-		gleif-L2:RegistrationStatusTransferred
-	) ;
 	skos:definition "The status of the legal entity's relationship record registration with the Managing LOU." ;
 	.
 
@@ -265,39 +270,6 @@ gleif-L2:RegistrationStatusLapsed
 	gleif-base:hasTag "LAPSED" ;
 	.
 
-gleif-L2:RegistrationStatusPendingArchival
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RegistrationStatus
-		;
-	rdfs:label "pending archival" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	skos:definition "This relationship data report is about to be transferred to a different LOU, after which its registration status will revert to a non-pending status. The PENDING_ARCHIVAL status serves to inform recipients of LOU-provided data files that a relationship record will be removed from that LOU’s published file after the transfer is complete" ;
-	gleif-base:hasTag "PENDING_ARCHIVAL" ;
-	.
-
-gleif-L2:RegistrationStatusPendingTransfer
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RegistrationStatus
-		;
-	rdfs:label "pending transfer" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	skos:definition "A relationship data report for which a transfer to another LOU has been requested. The request is being processed at the sending LOU. When the receiving LOU is ready, the status will be changed to PENDING_ARCHIVAL by the sending LOU prior to completion of the transfer." ;
-	gleif-base:hasTag "PENDING_TRANSFER" ;
-	.
-
-gleif-L2:RegistrationStatusPendingValidation
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RegistrationStatus
-		;
-	rdfs:label "pending validation" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	skos:definition "A relationship data report that has been submitted to the LOU and which is being processed and validated, prior to publication." ;
-	gleif-base:hasTag "PENDING_VALIDATION" ;
-	.
-
 gleif-L2:RegistrationStatusPublished
 	a
 		owl:NamedIndividual ,
@@ -318,17 +290,6 @@ gleif-L2:RegistrationStatusRetired
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:definition "status indicating that the registration is for an entity that has ceased operation, without having been merged into another entity" ;
 	gleif-base:hasTag "RETIRED" ;
-	.
-
-gleif-L2:RegistrationStatusTransferred
-	a
-		owl:NamedIndividual ,
-		gleif-L2:RegistrationStatus
-		;
-	rdfs:label "transferred" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	skos:definition "The relationship is considered to have ended, but the relationship report is kept in publication for historical audit trail purposes." ;
-	gleif-base:hasTag "TRANSFERRED" ;
 	.
 
 gleif-L2:RelationshipStatus

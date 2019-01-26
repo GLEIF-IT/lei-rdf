@@ -19,7 +19,7 @@
 <https://www.gleif.org/sample/DataWithInferences/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF sample data with inferences" ;
-	rdfs:comment "Ontology for testing that brings in data and inferences" ;
+	dct:abstract "Ontology for testing that brings in data and inferences" ;
 	owl:imports
 		<https://www.gleif.org/ontology/L1inferences/> ,
 		<https://www.gleif.org/ontology/L2inferences/> ,
