@@ -473,7 +473,7 @@ gleif-L1:hasManagingLOU
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf gleif-base:isManagedBy ;
 	rdfs:label "has managing LOU" ;
-	rdfs:domain gleif-L1:LegalEntityIdentifierRegistryEntry ;
+	rdfs:domain gleif-L1:RegistryEntry ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	rdfs:range gleif-L1:LocalOperatingUnit ;
 	skos:definition "The legal form of the entity, taken from the ISO Entity Legal Form (ELF) data set maintained by GLEIF." ;
