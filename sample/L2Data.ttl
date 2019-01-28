@@ -34,8 +34,8 @@
 
 gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-D
 	a gleif-L2:DirectConsolidation ;
-	gleif-base:hasChild gleif-L1-data:4469000001BFY38CWR75-LE ;
-	gleif-base:hasParent gleif-L1-data:95980020140006006514-LE ;
+	gleif-base:hasChild gleif-L1-data:4469000001BFY38CWR75 ;
+	gleif-base:hasParent gleif-L1-data:95980020140006006514 ;
 	gleif-L2:hasAccountingStandard gleif-L2:AccountingStandardIFRS ;
 	gleif-L2:hasOwnershipPercentage "99.99"^^xsd:decimal ;
 	gleif-L2:hasRelationshipPeriod [
@@ -52,7 +52,7 @@ gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-D-REC
 	gleif-base:hasNextRenewalDate "2018-10-31T18:15:49.463-06:00"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L2:RegistrationStatusPublished ;
 	gleif-base:records gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-D ;
-	gleif-L1:hasManagingLOU gleif-L1-data:4469000001AVO26P9X86-LE ;
+	gleif-L1:hasManagingLOU gleif-L1-data:4469000001AVO26P9X86 ;
 	gleif-L2:hasAccountingPeriod [
 		a gleif-base:Period ;
 		gleif-base:hasEnd "2016-12-31T00:00:00-06:00"^^xsd:dateTime ;
@@ -64,8 +64,8 @@ gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-D-REC
 
 gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-U
 	a gleif-L2:UltimateConsolidation ;
-	gleif-base:hasChild gleif-L1-data:4469000001BFY38CWR75-LE ;
-	gleif-base:hasParent gleif-L1-data:95980020140006006514-LE ;
+	gleif-base:hasChild gleif-L1-data:4469000001BFY38CWR75 ;
+	gleif-base:hasParent gleif-L1-data:95980020140006006514 ;
 	gleif-L2:hasAccountingStandard gleif-L2:AccountingStandardIFRS ;
 	gleif-L2:hasOwnershipPercentage "99.99"^^xsd:decimal ;
 	gleif-L2:hasRelationshipPeriod [
@@ -82,7 +82,7 @@ gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-U-REC
 	gleif-base:hasNextRenewalDate "2018-10-31T18:15:49.463-06:00"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L2:RegistrationStatusPublished ;
 	gleif-base:records gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-U ;
-	gleif-L1:hasManagingLOU gleif-L1-data:4469000001AVO26P9X86-LE ;
+	gleif-L1:hasManagingLOU gleif-L1-data:4469000001AVO26P9X86 ;
 	gleif-L2:hasAccountingPeriod [
 		a gleif-base:Period ;
 		gleif-base:hasEnd "2016-12-01T00:00:00-06:00"^^xsd:dateTime ;

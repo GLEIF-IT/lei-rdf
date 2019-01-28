@@ -31,29 +31,31 @@
 		<https://www.gleif.org/sample/EntityLegalFormData/> ,
 		<https://www.gleif.org/sample/RegistrationAuthorityData/>
 		;
-	skos:note """There are 4 categories of individual:
-    1) The LegalEntityIdentifier and LegalEntityRegistryEntry. The URI is the LEI but with the namespace of this ontology.
-    2) The PhysicalAddress (subclass) which is the Legal Address of an entity. The URI is that of the LegalEntityRegistryEntry followed by -LA and one of L, A, P for Local, Auto-transliterated, Preferred-transliterated respectively.
-    3) The PhysicalAddress (subclass) which is the Headquarters Address of an entity (ONLY PRESENT IF IT IS DIFFERENT FROM THE LEGAL ADDRESS). The URI is that of the LegalEntityRegistryEntry followed by -HQ and one of L, A, P for Local, Auto-transliterated, Preferred-transliterated respectively.
-    4) The RegistryIdentifier of an entity in a business registry. The URI is BID- followed by the Registry code - and the identifier of the entity within the registry.
+	skos:note """There are 5 categories of individual:
+    1) The LegalEntity. The URI is the LEI itself in the namespace of this ontology.
+    2) The LegalEntityIdentifier and LegalEntityRegistryEntry. The URI is the LEI followed by -LE.    
+    3) The PhysicalAddress (subclass) which is the Legal Address of an entity. The URI is that of the LegalEntity followed by -LA and one of L, A, P for Local, Auto-transliterated, Preferred-transliterated respectively.
+    4) The PhysicalAddress (subclass) which is the Headquarters Address of an entity (ONLY PRESENT IF IT IS DIFFERENT FROM THE LEGAL ADDRESS). The URI is that of the LegalEntityRegistryEntry followed by -HQ and one of L, A, P for Local, Auto-transliterated, Preferred-transliterated respectively.
+    5) The RegistryIdentifier of an entity in a business registry. The URI is BID- followed by the Registry code - and the identifier of the entity within the registry.
     """ ;
 	.
 
 gleif-L1-data:213800PRXJ7WA41AIN67
-	a
-		gleif-L1:LegalEntityIdentifier ,
-		gleif-L1:LegalEntityIdentifierRegistryEntry
+	a gleif-L1:LegalEntity ;
+	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-MX ;
+	gleif-base:hasNameLegalLocal "MUFG BANK MEXICO SOCIEDAD ANONIMA INSTITUCION DE BANCA MULTIPLE FILIAL"@es ;
+	gleif-base:hasNamePreviousLegal "BANK OF TOKYO-MITSUBISHI UFJ (MEXICO) SOCIEDAD ANONIMA INSTITUCION DE BANCA MULTIPLE FILIAL"@es ;
+	gleif-L1:hasHeadquartersAddress
+		gleif-L1-data:213800PRXJ7WA41AIN67-LAA ,
+		gleif-L1-data:213800PRXJ7WA41AIN67-LAL
 		;
-	gleif-base:hasInitialRegistrationDate "2015-09-23T19:00:00-05:00"^^xsd:dateTime ;
-	gleif-base:hasLastUpdateDate "2018-05-10T16:56:42.829-05:00"^^xsd:dateTime ;
-	gleif-base:hasNextRenewalDate "2019-01-17T18:54:02.53-06:00"^^xsd:dateTime ;
-	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
-	gleif-base:hasTag "213800PRXJ7WA41AIN67" ;
-	gleif-base:records gleif-L1-data:213800PRXJ7WA41AIN67-LE ;
-	gleif-L1:hasManagingLOU gleif-L1-data:4469000001AVO26P9X86-LE ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000449-BTM960401DV7 ;
-	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
-	gleif-L1:identifiesAndRecords gleif-L1-data:213800PRXJ7WA41AIN67-LE ;
+	gleif-L1:hasLegalAddress
+		gleif-L1-data:213800PRXJ7WA41AIN67-LAA ,
+		gleif-L1-data:213800PRXJ7WA41AIN67-LAL
+		;
+	gleif-L1:hasLegalFormText "SOCIEDAD ANONIMA" ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000449-BTM960401DV7 ;
 	.
 
 gleif-L1-data:213800PRXJ7WA41AIN67-LAA
@@ -82,39 +84,34 @@ gleif-L1-data:213800PRXJ7WA41AIN67-LAL
 	gleif-base:hasRegion lcc-3166-2-add:REG-MX-CMX ;
 	.
 
-gleif-L1-data:213800PRXJ7WA41AIN67-LE
-	a gleif-L1:LegalEntity ;
-	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-MX ;
-	gleif-base:hasNameLegalLocal "MUFG BANK MEXICO SOCIEDAD ANONIMA INSTITUCION DE BANCA MULTIPLE FILIAL"@es ;
-	gleif-base:hasNamePreviousLegal "BANK OF TOKYO-MITSUBISHI UFJ (MEXICO) SOCIEDAD ANONIMA INSTITUCION DE BANCA MULTIPLE FILIAL"@es ;
-	gleif-L1:hasHeadquartersAddress
-		gleif-L1-data:213800PRXJ7WA41AIN67-LAA ,
-		gleif-L1-data:213800PRXJ7WA41AIN67-LAL
-		;
-	gleif-L1:hasLegalAddress
-		gleif-L1-data:213800PRXJ7WA41AIN67-LAA ,
-		gleif-L1-data:213800PRXJ7WA41AIN67-LAL
-		;
-	gleif-L1:hasLegalFormText "SOCIEDAD ANONIMA" ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000449-BTM960401DV7 ;
-	.
-
-gleif-L1-data:213800YK2FEXWNMT3R12
+gleif-L1-data:213800PRXJ7WA41AIN67-LEI
 	a
 		gleif-L1:LegalEntityIdentifier ,
 		gleif-L1:LegalEntityIdentifierRegistryEntry
 		;
-	gleif-base:hasInitialRegistrationDate "2017-11-01T00:00:00Z"^^xsd:dateTime ;
-	gleif-base:hasLastUpdateDate "2018-09-14T14:37:15.170Z"^^xsd:dateTime ;
-	gleif-base:hasNextRenewalDate "2019-11-01T00:00:00Z"^^xsd:dateTime ;
-	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusMerged ;
-	gleif-base:hasTag "213800YK2FEXWNMT3R12" ;
-	gleif-base:records gleif-L1-data:213800YK2FEXWNMT3R12-LE ;
-	gleif-L1:hasManagingLOU gleif-L1-data:213800WAVVOPS85N2205-LE ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000585-03193392 ;
+	gleif-base:hasInitialRegistrationDate "2015-09-23T19:00:00-05:00"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2018-05-10T16:56:42.829-05:00"^^xsd:dateTime ;
+	gleif-base:hasNextRenewalDate "2019-01-17T18:54:02.53-06:00"^^xsd:dateTime ;
+	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
+	gleif-base:hasTag "213800PRXJ7WA41AIN67" ;
+	gleif-L1:hasManagingLOU gleif-L1-data:4469000001AVO26P9X86 ;
+	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000449-BTM960401DV7 ;
 	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
-	gleif-L1:identifiesAndRecords gleif-L1-data:213800YK2FEXWNMT3R12-LE ;
+	gleif-L1:identifiesAndRecords gleif-L1-data:213800PRXJ7WA41AIN67 ;
+	.
+
+gleif-L1-data:213800YK2FEXWNMT3R12
+	a gleif-L1:LegalEntity ;
+	gleif-base:hasEntityExpirationDate "2018-09-28T00:00:00Z"^^xsd:dateTime ;
+	gleif-base:hasEntityExpirationReason gleif-base:EntityExpirationReasonCorporateAction ;
+	gleif-base:hasEntityStatus gleif-base:EntityStatusInactive ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-GB ;
+	gleif-base:hasNameLegalLocal "LUDLOW (FYLDE) LIMITED"@en ;
+	gleif-base:hasSuccessor gleif-L1-data:213800YK2FEXWNMT3R12 ;
+	gleif-L1:hasHeadquartersAddress gleif-L1-data:213800YK2FEXWNMT3R12-LAL ;
+	gleif-L1:hasLegalAddress gleif-L1-data:213800YK2FEXWNMT3R12-LAL ;
+	gleif-L1:hasLegalForm gleif-ELF-data:ELF-H0PO ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000585-03193392 ;
 	.
 
 gleif-L1-data:213800YK2FEXWNMT3R12-LAL
@@ -127,36 +124,31 @@ gleif-L1-data:213800YK2FEXWNMT3R12-LAL
 	gleif-base:hasRegion lcc-3166-2-add:REG-GB-LIV ;
 	.
 
-gleif-L1-data:213800YK2FEXWNMT3R12-LE
-	a gleif-L1:LegalEntity ;
-	gleif-base:hasEntityExpirationDate "2018-09-28T00:00:00Z"^^xsd:dateTime ;
-	gleif-base:hasEntityExpirationReason gleif-base:EntityExpirationReasonCorporateAction ;
-	gleif-base:hasEntityStatus gleif-base:EntityStatusInactive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-GB ;
-	gleif-base:hasNameLegalLocal "LUDLOW (FYLDE) LIMITED"@en ;
-	gleif-base:hasSuccessor gleif-L1-data:213800YK2FEXWNMT3R12-LE ;
-	gleif-L1:hasHeadquartersAddress gleif-L1-data:213800YK2FEXWNMT3R12-LAL ;
-	gleif-L1:hasLegalAddress gleif-L1-data:213800YK2FEXWNMT3R12-LAL ;
-	gleif-L1:hasLegalForm gleif-ELF-data:ELF-H0PO ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000585-03193392 ;
-	.
-
-gleif-L1-data:25490050856CG53NAC28
+gleif-L1-data:213800YK2FEXWNMT3R12-LEI
 	a
 		gleif-L1:LegalEntityIdentifier ,
 		gleif-L1:LegalEntityIdentifierRegistryEntry
 		;
-	gleif-base:hasInitialRegistrationDate "2017-10-30T16:31:12.342Z"^^xsd:dateTime ;
-	gleif-base:hasLastUpdateDate "2018-10-31T13:32:11.732Z"^^xsd:dateTime ;
-	gleif-base:hasNextRenewalDate "2018-10-30T16:31:12.342Z"^^xsd:dateTime ;
-	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusLapsed ;
-	gleif-base:hasTag "25490050856CG53NAC28" ;
-	gleif-base:records gleif-L1-data:25490050856CG53NAC28-LE ;
-	gleif-L1:hasManagingLOU gleif-L1-data:5493001KJTIIGC8Y1R12-LE ;
-	gleif-L1:hasOtherValidationIdentifier gleif-L1-data:BID-RA000598-201725900005 ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000602-6534941 ;
+	gleif-base:hasInitialRegistrationDate "2017-11-01T00:00:00Z"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2018-09-14T14:37:15.170Z"^^xsd:dateTime ;
+	gleif-base:hasNextRenewalDate "2019-11-01T00:00:00Z"^^xsd:dateTime ;
+	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusMerged ;
+	gleif-base:hasTag "213800YK2FEXWNMT3R12" ;
+	gleif-L1:hasManagingLOU gleif-L1-data:213800WAVVOPS85N2205 ;
+	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000585-03193392 ;
 	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
-	gleif-L1:identifiesAndRecords gleif-L1-data:25490050856CG53NAC28-LE ;
+	gleif-L1:identifiesAndRecords gleif-L1-data:213800YK2FEXWNMT3R12 ;
+	.
+
+gleif-L1-data:25490050856CG53NAC28
+	a gleif-L1:LegalEntity ;
+	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
+	gleif-base:hasLegalJurisdiction lcc-3166-2-add:REG-US-DE ;
+	gleif-base:hasNameLegalLocal "5210 Concourse, LP"@en ;
+	gleif-L1:hasHeadquartersAddress gleif-L1-data:25490050856CG53NAC28-HQL ;
+	gleif-L1:hasLegalAddress gleif-L1-data:25490050856CG53NAC28-LAL ;
+	gleif-L1:hasLegalFormText "Limited Partnership"@en ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000602-6534941 ;
 	.
 
 gleif-L1-data:25490050856CG53NAC28-HQL
@@ -182,32 +174,33 @@ gleif-L1-data:25490050856CG53NAC28-LAL
 	gleif-base:hasRegion lcc-3166-2-add:REG-US-DE ;
 	.
 
-gleif-L1-data:25490050856CG53NAC28-LE
-	a gleif-L1:LegalEntity ;
-	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-2-add:REG-US-DE ;
-	gleif-base:hasNameLegalLocal "5210 Concourse, LP"@en ;
-	gleif-L1:hasHeadquartersAddress gleif-L1-data:25490050856CG53NAC28-HQL ;
-	gleif-L1:hasLegalAddress gleif-L1-data:25490050856CG53NAC28-LAL ;
-	gleif-L1:hasLegalFormText "Limited Partnership"@en ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000602-6534941 ;
-	.
-
-gleif-L1-data:4469000001AVO26P9X86
+gleif-L1-data:25490050856CG53NAC28-LEI
 	a
 		gleif-L1:LegalEntityIdentifier ,
 		gleif-L1:LegalEntityIdentifierRegistryEntry
 		;
-	gleif-base:hasInitialRegistrationDate "2017-02-01T19:37:30.514-06:00"^^xsd:dateTime ;
-	gleif-base:hasLastUpdateDate "2018-02-28T11:40:04.012-06:00"^^xsd:dateTime ;
-	gleif-base:hasNextRenewalDate "2018-02-01T19:37:30.513-06:00"^^xsd:dateTime ;
+	gleif-base:hasInitialRegistrationDate "2017-10-30T16:31:12.342Z"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2018-10-31T13:32:11.732Z"^^xsd:dateTime ;
+	gleif-base:hasNextRenewalDate "2018-10-30T16:31:12.342Z"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusLapsed ;
-	gleif-base:hasTag "4469000001AVO26P9X86" ;
-	gleif-base:records gleif-L1-data:5493007CICYM7A0SZ714-LE ;
-	gleif-L1:hasManagingLOU gleif-L1-data:4469000001AVO26P9X86-LE ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000449-AME9806027F9 ;
+	gleif-base:hasTag "25490050856CG53NAC28" ;
+	gleif-L1:hasManagingLOU gleif-L1-data:5493001KJTIIGC8Y1R12 ;
+	gleif-L1:hasOtherValidationIdentifier gleif-L1-data:BID-RA000598-201725900005 ;
+	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000602-6534941 ;
 	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
-	gleif-L1:identifiesAndRecords gleif-L1-data:4469000001AVO26P9X86-LE ;
+	gleif-L1:identifiesAndRecords gleif-L1-data:25490050856CG53NAC28 ;
+	.
+
+gleif-L1-data:4469000001AVO26P9X86
+	a gleif-L1:LocalOperatingUnit ;
+	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-MX ;
+	gleif-base:hasNameLegalLocal "ASOCIACION MEXICANA DE ESTANDARES PARA EL COMERCIO ELECTRONICO AC"@es ;
+	gleif-L1:hasHeadquartersAddress gleif-L1-data:4469000001AVO26P9X86-HQL ;
+	gleif-L1:hasLegalAddress gleif-L1-data:4469000001AVO26P9X86-LAL ;
+	gleif-L1:hasLegalFormText "ASOCIACIÓN CIVIL" ;
+	gleif-L1:hasNameTradingOrOperating "GS1 MÉXICO" ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000449-AME9806027F9 ;
 	.
 
 gleif-L1-data:4469000001AVO26P9X86-HQL
@@ -234,33 +227,33 @@ gleif-L1-data:4469000001AVO26P9X86-LAL
 	gleif-base:hasRegion lcc-3166-2-add:REG-MX-MEX ;
 	.
 
-gleif-L1-data:4469000001AVO26P9X86-LE
-	a gleif-L1:LocalOperatingUnit ;
-	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-MX ;
-	gleif-base:hasNameLegalLocal "ASOCIACION MEXICANA DE ESTANDARES PARA EL COMERCIO ELECTRONICO AC"@es ;
-	gleif-L1:hasHeadquartersAddress gleif-L1-data:4469000001AVO26P9X86-HQL ;
-	gleif-L1:hasLegalAddress gleif-L1-data:4469000001AVO26P9X86-LAL ;
-	gleif-L1:hasLegalFormText "ASOCIACIÓN CIVIL" ;
-	gleif-L1:hasNameTradingOrOperating "GS1 MÉXICO" ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000449-AME9806027F9 ;
-	.
-
-gleif-L1-data:5493007CICYM7A0SZ714
+gleif-L1-data:4469000001AVO26P9X86-LEI
 	a
 		gleif-L1:LegalEntityIdentifier ,
 		gleif-L1:LegalEntityIdentifierRegistryEntry
 		;
-	gleif-base:hasInitialRegistrationDate "2013-03-22T11:07:24.137-06:00"^^xsd:dateTime ;
+	gleif-base:hasInitialRegistrationDate "2017-02-01T19:37:30.514-06:00"^^xsd:dateTime ;
 	gleif-base:hasLastUpdateDate "2018-02-28T11:40:04.012-06:00"^^xsd:dateTime ;
-	gleif-base:hasNextRenewalDate "2019-01-24T20:16:17.627-06:00"^^xsd:dateTime ;
-	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
-	gleif-base:hasTag "5493007CICYM7A0SZ714" ;
-	gleif-base:records gleif-L1-data:5493007CICYM7A0SZ714-LE ;
-	gleif-L1:hasManagingLOU gleif-L1-data:4469000001AVO26P9X86-LE ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000449-IKM981217SD5 ;
+	gleif-base:hasNextRenewalDate "2018-02-01T19:37:30.513-06:00"^^xsd:dateTime ;
+	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusLapsed ;
+	gleif-base:hasTag "4469000001AVO26P9X86" ;
+	gleif-L1:hasManagingLOU gleif-L1-data:4469000001AVO26P9X86 ;
+	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000449-AME9806027F9 ;
 	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
-	gleif-L1:identifiesAndRecords gleif-L1-data:5493007CICYM7A0SZ714-LE ;
+	gleif-L1:identifiesAndRecords gleif-L1-data:4469000001AVO26P9X86 ;
+	.
+
+gleif-L1-data:5493007CICYM7A0SZ714
+	a gleif-L1:LegalEntity ;
+	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-MX ;
+	gleif-base:hasNameLegalLocal "KI MEXICO S DE RL DE CV"@es ;
+	gleif-L1:hasHeadquartersAddress gleif-L1-data:5493007CICYM7A0SZ714-HQL ;
+	gleif-L1:hasLegalAddress gleif-L1-data:5493007CICYM7A0SZ714-LAL ;
+	gleif-L1:hasLegalFormText "SOCIEDAD DE RESPONSABILIDAD LIMITADA DE CAPITAL VARIABLE" ;
+	gleif-L1:hasNameTradingOrOperating "KI MEXICO" ;
+	gleif-L1:hasPreviousLegalName "INDUSTRIAS KI DE MEXICO S.R.L. DE C.V." ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000449-IKM981217SD5 ;
 	.
 
 gleif-L1-data:5493007CICYM7A0SZ714-HQL
@@ -283,51 +276,54 @@ gleif-L1-data:5493007CICYM7A0SZ714-LAL
 	gleif-base:hasRegion lcc-3166-2-add:REG-MX-QUE ;
 	.
 
-gleif-L1-data:5493007CICYM7A0SZ714-LE
-	a gleif-L1:LegalEntity ;
-	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-MX ;
-	gleif-base:hasNameLegalLocal "KI MEXICO S DE RL DE CV"@es ;
-	gleif-L1:hasHeadquartersAddress gleif-L1-data:5493007CICYM7A0SZ714-HQL ;
-	gleif-L1:hasLegalAddress gleif-L1-data:5493007CICYM7A0SZ714-LAL ;
-	gleif-L1:hasLegalFormText "SOCIEDAD DE RESPONSABILIDAD LIMITADA DE CAPITAL VARIABLE" ;
-	gleif-L1:hasNameTradingOrOperating "KI MEXICO" ;
-	gleif-L1:hasPreviousLegalName "INDUSTRIAS KI DE MEXICO S.R.L. DE C.V." ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000449-IKM981217SD5 ;
+gleif-L1-data:5493007CICYM7A0SZ714-LEI
+	a
+		gleif-L1:LegalEntityIdentifier ,
+		gleif-L1:LegalEntityIdentifierRegistryEntry
+		;
+	gleif-base:hasInitialRegistrationDate "2013-03-22T11:07:24.137-06:00"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2018-02-28T11:40:04.012-06:00"^^xsd:dateTime ;
+	gleif-base:hasNextRenewalDate "2019-01-24T20:16:17.627-06:00"^^xsd:dateTime ;
+	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
+	gleif-base:hasTag "5493007CICYM7A0SZ714" ;
+	gleif-L1:hasManagingLOU gleif-L1-data:4469000001AVO26P9X86 ;
+	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000449-IKM981217SD5 ;
+	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
+	gleif-L1:identifiesAndRecords gleif-L1-data:5493007CICYM7A0SZ714 ;
 	.
 
 gleif-L1-data:BID-RA000449-AME9806027F9
 	a gleif-base:RegistryIdentifier ;
 	gleif-base:hasTag "AME9806027F9" ;
-	gleif-base:identifies gleif-L1-data:4469000001AVO26P9X86-LE ;
+	gleif-base:identifies gleif-L1-data:4469000001AVO26P9X86 ;
 	gleif-base:isRegisteredIn gleif-RA-data:RA000449 ;
 	.
 
 gleif-L1-data:BID-RA000449-BTM960401DV7
 	a gleif-base:RegistryIdentifier ;
 	gleif-base:hasTag "BTM960401DV7" ;
-	gleif-base:identifies gleif-L1-data:213800PRXJ7WA41AIN67-LE ;
+	gleif-base:identifies gleif-L1-data:213800PRXJ7WA41AIN67 ;
 	gleif-base:isRegisteredIn gleif-RA-data:RA000449 ;
 	.
 
 gleif-L1-data:BID-RA000449-IKM981217SD5
 	a gleif-base:RegistryIdentifier ;
 	gleif-base:hasTag "IKM981217SD5" ;
-	gleif-base:identifies gleif-L1-data:5493007CICYM7A0SZ714-LE ;
+	gleif-base:identifies gleif-L1-data:5493007CICYM7A0SZ714 ;
 	gleif-base:isRegisteredIn gleif-RA-data:RA000449 ;
 	.
 
 gleif-L1-data:BID-RA000598-201725900005
 	a gleif-base:RegistryIdentifier ;
 	gleif-base:hasTag "201725900005" ;
-	gleif-base:identifies gleif-L1-data:25490050856CG53NAC28-LE ;
+	gleif-base:identifies gleif-L1-data:25490050856CG53NAC28 ;
 	gleif-base:isRegisteredIn gleif-RA-data:RA000598 ;
 	.
 
 gleif-L1-data:BID-RA000602-6534941
 	a gleif-base:RegistryIdentifier ;
 	gleif-base:hasTag "6534941" ;
-	gleif-base:identifies gleif-L1-data:25490050856CG53NAC28-LE ;
+	gleif-base:identifies gleif-L1-data:25490050856CG53NAC28 ;
 	gleif-base:isRegisteredIn gleif-RA-data:RA000602 ;
 	.
 
