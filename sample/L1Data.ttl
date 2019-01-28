@@ -57,7 +57,7 @@ gleif-L1-data:213800PRXJ7WA41AIN67
 	.
 
 gleif-L1-data:213800PRXJ7WA41AIN67-LAA
-	a gleif-L1:gleif-L1:PhysicalAddressASCIIAutomatic ;
+	a gleif-L1:PhysicalAddressASCIIAutomatic ;
 	gleif-base:hasAddressLine1 "AVENIDA PASEO DE LA REFORMA 250 PISO 11 TORRE A"@es ;
 	gleif-base:hasAddressLine2 "Juarez"@es ;
 	gleif-base:hasAddressLine3 "Cuauhtemoc"@es ;

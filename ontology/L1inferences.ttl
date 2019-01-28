@@ -42,6 +42,14 @@ gleif-L1-infer:hasAddresses
 	skos:definition "The entities that are located in this region." ;
 	.
 
+gleif-L1-infer:hasEntries
+	a owl:ObjectProperty ;
+	rdfs:label "has entries" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1inferences/> ;
+	owl:inverseOf gleif-base:isRegisteredIn ;
+	skos:definition "The entries within a registry." ;
+	.
+
 gleif-L1-infer:hasIdentifier
 	a
 		owl:ObjectProperty ,
