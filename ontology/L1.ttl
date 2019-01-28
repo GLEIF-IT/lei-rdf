@@ -43,13 +43,21 @@ gleif-L1:Fund
 		gleif-L1:LegalEntity ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:isManagedBy ;
-			owl:someValuesFrom gleif-L1:LegalEntity ;
+			owl:onProperty gleif-L1:hasFundFamily ;
+			owl:someValuesFrom gleif-L1:FundFamily ;
 		]
 		;
 	rdfs:label "fund" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "The legal entity is a fund managed by another legal entity." ;
+	.
+
+gleif-L1:FundFamily
+	a owl:Class ;
+	rdfs:subClassOf gleif-L1:LegalEntity ;
+	rdfs:label "fund family" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "The legal entity has been declared to manage a fund." ;
 	.
 
 gleif-L1:LegalEntity
@@ -434,6 +442,16 @@ gleif-L1:ValidationSourceKindPartiallyCorroborated
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "Based on the validation procedures in use by the LOU responsible for the record, the information supplied by the registrant can be partially corroborated by public authoritative sources, while some of the record is dependent upon the information that the registrant submitted, either due to conflicts with authoritative information, or due to data unavailability." ;
 	gleif-base:hasTag "PARTIALLY_CORROBORATED" ;
+	.
+
+gleif-L1:hasFundFamily
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf gleif-base:isManagedBy ;
+	rdfs:label "has fund family" ;
+	rdfs:domain gleif-L1:Fund ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	rdfs:range gleif-L1:FundFamily ;
+	skos:definition "The manager of the fund." ;
 	.
 
 gleif-L1:hasHeadquartersAddress
