@@ -29,16 +29,6 @@
 		;
 	.
 
-gleif-elf:LEIregistry
-	a gleif-base:Registry ;
-	rdfs:label "GLEIF Entity Legal Entity Identifier Registry" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:altLabel "LEI registry" ;
-	skos:definition "The global registry of legal identifiers and their relationships, aggregated from data supplied by different Local Operating Units." ;
-	gleif-base:hasWebsite "https://www.gleif.org/en/about-lei/gleif-management-of-the-global-lei-system"^^xsd:anyURI ;
-	gleif-base:isManagedBy gleif-base:GLEIF ;
-	.
-
 gleif-L1:Branch
 	a owl:Class ;
 	rdfs:subClassOf gleif-L1:LegalEntity ;
@@ -68,6 +58,16 @@ gleif-L1:FundFamily
 	rdfs:label "fund family" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "The legal entity has been declared to manage a fund." ;
+	.
+
+gleif-L1:LEIregistry
+	a gleif-base:Registry ;
+	rdfs:label "GLEIF Entity Legal Entity Identifier Registry" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:altLabel "LEI registry" ;
+	skos:definition "The global registry of legal identifiers and their relationships, aggregated from data supplied by different Local Operating Units." ;
+	gleif-base:hasWebsite "https://www.gleif.org/en/about-lei/gleif-management-of-the-global-lei-system"^^xsd:anyURI ;
+	gleif-base:isManagedBy gleif-base:GLEIF ;
 	.
 
 gleif-L1:LegalEntity
