@@ -69,16 +69,7 @@ gleif-base:Entity
 		;
 	rdfs:label "entity" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	skos:definition "a partnership, corporation, or other organization having the capacity to negotiate contracts, assume financial obligations, and pay off debts, organized under the laws of some jurisdiction" ;
-	skos:example """Examples of eligible legal entities include, without limitation:
--   all financial intermediaries;
--   banks and finance companies;
--   all entities that issue equity, debt or other securities for other capital structures;
--   all entities listed on an exchange;
--   all entities that trade stock or debt, investment vehicles, including mutual funds, pension funds and alternative investment vehicles constituted as corporate entities or collective investment agreements (including umbrella funds as well as funds under an umbrella structure, hedge funds, private equity funds, etc.);
--   all entities under the purview of a financial regulator and their affiliates, subsidiaries and holding companies;
--   counterparties to financial transactions.""" ;
-	skos:scopeNote "The term 'legal entities' includes, but is not limited to, unique parties that are legally or financially responsible for the performance of financial transactions or have the legal right in their jurisdiction to enter independently into legal contracts, regardless of whether they are incorporated or constituted in some other way (e.g. trust, partnership, contractual). It excludes natural persons, but includes governmental organizations and supranationals." ;
+	skos:definition "A partnership, corporation, or other organization having the capacity to negotiate contracts, assume financial obligations, and pay off debts, organized under the laws of some jurisdiction." ;
 	.
 
 gleif-base:EntityExpirationReason
@@ -342,7 +333,7 @@ gleif-base:hasAbbreviation
 	rdfs:subPropertyOf skos:altLabel ;
 	rdfs:label "has abbreviation" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	skos:definition "an abbreviation for the entity identified" ;
+	skos:definition "An abbreviation for the entity identified." ;
 	.
 
 gleif-base:hasAbbreviationLocal
@@ -350,7 +341,7 @@ gleif-base:hasAbbreviationLocal
 	rdfs:subPropertyOf gleif-base:hasAbbreviation ;
 	rdfs:label "has abbreviation local" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	skos:definition "an abbreviation using a language local to the entity identified, may be English" ;
+	skos:definition "An abbreviation using a language local to the entity identified; may be English." ;
 	.
 
 gleif-base:hasAbbreviationTransliterated
@@ -374,7 +365,7 @@ gleif-base:hasAddress
 	rdfs:label "has address" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range gleif-base:PhysicalAddress ;
-	skos:definition "has a means by which the entity may be located or contacted or may receive correspondence" ;
+	skos:definition "Has a means by which the entity may be located or contacted or may receive correspondence." ;
 	.
 
 gleif-base:hasAddressLine1
@@ -436,7 +427,7 @@ gleif-base:hasChild
 	rdfs:domain gleif-base:LegalEntityRelationship ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range gleif-base:Entity ;
-	skos:definition "the entity that plays the child role" ;
+	skos:definition "The entity that plays the child role." ;
 	.
 
 gleif-base:hasCity
@@ -462,7 +453,7 @@ gleif-base:hasCoverageArea
 	rdfs:label "has coverage area" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range lcc-cr:GeographicRegion ;
-	skos:definition "indicates a geographic region in which some service is provided, or to which some policy applies, or in which something is available" ;
+	skos:definition "Indicates a geographic region in which some service is provided, or to which some policy applies, or in which something is available." ;
 	.
 
 gleif-base:hasEnd
@@ -471,7 +462,7 @@ gleif-base:hasEnd
 	rdfs:domain gleif-base:Period ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range xsd:dateTime ;
-	skos:definition "the end time of a period." ;
+	skos:definition "The end time of a period." ;
 	.
 
 gleif-base:hasEntityExpirationDate
@@ -480,7 +471,7 @@ gleif-base:hasEntityExpirationDate
 	rdfs:domain gleif-base:Entity ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range xsd:dateTime ;
-	skos:definition "The date that the entity ceased to operate, whether due to dissolution, merger or acquisition" ;
+	skos:definition "The date that the entity ceased to operate, whether due to dissolution, merger or acquisition." ;
 	.
 
 gleif-base:hasEntityExpirationReason
@@ -489,7 +480,7 @@ gleif-base:hasEntityExpirationReason
 	rdfs:domain gleif-base:Entity ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range gleif-base:EntityExpirationReason ;
-	skos:definition "the reason that an entity ceased to exist and/or operate" ;
+	skos:definition "The reason that an entity ceased to exist and/or operate." ;
 	.
 
 gleif-base:hasEntityStatus
@@ -498,7 +489,7 @@ gleif-base:hasEntityStatus
 	rdfs:domain gleif-base:Entity ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range gleif-base:EntityStatus ;
-	skos:definition "indicates the status of the entity (i.e., active, inactive)" ;
+	skos:definition "Indicates the status of the entity (i.e., active, inactive)." ;
 	.
 
 gleif-base:hasFirstAddressLine
@@ -525,7 +516,7 @@ gleif-base:hasInitialRegistrationDate
 	rdfs:label "has initial registration date" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range xsd:dateTime ;
-	skos:definition "the date on which an identifier or other registered item was first registered" ;
+	skos:definition "The date on which an identifier or other registered item was first registered." ;
 	.
 
 gleif-base:hasLastUpdateDate
@@ -534,7 +525,7 @@ gleif-base:hasLastUpdateDate
 	rdfs:label "has last modification date" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range xsd:dateTime ;
-	skos:definition "the date that the detail of a specific registration in the registry was last revised" ;
+	skos:definition "The date that the detail of a specific registration in the registry was last revised." ;
 	.
 
 gleif-base:hasLegalJurisdiction
@@ -560,7 +551,7 @@ gleif-base:hasName
 	rdfs:subPropertyOf rdfs:label ;
 	rdfs:label "has name" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	skos:definition "associates a name, reference name, or appellation with an individual concept" ;
+	skos:definition "Associates a name, reference name, or appellation with an individual resource." ;
 	.
 
 gleif-base:hasNameASCII
@@ -568,7 +559,7 @@ gleif-base:hasNameASCII
 	rdfs:subPropertyOf gleif-base:hasNameTransliterated ;
 	rdfs:label "has name ASCII" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	skos:definition "the name used to refer to a person or organization in 7 bit ASCII text (ISO 646); also valid UNICODE (ISO 10646)" ;
+	skos:definition "The name used to refer to a person or organization in 7 bit ASCII text (ISO 646); also valid UNICODE (ISO 10646)." ;
 	.
 
 gleif-base:hasNameASCIIAutomatic
@@ -601,7 +592,7 @@ gleif-base:hasNameAdditional
 		;
 	rdfs:label "has name additional" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	skos:definition "the name used to refer to an person or organization informally" ;
+	skos:definition "The name used to refer to an person or organization informally." ;
 	.
 
 gleif-base:hasNameLegal
@@ -609,7 +600,7 @@ gleif-base:hasNameLegal
 	rdfs:subPropertyOf gleif-base:hasName ;
 	rdfs:label "has name legal" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	skos:definition "the name used to refer to an person or organization in legal communications" ;
+	skos:definition "The name used to refer to an person or organization in legal communications." ;
 	.
 
 gleif-base:hasNameLegalLocal
@@ -621,7 +612,7 @@ gleif-base:hasNameLegalLocal
 		;
 	rdfs:label "has name legal local" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	skos:definition "the name used to refer to an person or organization in legal communications in local alphabet, which may be English" ;
+	skos:definition "The name used to refer to an person or organization in legal communications in local alphabet, which may be English." ;
 	.
 
 gleif-base:hasNameLocal
@@ -629,7 +620,7 @@ gleif-base:hasNameLocal
 	rdfs:subPropertyOf gleif-base:hasName ;
 	rdfs:label "has name local" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	skos:definition "a name in a language local to the entity identified, may be English" ;
+	skos:definition "A name in a language local to the entity identified; may be English." ;
 	.
 
 gleif-base:hasNameTranslatedEnglish
@@ -656,7 +647,7 @@ gleif-base:hasNextRenewalDate
 	rdfs:label "has next renewal date" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range xsd:dateTime ;
-	skos:definition "the date by which a specific registration in the registry must be renewed or updated" ;
+	skos:definition "The date by which a specific registration in the registry must be renewed or updated." ;
 	.
 
 gleif-base:hasParent
@@ -665,7 +656,7 @@ gleif-base:hasParent
 	rdfs:domain gleif-base:LegalEntityRelationship ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range gleif-base:Entity ;
-	skos:definition "the entity that plays the parent role" ;
+	skos:definition "The entity that plays the parent role." ;
 	.
 
 gleif-base:hasPostalCode
@@ -729,21 +720,21 @@ gleif-base:hasWebsite
 	rdfs:label "has website" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range xsd:anyURI ;
-	skos:definition "a website associated with something, including but not limited to an organization" ;
+	skos:definition "A website associated with something, including but not limited to an organization." ;
 	.
 
 gleif-base:identifies
 	a owl:ObjectProperty ;
 	rdfs:label "identifies" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	skos:definition "is the relationship between something and that which provides a unique reference for it" ;
+	skos:definition "The relationship between an identifier and the thing it uniquely identifies." ;
 	.
 
 gleif-base:isManagedBy
 	a owl:ObjectProperty ;
 	rdfs:label "is managed by" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	skos:definition "relates something to another thing that has some role in directing its affairs" ;
+	skos:definition "Relates something to another thing that has some role in directing its affairs." ;
 	.
 
 gleif-base:isQualifiedBy
