@@ -26,6 +26,60 @@
 		;
 	.
 
+gleif-L1-infer:coveredBy
+	a owl:ObjectProperty ;
+	rdfs:label "covered by" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1inferences/> ;
+	owl:inverseOf gleif-base:hasCoverageArea ;
+	skos:definition "The items in scope for this area." ;
+	.
+
+gleif-L1-infer:hasAddresses
+	a owl:ObjectProperty ;
+	rdfs:label "located in" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1inferences/> ;
+	owl:inverseOf gleif-base:hasGeographicRegion ;
+	skos:definition "The entities that are located in this region." ;
+	.
+
+gleif-L1-infer:hasIdentifier
+	a
+		owl:ObjectProperty ,
+		owl:InverseFunctionalProperty
+		;
+	rdfs:label "has identifier" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1inferences/> ;
+	owl:inverseOf gleif-base:identifies ;
+	skos:definition "The identifiers for an entity." ;
+	.
+
+gleif-L1-infer:hasLocatedEntities
+	a owl:ObjectProperty ;
+	rdfs:label "has located entities" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1inferences/> ;
+	owl:propertyChainAxiom (
+		gleif-L1-infer:hasAddresses
+		gleif-L1-infer:locatedAt
+	) ;
+	skos:definition "The entities located in a jurisdiction." ;
+	.
+
+gleif-L1-infer:hasRegisteredEntities
+	a owl:ObjectProperty ;
+	rdfs:label "has registered entities" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1inferences/> ;
+	owl:inverseOf gleif-base:hasLegalJurisdiction ;
+	skos:definition "The entities registered in a jurisdiction." ;
+	.
+
+gleif-L1-infer:locatedAt
+	a owl:ObjectProperty ;
+	rdfs:label "located at" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1inferences/> ;
+	owl:inverseOf gleif-base:hasAddress ;
+	skos:definition "The entities that are located at this address." ;
+	.
+
 gleif-L1-infer:manages
 	a owl:ObjectProperty ;
 	rdfs:label "manages" ;

@@ -449,6 +449,7 @@ gleif-base:hasCity
 
 gleif-base:hasCountry
 	a owl:ObjectProperty ;
+	rdfs:subPropertyOf gleif-base:hasGeographicRegion ;
 	rdfs:label "has country" ;
 	rdfs:domain gleif-base:PhysicalAddress ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
@@ -508,6 +509,14 @@ gleif-base:hasFirstAddressLine
 	owl:equivalentProperty gleif-base:hasAddressLine1 ;
 	skos:altLabel "has first address line" ;
 	skos:definition "The mandatory first address line element." ;
+	.
+
+gleif-base:hasGeographicRegion
+	a owl:ObjectProperty ;
+	rdfs:label "has geographic region" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	rdfs:range lcc-cr:GeographicRegion ;
+	skos:definition "The country or region where something is located." ;
 	.
 
 gleif-base:hasInitialRegistrationDate
@@ -669,6 +678,7 @@ gleif-base:hasPostalCode
 
 gleif-base:hasRegion
 	a owl:ObjectProperty ;
+	rdfs:subPropertyOf gleif-base:hasGeographicRegion ;
 	rdfs:label "has region" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range lcc-cr:CountrySubdivision ;

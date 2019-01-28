@@ -51,9 +51,9 @@ gleif-L2-infer:Parent
 	skos:definition "An entity which is the parent of at least one other." ;
 	.
 
-gleif-L2-infer:UltimateParent
+gleif-L2-infer:TopmostParent
 	a owl:Class ;
-	rdfs:label "ultimate parent" ;
+	rdfs:label "topmost parent" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2inferences/> ;
 	owl:equivalentClass [
 		a owl:Class ;
@@ -65,6 +65,18 @@ gleif-L2-infer:UltimateParent
 			]
 		) ;
 	] ;
+	skos:definition "An entity which is the parent of at least one other and is not itself a child." ;
+	.
+
+gleif-L2-infer:UltimateParent
+	a owl:Class ;
+	rdfs:label "parent" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2inferences/> ;
+	owl:equivalentClass [
+		a owl:Restriction ;
+		owl:onProperty gleif-L2-infer:hasChildRelationship ;
+		owl:someValuesFrom gleif-L2:UltimateConsolidation ;
+	] ;
 	skos:definition "An entity which is the ultimate parent of at least one other." ;
 	.
 
@@ -75,6 +87,16 @@ gleif-L2-infer:hasChildEntity
 		gleif-base:hasChild
 	) ;
 	skos:definition "The direct children for this entity." ;
+	.
+
+gleif-L2-infer:hasChildHierarchy
+	a owl:TransitiveProperty ;
+	rdfs:label "has child hierarchy" ;
+	owl:propertyChainAxiom (
+		gleif-L2-infer:hasChildRelationship
+		gleif-base:hasChild
+	) ;
+	skos:definition "The complete set of children for this entity." ;
 	.
 
 gleif-L2-infer:hasChildRelationship
@@ -94,6 +116,16 @@ gleif-L2-infer:hasParentEntity
 		gleif-base:hasParent
 	) ;
 	skos:definition "The direct parent for this entity." ;
+	.
+
+gleif-L2-infer:hasParentHierarchy
+	a owl:TransitiveProperty ;
+	rdfs:label "has parent hierarchy" ;
+	owl:propertyChainAxiom (
+		gleif-L2-infer:hasParentRelationship
+		gleif-base:hasParent
+	) ;
+	skos:definition "The complete set of parents for this entity." ;
 	.
 
 gleif-L2-infer:hasParentRelationship
