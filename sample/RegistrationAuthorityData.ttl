@@ -39,9 +39,9 @@ gleif-RA-data:RA000189
 		gleif-ra:RegistrationAuthorityCode
 		;
 	gleif-base:hasCoverageArea
-		lcc-3166-1-add:FR ,
-		lcc-3166-1-add:GF ,
-		lcc-3166-1-add:GP
+		lcc-3166-1-add:CTRY-FR ,
+		lcc-3166-1-add:CTRY-GF ,
+		lcc-3166-1-add:CTRY-GP
 		;
 	gleif-base:hasNameLegalLocal "Sirene"@fr ;
 	gleif-base:hasNameTranslatedEnglish "Register of Companies (Sirene)" ;
@@ -69,9 +69,9 @@ gleif-RA-data:REG-RA000585
 		gleif-ra:RegistrationAuthorityCode
 		;
 	gleif-base:hasCoverageArea
-		lcc-3166-2-add:GB-EAW ,
-		lcc-3166-2-add:GB-NIR ,
-		lcc-3166-2-add:GB-SCT
+		lcc-3166-2-add:REG-GB-EAW ,
+		lcc-3166-2-add:REG-GB-NIR ,
+		lcc-3166-2-add:REG-GB-SCT
 		;
 	gleif-base:hasNameLegalLocal "Companies Register"@en ;
 	gleif-base:hasNameTranslatedEnglish "Companies Register" ;

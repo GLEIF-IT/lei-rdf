@@ -7,10 +7,10 @@
 
 @base <https://www.gleif.org/sample/L1Data/> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix gleif-ELF-data: <https://www.gleif.org/ontology/EntityLegalForm/> .
+@prefix gleif-ELF-data: <https://www.gleif.org/sample/EntityLegalFormData/> .
 @prefix gleif-L1: <https://www.gleif.org/ontology/L1/> .
 @prefix gleif-L1-data: <https://www.gleif.org/sample/L1Data/> .
-@prefix gleif-RA-data: <https://www.gleif.org/ontology/RegistrationAuthority/> .
+@prefix gleif-RA-data: <https://www.gleif.org/sample/RegistrationAuthorityData/> .
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
 @prefix lcc-3166-1-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> .
 @prefix lcc-3166-2-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> .
