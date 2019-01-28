@@ -57,13 +57,7 @@ gleif-RA-data:RA000189-ORG
 	gleif-base:hasNameTranslatedEnglish "National Institute of Statistics and Economic Studies" ;
 	.
 
-gleif-RA-data:RA000585-ORG
-	a gleif-ra:RegistrationAuthority ;
-	gleif-base:hasNameLegalLocal "Companies House" ;
-	gleif-base:hasNameTranslatedEnglish "Companies House" ;
-	.
-
-gleif-RA-data:REG-RA000585
+gleif-RA-data:RA000585
 	a
 		gleif-ra:BusinessRegistry ,
 		gleif-ra:RegistrationAuthorityCode
@@ -79,5 +73,11 @@ gleif-RA-data:REG-RA000585
 	gleif-base:hasWebsite "www.companieshouse.gov.uk"^^xsd:anyURI ;
 	gleif-base:identifies gleif-RA-data:RA000585 ;
 	gleif-base:isManagedBy gleif-RA-data:RA000585-ORG ;
+	.
+
+gleif-RA-data:RA000585-ORG
+	a gleif-ra:RegistrationAuthority ;
+	gleif-base:hasNameLegalLocal "Companies House" ;
+	gleif-base:hasNameTranslatedEnglish "Companies House" ;
 	.
 
