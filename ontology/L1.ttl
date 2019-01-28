@@ -29,12 +29,22 @@
 		;
 	.
 
+gleif-elf:LEIregistry
+	a gleif-base:Registry ;
+	rdfs:label "GLEIF Entity Legal Entity Identifier Registry" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:altLabel "LEI registry" ;
+	skos:definition "The global registry of legal identifiers and their relationships, aggregated from data supplied by different Local Operating Units." ;
+	gleif-base:hasWebsite "https://www.gleif.org/en/about-lei/gleif-management-of-the-global-lei-system"^^xsd:anyURI ;
+	gleif-base:isManagedBy gleif-base:GLEIF ;
+	.
+
 gleif-L1:Branch
 	a owl:Class ;
 	rdfs:subClassOf gleif-L1:LegalEntity ;
 	rdfs:label "branch" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "The legal entity is a branch of another legal entity" ;
+	skos:definition "The legal entity is a branch of another legal entity." ;
 	.
 
 gleif-L1:Fund
