@@ -85,11 +85,6 @@ gleif-ra:RegistrationAuthorityCode
 		;
 	rdfs:label "registration authority code" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/RegistrationAuthority/> ;
-	owl:equivalentClass [
-		a owl:Restriction ;
-		owl:onProperty gleif-base:isRegisteredIn ;
-		owl:hasValue gleif-ra:RAregistry ;
-	] ;
 	skos:definition "The reference code of the registration authority, taken from the Registration Authorities Code List maintained by GLEIF." ;
 	.
 

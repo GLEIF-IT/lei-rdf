@@ -194,11 +194,6 @@ gleif-L1:LegalEntityIdentifier
 		;
 	rdfs:label "legal entity identifier" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	owl:equivalentClass [
-		a owl:Restriction ;
-		owl:onProperty gleif-base:isRegisteredIn ;
-		owl:hasValue gleif-L1:LEIregistry ;
-	] ;
 	skos:definition "The ISO 17442 compatible identifier for the legal entity referenced." ;
 	.
 
