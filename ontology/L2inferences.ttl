@@ -29,6 +29,7 @@
 
 gleif-L2-infer:Child
 	a owl:Class ;
+	rdfs:subClassOf gleif-L1:LegalEntity ;
 	rdfs:label "child" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2inferences/> ;
 	owl:equivalentClass [
@@ -41,6 +42,7 @@ gleif-L2-infer:Child
 
 gleif-L2-infer:Parent
 	a owl:Class ;
+	rdfs:subClassOf gleif-base:Entity ;
 	rdfs:label "parent" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2inferences/> ;
 	owl:equivalentClass [
@@ -53,6 +55,7 @@ gleif-L2-infer:Parent
 
 gleif-L2-infer:TopmostParent
 	a owl:Class ;
+	rdfs:subClassOf gleif-L2-infer:Parent ;
 	rdfs:label "topmost parent" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2inferences/> ;
 	owl:equivalentClass [
@@ -70,6 +73,7 @@ gleif-L2-infer:TopmostParent
 
 gleif-L2-infer:UltimateParent
 	a owl:Class ;
+	rdfs:subClassOf gleif-L2-infer:Parent ;
 	rdfs:label "parent" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2inferences/> ;
 	owl:equivalentClass [
