@@ -85,6 +85,8 @@ gleif-L2-infer:UltimateParent
 	.
 
 gleif-L2-infer:hasChildEntity
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf gleif-L2-infer:hasChildHierarchy ;
 	rdfs:label "has child entity" ;
 	owl:propertyChainAxiom (
 		gleif-L2-infer:hasChildRelationship
@@ -96,10 +98,6 @@ gleif-L2-infer:hasChildEntity
 gleif-L2-infer:hasChildHierarchy
 	a owl:TransitiveProperty ;
 	rdfs:label "has child hierarchy" ;
-	owl:propertyChainAxiom (
-		gleif-L2-infer:hasChildRelationship
-		gleif-base:hasChild
-	) ;
 	skos:definition "The complete set of children for this entity." ;
 	.
 
@@ -114,6 +112,8 @@ gleif-L2-infer:hasChildRelationship
 	.
 
 gleif-L2-infer:hasParentEntity
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf gleif-L2-infer:hasParentHierarchy ;
 	rdfs:label "has parent entity" ;
 	owl:propertyChainAxiom (
 		gleif-L2-infer:hasParentRelationship
@@ -125,10 +125,6 @@ gleif-L2-infer:hasParentEntity
 gleif-L2-infer:hasParentHierarchy
 	a owl:TransitiveProperty ;
 	rdfs:label "has parent hierarchy" ;
-	owl:propertyChainAxiom (
-		gleif-L2-infer:hasParentRelationship
-		gleif-base:hasParent
-	) ;
 	skos:definition "The complete set of parents for this entity." ;
 	.
 
