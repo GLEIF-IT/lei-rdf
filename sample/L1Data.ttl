@@ -45,6 +45,7 @@ gleif-L1-data:097900BHFR0000075034
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
 	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-CZ ;
 	gleif-base:hasNameASCIIAutomatic "J T BANKA, AS, POBOCKA ZAHRANICNEJ BANKY" ;
+	gleif-base:hasNameLegalLocal "J & T BANKA, a.s., pobočka zahraničnej banky"@sk ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:097900BHFR0000075034-HQL ;
 	gleif-L1:hasLegalAddress gleif-L1-data:097900BHFR0000075034-LAL ;
 	gleif-L1:hasLegalForm gleif-ELF-data:ELF-J8DW ;
