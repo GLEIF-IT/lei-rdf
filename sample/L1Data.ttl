@@ -40,6 +40,33 @@
     """ ;
 	.
 
+gleif-L1-data:097900BHFR0000075034
+	a gleif-L1:Branch ;
+	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-CZ ;
+	gleif-base:hasNameASCIIAutomatic "J T BANKA, AS, POBOCKA ZAHRANICNEJ BANKY" ;
+	gleif-L1:hasHeadquartersAddress gleif-L1-data:097900BHFR0000075034-HQL ;
+	gleif-L1:hasLegalAddress gleif-L1-data:097900BHFR0000075034-LAL ;
+	gleif-L1:hasLegalForm gleif-ELF-data:ELF-J8DW ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000163-35964693 ;
+	.
+
+gleif-L1-data:097900BHFR0000075034-LEI
+	a
+		gleif-L1:LegalEntityIdentifier ,
+		gleif-L1:LegalEntityIdentifierRegistryEntry
+		;
+	gleif-base:hasInitialRegistrationDate "2017-05-17T00:00:00.00Z"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2018-08-21T00:00:00.00Z"^^xsd:dateTime ;
+	gleif-base:hasNextRenewalDate "2019-05-17T00:00:00.00Z"^^xsd:dateTime ;
+	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
+	gleif-base:hasTag "097900BHFR0000075034" ;
+	gleif-L1:hasManagingLOU gleif-L1-data:097900BEFH0000000217 ;
+	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000163-35964693 ;
+	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
+	gleif-L1:identifiesAndRecords gleif-L1-data:097900BHFR0000075034 ;
+	.
+
 gleif-L1-data:2138001FT6OQ9OG5WR43
 	a gleif-L1:Fund ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
@@ -141,7 +168,7 @@ gleif-L1-data:213800ICVRLPU57BQ280-LEI
 		gleif-L1:LegalEntityIdentifierRegistryEntry
 		;
 	gleif-base:hasInitialRegistrationDate "2014-08-12T00:00:00.000+01:00"^^xsd:dateTime ;
-	gleif-base:hasLastUpdateDate "2018-06-13T0:30:35.520Z"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2018-06-13T10:30:35.520Z"^^xsd:dateTime ;
 	gleif-base:hasNextRenewalDate "2019-08-12T00:00:00.00Z"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
 	gleif-base:hasTag "213800ICVRLPU57BQ280" ;
@@ -445,6 +472,13 @@ gleif-L1-data:BID-AgenziaDelleEntrateViaCristoforoColombo-02653240594
 	gleif-base:hasTag "02653240594" ;
 	gleif-base:identifies gleif-L1-data:2138004WRXP5I4MW6417 ;
 	gleif-base:isRegisteredIn gleif-RA-data:AgenziaDelleEntrateViaCristoforoColombo ;
+	.
+
+gleif-L1-data:BID-RA000163-35964693
+	a gleif-base:RegistryIdentifier ;
+	gleif-base:hasTag "35964693" ;
+	gleif-base:identifies gleif-L1-data:097900BHFR0000075034 ;
+	gleif-base:isRegisteredIn gleif-RA-data:RA000163 ;
 	.
 
 gleif-L1-data:BID-RA000163-47115378
