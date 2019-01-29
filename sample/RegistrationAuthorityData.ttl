@@ -33,6 +33,15 @@
     2) The RegistrationAuthority organization. The URI is that of the BusinessRegistry followed by -ORG.""" ;
 	.
 
+gleif-RA-data:AgenziaDelleEntrateViaCristoforoColombo
+	a gleif-ra:BusinessRegistry ;
+	skos:note "This entry was manually created from research." ;
+	gleif-base:hasNameLegalLocal "Agenzia delle Entrate via Cristoforo Colombo"@it ;
+	gleif-base:hasNameTranslatedEnglish "Tax Collector's office in Rome, Italy" ;
+	gleif-base:hasWebsite "https://www.agenziaentrate.gov.it/wps/portal/entrate/home"^^xsd:anyURI ;
+	gleif-base:identifies gleif-RA-data:AgenziaDelleEntrateViaCristoforoColombo ;
+	.
+
 gleif-RA-data:RA000189
 	a
 		gleif-ra:BusinessRegistry ,
