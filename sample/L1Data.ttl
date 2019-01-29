@@ -52,6 +52,15 @@ gleif-L1-data:097900BHFR0000075034
 	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000163-35964693 ;
 	.
 
+gleif-L1-data:097900BHFR0000075034-HQL
+	a gleif-L1:PhysicalAddressLocal ;
+	skos:note "City should be Praha 8 and lang cs - see parent" ;
+	gleif-base:hasAddressLine1 "Pobrežní 297/14"@sk ;
+	gleif-base:hasCity "Bratislava"@sk ;
+	gleif-base:hasCountry lcc-3166-1-add:CTRY-CZ ;
+	gleif-base:hasPostalCode "18600" ;
+	.
+
 gleif-L1-data:097900BHFR0000075034-LAL
 	a gleif-L1:PhysicalAddressLocal ;
 	gleif-base:hasAddressLine1 "Dvořákovo nábrežie 8"@sk ;
