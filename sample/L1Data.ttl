@@ -52,6 +52,14 @@ gleif-L1-data:097900BHFR0000075034
 	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000163-35964693 ;
 	.
 
+gleif-L1-data:097900BHFR0000075034-LAL
+	a gleif-L1:PhysicalAddressLocal ;
+	gleif-base:hasAddressLine1 "Dvořákovo nábrežie 8"@sk ;
+	gleif-base:hasCity "Bratislava"@sk ;
+	gleif-base:hasCountry lcc-3166-1-add:CTRY-SK ;
+	gleif-base:hasPostalCode "81102" ;
+	.
+
 gleif-L1-data:097900BHFR0000075034-LEI
 	a
 		gleif-L1:LegalEntityIdentifier ,
