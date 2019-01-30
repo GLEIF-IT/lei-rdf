@@ -284,6 +284,7 @@ gleif-base:RegistrationAuthority
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	skos:altLabel "RA" ;
 	skos:definition "An organization that is responsible for maintaining a registry and provides registration services." ;
+	skos:prefLabel "registration authority" ;
 	.
 
 gleif-base:RegistrationStatus
@@ -498,7 +499,6 @@ gleif-base:hasFirstAddressLine
 	rdfs:domain gleif-base:PhysicalAddress ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	owl:equivalentProperty gleif-base:hasAddressLine1 ;
-	skos:altLabel "has first address line" ;
 	skos:definition "The mandatory first address line element." ;
 	.
 
@@ -534,7 +534,6 @@ gleif-base:hasLegalJurisdiction
 	rdfs:domain gleif-base:Entity ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range lcc-cr:GeographicRegion ;
-	skos:altLabel "is organized in" ;
 	skos:definition "The jurisdiction of legal formation and registration of the entity (and upon which the LegalForm data element is also dependent). " ;
 	.
 
@@ -673,8 +672,12 @@ gleif-base:hasRegion
 	rdfs:label "has region" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range lcc-cr:CountrySubdivision ;
-	skos:altLabel "has subdivision" ;
+	skos:altLabel
+		"has state" ,
+		"has subdivision"
+		;
 	skos:definition "The (optional) region or subdivision (state, province, region, etc.) based on the 4- to 6-character ISO 3166-2 region code" ;
+	skos:prefLabel "has region" ;
 	.
 
 gleif-base:hasRegistrationStatus

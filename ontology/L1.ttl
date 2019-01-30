@@ -62,10 +62,11 @@ gleif-L1:FundFamily
 
 gleif-L1:LEIregistry
 	a gleif-base:Registry ;
-	rdfs:label "GLEIF Entity Legal Entity Identifier Registry" ;
+	rdfs:label "LEI registry" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:altLabel "LEI registry" ;
+	skos:altLabel "GLEIF Entity Legal Entity Identifier Registry" ;
 	skos:definition "The global registry of legal identifiers and their relationships, aggregated from data supplied by different Local Operating Units." ;
+	skos:prefLabel "LEI registry" ;
 	gleif-base:hasWebsite "https://www.gleif.org/en/about-lei/gleif-management-of-the-global-lei-system"^^xsd:anyURI ;
 	gleif-base:isManagedBy gleif-base:GLEIF ;
 	.
@@ -287,6 +288,7 @@ gleif-L1:LocalOperatingUnit
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:altLabel "LOU" ;
 	skos:definition "An entity that supplies registration, renewal and other services, and acts as the primary interface for legal entities wishing to obtain an LEI. Only organizations duly accredited by the Global Legal Entity Identifier Foundation (GLEIF) are authorized to issue LEIs." ;
+	skos:prefLabel "local operating unit" ;
 	.
 
 gleif-L1:PhysicalAddressASCII
@@ -548,6 +550,7 @@ gleif-L1:hasOtherValidationIdentifier
 	rdfs:range gleif-base:RegistryIdentifier ;
 	skos:altLabel "has additional validation identifier" ;
 	skos:definition "An optional list of additional registrations used by the LEI Issuer to validate the entity data." ;
+	skos:prefLabel "has other validation identifier" ;
 	.
 
 gleif-L1:hasRegistrationIdentifier
@@ -557,6 +560,7 @@ gleif-L1:hasRegistrationIdentifier
 	rdfs:range gleif-base:RegistryIdentifier ;
 	skos:altLabel "has business register entity ID" ;
 	skos:definition "An identifier for the legal entity in a business registry in the jurisdiction of legal registration, or in the appropriate registration authority." ;
+	skos:prefLabel "has registration identifier" ;
 	.
 
 gleif-L1:hasValidationIdentifier

@@ -29,9 +29,13 @@
 
 gleif-elf:ELFregistry
 	a gleif-base:Registry ;
-	rdfs:label "GLEIF Entity Legal Forms List" ;
+	rdfs:label "ELF registry" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/EntityLegalForm/> ;
-	skos:altLabel "ELF" ;
+	skos:altLabel
+		"ELF list" ,
+		"Entity Legal Form list"
+		;
+	skos:prefLabel "ELF registry" ;
 	gleif-base:hasWebsite "https://www.gleif.org/en/about-lei/code-lists/iso-20275-entity-legal-forms-code-list"^^xsd:anyURI ;
 	gleif-base:isManagedBy gleif-base:GLEIF ;
 	.
