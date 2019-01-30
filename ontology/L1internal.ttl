@@ -79,13 +79,13 @@ gleif-L1internal:LegalEntityIdentifierRegistryEntry
 				a owl:Class ;
 				owl:oneOf (
 					gleif-L1:RegistrationStatusAnnulled
-					gleif-L1:RegistrationStatusCancelled
+					gleif-L1internal:RegistrationStatusCancelled
 					gleif-L1:RegistrationStatusDuplicate
 					gleif-L1:RegistrationStatusIssued
 					gleif-L1:RegistrationStatusLapsed
 					gleif-L1:RegistrationStatusMerged
-					gleif-L1internal:RegistrationStatusPendingArchival
-					gleif-L1internal:RegistrationStatusPendingTransfer
+					gleif-L1:RegistrationStatusPendingArchival
+					gleif-L1:RegistrationStatusPendingTransfer
 					gleif-L1internal:RegistrationStatusPendingValidation
 					gleif-L1:RegistrationStatusRetired
 					gleif-L1internal:RegistrationStatusTransferred
@@ -118,13 +118,13 @@ gleif-L1internal:RegistrationStatus
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1internal/> ;
 	owl:oneOf (
 		gleif-L1:RegistrationStatusAnnulled
-		gleif-L1:RegistrationStatusCancelled
+		gleif-L1internal:RegistrationStatusCancelled
 		gleif-L1:RegistrationStatusDuplicate
 		gleif-L1:RegistrationStatusIssued
 		gleif-L1:RegistrationStatusLapsed
 		gleif-L1:RegistrationStatusMerged
-		gleif-L1internal:RegistrationStatusPendingArchival
-		gleif-L1internal:RegistrationStatusPendingTransfer
+		gleif-L1:RegistrationStatusPendingArchival
+		gleif-L1:RegistrationStatusPendingTransfer
 		gleif-L1internal:RegistrationStatusPendingValidation
 		gleif-L1:RegistrationStatusRetired
 		gleif-L1internal:RegistrationStatusTransferred
@@ -132,26 +132,15 @@ gleif-L1internal:RegistrationStatus
 	skos:definition "The status of the legal entity's LEI registration with the Managing LOU, including internal-only values." ;
 	.
 
-gleif-L1internal:RegistrationStatusPendingArchival
+gleif-L1internal:RegistrationStatusCancelled
 	a
 		owl:NamedIndividual ,
 		gleif-L1internal:RegistrationStatus
 		;
-	rdfs:label "pending archival" ;
+	rdfs:label "cancelled" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1internal/> ;
-	skos:definition "An LEI registration is about to be transferred to a different LOU, after which its registration status will revert to a non-pending status." ;
-	gleif-base:hasTag "PENDING_ARCHIVAL" ;
-	.
-
-gleif-L1internal:RegistrationStatusPendingTransfer
-	a
-		owl:NamedIndividual ,
-		gleif-L1internal:RegistrationStatus
-		;
-	rdfs:label "pending transfer" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1internal/> ;
-	skos:definition "An LEI registration that has been requested to be transferred to another LOU. The request is being processed at the sending LOU." ;
-	gleif-base:hasTag "PENDING_TRANSFER" ;
+	skos:definition "An LEI registration that was abandoned prior to issuance of an LEI." ;
+	gleif-base:hasTag "CANCELLED" ;
 	.
 
 gleif-L1internal:RegistrationStatusPendingValidation
@@ -205,13 +194,13 @@ gleif-L1internal:ValidationSourceKindPending
 	a owl:AllDifferent ;
 	owl:members (
 		gleif-L1:RegistrationStatusAnnulled
-		gleif-L1:RegistrationStatusCancelled
+		gleif-L1internal:RegistrationStatusCancelled
 		gleif-L1:RegistrationStatusDuplicate
 		gleif-L1:RegistrationStatusIssued
 		gleif-L1:RegistrationStatusLapsed
 		gleif-L1:RegistrationStatusMerged
-		gleif-L1internal:RegistrationStatusPendingArchival
-		gleif-L1internal:RegistrationStatusPendingTransfer
+		gleif-L1:RegistrationStatusPendingArchival
+		gleif-L1:RegistrationStatusPendingTransfer
 		gleif-L1internal:RegistrationStatusPendingValidation
 		gleif-L1:RegistrationStatusRetired
 		gleif-L1internal:RegistrationStatusTransferred

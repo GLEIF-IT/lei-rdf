@@ -206,6 +206,8 @@ gleif-L2:LegalEntityRelationshipRecord
 					gleif-L2:RegistrationStatusAnnulled
 					gleif-L2:RegistrationStatusDuplicate
 					gleif-L2:RegistrationStatusLapsed
+					gleif-L2:RegistrationStatusPendingArchival
+					gleif-L2:RegistrationStatusPendingTransfer
 					gleif-L2:RegistrationStatusPublished
 					gleif-L2:RegistrationStatusRetired
 				) ;
@@ -269,6 +271,28 @@ gleif-L2:RegistrationStatusLapsed
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:definition "A relationship data report that has not been renewed by the NextRenewalDate" ;
 	gleif-base:hasTag "LAPSED" ;
+	.
+
+gleif-L2:RegistrationStatusPendingArchival
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RegistrationStatus
+		;
+	rdfs:label "pending archival" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
+	skos:definition "An LEI registration is about to be transferred to a different LOU, after which its registration status will revert to a non-pending status." ;
+	gleif-base:hasTag "PENDING_ARCHIVAL" ;
+	.
+
+gleif-L2:RegistrationStatusPendingTransfer
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RegistrationStatus
+		;
+	rdfs:label "pending transfer" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
+	skos:definition "An LEI registration that has been requested to be transferred to another LOU. The request is being processed at the sending LOU." ;
+	gleif-base:hasTag "PENDING_TRANSFER" ;
 	.
 
 gleif-L2:RegistrationStatusPublished
@@ -502,10 +526,8 @@ gleif-L2:hasValidationSources
 		gleif-L2:RegistrationStatusLapsed
 		gleif-L2:RegistrationStatusPendingArchival
 		gleif-L2:RegistrationStatusPendingTransfer
-		gleif-L2:RegistrationStatusPendingValidation
 		gleif-L2:RegistrationStatusPublished
 		gleif-L2:RegistrationStatusRetired
-		gleif-L2:RegistrationStatusTransferred
 	) ;
 	.
 

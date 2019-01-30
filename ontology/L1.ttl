@@ -253,11 +253,12 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 				a owl:Class ;
 				owl:oneOf (
 					gleif-L1:RegistrationStatusAnnulled
-					gleif-L1:RegistrationStatusCancelled
 					gleif-L1:RegistrationStatusDuplicate
 					gleif-L1:RegistrationStatusIssued
 					gleif-L1:RegistrationStatusLapsed
 					gleif-L1:RegistrationStatusMerged
+					gleif-L1:RegistrationStatusPendingArchival
+					gleif-L1:RegistrationStatusPendingTransfer
 					gleif-L1:RegistrationStatusRetired
 				) ;
 			] ;
@@ -342,17 +343,6 @@ gleif-L1:RegistrationStatusAnnulled
 	gleif-base:hasTag "ANNULLED" ;
 	.
 
-gleif-L1:RegistrationStatusCancelled
-	a
-		owl:NamedIndividual ,
-		gleif-L1:RegistrationStatus
-		;
-	rdfs:label "cancelled" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "An LEI registration that was abandoned prior to issuance of an LEI." ;
-	gleif-base:hasTag "CANCELLED" ;
-	.
-
 gleif-L1:RegistrationStatusDuplicate
 	a
 		owl:NamedIndividual ,
@@ -395,6 +385,28 @@ gleif-L1:RegistrationStatusMerged
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "An LEI registration for an entity that has been merged into another legal entity, such that this legal entity no longer exists as an operating entity." ;
 	gleif-base:hasTag "MERGED" ;
+	.
+
+gleif-L1:RegistrationStatusPendingArchival
+	a
+		owl:NamedIndividual ,
+		gleif-L1:RegistrationStatus
+		;
+	rdfs:label "pending archival" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "An LEI registration is about to be transferred to a different LOU, after which its registration status will revert to a non-pending status." ;
+	gleif-base:hasTag "PENDING_ARCHIVAL" ;
+	.
+
+gleif-L1:RegistrationStatusPendingTransfer
+	a
+		owl:NamedIndividual ,
+		gleif-L1:RegistrationStatus
+		;
+	rdfs:label "pending transfer" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "An LEI registration that has been requested to be transferred to another LOU. The request is being processed at the sending LOU." ;
+	gleif-base:hasTag "PENDING_TRANSFER" ;
 	.
 
 gleif-L1:RegistrationStatusRetired
@@ -595,10 +607,11 @@ gleif-L1:identifiesAndRecords
 	a owl:AllDifferent ;
 	owl:members (
 		gleif-L1:RegistrationStatusAnnulled
-		gleif-L1:RegistrationStatusCancelled
 		gleif-L1:RegistrationStatusDuplicate
 		gleif-L1:RegistrationStatusIssued
 		gleif-L1:RegistrationStatusLapsed
+		gleif-L1:RegistrationStatusPendingArchival
+		gleif-L1:RegistrationStatusPendingTransfer
 		gleif-L1:RegistrationStatusMerged
 		gleif-L1:RegistrationStatusRetired
 	) ;
