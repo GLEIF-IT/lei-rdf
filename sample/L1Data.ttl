@@ -452,6 +452,7 @@ gleif-L1-data:5493007CICYM7A0SZ714
 gleif-L1-data:5493007CICYM7A0SZ714-HQL
 	a gleif-base:PhysicalAddress ;
 	gleif-base:hasAddressLine1 "ACCESO II 32" ;
+	gleif-base:hasAddressLine2 "Benito Juárez" ;
 	gleif-base:hasAddressNumber "32" ;
 	gleif-base:hasCity "Querétaro" ;
 	gleif-base:hasCountry lcc-3166-1-add:CTRY-MX ;
@@ -462,6 +463,7 @@ gleif-L1-data:5493007CICYM7A0SZ714-HQL
 gleif-L1-data:5493007CICYM7A0SZ714-LAL
 	a gleif-L1:PhysicalAddressLocal ;
 	gleif-base:hasAddressLine1 "ACCESO II 32" ;
+	gleif-base:hasAddressLine2 "Benito Juárez" ;
 	gleif-base:hasAddressNumber "32" ;
 	gleif-base:hasCity "Querétaro" ;
 	gleif-base:hasCountry lcc-3166-1-add:CTRY-MX ;
