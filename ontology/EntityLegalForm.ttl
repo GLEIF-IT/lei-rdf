@@ -83,11 +83,6 @@ gleif-elf:EntityLegalFormIdentifier
 		;
 	rdfs:label "entity legal form identifier" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/EntityLegalForm/> ;
-	owl:equivalentClass [
-		a owl:Restriction ;
-		owl:onProperty gleif-base:isRegisteredIn ;
-		owl:hasValue gleif-elf:ELFregistry ;
-	] ;
 	skos:definition "A current code from the GLEIF-maintained list MUST be used. Values of the LegalFormEnum code list are maintained by GLEIF on behalf of ISO through the Entity Legal Form (ELF) as defined in ISO 20275." ;
 	.
 

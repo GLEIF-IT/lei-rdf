@@ -34,7 +34,7 @@ gleif-L1:Branch
 	rdfs:subClassOf gleif-L1:LegalEntity ;
 	rdfs:label "branch" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "The legal entity is a branch of another legal entity" ;
+	skos:definition "The legal entity is a branch of another legal entity." ;
 	.
 
 gleif-L1:Fund
@@ -43,13 +43,31 @@ gleif-L1:Fund
 		gleif-L1:LegalEntity ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:isManagedBy ;
-			owl:someValuesFrom gleif-L1:LegalEntity ;
+			owl:onProperty gleif-L1:hasFundFamily ;
+			owl:someValuesFrom gleif-L1:FundFamily ;
 		]
 		;
 	rdfs:label "fund" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "The legal entity is a fund managed by another legal entity." ;
+	.
+
+gleif-L1:FundFamily
+	a owl:Class ;
+	rdfs:subClassOf gleif-L1:LegalEntity ;
+	rdfs:label "fund family" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "The legal entity has been declared to manage a fund." ;
+	.
+
+gleif-L1:LEIregistry
+	a gleif-base:Registry ;
+	rdfs:label "GLEIF Entity Legal Entity Identifier Registry" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:altLabel "LEI registry" ;
+	skos:definition "The global registry of legal identifiers and their relationships, aggregated from data supplied by different Local Operating Units." ;
+	gleif-base:hasWebsite "https://www.gleif.org/en/about-lei/gleif-management-of-the-global-lei-system"^^xsd:anyURI ;
+	gleif-base:isManagedBy gleif-base:GLEIF ;
 	.
 
 gleif-L1:LegalEntity
@@ -161,6 +179,7 @@ gleif-L1:LegalEntity
 		]
 		;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "An entity which meets GLEIF rules for being assigned a LEI. It is generally a formal, legally registered,  organization." ;
 	.
 
 gleif-L1:LegalEntityIdentifier
@@ -436,6 +455,16 @@ gleif-L1:ValidationSourceKindPartiallyCorroborated
 	gleif-base:hasTag "PARTIALLY_CORROBORATED" ;
 	.
 
+gleif-L1:hasFundFamily
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf gleif-base:isManagedBy ;
+	rdfs:label "has fund family" ;
+	rdfs:domain gleif-L1:Fund ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	rdfs:range gleif-L1:FundFamily ;
+	skos:definition "The manager of the fund." ;
+	.
+
 gleif-L1:hasHeadquartersAddress
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf gleif-base:hasAddress ;
@@ -473,7 +502,7 @@ gleif-L1:hasManagingLOU
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf gleif-base:isManagedBy ;
 	rdfs:label "has managing LOU" ;
-	rdfs:domain gleif-L1:LegalEntityIdentifierRegistryEntry ;
+	rdfs:domain gleif-base:RegistryEntry ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	rdfs:range gleif-L1:LocalOperatingUnit ;
 	skos:definition "The legal form of the entity, taken from the ISO Entity Legal Form (ELF) data set maintained by GLEIF." ;
