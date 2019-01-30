@@ -180,7 +180,7 @@ gleif-L1:LegalEntity
 		]
 		;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "An entity which meets GLEIF rules for being assigned a LEI. It is generally a formal, legally registered,  organization." ;
+	skos:definition "Includes, but is not limited to, unique parties that are legally or financially responsible for the performance of financial transactions or have the legal right in their jurisdiction to enter independently into legal contracts, regardless of whether they are incorporated or constituted in some other way (e.g. trust, partnership, contractual). It excludes natural persons, but includes governmental organizations and supranationals." ;
 	.
 
 gleif-L1:LegalEntityIdentifier
