@@ -1,13 +1,17 @@
 # baseURI: https://www.gleif.org/ontology/L1inferences/
 # imports: https://www.gleif.org/ontology/Base/
+# imports: https://www.gleif.org/ontology/EntityLegalForm/
 # imports: https://www.gleif.org/ontology/L1/
 # imports: https://www.gleif.org/ontology/L2/
+# imports: https://www.gleif.org/ontology/RegistrationAuthority/
 
 @base <https://www.gleif.org/ontology/L1inferences/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix gleif-L1: <https://www.gleif.org/ontology/L1/> .
 @prefix gleif-L1-infer: <https://www.gleif.org/ontology/L1inferences/> .
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
+@prefix gleif-elf: <https://www.gleif.org/ontology/EntityLegalForm/> .
+@prefix gleif-ra: <https://www.gleif.org/ontology/RegistrationAuthority/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -21,9 +25,91 @@
 	dct:abstract "Ontology that builds on GLEIF L1 ontology to infer additional information" ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
+		<https://www.gleif.org/ontology/EntityLegalForm/> ,
 		<https://www.gleif.org/ontology/L1/> ,
-		<https://www.gleif.org/ontology/L2/>
+		<https://www.gleif.org/ontology/L2/> ,
+		<https://www.gleif.org/ontology/RegistrationAuthority/>
 		;
+	.
+
+gleif-elf:EntityLegalFormIdentifier
+	a owl:Class ;
+	owl:equivalentClass [
+		a owl:Restriction ;
+		owl:onProperty gleif-base:isRegisteredIn ;
+		owl:hasValue gleif-elf:ELFregistry ;
+	] ;
+	.
+
+gleif-L1:LegalEntityIdentifier
+	a owl:Class ;
+	owl:equivalentClass [
+		a owl:Restriction ;
+		owl:onProperty gleif-base:isRegisteredIn ;
+		owl:hasValue gleif-L1:LEIregistry ;
+	] ;
+	.
+
+gleif-L1-infer:covers
+	a owl:ObjectProperty ;
+	rdfs:label "covers" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1inferences/> ;
+	owl:inverseOf gleif-base:hasCoverageArea ;
+	skos:definition "The items in scope for this area." ;
+	.
+
+gleif-L1-infer:hasAddresses
+	a owl:ObjectProperty ;
+	rdfs:label "has addresses" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1inferences/> ;
+	owl:inverseOf gleif-base:hasGeographicRegion ;
+	skos:definition "The entities that are located in this region." ;
+	.
+
+gleif-L1-infer:hasEntries
+	a owl:ObjectProperty ;
+	rdfs:label "has entries" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1inferences/> ;
+	owl:inverseOf gleif-base:isRegisteredIn ;
+	skos:definition "The entries within a registry." ;
+	.
+
+gleif-L1-infer:hasIdentifier
+	a
+		owl:ObjectProperty ,
+		owl:InverseFunctionalProperty
+		;
+	rdfs:label "has identifier" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1inferences/> ;
+	owl:inverseOf gleif-base:identifies ;
+	skos:definition "The identifiers for an entity." ;
+	.
+
+gleif-L1-infer:hasLocatedEntities
+	a owl:ObjectProperty ;
+	rdfs:label "has located entities" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1inferences/> ;
+	owl:propertyChainAxiom (
+		gleif-L1-infer:hasAddresses
+		gleif-L1-infer:locatedAt
+	) ;
+	skos:definition "The entities located in a jurisdiction." ;
+	.
+
+gleif-L1-infer:hasRegisteredEntities
+	a owl:ObjectProperty ;
+	rdfs:label "has registered entities" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1inferences/> ;
+	owl:inverseOf gleif-base:hasLegalJurisdiction ;
+	skos:definition "The entities registered in a jurisdiction." ;
+	.
+
+gleif-L1-infer:locatedAt
+	a owl:ObjectProperty ;
+	rdfs:label "located at" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1inferences/> ;
+	owl:inverseOf gleif-base:hasAddress ;
+	skos:definition "The entities that are located at this address." ;
 	.
 
 gleif-L1-infer:manages
@@ -32,5 +118,14 @@ gleif-L1-infer:manages
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1inferences/> ;
 	owl:inverseOf gleif-base:isManagedBy ;
 	skos:definition "The entities managed." ;
+	.
+
+gleif-ra:RegistrationAuthorityCode
+	a owl:Class ;
+	owl:equivalentClass [
+		a owl:Restriction ;
+		owl:onProperty gleif-base:isRegisteredIn ;
+		owl:hasValue gleif-ra:RAregistry ;
+	] ;
 	.
 
