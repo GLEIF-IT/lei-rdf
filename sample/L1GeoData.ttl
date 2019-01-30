@@ -1,0 +1,81 @@
+# baseURI: https://www.gleif.org/sample/L1GeoData/
+# imports: http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/
+# imports: http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/
+# imports: https://www.gleif.org/ontology/Geocoding/
+# imports: https://www.gleif.org/ontology/L1/
+# imports: https://www.gleif.org/sample/L1Data/
+
+@base <https://www.gleif.org/sample/L1GeoData/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix gleif-L1: <https://www.gleif.org/ontology/L1/> .
+@prefix gleif-L1-data: <https://www.gleif.org/sample/L1Data/> .
+@prefix gleif-L1Geo-data: <https://www.gleif.org/sample/L1GeoData/> .
+@prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
+@prefix gleif-geo: <https://www.gleif.org/ontology/Geocoding/> .
+@prefix lcc-3166-1-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> .
+@prefix lcc-3166-2-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix wgs: <http://www.w3.org/2003/01/geo/wgs84_pos/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://www.gleif.org/sample/L1GeoData/>
+	a owl:Ontology ;
+	rdfs:label "GLEIF geocoding sample data" ;
+	dct:abstract "Sample data for GLEIF Geocoding. This extends the sample L1Data ontology with additional address information" ;
+	owl:imports
+		<http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> ,
+		<http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> ,
+		<https://www.gleif.org/ontology/Geocoding/> ,
+		<https://www.gleif.org/ontology/L1/> ,
+		<https://www.gleif.org/sample/L1Data/>
+		;
+	skos:note """This adds triples to the existing L1Data ontology and adds 1 additional category of individual:
+    1) The Geocoded address. The URI is the locationId preceded with G in the namespace of this ontology.
+    """ ;
+	.
+
+gleif-L1-data:5493007CICYM7A0SZ714
+	a gleif-L1:LegalEntity ;
+	gleif-L1:hasHeadquartersAddress gleif-L1Geo-data:G-NT_VTJ.3trcvUNJcXHy2v1oDC_zID ;
+	gleif-L1:hasLegalAddress gleif-L1Geo-data:G-NT_VTJ.3trcvUNJcXHy2v1oDC_zID ;
+	.
+
+gleif-L1Geo-data:G-NT_VTJ.3trcvUNJcXHy2v1oDC_zID
+	a gleif-geo:GeocodedAddress ;
+	wgs:lat "20.59156"^^xsd:decimal ;
+	wgs:long "-100.39182"^^xsd:decimal ;
+	gleif-base:hasAddressNumber "32" ;
+	gleif-base:hasCity "Querétaro" ;
+	gleif-base:hasCountry lcc-3166-1-add:CTRY-MX ;
+	gleif-base:hasPostalCode "76000" ;
+	gleif-geo:formattedAddressText "Calle Benito Juárez 32, Querétaro Centro, 76000 Querétaro, QRO, México" ;
+	gleif-geo:hasBoundingBox [
+		a gleif-geo:BoundingBox ;
+		gleif-geo:hasBottomRight [
+			a wgs:Point ;
+			wgs:lat "20.5904358"^^xsd:decimal ;
+			wgs:long "-100.3906191"^^xsd:decimal ;
+		] ;
+		gleif-geo:hasTopLeft [
+			a wgs:Point ;
+			wgs:lat "20.5926842"^^xsd:decimal ;
+			wgs:long "-100.3930209"^^xsd:decimal ;
+		] ;
+	] ;
+	gleif-geo:hasDistrict "Querétaro Centro" ;
+	gleif-geo:hasRegionText "QRO" ;
+	gleif-geo:hasStreet "Calle Benito Juárez" ;
+	gleif-geo:locationId "NT_VTJ.3trcvUNJcXHy2v1oDC_zID" ;
+	gleif-geo:matchDate "2018-02-11T11:42:42"^^xsd:dateTime ;
+	gleif-geo:matchLevel gleif-base:hasAddressNumber ;
+	gleif-geo:originalAddress
+		gleif-L1-data:5493007CICYM7A0SZ714-HQL ,
+		gleif-L1-data:5493007CICYM7A0SZ714-LAL
+		;
+	gleif-geo:originalAddressText "ACCESO II 32, 32, Benito Juárez, Querétaro, 76120, Querétaro, MX-QUE, MX	." ;
+	gleif-geo:relevance "0.77"^^xsd:decimal ;
+	.
+
