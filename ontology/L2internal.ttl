@@ -99,8 +99,8 @@ gleif-L2:LegalEntityRelationshipRecord
 					gleif-L2:RegistrationStatusDuplicate
 					gleif-L2:RegistrationStatusLapsed
 					gleif-L2:RegistrationStatusPublished
-					gleif-L2internal:RegistrationStatusPendingArchival
-					gleif-L2internal:RegistrationStatusPendingTransfer
+					gleif-L2:RegistrationStatusPendingArchival
+					gleif-L2:RegistrationStatusPendingTransfer
 					gleif-L2internal:RegistrationStatusPendingValidation
 					gleif-L2:RegistrationStatusRetired
 					gleif-L2internal:RegistrationStatusTransferred
@@ -136,35 +136,13 @@ gleif-L2internal:RegistrationStatus
 		gleif-L2:RegistrationStatusDuplicate
 		gleif-L2:RegistrationStatusLapsed
 		gleif-L2:RegistrationStatusPublished
-		gleif-L2internal:RegistrationStatusPendingArchival
-		gleif-L2internal:RegistrationStatusPendingTransfer
+		gleif-L2:RegistrationStatusPendingArchival
+		gleif-L2:RegistrationStatusPendingTransfer
 		gleif-L2internal:RegistrationStatusPendingValidation
 		gleif-L2:RegistrationStatusRetired
 		gleif-L2internal:RegistrationStatusTransferred
 	) ;
 	skos:definition "The status of the legal entity's LEI registration with the Managing LOU, including internal-only values." ;
-	.
-
-gleif-L2internal:RegistrationStatusPendingArchival
-	a
-		owl:NamedIndividual ,
-		gleif-L2internal:RegistrationStatus
-		;
-	rdfs:label "pending archival" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2internal/> ;
-	skos:definition "An LEI registration is about to be transferred to a different LOU, after which its registration status will revert to a non-pending status." ;
-	gleif-base:hasTag "PENDING_ARCHIVAL" ;
-	.
-
-gleif-L2internal:RegistrationStatusPendingTransfer
-	a
-		owl:NamedIndividual ,
-		gleif-L2internal:RegistrationStatus
-		;
-	rdfs:label "pending transfer" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2internal/> ;
-	skos:definition "An LEI registration that has been requested to be transferred to another LOU. The request is being processed at the sending LOU." ;
-	gleif-base:hasTag "PENDING_TRANSFER" ;
 	.
 
 gleif-L2internal:RegistrationStatusPendingValidation
@@ -196,8 +174,8 @@ gleif-L2internal:RegistrationStatusTransferred
 		gleif-L2:RegistrationStatusDuplicate
 		gleif-L2:RegistrationStatusPublished
 		gleif-L2:RegistrationStatusLapsed
-		gleif-L2internal:RegistrationStatusPendingArchival
-		gleif-L2internal:RegistrationStatusPendingTransfer
+		gleif-L2:RegistrationStatusPendingArchival
+		gleif-L2:RegistrationStatusPendingTransfer
 		gleif-L2internal:RegistrationStatusPendingValidation
 		gleif-L2:RegistrationStatusRetired
 		gleif-L2internal:RegistrationStatusTransferred

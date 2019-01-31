@@ -1,12 +1,12 @@
-# baseURI: https://www.gleif.org/sample/EntityLegalFormData/
+# baseURI: https://www.gleif.org/ontology/sample/EntityLegalFormData/
 # imports: http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/
 # imports: http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/
 # imports: https://www.gleif.org/ontology/Base/
 # imports: https://www.gleif.org/ontology/EntityLegalForm/
 
-@base <https://www.gleif.org/sample/EntityLegalFormData/> .
+@base <https://www.gleif.org/ontology/sample/EntityLegalFormData/> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix gleif-ELF-data: <https://www.gleif.org/sample/EntityLegalFormData/> .
+@prefix gleif-ELF-data: <https://www.gleif.org/ontology/sample/EntityLegalFormData/> .
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
 @prefix gleif-elf: <https://www.gleif.org/ontology/EntityLegalForm/> .
 @prefix lcc-3166-1-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> .
@@ -17,16 +17,24 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://www.gleif.org/sample/EntityLegalFormData/>
+<https://www.gleif.org/ontology/sample/EntityLegalFormData/>
 	a owl:Ontology ;
-	rdfs:label "GLEIF Entity Legal Forms sample data" ;
-	dct:abstract "Sample data for Entity Legal Form codes." ;
+	rdfs:label "GLEIF Entity Legal Forms sample data"@en ;
+	dct:abstract "Sample data for Entity Legal Form codes to illustrate and test the ontology."@en ;
+	dct:contributor <https://plus.google.com/+PeteRivett> ;
+	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
+	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
+	dct:publisher gleif-base:GLEIF ;
+	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
+	dct:rightsHolder gleif-base:GLEIF ;
+	dct:title "Global Legal Entity Identifier Foundation Entity Legal Form sample data"@en ;
 	owl:imports
 		<http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> ,
 		<http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> ,
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/EntityLegalForm/>
 		;
+	owl:versionIRI gleif-ELF-data:V1.0 ;
 	skos:note """There is 1 category of individual:
     1) The EntityLegalForm and its Identifier. The URI is the code preceded by ELF-.""" ;
 	.

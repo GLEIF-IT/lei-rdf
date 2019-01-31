@@ -1,13 +1,13 @@
-# baseURI: https://www.gleif.org/sample/RegistrationAuthorityData/
+# baseURI: https://www.gleif.org/ontology/sample/RegistrationAuthorityData/
 # imports: http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/
 # imports: http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/
 # imports: https://www.gleif.org/ontology/Base/
 # imports: https://www.gleif.org/ontology/RegistrationAuthority/
 
-@base <https://www.gleif.org/sample/RegistrationAuthorityData/> .
+@base <https://www.gleif.org/ontology/sample/RegistrationAuthorityData/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix gleif-L1: <https://www.gleif.org/ontology/L1/> .
-@prefix gleif-RA-data: <https://www.gleif.org/sample/RegistrationAuthorityData/> .
+@prefix gleif-RA-data: <https://www.gleif.org/ontology/sample/RegistrationAuthorityData/> .
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
 @prefix gleif-ra: <https://www.gleif.org/ontology/RegistrationAuthority/> .
 @prefix lcc-3166-1-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> .
@@ -18,16 +18,24 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://www.gleif.org/sample/RegistrationAuthorityData/>
+<https://www.gleif.org/ontology/sample/RegistrationAuthorityData/>
 	a owl:Ontology ;
-	rdfs:label "GLEIF Registration Authority sample data" ;
-	dct:abstract "Sample data for Registration Authority Codes" ;
+	rdfs:label "GLEIF Registration Authority sample data"@en ;
+	dct:abstract "Sample data for Registration Authority Codes to illustrate and test the ontology"@en ;
+	dct:contributor <https://plus.google.com/+PeteRivett> ;
+	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
+	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
+	dct:publisher gleif-base:GLEIF ;
+	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
+	dct:rightsHolder gleif-base:GLEIF ;
+	dct:title "Global Legal Entity Identifier Foundation Registration Authority sample data"@en ;
 	owl:imports
 		<http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> ,
 		<http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> ,
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/RegistrationAuthority/>
 		;
+	owl:versionIRI gleif-RA-data:V1.0 ;
 	skos:note """There are 2 categories of individual:
     1) The BusinessRegistry and RACode. The URI is the RA code.
     2) The RegistrationAuthority organization. The URI is that of the BusinessRegistry followed by -ORG.""" ;
