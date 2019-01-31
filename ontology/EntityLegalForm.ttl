@@ -86,6 +86,19 @@ gleif-elf:EntityLegalFormIdentifier
 		gleif-base:Identifier ,
 		[
 			a owl:Restriction ;
+			owl:onProperty gleif-base:hasTag ;
+			owl:allValuesFrom [
+				a rdfs:Datatype ;
+				owl:onDatatype xsd:string ;
+				owl:withRestrictions (
+					[
+						xsd:pattern "([A-Z][A-Z0-9]{3}|[A-Z0-9][A-Z][A-Z0-9]{2}|[A-Z0-9]{2}[A-Z][A-Z0-9]|[A-Z0-9]{3}[A-Z])" ;
+					]
+				) ;
+			] ;
+		] ,
+		[
+			a owl:Restriction ;
 			owl:onProperty gleif-base:identifies ;
 			owl:onClass gleif-elf:EntityLegalForm ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -94,5 +107,6 @@ gleif-elf:EntityLegalFormIdentifier
 	rdfs:label "entity legal form identifier" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/EntityLegalForm/> ;
 	skos:definition "A current code from the GLEIF-maintained list MUST be used. Values of the LegalFormEnum code list are maintained by GLEIF on behalf of ISO through the Entity Legal Form (ELF) as defined in ISO 20275." ;
+	skos:note "In the ontology representation the values 8888 and 9999 are not used but replaced by entityLegalFormText and absence of value respectively." ;
 	.
 

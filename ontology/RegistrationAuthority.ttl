@@ -88,6 +88,19 @@ gleif-ra:RegistrationAuthorityCode
 		gleif-base:Identifier ,
 		[
 			a owl:Restriction ;
+			owl:onProperty gleif-base:hasTag ;
+			owl:allValuesFrom [
+				a rdfs:Datatype ;
+				owl:onDatatype xsd:string ;
+				owl:withRestrictions (
+					[
+						xsd:pattern "RA\\d{6}" ;
+					]
+				) ;
+			] ;
+		] ,
+		[
+			a owl:Restriction ;
 			owl:onProperty gleif-base:identifies ;
 			owl:onClass gleif-ra:BusinessRegistry ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
