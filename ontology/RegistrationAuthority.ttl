@@ -16,14 +16,20 @@
 <https://www.gleif.org/ontology/RegistrationAuthority/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF Registration Authority Ontology" ;
-	dct:abstract "This ontology defines concepts for Registration Authority Code List (RAL) of Business Registries" ;
-	dct:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
-	dct:rights "Copyright (c) 2018 GLEIF" ;
+	dct:abstract "This ontology defines concepts for Registration Authority Code List (RAL) of Business Registries, including the jurisdictions served."@en ;
+	dct:contributor <https://plus.google.com/+PeteRivett> ;
+	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
+	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
+	dct:publisher gleif-base:GLEIF ;
+	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
+	dct:rightsHolder gleif-base:GLEIF ;
 	dct:source "https://www.gleif.org/en/about-lei/gleif-registration-authorities-list"^^xsd:anyURI ;
+	dct:title "Global Legal Entity Identifier Foundation Registration Authority Ontology"@en ;
 	owl:imports
 		<http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ,
 		<https://www.gleif.org/ontology/Base/>
 		;
+	owl:versionIRI gleif-ra:V1.0 ;
 	.
 
 gleif-ra:BusinessRegistry
@@ -64,9 +70,13 @@ gleif-ra:BusinessRegistry
 
 gleif-ra:RAregistry
 	a gleif-base:Registry ;
-	rdfs:label "GLEIF Registration Authorities List" ;
+	rdfs:label "RA registry" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/RegistrationAuthority/> ;
-	skos:altLabel "RAL" ;
+	skos:altLabel
+		"GLEIF Registration Authorities List" ,
+		"RAL"
+		;
+	skos:prefLabel "RA registry" ;
 	gleif-base:hasNameLocal "GLEIF Registration Authorities List"@en ;
 	gleif-base:hasWebsite "https://www.gleif.org/en/about-lei/code-lists/gleif-registration-authorities-list"^^xsd:anyURI ;
 	gleif-base:isManagedBy gleif-base:GLEIF ;

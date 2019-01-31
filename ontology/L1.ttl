@@ -20,13 +20,26 @@
 <https://www.gleif.org/ontology/L1/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF L1 Ontology" ;
-	dct:abstract "Ontology generated from GLEIF L1 data in CDF 2.1 format" ;
+	dct:abstract """Ontology for GLEIF Level 1 data corresponding to the Common Data Format version 2.1. It covers key reference data that provides the information on a legal entity identifiable with an LEI. The ISO 17442 standard developed by the International Organization for Standardization defines a set of attributes or LEI reference data that comprises the most essential elements of identification. It specifies the minimum reference data, which must be supplied for each LEI:
+    The official name of the legal entity as recorded in the official registers.
+    The registered address of that legal entity.
+    The country of formation.
+    The codes for the representation of names of countries and their subdivisions.
+    The date of the first LEI assignment; the date of last update of the LEI information; and the date of expiry, if applicable."""@en ;
+	dct:contributor <https://plus.google.com/+PeteRivett> ;
+	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
+	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
+	dct:publisher gleif-base:GLEIF ;
+	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
+	dct:rightsHolder gleif-base:GLEIF ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	dct:title "Global Legal Entity Identifier Foundation Level 1 Ontology - Who Is Who"@en ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/EntityLegalForm/> ,
 		<https://www.gleif.org/ontology/RegistrationAuthority/>
 		;
+	owl:versionIRI gleif-L1:V1.0 ;
 	.
 
 gleif-L1:Branch
@@ -62,10 +75,11 @@ gleif-L1:FundFamily
 
 gleif-L1:LEIregistry
 	a gleif-base:Registry ;
-	rdfs:label "GLEIF Entity Legal Entity Identifier Registry" ;
+	rdfs:label "LEI registry" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:altLabel "LEI registry" ;
+	skos:altLabel "GLEIF Entity Legal Entity Identifier Registry" ;
 	skos:definition "The global registry of legal identifiers and their relationships, aggregated from data supplied by different Local Operating Units." ;
+	skos:prefLabel "LEI registry" ;
 	gleif-base:hasWebsite "https://www.gleif.org/en/about-lei/gleif-management-of-the-global-lei-system"^^xsd:anyURI ;
 	gleif-base:isManagedBy gleif-base:GLEIF ;
 	.
@@ -179,7 +193,7 @@ gleif-L1:LegalEntity
 		]
 		;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "An entity which meets GLEIF rules for being assigned a LEI. It is generally a formal, legally registered,  organization." ;
+	skos:definition "Includes, but is not limited to, unique parties that are legally or financially responsible for the performance of financial transactions or have the legal right in their jurisdiction to enter independently into legal contracts, regardless of whether they are incorporated or constituted in some other way (e.g. trust, partnership, contractual). It excludes natural persons, but includes governmental organizations and supranationals." ;
 	.
 
 gleif-L1:LegalEntityIdentifier
@@ -252,11 +266,12 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 				a owl:Class ;
 				owl:oneOf (
 					gleif-L1:RegistrationStatusAnnulled
-					gleif-L1:RegistrationStatusCancelled
 					gleif-L1:RegistrationStatusDuplicate
 					gleif-L1:RegistrationStatusIssued
 					gleif-L1:RegistrationStatusLapsed
 					gleif-L1:RegistrationStatusMerged
+					gleif-L1:RegistrationStatusPendingArchival
+					gleif-L1:RegistrationStatusPendingTransfer
 					gleif-L1:RegistrationStatusRetired
 				) ;
 			] ;
@@ -287,6 +302,7 @@ gleif-L1:LocalOperatingUnit
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:altLabel "LOU" ;
 	skos:definition "An entity that supplies registration, renewal and other services, and acts as the primary interface for legal entities wishing to obtain an LEI. Only organizations duly accredited by the Global Legal Entity Identifier Foundation (GLEIF) are authorized to issue LEIs." ;
+	skos:prefLabel "local operating unit" ;
 	.
 
 gleif-L1:PhysicalAddressASCII
@@ -340,17 +356,6 @@ gleif-L1:RegistrationStatusAnnulled
 	gleif-base:hasTag "ANNULLED" ;
 	.
 
-gleif-L1:RegistrationStatusCancelled
-	a
-		owl:NamedIndividual ,
-		gleif-L1:RegistrationStatus
-		;
-	rdfs:label "cancelled" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "An LEI registration that was abandoned prior to issuance of an LEI." ;
-	gleif-base:hasTag "CANCELLED" ;
-	.
-
 gleif-L1:RegistrationStatusDuplicate
 	a
 		owl:NamedIndividual ,
@@ -393,6 +398,28 @@ gleif-L1:RegistrationStatusMerged
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "An LEI registration for an entity that has been merged into another legal entity, such that this legal entity no longer exists as an operating entity." ;
 	gleif-base:hasTag "MERGED" ;
+	.
+
+gleif-L1:RegistrationStatusPendingArchival
+	a
+		owl:NamedIndividual ,
+		gleif-L1:RegistrationStatus
+		;
+	rdfs:label "pending archival" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "An LEI registration is about to be transferred to a different LOU, after which its registration status will revert to a non-pending status." ;
+	gleif-base:hasTag "PENDING_ARCHIVAL" ;
+	.
+
+gleif-L1:RegistrationStatusPendingTransfer
+	a
+		owl:NamedIndividual ,
+		gleif-L1:RegistrationStatus
+		;
+	rdfs:label "pending transfer" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "An LEI registration that has been requested to be transferred to another LOU. The request is being processed at the sending LOU." ;
+	gleif-base:hasTag "PENDING_TRANSFER" ;
 	.
 
 gleif-L1:RegistrationStatusRetired
@@ -548,6 +575,7 @@ gleif-L1:hasOtherValidationIdentifier
 	rdfs:range gleif-base:RegistryIdentifier ;
 	skos:altLabel "has additional validation identifier" ;
 	skos:definition "An optional list of additional registrations used by the LEI Issuer to validate the entity data." ;
+	skos:prefLabel "has other validation identifier" ;
 	.
 
 gleif-L1:hasRegistrationIdentifier
@@ -557,6 +585,7 @@ gleif-L1:hasRegistrationIdentifier
 	rdfs:range gleif-base:RegistryIdentifier ;
 	skos:altLabel "has business register entity ID" ;
 	skos:definition "An identifier for the legal entity in a business registry in the jurisdiction of legal registration, or in the appropriate registration authority." ;
+	skos:prefLabel "has registration identifier" ;
 	.
 
 gleif-L1:hasValidationIdentifier
@@ -591,10 +620,11 @@ gleif-L1:identifiesAndRecords
 	a owl:AllDifferent ;
 	owl:members (
 		gleif-L1:RegistrationStatusAnnulled
-		gleif-L1:RegistrationStatusCancelled
 		gleif-L1:RegistrationStatusDuplicate
 		gleif-L1:RegistrationStatusIssued
 		gleif-L1:RegistrationStatusLapsed
+		gleif-L1:RegistrationStatusPendingArchival
+		gleif-L1:RegistrationStatusPendingTransfer
 		gleif-L1:RegistrationStatusMerged
 		gleif-L1:RegistrationStatusRetired
 	) ;

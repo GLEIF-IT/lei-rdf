@@ -1,9 +1,9 @@
-# baseURI: https://www.gleif.org/sample/DataWithInferences/
+# baseURI: https://www.gleif.org/ontology/sample/DataWithInferences/
 # imports: https://www.gleif.org/ontology/L1inferences/
 # imports: https://www.gleif.org/ontology/L2inferences/
-# imports: https://www.gleif.org/sample/L2Data/
+# imports: https://www.gleif.org/ontology/sample/L2Data/
 
-@base <https://www.gleif.org/sample/DataWithInferences/> .
+@base <https://www.gleif.org/ontology/sample/DataWithInferences/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix gleif-L1: <https://www.gleif.org/ontology/L1/> .
 @prefix gleif-L1-infer: <https://www.gleif.org/ontology/L1inferences/> .
@@ -16,14 +16,14 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://www.gleif.org/sample/DataWithInferences/>
+<https://www.gleif.org/ontology/sample/DataWithInferences/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF sample data with inferences" ;
 	dct:abstract "Ontology for testing that brings in data and inferences" ;
 	owl:imports
 		<https://www.gleif.org/ontology/L1inferences/> ,
 		<https://www.gleif.org/ontology/L2inferences/> ,
-		<https://www.gleif.org/sample/L2Data/>
+		<https://www.gleif.org/ontology/sample/L2Data/>
 		;
 	.
 

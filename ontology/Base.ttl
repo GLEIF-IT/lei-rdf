@@ -15,17 +15,17 @@
 <https://www.gleif.org/ontology/Base/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF Base Ontology"@en ;
-	dct:abstract "This ontology defines generic concepts for reuse by other Global Legal Entity Federation (GLEIF) ontologies. It defines generic classes for (legal) Entities and their relationships and statuses; and generic properties for different types of name and address."@en ;
+	dct:abstract "This ontology defines generic concepts for reuse by other Global Legal Entity Foundation (GLEIF) ontologies. It defines generic classes for (legal) Entities and their relationships and statuses; and generic properties for different types of name and address."@en ;
 	dct:contributor <https://plus.google.com/+PeteRivett> ;
-	dct:issued "2019-01-24T20:16:17.627-06:00"^^xsd:dateTime ;
-	dct:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
+	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
 	dct:publisher gleif-base:GLEIF ;
-	dct:rights "Copyright (c) 2018 GLEIF" ;
+	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
 	dct:rightsHolder gleif-base:GLEIF ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
-	dct:title "Global Legal Entity Federation Base Ontology"@en ;
+	dct:title "Global Legal Entity Identifier Foundation Base Ontology"@en ;
 	owl:imports <http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ;
-	owl:versionIRI gleif-base:2.1 ;
+	owl:versionIRI gleif-base:V1.0 ;
 	.
 
 gleif-base:Entity
@@ -144,8 +144,8 @@ gleif-base:EntityStatusInactive
 gleif-base:GLEIF
 	a gleif-base:RegistrationAuthority ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	gleif-base:hasLegalName "Global Legal Entity Identifier Federation" ;
-	gleif-base:hasNameLegalLocal "Global Legal Entity Identifier Federation" ;
+	gleif-base:hasLegalName "Global Legal Entity Identifier Foundation" ;
+	gleif-base:hasNameLegalLocal "Global Legal Entity Identifier Foundation" ;
 	.
 
 gleif-base:Identifier
@@ -284,6 +284,7 @@ gleif-base:RegistrationAuthority
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	skos:altLabel "RA" ;
 	skos:definition "An organization that is responsible for maintaining a registry and provides registration services." ;
+	skos:prefLabel "registration authority" ;
 	.
 
 gleif-base:RegistrationStatus
@@ -498,7 +499,6 @@ gleif-base:hasFirstAddressLine
 	rdfs:domain gleif-base:PhysicalAddress ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	owl:equivalentProperty gleif-base:hasAddressLine1 ;
-	skos:altLabel "has first address line" ;
 	skos:definition "The mandatory first address line element." ;
 	.
 
@@ -534,7 +534,6 @@ gleif-base:hasLegalJurisdiction
 	rdfs:domain gleif-base:Entity ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range lcc-cr:GeographicRegion ;
-	skos:altLabel "is organized in" ;
 	skos:definition "The jurisdiction of legal formation and registration of the entity (and upon which the LegalForm data element is also dependent). " ;
 	.
 
@@ -673,8 +672,12 @@ gleif-base:hasRegion
 	rdfs:label "has region" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range lcc-cr:CountrySubdivision ;
-	skos:altLabel "has subdivision" ;
+	skos:altLabel
+		"has state" ,
+		"has subdivision"
+		;
 	skos:definition "The (optional) region or subdivision (state, province, region, etc.) based on the 4- to 6-character ISO 3166-2 region code" ;
+	skos:prefLabel "has region" ;
 	.
 
 gleif-base:hasRegistrationStatus

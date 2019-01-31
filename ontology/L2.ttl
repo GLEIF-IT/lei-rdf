@@ -17,12 +17,20 @@
 <https://www.gleif.org/ontology/L2/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF L2 Ontology" ;
-	dct:abstract "Ontology generated from GLEIF L2 data in RR 1.1 format" ;
+	dct:abstract "Ontology for GLEIF Level 2 data corresponding to the Relationship Record format, version 1.1. Legal entities that have or acquire an LEI report their ‘direct accounting consolidating parent’ as well as their ‘ultimate accounting consolidating parent’."@en ;
+	dct:contributor <https://plus.google.com/+PeteRivett> ;
+	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
+	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
+	dct:publisher gleif-base:GLEIF ;
+	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
+	dct:rightsHolder gleif-base:GLEIF ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#"^^xsd:anyURI ;
+	dct:title "Global Legal Entity Identifier Foundation Level 2 Ontology - Who Owns Whom"@en ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/>
 		;
+	owl:versionIRI gleif-L2:V1.0 ;
 	.
 
 gleif-base:LegalEntityRelationship
@@ -136,6 +144,7 @@ gleif-L2:InternationalBranchRelationship
 	skos:altLabel "foreign branch relationship" ;
 	skos:definition "Child is a lead international branch or international branch network outside of the head office’s jurisdiction. The Parent is the Head Office and MUST have an LEI." ;
 	skos:note "A non-incorporated establishment of a head office legal entity, when this establishment is located in a separate jurisdiction from the jurisdiction in which the head office legal entity is located, i.e., in a host jurisdiction outside of its home jurisdiction. Under this definition, an establishment may consist of a single office or other business premises, or of several offices (i.e., a branch network) in different locations of the same host jurisdiction: even in the latter case, only one LEI would be issued per host jurisdiction, essentially amounting to, “one country-one LEI.” Unlike foreign subsidiaries of a parent entity, which are separately incorporated or organised under the laws of the host jurisdictions, an international branch, as defined here, is legally dependent on the head office legal entity and cannot exist without its head office legal entity " ;
+	skos:prefLabel "international branch relationship" ;
 	.
 
 gleif-L2:LegalEntityRelationshipRecord
@@ -205,6 +214,8 @@ gleif-L2:LegalEntityRelationshipRecord
 					gleif-L2:RegistrationStatusAnnulled
 					gleif-L2:RegistrationStatusDuplicate
 					gleif-L2:RegistrationStatusLapsed
+					gleif-L2:RegistrationStatusPendingArchival
+					gleif-L2:RegistrationStatusPendingTransfer
 					gleif-L2:RegistrationStatusPublished
 					gleif-L2:RegistrationStatusRetired
 				) ;
@@ -268,6 +279,28 @@ gleif-L2:RegistrationStatusLapsed
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:definition "A relationship data report that has not been renewed by the NextRenewalDate" ;
 	gleif-base:hasTag "LAPSED" ;
+	.
+
+gleif-L2:RegistrationStatusPendingArchival
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RegistrationStatus
+		;
+	rdfs:label "pending archival" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
+	skos:definition "An LEI registration is about to be transferred to a different LOU, after which its registration status will revert to a non-pending status." ;
+	gleif-base:hasTag "PENDING_ARCHIVAL" ;
+	.
+
+gleif-L2:RegistrationStatusPendingTransfer
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RegistrationStatus
+		;
+	rdfs:label "pending transfer" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
+	skos:definition "An LEI registration that has been requested to be transferred to another LOU. The request is being processed at the sending LOU." ;
+	gleif-base:hasTag "PENDING_TRANSFER" ;
 	.
 
 gleif-L2:RegistrationStatusPublished
@@ -501,10 +534,8 @@ gleif-L2:hasValidationSources
 		gleif-L2:RegistrationStatusLapsed
 		gleif-L2:RegistrationStatusPendingArchival
 		gleif-L2:RegistrationStatusPendingTransfer
-		gleif-L2:RegistrationStatusPendingValidation
 		gleif-L2:RegistrationStatusPublished
 		gleif-L2:RegistrationStatusRetired
-		gleif-L2:RegistrationStatusTransferred
 	) ;
 	.
 
