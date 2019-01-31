@@ -1,15 +1,15 @@
-# baseURI: https://www.gleif.org/sample/L2Data/
+# baseURI: https://www.gleif.org/ontology/sample/L2Data/
 # imports: https://www.gleif.org/ontology/Base/
 # imports: https://www.gleif.org/ontology/L1/
 # imports: https://www.gleif.org/ontology/L2/
-# imports: https://www.gleif.org/sample/L1Data/
+# imports: https://www.gleif.org/ontology/sample/L1Data/
 
-@base <https://www.gleif.org/sample/L2Data/> .
+@base <https://www.gleif.org/ontology/sample/L2Data/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix gleif-L1: <https://www.gleif.org/ontology/L1/> .
-@prefix gleif-L1-data: <https://www.gleif.org/sample/L1Data/> .
+@prefix gleif-L1-data: <https://www.gleif.org/ontology/sample/L1Data/> .
 @prefix gleif-L2: <https://www.gleif.org/ontology/L2/> .
-@prefix gleif-L2-data: <https://www.gleif.org/sample/L2Data/> .
+@prefix gleif-L2-data: <https://www.gleif.org/ontology/sample/L2Data/> .
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -17,7 +17,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://www.gleif.org/sample/L2Data/>
+<https://www.gleif.org/ontology/sample/L2Data/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF L2 sample data" ;
 	dct:abstract "Sample data for GLEIF L2 ontology" ;
@@ -25,7 +25,7 @@
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/> ,
 		<https://www.gleif.org/ontology/L2/> ,
-		<https://www.gleif.org/sample/L1Data/>
+		<https://www.gleif.org/ontology/sample/L1Data/>
 		;
 	skos:note """There are 2 categories of individual:
     1) The LegalEntityRelationship (or a subclass). The URI is a prefix of R- followed by LEIs of child then parent separated by - followed by a suffix of one of -D, -U or -I for Direct, Ultimate or International Branch relationships respectively.

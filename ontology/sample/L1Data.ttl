@@ -1,16 +1,16 @@
-# baseURI: https://www.gleif.org/sample/L1Data/
+# baseURI: https://www.gleif.org/ontology/sample/L1Data/
 # imports: http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/
 # imports: http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/
 # imports: https://www.gleif.org/ontology/L1/
-# imports: https://www.gleif.org/sample/EntityLegalFormData/
-# imports: https://www.gleif.org/sample/RegistrationAuthorityData/
+# imports: https://www.gleif.org/ontology/sample/EntityLegalFormData/
+# imports: https://www.gleif.org/ontology/sample/RegistrationAuthorityData/
 
-@base <https://www.gleif.org/sample/L1Data/> .
+@base <https://www.gleif.org/ontology/sample/L1Data/> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix gleif-ELF-data: <https://www.gleif.org/sample/EntityLegalFormData/> .
+@prefix gleif-ELF-data: <https://www.gleif.org/ontology/sample/EntityLegalFormData/> .
 @prefix gleif-L1: <https://www.gleif.org/ontology/L1/> .
-@prefix gleif-L1-data: <https://www.gleif.org/sample/L1Data/> .
-@prefix gleif-RA-data: <https://www.gleif.org/sample/RegistrationAuthorityData/> .
+@prefix gleif-L1-data: <https://www.gleif.org/ontology/sample/L1Data/> .
+@prefix gleif-RA-data: <https://www.gleif.org/ontology/sample/RegistrationAuthorityData/> .
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
 @prefix lcc-3166-1-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> .
 @prefix lcc-3166-2-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> .
@@ -20,7 +20,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://www.gleif.org/sample/L1Data/>
+<https://www.gleif.org/ontology/sample/L1Data/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF L1 sample data" ;
 	dct:abstract "Sample data for GLEIF L1 ontology" ;
@@ -28,8 +28,8 @@
 		<http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> ,
 		<http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> ,
 		<https://www.gleif.org/ontology/L1/> ,
-		<https://www.gleif.org/sample/EntityLegalFormData/> ,
-		<https://www.gleif.org/sample/RegistrationAuthorityData/>
+		<https://www.gleif.org/ontology/sample/EntityLegalFormData/> ,
+		<https://www.gleif.org/ontology/sample/RegistrationAuthorityData/>
 		;
 	skos:note """There are 5 categories of individual:
     1) The LegalEntity. The URI is the LEI itself in the namespace of this ontology.
