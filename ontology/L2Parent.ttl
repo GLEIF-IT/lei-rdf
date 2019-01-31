@@ -25,10 +25,10 @@
 	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
 	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
 	dct:publisher gleif-base:GLEIF ;
-	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Federation (GLEIF)" ;
+	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
 	dct:rightsHolder gleif-base:GLEIF ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/parent-reference-data-format#"^^xsd:anyURI ;
-	dct:title "Global Legal Entity Identifier Federation Parent Reference Data Format Ontology"@en ;
+	dct:title "Global Legal Entity Identifier Foundation Parent Reference Data Format Ontology"@en ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/>

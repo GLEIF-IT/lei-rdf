@@ -25,9 +25,9 @@
 	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
 	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
 	dct:publisher gleif-base:GLEIF ;
-	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Federation (GLEIF)" ;
+	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
 	dct:rightsHolder gleif-base:GLEIF ;
-	dct:title "Global Legal Entity Identifier Federation Entity Legal Form sample data"@en ;
+	dct:title "Global Legal Entity Identifier Foundation Entity Legal Form sample data"@en ;
 	owl:imports
 		<http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> ,
 		<http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> ,
