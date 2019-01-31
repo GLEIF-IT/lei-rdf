@@ -37,7 +37,7 @@
     """ ;
 	.
 
-gleif-L1-data:5493007CICYM7A0SZ714
+gleif-L1-data:L-5493007CICYM7A0SZ714
 	a gleif-L1:LegalEntity ;
 	gleif-L1:hasHeadquartersAddress gleif-L1Geo-data:G-NT_VTJ.3trcvUNJcXHy2v1oDC_zID ;
 	gleif-L1:hasLegalAddress gleif-L1Geo-data:G-NT_VTJ.3trcvUNJcXHy2v1oDC_zID ;
@@ -72,8 +72,8 @@ gleif-L1Geo-data:G-NT_VTJ.3trcvUNJcXHy2v1oDC_zID
 	gleif-geo:matchDate "2018-02-11T11:42:42"^^xsd:dateTime ;
 	gleif-geo:matchLevel gleif-base:hasAddressNumber ;
 	gleif-geo:originalAddress
-		gleif-L1-data:5493007CICYM7A0SZ714-HQL ,
-		gleif-L1-data:5493007CICYM7A0SZ714-LAL
+		gleif-L1-data:L-5493007CICYM7A0SZ714-HQL ,
+		gleif-L1-data:L-5493007CICYM7A0SZ714-LAL
 		;
 	gleif-geo:originalAddressText "ACCESO II 32, 32, Benito Juárez, Querétaro, 76120, Querétaro, MX-QUE, MX	." ;
 	gleif-geo:relevance "0.77"^^xsd:decimal ;

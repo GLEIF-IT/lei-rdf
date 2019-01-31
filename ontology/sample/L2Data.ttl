@@ -34,8 +34,8 @@
 
 gleif-L2-data:R-097900BHFR0000075034-31570010000000043842-I
 	a gleif-L2:InternationalBranchRelationship ;
-	gleif-base:hasChild gleif-L1-data:097900BHFR0000075034 ;
-	gleif-base:hasParent gleif-L1-data:31570010000000043842 ;
+	gleif-base:hasChild gleif-L1-data:L-097900BHFR0000075034 ;
+	gleif-base:hasParent gleif-L1-data:L-31570010000000043842 ;
 	gleif-L2:hasAccountingStandard gleif-L2:AccountingStandardOther ;
 	gleif-L2:hasOwnershipPercentage "1.00"^^xsd:decimal ;
 	gleif-L2:hasRelationshipPeriod [
@@ -52,7 +52,7 @@ gleif-L2-data:R-097900BHFR0000075034-31570010000000043842-I-REC
 	gleif-base:hasNextRenewalDate "2019-05-17T00:00:00Z"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L2:RegistrationStatusPublished ;
 	gleif-base:records gleif-L2-data:R-097900BHFR0000075034-31570010000000043842-I ;
-	gleif-L1:hasManagingLOU gleif-L1-data:097900BEFH0000000217 ;
+	gleif-L1:hasManagingLOU gleif-L1-data:L-097900BEFH0000000217 ;
 	gleif-L2:hasAccountingPeriod [
 		a gleif-base:Period ;
 		gleif-base:hasStart "2018-05-17T00:00:00Z"^^xsd:dateTime ;
@@ -67,8 +67,8 @@ gleif-L2-data:R-097900BHFR0000075034-31570010000000043842-I-REC
 
 gleif-L2-data:R-2138005GBBOTGXJ4Z883-7245003HPQ1HG4CHTL79-D
 	a gleif-L2:DirectConsolidation ;
-	gleif-base:hasChild gleif-L1-data:2138005GBBOTGXJ4Z883 ;
-	gleif-base:hasParent gleif-L1-data:7245003HPQ1HG4CHTL79 ;
+	gleif-base:hasChild gleif-L1-data:L-2138005GBBOTGXJ4Z883 ;
+	gleif-base:hasParent gleif-L1-data:L-7245003HPQ1HG4CHTL79 ;
 	gleif-L2:hasAccountingStandard gleif-L2:AccountingStandardIFRS ;
 	gleif-L2:hasRelationshipPeriod [
 		a gleif-base:Period ;
@@ -84,7 +84,7 @@ gleif-L2-data:R-2138005GBBOTGXJ4Z883-7245003HPQ1HG4CHTL79-D-REC
 	gleif-base:hasNextRenewalDate "2019-11-10T00:00:00Z"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L2:RegistrationStatusPublished ;
 	gleif-base:records gleif-L2-data:R-2138005GBBOTGXJ4Z883-7245003HPQ1HG4CHTL79-D ;
-	gleif-L1:hasManagingLOU gleif-L1-data:213800WAVVOPS85N2205 ;
+	gleif-L1:hasManagingLOU gleif-L1-data:L-213800WAVVOPS85N2205 ;
 	gleif-L2:hasAccountingPeriod [
 		a gleif-base:Period ;
 		gleif-base:hasStart "2017-11-10T00:00:00Z"^^xsd:dateTime ;
@@ -95,8 +95,8 @@ gleif-L2-data:R-2138005GBBOTGXJ4Z883-7245003HPQ1HG4CHTL79-D-REC
 
 gleif-L2-data:R-4469000001BFFJTJOW39-7245003HPQ1HG4CHTL79-D
 	a gleif-L2:DirectConsolidation ;
-	gleif-base:hasChild gleif-L1-data:4469000001BFFJTJOW39 ;
-	gleif-base:hasParent gleif-L1-data:7245003HPQ1HG4CHTL79 ;
+	gleif-base:hasChild gleif-L1-data:L-4469000001BFFJTJOW39 ;
+	gleif-base:hasParent gleif-L1-data:L-7245003HPQ1HG4CHTL79 ;
 	gleif-L2:hasAccountingStandard gleif-L2:AccountingStandardIFRS ;
 	gleif-L2:hasOwnershipPercentage "100.00"^^xsd:decimal ;
 	gleif-L2:hasRelationshipPeriod [
@@ -113,7 +113,7 @@ gleif-L2-data:R-4469000001BFFJTJOW39-7245003HPQ1HG4CHTL79-D-REC
 	gleif-base:hasNextRenewalDate "2019-10-17T00:16:22.08-05:00"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L2:RegistrationStatusPublished ;
 	gleif-base:records gleif-L2-data:R-4469000001BFFJTJOW39-7245003HPQ1HG4CHTL79-D ;
-	gleif-L1:hasManagingLOU gleif-L1-data:4469000001AVO26P9X86 ;
+	gleif-L1:hasManagingLOU gleif-L1-data:L-4469000001AVO26P9X86 ;
 	gleif-L2:hasAccountingPeriod [
 		a gleif-base:Period ;
 		gleif-base:hasEnd "2017-03-31T00:00:00-06:00"^^xsd:dateTime ;
@@ -125,8 +125,8 @@ gleif-L2-data:R-4469000001BFFJTJOW39-7245003HPQ1HG4CHTL79-D-REC
 
 gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-D
 	a gleif-L2:DirectConsolidation ;
-	gleif-base:hasChild gleif-L1-data:4469000001BFY38CWR75 ;
-	gleif-base:hasParent gleif-L1-data:95980020140006006514 ;
+	gleif-base:hasChild gleif-L1-data:L-4469000001BFY38CWR75 ;
+	gleif-base:hasParent gleif-L1-data:L-95980020140006006514 ;
 	gleif-L2:hasAccountingStandard gleif-L2:AccountingStandardIFRS ;
 	gleif-L2:hasOwnershipPercentage "99.99"^^xsd:decimal ;
 	gleif-L2:hasRelationshipPeriod [
@@ -143,7 +143,7 @@ gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-D-REC
 	gleif-base:hasNextRenewalDate "2018-10-31T18:15:49.463-06:00"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L2:RegistrationStatusPublished ;
 	gleif-base:records gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-D ;
-	gleif-L1:hasManagingLOU gleif-L1-data:4469000001AVO26P9X86 ;
+	gleif-L1:hasManagingLOU gleif-L1-data:L-4469000001AVO26P9X86 ;
 	gleif-L2:hasAccountingPeriod [
 		a gleif-base:Period ;
 		gleif-base:hasEnd "2016-12-31T00:00:00-06:00"^^xsd:dateTime ;
@@ -155,8 +155,8 @@ gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-D-REC
 
 gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-U
 	a gleif-L2:UltimateConsolidation ;
-	gleif-base:hasChild gleif-L1-data:4469000001BFY38CWR75 ;
-	gleif-base:hasParent gleif-L1-data:95980020140006006514 ;
+	gleif-base:hasChild gleif-L1-data:L-4469000001BFY38CWR75 ;
+	gleif-base:hasParent gleif-L1-data:L-95980020140006006514 ;
 	gleif-L2:hasAccountingStandard gleif-L2:AccountingStandardIFRS ;
 	gleif-L2:hasOwnershipPercentage "99.99"^^xsd:decimal ;
 	gleif-L2:hasRelationshipPeriod [
@@ -173,7 +173,7 @@ gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-U-REC
 	gleif-base:hasNextRenewalDate "2018-10-31T18:15:49.463-06:00"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L2:RegistrationStatusPublished ;
 	gleif-base:records gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-U ;
-	gleif-L1:hasManagingLOU gleif-L1-data:4469000001AVO26P9X86 ;
+	gleif-L1:hasManagingLOU gleif-L1-data:L-4469000001AVO26P9X86 ;
 	gleif-L2:hasAccountingPeriod [
 		a gleif-base:Period ;
 		gleif-base:hasEnd "2016-12-01T00:00:00-06:00"^^xsd:dateTime ;
@@ -185,8 +185,8 @@ gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-U-REC
 
 gleif-L2-data:R-7245003HPQ1HG4CHTL79-335800LN9THPFUHMGI86-D
 	a gleif-L2:DirectConsolidation ;
-	gleif-base:hasChild gleif-L1-data:7245003HPQ1HG4CHTL79 ;
-	gleif-base:hasParent gleif-L1-data:335800LN9THPFUHMGI86 ;
+	gleif-base:hasChild gleif-L1-data:L-7245003HPQ1HG4CHTL79 ;
+	gleif-base:hasParent gleif-L1-data:L-335800LN9THPFUHMGI86 ;
 	gleif-L2:hasAccountingStandard gleif-L2:AccountingStandardOther ;
 	gleif-L2:hasOwnershipPercentage "100.00"^^xsd:decimal ;
 	gleif-L2:hasRelationshipPeriod [
@@ -203,7 +203,7 @@ gleif-L2-data:R-7245003HPQ1HG4CHTL79-335800LN9THPFUHMGI86-D-REC
 	gleif-base:hasNextRenewalDate "2019-06-03T11:32:53.932+02:00"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L2:RegistrationStatusPublished ;
 	gleif-base:records gleif-L2-data:R-7245003HPQ1HG4CHTL79-335800LN9THPFUHMGI86-D ;
-	gleif-L1:hasManagingLOU gleif-L1-data:724500A93Z8V1MJK5349 ;
+	gleif-L1:hasManagingLOU gleif-L1-data:L-724500A93Z8V1MJK5349 ;
 	gleif-L2:hasAccountingPeriod [
 		a gleif-base:Period ;
 		gleif-base:hasEnd "2017-03-31T00:00:00.000+02:00"^^xsd:dateTime ;
@@ -219,8 +219,8 @@ gleif-L2-data:R-7245003HPQ1HG4CHTL79-335800LN9THPFUHMGI86-D-REC
 
 gleif-L2-data:R-7245003HPQ1HG4CHTL79-335800LN9THPFUHMGI86-U
 	a gleif-L2:UltimateConsolidation ;
-	gleif-base:hasChild gleif-L1-data:7245003HPQ1HG4CHTL79 ;
-	gleif-base:hasParent gleif-L1-data:335800LN9THPFUHMGI86 ;
+	gleif-base:hasChild gleif-L1-data:L-7245003HPQ1HG4CHTL79 ;
+	gleif-base:hasParent gleif-L1-data:L-335800LN9THPFUHMGI86 ;
 	gleif-L2:hasAccountingStandard gleif-L2:AccountingStandardOther ;
 	gleif-L2:hasOwnershipPercentage "100.00"^^xsd:decimal ;
 	gleif-L2:hasRelationshipPeriod [
@@ -237,7 +237,7 @@ gleif-L2-data:R-7245003HPQ1HG4CHTL79-335800LN9THPFUHMGI86-U-REC
 	gleif-base:hasNextRenewalDate "2019-06-03T11:32:53.932+02:00"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L2:RegistrationStatusPublished ;
 	gleif-base:records gleif-L2-data:R-7245003HPQ1HG4CHTL79-335800LN9THPFUHMGI86-D ;
-	gleif-L1:hasManagingLOU gleif-L1-data:724500A93Z8V1MJK5349 ;
+	gleif-L1:hasManagingLOU gleif-L1-data:L-724500A93Z8V1MJK5349 ;
 	gleif-L2:hasAccountingPeriod [
 		a gleif-base:Period ;
 		gleif-base:hasEnd "2017-03-31T00:00:00.000+02:00"^^xsd:dateTime ;
