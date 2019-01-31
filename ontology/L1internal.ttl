@@ -17,11 +17,19 @@
 <https://www.gleif.org/ontology/L1internal/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF L1 Internal Ontology" ;
-	dct:abstract "Ontology that builds on GLEIF L1 ontology to add information for GLEIF internal maintenance purposes." ;
+	dct:abstract "Ontology that builds on GLEIF L1 ontology to add information for LOU internal maintenance purposes." ;
+	dct:contributor <https://plus.google.com/+PeteRivett> ;
+	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
+	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
+	dct:publisher gleif-base:GLEIF ;
+	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Federation (GLEIF)" ;
+	dct:rightsHolder gleif-base:GLEIF ;
+	dct:title "Global Legal Entity Identifier Federation Level 1 Ontology - for LOU Internal User"@en ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/>
 		;
+	owl:versionIRI gleif-L1internal:V1.0 ;
 	.
 
 gleif-L1internal:LegalEntityIdentifierRegistryEntry

@@ -22,7 +22,14 @@
 <https://www.gleif.org/ontology/L1inferences/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF L1 Ontology Inferences" ;
-	dct:abstract "Ontology that builds on GLEIF L1 ontology to infer additional information" ;
+	dct:abstract "Ontology that builds on GLEIF L1 ontology to perform validation and infer additional information" ;
+	dct:contributor <https://plus.google.com/+PeteRivett> ;
+	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
+	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
+	dct:publisher gleif-base:GLEIF ;
+	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Federation (GLEIF)" ;
+	dct:rightsHolder gleif-base:GLEIF ;
+	dct:title "Global Legal Entity Identifier Federation Level 1 Inferences Ontology"@en ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/EntityLegalForm/> ,
@@ -30,6 +37,7 @@
 		<https://www.gleif.org/ontology/L2/> ,
 		<https://www.gleif.org/ontology/RegistrationAuthority/>
 		;
+	owl:versionIRI gleif-L1-infer:V1.0 ;
 	.
 
 gleif-elf:EntityLegalFormIdentifier

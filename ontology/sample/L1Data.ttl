@@ -22,8 +22,15 @@
 
 <https://www.gleif.org/ontology/sample/L1Data/>
 	a owl:Ontology ;
-	rdfs:label "GLEIF L1 sample data" ;
-	dct:abstract "Sample data for GLEIF L1 ontology" ;
+	rdfs:label "GLEIF L1 sample data"@en ;
+	dct:abstract "Sample data for GLEIF L1 ontology to illustrate and test the ontology"@en ;
+	dct:contributor <https://plus.google.com/+PeteRivett> ;
+	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
+	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
+	dct:publisher gleif-base:GLEIF ;
+	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Federation (GLEIF)" ;
+	dct:rightsHolder gleif-base:GLEIF ;
+	dct:title "Global Legal Entity Identifier Federation Level 1 sample data"@en ;
 	owl:imports
 		<http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> ,
 		<http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> ,
@@ -31,6 +38,7 @@
 		<https://www.gleif.org/ontology/sample/EntityLegalFormData/> ,
 		<https://www.gleif.org/ontology/sample/RegistrationAuthorityData/>
 		;
+	owl:versionIRI gleif-L1-data:V1.0 ;
 	skos:note """There are 5 categories of individual:
     1) The LegalEntity. The URI is the LEI itself in the namespace of this ontology preceded by L-.
     2) The LegalEntityIdentifier and LegalEntityRegistryEntry. The URI is that of the LegalEntity followed by -LE.    

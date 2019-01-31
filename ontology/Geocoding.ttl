@@ -18,17 +18,23 @@
 <https://www.gleif.org/ontology/Geocoding/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF Geocoding Ontology" ;
-	dct:abstract "This ontology defines concepts for Geocoding of addresses as used in the L1 Golden Copy. It makes use of the W3C WGS84 ontology for latitude and longitude." ;
-	dct:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
-	dct:rights "Copyright (c) 2018 GLEIF" ;
+	dct:abstract "This ontology defines concepts for Geocoding of addresses as used in the L1 Golden Copy Data. It makes use of the W3C WGS84 ontology for latitude and longitude." ;
+	dct:contributor <https://plus.google.com/+PeteRivett> ;
+	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
+	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
+	dct:publisher gleif-base:GLEIF ;
+	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Federation (GLEIF)" ;
+	dct:rightsHolder gleif-base:GLEIF ;
 	dct:source
 		"https://developer.here.com/documentation/geocoder/topics/reading-geocoding-response.html"^^xsd:anyURI ,
 		"https://www.gleif.org/en/lei-data/gleif-golden-copy"^^xsd:anyURI
 		;
+	dct:title "Global Legal Entity Identifier Federation Geocoding Ontology "@en ;
 	owl:imports
 		<http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ,
 		<https://www.gleif.org/ontology/Base/>
 		;
+	owl:versionIRI gleif-geo:V1.0 ;
 	.
 
 gleif-geo:BoundingBox

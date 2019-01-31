@@ -19,14 +19,22 @@
 
 <https://www.gleif.org/ontology/sample/L2Data/>
 	a owl:Ontology ;
-	rdfs:label "GLEIF L2 sample data" ;
-	dct:abstract "Sample data for GLEIF L2 ontology" ;
+	rdfs:label "GLEIF L2 sample data"@en ;
+	dct:abstract "Sample data for GLEIF L2 ontology to illustrate and test the ontology"@en ;
+	dct:contributor <https://plus.google.com/+PeteRivett> ;
+	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
+	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
+	dct:publisher gleif-base:GLEIF ;
+	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Federation (GLEIF)" ;
+	dct:rightsHolder gleif-base:GLEIF ;
+	dct:title "Global Legal Entity Identifier Federation Level 2 sample data"@en ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/> ,
 		<https://www.gleif.org/ontology/L2/> ,
 		<https://www.gleif.org/ontology/sample/L1Data/>
 		;
+	owl:versionIRI gleif-L2-data:V1.0 ;
 	skos:note """There are 2 categories of individual:
     1) The LegalEntityRelationship (or a subclass). The URI is a prefix of R- followed by LEIs of child then parent separated by - followed by a suffix of one of -D, -U or -I for Direct, Ultimate or International Branch relationships respectively.
     2) The LegalEntityRelationshipRecord. The URI is that of the LegalEntityRelationship followed by -REC.""" ;
