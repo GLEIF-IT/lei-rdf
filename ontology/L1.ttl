@@ -300,7 +300,10 @@ gleif-L1:LocalOperatingUnit
 	rdfs:subClassOf gleif-L1:LegalEntity ;
 	rdfs:label "local operating unit" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:altLabel "LOU" ;
+	skos:altLabel
+		"LEI issuer" ,
+		"LOU"
+		;
 	skos:definition "An entity that supplies registration, renewal and other services, and acts as the primary interface for legal entities wishing to obtain an LEI. Only organizations duly accredited by the Global Legal Entity Identifier Foundation (GLEIF) are authorized to issue LEIs." ;
 	skos:prefLabel "local operating unit" ;
 	.
