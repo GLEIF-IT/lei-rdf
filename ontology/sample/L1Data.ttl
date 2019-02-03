@@ -48,6 +48,51 @@
     """ ;
 	.
 
+gleif-L1-data:L-097900BHFR0000075034
+	a gleif-L1:Branch ;
+	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-CZ ;
+	gleif-base:hasNameASCIIAutomatic "J T BANKA, AS, POBOCKA ZAHRANICNEJ BANKY" ;
+	gleif-base:hasNameLegalLocal "J & T BANKA, a.s., pobočka zahraničnej banky"@sk ;
+	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-097900BHFR0000075034-HQL ;
+	gleif-L1:hasLegalAddress gleif-L1-data:L-097900BHFR0000075034-LAL ;
+	gleif-L1:hasLegalForm gleif-ELF-data:ELF-J8DW ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:L-BID-RA000163-35964693 ;
+	.
+
+gleif-L1-data:L-097900BHFR0000075034-HQL
+	a gleif-L1:PhysicalAddressLocal ;
+	skos:note "City should be Praha 8 and lang cs - see parent" ;
+	gleif-base:hasAddressLine1 "Pobrežní 297/14"@sk ;
+	gleif-base:hasCity "Bratislava"@sk ;
+	gleif-base:hasCountry lcc-3166-1-add:CTRY-CZ ;
+	gleif-base:hasPostalCode "18600" ;
+	.
+
+gleif-L1-data:L-097900BHFR0000075034-LAL
+	a gleif-L1:PhysicalAddressLocal ;
+	gleif-base:hasAddressLine1 "Dvořákovo nábrežie 8"@sk ;
+	gleif-base:hasCity "Bratislava"@sk ;
+	gleif-base:hasCountry lcc-3166-1-add:CTRY-SK ;
+	gleif-base:hasPostalCode "81102" ;
+	.
+
+gleif-L1-data:L-097900BHFR0000075034-LEI
+	a
+		gleif-L1:LegalEntityIdentifier ,
+		gleif-L1:LegalEntityIdentifierRegistryEntry
+		;
+	gleif-base:hasInitialRegistrationDate "2017-05-17T00:00:00.00Z"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2018-08-21T00:00:00.00Z"^^xsd:dateTime ;
+	gleif-base:hasNextRenewalDate "2019-05-17T00:00:00.00Z"^^xsd:dateTime ;
+	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
+	gleif-base:hasTag "097900BHFR0000075034" ;
+	gleif-L1:hasManagingLOU gleif-L1-data:L-097900BEFH0000000217 ;
+	gleif-L1:hasValidationIdentifier gleif-L1-data:L-BID-RA000163-35964693 ;
+	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
+	gleif-L1:identifiesAndRecords gleif-L1-data:L-097900BHFR0000075034 ;
+	.
+
 gleif-L1-data:L-2138001FT6OQ9OG5WR43
 	a gleif-L1:Fund ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
@@ -519,50 +564,5 @@ gleif-L1-data:L-BID-RA000602-6534941
 	gleif-base:hasTag "6534941" ;
 	gleif-base:identifies gleif-L1-data:L-25490050856CG53NAC28 ;
 	gleif-base:isRegisteredIn gleif-RA-data:RA000602 ;
-	.
-
-gleif-L1-data:L-L-097900BHFR0000075034
-	a gleif-L1:Branch ;
-	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-CZ ;
-	gleif-base:hasNameASCIIAutomatic "J T BANKA, AS, POBOCKA ZAHRANICNEJ BANKY" ;
-	gleif-base:hasNameLegalLocal "J & T BANKA, a.s., pobočka zahraničnej banky"@sk ;
-	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-L-097900BHFR0000075034-HQL ;
-	gleif-L1:hasLegalAddress gleif-L1-data:L-L-097900BHFR0000075034-LAL ;
-	gleif-L1:hasLegalForm gleif-ELF-data:ELF-J8DW ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:L-L-BID-RA000163-35964693 ;
-	.
-
-gleif-L1-data:L-L-097900BHFR0000075034-HQL
-	a gleif-L1:PhysicalAddressLocal ;
-	skos:note "City should be Praha 8 and lang cs - see parent" ;
-	gleif-base:hasAddressLine1 "Pobrežní 297/14"@sk ;
-	gleif-base:hasCity "Bratislava"@sk ;
-	gleif-base:hasCountry lcc-3166-1-add:CTRY-CZ ;
-	gleif-base:hasPostalCode "18600" ;
-	.
-
-gleif-L1-data:L-L-097900BHFR0000075034-LAL
-	a gleif-L1:PhysicalAddressLocal ;
-	gleif-base:hasAddressLine1 "Dvořákovo nábrežie 8"@sk ;
-	gleif-base:hasCity "Bratislava"@sk ;
-	gleif-base:hasCountry lcc-3166-1-add:CTRY-SK ;
-	gleif-base:hasPostalCode "81102" ;
-	.
-
-gleif-L1-data:L-L-097900BHFR0000075034-LEI
-	a
-		gleif-L1:LegalEntityIdentifier ,
-		gleif-L1:LegalEntityIdentifierRegistryEntry
-		;
-	gleif-base:hasInitialRegistrationDate "2017-05-17T00:00:00.00Z"^^xsd:dateTime ;
-	gleif-base:hasLastUpdateDate "2018-08-21T00:00:00.00Z"^^xsd:dateTime ;
-	gleif-base:hasNextRenewalDate "2019-05-17T00:00:00.00Z"^^xsd:dateTime ;
-	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
-	gleif-base:hasTag "097900BHFR0000075034" ;
-	gleif-L1:hasManagingLOU gleif-L1-data:L-097900BEFH0000000217 ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:L-BID-RA000163-35964693 ;
-	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
-	gleif-L1:identifiesAndRecords gleif-L1-data:L-097900BHFR0000075034 ;
 	.
 
