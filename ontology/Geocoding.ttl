@@ -128,6 +128,12 @@ gleif-geo:GeocodedAddress
 		] ,
 		[
 			a owl:Restriction ;
+			owl:onProperty gleif-geo:matchType ;
+			owl:onClass gleif-geo:MatchType ;
+			owl:qualifiedCardinality "1" ;
+		] ,
+		[
+			a owl:Restriction ;
 			owl:onProperty gleif-geo:matchDate ;
 			owl:onDataRange xsd:dateTime ;
 			owl:qualifiedCardinality "1" ;
