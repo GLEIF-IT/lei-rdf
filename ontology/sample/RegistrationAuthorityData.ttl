@@ -44,7 +44,7 @@
 gleif-RA-data:AgenziaDelleEntrateViaCristoforoColombo
 	a gleif-ra:BusinessRegistry ;
 	skos:note "This entry was manually created from research." ;
-	gleif-base:hasNameLegalLocal "Agenzia delle Entrate via Cristoforo Colombo"@it ;
+	gleif-base:hasNameLocal "Agenzia delle Entrate via Cristoforo Colombo"@it ;
 	gleif-base:hasNameTranslatedEnglish "Tax Collector's office in Rome, Italy" ;
 	gleif-base:hasWebsite "https://www.agenziaentrate.gov.it/wps/portal/entrate/home"^^xsd:anyURI ;
 	gleif-base:identifies gleif-RA-data:AgenziaDelleEntrateViaCristoforoColombo ;
@@ -60,7 +60,7 @@ gleif-RA-data:RA000189
 		lcc-3166-1-add:CTRY-GF ,
 		lcc-3166-1-add:CTRY-GP
 		;
-	gleif-base:hasNameLegalLocal "Sirene"@fr ;
+	gleif-base:hasNameLocal "Sirene"@fr ;
 	gleif-base:hasNameTranslatedEnglish "Register of Companies (Sirene)" ;
 	gleif-base:hasTag "RA000189" ;
 	gleif-base:hasWebsite "http://sirene.fr/sirene/public/accueil?sirene_locale=en"^^xsd:anyURI ;
@@ -70,8 +70,39 @@ gleif-RA-data:RA000189
 
 gleif-RA-data:RA000189-ORG
 	a gleif-ra:RegistrationAuthority ;
-	gleif-base:hasNameLegalLocal "Institut National de la Statistique et des Études Économiques" ;
+	gleif-base:hasNameLocal "Institut National de la Statistique et des Études Économiques" ;
 	gleif-base:hasNameTranslatedEnglish "National Institute of Statistics and Economic Studies" ;
+	.
+
+gleif-RA-data:RA000548
+	a
+		gleif-ra:BusinessRegistry ,
+		gleif-ra:RegistrationAuthorityCode
+		;
+	gleif-base:hasCoverageArea
+		lcc-3166-1-add:CTRY-CH ,
+		lcc-3166-1-add:CTRY-LI
+		;
+	gleif-base:hasNameAdditionalLocal
+		"Registre IDE"@fr ,
+		"Registro IDI"@it
+		;
+	gleif-base:hasNameLocal "UID-Register"@de ;
+	gleif-base:hasNameTranslatedEnglish "UID-Register" ;
+	gleif-base:hasTag "RA000548" ;
+	gleif-base:hasWebsite "https://www.uid.admin.ch/"^^xsd:anyURI ;
+	gleif-base:identifies gleif-RA-data:RA000585 ;
+	gleif-base:isManagedBy gleif-RA-data:RA000585-ORG ;
+	.
+
+gleif-RA-data:RA000548-ORG
+	a gleif-ra:RegistrationAuthority ;
+	gleif-base:hasNameLocal
+		"Bundesamt für Statistik"@de ,
+		"Office fédéral de la statistique"@fr ,
+		"Ufficio federale di statistica"@it
+		;
+	gleif-base:hasNameTranslatedEnglish "Federal Statistical Office" ;
 	.
 
 gleif-RA-data:RA000585
@@ -84,7 +115,7 @@ gleif-RA-data:RA000585
 		lcc-3166-2-add:REG-GB-NIR ,
 		lcc-3166-2-add:REG-GB-SCT
 		;
-	gleif-base:hasNameLegalLocal "Companies Register"@en ;
+	gleif-base:hasNameLocal "Companies Register"@en ;
 	gleif-base:hasNameTranslatedEnglish "Companies Register" ;
 	gleif-base:hasTag "RA000585" ;
 	gleif-base:hasWebsite "www.companieshouse.gov.uk"^^xsd:anyURI ;
@@ -94,7 +125,7 @@ gleif-RA-data:RA000585
 
 gleif-RA-data:RA000585-ORG
 	a gleif-ra:RegistrationAuthority ;
-	gleif-base:hasNameLegalLocal "Companies House" ;
+	gleif-base:hasNameLocal "Companies House" ;
 	gleif-base:hasNameTranslatedEnglish "Companies House" ;
 	.
 

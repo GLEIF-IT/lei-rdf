@@ -53,21 +53,46 @@ gleif-ELF-data:ELF-2HBR
 	gleif-base:identifies gleif-ELF-data:ELF-2HBR ;
 	.
 
+gleif-ELF-data:ELF-2JZ4
+	a
+		gleif-elf:EntityLegalForm ,
+		gleif-elf:EntityLegalFormIdentifier
+		;
+	gleif-base:hasCoverageArea lcc-3166-1-add:CTRY-CH ;
+	gleif-base:hasNameLocal "Stiftung"@ge ;
+	gleif-base:hasNameTransliterated "Stiftung"@ge ;
+	gleif-base:hasTag "2JZ4" ;
+	gleif-base:identifies gleif-ELF-data:ELF-2JZ4 ;
+	.
+
+gleif-ELF-data:ELF-BF9N
+	a
+		gleif-elf:EntityLegalForm ,
+		gleif-elf:EntityLegalFormIdentifier
+		;
+	gleif-base:hasAbbreviationLocal "öff. Unt. Bund"@ge ;
+	gleif-base:hasCoverageArea lcc-3166-2-add:CTRY-CH ;
+	gleif-base:hasNameLegalLocal "Unternehmen des Bundes"@ge ;
+	gleif-base:hasNameTransliterated "Unternehmen des Bundes"@ge ;
+	gleif-base:hasTag "BF9N" ;
+	gleif-base:identifies gleif-ELF-data:ELF-BF9N ;
+	.
+
 gleif-ELF-data:ELF-EZNQ
 	a
 		gleif-elf:EntityLegalForm ,
 		gleif-elf:EntityLegalFormIdentifier
 		;
 	gleif-base:hasAbbreviationLocal
-		"L.L.C."@ge ,
-		"LLC"@ge ,
-		"limited"@ge ,
-		"limited liability company"@ge ,
-		"ltd"@ge ,
-		"ltd."@ge
+		"L.L.C."@en ,
+		"LLC"@en ,
+		"limited"@en ,
+		"limited liability company"@en ,
+		"ltd"@en ,
+		"ltd."@en
 		;
 	gleif-base:hasCoverageArea lcc-3166-2-add:REG-US-OH ;
-	gleif-base:hasNameLegalLocal "Limited Liability Company"@ge ;
+	gleif-base:hasNameLegalLocal "Limited Liability Company"@en ;
 	gleif-base:hasNameTransliterated "Limited Liability Company" ;
 	gleif-base:hasTag "EZNQ" ;
 	gleif-base:identifies gleif-ELF-data:ELF-EZNQ ;
