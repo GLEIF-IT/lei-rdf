@@ -48,6 +48,136 @@
     """ ;
 	.
 
+gleif-L1-data:BID-AgenziaDelleEntrateViaCristoforoColombo-02653240594
+	a gleif-base:RegistryIdentifier ;
+	gleif-base:hasTag "02653240594" ;
+	gleif-base:identifies gleif-L1-data:L-2138004WRXP5I4MW6417 ;
+	gleif-base:isRegisteredIn gleif-RA-data:AgenziaDelleEntrateViaCristoforoColombo ;
+	.
+
+gleif-L1-data:BID-RA000163-35964693
+	a gleif-base:RegistryIdentifier ;
+	gleif-base:hasTag "35964693" ;
+	gleif-base:identifies gleif-L1-data:L-097900BHFR0000075034 ;
+	gleif-base:isRegisteredIn gleif-RA-data:RA000163 ;
+	.
+
+gleif-L1-data:BID-RA000163-47115378
+	a gleif-base:RegistryIdentifier ;
+	skos:note "Ignored lei:OtherRegistrationAuthorityID Městský soud v Praze-B 1731" ;
+	gleif-base:hasTag "47115378" ;
+	gleif-base:identifies gleif-L1-data:L-31570010000000043842 ;
+	gleif-base:isRegisteredIn gleif-RA-data:RA000163 ;
+	.
+
+gleif-L1-data:BID-RA000449-AME9806027F9
+	a gleif-base:RegistryIdentifier ;
+	gleif-base:hasTag "AME9806027F9" ;
+	gleif-base:identifies gleif-L1-data:L-4469000001AVO26P9X86 ;
+	gleif-base:isRegisteredIn gleif-RA-data:RA000449 ;
+	.
+
+gleif-L1-data:BID-RA000449-BTM960401DV7
+	a gleif-base:RegistryIdentifier ;
+	gleif-base:hasTag "BTM960401DV7" ;
+	gleif-base:identifies gleif-L1-data:L-213800PRXJ7WA41AIN67 ;
+	gleif-base:isRegisteredIn gleif-RA-data:RA000449 ;
+	.
+
+gleif-L1-data:BID-RA000449-IKM981217SD5
+	a gleif-base:RegistryIdentifier ;
+	gleif-base:hasTag "IKM981217SD5" ;
+	gleif-base:identifies gleif-L1-data:L-5493007CICYM7A0SZ714 ;
+	gleif-base:isRegisteredIn gleif-RA-data:RA000449 ;
+	.
+
+gleif-L1-data:BID-RA000548-CHE115117479
+	a gleif-base:RegistryIdentifier ;
+	gleif-base:hasTag "CHE200595965" ;
+	gleif-base:identifies gleif-L1-data:L-506700LOLO7M6V0E4247 ;
+	gleif-base:isRegisteredIn gleif-RA-data:RA000548 ;
+	.
+
+gleif-L1-data:BID-RA000548-CHE200595965
+	a gleif-base:RegistryIdentifier ;
+	gleif-base:hasTag "CHE200595965" ;
+	gleif-base:identifies gleif-L1-data:L-506700GE1G29325QX363 ;
+	gleif-base:isRegisteredIn gleif-RA-data:RA000548 ;
+	.
+
+gleif-L1-data:BID-RA000592-01235867
+	a gleif-base:RegistryIdentifier ;
+	gleif-base:hasTag "01235867" ;
+	gleif-base:identifies gleif-L1-data:L-213800ICVRLPU57BQ280 ;
+	gleif-base:isRegisteredIn gleif-RA-data:RA000592 ;
+	.
+
+gleif-L1-data:BID-RA000592-190775
+	a gleif-base:RegistryIdentifier ;
+	gleif-base:hasTag "190775" ;
+	gleif-base:identifies gleif-L1-data:L-2138001FT6OQ9OG5WR43 ;
+	gleif-base:isRegisteredIn gleif-RA-data:RA000592 ;
+	.
+
+gleif-L1-data:BID-RA000598-201725900005
+	a gleif-base:RegistryIdentifier ;
+	gleif-base:hasTag "201725900005" ;
+	gleif-base:identifies gleif-L1-data:L-25490050856CG53NAC28 ;
+	gleif-base:isRegisteredIn gleif-RA-data:RA000598 ;
+	.
+
+gleif-L1-data:BID-RA000602-6534941
+	a gleif-base:RegistryIdentifier ;
+	gleif-base:hasTag "6534941" ;
+	gleif-base:identifies gleif-L1-data:L-25490050856CG53NAC28 ;
+	gleif-base:isRegisteredIn gleif-RA-data:RA000602 ;
+	.
+
+gleif-L1-data:L-097900BHFR0000075034
+	a gleif-L1:Branch ;
+	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-CZ ;
+	gleif-base:hasNameASCIIAutomatic "J T BANKA, AS, POBOCKA ZAHRANICNEJ BANKY" ;
+	gleif-base:hasNameLegalLocal "J & T BANKA, a.s., pobočka zahraničnej banky"@sk ;
+	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-097900BHFR0000075034-HQL ;
+	gleif-L1:hasLegalAddress gleif-L1-data:L-097900BHFR0000075034-LAL ;
+	gleif-L1:hasLegalForm gleif-ELF-data:ELF-J8DW ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000163-35964693 ;
+	.
+
+gleif-L1-data:L-097900BHFR0000075034-HQL
+	a gleif-L1:PhysicalAddressLocal ;
+	skos:note "City should be Praha 8 and lang cs - see parent" ;
+	gleif-base:hasAddressLine1 "Pobrežní 297/14"@sk ;
+	gleif-base:hasCity "Bratislava"@sk ;
+	gleif-base:hasCountry lcc-3166-1-add:CTRY-CZ ;
+	gleif-base:hasPostalCode "18600" ;
+	.
+
+gleif-L1-data:L-097900BHFR0000075034-LAL
+	a gleif-L1:PhysicalAddressLocal ;
+	gleif-base:hasAddressLine1 "Dvořákovo nábrežie 8"@sk ;
+	gleif-base:hasCity "Bratislava"@sk ;
+	gleif-base:hasCountry lcc-3166-1-add:CTRY-SK ;
+	gleif-base:hasPostalCode "81102" ;
+	.
+
+gleif-L1-data:L-097900BHFR0000075034-LEI
+	a
+		gleif-L1:LegalEntityIdentifier ,
+		gleif-L1:LegalEntityIdentifierRegistryEntry
+		;
+	gleif-base:hasInitialRegistrationDate "2017-05-17T00:00:00.00Z"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2018-08-21T00:00:00.00Z"^^xsd:dateTime ;
+	gleif-base:hasNextRenewalDate "2019-05-17T00:00:00.00Z"^^xsd:dateTime ;
+	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
+	gleif-base:hasTag "097900BHFR0000075034" ;
+	gleif-L1:hasManagingLOU gleif-L1-data:L-097900BEFH0000000217 ;
+	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000163-35964693 ;
+	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
+	gleif-L1:identifiesAndRecords gleif-L1-data:L-097900BHFR0000075034 ;
+	.
+
 gleif-L1-data:L-2138001FT6OQ9OG5WR43
 	a gleif-L1:Fund ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
@@ -57,7 +187,7 @@ gleif-L1-data:L-2138001FT6OQ9OG5WR43
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-2138001FT6OQ9OG5WR43-LAL ;
 	gleif-L1:hasLegalAddress gleif-L1-data:L-2138001FT6OQ9OG5WR43-LAL ;
 	gleif-L1:hasLegalFormText "SUB_FUND" ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:L-BID-RA000592-190775 ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000592-190775 ;
 	.
 
 gleif-L1-data:L-2138001FT6OQ9OG5WR43-LAL
@@ -81,7 +211,7 @@ gleif-L1-data:L-2138001FT6OQ9OG5WR43-LEI
 	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
 	gleif-base:hasTag "2138001FT6OQ9OG5WR43" ;
 	gleif-L1:hasManagingLOU gleif-L1-data:L-213800WAVVOPS85N2205 ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:L-BID-RA000592-190775 ;
+	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000592-190775 ;
 	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
 	gleif-L1:identifiesAndRecords gleif-L1-data:L-2138001FT6OQ9OG5WR43 ;
 	.
@@ -95,7 +225,7 @@ gleif-L1-data:L-2138004WRXP5I4MW6417
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-2138004WRXP5I4MW6417-LAL ;
 	gleif-L1:hasLegalAddress gleif-L1-data:L-2138004WRXP5I4MW6417-LAL ;
 	gleif-L1:hasLegalForm gleif-ELF-data:ELF-P418 ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:L-BID-AgenziaDelleEntrateViaCristoforoColombo-02653240594 ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-AgenziaDelleEntrateViaCristoforoColombo-02653240594 ;
 	.
 
 gleif-L1-data:L-2138004WRXP5I4MW6417-LAL
@@ -117,7 +247,7 @@ gleif-L1-data:L-2138004WRXP5I4MW6417-LEI
 	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
 	gleif-base:hasTag "2138004WRXP5I4MW6417" ;
 	gleif-L1:hasManagingLOU gleif-L1-data:L-213800WAVVOPS85N2205 ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:L-BID-AgenziaDelleEntrateViaCristoforoColombo-02653240594 ;
+	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-AgenziaDelleEntrateViaCristoforoColombo-02653240594 ;
 	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
 	gleif-L1:identifiesAndRecords gleif-L1-data:L-2138004WRXP5I4MW6417 ;
 	.
@@ -130,7 +260,7 @@ gleif-L1-data:L-213800ICVRLPU57BQ280
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-213800ICVRLPU57BQ280-LAL ;
 	gleif-L1:hasLegalAddress gleif-L1-data:L-213800ICVRLPU57BQ280-LAL ;
 	gleif-L1:hasLegalForm gleif-ELF-data:ELF-H0PO ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:L-BID-RA000592-01235867 ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000592-01235867 ;
 	.
 
 gleif-L1-data:L-213800ICVRLPU57BQ280-LAL
@@ -154,7 +284,7 @@ gleif-L1-data:L-213800ICVRLPU57BQ280-LEI
 	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
 	gleif-base:hasTag "213800ICVRLPU57BQ280" ;
 	gleif-L1:hasManagingLOU gleif-L1-data:L-213800WAVVOPS85N2205 ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:L-BID-RA000592-01235867 ;
+	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000592-01235867 ;
 	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
 	gleif-L1:identifiesAndRecords gleif-L1-data:L-213800ICVRLPU57BQ280 ;
 	.
@@ -174,7 +304,7 @@ gleif-L1-data:L-213800PRXJ7WA41AIN67
 		gleif-L1-data:L-213800PRXJ7WA41AIN67-LAL
 		;
 	gleif-L1:hasLegalFormText "SOCIEDAD ANONIMA" ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:L-BID-RA000449-BTM960401DV7 ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000449-BTM960401DV7 ;
 	.
 
 gleif-L1-data:L-213800PRXJ7WA41AIN67-LAA
@@ -214,7 +344,7 @@ gleif-L1-data:L-213800PRXJ7WA41AIN67-LEI
 	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
 	gleif-base:hasTag "213800PRXJ7WA41AIN67" ;
 	gleif-L1:hasManagingLOU gleif-L1-data:L-4469000001AVO26P9X86 ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:L-BID-RA000449-BTM960401DV7 ;
+	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000449-BTM960401DV7 ;
 	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
 	gleif-L1:identifiesAndRecords gleif-L1-data:L-213800PRXJ7WA41AIN67 ;
 	.
@@ -230,7 +360,7 @@ gleif-L1-data:L-213800YK2FEXWNMT3R12
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-213800YK2FEXWNMT3R12-LAL ;
 	gleif-L1:hasLegalAddress gleif-L1-data:L-213800YK2FEXWNMT3R12-LAL ;
 	gleif-L1:hasLegalForm gleif-ELF-data:ELF-H0PO ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:L-BID-RA000585-03193392 ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000585-03193392 ;
 	.
 
 gleif-L1-data:L-213800YK2FEXWNMT3R12-LAL
@@ -254,7 +384,7 @@ gleif-L1-data:L-213800YK2FEXWNMT3R12-LEI
 	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusMerged ;
 	gleif-base:hasTag "213800YK2FEXWNMT3R12" ;
 	gleif-L1:hasManagingLOU gleif-L1-data:L-213800WAVVOPS85N2205 ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:L-BID-RA000585-03193392 ;
+	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000585-03193392 ;
 	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
 	gleif-L1:identifiesAndRecords gleif-L1-data:L-213800YK2FEXWNMT3R12 ;
 	.
@@ -267,7 +397,7 @@ gleif-L1-data:L-25490050856CG53NAC28
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-25490050856CG53NAC28-HQL ;
 	gleif-L1:hasLegalAddress gleif-L1-data:L-25490050856CG53NAC28-LAL ;
 	gleif-L1:hasLegalFormText "Limited Partnership"@en ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:L-BID-RA000602-6534941 ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000602-6534941 ;
 	.
 
 gleif-L1-data:L-25490050856CG53NAC28-HQL
@@ -304,8 +434,8 @@ gleif-L1-data:L-25490050856CG53NAC28-LEI
 	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusLapsed ;
 	gleif-base:hasTag "25490050856CG53NAC28" ;
 	gleif-L1:hasManagingLOU gleif-L1-data:L-5493001KJTIIGC8Y1R12 ;
-	gleif-L1:hasOtherValidationIdentifier gleif-L1-data:L-BID-RA000598-201725900005 ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:L-BID-RA000602-6534941 ;
+	gleif-L1:hasOtherValidationIdentifier gleif-L1-data:BID-RA000598-201725900005 ;
+	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000602-6534941 ;
 	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
 	gleif-L1:identifiesAndRecords gleif-L1-data:L-25490050856CG53NAC28 ;
 	.
@@ -320,7 +450,7 @@ gleif-L1-data:L-31570010000000043842
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-31570010000000043842-LAL ;
 	gleif-L1:hasLegalAddress gleif-L1-data:L-31570010000000043842-LAL ;
 	gleif-L1:hasLegalForm gleif-ELF-data:ELF-6CON ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:L-BID-RA000163-47115378 ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000163-47115378 ;
 	.
 
 gleif-L1-data:L-31570010000000043842-LAL
@@ -342,7 +472,7 @@ gleif-L1-data:L-31570010000000043842-LEI
 	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
 	gleif-base:hasTag "31570010000000043842" ;
 	gleif-L1:hasManagingLOU gleif-L1-data:L-315700LK78Z7C0WMIL03 ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:L-BID-RA000163-47115378 ;
+	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000163-47115378 ;
 	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
 	gleif-L1:identifiesAndRecords gleif-L1-data:L-31570010000000043842 ;
 	.
@@ -356,7 +486,7 @@ gleif-L1-data:L-4469000001AVO26P9X86
 	gleif-L1:hasLegalAddress gleif-L1-data:L-4469000001AVO26P9X86-LAL ;
 	gleif-L1:hasLegalFormText "ASOCIACIÓN CIVIL" ;
 	gleif-L1:hasNameTradingOrOperating "GS1 MÉXICO" ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:L-BID-RA000449-AME9806027F9 ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000449-AME9806027F9 ;
 	.
 
 gleif-L1-data:L-4469000001AVO26P9X86-HQL
@@ -394,9 +524,83 @@ gleif-L1-data:L-4469000001AVO26P9X86-LEI
 	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusLapsed ;
 	gleif-base:hasTag "4469000001AVO26P9X86" ;
 	gleif-L1:hasManagingLOU gleif-L1-data:L-4469000001AVO26P9X86 ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:L-BID-RA000449-AME9806027F9 ;
+	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000449-AME9806027F9 ;
 	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
 	gleif-L1:identifiesAndRecords gleif-L1-data:L-4469000001AVO26P9X86 ;
+	.
+
+gleif-L1-data:L-506700GE1G29325QX363
+	a gleif-L1:LegalEntity ;
+	owl:sameAs gleif-base:GLEIF ;
+	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-CH ;
+	gleif-base:hasNameLegalLocal "Global Legal Entity Identifier Foundation"@en ;
+	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-506700GE1G29325QX363-LAL ;
+	gleif-L1:hasLegalAddress gleif-L1-data:L-506700GE1G29325QX363-LAL ;
+	gleif-L1:hasLegalForm gleif-ELF-data:ELF-2JZ4 ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000548-CHE200595965 ;
+	.
+
+gleif-L1-data:L-506700GE1G29325QX363-LAL
+	a gleif-L1:PhysicalAddressLocal ;
+	gleif-base:hasAddressLine1 "St. Alban-Vorstadt 5"@de ;
+	gleif-base:hasCity "Basel"@de ;
+	gleif-base:hasCountry lcc-3166-1-add:CTRY-CH ;
+	gleif-base:hasPostalCode "4052" ;
+	gleif-base:hasRegion lcc-3166-2-add:REG-CH-BS ;
+	.
+
+gleif-L1-data:L-506700GE1G29325QX363-LEI
+	a
+		gleif-L1:LegalEntityIdentifier ,
+		gleif-L1:LegalEntityIdentifierRegistryEntry
+		;
+	gleif-base:hasInitialRegistrationDate "2018-03-16T06:13:33+01:00"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2019-01-03T09:24:14+01:00"^^xsd:dateTime ;
+	gleif-base:hasNextRenewalDate "2019-03-16T00:00:00+01:00"^^xsd:dateTime ;
+	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
+	gleif-base:hasTag "506700GE1G29325QX363" ;
+	gleif-L1:hasManagingLOU gleif-L1-data:L-506700LOLO7M6V0E4247 ;
+	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000548-CHE200595965 ;
+	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
+	gleif-L1:identifiesAndRecords gleif-L1-data:L-506700GE1G29325QX363 ;
+	.
+
+gleif-L1-data:L-506700LOLO7M6V0E4247
+	a gleif-L1:LegalEntity ;
+	owl:sameAs gleif-RA-data:RA000548-ORG ;
+	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-CH ;
+	gleif-base:hasNameLegalLocal "Office Fédéral de la Statistique (OFS) Registre des entreprises et des établissements (REE)"@de ;
+	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-506700LOLO7M6V0E4247-LAL ;
+	gleif-L1:hasLegalAddress gleif-L1-data:L-506700LOLO7M6V0E4247-LAL ;
+	gleif-L1:hasLegalForm gleif-ELF-data:ELF-BF9N ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000548-CHE115117479 ;
+	.
+
+gleif-L1-data:L-506700LOLO7M6V0E4247-LAL
+	a gleif-L1:PhysicalAddressLocal ;
+	gleif-base:hasAddressLine1 "Espace de l'Europe 10"@de ;
+	gleif-base:hasCity "Neuchâtel"@de ;
+	gleif-base:hasCountry lcc-3166-1-add:CTRY-CH ;
+	gleif-base:hasPostalCode "2000" ;
+	gleif-base:hasRegion lcc-3166-2-add:REG-CH-NE ;
+	.
+
+gleif-L1-data:L-506700LOLO7M6V0E4247-LEI
+	a
+		gleif-L1:LegalEntityIdentifier ,
+		gleif-L1:LegalEntityIdentifierRegistryEntry
+		;
+	gleif-base:hasInitialRegistrationDate "2017-07-20T00:00:00+02:00"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2018-06-25T09:18:06+02:00"^^xsd:dateTime ;
+	gleif-base:hasNextRenewalDate "2019-07-20T00:00:00+02:00"^^xsd:dateTime ;
+	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
+	gleif-base:hasTag "506700LOLO7M6V0E4247" ;
+	gleif-L1:hasManagingLOU gleif-L1-data:L-506700LOLO7M6V0E4247 ;
+	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000548-CHE115117479 ;
+	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
+	gleif-L1:identifiesAndRecords gleif-L1-data:L-506700LOLO7M6V0E4247 ;
 	.
 
 gleif-L1-data:L-5493007CICYM7A0SZ714
@@ -409,7 +613,7 @@ gleif-L1-data:L-5493007CICYM7A0SZ714
 	gleif-L1:hasLegalFormText "SOCIEDAD DE RESPONSABILIDAD LIMITADA DE CAPITAL VARIABLE" ;
 	gleif-L1:hasNameTradingOrOperating "KI MEXICO" ;
 	gleif-L1:hasPreviousLegalName "INDUSTRIAS KI DE MEXICO S.R.L. DE C.V." ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:L-BID-RA000449-IKM981217SD5 ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000449-IKM981217SD5 ;
 	.
 
 gleif-L1-data:L-5493007CICYM7A0SZ714-HQL
@@ -445,124 +649,8 @@ gleif-L1-data:L-5493007CICYM7A0SZ714-LEI
 	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
 	gleif-base:hasTag "5493007CICYM7A0SZ714" ;
 	gleif-L1:hasManagingLOU gleif-L1-data:L-4469000001AVO26P9X86 ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:L-BID-RA000449-IKM981217SD5 ;
+	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000449-IKM981217SD5 ;
 	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
 	gleif-L1:identifiesAndRecords gleif-L1-data:L-5493007CICYM7A0SZ714 ;
-	.
-
-gleif-L1-data:L-BID-AgenziaDelleEntrateViaCristoforoColombo-02653240594
-	a gleif-base:RegistryIdentifier ;
-	gleif-base:hasTag "02653240594" ;
-	gleif-base:identifies gleif-L1-data:L-2138004WRXP5I4MW6417 ;
-	gleif-base:isRegisteredIn gleif-RA-data:AgenziaDelleEntrateViaCristoforoColombo ;
-	.
-
-gleif-L1-data:L-BID-RA000163-35964693
-	a gleif-base:RegistryIdentifier ;
-	gleif-base:hasTag "35964693" ;
-	gleif-base:identifies gleif-L1-data:L-097900BHFR0000075034 ;
-	gleif-base:isRegisteredIn gleif-RA-data:RA000163 ;
-	.
-
-gleif-L1-data:L-BID-RA000163-47115378
-	a gleif-base:RegistryIdentifier ;
-	skos:note "Ignored lei:OtherRegistrationAuthorityID Městský soud v Praze-B 1731" ;
-	gleif-base:hasTag "47115378" ;
-	gleif-base:identifies gleif-L1-data:L-31570010000000043842 ;
-	gleif-base:isRegisteredIn gleif-RA-data:RA000163 ;
-	.
-
-gleif-L1-data:L-BID-RA000449-AME9806027F9
-	a gleif-base:RegistryIdentifier ;
-	gleif-base:hasTag "AME9806027F9" ;
-	gleif-base:identifies gleif-L1-data:L-4469000001AVO26P9X86 ;
-	gleif-base:isRegisteredIn gleif-RA-data:RA000449 ;
-	.
-
-gleif-L1-data:L-BID-RA000449-BTM960401DV7
-	a gleif-base:RegistryIdentifier ;
-	gleif-base:hasTag "BTM960401DV7" ;
-	gleif-base:identifies gleif-L1-data:L-213800PRXJ7WA41AIN67 ;
-	gleif-base:isRegisteredIn gleif-RA-data:RA000449 ;
-	.
-
-gleif-L1-data:L-BID-RA000449-IKM981217SD5
-	a gleif-base:RegistryIdentifier ;
-	gleif-base:hasTag "IKM981217SD5" ;
-	gleif-base:identifies gleif-L1-data:L-5493007CICYM7A0SZ714 ;
-	gleif-base:isRegisteredIn gleif-RA-data:RA000449 ;
-	.
-
-gleif-L1-data:L-BID-RA000592-01235867
-	a gleif-base:RegistryIdentifier ;
-	gleif-base:hasTag "01235867" ;
-	gleif-base:identifies gleif-L1-data:L-213800ICVRLPU57BQ280 ;
-	gleif-base:isRegisteredIn gleif-RA-data:RA000592 ;
-	.
-
-gleif-L1-data:L-BID-RA000592-190775
-	a gleif-base:RegistryIdentifier ;
-	gleif-base:hasTag "190775" ;
-	gleif-base:identifies gleif-L1-data:L-2138001FT6OQ9OG5WR43 ;
-	gleif-base:isRegisteredIn gleif-RA-data:RA000592 ;
-	.
-
-gleif-L1-data:L-BID-RA000598-201725900005
-	a gleif-base:RegistryIdentifier ;
-	gleif-base:hasTag "201725900005" ;
-	gleif-base:identifies gleif-L1-data:L-25490050856CG53NAC28 ;
-	gleif-base:isRegisteredIn gleif-RA-data:RA000598 ;
-	.
-
-gleif-L1-data:L-BID-RA000602-6534941
-	a gleif-base:RegistryIdentifier ;
-	gleif-base:hasTag "6534941" ;
-	gleif-base:identifies gleif-L1-data:L-25490050856CG53NAC28 ;
-	gleif-base:isRegisteredIn gleif-RA-data:RA000602 ;
-	.
-
-gleif-L1-data:L-L-097900BHFR0000075034
-	a gleif-L1:Branch ;
-	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-CZ ;
-	gleif-base:hasNameASCIIAutomatic "J T BANKA, AS, POBOCKA ZAHRANICNEJ BANKY" ;
-	gleif-base:hasNameLegalLocal "J & T BANKA, a.s., pobočka zahraničnej banky"@sk ;
-	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-L-097900BHFR0000075034-HQL ;
-	gleif-L1:hasLegalAddress gleif-L1-data:L-L-097900BHFR0000075034-LAL ;
-	gleif-L1:hasLegalForm gleif-ELF-data:ELF-J8DW ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:L-L-BID-RA000163-35964693 ;
-	.
-
-gleif-L1-data:L-L-097900BHFR0000075034-HQL
-	a gleif-L1:PhysicalAddressLocal ;
-	skos:note "City should be Praha 8 and lang cs - see parent" ;
-	gleif-base:hasAddressLine1 "Pobrežní 297/14"@sk ;
-	gleif-base:hasCity "Bratislava"@sk ;
-	gleif-base:hasCountry lcc-3166-1-add:CTRY-CZ ;
-	gleif-base:hasPostalCode "18600" ;
-	.
-
-gleif-L1-data:L-L-097900BHFR0000075034-LAL
-	a gleif-L1:PhysicalAddressLocal ;
-	gleif-base:hasAddressLine1 "Dvořákovo nábrežie 8"@sk ;
-	gleif-base:hasCity "Bratislava"@sk ;
-	gleif-base:hasCountry lcc-3166-1-add:CTRY-SK ;
-	gleif-base:hasPostalCode "81102" ;
-	.
-
-gleif-L1-data:L-L-097900BHFR0000075034-LEI
-	a
-		gleif-L1:LegalEntityIdentifier ,
-		gleif-L1:LegalEntityIdentifierRegistryEntry
-		;
-	gleif-base:hasInitialRegistrationDate "2017-05-17T00:00:00.00Z"^^xsd:dateTime ;
-	gleif-base:hasLastUpdateDate "2018-08-21T00:00:00.00Z"^^xsd:dateTime ;
-	gleif-base:hasNextRenewalDate "2019-05-17T00:00:00.00Z"^^xsd:dateTime ;
-	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
-	gleif-base:hasTag "097900BHFR0000075034" ;
-	gleif-L1:hasManagingLOU gleif-L1-data:L-097900BEFH0000000217 ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:L-BID-RA000163-35964693 ;
-	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
-	gleif-L1:identifiesAndRecords gleif-L1-data:L-097900BHFR0000075034 ;
 	.
 

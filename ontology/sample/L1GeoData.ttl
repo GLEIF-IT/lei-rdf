@@ -18,7 +18,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix wgs: <http://www.w3.org/2003/01/geo/wgs84_pos/> .
+@prefix wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://www.gleif.org/ontology/sample/L1GeoData/>
@@ -45,10 +45,50 @@
     """ ;
 	.
 
+gleif-L1-data:L-506700GE1G29325QX363
+	a gleif-L1:LegalEntity ;
+	gleif-L1:hasHeadquartersAddress gleif-L1Geo-data:G-NT_.X67rNkRmAT6ZGJg.p482B_1A ;
+	gleif-L1:hasLegalAddress gleif-L1Geo-data:G-NT_.X67rNkRmAT6ZGJg.p482B_1A ;
+	.
+
 gleif-L1-data:L-5493007CICYM7A0SZ714
 	a gleif-L1:LegalEntity ;
 	gleif-L1:hasHeadquartersAddress gleif-L1Geo-data:G-NT_VTJ.3trcvUNJcXHy2v1oDC_zID ;
 	gleif-L1:hasLegalAddress gleif-L1Geo-data:G-NT_VTJ.3trcvUNJcXHy2v1oDC_zID ;
+	.
+
+gleif-L1Geo-data:G-NT_.X67rNkRmAT6ZGJg.p482B_1A
+	a gleif-geo:GeocodedAddress ;
+	wgs:lat "47.5547899"^^xsd:decimal ;
+	wgs:long "7.59523"^^xsd:decimal ;
+	gleif-base:hasAddressNumber "5" ;
+	gleif-base:hasCity "Basel" ;
+	gleif-base:hasCountry lcc-3166-1-add:CTRY-CH ;
+	gleif-base:hasPostalCode "4052" ;
+	gleif-geo:formattedAddressText "Sankt Alban-Vorstadt 5, 4052 Basel Basel-Stadt, Schweiz" ;
+	gleif-geo:hasBoundingBox [
+		a gleif-geo:BoundingBox ;
+		gleif-geo:hasBottomRight [
+			a wgs:Point ;
+			wgs:lat "47.5536657"^^xsd:decimal ;
+			wgs:long "7.5968957"^^xsd:decimal ;
+		] ;
+		gleif-geo:hasTopLeft [
+			a wgs:Point ;
+			wgs:lat "47.5559141"^^xsd:decimal ;
+			wgs:long "7.5935643"^^xsd:decimal ;
+		] ;
+	] ;
+	gleif-geo:hasDistrict "Vorstädte" ;
+	gleif-geo:hasRegionText "BS" ;
+	gleif-geo:hasStreet "Sankt Alban-Vorstadt" ;
+	gleif-geo:locationId "NT_VTJ.3trcvUNJcXHy2v1oDC_zID" ;
+	gleif-geo:matchDate "2018-01-02T03:39:06"^^xsd:dateTime ;
+	gleif-geo:matchLevel gleif-base:hasAddressNumber ;
+	gleif-geo:matchType gleif-base:MatchTypePointAddress ;
+	gleif-geo:originalAddress gleif-L1-data:L-506700GE1G29325QX363-LAL ;
+	gleif-geo:originalAddressText "St. Alban-Vorstadt 5, 4052, Basel, CH-BS, CH" ;
+	gleif-geo:relevance "0.93"^^xsd:decimal ;
 	.
 
 gleif-L1Geo-data:G-NT_VTJ.3trcvUNJcXHy2v1oDC_zID
@@ -79,6 +119,7 @@ gleif-L1Geo-data:G-NT_VTJ.3trcvUNJcXHy2v1oDC_zID
 	gleif-geo:locationId "NT_VTJ.3trcvUNJcXHy2v1oDC_zID" ;
 	gleif-geo:matchDate "2018-02-11T11:42:42"^^xsd:dateTime ;
 	gleif-geo:matchLevel gleif-base:hasAddressNumber ;
+	gleif-geo:matchType gleif-base:MatchTypeInterpolated ;
 	gleif-geo:originalAddress
 		gleif-L1-data:L-5493007CICYM7A0SZ714-HQL ,
 		gleif-L1-data:L-5493007CICYM7A0SZ714-LAL

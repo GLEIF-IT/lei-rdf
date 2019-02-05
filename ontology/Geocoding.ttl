@@ -11,7 +11,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix wgs: <http://www.w3.org/2003/01/geo/wgs84_pos/> .
+@prefix wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -80,17 +80,7 @@ gleif-geo:GeocodedAddress
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasDistrict ;
-			owl:maxCardinality "1" ;
-		] ,
-		[
-			a owl:Restriction ;
 			owl:onProperty gleif-base:hasPostalCode ;
-			owl:maxCardinality "1" ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasStreet ;
 			owl:maxCardinality "1" ;
 		] ,
 		[
@@ -100,7 +90,17 @@ gleif-geo:GeocodedAddress
 		] ,
 		[
 			a owl:Restriction ;
+			owl:onProperty gleif-geo:hasDistrict ;
+			owl:maxCardinality "1" ;
+		] ,
+		[
+			a owl:Restriction ;
 			owl:onProperty gleif-geo:hasRegionText ;
+			owl:maxCardinality "1" ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-geo:hasStreet ;
 			owl:maxCardinality "1" ;
 		] ,
 		[
@@ -128,20 +128,14 @@ gleif-geo:GeocodedAddress
 		] ,
 		[
 			a owl:Restriction ;
+			owl:onProperty gleif-geo:matchType ;
+			owl:onClass gleif-geo:MatchType ;
+			owl:qualifiedCardinality "1" ;
+		] ,
+		[
+			a owl:Restriction ;
 			owl:onProperty gleif-geo:matchDate ;
 			owl:onDataRange xsd:dateTime ;
-			owl:qualifiedCardinality "1" ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty wgs:lat ;
-			owl:onDataRange xsd:decimal ;
-			owl:qualifiedCardinality "1" ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty wgs:long ;
-			owl:onDataRange xsd:decimal ;
 			owl:qualifiedCardinality "1" ;
 		] ,
 		[
