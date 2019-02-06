@@ -145,7 +145,7 @@ gleif-base:GLEIF
 	a gleif-base:RegistrationAuthority ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	gleif-base:hasLegalName "Global Legal Entity Identifier Foundation" ;
-	gleif-base:hasNameLegalLocal "Global Legal Entity Identifier Foundation" ;
+	gleif-base:hasNameLegalLocal "Global Legal Entity Identifier Foundation"@en ;
 	.
 
 gleif-base:Identifier
@@ -174,14 +174,12 @@ gleif-base:LegalEntityRelationship
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasChild ;
-			owl:onClass gleif-base:Entity ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:someValuesFrom gleif-base:Entity ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasParent ;
-			owl:onClass gleif-base:Entity ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:someValuesFrom gleif-base:Entity ;
 		]
 		;
 	rdfs:label "legal entity relationship" ;
