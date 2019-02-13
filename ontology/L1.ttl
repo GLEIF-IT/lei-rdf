@@ -76,8 +76,7 @@ gleif-L1:FundFamily
 gleif-L1:LEI
 	a
 		owl:DatatypeProperty ,
-		owl:FunctionalProperty ,
-		owl:InverseFunctionalProperty
+		owl:FunctionalProperty
 		;
 	rdfs:subPropertyOf gleif-base:hasTag ;
 	rdfs:label "LEI" ;

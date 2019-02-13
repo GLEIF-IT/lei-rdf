@@ -232,8 +232,7 @@ gleif-geo:hasStreet
 gleif-geo:locationId
 	a
 		owl:DatatypeProperty ,
-		owl:FunctionalProperty ,
-		owl:InverseFunctionalProperty
+		owl:FunctionalProperty
 		;
 	rdfs:subPropertyOf gleif-base:hasTag ;
 	rdfs:label "location ID" ;

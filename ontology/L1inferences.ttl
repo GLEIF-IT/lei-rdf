@@ -93,6 +93,15 @@ gleif-L1-infer:hasIdentifier
 	skos:definition "The identifiers for an entity." ;
 	.
 
+gleif-L1-infer:hasLEI
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf gleif-L1-infer:hasIdentifier ;
+	rdfs:label "has LEI" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1inferences/> ;
+	owl:inverseOf gleif-L1:identifiesAndRecords ;
+	skos:definition "The LEI record for an entity." ;
+	.
+
 gleif-L1-infer:hasLocatedEntities
 	a owl:ObjectProperty ;
 	rdfs:label "has located entities" ;
@@ -110,17 +119,6 @@ gleif-L1-infer:hasRegisteredEntities
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1inferences/> ;
 	owl:inverseOf gleif-base:hasLegalJurisdiction ;
 	skos:definition "The entities registered in a jurisdiction." ;
-	.
-
-gleif-L1-infer:leiCode
-	a owl:DatatypeProperty ;
-	rdfs:label "LEI code" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1inferences/> ;
-	owl:propertyChainAxiom (
-		gleif-L1-infer:hasIdentifier
-		gleif-L1:LEI
-	) ;
-	skos:definition "The LEI string for an entity." ;
 	.
 
 gleif-L1-infer:locatedAt
