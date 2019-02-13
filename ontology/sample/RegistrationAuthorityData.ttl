@@ -91,8 +91,8 @@ gleif-RA-data:RA000548
 	gleif-base:hasNameTranslatedEnglish "UID-Register" ;
 	gleif-base:hasTag "RA000548" ;
 	gleif-base:hasWebsite "https://www.uid.admin.ch/"^^xsd:anyURI ;
-	gleif-base:identifies gleif-RA-data:RA000585 ;
-	gleif-base:isManagedBy gleif-RA-data:RA000585-ORG ;
+	gleif-base:identifies gleif-RA-data:RA000548 ;
+	gleif-base:isManagedBy gleif-RA-data:RA000548-ORG ;
 	.
 
 gleif-RA-data:RA000548-ORG
