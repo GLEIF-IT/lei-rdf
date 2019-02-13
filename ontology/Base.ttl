@@ -174,12 +174,14 @@ gleif-base:LegalEntityRelationship
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasChild ;
-			owl:someValuesFrom gleif-base:Entity ;
+			owl:onClass gleif-base:Entity ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasParent ;
-			owl:someValuesFrom gleif-base:Entity ;
+			owl:onClass gleif-base:Entity ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
 		;
 	rdfs:label "legal entity relationship" ;
