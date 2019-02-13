@@ -476,7 +476,7 @@ gleif-L2:hasOwnershipPercentage
 	rdfs:domain gleif-L2:AccountingConsolidation ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	rdfs:range xsd:decimal ;
-	skos:definition "the percentage of the child owned by the parent, if known" ;
+	skos:definition "The percentage of the child owned by the parent, if known." ;
 	.
 
 gleif-L2:hasRelationshipPeriod
@@ -494,7 +494,7 @@ gleif-L2:hasRelationshipStatus
 	rdfs:domain gleif-base:LegalEntityRelationship ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	rdfs:range gleif-L2:RelationshipStatus ;
-	skos:definition "indicates the status of the relationship (i.e., active, inactive)" ;
+	skos:definition "Indicates the status of the relationship (i.e., active, inactive)." ;
 	.
 
 gleif-L2:hasValidationDocuments

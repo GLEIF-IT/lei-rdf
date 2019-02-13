@@ -73,6 +73,21 @@ gleif-L1:FundFamily
 	skos:definition "The legal entity has been declared to manage a fund." ;
 	.
 
+gleif-L1:LEI
+	a
+		owl:DatatypeProperty ,
+		owl:FunctionalProperty ,
+		owl:InverseFunctionalProperty
+		;
+	rdfs:subPropertyOf gleif-base:hasTag ;
+	rdfs:label "LEI" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	rdfs:range xsd:string ;
+	skos:altLabel "has LEI string" ;
+	skos:definition "The ISO 17442 compatible identifier for the legal entity recorded." ;
+	skos:prefLabel "LEI" ;
+	.
+
 gleif-L1:LEIregistry
 	a gleif-base:Registry ;
 	rdfs:label "LEI registry" ;
@@ -287,6 +302,12 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasLastUpdateDate ;
 			owl:onDataRange xsd:dateTime ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:LEI ;
+			owl:onDataRange xsd:string ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
 		;
@@ -529,7 +550,10 @@ gleif-L1:hasLegalFormText
 	.
 
 gleif-L1:hasManagingLOU
-	a owl:ObjectProperty ;
+	a
+		owl:ObjectProperty ,
+		owl:FunctionalProperty
+		;
 	rdfs:subPropertyOf gleif-base:isManagedBy ;
 	rdfs:label "has managing LOU" ;
 	rdfs:domain gleif-base:RegistryEntry ;
@@ -619,7 +643,10 @@ gleif-L1:hasValidationSources
 	.
 
 gleif-L1:identifiesAndRecords
-	a owl:ObjectProperty ;
+	a
+		owl:ObjectProperty ,
+		owl:FunctionalProperty
+		;
 	rdfs:subPropertyOf
 		gleif-base:identifies ,
 		gleif-base:records

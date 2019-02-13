@@ -112,6 +112,17 @@ gleif-L1-infer:hasRegisteredEntities
 	skos:definition "The entities registered in a jurisdiction." ;
 	.
 
+gleif-L1-infer:leiCode
+	a owl:DatatypeProperty ;
+	rdfs:label "LEI code" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1inferences/> ;
+	owl:propertyChainAxiom (
+		gleif-L1-infer:hasIdentifier
+		gleif-L1:LEI
+	) ;
+	skos:definition "The LEI string for an entity." ;
+	.
+
 gleif-L1-infer:locatedAt
 	a owl:ObjectProperty ;
 	rdfs:label "located at" ;
