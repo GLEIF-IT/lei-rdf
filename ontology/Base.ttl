@@ -556,7 +556,9 @@ gleif-base:hasNameASCII
 	rdfs:subPropertyOf gleif-base:hasNameTransliterated ;
 	rdfs:label "has name ASCII" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:altLabel "has ASCII name" ;
 	skos:definition "The name used to refer to a person or organization in 7 bit ASCII text (ISO 646); also valid UNICODE (ISO 10646)." ;
+	skos:prefLabel "has name ASCII" ;
 	.
 
 gleif-base:hasNameASCIIAutomatic
@@ -567,7 +569,9 @@ gleif-base:hasNameASCIIAutomatic
 		;
 	rdfs:label "has name ASCII automatic" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:altLabel "has auto ASCII transliterated legal name" ;
 	skos:definition "Legal name of the entity transliterated to ASCII characters, auto-transliterated by the managing LOU." ;
+	skos:prefLabel "has name ASCII automatic" ;
 	.
 
 gleif-base:hasNameASCIIPreferred
@@ -578,7 +582,9 @@ gleif-base:hasNameASCIIPreferred
 		;
 	rdfs:label "has name ASCII preferred" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:altLabel "has preferred transliterated legal name" ;
 	skos:definition "Legal name of the entity transliterated to ASCII characters, provided by the entity for this purpose." ;
+	skos:prefLabel "has name ASCII preferred" ;
 	.
 
 gleif-base:hasNameAdditional
@@ -589,7 +595,9 @@ gleif-base:hasNameAdditional
 		;
 	rdfs:label "has name additional" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:altLabel "has other name" ;
 	skos:definition "The name used to refer to an person or organization informally." ;
+	skos:prefLabel "has name additional" ;
 	.
 
 gleif-base:hasNameLegal
@@ -597,7 +605,9 @@ gleif-base:hasNameLegal
 	rdfs:subPropertyOf gleif-base:hasName ;
 	rdfs:label "has name legal" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:altLabel "has legal name" ;
 	skos:definition "The name used to refer to an person or organization in legal communications." ;
+	skos:prefLabel "has name legal" ;
 	.
 
 gleif-base:hasNameLegalLocal
@@ -609,7 +619,9 @@ gleif-base:hasNameLegalLocal
 		;
 	rdfs:label "has name legal local" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:altLabel "has local legal name" ;
 	skos:definition "The name used to refer to an person or organization in legal communications in local alphabet, which may be English." ;
+	skos:prefLabel "has name legal local" ;
 	.
 
 gleif-base:hasNameLocal
@@ -617,15 +629,22 @@ gleif-base:hasNameLocal
 	rdfs:subPropertyOf gleif-base:hasName ;
 	rdfs:label "has name local" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:altLabel "has local name" ;
 	skos:definition "A name in a language local to the entity identified; may be English." ;
+	skos:prefLabel "has name local" ;
 	.
 
 gleif-base:hasNameTranslatedEnglish
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasNameASCII ;
-	rdfs:label "has legal name" ;
+	rdfs:label "has name translated English" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:altLabel
+		"has English name" ,
+		"has international name"
+		;
 	skos:definition "The name used to refer to a person or organization, translated into English. Transliterated to ASCII by definition." ;
+	skos:prefLabel "has name translated English" ;
 	.
 
 gleif-base:hasNameTransliterated
@@ -636,7 +655,12 @@ gleif-base:hasNameTransliterated
 		;
 	rdfs:label "has name transliterated" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:altLabel
+		"has transliterated name" ,
+		"has transliterated other names"
+		;
 	skos:definition "The name used to refer to a person or organization, converted from original to western text. Not generally the legal name." ;
+	skos:prefLabel "has name transliterated" ;
 	.
 
 gleif-base:hasNextRenewalDate

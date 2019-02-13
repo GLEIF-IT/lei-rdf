@@ -546,7 +546,9 @@ gleif-L1:hasNameAdditionalLocal
 		;
 	rdfs:label "has name additional local" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:altLabel "has other entity names" ;
 	skos:definition "Registered name of the entity in an alternative language in the legal jurisdiction in which the entity is registered." ;
+	skos:prefLabel "has name additional local" ;
 	.
 
 gleif-L1:hasNamePreviousLegal
@@ -554,7 +556,9 @@ gleif-L1:hasNamePreviousLegal
 	rdfs:subPropertyOf gleif-base:hasNameAdditional ;
 	rdfs:label "has name previous legal" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:altLabel "has previous legal name" ;
 	skos:definition "A primary legal name previously used by this entity." ;
+	skos:prefLabel "has name previous legal" ;
 	.
 
 gleif-L1:hasNameTradingOrOperating
@@ -565,10 +569,12 @@ gleif-L1:hasNameTradingOrOperating
 	skos:altLabel
 		"brand name" ,
 		"doing business as" ,
+		"has trading or operating name" ,
 		"operating under" ,
 		"trading as"
 		;
 	skos:definition "A 'trading as', 'brand name' or 'operating under' name currently used by this entity in addition to, but not replacing, the (primary) legal, official registered name" ;
+	skos:prefLabel "has name trading or operating" ;
 	.
 
 gleif-L1:hasOtherValidationIdentifier
@@ -586,7 +592,10 @@ gleif-L1:hasRegistrationIdentifier
 	rdfs:label "has registration identifier" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	rdfs:range gleif-base:RegistryIdentifier ;
-	skos:altLabel "has business register entity ID" ;
+	skos:altLabel
+		"has business register entity ID" ,
+		"has registration authority"
+		;
 	skos:definition "An identifier for the legal entity in a business registry in the jurisdiction of legal registration, or in the appropriate registration authority." ;
 	skos:prefLabel "has registration identifier" ;
 	.
@@ -596,7 +605,9 @@ gleif-L1:hasValidationIdentifier
 	rdfs:label "has validation identifier" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	rdfs:range gleif-base:RegistryIdentifier ;
+	skos:altLabel "has validation authority" ;
 	skos:definition "The (primary) registration used by the LOU to validate the entity data." ;
+	skos:prefLabel "has validation identifier" ;
 	.
 
 gleif-L1:hasValidationSources
