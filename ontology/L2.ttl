@@ -30,7 +30,7 @@
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/>
 		;
-	owl:versionIRI gleif-L2:V1.0 ;
+	owl:versionIRI <https://www.gleif.org/ontology/L2-v1.0/L2/> ;
 	.
 
 gleif-base:LegalEntityRelationship

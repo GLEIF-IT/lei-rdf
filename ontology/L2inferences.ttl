@@ -25,6 +25,7 @@
 		<https://www.gleif.org/ontology/L1/> ,
 		<https://www.gleif.org/ontology/L2/>
 		;
+	owl:versionIRI <https://www.gleif.org/ontology/L2inferences-v1.0/L2inferences/> ;
 	.
 
 gleif-L2-infer:Child

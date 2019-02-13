@@ -29,7 +29,7 @@
 		<http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ,
 		<https://www.gleif.org/ontology/Base/>
 		;
-	owl:versionIRI gleif-ra:V1.0 ;
+	owl:versionIRI <https://www.gleif.org/ontology/RegistrationAuthority-1.0/RegistrationAuthority/> ;
 	.
 
 gleif-ra:BusinessRegistry

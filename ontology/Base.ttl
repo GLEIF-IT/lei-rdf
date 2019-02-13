@@ -25,7 +25,7 @@
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	dct:title "Global Legal Entity Identifier Foundation Base Ontology"@en ;
 	owl:imports <http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ;
-	owl:versionIRI gleif-base:V1.0 ;
+	owl:versionIRI <https://www.gleif.org/ontology/Base-v1.0/Base/> ;
 	.
 
 gleif-base:Entity

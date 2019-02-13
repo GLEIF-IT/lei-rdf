@@ -38,7 +38,7 @@
 		<https://www.gleif.org/ontology/sample/EntityLegalFormData/> ,
 		<https://www.gleif.org/ontology/sample/RegistrationAuthorityData/>
 		;
-	owl:versionIRI gleif-L1-data:V1.0 ;
+	owl:versionIRI <https://www.gleif.org/ontology/L1-v1.0/sample/L1Data/> ;
 	skos:note """There are 5 categories of individual:
     1) The LegalEntity. The URI is the LEI itself in the namespace of this ontology preceded by L-.
     2) The LegalEntityIdentifier and LegalEntityRegistryEntry. The URI is that of the LegalEntity followed by -LE.    

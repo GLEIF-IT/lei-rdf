@@ -29,7 +29,7 @@
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/>
 		;
-	owl:versionIRI gleif-L1internal:V1.0 ;
+	owl:versionIRI <https://www.gleif.org/ontology/L1internal-v1.0/L1internal/> ;
 	.
 
 gleif-L1internal:LegalEntityIdentifierRegistryEntry

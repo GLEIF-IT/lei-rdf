@@ -37,7 +37,7 @@
 		<https://www.gleif.org/ontology/L2/> ,
 		<https://www.gleif.org/ontology/RegistrationAuthority/>
 		;
-	owl:versionIRI gleif-L1-infer:V1.0 ;
+	owl:versionIRI <https://www.gleif.org/ontology/L1inferences-v1.0/L1inferences/> ;
 	.
 
 gleif-elf:EntityLegalFormIdentifier
