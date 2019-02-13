@@ -143,10 +143,8 @@ gleif-L2:InternationalBranchRelationship
 	rdfs:subClassOf gleif-base:LegalEntityRelationship ;
 	rdfs:label "international branch relationship" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	skos:altLabel "foreign branch relationship" ;
 	skos:definition "Child is a lead international branch or international branch network outside of the head office’s jurisdiction. The Parent is the Head Office and MUST have an LEI." ;
 	skos:note "A non-incorporated establishment of a head office legal entity, when this establishment is located in a separate jurisdiction from the jurisdiction in which the head office legal entity is located, i.e., in a host jurisdiction outside of its home jurisdiction. Under this definition, an establishment may consist of a single office or other business premises, or of several offices (i.e., a branch network) in different locations of the same host jurisdiction: even in the latter case, only one LEI would be issued per host jurisdiction, essentially amounting to, “one country-one LEI.” Unlike foreign subsidiaries of a parent entity, which are separately incorporated or organised under the laws of the host jurisdictions, an international branch, as defined here, is legally dependent on the head office legal entity and cannot exist without its head office legal entity " ;
-	skos:prefLabel "international branch relationship" ;
 	.
 
 gleif-L2:LegalEntityRelationshipRecord
