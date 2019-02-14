@@ -104,6 +104,11 @@ gleif-L1:LegalEntity
 		gleif-base:Entity ,
 		[
 			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasLegalName ;
+			owl:cardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
 			owl:onProperty gleif-base:hasEntityExpirationReason ;
 			owl:onClass gleif-base:EntityExpirationReason ;
 			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -134,7 +139,7 @@ gleif-L1:LegalEntity
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasNameAdditional ;
+			owl:onProperty gleif-L1:hasOtherEntityNames ;
 			owl:minCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
 		[
