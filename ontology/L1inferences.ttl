@@ -108,7 +108,7 @@ gleif-L1-infer:hasLocatedEntities
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1inferences/> ;
 	owl:propertyChainAxiom (
 		gleif-L1-infer:hasAddresses
-		gleif-L1-infer:locatedAt
+		gleif-L1-infer:isAddressFor
 	) ;
 	skos:definition "The entities located in a jurisdiction." ;
 	.
@@ -121,9 +121,9 @@ gleif-L1-infer:hasRegisteredEntities
 	skos:definition "The entities registered in a jurisdiction." ;
 	.
 
-gleif-L1-infer:locatedAt
+gleif-L1-infer:isAddressFor
 	a owl:ObjectProperty ;
-	rdfs:label "located at" ;
+	rdfs:label "is address for" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1inferences/> ;
 	owl:inverseOf gleif-base:hasAddress ;
 	skos:definition "The entities that are located at this address." ;
