@@ -62,7 +62,7 @@ gleif-L1:Fund
 		;
 	rdfs:label "fund" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "The legal entity is a fund managed by another legal entity." ;
+	skos:definition "The legal entity is a fund." ;
 	.
 
 gleif-L1:FundFamily
