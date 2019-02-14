@@ -69,12 +69,6 @@ gleif-L2:AccountingConsolidation
 		gleif-base:LegalEntityRelationship ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L2:hasOwnershipPercentage ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-			owl:onDataRange xsd:decimal ;
-		] ,
-		[
-			a owl:Restriction ;
 			owl:onProperty gleif-L2:hasAccountingStandard ;
 			owl:onClass gleif-L2:AccountingStandard ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
