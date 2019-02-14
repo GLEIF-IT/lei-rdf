@@ -168,6 +168,16 @@ gleif-L2internal:RegistrationStatusTransferred
 	gleif-base:hasTag "TRANSFERRED" ;
 	.
 
+gleif-L2internal:hasOwnershipPercentage
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf gleif-base:isQuantifiedBy ;
+	rdfs:label "has ownership percentage" ;
+	rdfs:domain gleif-L2:AccountingConsolidation ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2internal/> ;
+	rdfs:range xsd:decimal ;
+	skos:definition "The percentage of the child owned by the parent, if known." ;
+	.
+
 []
 	a owl:AllDifferent ;
 	owl:members (

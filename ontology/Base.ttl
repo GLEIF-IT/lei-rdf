@@ -274,7 +274,7 @@ gleif-base:PhysicalAddress
 	rdfs:label "physical address"@en ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	skos:definition "a physical address where communications can be addressed, papers served or representatives located for any kind of organization or person" ;
-	skos:scopeNote "An address is a collection of information, presented in a mostly fixed format, used for describing the location of a building, apartment, or other structure or a plot of land, generally using political boundaries and street names as references, along with other identifiers such as house or apartment numbers.  Some addresses also contain special codes to aid routing of mail and packages, such as a ZIP code or post code. (Wikipedia)" ;
+	skos:note "An address is a collection of information, presented in a mostly fixed format, used for describing the location of a building, apartment, or other structure or a plot of land, generally using political boundaries and street names as references, along with other identifiers such as house or apartment numbers.  Some addresses also contain special codes to aid routing of mail and packages, such as a ZIP code or post code. (Wikipedia)" ;
 	.
 
 gleif-base:RegistrationAuthority
@@ -423,7 +423,10 @@ gleif-base:hasAddressNumberWithinBuilding
 	.
 
 gleif-base:hasChild
-	a owl:ObjectProperty ;
+	a
+		owl:ObjectProperty ,
+		owl:FunctionalProperty
+		;
 	rdfs:label "has child" ;
 	rdfs:domain gleif-base:LegalEntityRelationship ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
@@ -485,7 +488,10 @@ gleif-base:hasEntityExpirationReason
 	.
 
 gleif-base:hasEntityStatus
-	a owl:ObjectProperty ;
+	a
+		owl:ObjectProperty ,
+		owl:FunctionalProperty
+		;
 	rdfs:label "has entity status" ;
 	rdfs:domain gleif-base:Entity ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
@@ -674,7 +680,10 @@ gleif-base:hasNextRenewalDate
 	.
 
 gleif-base:hasParent
-	a owl:ObjectProperty ;
+	a
+		owl:ObjectProperty ,
+		owl:FunctionalProperty
+		;
 	rdfs:label "has parent" ;
 	rdfs:domain gleif-base:LegalEntityRelationship ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
@@ -705,7 +714,10 @@ gleif-base:hasRegion
 	.
 
 gleif-base:hasRegistrationStatus
-	a owl:ObjectProperty ;
+	a
+		owl:ObjectProperty ,
+		owl:FunctionalProperty
+		;
 	rdfs:label "has registration status" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range gleif-base:RegistrationStatus ;
@@ -751,7 +763,10 @@ gleif-base:hasWebsite
 	.
 
 gleif-base:identifies
-	a owl:ObjectProperty ;
+	a
+		owl:ObjectProperty ,
+		owl:FunctionalProperty
+		;
 	rdfs:label "identifies" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	skos:definition "The relationship between an identifier and the thing it uniquely identifies." ;
@@ -790,7 +805,10 @@ gleif-base:isRegisteredIn
 	.
 
 gleif-base:records
-	a owl:ObjectProperty ;
+	a
+		owl:ObjectProperty ,
+		owl:FunctionalProperty
+		;
 	rdfs:label "records" ;
 	rdfs:domain gleif-base:RegistryEntry ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;

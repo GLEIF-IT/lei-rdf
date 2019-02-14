@@ -469,16 +469,6 @@ gleif-L2:hasDocumentFilingPeriod
 	skos:definition "The dates in this instance of Period indicate the validity period of a regulatory filing, accounting document, or other document demonstrating the relationship's validity" ;
 	.
 
-gleif-L2:hasOwnershipPercentage
-	a owl:DatatypeProperty ;
-	rdfs:subPropertyOf gleif-base:isQuantifiedBy ;
-	rdfs:label "has ownership percentage" ;
-	rdfs:domain gleif-L2:AccountingConsolidation ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	rdfs:range xsd:decimal ;
-	skos:definition "the percentage of the child owned by the parent, if known" ;
-	.
-
 gleif-L2:hasRelationshipPeriod
 	a owl:ObjectProperty ;
 	rdfs:label "has relationship period" ;
@@ -494,7 +484,7 @@ gleif-L2:hasRelationshipStatus
 	rdfs:domain gleif-base:LegalEntityRelationship ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	rdfs:range gleif-L2:RelationshipStatus ;
-	skos:definition "indicates the status of the relationship (i.e., active, inactive)" ;
+	skos:definition "Indicates the status of the relationship (i.e., active, inactive)." ;
 	.
 
 gleif-L2:hasValidationDocuments
