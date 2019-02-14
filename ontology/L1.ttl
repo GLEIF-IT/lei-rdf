@@ -505,6 +505,28 @@ gleif-L1:ValidationSourceKindPartiallyCorroborated
 	gleif-base:hasTag "PARTIALLY_CORROBORATED" ;
 	.
 
+gleif-L1:hasAlternativeLanguageLegalName
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf
+		gleif-base:hasNameAdditionalLocal ,
+		gleif-L1:hasOtherEntityNames
+		;
+	rdfs:label "has other entity names" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Registered name of the entity in an alternative language in the legal jurisdiction in which the entity is registered." ;
+	.
+
+gleif-L1:hasAutoASCIITransliteratedLegalName
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf
+		gleif-base:hasNameASCIIAutomatic ,
+		gleif-L1:hasTransliteratedOtherEntityNames
+		;
+	rdfs:label "has auto ASCII transliterated legal name" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Legal name of the entity transliterated to ASCII characters, auto-transliterated by the managing LOU." ;
+	.
+
 gleif-L1:hasFundFamily
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf gleif-base:isManagedBy ;
@@ -548,6 +570,14 @@ gleif-L1:hasLegalFormText
 	skos:definition "A legacy code or textual description for the legal entity's legal form, used until a current code from the GLEIF-maintained list can be used." ;
 	.
 
+gleif-L1:hasLegalName
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf gleif-base:hasNameLegalLocal ;
+	rdfs:label "has legal name" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "The legal name of the entity." ;
+	.
+
 gleif-L1:hasManagingLOU
 	a
 		owl:ObjectProperty ,
@@ -561,43 +591,13 @@ gleif-L1:hasManagingLOU
 	skos:definition "The legal form of the entity, taken from the ISO Entity Legal Form (ELF) data set maintained by GLEIF." ;
 	.
 
-gleif-L1:hasNameAdditionalLocal
-	a owl:DatatypeProperty ;
-	rdfs:subPropertyOf
-		gleif-base:hasNameAdditional ,
-		gleif-base:hasNameLocal
-		;
-	rdfs:label "has name additional local" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:altLabel "has other entity names" ;
-	skos:definition "Registered name of the entity in an alternative language in the legal jurisdiction in which the entity is registered." ;
-	skos:prefLabel "has name additional local" ;
-	.
-
-gleif-L1:hasNamePreviousLegal
+gleif-L1:hasOtherEntityNames
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasNameAdditional ;
-	rdfs:label "has name previous legal" ;
+	rdfs:label "has other entity names" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:altLabel "has previous legal name" ;
-	skos:definition "A primary legal name previously used by this entity." ;
-	skos:prefLabel "has name previous legal" ;
-	.
-
-gleif-L1:hasNameTradingOrOperating
-	a owl:DatatypeProperty ;
-	rdfs:subPropertyOf gleif-base:hasNameAdditional ;
-	rdfs:label "has name trading or operating" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:altLabel
-		"brand name" ,
-		"doing business as" ,
-		"has trading or operating name" ,
-		"operating under" ,
-		"trading as"
-		;
-	skos:definition "A 'trading as', 'brand name' or 'operating under' name currently used by this entity in addition to, but not replacing, the (primary) legal, official registered name" ;
-	skos:prefLabel "has name trading or operating" ;
+	skos:definition "An optional list of other names (excluding transliterations) for the legal entity." ;
+	skos:note "Not expected to be used directly: use one of its subProperties." ;
 	.
 
 gleif-L1:hasOtherValidationIdentifier
@@ -608,6 +608,28 @@ gleif-L1:hasOtherValidationIdentifier
 	skos:altLabel "has additional validation identifier" ;
 	skos:definition "An optional list of additional registrations used by the LEI Issuer to validate the entity data." ;
 	skos:prefLabel "has other validation identifier" ;
+	.
+
+gleif-L1:hasPreferredASCIITransliteratedLegalName
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf
+		gleif-base:hasNameASCIIPreferred ,
+		gleif-L1:hasTransliteratedOtherEntityNames
+		;
+	rdfs:label "has preferred ASCII transliterated legal name" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Legal name of the entity transliterated to ASCII characters, provided by the entity for this purpose." ;
+	.
+
+gleif-L1:hasPreviousLegalName
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf
+		gleif-base:hasNamePreviousLegal ,
+		gleif-L1:hasOtherEntityNames
+		;
+	rdfs:label "has previous legal name" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "A primary legal name previously used by this entity." ;
 	.
 
 gleif-L1:hasRegistrationIdentifier
@@ -621,6 +643,34 @@ gleif-L1:hasRegistrationIdentifier
 		;
 	skos:definition "An identifier for the legal entity in a business registry in the jurisdiction of legal registration, or in the appropriate registration authority." ;
 	skos:prefLabel "has registration identifier" ;
+	.
+
+gleif-L1:hasTradingOrOperatingName
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf
+		gleif-base:hasNameTradingOrOperating ,
+		gleif-L1:hasOtherEntityNames
+		;
+	rdfs:label "has trading or operating name" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:altLabel
+		"brand name" ,
+		"doing business as" ,
+		"has trading or operating name" ,
+		"operating under" ,
+		"trading as"
+		;
+	skos:definition "A 'trading as', 'brand name' or 'operating under' name currently used by this entity in addition to, but not replacing, the (primary) legal, official registered name" ;
+	skos:prefLabel "has trading or operating name" ;
+	.
+
+gleif-L1:hasTransliteratedOtherEntityNames
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf gleif-base:hasNameTransliterated ;
+	rdfs:label "has transliterated other entity names" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "An optional list of ASCII-transliterated (i.e. Latin- or Romanized) representations of names for the legal entity." ;
+	skos:note "Not expected to be used directly: use one of its subProperties." ;
 	.
 
 gleif-L1:hasValidationIdentifier
