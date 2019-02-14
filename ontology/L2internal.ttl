@@ -28,6 +28,7 @@
 		<https://www.gleif.org/ontology/L1internal/> ,
 		<https://www.gleif.org/ontology/L2/>
 		;
+	owl:versionIRI <https://www.gleif.org/ontology/L2internal-v1.0/L2internal/> ;
 	.
 
 gleif-L2:LegalEntityRelationshipRecord

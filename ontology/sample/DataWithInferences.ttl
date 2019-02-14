@@ -1,6 +1,7 @@
 # baseURI: https://www.gleif.org/ontology/sample/DataWithInferences/
 # imports: https://www.gleif.org/ontology/L1inferences/
 # imports: https://www.gleif.org/ontology/L2inferences/
+# imports: https://www.gleif.org/ontology/sample/L1GeoData/
 # imports: https://www.gleif.org/ontology/sample/L2Data/
 
 @base <https://www.gleif.org/ontology/sample/DataWithInferences/> .
@@ -23,6 +24,7 @@
 	owl:imports
 		<https://www.gleif.org/ontology/L1inferences/> ,
 		<https://www.gleif.org/ontology/L2inferences/> ,
+		<https://www.gleif.org/ontology/sample/L1GeoData/> ,
 		<https://www.gleif.org/ontology/sample/L2Data/>
 		;
 	.

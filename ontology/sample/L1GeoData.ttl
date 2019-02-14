@@ -39,7 +39,7 @@
 		<https://www.gleif.org/ontology/L1/> ,
 		<https://www.gleif.org/ontology/sample/L1Data/>
 		;
-	owl:versionIRI gleif-L1Geo-data:V1.0 ;
+	owl:versionIRI <https://www.gleif.org/ontology/Geocoding-v1.0/sample/L1GeoData/> ;
 	skos:note """This adds triples to the existing L1Data ontology and adds 1 additional category of individual:
     1) The Geocoded address. The URI is the locationId preceded with G in the namespace of this ontology.
     """ ;

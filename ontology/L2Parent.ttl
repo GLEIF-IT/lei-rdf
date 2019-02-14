@@ -33,7 +33,7 @@
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/>
 		;
-	owl:versionIRI gleif-L2parent:V1.0 ;
+	owl:versionIRI <https://www.gleif.org/ontology/L2parent-v1.0/L2parent/> ;
 	.
 
 gleif-L2parent:EntityWithoutLEI

@@ -38,7 +38,7 @@
 		<https://www.gleif.org/ontology/sample/EntityLegalFormData/> ,
 		<https://www.gleif.org/ontology/sample/RegistrationAuthorityData/>
 		;
-	owl:versionIRI gleif-L1-data:V1.0 ;
+	owl:versionIRI <https://www.gleif.org/ontology/L1-v1.0/sample/L1Data/> ;
 	skos:note """There are 5 categories of individual:
     1) The LegalEntity. The URI is the LEI itself in the namespace of this ontology preceded by L-.
     2) The LegalEntityIdentifier and LegalEntityRegistryEntry. The URI is that of the LegalEntity followed by -LE.    
@@ -611,8 +611,8 @@ gleif-L1-data:L-5493007CICYM7A0SZ714
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-5493007CICYM7A0SZ714-HQL ;
 	gleif-L1:hasLegalAddress gleif-L1-data:L-5493007CICYM7A0SZ714-LAL ;
 	gleif-L1:hasLegalFormText "SOCIEDAD DE RESPONSABILIDAD LIMITADA DE CAPITAL VARIABLE" ;
+	gleif-L1:hasNamePreviousLegal "INDUSTRIAS KI DE MEXICO S.R.L. DE C.V." ;
 	gleif-L1:hasNameTradingOrOperating "KI MEXICO" ;
-	gleif-L1:hasPreviousLegalName "INDUSTRIAS KI DE MEXICO S.R.L. DE C.V." ;
 	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000449-IKM981217SD5 ;
 	.
 

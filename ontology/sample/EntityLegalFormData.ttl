@@ -34,7 +34,7 @@
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/EntityLegalForm/>
 		;
-	owl:versionIRI gleif-ELF-data:V1.0 ;
+	owl:versionIRI <https://www.gleif.org/ontology/EntityLegalForm-v1.0/sample/EntityLegalFormData/> ;
 	skos:note """There is 1 category of individual:
     1) The EntityLegalForm and its Identifier. The URI is the code preceded by ELF-.""" ;
 	.

@@ -35,7 +35,7 @@
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/RegistrationAuthority/>
 		;
-	owl:versionIRI gleif-RA-data:V1.0 ;
+	owl:versionIRI <https://www.gleif.org/ontology/RegistrationAuthority-v1.0/sample/RegistrationAuthorityData/> ;
 	skos:note """There are 2 categories of individual:
     1) The BusinessRegistry and RACode. The URI is the RA code.
     2) The RegistrationAuthority organization. The URI is that of the BusinessRegistry followed by -ORG.""" ;
@@ -91,8 +91,8 @@ gleif-RA-data:RA000548
 	gleif-base:hasNameTranslatedEnglish "UID-Register" ;
 	gleif-base:hasTag "RA000548" ;
 	gleif-base:hasWebsite "https://www.uid.admin.ch/"^^xsd:anyURI ;
-	gleif-base:identifies gleif-RA-data:RA000585 ;
-	gleif-base:isManagedBy gleif-RA-data:RA000585-ORG ;
+	gleif-base:identifies gleif-RA-data:RA000548 ;
+	gleif-base:isManagedBy gleif-RA-data:RA000548-ORG ;
 	.
 
 gleif-RA-data:RA000548-ORG

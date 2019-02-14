@@ -30,7 +30,7 @@
 		<http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ,
 		<https://www.gleif.org/ontology/Base/>
 		;
-	owl:versionIRI gleif-elf:V1.0 ;
+	owl:versionIRI <https://www.gleif.org/ontology/EntityLegalForm-v1.0/EntityLegalForm/> ;
 	.
 
 gleif-elf:ELFregistry
