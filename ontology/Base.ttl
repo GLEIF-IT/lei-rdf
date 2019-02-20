@@ -608,6 +608,17 @@ gleif-base:hasNameAdditional
 	skos:prefLabel "has name additional" ;
 	.
 
+gleif-base:hasNameAdditionalLocal
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf
+		gleif-base:hasNameAdditional ,
+		gleif-base:hasNameLocal
+		;
+	rdfs:label "has name additional local" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:definition "Registered name of the entity in an alternative language in the legal jurisdiction in which the entity is registered." ;
+	.
+
 gleif-base:hasNameLegal
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasName ;
@@ -640,6 +651,30 @@ gleif-base:hasNameLocal
 	skos:altLabel "has local name" ;
 	skos:definition "A name in a language local to the entity identified; may be English." ;
 	skos:prefLabel "has name local" ;
+	.
+
+gleif-base:hasNamePreviousLegal
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf gleif-base:hasNameAdditional ;
+	rdfs:label "has name previous legal" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/base/> ;
+	skos:definition "A primary legal name previously used by this entity." ;
+	.
+
+gleif-base:hasNameTradingOrOperating
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf gleif-base:hasNameAdditional ;
+	rdfs:label "has name trading or operating" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/base/> ;
+	skos:altLabel
+		"brand name" ,
+		"doing business as" ,
+		"has trading or operating name" ,
+		"operating under" ,
+		"trading as"
+		;
+	skos:definition "A 'trading as', 'brand name' or 'operating under' name currently used by this entity in addition to, but not replacing, the (primary) legal, official registered name" ;
+	skos:prefLabel "has name trading or operating" ;
 	.
 
 gleif-base:hasNameTranslatedEnglish
