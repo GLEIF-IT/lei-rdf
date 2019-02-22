@@ -539,7 +539,15 @@ gleif-L1:hasFundFamily
 	rdfs:domain gleif-L1:Fund ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	rdfs:range gleif-L1:FundFamily ;
-	skos:definition "The manager of the fund." ;
+	skos:definition "The entity that is the manager of the fund." ;
+	.
+
+gleif-L1:hasFundFamilyName
+	a owl:DatatypeProperty ;
+	rdfs:label "has fund family name" ;
+	rdfs:domain gleif-L1:Fund ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "The name of an entity that is the manager of the fund." ;
 	.
 
 gleif-L1:hasHeadquartersAddress
