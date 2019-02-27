@@ -68,8 +68,8 @@ gleif-L2-data:R-097900BHFR0000075034-31570010000000043842-I-REC
 		a gleif-base:Period ;
 		gleif-base:hasStart "2018-05-17T00:00:00Z"^^xsd:dateTime ;
 	] ;
-	gleif-L2:hasValidationDocuments gleif-L2:RelationshipValidationDocumentsKindFullyCorrobated ;
-	gleif-L2:hasValidationSources gleif-L1:ValidationSourceKindOtherOfficialDocuments ;
+	gleif-L2:hasValidationDocuments gleif-L2:RelationshipValidationDocumentsKindOtherOfficialDocuments ;
+	gleif-L2:hasValidationSources gleif-L1:ValidationSourceKindFullyCorrobated ;
 	.
 
 gleif-L2-data:R-2138005GBBOTGXJ4Z883-7245003HPQ1HG4CHTL79-D
@@ -216,8 +216,8 @@ gleif-L2-data:R-7245003HPQ1HG4CHTL79-335800LN9THPFUHMGI86-D-REC
 		a gleif-base:Period ;
 		gleif-base:hasStart "2017-08-21T00:00:00.000+02:00"^^xsd:dateTime ;
 	] ;
-	gleif-L2:hasValidationDocuments gleif-L2:RelationshipValidationDocumentsKindFullyCorrobated ;
-	gleif-L2:hasValidationSources gleif-L1:ValidationSourceKindAccountsFiling ;
+	gleif-L2:hasValidationDocuments gleif-L2:RelationshipValidationDocumentsKindAccountsFiling ;
+	gleif-L2:hasValidationSources gleif-L1:ValidationSourceKindFullyCorrobated ;
 	.
 
 gleif-L2-data:R-7245003HPQ1HG4CHTL79-335800LN9THPFUHMGI86-U
@@ -249,7 +249,7 @@ gleif-L2-data:R-7245003HPQ1HG4CHTL79-335800LN9THPFUHMGI86-U-REC
 		a gleif-base:Period ;
 		gleif-base:hasStart "2017-08-21T00:00:00.000+02:00"^^xsd:dateTime ;
 	] ;
-	gleif-L2:hasValidationDocuments gleif-L2:RelationshipValidationDocumentsKindFullyCorrobated ;
-	gleif-L2:hasValidationSources gleif-L1:ValidationSourceKindAccountsFiling ;
+	gleif-L2:hasValidationDocuments gleif-L2:RelationshipValidationDocumentsKindAccountsFiling ;
+	gleif-L2:hasValidationSources gleif-L1:ValidationSourceKindFullyCorrobated ;
 	.
 
