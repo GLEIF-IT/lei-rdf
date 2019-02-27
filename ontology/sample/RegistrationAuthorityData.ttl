@@ -1,8 +1,8 @@
 # baseURI: https://www.gleif.org/ontology/sample/RegistrationAuthorityData/
-# imports: http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/
-# imports: http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/
 # imports: https://www.gleif.org/ontology/Base/
 # imports: https://www.gleif.org/ontology/RegistrationAuthority/
+# imports: https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/
+# imports: https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/
 
 @base <https://www.gleif.org/ontology/sample/RegistrationAuthorityData/> .
 @prefix dct: <http://purl.org/dc/terms/> .
@@ -10,8 +10,8 @@
 @prefix gleif-RA-data: <https://www.gleif.org/ontology/sample/RegistrationAuthorityData/> .
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
 @prefix gleif-ra: <https://www.gleif.org/ontology/RegistrationAuthority/> .
-@prefix lcc-3166-1-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> .
-@prefix lcc-3166-2-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> .
+@prefix lcc-3166-1-adj: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/> .
+@prefix lcc-3166-2-adj: <https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -30,10 +30,10 @@
 	dct:rightsHolder gleif-base:GLEIF ;
 	dct:title "Global Legal Entity Identifier Foundation Registration Authority sample data"@en ;
 	owl:imports
-		<http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> ,
-		<http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> ,
 		<https://www.gleif.org/ontology/Base/> ,
-		<https://www.gleif.org/ontology/RegistrationAuthority/>
+		<https://www.gleif.org/ontology/RegistrationAuthority/> ,
+		<https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/> ,
+		<https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/>
 		;
 	owl:versionIRI <https://www.gleif.org/ontology/RegistrationAuthority-v1.0/sample/RegistrationAuthorityData/> ;
 	skos:note """There are 2 categories of individual:
@@ -56,9 +56,9 @@ gleif-RA-data:RA000189
 		gleif-ra:RegistrationAuthorityCode
 		;
 	gleif-base:hasCoverageArea
-		lcc-3166-1-add:CTRY-FR ,
-		lcc-3166-1-add:CTRY-GF ,
-		lcc-3166-1-add:CTRY-GP
+		lcc-3166-1-adj:FR ,
+		lcc-3166-1-adj:GF ,
+		lcc-3166-1-adj:GP
 		;
 	gleif-base:hasNameLocal "Sirene"@fr ;
 	gleif-base:hasNameTranslatedEnglish "Register of Companies (Sirene)" ;
@@ -80,8 +80,8 @@ gleif-RA-data:RA000548
 		gleif-ra:RegistrationAuthorityCode
 		;
 	gleif-base:hasCoverageArea
-		lcc-3166-1-add:CTRY-CH ,
-		lcc-3166-1-add:CTRY-LI
+		lcc-3166-1-adj:CH ,
+		lcc-3166-1-adj:LI
 		;
 	gleif-base:hasNameAdditionalLocal
 		"Registre IDE"@fr ,
@@ -111,9 +111,9 @@ gleif-RA-data:RA000585
 		gleif-ra:RegistrationAuthorityCode
 		;
 	gleif-base:hasCoverageArea
-		lcc-3166-2-add:REG-GB-EAW ,
-		lcc-3166-2-add:REG-GB-NIR ,
-		lcc-3166-2-add:REG-GB-SCT
+		lcc-3166-2-adj:GB-EAW ,
+		lcc-3166-2-adj:GB-NIR ,
+		lcc-3166-2-adj:GB-SCT
 		;
 	gleif-base:hasNameLocal "Companies Register"@en ;
 	gleif-base:hasNameTranslatedEnglish "Companies Register" ;

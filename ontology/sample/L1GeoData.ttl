@@ -1,9 +1,9 @@
 # baseURI: https://www.gleif.org/ontology/sample/L1GeoData/
-# imports: http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/
-# imports: http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/
 # imports: https://www.gleif.org/ontology/Geocoding/
 # imports: https://www.gleif.org/ontology/L1/
 # imports: https://www.gleif.org/ontology/sample/L1Data/
+# imports: https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/
+# imports: https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/
 
 @base <https://www.gleif.org/ontology/sample/L1GeoData/> .
 @prefix dct: <http://purl.org/dc/terms/> .
@@ -12,8 +12,8 @@
 @prefix gleif-L1Geo-data: <https://www.gleif.org/ontology/sample/L1GeoData/> .
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
 @prefix gleif-geo: <https://www.gleif.org/ontology/Geocoding/> .
-@prefix lcc-3166-1-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> .
-@prefix lcc-3166-2-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> .
+@prefix lcc-3166-1-adj: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/> .
+@prefix lcc-3166-2-adj: <https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -33,11 +33,11 @@
 	dct:rightsHolder gleif-base:GLEIF ;
 	dct:title "Global Legal Entity Identifier Foundation Level 1 geocoded sample data"@en ;
 	owl:imports
-		<http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> ,
-		<http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> ,
 		<https://www.gleif.org/ontology/Geocoding/> ,
 		<https://www.gleif.org/ontology/L1/> ,
-		<https://www.gleif.org/ontology/sample/L1Data/>
+		<https://www.gleif.org/ontology/sample/L1Data/> ,
+		<https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/> ,
+		<https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/>
 		;
 	owl:versionIRI <https://www.gleif.org/ontology/Geocoding-v1.0/sample/L1GeoData/> ;
 	skos:note """This adds triples to the existing L1Data ontology and adds 1 additional category of individual:
@@ -63,7 +63,7 @@ gleif-L1Geo-data:G-NT_.X67rNkRmAT6ZGJg.p482B_1A
 	wgs:long "7.59523"^^xsd:decimal ;
 	gleif-base:hasAddressNumber "5" ;
 	gleif-base:hasCity "Basel" ;
-	gleif-base:hasCountry lcc-3166-1-add:CTRY-CH ;
+	gleif-base:hasCountry lcc-3166-1-adj:CH ;
 	gleif-base:hasPostalCode "4052" ;
 	gleif-geo:formattedAddressText "Sankt Alban-Vorstadt 5, 4052 Basel Basel-Stadt, Schweiz" ;
 	gleif-geo:hasBoundingBox [
@@ -97,7 +97,7 @@ gleif-L1Geo-data:G-NT_VTJ.3trcvUNJcXHy2v1oDC_zID
 	wgs:long "-100.39182"^^xsd:decimal ;
 	gleif-base:hasAddressNumber "32" ;
 	gleif-base:hasCity "Querétaro" ;
-	gleif-base:hasCountry lcc-3166-1-add:CTRY-MX ;
+	gleif-base:hasCountry lcc-3166-1-adj:MX ;
 	gleif-base:hasPostalCode "76000" ;
 	gleif-geo:formattedAddressText "Calle Benito Juárez 32, Querétaro Centro, 76000 Querétaro, QRO, México" ;
 	gleif-geo:hasBoundingBox [

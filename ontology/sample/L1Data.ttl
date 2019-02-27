@@ -1,9 +1,9 @@
 # baseURI: https://www.gleif.org/ontology/sample/L1Data/
-# imports: http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/
-# imports: http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/
 # imports: https://www.gleif.org/ontology/L1/
 # imports: https://www.gleif.org/ontology/sample/EntityLegalFormData/
 # imports: https://www.gleif.org/ontology/sample/RegistrationAuthorityData/
+# imports: https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/
+# imports: https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/
 
 @base <https://www.gleif.org/ontology/sample/L1Data/> .
 @prefix dct: <http://purl.org/dc/terms/> .
@@ -12,8 +12,8 @@
 @prefix gleif-L1-data: <https://www.gleif.org/ontology/sample/L1Data/> .
 @prefix gleif-RA-data: <https://www.gleif.org/ontology/sample/RegistrationAuthorityData/> .
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
-@prefix lcc-3166-1-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> .
-@prefix lcc-3166-2-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> .
+@prefix lcc-3166-1-adj: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/> .
+@prefix lcc-3166-2-adj: <https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -32,11 +32,11 @@
 	dct:rightsHolder gleif-base:GLEIF ;
 	dct:title "Global Legal Entity Identifier Foundation Level 1 sample data"@en ;
 	owl:imports
-		<http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> ,
-		<http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> ,
 		<https://www.gleif.org/ontology/L1/> ,
 		<https://www.gleif.org/ontology/sample/EntityLegalFormData/> ,
-		<https://www.gleif.org/ontology/sample/RegistrationAuthorityData/>
+		<https://www.gleif.org/ontology/sample/RegistrationAuthorityData/> ,
+		<https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/> ,
+		<https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/>
 		;
 	owl:versionIRI <https://www.gleif.org/ontology/L1-v1.0/sample/L1Data/> ;
 	skos:note """There are 5 categories of individual:
@@ -136,7 +136,7 @@ gleif-L1-data:BID-RA000602-6534941
 gleif-L1-data:L-097900BHFR0000075034
 	a gleif-L1:Branch ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-CZ ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:CZ ;
 	gleif-L1:hasAutoASCIITransliteratedLegalName "J T BANKA, AS, POBOCKA ZAHRANICNEJ BANKY" ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-097900BHFR0000075034-HQL ;
 	gleif-L1:hasLegalAddress gleif-L1-data:L-097900BHFR0000075034-LAL ;
@@ -150,7 +150,7 @@ gleif-L1-data:L-097900BHFR0000075034-HQL
 	skos:note "City should be Praha 8 and lang cs - see parent" ;
 	gleif-base:hasAddressLine1 "Pobrežní 297/14"@sk ;
 	gleif-base:hasCity "Bratislava"@sk ;
-	gleif-base:hasCountry lcc-3166-1-add:CTRY-CZ ;
+	gleif-base:hasCountry lcc-3166-1-adj:CZ ;
 	gleif-base:hasPostalCode "18600" ;
 	.
 
@@ -158,7 +158,7 @@ gleif-L1-data:L-097900BHFR0000075034-LAL
 	a gleif-L1:PhysicalAddressLocal ;
 	gleif-base:hasAddressLine1 "Dvořákovo nábrežie 8"@sk ;
 	gleif-base:hasCity "Bratislava"@sk ;
-	gleif-base:hasCountry lcc-3166-1-add:CTRY-SK ;
+	gleif-base:hasCountry lcc-3166-1-adj:SK ;
 	gleif-base:hasPostalCode "81102" ;
 	.
 
@@ -181,7 +181,7 @@ gleif-L1-data:L-097900BHFR0000075034-LEI
 gleif-L1-data:L-2138001FT6OQ9OG5WR43
 	a gleif-L1:Fund ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-GB ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:GB ;
 	gleif-L1:hasFundFamily gleif-L1-data:L-213800ICVRLPU57BQ280 ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-2138001FT6OQ9OG5WR43-LAL ;
 	gleif-L1:hasLegalAddress gleif-L1-data:L-2138001FT6OQ9OG5WR43-LAL ;
@@ -195,9 +195,9 @@ gleif-L1-data:L-2138001FT6OQ9OG5WR43-LAL
 	gleif-base:hasAddressLine1 "C/O PREMIER PORTFOLIO MANAGERS LIMITED" ;
 	gleif-base:hasAddressLine2 "EASTGATE COURT, HIGH STREET" ;
 	gleif-base:hasCity "GUILDFORD" ;
-	gleif-base:hasCountry lcc-3166-1-add:CTRY-GB ;
+	gleif-base:hasCountry lcc-3166-1-adj:GB ;
 	gleif-base:hasPostalCode "GU1 3DE" ;
-	gleif-base:hasRegion lcc-3166-2-add:REG-GB-SRY ;
+	gleif-base:hasRegion lcc-3166-2-adj:GB-SRY ;
 	.
 
 gleif-L1-data:L-2138001FT6OQ9OG5WR43-LEI
@@ -219,7 +219,7 @@ gleif-L1-data:L-2138001FT6OQ9OG5WR43-LEI
 gleif-L1-data:L-2138004WRXP5I4MW6417
 	a gleif-L1:SoleProprietor ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-IT ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:IT ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-2138004WRXP5I4MW6417-LAL ;
 	gleif-L1:hasLegalAddress gleif-L1-data:L-2138004WRXP5I4MW6417-LAL ;
 	gleif-L1:hasLegalForm gleif-ELF-data:ELF-P418 ;
@@ -232,7 +232,7 @@ gleif-L1-data:L-2138004WRXP5I4MW6417-LAL
 	a gleif-L1:PhysicalAddressLocal ;
 	gleif-base:hasAddressLine1 "S.S MONTE LEPINI KM 42/44" ;
 	gleif-base:hasCity "SEZZE" ;
-	gleif-base:hasCountry lcc-3166-1-add:CTRY-IT ;
+	gleif-base:hasCountry lcc-3166-1-adj:IT ;
 	gleif-base:hasPostalCode "04018" ;
 	.
 
@@ -255,7 +255,7 @@ gleif-L1-data:L-2138004WRXP5I4MW6417-LEI
 gleif-L1-data:L-213800ICVRLPU57BQ280
 	a gleif-L1:LegalEntity ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-GB ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:GB ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-213800ICVRLPU57BQ280-LAL ;
 	gleif-L1:hasLegalAddress gleif-L1-data:L-213800ICVRLPU57BQ280-LAL ;
 	gleif-L1:hasLegalForm gleif-ELF-data:ELF-H0PO ;
@@ -268,9 +268,9 @@ gleif-L1-data:L-213800ICVRLPU57BQ280-LAL
 	gleif-base:hasAddressLine1 "EASTGATE COURT" ;
 	gleif-base:hasAddressLine2 "HIGH STREET" ;
 	gleif-base:hasCity "GUILDFORD" ;
-	gleif-base:hasCountry lcc-3166-1-add:CTRY-GB ;
+	gleif-base:hasCountry lcc-3166-1-adj:GB ;
 	gleif-base:hasPostalCode "GU1 3DE" ;
-	gleif-base:hasRegion lcc-3166-2-add:REG-GB-SRY ;
+	gleif-base:hasRegion lcc-3166-2-adj:GB-SRY ;
 	.
 
 gleif-L1-data:L-213800ICVRLPU57BQ280-LEI
@@ -292,7 +292,7 @@ gleif-L1-data:L-213800ICVRLPU57BQ280-LEI
 gleif-L1-data:L-213800PRXJ7WA41AIN67
 	a gleif-L1:LegalEntity ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-MX ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:MX ;
 	gleif-L1:hasHeadquartersAddress
 		gleif-L1-data:L-213800PRXJ7WA41AIN67-LAA ,
 		gleif-L1-data:L-213800PRXJ7WA41AIN67-LAL
@@ -315,9 +315,9 @@ gleif-L1-data:L-213800PRXJ7WA41AIN67-LAA
 	gleif-base:hasAddressNumber "250" ;
 	gleif-base:hasAddressNumberWithinBuilding "PISO 11 TORRE A"@es ;
 	gleif-base:hasCity "Ciudad de Mexico"@es ;
-	gleif-base:hasCountry lcc-3166-1-add:CTRY-MX ;
+	gleif-base:hasCountry lcc-3166-1-adj:MX ;
 	gleif-base:hasPostalCode "06600" ;
-	gleif-base:hasRegion lcc-3166-2-add:REG-MX-CMX ;
+	gleif-base:hasRegion lcc-3166-2-adj:MX-CMX ;
 	.
 
 gleif-L1-data:L-213800PRXJ7WA41AIN67-LAL
@@ -328,9 +328,9 @@ gleif-L1-data:L-213800PRXJ7WA41AIN67-LAL
 	gleif-base:hasAddressNumber "250" ;
 	gleif-base:hasAddressNumberWithinBuilding "PISO 11 TORRE A"@es ;
 	gleif-base:hasCity "Ciudad de México"@es ;
-	gleif-base:hasCountry lcc-3166-1-add:CTRY-MX ;
+	gleif-base:hasCountry lcc-3166-1-adj:MX ;
 	gleif-base:hasPostalCode "06600" ;
-	gleif-base:hasRegion lcc-3166-2-add:REG-MX-CMX ;
+	gleif-base:hasRegion lcc-3166-2-adj:MX-CMX ;
 	.
 
 gleif-L1-data:L-213800PRXJ7WA41AIN67-LEI
@@ -354,7 +354,7 @@ gleif-L1-data:L-213800YK2FEXWNMT3R12
 	gleif-base:hasEntityExpirationDate "2018-09-28T00:00:00Z"^^xsd:dateTime ;
 	gleif-base:hasEntityExpirationReason gleif-base:EntityExpirationReasonCorporateAction ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusInactive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-GB ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:GB ;
 	gleif-base:hasSuccessor gleif-L1-data:L-213800YK2FEXWNMT3R12 ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-213800YK2FEXWNMT3R12-LAL ;
 	gleif-L1:hasLegalAddress gleif-L1-data:L-213800YK2FEXWNMT3R12-LAL ;
@@ -368,9 +368,9 @@ gleif-L1-data:L-213800YK2FEXWNMT3R12-LAL
 	gleif-base:hasAddressLine1 "172 LORD STREET" ;
 	gleif-base:hasAddressNumber "172" ;
 	gleif-base:hasCity "SOUTHPORT" ;
-	gleif-base:hasCountry lcc-3166-1-add:CTRY-GB ;
+	gleif-base:hasCountry lcc-3166-1-adj:GB ;
 	gleif-base:hasPostalCode "PR9 0QA" ;
-	gleif-base:hasRegion lcc-3166-2-add:REG-GB-LIV ;
+	gleif-base:hasRegion lcc-3166-2-adj:GB-LIV ;
 	.
 
 gleif-L1-data:L-213800YK2FEXWNMT3R12-LEI
@@ -392,7 +392,7 @@ gleif-L1-data:L-213800YK2FEXWNMT3R12-LEI
 gleif-L1-data:L-25490050856CG53NAC28
 	a gleif-L1:LegalEntity ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-2-add:REG-US-DE ;
+	gleif-base:hasLegalJurisdiction lcc-3166-2-adj:US-DE ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-25490050856CG53NAC28-HQL ;
 	gleif-L1:hasLegalAddress gleif-L1-data:L-25490050856CG53NAC28-LAL ;
 	gleif-L1:hasLegalFormText "Limited Partnership"@en ;
@@ -406,9 +406,9 @@ gleif-L1-data:L-25490050856CG53NAC28-HQL
 	gleif-base:hasAddressLine2 "Suite 700" ;
 	gleif-base:hasAddressNumber "12011" ;
 	gleif-base:hasCity "Los Angeles" ;
-	gleif-base:hasCountry lcc-3166-1-add:CTRY-US ;
+	gleif-base:hasCountry lcc-3166-1-adj:US ;
 	gleif-base:hasPostalCode "90049" ;
-	gleif-base:hasRegion lcc-3166-2-add:REG-US-CA ;
+	gleif-base:hasRegion lcc-3166-2-adj:US-CA ;
 	.
 
 gleif-L1-data:L-25490050856CG53NAC28-LAL
@@ -418,9 +418,9 @@ gleif-L1-data:L-25490050856CG53NAC28-LAL
 	gleif-base:hasAddressLine3 "Suite 201" ;
 	gleif-base:hasAddressNumber "850" ;
 	gleif-base:hasCity "Dover" ;
-	gleif-base:hasCountry lcc-3166-1-add:CTRY-US ;
+	gleif-base:hasCountry lcc-3166-1-adj:US ;
 	gleif-base:hasPostalCode "19904" ;
-	gleif-base:hasRegion lcc-3166-2-add:REG-US-DE ;
+	gleif-base:hasRegion lcc-3166-2-adj:US-DE ;
 	.
 
 gleif-L1-data:L-25490050856CG53NAC28-LEI
@@ -444,7 +444,7 @@ gleif-L1-data:L-31570010000000043842
 	a gleif-L1:LegalEntity ;
 	skos:note "Ignored lei:OtherLegalForm Akciová společnost " ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-CZ ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:CZ ;
 	gleif-L1:hasAutoASCIITransliteratedLegalName "J & T BANKA, a.s." ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-31570010000000043842-LAL ;
 	gleif-L1:hasLegalAddress gleif-L1-data:L-31570010000000043842-LAL ;
@@ -457,7 +457,7 @@ gleif-L1-data:L-31570010000000043842-LAL
 	a gleif-L1:PhysicalAddressLocal ;
 	gleif-base:hasAddressLine1 "Pobrežní 297/14"@cs ;
 	gleif-base:hasCity "Praha 8"@cs ;
-	gleif-base:hasCountry lcc-3166-1-add:CTRY-CZ ;
+	gleif-base:hasCountry lcc-3166-1-adj:CZ ;
 	gleif-base:hasPostalCode "18600" ;
 	.
 
@@ -480,7 +480,7 @@ gleif-L1-data:L-31570010000000043842-LEI
 gleif-L1-data:L-4469000001AVO26P9X86
 	a gleif-L1:LocalOperatingUnit ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-MX ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:MX ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-4469000001AVO26P9X86-HQL ;
 	gleif-L1:hasLegalAddress gleif-L1-data:L-4469000001AVO26P9X86-LAL ;
 	gleif-L1:hasLegalFormText "ASOCIACIÓN CIVIL" ;
@@ -496,9 +496,9 @@ gleif-L1-data:L-4469000001AVO26P9X86-HQL
 	gleif-base:hasAddressLine3 "Naucalpan de Juárez" ;
 	gleif-base:hasAddressNumber "46" ;
 	gleif-base:hasCity "Naucalpan de Juárez" ;
-	gleif-base:hasCountry lcc-3166-1-add:CTRY-MX ;
+	gleif-base:hasCountry lcc-3166-1-adj:MX ;
 	gleif-base:hasPostalCode "53500" ;
-	gleif-base:hasRegion lcc-3166-2-add:REG-MX-MEX ;
+	gleif-base:hasRegion lcc-3166-2-adj:MX-MEX ;
 	.
 
 gleif-L1-data:L-4469000001AVO26P9X86-LAL
@@ -508,9 +508,9 @@ gleif-L1-data:L-4469000001AVO26P9X86-LAL
 	gleif-base:hasAddressLine3 "Naucalpan de Juárez" ;
 	gleif-base:hasAddressNumber "46" ;
 	gleif-base:hasCity "Naucalpan de Juárez" ;
-	gleif-base:hasCountry lcc-3166-1-add:CTRY-MX ;
+	gleif-base:hasCountry lcc-3166-1-adj:MX ;
 	gleif-base:hasPostalCode "53500" ;
-	gleif-base:hasRegion lcc-3166-2-add:REG-MX-MEX ;
+	gleif-base:hasRegion lcc-3166-2-adj:MX-MEX ;
 	.
 
 gleif-L1-data:L-4469000001AVO26P9X86-LEI
@@ -533,7 +533,7 @@ gleif-L1-data:L-506700GE1G29325QX363
 	a gleif-L1:LegalEntity ;
 	owl:sameAs gleif-base:GLEIF ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-CH ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:CH ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-506700GE1G29325QX363-LAL ;
 	gleif-L1:hasLegalAddress gleif-L1-data:L-506700GE1G29325QX363-LAL ;
 	gleif-L1:hasLegalForm gleif-ELF-data:ELF-2JZ4 ;
@@ -545,9 +545,9 @@ gleif-L1-data:L-506700GE1G29325QX363-LAL
 	a gleif-L1:PhysicalAddressLocal ;
 	gleif-base:hasAddressLine1 "St. Alban-Vorstadt 5"@de ;
 	gleif-base:hasCity "Basel"@de ;
-	gleif-base:hasCountry lcc-3166-1-add:CTRY-CH ;
+	gleif-base:hasCountry lcc-3166-1-adj:CH ;
 	gleif-base:hasPostalCode "4052" ;
-	gleif-base:hasRegion lcc-3166-2-add:REG-CH-BS ;
+	gleif-base:hasRegion lcc-3166-2-adj:CH-BS ;
 	.
 
 gleif-L1-data:L-506700GE1G29325QX363-LEI
@@ -570,7 +570,7 @@ gleif-L1-data:L-506700LOLO7M6V0E4247
 	a gleif-L1:LegalEntity ;
 	owl:sameAs gleif-RA-data:RA000548-ORG ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-CH ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:CH ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-506700LOLO7M6V0E4247-LAL ;
 	gleif-L1:hasLegalAddress gleif-L1-data:L-506700LOLO7M6V0E4247-LAL ;
 	gleif-L1:hasLegalForm gleif-ELF-data:ELF-BF9N ;
@@ -582,9 +582,9 @@ gleif-L1-data:L-506700LOLO7M6V0E4247-LAL
 	a gleif-L1:PhysicalAddressLocal ;
 	gleif-base:hasAddressLine1 "Espace de l'Europe 10"@de ;
 	gleif-base:hasCity "Neuchâtel"@de ;
-	gleif-base:hasCountry lcc-3166-1-add:CTRY-CH ;
+	gleif-base:hasCountry lcc-3166-1-adj:CH ;
 	gleif-base:hasPostalCode "2000" ;
-	gleif-base:hasRegion lcc-3166-2-add:REG-CH-NE ;
+	gleif-base:hasRegion lcc-3166-2-adj:CH-NE ;
 	.
 
 gleif-L1-data:L-506700LOLO7M6V0E4247-LEI
@@ -606,7 +606,7 @@ gleif-L1-data:L-506700LOLO7M6V0E4247-LEI
 gleif-L1-data:L-5493007CICYM7A0SZ714
 	a gleif-L1:LegalEntity ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-MX ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:MX ;
 	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-5493007CICYM7A0SZ714-HQL ;
 	gleif-L1:hasLegalAddress gleif-L1-data:L-5493007CICYM7A0SZ714-LAL ;
 	gleif-L1:hasLegalFormText "SOCIEDAD DE RESPONSABILIDAD LIMITADA DE CAPITAL VARIABLE" ;
@@ -622,9 +622,9 @@ gleif-L1-data:L-5493007CICYM7A0SZ714-HQL
 	gleif-base:hasAddressLine2 "Benito Juárez" ;
 	gleif-base:hasAddressNumber "32" ;
 	gleif-base:hasCity "Querétaro" ;
-	gleif-base:hasCountry lcc-3166-1-add:CTRY-MX ;
+	gleif-base:hasCountry lcc-3166-1-adj:MX ;
 	gleif-base:hasPostalCode "76120" ;
-	gleif-base:hasRegion lcc-3166-2-add:REG-MX-QUE ;
+	gleif-base:hasRegion lcc-3166-2-adj:MX-QUE ;
 	.
 
 gleif-L1-data:L-5493007CICYM7A0SZ714-LAL
@@ -633,9 +633,9 @@ gleif-L1-data:L-5493007CICYM7A0SZ714-LAL
 	gleif-base:hasAddressLine2 "Benito Juárez" ;
 	gleif-base:hasAddressNumber "32" ;
 	gleif-base:hasCity "Querétaro" ;
-	gleif-base:hasCountry lcc-3166-1-add:CTRY-MX ;
+	gleif-base:hasCountry lcc-3166-1-adj:MX ;
 	gleif-base:hasPostalCode "76120" ;
-	gleif-base:hasRegion lcc-3166-2-add:REG-MX-QUE ;
+	gleif-base:hasRegion lcc-3166-2-adj:MX-QUE ;
 	.
 
 gleif-L1-data:L-5493007CICYM7A0SZ714-LEI
