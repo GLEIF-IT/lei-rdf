@@ -42,17 +42,16 @@
 	skos:note """There are 5 categories of individual:
     1) The LegalEntity. The URI is the LEI itself in the namespace of this ontology preceded by L-.
     2) The LegalEntityIdentifier and LegalEntityRegistryEntry. The URI is that of the LegalEntity followed by -LE.    
-    3) The PhysicalAddress (subclass) which is the Legal Address of an entity. The URI is that of the LegalEntity followed by -LA and one of L, A, P for Local, Auto-transliterated, Preferred-transliterated respectively.
-    4) The PhysicalAddress (subclass) which is the Headquarters Address of an entity (ONLY PRESENT IF IT IS DIFFERENT FROM THE LEGAL ADDRESS). The URI is that of the LegalEntityRegistryEntry followed by -HQ and one of L, A, P for Local, Auto-transliterated, Preferred-transliterated respectively.
+    3) The PhysicalAddress (ASCII) which is the Legal Address of an entity. The URI is that of the LegalEntity followed by -LA and one of L, A, T for Local, Alternative, Transliterated respectively.
+    4) The PhysicalAddress (ASCII) which is the Headquarters Address of an entity (ONLY PRESENT IF IT IS DIFFERENT FROM THE LEGAL ADDRESS). The URI is that of the LegalEntityRegistryEntry followed by -HQ and one of L, A, T for Local, Alternative, Transliterated respectively respectively.
     5) The RegistryIdentifier of an entity in a business registry. The URI is BID- followed by the Registry code - and the identifier of the entity within the registry.
     """ ;
 	.
 
-gleif-L1-data:BID-AgenziaDelleEntrateViaCristoforoColombo-02653240594
+gleif-L1-data:BID-Agenzia_delle_Entrate_via_Cristoforo_Colombo-02653240594
 	a gleif-base:RegistryIdentifier ;
 	gleif-base:hasTag "02653240594" ;
 	gleif-base:identifies gleif-L1-data:L-2138004WRXP5I4MW6417 ;
-	gleif-base:isRegisteredIn gleif-RA-data:AgenziaDelleEntrateViaCristoforoColombo ;
 	.
 
 gleif-L1-data:BID-RA000163-35964693
@@ -146,7 +145,7 @@ gleif-L1-data:L-097900BHFR0000075034
 	.
 
 gleif-L1-data:L-097900BHFR0000075034-HQL
-	a gleif-L1:PhysicalAddressLocal ;
+	a gleif-base:PhysicalAddress ;
 	skos:note "City should be Praha 8 and lang cs - see parent" ;
 	gleif-base:hasAddressLine1 "Pobrežní 297/14"@sk ;
 	gleif-base:hasCity "Bratislava"@sk ;
@@ -155,7 +154,7 @@ gleif-L1-data:L-097900BHFR0000075034-HQL
 	.
 
 gleif-L1-data:L-097900BHFR0000075034-LAL
-	a gleif-L1:PhysicalAddressLocal ;
+	a gleif-base:PhysicalAddress ;
 	gleif-base:hasAddressLine1 "Dvořákovo nábrežie 8"@sk ;
 	gleif-base:hasCity "Bratislava"@sk ;
 	gleif-base:hasCountry lcc-3166-1-add:CTRY-SK ;
@@ -191,7 +190,7 @@ gleif-L1-data:L-2138001FT6OQ9OG5WR43
 	.
 
 gleif-L1-data:L-2138001FT6OQ9OG5WR43-LAL
-	a gleif-L1:PhysicalAddressLocal ;
+	a gleif-base:PhysicalAddress ;
 	gleif-base:hasAddressLine1 "C/O PREMIER PORTFOLIO MANAGERS LIMITED" ;
 	gleif-base:hasAddressLine2 "EASTGATE COURT, HIGH STREET" ;
 	gleif-base:hasCity "GUILDFORD" ;
@@ -224,12 +223,12 @@ gleif-L1-data:L-2138004WRXP5I4MW6417
 	gleif-L1:hasLegalAddress gleif-L1-data:L-2138004WRXP5I4MW6417-LAL ;
 	gleif-L1:hasLegalForm gleif-ELF-data:ELF-P418 ;
 	gleif-L1:hasLegalName "ALLIT SPA" ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-AgenziaDelleEntrateViaCristoforoColombo-02653240594 ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-Agenzia_delle_Entrate_via_Cristoforo_Colombo-02653240594 ;
 	gleif-L1:hasTradingOrOperatingName "ALLIT" ;
 	.
 
 gleif-L1-data:L-2138004WRXP5I4MW6417-LAL
-	a gleif-L1:PhysicalAddressLocal ;
+	a gleif-base:PhysicalAddress ;
 	gleif-base:hasAddressLine1 "S.S MONTE LEPINI KM 42/44" ;
 	gleif-base:hasCity "SEZZE" ;
 	gleif-base:hasCountry lcc-3166-1-add:CTRY-IT ;
@@ -247,7 +246,7 @@ gleif-L1-data:L-2138004WRXP5I4MW6417-LEI
 	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
 	gleif-L1:LEI "2138004WRXP5I4MW6417" ;
 	gleif-L1:hasManagingLOU gleif-L1-data:L-213800WAVVOPS85N2205 ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-AgenziaDelleEntrateViaCristoforoColombo-02653240594 ;
+	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-Agenzia_delle_Entrate_via_Cristoforo_Colombo-02653240594 ;
 	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
 	gleif-L1:identifiesAndRecords gleif-L1-data:L-2138004WRXP5I4MW6417 ;
 	.
@@ -264,7 +263,7 @@ gleif-L1-data:L-213800ICVRLPU57BQ280
 	.
 
 gleif-L1-data:L-213800ICVRLPU57BQ280-LAL
-	a gleif-L1:PhysicalAddressLocal ;
+	a gleif-base:PhysicalAddress ;
 	gleif-base:hasAddressLine1 "EASTGATE COURT" ;
 	gleif-base:hasAddressLine2 "HIGH STREET" ;
 	gleif-base:hasCity "GUILDFORD" ;
@@ -293,41 +292,37 @@ gleif-L1-data:L-213800PRXJ7WA41AIN67
 	a gleif-L1:LegalEntity ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
 	gleif-base:hasLegalJurisdiction lcc-3166-1-add:CTRY-MX ;
-	gleif-L1:hasHeadquartersAddress
-		gleif-L1-data:L-213800PRXJ7WA41AIN67-LAA ,
-		gleif-L1-data:L-213800PRXJ7WA41AIN67-LAL
-		;
-	gleif-L1:hasLegalAddress
-		gleif-L1-data:L-213800PRXJ7WA41AIN67-LAA ,
-		gleif-L1-data:L-213800PRXJ7WA41AIN67-LAL
-		;
+	gleif-L1:hasAutoASCIITransliteratedHeadquartersAddress gleif-L1-data:L-213800PRXJ7WA41AIN67-LAT ;
+	gleif-L1:hasAutoASCIITransliteratedLegalAddress gleif-L1-data:L-213800PRXJ7WA41AIN67-LAT ;
+	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-213800PRXJ7WA41AIN67-LAL ;
+	gleif-L1:hasLegalAddress gleif-L1-data:L-213800PRXJ7WA41AIN67-LAL ;
 	gleif-L1:hasLegalFormText "SOCIEDAD ANONIMA" ;
 	gleif-L1:hasLegalName "MUFG BANK MEXICO SOCIEDAD ANONIMA INSTITUCION DE BANCA MULTIPLE FILIAL"@es ;
 	gleif-L1:hasPreviousLegalName "BANK OF TOKYO-MITSUBISHI UFJ (MEXICO) SOCIEDAD ANONIMA INSTITUCION DE BANCA MULTIPLE FILIAL"@es ;
 	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000449-BTM960401DV7 ;
 	.
 
-gleif-L1-data:L-213800PRXJ7WA41AIN67-LAA
-	a gleif-L1:PhysicalAddressASCIIAutomatic ;
-	gleif-base:hasAddressLine1 "AVENIDA PASEO DE LA REFORMA 250 PISO 11 TORRE A"@es ;
-	gleif-base:hasAddressLine2 "Juarez"@es ;
-	gleif-base:hasAddressLine3 "Cuauhtemoc"@es ;
-	gleif-base:hasAddressNumber "250" ;
-	gleif-base:hasAddressNumberWithinBuilding "PISO 11 TORRE A"@es ;
-	gleif-base:hasCity "Ciudad de Mexico"@es ;
-	gleif-base:hasCountry lcc-3166-1-add:CTRY-MX ;
-	gleif-base:hasPostalCode "06600" ;
-	gleif-base:hasRegion lcc-3166-2-add:REG-MX-CMX ;
-	.
-
 gleif-L1-data:L-213800PRXJ7WA41AIN67-LAL
-	a gleif-L1:PhysicalAddressLocal ;
+	a gleif-base:PhysicalAddress ;
 	gleif-base:hasAddressLine1 "AVENIDA PASEO DE LA REFORMA 250 PISO 11 TORRE A"@es ;
 	gleif-base:hasAddressLine2 "Juárez"@es ;
 	gleif-base:hasAddressLine3 "Cuauhtémoc"@es ;
 	gleif-base:hasAddressNumber "250" ;
 	gleif-base:hasAddressNumberWithinBuilding "PISO 11 TORRE A"@es ;
 	gleif-base:hasCity "Ciudad de México"@es ;
+	gleif-base:hasCountry lcc-3166-1-add:CTRY-MX ;
+	gleif-base:hasPostalCode "06600" ;
+	gleif-base:hasRegion lcc-3166-2-add:REG-MX-CMX ;
+	.
+
+gleif-L1-data:L-213800PRXJ7WA41AIN67-LAT
+	a gleif-base:PhysicalAddressASCII ;
+	gleif-base:hasAddressLine1 "AVENIDA PASEO DE LA REFORMA 250 PISO 11 TORRE A"@es ;
+	gleif-base:hasAddressLine2 "Juarez"@es ;
+	gleif-base:hasAddressLine3 "Cuauhtemoc"@es ;
+	gleif-base:hasAddressNumber "250" ;
+	gleif-base:hasAddressNumberWithinBuilding "PISO 11 TORRE A"@es ;
+	gleif-base:hasCity "Ciudad de Mexico"@es ;
 	gleif-base:hasCountry lcc-3166-1-add:CTRY-MX ;
 	gleif-base:hasPostalCode "06600" ;
 	gleif-base:hasRegion lcc-3166-2-add:REG-MX-CMX ;
@@ -364,7 +359,7 @@ gleif-L1-data:L-213800YK2FEXWNMT3R12
 	.
 
 gleif-L1-data:L-213800YK2FEXWNMT3R12-LAL
-	a gleif-L1:PhysicalAddressLocal ;
+	a gleif-base:PhysicalAddress ;
 	gleif-base:hasAddressLine1 "172 LORD STREET" ;
 	gleif-base:hasAddressNumber "172" ;
 	gleif-base:hasCity "SOUTHPORT" ;
@@ -412,7 +407,7 @@ gleif-L1-data:L-25490050856CG53NAC28-HQL
 	.
 
 gleif-L1-data:L-25490050856CG53NAC28-LAL
-	a gleif-L1:PhysicalAddressLocal ;
+	a gleif-base:PhysicalAddress ;
 	gleif-base:hasAddressLine1 "c/o Cogency Global Inc." ;
 	gleif-base:hasAddressLine2 "850 New Burton Road" ;
 	gleif-base:hasAddressLine3 "Suite 201" ;
@@ -454,7 +449,7 @@ gleif-L1-data:L-31570010000000043842
 	.
 
 gleif-L1-data:L-31570010000000043842-LAL
-	a gleif-L1:PhysicalAddressLocal ;
+	a gleif-base:PhysicalAddress ;
 	gleif-base:hasAddressLine1 "Pobrežní 297/14"@cs ;
 	gleif-base:hasCity "Praha 8"@cs ;
 	gleif-base:hasCountry lcc-3166-1-add:CTRY-CZ ;
@@ -502,7 +497,7 @@ gleif-L1-data:L-4469000001AVO26P9X86-HQL
 	.
 
 gleif-L1-data:L-4469000001AVO26P9X86-LAL
-	a gleif-L1:PhysicalAddressLocal ;
+	a gleif-base:PhysicalAddress ;
 	gleif-base:hasAddressLine1 "BOULEVARD TOLUCA 46" ;
 	gleif-base:hasAddressLine2 "El Conde" ;
 	gleif-base:hasAddressLine3 "Naucalpan de Juárez" ;
@@ -542,7 +537,7 @@ gleif-L1-data:L-506700GE1G29325QX363
 	.
 
 gleif-L1-data:L-506700GE1G29325QX363-LAL
-	a gleif-L1:PhysicalAddressLocal ;
+	a gleif-base:PhysicalAddress ;
 	gleif-base:hasAddressLine1 "St. Alban-Vorstadt 5"@de ;
 	gleif-base:hasCity "Basel"@de ;
 	gleif-base:hasCountry lcc-3166-1-add:CTRY-CH ;
@@ -579,7 +574,7 @@ gleif-L1-data:L-506700LOLO7M6V0E4247
 	.
 
 gleif-L1-data:L-506700LOLO7M6V0E4247-LAL
-	a gleif-L1:PhysicalAddressLocal ;
+	a gleif-base:PhysicalAddress ;
 	gleif-base:hasAddressLine1 "Espace de l'Europe 10"@de ;
 	gleif-base:hasCity "Neuchâtel"@de ;
 	gleif-base:hasCountry lcc-3166-1-add:CTRY-CH ;
@@ -628,7 +623,7 @@ gleif-L1-data:L-5493007CICYM7A0SZ714-HQL
 	.
 
 gleif-L1-data:L-5493007CICYM7A0SZ714-LAL
-	a gleif-L1:PhysicalAddressLocal ;
+	a gleif-base:PhysicalAddress ;
 	gleif-base:hasAddressLine1 "ACCESO II 32" ;
 	gleif-base:hasAddressLine2 "Benito Juárez" ;
 	gleif-base:hasAddressNumber "32" ;
