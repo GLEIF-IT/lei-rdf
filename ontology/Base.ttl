@@ -189,6 +189,14 @@ gleif-base:LegalEntityRelationship
 	skos:definition "abstract superclass to represent a reified directed relationship" ;
 	.
 
+gleif-base:LegalPerson
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:Entity ;
+	rdfs:label "legal person" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:definition "Any entity which can incur legal obligation and can be sued at law." ;
+	.
+
 gleif-base:Period
 	a owl:Class ;
 	rdfs:subClassOf

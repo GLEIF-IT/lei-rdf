@@ -70,14 +70,14 @@ gleif-L1internal:LegalEntityIdentifierRegistryEntry
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L1:identifiesAndRecords ;
-			owl:onClass gleif-L1:LegalEntity ;
+			owl:onProperty gleif-L1:hasManagingLOU ;
+			owl:onClass gleif-L1:LocalOperatingUnit ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasManagingLOU ;
-			owl:onClass gleif-L1:LocalOperatingUnit ;
+			owl:onProperty gleif-L1:identifiesAndRecords ;
+			owl:onClass gleif-L1:RegisteredEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[

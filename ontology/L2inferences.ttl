@@ -30,7 +30,7 @@
 
 gleif-L2-infer:Child
 	a owl:Class ;
-	rdfs:subClassOf gleif-L1:LegalEntity ;
+	rdfs:subClassOf gleif-L1:RegisteredEntity ;
 	rdfs:label "child" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2inferences/> ;
 	owl:equivalentClass [
@@ -144,7 +144,7 @@ gleif-L2-infer:hasParentHierarchy
 gleif-L2-infer:hasParentRelationship
 	a owl:ObjectProperty ;
 	rdfs:label "has parent relationship" ;
-	rdfs:domain gleif-L1:LegalEntity ;
+	rdfs:domain gleif-L1:RegisteredEntity ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2inferences/> ;
 	rdfs:range gleif-base:LegalEntityRelationship ;
 	owl:inverseOf gleif-base:hasChild ;
