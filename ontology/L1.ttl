@@ -56,8 +56,14 @@ gleif-L1:Fund
 		gleif-L1:RegisteredEntity ,
 		[
 			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasFundFamilyName ;
+			owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasFundFamily ;
-			owl:someValuesFrom gleif-L1:FundFamily ;
+			owl:onClass gleif-L1:FundFamily ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
 		;
 	rdfs:label "fund" ;
@@ -235,6 +241,11 @@ gleif-L1:RegisteredEntity
 			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasLegalName ;
 			owl:cardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasSuccessorName ;
+			owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;

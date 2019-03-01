@@ -819,6 +819,14 @@ gleif-base:hasSuccessor
 	skos:definition "The surviving/new entity which continues/replaces this registration." ;
 	.
 
+gleif-base:hasSuccessorName
+	a owl:DatatypeProperty ;
+	rdfs:label "has successor name" ;
+	rdfs:domain gleif-base:Entity ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:definition "The name of the successor entity." ;
+	.
+
 gleif-base:hasTag
 	a
 		owl:DatatypeProperty ,
