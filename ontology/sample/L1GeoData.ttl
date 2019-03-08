@@ -47,14 +47,12 @@
 
 gleif-L1-data:L-506700GE1G29325QX363
 	a gleif-L1:LegalEntity ;
-	gleif-L1:hasHeadquartersAddress gleif-L1Geo-data:G-NT_.X67rNkRmAT6ZGJg.p482B_1A ;
-	gleif-L1:hasLegalAddress gleif-L1Geo-data:G-NT_.X67rNkRmAT6ZGJg.p482B_1A ;
+	gleif-geo:hasGeocodedAddress gleif-L1Geo-data:G-NT_.X67rNkRmAT6ZGJg.p482B_1A ;
 	.
 
 gleif-L1-data:L-5493007CICYM7A0SZ714
 	a gleif-L1:LegalEntity ;
-	gleif-L1:hasHeadquartersAddress gleif-L1Geo-data:G-NT_VTJ.3trcvUNJcXHy2v1oDC_zID ;
-	gleif-L1:hasLegalAddress gleif-L1Geo-data:G-NT_VTJ.3trcvUNJcXHy2v1oDC_zID ;
+	gleif-geo:hasGeocodedAddress gleif-L1Geo-data:G-NT_VTJ.3trcvUNJcXHy2v1oDC_zID ;
 	.
 
 gleif-L1Geo-data:G-NT_.X67rNkRmAT6ZGJg.p482B_1A

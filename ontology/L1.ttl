@@ -115,20 +115,20 @@ gleif-L1:LegalEntity
 		] ,
 		[
 			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasTransliteratedHeadquartersAddress ;
+			owl:onClass gleif-base:PhysicalAddressASCII ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasTransliteratedLegalAddress ;
+			owl:onClass gleif-base:PhysicalAddressASCII ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
 			owl:onProperty gleif-base:hasSuccessor ;
 			owl:onClass gleif-L1:LegalEntity ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasHeadquartersAddress ;
-			owl:onClass gleif-L1:PhysicalAddressASCII ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasLegalAddress ;
-			owl:onClass gleif-L1:PhysicalAddressASCII ;
 			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -144,6 +144,12 @@ gleif-L1:LegalEntity
 		] ,
 		[
 			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasOtherAddresses ;
+			owl:onClass gleif-base:PhysicalAddress ;
+			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
 			owl:onProperty gleif-base:hasLegalJurisdiction ;
 			owl:onClass lcc-cr:GeographicRegion ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -156,20 +162,20 @@ gleif-L1:LegalEntity
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasRegistrationIdentifier ;
-			owl:onClass gleif-base:RegistryIdentifier ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasHeadquartersAddress ;
-			owl:onClass gleif-L1:PhysicalAddressLocal ;
+			owl:onClass gleif-base:PhysicalAddress ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasLegalAddress ;
-			owl:onClass gleif-L1:PhysicalAddressLocal ;
+			owl:onClass gleif-base:PhysicalAddress ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasRegistrationIdentifier ;
+			owl:onClass gleif-base:RegistryIdentifier ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -333,38 +339,6 @@ gleif-L1:LocalOperatingUnit
 	skos:prefLabel "local operating unit" ;
 	.
 
-gleif-L1:PhysicalAddressASCII
-	a owl:Class ;
-	rdfs:subClassOf gleif-base:PhysicalAddress ;
-	rdfs:label "physical address ASCII" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "An address of an entity, transliterated to ASCII characters; not to be used directly in favor of its subclasses." ;
-	.
-
-gleif-L1:PhysicalAddressASCIIAutomatic
-	a owl:Class ;
-	rdfs:subClassOf gleif-L1:PhysicalAddressASCII ;
-	rdfs:label "physical address ASCII automatic" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "An address of an entity, transliterated to ASCII characters, auto-transliterated by the managing LOU." ;
-	.
-
-gleif-L1:PhysicalAddressASCIIPreferred
-	a owl:Class ;
-	rdfs:subClassOf gleif-L1:PhysicalAddressASCII ;
-	rdfs:label "physical address ASCII preferred" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "An address of an entity, transliterated to ASCII characters, provided by the entity for a purpose." ;
-	.
-
-gleif-L1:PhysicalAddressLocal
-	a owl:Class ;
-	rdfs:subClassOf gleif-base:PhysicalAddress ;
-	rdfs:label "physical address local" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "An address as represented in the local language and character set." ;
-	.
-
 gleif-L1:RegistrationStatus
 	a owl:Class ;
 	rdfs:subClassOf gleif-base:RegistrationStatus ;
@@ -510,6 +484,28 @@ gleif-L1:ValidationSourceKindPartiallyCorroborated
 	gleif-base:hasTag "PARTIALLY_CORROBORATED" ;
 	.
 
+gleif-L1:hasAlternativeLanguageHeadquartersAddress
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf
+		gleif-base:hasAddressHeadquarters ,
+		gleif-L1:hasOtherAddresses
+		;
+	rdfs:label "has alternative language headquarters address" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Address of the headquarters of the entity, in an alternative language used in the legal jurisdiction." ;
+	.
+
+gleif-L1:hasAlternativeLanguageLegalAddress
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf
+		gleif-base:hasAddressLegal ,
+		gleif-L1:hasOtherAddresses
+		;
+	rdfs:label "has alternative language legal address" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Registered address of the entity in the legal jurisdiction, in analternative language used in the legal jurisdiction." ;
+	.
+
 gleif-L1:hasAlternativeLanguageLegalName
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf
@@ -519,6 +515,22 @@ gleif-L1:hasAlternativeLanguageLegalName
 	rdfs:label "has other entity names" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "Registered name of the entity in an alternative language in the legal jurisdiction in which the entity is registered." ;
+	.
+
+gleif-L1:hasAutoASCIITransliteratedHeadquartersAddress
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf gleif-L1:hasTransliteratedHeadquartersAddress ;
+	rdfs:label "has auto ASCII transliterated headquarters address" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Auto transliterated headquarters address for the legal entity." ;
+	.
+
+gleif-L1:hasAutoASCIITransliteratedLegalAddress
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf gleif-L1:hasTransliteratedLegalAddress ;
+	rdfs:label "has auto ASCII transliterated legal address" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Auto transliterated legal address for the legal entity." ;
 	.
 
 gleif-L1:hasAutoASCIITransliteratedLegalName
@@ -552,18 +564,22 @@ gleif-L1:hasFundFamilyName
 
 gleif-L1:hasHeadquartersAddress
 	a owl:ObjectProperty ;
-	rdfs:subPropertyOf gleif-base:hasAddress ;
+	rdfs:subPropertyOf gleif-base:hasAddressHeadquarters ;
 	rdfs:label "has headquarters address" ;
+	rdfs:domain gleif-base:Entity ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "The address of the headquarters of the Entity." ;
+	rdfs:range gleif-base:PhysicalAddress ;
+	skos:definition "The primary address of the headquarters of the Entity." ;
 	.
 
 gleif-L1:hasLegalAddress
 	a owl:ObjectProperty ;
-	rdfs:subPropertyOf gleif-base:hasAddress ;
+	rdfs:subPropertyOf gleif-base:hasAddressLegal ;
 	rdfs:label "has legal address" ;
+	rdfs:domain gleif-base:Entity ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "The address of the entity as recorded in the registration of the entity in its legal jurisdiction." ;
+	rdfs:range gleif-base:PhysicalAddress ;
+	skos:definition "The primary legal address of the entity as recorded in the registration of the entity in its legal jurisdiction." ;
 	.
 
 gleif-L1:hasLegalForm
@@ -604,6 +620,14 @@ gleif-L1:hasManagingLOU
 	skos:definition "The legal form of the entity, taken from the ISO Entity Legal Form (ELF) data set maintained by GLEIF." ;
 	.
 
+gleif-L1:hasOtherAddresses
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf gleif-base:hasAddress ;
+	rdfs:label "has other addresses" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "An optional list of other addresses for the legal entity, excluding transliterations." ;
+	.
+
 gleif-L1:hasOtherEntityNames
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasNameAdditional ;
@@ -621,6 +645,22 @@ gleif-L1:hasOtherValidationIdentifier
 	skos:altLabel "has additional validation identifier" ;
 	skos:definition "An optional list of additional registrations used by the LEI Issuer to validate the entity data." ;
 	skos:prefLabel "has other validation identifier" ;
+	.
+
+gleif-L1:hasPreferredASCIITransliteratedHeadquartersAddress
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf gleif-L1:hasTransliteratedHeadquartersAddress ;
+	rdfs:label "has preferred ASCII transliterated headquarters address" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Preferred transliterated headquarters address for the legal entity." ;
+	.
+
+gleif-L1:hasPreferredASCIITransliteratedLegalAddress
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf gleif-L1:hasTransliteratedLegalAddress ;
+	rdfs:label "has preferred ASCII transliterated legal address" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Preferred transliterated legal address for the legal entity." ;
 	.
 
 gleif-L1:hasPreferredASCIITransliteratedLegalName
@@ -675,6 +715,36 @@ gleif-L1:hasTradingOrOperatingName
 		;
 	skos:definition "A 'trading as', 'brand name' or 'operating under' name currently used by this entity in addition to, but not replacing, the (primary) legal, official registered name" ;
 	skos:prefLabel "has trading or operating name" ;
+	.
+
+gleif-L1:hasTransliteratedHeadquartersAddress
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf
+		gleif-base:hasAddressHeadquarters ,
+		gleif-L1:hasTransliteratedOtherAddresses
+		;
+	rdfs:label "has transliterated headquarters address" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "A transliterated headquarters address for the legal entity." ;
+	.
+
+gleif-L1:hasTransliteratedLegalAddress
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf
+		gleif-base:hasAddressLegal ,
+		gleif-L1:hasTransliteratedOtherAddresses
+		;
+	rdfs:label "has transliterated legal address" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "A transliterated legal address for the legal entity." ;
+	.
+
+gleif-L1:hasTransliteratedOtherAddresses
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf gleif-base:hasAddressTransliterated ;
+	rdfs:label "has transliterated other addresses" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "An optional list of transliterated addresses for the legal entity." ;
 	.
 
 gleif-L1:hasTransliteratedOtherEntityNames

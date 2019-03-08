@@ -211,6 +211,15 @@ gleif-geo:hasDistrict
 	skos:definition "A textual representation of the district." ;
 	.
 
+gleif-geo:hasGeocodedAddress
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf gleif-base:hasAddress ;
+	rdfs:label "has geocoded address" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Geocoding/> ;
+	rdfs:range gleif-geo:GeocodedAddress ;
+	skos:definition "A geocoded address for the legal entity." ;
+	.
+
 gleif-geo:hasRegionText
 	a owl:DatatypeProperty ;
 	rdfs:label "has region text" ;
