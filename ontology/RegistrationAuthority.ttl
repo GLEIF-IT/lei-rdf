@@ -1,12 +1,12 @@
 # baseURI: https://www.gleif.org/ontology/RegistrationAuthority/
-# imports: http://www.omg.org/spec/LCC/Countries/CountryRepresentation/
 # imports: https://www.gleif.org/ontology/Base/
+# imports: https://www.omg.org/spec/LCC/Countries/CountryRepresentation/
 
 @base <https://www.gleif.org/ontology/RegistrationAuthority/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
 @prefix gleif-ra: <https://www.gleif.org/ontology/RegistrationAuthority/> .
-@prefix lcc-cr: <http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> .
+@prefix lcc-cr: <https://www.omg.org/spec/LCC/Countries/CountryRepresentation/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -26,8 +26,8 @@
 	dct:source "https://www.gleif.org/en/about-lei/gleif-registration-authorities-list"^^xsd:anyURI ;
 	dct:title "Global Legal Entity Identifier Foundation Registration Authority Ontology"@en ;
 	owl:imports
-		<http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ,
-		<https://www.gleif.org/ontology/Base/>
+		<https://www.gleif.org/ontology/Base/> ,
+		<https://www.omg.org/spec/LCC/Countries/CountryRepresentation/>
 		;
 	owl:versionIRI <https://www.gleif.org/ontology/RegistrationAuthority-1.0/RegistrationAuthority/> ;
 	.

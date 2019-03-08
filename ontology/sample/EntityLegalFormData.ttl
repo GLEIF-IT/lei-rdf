@@ -1,16 +1,16 @@
 # baseURI: https://www.gleif.org/ontology/sample/EntityLegalFormData/
-# imports: http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/
-# imports: http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/
 # imports: https://www.gleif.org/ontology/Base/
 # imports: https://www.gleif.org/ontology/EntityLegalForm/
+# imports: https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/
+# imports: https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/
 
 @base <https://www.gleif.org/ontology/sample/EntityLegalFormData/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix gleif-ELF-data: <https://www.gleif.org/ontology/sample/EntityLegalFormData/> .
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
 @prefix gleif-elf: <https://www.gleif.org/ontology/EntityLegalForm/> .
-@prefix lcc-3166-1-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> .
-@prefix lcc-3166-2-add: <http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> .
+@prefix lcc-3166-1-adj: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/> .
+@prefix lcc-3166-2-adj: <https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -29,10 +29,10 @@
 	dct:rightsHolder gleif-base:GLEIF ;
 	dct:title "Global Legal Entity Identifier Foundation Entity Legal Form sample data"@en ;
 	owl:imports
-		<http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Add/> ,
-		<http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Add/> ,
 		<https://www.gleif.org/ontology/Base/> ,
-		<https://www.gleif.org/ontology/EntityLegalForm/>
+		<https://www.gleif.org/ontology/EntityLegalForm/> ,
+		<https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/> ,
+		<https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/>
 		;
 	owl:versionIRI <https://www.gleif.org/ontology/EntityLegalForm-v1.0/sample/EntityLegalFormData/> ;
 	skos:note """There is 1 category of individual:
@@ -46,7 +46,7 @@ gleif-ELF-data:ELF-2HBR
 		;
 	gleif-base:hasAbbreviationLocal "GmbH"@ge ;
 	gleif-base:hasAbbreviationTransliterated "GmbH" ;
-	gleif-base:hasCoverageArea lcc-3166-1-add:CTRY-GE ;
+	gleif-base:hasCoverageArea lcc-3166-1-adj:GE ;
 	gleif-base:hasNameLocal "Gesellschaft mit beschränkter Haftung"@ge ;
 	gleif-base:hasNameTransliterated "Gesellschaft mit beschränkter Haftung" ;
 	gleif-base:hasTag "2HBR" ;
@@ -58,7 +58,7 @@ gleif-ELF-data:ELF-2JZ4
 		gleif-elf:EntityLegalForm ,
 		gleif-elf:EntityLegalFormIdentifier
 		;
-	gleif-base:hasCoverageArea lcc-3166-1-add:CTRY-CH ;
+	gleif-base:hasCoverageArea lcc-3166-1-adj:CH ;
 	gleif-base:hasNameLocal "Stiftung"@ge ;
 	gleif-base:hasNameTransliterated "Stiftung"@ge ;
 	gleif-base:hasTag "2JZ4" ;
@@ -71,7 +71,7 @@ gleif-ELF-data:ELF-BF9N
 		gleif-elf:EntityLegalFormIdentifier
 		;
 	gleif-base:hasAbbreviationLocal "öff. Unt. Bund"@ge ;
-	gleif-base:hasCoverageArea lcc-3166-2-add:CTRY-CH ;
+	gleif-base:hasCoverageArea lcc-3166-2-adj:CH ;
 	gleif-base:hasNameLegalLocal "Unternehmen des Bundes"@ge ;
 	gleif-base:hasNameTransliterated "Unternehmen des Bundes"@ge ;
 	gleif-base:hasTag "BF9N" ;
@@ -91,7 +91,7 @@ gleif-ELF-data:ELF-EZNQ
 		"ltd"@en ,
 		"ltd."@en
 		;
-	gleif-base:hasCoverageArea lcc-3166-2-add:REG-US-OH ;
+	gleif-base:hasCoverageArea lcc-3166-2-adj:US-OH ;
 	gleif-base:hasNameLegalLocal "Limited Liability Company"@en ;
 	gleif-base:hasNameTransliterated "Limited Liability Company" ;
 	gleif-base:hasTag "EZNQ" ;
@@ -109,7 +109,7 @@ gleif-ELF-data:ELF-H0PO
 		"ltd"@en ,
 		"ltd."@en
 		;
-	gleif-base:hasCoverageArea lcc-3166-1-add:CTRY-GB ;
+	gleif-base:hasCoverageArea lcc-3166-1-adj:GB ;
 	gleif-base:hasNameLegalLocal "Private Limited Company"@en ;
 	gleif-base:hasTag "H0PO" ;
 	gleif-base:identifies gleif-ELF-data:ELF-H0PO ;

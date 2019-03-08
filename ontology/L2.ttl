@@ -51,7 +51,7 @@ gleif-base:LegalEntityRelationship
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasChild ;
-			owl:onClass gleif-L1:LegalEntity ;
+			owl:onClass gleif-L1:RegisteredEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[

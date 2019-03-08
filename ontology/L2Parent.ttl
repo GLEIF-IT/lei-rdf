@@ -9,7 +9,7 @@
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
 @prefix gleif-elf: <https://www.gleif.org/ontology/EntityLegalForm/> .
 @prefix gleif-ra: <https://www.gleif.org/ontology/RegistrationAuthority/> .
-@prefix lcc-cr: <http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> .
+@prefix lcc-cr: <https://www.omg.org/spec/LCC/Countries/CountryRepresentation/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -77,12 +77,6 @@ gleif-L2parent:EntityWithoutLEI
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasLegalJurisdiction ;
-			owl:onClass lcc-cr:GeographicRegion ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
 			owl:onProperty gleif-base:hasEntityStatus ;
 			owl:onClass gleif-base:EntityStatus ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -103,6 +97,12 @@ gleif-L2parent:EntityWithoutLEI
 			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasLegalAddress ;
 			owl:onClass gleif-L1:PhysicalAddressLocal ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasLegalJurisdiction ;
+			owl:onClass lcc-cr:GeographicRegion ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[

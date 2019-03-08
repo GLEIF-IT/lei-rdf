@@ -9,7 +9,7 @@
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
 @prefix gleif-elf: <https://www.gleif.org/ontology/EntityLegalForm/> .
 @prefix gleif-ra: <https://www.gleif.org/ontology/RegistrationAuthority/> .
-@prefix lcc-cr: <http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> .
+@prefix lcc-cr: <https://www.omg.org/spec/LCC/Countries/CountryRepresentation/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -44,7 +44,7 @@
 
 gleif-L1:Branch
 	a owl:Class ;
-	rdfs:subClassOf gleif-L1:LegalEntity ;
+	rdfs:subClassOf gleif-L1:RegisteredEntity ;
 	rdfs:label "branch" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "The legal entity is a branch of another legal entity." ;
@@ -53,11 +53,17 @@ gleif-L1:Branch
 gleif-L1:Fund
 	a owl:Class ;
 	rdfs:subClassOf
-		gleif-L1:LegalEntity ,
+		gleif-L1:RegisteredEntity ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasFundFamilyName ;
+			owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasFundFamily ;
-			owl:someValuesFrom gleif-L1:FundFamily ;
+			owl:onClass gleif-L1:FundFamily ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
 		;
 	rdfs:label "fund" ;
@@ -101,124 +107,12 @@ gleif-L1:LEIregistry
 gleif-L1:LegalEntity
 	a owl:Class ;
 	rdfs:subClassOf
-		gleif-base:Entity ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasLegalName ;
-			owl:cardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasEntityExpirationReason ;
-			owl:onClass gleif-base:EntityExpirationReason ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasTransliteratedHeadquartersAddress ;
-			owl:onClass gleif-base:PhysicalAddressASCII ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasTransliteratedLegalAddress ;
-			owl:onClass gleif-base:PhysicalAddressASCII ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasSuccessor ;
-			owl:onClass gleif-L1:LegalEntity ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasEntityExpirationDate ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-			owl:onDataRange xsd:dateTime ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasOtherEntityNames ;
-			owl:minCardinality "0"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasOtherAddresses ;
-			owl:onClass gleif-base:PhysicalAddress ;
-			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasLegalJurisdiction ;
-			owl:onClass lcc-cr:GeographicRegion ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasEntityStatus ;
-			owl:onClass gleif-base:EntityStatus ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasHeadquartersAddress ;
-			owl:onClass gleif-base:PhysicalAddress ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasLegalAddress ;
-			owl:onClass gleif-base:PhysicalAddress ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasRegistrationIdentifier ;
-			owl:onClass gleif-base:RegistryIdentifier ;
-			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			owl:intersectionOf (
-				[
-					a owl:Class ;
-					owl:unionOf (
-						[
-							a owl:Restriction ;
-							owl:onProperty gleif-L1:hasLegalForm ;
-							owl:onClass gleif-elf:EntityLegalForm ;
-							owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-						]
-						[
-							a owl:Restriction ;
-							owl:onProperty gleif-L1:hasLegalFormText ;
-							owl:cardinality "1"^^xsd:nonNegativeInteger ;
-						]
-					) ;
-				]
-				[
-					a owl:Class ;
-					owl:complementOf [
-						a owl:Class ;
-						owl:intersectionOf (
-							[
-								a owl:Restriction ;
-								owl:onProperty gleif-L1:hasLegalForm ;
-								owl:someValuesFrom gleif-elf:EntityLegalForm ;
-							]
-							[
-								a owl:Restriction ;
-								owl:onProperty gleif-L1:hasLegalFormText ;
-								owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-							]
-						) ;
-					] ;
-				]
-			) ;
-		]
+		gleif-base:LegalPerson ,
+		gleif-L1:RegisteredEntity
 		;
+	rdfs:label "legal entity" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "Includes, but is not limited to, unique parties that are legally or financially responsible for the performance of financial transactions or have the legal right in their jurisdiction to enter independently into legal contracts, regardless of whether they are incorporated or constituted in some other way (e.g. trust, partnership, contractual). It excludes natural persons, but includes governmental organizations and supranationals." ;
+	skos:definition "LEI-registered entities that are legally or financially responsible for the performance of financial transactions or have the legal right in their jurisdiction to enter independently into legal contracts, regardless of whether they are incorporated or constituted in some other way (e.g. trust, partnership, contractual). It excludes natural persons, but includes governmental organizations and supranationals." ;
 	.
 
 gleif-L1:LegalEntityIdentifier
@@ -228,7 +122,7 @@ gleif-L1:LegalEntityIdentifier
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:identifies ;
-			owl:onClass gleif-L1:LegalEntity ;
+			owl:onClass gleif-L1:RegisteredEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
 		;
@@ -274,14 +168,14 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L1:identifiesAndRecords ;
-			owl:onClass gleif-L1:LegalEntity ;
+			owl:onProperty gleif-L1:hasManagingLOU ;
+			owl:onClass gleif-L1:LocalOperatingUnit ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasManagingLOU ;
-			owl:onClass gleif-L1:LocalOperatingUnit ;
+			owl:onProperty gleif-L1:identifiesAndRecords ;
+			owl:onClass gleif-L1:RegisteredEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -337,6 +231,135 @@ gleif-L1:LocalOperatingUnit
 		;
 	skos:definition "An entity that supplies registration, renewal and other services, and acts as the primary interface for legal entities wishing to obtain an LEI. Only organizations duly accredited by the Global Legal Entity Identifier Foundation (GLEIF) are authorized to issue LEIs." ;
 	skos:prefLabel "local operating unit" ;
+	.
+
+gleif-L1:RegisteredEntity
+	a owl:Class ;
+	rdfs:subClassOf
+		gleif-base:Entity ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasLegalName ;
+			owl:cardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasSuccessorName ;
+			owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEntityExpirationReason ;
+			owl:onClass gleif-base:EntityExpirationReason ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasTransliteratedHeadquartersAddress ;
+			owl:onClass gleif-base:PhysicalAddressASCII ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasTransliteratedLegalAddress ;
+			owl:onClass gleif-base:PhysicalAddressASCII ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasSuccessor ;
+			owl:onClass gleif-L1:LegalEntity ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEntityExpirationDate ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:onDataRange xsd:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasOtherEntityNames ;
+			owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasOtherAddresses ;
+			owl:onClass gleif-base:PhysicalAddress ;
+			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEntityStatus ;
+			owl:onClass gleif-base:EntityStatus ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasHeadquartersAddress ;
+			owl:onClass gleif-base:PhysicalAddress ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasLegalAddress ;
+			owl:onClass gleif-base:PhysicalAddress ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasRegistrationIdentifier ;
+			owl:onClass gleif-base:RegistryIdentifier ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasLegalJurisdiction ;
+			owl:onClass lcc-cr:GeographicRegion ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			owl:intersectionOf (
+				[
+					a owl:Class ;
+					owl:unionOf (
+						[
+							a owl:Restriction ;
+							owl:onProperty gleif-L1:hasLegalForm ;
+							owl:onClass gleif-elf:EntityLegalForm ;
+							owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+						]
+						[
+							a owl:Restriction ;
+							owl:onProperty gleif-L1:hasLegalFormText ;
+							owl:cardinality "1"^^xsd:nonNegativeInteger ;
+						]
+					) ;
+				]
+				[
+					a owl:Class ;
+					owl:complementOf [
+						a owl:Class ;
+						owl:intersectionOf (
+							[
+								a owl:Restriction ;
+								owl:onProperty gleif-L1:hasLegalForm ;
+								owl:someValuesFrom gleif-elf:EntityLegalForm ;
+							]
+							[
+								a owl:Restriction ;
+								owl:onProperty gleif-L1:hasLegalFormText ;
+								owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+							]
+						) ;
+					] ;
+				]
+			) ;
+		]
+		;
+	rdfs:label "registered entity" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "LEI-registered entities including, but not limited to, unique parties that are legally or financially responsible for the performance of financial transactions or have the legal right in their jurisdiction to enter independently into legal contracts, regardless of whether they are incorporated or constituted in some other way (e.g. trust, partnership, contractual). It excludes natural persons, but includes governmental organizations and supranationals." ;
 	.
 
 gleif-L1:RegistrationStatus
@@ -785,7 +808,7 @@ gleif-L1:identifiesAndRecords
 		;
 	rdfs:label "identifies and records" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	rdfs:range gleif-L1:LegalEntity ;
+	rdfs:range gleif-L1:RegisteredEntity ;
 	skos:definition "The legal entity that is recorded by this registry entry and identified by the LEI." ;
 	.
 

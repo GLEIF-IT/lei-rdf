@@ -1,10 +1,10 @@
 # baseURI: https://www.gleif.org/ontology/Base/
-# imports: http://www.omg.org/spec/LCC/Countries/CountryRepresentation/
+# imports: https://www.omg.org/spec/LCC/Countries/CountryRepresentation/
 
 @base <https://www.gleif.org/ontology/Base/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
-@prefix lcc-cr: <http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> .
+@prefix lcc-cr: <https://www.omg.org/spec/LCC/Countries/CountryRepresentation/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -24,7 +24,7 @@
 	dct:rightsHolder gleif-base:GLEIF ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	dct:title "Global Legal Entity Identifier Foundation Base Ontology"@en ;
-	owl:imports <http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ;
+	owl:imports <https://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ;
 	owl:versionIRI <https://www.gleif.org/ontology/Base-v1.0/Base/> ;
 	.
 
@@ -50,14 +50,14 @@ gleif-base:Entity
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasLegalJurisdiction ;
-			owl:onClass lcc-cr:GeographicRegion ;
+			owl:onProperty gleif-base:hasSuccessor ;
+			owl:onClass gleif-base:Entity ;
 			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasSuccessor ;
-			owl:onClass gleif-base:Entity ;
+			owl:onProperty gleif-base:hasLegalJurisdiction ;
+			owl:onClass lcc-cr:GeographicRegion ;
 			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -187,6 +187,14 @@ gleif-base:LegalEntityRelationship
 	rdfs:label "legal entity relationship" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	skos:definition "abstract superclass to represent a reified directed relationship" ;
+	.
+
+gleif-base:LegalPerson
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:Entity ;
+	rdfs:label "legal person" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:definition "Any entity which can incur legal obligation and can be sued at law." ;
 	.
 
 gleif-base:Period
@@ -809,6 +817,14 @@ gleif-base:hasSuccessor
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range gleif-base:Entity ;
 	skos:definition "The surviving/new entity which continues/replaces this registration." ;
+	.
+
+gleif-base:hasSuccessorName
+	a owl:DatatypeProperty ;
+	rdfs:label "has successor name" ;
+	rdfs:domain gleif-base:Entity ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:definition "The name of the successor entity." ;
 	.
 
 gleif-base:hasTag
