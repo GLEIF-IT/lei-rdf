@@ -55,6 +55,24 @@ gleif-L1:Fund
 	rdfs:subClassOf
 		gleif-L1:RegisteredEntity ,
 		[
+			a owl:Class ;
+			owl:complementOf [
+				a owl:Class ;
+				owl:intersectionOf (
+					[
+						a owl:Restriction ;
+						owl:onProperty gleif-L1:hasFundFamily ;
+						owl:someValuesFrom gleif-L1:FundFamily ;
+					]
+					[
+						a owl:Restriction ;
+						owl:onProperty gleif-L1:hasFundFamilyName ;
+						owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+					]
+				) ;
+			] ;
+		] ,
+		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasFundFamilyName ;
 			owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
@@ -76,7 +94,18 @@ gleif-L1:FundFamily
 	rdfs:subClassOf gleif-L1:LegalEntity ;
 	rdfs:label "fund family" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "The legal entity has been declared to manage a fund." ;
+	skos:definition "The entity that is the manager of one or more funds." ;
+	.
+
+gleif-L1:GlobalLegalEntityIdentifierSystem
+	a gleif-base:Registry ;
+	rdfs:label "Global Legal Entity Identifier System" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:altLabel "GLEIS" ;
+	skos:definition "The global repository of LEIs and reference data." ;
+	skos:prefLabel "Global Legal Entity Identifier System" ;
+	gleif-base:hasWebsite "https://www.gleif.org/en/about-lei/gleif-management-of-the-global-lei-system"^^xsd:anyURI ;
+	gleif-base:isManagedBy gleif-base:GLEIF ;
 	.
 
 gleif-L1:LEI
@@ -91,17 +120,6 @@ gleif-L1:LEI
 	skos:altLabel "has LEI string" ;
 	skos:definition "The ISO 17442 compatible identifier for the legal entity recorded." ;
 	skos:prefLabel "LEI" ;
-	.
-
-gleif-L1:LEIregistry
-	a gleif-base:Registry ;
-	rdfs:label "LEI registry" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:altLabel "GLEIF Entity Legal Entity Identifier Registry" ;
-	skos:definition "The global registry of legal identifiers and their relationships, aggregated from data supplied by different Local Operating Units." ;
-	skos:prefLabel "LEI registry" ;
-	gleif-base:hasWebsite "https://www.gleif.org/en/about-lei/gleif-management-of-the-global-lei-system"^^xsd:anyURI ;
-	gleif-base:isManagedBy gleif-base:GLEIF ;
 	.
 
 gleif-L1:LegalEntity
@@ -237,6 +255,24 @@ gleif-L1:RegisteredEntity
 	a owl:Class ;
 	rdfs:subClassOf
 		gleif-base:Entity ,
+		[
+			a owl:Class ;
+			owl:complementOf [
+				a owl:Class ;
+				owl:intersectionOf (
+					[
+						a owl:Restriction ;
+						owl:onProperty gleif-L1:hasSuccessor ;
+						owl:someValuesFrom gleif-L1:RegisteredEntity ;
+					]
+					[
+						a owl:Restriction ;
+						owl:onProperty gleif-L1:hasSuccessorName ;
+						owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+					]
+				) ;
+			] ;
+		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasLegalName ;
@@ -611,7 +647,7 @@ gleif-L1:hasLegalForm
 	rdfs:domain gleif-base:Entity ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	rdfs:range gleif-elf:EntityLegalForm ;
-	skos:definition "The legal form of the entity, taken from the ISO Entity Legal Form (ELF) data set maintained by GLEIF." ;
+	skos:definition "The legal form of the entity, taken from the ISO 20275 Entity Legal Form (ELF) data set maintained by GLEIF." ;
 	.
 
 gleif-L1:hasLegalFormText
@@ -640,7 +676,7 @@ gleif-L1:hasManagingLOU
 	rdfs:domain gleif-base:RegistryEntry ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	rdfs:range gleif-L1:LocalOperatingUnit ;
-	skos:definition "The legal form of the entity, taken from the ISO Entity Legal Form (ELF) data set maintained by GLEIF." ;
+	skos:definition "The LOU that is responsible for administering this LEI registration." ;
 	.
 
 gleif-L1:hasOtherAddresses
