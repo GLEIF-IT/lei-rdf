@@ -56,13 +56,13 @@ gleif-L1:BusinessRegistryIdentifier
 		gleif-base:RegistryIdentifier ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasRegisteredAuthority ;
-			owl:onClass gleif-ra:BusinessRegistry ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:onProperty gleif-L1:hasOtherAuthority ;
+			owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasOtherAuthority ;
+			owl:onProperty gleif-L1:hasRegisteredAuthority ;
+			owl:onClass gleif-ra:BusinessRegistry ;
 			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -339,12 +339,12 @@ gleif-L1:RegisteredEntity
 				owl:intersectionOf (
 					[
 						a owl:Restriction ;
-						owl:onProperty gleif-L1:hasSuccessor ;
+						owl:onProperty gleif-base:hasSuccessor ;
 						owl:someValuesFrom gleif-L1:RegisteredEntity ;
 					]
 					[
 						a owl:Restriction ;
-						owl:onProperty gleif-L1:hasSuccessorName ;
+						owl:onProperty gleif-base:hasSuccessorName ;
 						owl:minCardinality "1"^^xsd:nonNegativeInteger ;
 					]
 				) ;
