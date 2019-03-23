@@ -50,6 +50,77 @@ gleif-L1:Branch
 	skos:definition "The legal entity is a branch of another legal entity." ;
 	.
 
+gleif-L1:BusinessRegistryIdentifier
+	a owl:Class ;
+	rdfs:subClassOf
+		gleif-base:RegistryIdentifier ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasRegisteredAuthority ;
+			owl:onClass gleif-ra:BusinessRegistry ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasOtherAuthority ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:identifies ;
+			owl:onClass gleif-L1:RegisteredEntity ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasEntityID ;
+			owl:onDataRange xsd:string ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			owl:intersectionOf (
+				[
+					a owl:Class ;
+					owl:unionOf (
+						[
+							a owl:Restriction ;
+							owl:onProperty gleif-L1:hasRegisteredAuthority ;
+							owl:onClass gleif-ra:BusinessRegistry ;
+							owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+						]
+						[
+							a owl:Restriction ;
+							owl:onProperty gleif-L1:hasOtherAuthority ;
+							owl:cardinality "1"^^xsd:nonNegativeInteger ;
+						]
+					) ;
+				]
+				[
+					a owl:Class ;
+					owl:complementOf [
+						a owl:Class ;
+						owl:intersectionOf (
+							[
+								a owl:Restriction ;
+								owl:onProperty gleif-L1:hasRegisteredAuthority ;
+								owl:someValuesFrom gleif-ra:BusinessRegistry ;
+							]
+							[
+								a owl:Restriction ;
+								owl:onProperty gleif-L1:hasOtherAuthority ;
+								owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+							]
+						) ;
+					] ;
+				]
+			) ;
+		]
+		;
+	rdfs:label "business registry identifier" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "The legal entity is a branch of another legal entity." ;
+	.
+
 gleif-L1:Fund
 	a owl:Class ;
 	rdfs:subClassOf
@@ -142,6 +213,12 @@ gleif-L1:LegalEntityIdentifier
 			owl:onProperty gleif-base:identifies ;
 			owl:onClass gleif-L1:RegisteredEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:LEI ;
+			owl:onDataRange xsd:string ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
 		;
 	rdfs:label "legal entity identifier" ;
@@ -156,7 +233,7 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasValidationIdentifier ;
-			owl:onClass gleif-base:RegistryIdentifier ;
+			owl:onClass gleif-L1:BusinessRegistryIdentifier ;
 			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -168,7 +245,7 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasOtherValidationIdentifier ;
-			owl:onClass gleif-base:RegistryIdentifier ;
+			owl:onClass gleif-L1:BusinessRegistryIdentifier ;
 			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -345,7 +422,7 @@ gleif-L1:RegisteredEntity
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasRegistrationIdentifier ;
-			owl:onClass gleif-base:RegistryIdentifier ;
+			owl:onClass gleif-L1:BusinessRegistryIdentifier ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -603,6 +680,16 @@ gleif-L1:hasAutoASCIITransliteratedLegalName
 	skos:definition "Legal name of the entity transliterated to ASCII characters, auto-transliterated by the managing LOU." ;
 	.
 
+gleif-L1:hasEntityID
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf gleif-base:hasTag ;
+	rdfs:label "has entity id" ;
+	rdfs:domain gleif-L1:BusinessRegistryIdentifier ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	rdfs:range xsd:string ;
+	skos:definition "The identifier of the entity at the indicated registration authority. Typically, the identifier of the legal entity as maintained by a business registry in the jurisdiction of legal registration, or if the entity is one that is not recorded in a business registry (e.g. one of the varieties of funds registered instead with financial regulators), the identifier of the entity in the appropriate registration authority." ;
+	.
+
 gleif-L1:hasFundFamily
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf gleif-base:isManagedBy ;
@@ -687,6 +774,14 @@ gleif-L1:hasOtherAddresses
 	skos:definition "An optional list of other addresses for the legal entity, excluding transliterations." ;
 	.
 
+gleif-L1:hasOtherAuthority
+	a owl:DatatypeProperty ;
+	rdfs:label "has other authority" ;
+	rdfs:domain gleif-ra:BusinessRegistryIdentifier ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "A legacy / historical reference code of a registration authority which is not yet entered in the Registration Authorities Code List (RAL) maintained by GLEIF, or the designation of an interim register until such time as an entry from RAL can be delivered. " ;
+	.
+
 gleif-L1:hasOtherEntityNames
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasNameAdditional ;
@@ -742,6 +837,16 @@ gleif-L1:hasPreviousLegalName
 	rdfs:label "has previous legal name" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "A primary legal name previously used by this entity." ;
+	.
+
+gleif-L1:hasRegisteredAuthority
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf gleif-base:isRegisteredIn ;
+	rdfs:label "has registered authority" ;
+	rdfs:domain gleif-ra:BusinessRegistryIdentifier ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	rdfs:range gleif-ra:BusinessRegistry ;
+	skos:definition "The reference of the registration authority, taken from the Registration Authorities Code List (RAL) maintained by GLEIF." ;
 	.
 
 gleif-L1:hasRegistrationIdentifier
@@ -819,7 +924,7 @@ gleif-L1:hasValidationIdentifier
 	a owl:ObjectProperty ;
 	rdfs:label "has validation identifier" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	rdfs:range gleif-base:RegistryIdentifier ;
+	rdfs:range gleif-L1:BusinessRegistryIdentifier ;
 	skos:altLabel "has validation authority" ;
 	skos:definition "The (primary) registration used by the LOU to validate the entity data." ;
 	skos:prefLabel "has validation identifier" ;
