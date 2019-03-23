@@ -39,7 +39,7 @@ gleif-L1internal:LegalEntityIdentifierRegistryEntry
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasValidationIdentifier ;
-			owl:onClass gleif-base:RegistryIdentifier ;
+			owl:onClass gleif-L1:BusinessRegistryIdentifier ;
 			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -51,7 +51,7 @@ gleif-L1internal:LegalEntityIdentifierRegistryEntry
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasOtherValidationIdentifier ;
-			owl:onClass gleif-base:RegistryIdentifier ;
+			owl:onClass gleif-L1:BusinessRegistryIdentifier ;
 			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
 		[

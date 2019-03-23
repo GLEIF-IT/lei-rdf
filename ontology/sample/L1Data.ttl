@@ -49,87 +49,88 @@
 	.
 
 gleif-L1-data:BID-Agenzia_delle_Entrate_via_Cristoforo_Colombo-02653240594
-	a gleif-base:RegistryIdentifier ;
-	gleif-base:hasTag "02653240594" ;
+	a gleif-L1:BusinessRegistryIdentifier ;
 	gleif-base:identifies gleif-L1-data:L-2138004WRXP5I4MW6417 ;
+	gleif-L1:hasEntityID "02653240594" ;
+	gleif-L1:hasOtherAuthority "Agenzia delle Entrate via Cristoforo Colombo" ;
 	.
 
 gleif-L1-data:BID-RA000163-35964693
-	a gleif-base:RegistryIdentifier ;
-	gleif-base:hasTag "35964693" ;
+	a gleif-L1:BusinessRegistryIdentifier ;
 	gleif-base:identifies gleif-L1-data:L-097900BHFR0000075034 ;
-	gleif-base:isRegisteredIn gleif-RA-data:RA000163 ;
+	gleif-L1:hasEntityID "35964693" ;
+	gleif-L1:hasRegisteredAuthority gleif-RA-data:RA000163 ;
 	.
 
 gleif-L1-data:BID-RA000163-47115378
-	a gleif-base:RegistryIdentifier ;
+	a gleif-L1:BusinessRegistryIdentifier ;
 	skos:note "Ignored lei:OtherRegistrationAuthorityID Městský soud v Praze-B 1731" ;
-	gleif-base:hasTag "47115378" ;
 	gleif-base:identifies gleif-L1-data:L-31570010000000043842 ;
-	gleif-base:isRegisteredIn gleif-RA-data:RA000163 ;
+	gleif-L1:hasEntityID "47115378" ;
+	gleif-L1:hasRegisteredAuthority gleif-RA-data:RA000163 ;
 	.
 
 gleif-L1-data:BID-RA000449-AME9806027F9
-	a gleif-base:RegistryIdentifier ;
-	gleif-base:hasTag "AME9806027F9" ;
+	a gleif-L1:BusinessRegistryIdentifier ;
 	gleif-base:identifies gleif-L1-data:L-4469000001AVO26P9X86 ;
-	gleif-base:isRegisteredIn gleif-RA-data:RA000449 ;
+	gleif-L1:hasEntityID "AME9806027F9" ;
+	gleif-L1:hasRegisteredAuthority gleif-RA-data:RA000449 ;
 	.
 
 gleif-L1-data:BID-RA000449-BTM960401DV7
-	a gleif-base:RegistryIdentifier ;
-	gleif-base:hasTag "BTM960401DV7" ;
+	a gleif-L1:BusinessRegistryIdentifier ;
 	gleif-base:identifies gleif-L1-data:L-213800PRXJ7WA41AIN67 ;
-	gleif-base:isRegisteredIn gleif-RA-data:RA000449 ;
+	gleif-L1:hasEntityID "BTM960401DV7" ;
+	gleif-L1:hasRegisteredAuthority gleif-RA-data:RA000449 ;
 	.
 
 gleif-L1-data:BID-RA000449-IKM981217SD5
-	a gleif-base:RegistryIdentifier ;
-	gleif-base:hasTag "IKM981217SD5" ;
+	a gleif-L1:BusinessRegistryIdentifier ;
 	gleif-base:identifies gleif-L1-data:L-5493007CICYM7A0SZ714 ;
-	gleif-base:isRegisteredIn gleif-RA-data:RA000449 ;
+	gleif-L1:hasEntityID "IKM981217SD5" ;
+	gleif-L1:hasRegisteredAuthority gleif-RA-data:RA000449 ;
 	.
 
 gleif-L1-data:BID-RA000548-CHE115117479
-	a gleif-base:RegistryIdentifier ;
-	gleif-base:hasTag "CHE200595965" ;
+	a gleif-L1:BusinessRegistryIdentifier ;
 	gleif-base:identifies gleif-L1-data:L-506700LOLO7M6V0E4247 ;
-	gleif-base:isRegisteredIn gleif-RA-data:RA000548 ;
+	gleif-L1:hasEntityID "CHE200595965" ;
+	gleif-L1:hasRegisteredAuthority gleif-RA-data:RA000548 ;
 	.
 
 gleif-L1-data:BID-RA000548-CHE200595965
-	a gleif-base:RegistryIdentifier ;
-	gleif-base:hasTag "CHE200595965" ;
+	a gleif-L1:BusinessRegistryIdentifier ;
 	gleif-base:identifies gleif-L1-data:L-506700GE1G29325QX363 ;
-	gleif-base:isRegisteredIn gleif-RA-data:RA000548 ;
+	gleif-L1:hasEntityID "CHE200595965" ;
+	gleif-L1:hasRegisteredAuthority gleif-RA-data:RA000548 ;
 	.
 
 gleif-L1-data:BID-RA000592-01235867
-	a gleif-base:RegistryIdentifier ;
-	gleif-base:hasTag "01235867" ;
+	a gleif-L1:BusinessRegistryIdentifier ;
 	gleif-base:identifies gleif-L1-data:L-213800ICVRLPU57BQ280 ;
-	gleif-base:isRegisteredIn gleif-RA-data:RA000592 ;
+	gleif-L1:hasEntityID "01235867" ;
+	gleif-L1:hasRegisteredAuthority gleif-RA-data:RA000592 ;
 	.
 
 gleif-L1-data:BID-RA000592-190775
-	a gleif-base:RegistryIdentifier ;
-	gleif-base:hasTag "190775" ;
+	a gleif-L1:BusinessRegistryIdentifier ;
 	gleif-base:identifies gleif-L1-data:L-2138001FT6OQ9OG5WR43 ;
-	gleif-base:isRegisteredIn gleif-RA-data:RA000592 ;
+	gleif-L1:hasEntityID "190775" ;
+	gleif-L1:hasRegisteredAuthority gleif-RA-data:RA000592 ;
 	.
 
 gleif-L1-data:BID-RA000598-201725900005
-	a gleif-base:RegistryIdentifier ;
-	gleif-base:hasTag "201725900005" ;
+	a gleif-L1:BusinessRegistryIdentifier ;
 	gleif-base:identifies gleif-L1-data:L-25490050856CG53NAC28 ;
-	gleif-base:isRegisteredIn gleif-RA-data:RA000598 ;
+	gleif-L1:hasEntityID "201725900005" ;
+	gleif-L1:hasRegisteredAuthority gleif-RA-data:RA000598 ;
 	.
 
 gleif-L1-data:BID-RA000602-6534941
-	a gleif-base:RegistryIdentifier ;
-	gleif-base:hasTag "6534941" ;
+	a gleif-L1:BusinessRegistryIdentifier ;
 	gleif-base:identifies gleif-L1-data:L-25490050856CG53NAC28 ;
-	gleif-base:isRegisteredIn gleif-RA-data:RA000602 ;
+	gleif-L1:hasEntityID "6534941" ;
+	gleif-L1:hasRegisteredAuthority gleif-RA-data:RA000602 ;
 	.
 
 gleif-L1-data:L-097900BHFR0000075034

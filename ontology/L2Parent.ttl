@@ -84,7 +84,7 @@ gleif-L2parent:EntityWithoutLEI
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L1:hasRegistrationIdentifier ;
-			owl:onClass gleif-base:RegistryIdentifier ;
+			owl:onClass gleif-L1:BusinessRegistryIdentifier ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
