@@ -653,6 +653,23 @@ gleif-L1:hasAlternativeLanguageLegalName
 	skos:definition "Registered name of the entity in an alternative language in the legal jurisdiction in which the entity is registered." ;
 	.
 
+gleif-L1:hasAssociatedEntity
+	a owl:ObjectProperty ;
+	rdfs:label "has associated entity" ;
+	rdfs:domain gleif-L1:RegisteredEntity ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	rdfs:range gleif-L1:RegisteredEntity ;
+	skos:definition "Another entity associated with this entity if needed to fully identify this entity or to place it in an appropriate context." ;
+	.
+
+gleif-L1:hasAssociatedEntityName
+	a owl:DatatypeProperty ;
+	rdfs:label "has associated entity name" ;
+	rdfs:domain gleif-L1:RegisteredEntity ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "The name of another entity associated with this entity if needed to fully identify this entity or to place it in an appropriate context." ;
+	.
+
 gleif-L1:hasAutoASCIITransliteratedHeadquartersAddress
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf gleif-L1:hasTransliteratedHeadquartersAddress ;
@@ -692,7 +709,10 @@ gleif-L1:hasEntityID
 
 gleif-L1:hasFundFamily
 	a owl:ObjectProperty ;
-	rdfs:subPropertyOf gleif-base:isManagedBy ;
+	rdfs:subPropertyOf
+		gleif-base:isManagedBy ,
+		gleif-L1:hasAssociatedEntity
+		;
 	rdfs:label "has fund family" ;
 	rdfs:domain gleif-L1:Fund ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
@@ -702,6 +722,7 @@ gleif-L1:hasFundFamily
 
 gleif-L1:hasFundFamilyName
 	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf gleif-L1:hasAssociatedEntityName ;
 	rdfs:label "has fund family name" ;
 	rdfs:domain gleif-L1:Fund ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
