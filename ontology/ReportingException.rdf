@@ -195,15 +195,6 @@ gleif-repex:ExceptionReasonDisclosureDetrimental
 	gleif-base:hasTag "DISCLOSURE_DETRIMENTAL" ;
 	.
 
-gleif-repex:hasExceptionCategory
-  a owl:AnnotationProperty ;
- 	rdfs:label "has exception category" ;
-  rdfs:domain gleif-repex:ReportingException ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
-  rdfs:range gleif-repex:hasExceptionCategory ;
-	skos:definition "A category of mandatory information reporting, beyond the minimum required for legal entity identification, which the legal entity declines, giving reasons and references where applicable." ;
-  .
-
 gleif-repex:hasExceptionReason
   a owl:ObjectProperty ;
  	rdfs:label "has exception reason" ;
