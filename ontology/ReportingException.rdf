@@ -45,7 +45,7 @@ gleif-repex:ReportingException
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-repex:hasExceptionReason ;
-			owl:onClass gleif-repex:ExceptionReason ;
+			owl:onClass gleif-repex:ExceptionReasonKind ;
 			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
     [
@@ -77,28 +77,28 @@ gleif-repex:UltimateConsolidationReportingException
 	gleif-base:hasTag "ULTIMATE_ACCOUNTING_CONSOLIDATION_PARENT" ;
 .  
   
-gleif-repex:ExceptionReason
+gleif-repex:ExceptionReasonKind
 	a owl:Class ;
 	rdfs:label "exception reason" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
 	owl:oneOf (
-		gleif-repex:ExceptionReasonNoLEI
-		gleif-repex:ExceptionReasonNaturalPersons
-		gleif-repex:ExceptionReasonNonConsolidating
-		gleif-repex:ExceptionReasonNoKnownPerson
-		gleif-repex:ExceptionReasonLegalObstacles
-		gleif-repex:ExceptionReasonConsentNotObtained
-		gleif-repex:ExceptionReasonLegalCommitments
-		gleif-repex:ExceptionReasonDetrimentNotExcluded
-		gleif-repex:ExceptionReasonDisclosureDetrimental
+		gleif-repex:ExceptionReasonKindNoLEI
+		gleif-repex:ExceptionReasonKindNaturalPersons
+		gleif-repex:ExceptionReasonKindNonConsolidating
+		gleif-repex:ExceptionReasonKindNoKnownPerson
+		gleif-repex:ExceptionReasonKindLegalObstacles
+		gleif-repex:ExceptionReasonKindConsentNotObtained
+		gleif-repex:ExceptionReasonKindLegalCommitments
+		gleif-repex:ExceptionReasonKindDetrimentNotExcluded
+		gleif-repex:ExceptionReasonKindDisclosureDetrimental
 	) ;
 	skos:definition "A single reason provided by the legal entity for declining to provide the mandatory report of a specified type of information (beyond the minimum reference data needed purely for identification of the legal entity). " ;
 	.
 
-gleif-repex:ExceptionReasonNoLEI
+gleif-repex:ExceptionReasonKindNoLEI
 	a
 		owl:NamedIndividual ,
-		gleif-repex:ExceptionReason
+		gleif-repex:ExceptionReasonKind
 		;
 	rdfs:label "no LEI" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
@@ -106,10 +106,10 @@ gleif-repex:ExceptionReasonNoLEI
 	gleif-base:hasTag "NO_LEI" ;
 	.
 
-gleif-repex:ExceptionReasonNaturalPersons
+gleif-repex:ExceptionReasonKindNaturalPersons
 	a
 		owl:NamedIndividual ,
-		gleif-repex:ExceptionReason
+		gleif-repex:ExceptionReasonKind
 		;
 	rdfs:label "natural persons" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
@@ -117,10 +117,10 @@ gleif-repex:ExceptionReasonNaturalPersons
 	gleif-base:hasTag "NATURAL_PERSONS" ;
 	.
 
-gleif-repex:ExceptionReasonNonConsolidating
+gleif-repex:ExceptionReasonKindNonConsolidating
 	a
 		owl:NamedIndividual ,
-		gleif-repex:ExceptionReason
+		gleif-repex:ExceptionReasonKind
 		;
 	rdfs:label "non consolidating" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
@@ -128,10 +128,10 @@ gleif-repex:ExceptionReasonNonConsolidating
 	gleif-base:hasTag "NON_CONSOLIDATING" ;
 	.
 
-gleif-repex:ExceptionReasonNoKnownPerson
+gleif-repex:ExceptionReasonKindNoKnownPerson
 	a
 		owl:NamedIndividual ,
-		gleif-repex:ExceptionReason
+		gleif-repex:ExceptionReasonKind
 		;
 	rdfs:label "no known person" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
@@ -139,10 +139,10 @@ gleif-repex:ExceptionReasonNoKnownPerson
 	gleif-base:hasTag "NO_KNOWN_PERSON" ;
 	.
 
-gleif-repex:ExceptionReasonLegalObstacles
+gleif-repex:ExceptionReasonKindLegalObstacles
 	a
 		owl:NamedIndividual ,
-		gleif-repex:ExceptionReason
+		gleif-repex:ExceptionReasonKind
 		;
 	rdfs:label "legal obstacles" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
@@ -150,10 +150,10 @@ gleif-repex:ExceptionReasonLegalObstacles
 	gleif-base:hasTag "LEGAL_OBSTACLES" ;
 	.
 
-gleif-repex:ExceptionReasonConsentNotObtained
+gleif-repex:ExceptionReasonKindConsentNotObtained
 	a
 		owl:NamedIndividual ,
-		gleif-repex:ExceptionReason
+		gleif-repex:ExceptionReasonKind
 		;
 	rdfs:label "consent not obtained" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
@@ -161,10 +161,10 @@ gleif-repex:ExceptionReasonConsentNotObtained
 	gleif-base:hasTag "CONSENT_NOT_OBTAINED" ;
 	.
 
-gleif-repex:ExceptionReasonBindingLegalCommitments
+gleif-repex:ExceptionReasonKindBindingLegalCommitments
 	a
 		owl:NamedIndividual ,
-		gleif-repex:ExceptionReason
+		gleif-repex:ExceptionReasonKind
 		;
 	rdfs:label "binding legal commitments" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
@@ -172,10 +172,10 @@ gleif-repex:ExceptionReasonBindingLegalCommitments
 	gleif-base:hasTag "BINDING_LEGAL_COMMITMENTS" ;
 	.
 
-gleif-repex:ExceptionReasonDetrimentNotExcluded
+gleif-repex:ExceptionReasonKindDetrimentNotExcluded
 	a
 		owl:NamedIndividual ,
-		gleif-repex:ExceptionReason
+		gleif-repex:ExceptionReasonKind
 		;
 	rdfs:label "detriment not excluded" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
@@ -184,10 +184,10 @@ gleif-repex:ExceptionReasonDetrimentNotExcluded
 	gleif-base:hasTag "DETRIMENT_NOT_EXCLUDED" ;
 	.
 
-gleif-repex:ExceptionReasonDisclosureDetrimental
+gleif-repex:ExceptionReasonKindDisclosureDetrimental
 	a
 		owl:NamedIndividual ,
-		gleif-repex:ExceptionReason
+		gleif-repex:ExceptionReasonKind
 		;
 	rdfs:label "disclosure detrimental" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
@@ -195,12 +195,12 @@ gleif-repex:ExceptionReasonDisclosureDetrimental
 	gleif-base:hasTag "DISCLOSURE_DETRIMENTAL" ;
 	.
 
-gleif-repex:hasExceptionReason
+gleif-repex:hasExceptionReasonKind
   a owl:ObjectProperty ;
  	rdfs:label "has exception reason" ;
   rdfs:domain gleif-repex:ReportingException ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
-  rdfs:range gleif-repex:ExceptionReason ;
+  rdfs:range gleif-repex:ExceptionReasonKind ;
 	skos:definition "A single reason provided by the legal entity for declining to provide the mandatory report of a specified type of information (beyond the minimum reference data needed purely for identification of the legal entity)." ;
   .
 
@@ -224,15 +224,15 @@ gleif-repex:hasReportingEntity
 []
 	a owl:AllDifferent ;
 	owl:members (
-		gleif-repex:ExceptionReasonNoLEI
-		gleif-repex:ExceptionReasonNaturalPersons
-		gleif-repex:ExceptionReasonNonConsolidating
-		gleif-repex:ExceptionReasonNoKnownPerson
-		gleif-repex:ExceptionReasonLegalObstacles
-		gleif-repex:ExceptionReasonConsentNotObtained
-		gleif-repex:ExceptionReasonLegalCommitments
-		gleif-repex:ExceptionReasonDetrimentNotExcluded
-		gleif-repex:ExceptionReasonDisclosureDetrimental
+		gleif-repex:ExceptionReasonKindNoLEI
+		gleif-repex:ExceptionReasonKindNaturalPersons
+		gleif-repex:ExceptionReasonKindNonConsolidating
+		gleif-repex:ExceptionReasonKindNoKnownPerson
+		gleif-repex:ExceptionReasonKindLegalObstacles
+		gleif-repex:ExceptionReasonKindConsentNotObtained
+		gleif-repex:ExceptionReasonKindLegalCommitments
+		gleif-repex:ExceptionReasonKindDetrimentNotExcluded
+		gleif-repex:ExceptionReasonKindDisclosureDetrimental
 	) ;
 	.
  

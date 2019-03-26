@@ -39,20 +39,20 @@
 
 gleif-repex-data:X-253400UEEJPNF0G35X65-U
 	a gleif-repex:UltimateConsolidationReportingException ;
-	gleif-repex:hasExceptionReason gleif-repex:ExceptionReasonNoKnownPerson ;
+	gleif-repex:hasExceptionReason gleif-repex:ExceptionReasonKindNoKnownPerson ;
 	gleif-repex:hasExceptionReference "Материнские компании, прямо владеющие более 50 % уставного капитала Банка в структуре собственности Банка отсутствуют" ;
 	gleif-repex:hasReportingEntity gleif-L1-data:L-253400UEEJPNF0G35X65 ;
 	.
 
 gleif-repex-data:X-506700GE1G29325QX363-D
 	a gleif-repex:DirectConsolidationReportingException ;
-	gleif-repex:hasExceptionReason gleif-repex:ExceptionReasonNoKnownPerson ;
+	gleif-repex:hasExceptionReason gleif-repex:ExceptionReasonKindNoKnownPerson ;
 	gleif-repex:hasReportingEntity gleif-L1-data:L-506700GE1G29325QX363 ;
 	.
 
 gleif-repex-data:X-506700GE1G29325QX363-U
 	a gleif-repex:UltimateConsolidationReportingException ;
-	gleif-repex:hasExceptionReason gleif-repex:ExceptionReasonNoKnownPerson ;
+	gleif-repex:hasExceptionReason gleif-repex:ExceptionReasonKindNoKnownPerson ;
 	gleif-repex:hasReportingEntity gleif-L1-data:L-506700GE1G29325QX363 ;
 	.
 
