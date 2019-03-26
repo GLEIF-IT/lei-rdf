@@ -195,7 +195,7 @@ gleif-repex:ExceptionReasonKindDisclosureDetrimental
 	gleif-base:hasTag "DISCLOSURE_DETRIMENTAL" ;
 	.
 
-gleif-repex:hasExceptionReasonKind
+gleif-repex:hasExceptionReason
   a owl:ObjectProperty ;
  	rdfs:label "has exception reason" ;
   rdfs:domain gleif-repex:ReportingException ;
