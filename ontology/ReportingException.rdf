@@ -1,0 +1,247 @@
+# baseURI: https://www.gleif.org/ontology/ReportingException/
+# imports: https://www.gleif.org/ontology/L1/
+# imports: https://www.gleif.org/ontology/L2/
+
+@base <https://www.gleif.org/ontology/ReportingException/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
+@prefix gleif-L1: <https://www.gleif.org/ontology/L1/> .
+@prefix gleif-L2: <https://www.gleif.org/ontology/L1/> .
+@prefix gleif-repex: <https://www.gleif.org/ontology/ReportingException/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://www.gleif.org/ontology/ReportingException/>
+	a owl:Ontology ;
+	rdfs:label "GLEIF Reporting Exception Ontology" ;
+	dct:abstract "Ontology that records reasons for legal entities not reporting their parent information." ;
+	dct:contributor <https://plus.google.com/+PeteRivett> ;
+	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
+	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
+	dct:publisher gleif-base:GLEIF ;
+	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
+	dct:rightsHolder gleif-base:GLEIF ;
+	dct:title "Global Legal Entity Identifier Foundation Reporting Exception Ontology"@en ;
+	owl:imports
+		<https://www.gleif.org/ontology/L1/> ,
+		<https://www.gleif.org/ontology/L2/>
+		;
+	owl:versionIRI <https://www.gleif.org/ontology/ReportingException-v1.0/ReportingException/> ;
+	.
+
+gleif-repex:ReportingException
+	a owl:Class ;
+	rdfs:subClassOf
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-repex:hasReportingEntity ;
+			owl:onClass gleif-L1:RegisteredEntity ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-repex:hasExceptionReason ;
+			owl:onClass gleif-repex:ExceptionReason ;
+			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+    [
+			a owl:Restriction ;
+			owl:onProperty gleif-repex:hasExceptionReference ;
+			owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+		] 
+		;
+	rdfs:label "reporting exception" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
+	skos:definition "A single exception to a specified reporting requirement, giving reasons and references where applicable." ;
+	.
+
+gleif-repex:DirectConsolidationReportingException
+	a owl:Class ;
+	rdfs:subClassOf gleif-repex:ReportingException ;
+	rdfs:label "direct consolidation reporting exception" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
+	skos:definition "The legal entity has declined to report a direct accounting consolidation parent, based on applicable accounting standards." ;
+	gleif-base:hasTag "DIRECT_ACCOUNTING_CONSOLIDATION_PARENT" ;
+.  
+
+gleif-repex:UltimateConsolidationReportingException
+	a owl:Class ;
+	rdfs:subClassOf gleif-repex:ReportingException ;
+	rdfs:label "ultimate consolidation reporting exception" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
+	skos:definition "The legal entity has declined to report an ultimate accounting consolidation parent, based on applicable accounting standards." ;
+	gleif-base:hasTag "ULTIMATE_ACCOUNTING_CONSOLIDATION_PARENT" ;
+.  
+  
+gleif-repex:ExceptionReason
+	a owl:Class ;
+	rdfs:label "exception reason" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
+	owl:oneOf (
+		gleif-repex:ExceptionReasonNoLEI
+		gleif-repex:ExceptionReasonNaturalPersons
+		gleif-repex:ExceptionReasonNonConsolidating
+		gleif-repex:ExceptionReasonNoKnownPerson
+		gleif-repex:ExceptionReasonLegalObstacles
+		gleif-repex:ExceptionReasonConsentNotObtained
+		gleif-repex:ExceptionReasonLegalCommitments
+		gleif-repex:ExceptionReasonDetrimentNotExcluded
+		gleif-repex:ExceptionReasonDisclosureDetrimental
+	) ;
+	skos:definition "A single reason provided by the legal entity for declining to provide the mandatory report of a specified type of information (beyond the minimum reference data needed purely for identification of the legal entity). " ;
+	.
+
+gleif-repex:ExceptionReasonNoLEI
+	a
+		owl:NamedIndividual ,
+		gleif-repex:ExceptionReason
+		;
+	rdfs:label "no LEI" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
+	skos:definition "The parent does not consent to have an LEI." ;
+	gleif-base:hasTag "NO_LEI" ;
+	.
+
+gleif-repex:ExceptionReasonNaturalPersons
+	a
+		owl:NamedIndividual ,
+		gleif-repex:ExceptionReason
+		;
+	rdfs:label "natural persons" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
+	skos:definition "There is no parent according to the definition used, because the entity is controlled by natural person(s) without any intermediate legal entity meeting the definition of accounting consolidating parent." ;
+	gleif-base:hasTag "NATURAL_PERSONS" ;
+	.
+
+gleif-repex:ExceptionReasonNonConsolidating
+	a
+		owl:NamedIndividual ,
+		gleif-repex:ExceptionReason
+		;
+	rdfs:label "non consolidating" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
+	skos:definition "There is no parent according to the definition used, because the entity is controlled by legal entities not subject to preparing consolidated financial statements." ;
+	gleif-base:hasTag "NON_CONSOLIDATING" ;
+	.
+
+gleif-repex:ExceptionReasonNoKnownPerson
+	a
+		owl:NamedIndividual ,
+		gleif-repex:ExceptionReason
+		;
+	rdfs:label "no known person" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
+	skos:definition "There is no parent according to the definition used, because there is no known person controlling the entity (e.g., diversified shareholding)." ;
+	gleif-base:hasTag "NO_KNOWN_PERSON" ;
+	.
+
+gleif-repex:ExceptionReasonLegalObstacles
+	a
+		owl:NamedIndividual ,
+		gleif-repex:ExceptionReason
+		;
+	rdfs:label "legal obstacles" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
+	skos:definition """Obstacles in the laws or regulations of a jurisdiction prevent providing or publishing this information. This does not include cases where, under the applicable legal framework disclosing the parent relationship would require the consent of one of the entities in the relationship, or both, and such consent could not be obtained (in these cases 'CONSENT_NOT_OBTAINED' is the applicable code). The LOU is not expected to verify or analyze whether the legal framework constitutes a legal obstacle.""" ;
+	gleif-base:hasTag "LEGAL_OBSTACLES" ;
+	.
+
+gleif-repex:ExceptionReasonConsentNotObtained
+	a
+		owl:NamedIndividual ,
+		gleif-repex:ExceptionReason
+		;
+	rdfs:label "consent not obtained" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
+	skos:definition "There is no parent according to the definition used, because there is no known person controlling the entity (e.g., diversified shareholding)." ;
+	gleif-base:hasTag "CONSENT_NOT_OBTAINED" ;
+	.
+
+gleif-repex:ExceptionReasonBindingLegalCommitments
+	a
+		owl:NamedIndividual ,
+		gleif-repex:ExceptionReason
+		;
+	rdfs:label "binding legal commitments" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
+	skos:definition "Binding legal commitments (other than the laws or regulations of a jurisdiction), such as articles governing the legal entity or a contract, prevent providing or publishing this information. The LOU is not expected to verify or analyze whether the legal framework constitutes a legal obstacle." ;
+	gleif-base:hasTag "BINDING_LEGAL_COMMITMENTS" ;
+	.
+
+gleif-repex:ExceptionReasonDetrimentNotExcluded
+	a
+		owl:NamedIndividual ,
+		gleif-repex:ExceptionReason
+		;
+	rdfs:label "detriment not excluded" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
+	skos:definition "The child entity has sought to consult the parent entity about the reporting of the parent information to the GLEIS but could not confirm the absence of detriment in a way that can appropriately prevent liability risks for the child entity (or those acting on its behalf) under the applicable legal framework. The disclosure of this information would be detrimental to the legal entity or the relevant parent. This will include reasons generally accepted by public authorities in similar circumstances, based on a declaration by the entity. 
+  This reason may be used only when all following cumulative circumstances apply: [i) the parent could not be informed via the GLEIS and have the possibility to correct the relationship information before publication (including raising a cause for opt out, either because the parent does not have an LEI, or it has an LEI but the GLEIS has not yet implemented such system;] ii) the relationship is not already in the public domain (information being in the public domain assumes here that the way the information came into the public domain did not infringe the applicable legal framework); iii) the child entity has reasons to believe that the parent may consider disclosure to be detrimental; (iv) the child entity has sought to consult the parent entity of the reporting of the parent information to the GLEIS but could not confirm the absence of detriment in a way that can appropriately prevent liability risks for the child entity (or those acting on its behalf) under the applicable legal framework." ;
+	gleif-base:hasTag "DETRIMENT_NOT_EXCLUDED" ;
+	.
+
+gleif-repex:ExceptionReasonDisclosureDetrimental
+	a
+		owl:NamedIndividual ,
+		gleif-repex:ExceptionReason
+		;
+	rdfs:label "disclosure detrimental" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
+	skos:definition "The disclosure of this information would be detrimental to the legal entity or the relevant parent. This will include reasons generally accepted by public authorities in similar circumstances, based on a declaration by the entity." ;
+	gleif-base:hasTag "DISCLOSURE_DETRIMENTAL" ;
+	.
+
+gleif-repex:hasExceptionCategory
+  a owl:AnnotationProperty ;
+ 	rdfs:label "has exception category" ;
+  rdfs:domain gleif-repex:ReportingException ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
+  rdfs:range gleif-repex:hasExceptionCategory ;
+	skos:definition "A category of mandatory information reporting, beyond the minimum required for legal entity identification, which the legal entity declines, giving reasons and references where applicable." ;
+  .
+
+gleif-repex:hasExceptionReason
+  a owl:ObjectProperty ;
+ 	rdfs:label "has exception reason" ;
+  rdfs:domain gleif-repex:ReportingException ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
+  rdfs:range gleif-repex:ExceptionReason ;
+	skos:definition "A single reason provided by the legal entity for declining to provide the mandatory report of a specified type of information (beyond the minimum reference data needed purely for identification of the legal entity)." ;
+  .
+
+gleif-repex:hasExceptionReference
+  a owl:DatatypeProperty ;
+ 	rdfs:label "has exception reference" ;
+  rdfs:domain gleif-repex:ReportingException ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
+	skos:definition "References of the law, regulation or other element of the legal framework to support reason(s) provided by the legal entity for declining to provide information on its parents." ;
+  .
+  
+gleif-repex:hasReportingEntity
+  a owl:ObjectProperty ;
+ 	rdfs:label "has exception reason" ;
+  rdfs:domain gleif-repex:ReportingException ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
+  rdfs:range gleif-L1:RegisteredEntity ;
+	skos:definition "A single reason provided by the legal entity for declining to provide the mandatory report of a specified type of information (beyond the minimum reference data needed purely for identification of the legal entity)." ;
+  .
+  
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-repex:ExceptionReasonNoLEI
+		gleif-repex:ExceptionReasonNaturalPersons
+		gleif-repex:ExceptionReasonNonConsolidating
+		gleif-repex:ExceptionReasonNoKnownPerson
+		gleif-repex:ExceptionReasonLegalObstacles
+		gleif-repex:ExceptionReasonConsentNotObtained
+		gleif-repex:ExceptionReasonLegalCommitments
+		gleif-repex:ExceptionReasonDetrimentNotExcluded
+		gleif-repex:ExceptionReasonDisclosureDetrimental
+	) ;
+	.
+ 
