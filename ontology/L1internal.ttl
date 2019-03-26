@@ -115,7 +115,7 @@ gleif-L1internal:LegalEntityIdentifierRegistryEntry
 		]
 		;
 	rdfs:label "legal entity identifier registry entry" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1internal/> ;
 	skos:definition "The extended Registration container element which contains all information on the legal entity's LEI registration with the Managing LOU." ;
 	.
 

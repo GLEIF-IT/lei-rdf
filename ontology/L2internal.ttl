@@ -123,7 +123,7 @@ gleif-L2:LegalEntityRelationshipRecord
 		]
 		;
 	rdfs:label "legal entity relationship record" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2internal/> ;
 	skos:definition "The Registration container element contains information specifying the LOU's administration of the relationship report." ;
 	.
 
@@ -163,7 +163,7 @@ gleif-L2internal:RegistrationStatusTransferred
 		gleif-L2internal:RegistrationStatus
 		;
 	rdfs:label "transferred" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2internal/> ;
 	skos:definition "An LEI registration that has been transferred to a different LOU as the managing LOU." ;
 	gleif-base:hasTag "TRANSFERRED" ;
 	.
