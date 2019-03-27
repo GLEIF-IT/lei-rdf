@@ -54,7 +54,7 @@ gleif-L1:LegalEntityIdentifier
 	owl:equivalentClass [
 		a owl:Restriction ;
 		owl:onProperty gleif-base:isRegisteredIn ;
-		owl:hasValue gleif-L1:LEIregistry ;
+		owl:hasValue gleif-L1:GlobalLegalEntityIdentifierSystem ;
 	] ;
 	.
 
