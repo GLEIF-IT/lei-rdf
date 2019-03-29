@@ -215,11 +215,11 @@ gleif-repex:hasExceptionReference
 
 gleif-repex:hasReportingEntity
 	a owl:ObjectProperty ;
-	rdfs:label "has exception reason" ;
+	rdfs:label "has reporting entity" ;
 	rdfs:domain gleif-repex:ReportingException ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
 	rdfs:range gleif-L2:RegisteredEntity ;
-	skos:definition "A single reason provided by the legal entity for declining to provide the mandatory report of a specified type of information (beyond the minimum reference data needed purely for identification of the legal entity)." ;
+	skos:definition "The LEI-registered legal entity which raised this exception." ;
 	.
 
 []
