@@ -17,9 +17,9 @@
 	rdfs:label "GLEIF Base Ontology"@en ;
 	dct:abstract "This ontology defines generic concepts for reuse by other Global Legal Entity Foundation (GLEIF) ontologies. It defines generic classes for (legal) Entities and their relationships and statuses; and generic properties for different types of name and address."@en ;
 	dct:contributor <https://plus.google.com/+PeteRivett> ;
+	dct:creator gleif-base:GLEIF ;
 	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
 	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
-	dct:publisher gleif-base:GLEIF ;
 	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
 	dct:rightsHolder gleif-base:GLEIF ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
