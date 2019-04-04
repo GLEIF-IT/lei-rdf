@@ -26,7 +26,7 @@
     The country of formation.
     The codes for the representation of names of countries and their subdivisions.
     The date of the first LEI assignment; the date of last update of the LEI information; and the date of expiry, if applicable."""@en ;
-	dct:contributor <https://plus.google.com/+PeteRivett> ;
+	dct:contributor <https://www.linkedin.com/in/peterivett/> ;
 	dct:creator gleif-base:GLEIF ;
 	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
 	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;

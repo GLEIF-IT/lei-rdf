@@ -18,7 +18,7 @@
 	a owl:Ontology ;
 	rdfs:label "GLEIF L2 Ontology" ;
 	dct:abstract "Ontology for GLEIF Level 2 data corresponding to the Relationship Record format, version 1.1. Legal entities that have or acquire an LEI report their ‘direct accounting consolidating parent’ as well as their ‘ultimate accounting consolidating parent’ or for International Branches ‘is an International Branch of' or specify a Reporting Exception."@en ;
-	dct:contributor <https://plus.google.com/+PeteRivett> ;
+	dct:contributor <https://www.linkedin.com/in/peterivett/> ;
 	dct:creator gleif-base:GLEIF ;
 	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
 	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
