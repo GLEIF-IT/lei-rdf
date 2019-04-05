@@ -11,10 +11,15 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://www.gleif.org/ontology/RegistrationAuthority/>
-	a owl:Ontology ;
+	a
+		voaf:Vocabulary ,
+		owl:Ontology
+		;
 	rdfs:label "GLEIF Registration Authority Ontology" ;
 	dct:abstract "This ontology defines concepts for Registration Authority Code List (RAL) of Business Registries, including the jurisdictions served."@en ;
 	dct:contributor <https://www.linkedin.com/in/peterivett/> ;
@@ -25,6 +30,8 @@
 	dct:rightsHolder gleif-base:GLEIF ;
 	dct:source "https://www.gleif.org/en/about-lei/gleif-registration-authorities-list"^^xsd:anyURI ;
 	dct:title "Global Legal Entity Identifier Foundation Registration Authority Ontology"@en ;
+	vann:preferredNamespacePrefix "gleif-ra" ;
+	vann:preferredNamespaceUri "https://www.gleif.org/ontology/RegistrationAuthority/" ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.omg.org/spec/LCC/Countries/CountryRepresentation/>

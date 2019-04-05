@@ -11,11 +11,15 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://www.gleif.org/ontology/L2/>
-	a owl:Ontology ;
+	a
+		voaf:Vocabulary ,
+		owl:Ontology
+		;
 	rdfs:label "GLEIF L2 Ontology" ;
 	dct:abstract "Ontology for GLEIF Level 2 data corresponding to the Relationship Record format, version 1.1. Legal entities that have or acquire an LEI report their ‘direct accounting consolidating parent’ as well as their ‘ultimate accounting consolidating parent’ or for International Branches ‘is an International Branch of' or specify a Reporting Exception."@en ;
 	dct:contributor <https://www.linkedin.com/in/peterivett/> ;
@@ -26,6 +30,8 @@
 	dct:rightsHolder gleif-base:GLEIF ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#"^^xsd:anyURI ;
 	dct:title "Global Legal Entity Identifier Foundation Level 2 Ontology - Who Owns Whom"@en ;
+	vann:preferredNamespacePrefix "gleif-L2" ;
+	vann:preferredNamespaceUri "https://www.gleif.org/ontology/L2/" ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/>

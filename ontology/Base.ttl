@@ -9,11 +9,16 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://www.gleif.org/ontology/Base/>
-	a owl:Ontology ;
+	a
+		voaf:Vocabulary ,
+		owl:Ontology
+		;
 	rdfs:label "GLEIF Base Ontology"@en ;
 	dct:abstract "This ontology defines generic concepts for reuse by other Global Legal Entity Foundation (GLEIF) ontologies. It defines generic classes for (legal) Entities and their relationships and statuses; and generic properties for different types of name and address."@en ;
 	dct:contributor <https://www.linkedin.com/in/peterivett/> ;
@@ -24,6 +29,8 @@
 	dct:rightsHolder gleif-base:GLEIF ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	dct:title "Global Legal Entity Identifier Foundation Base Ontology"@en ;
+	vann:preferredNamespacePrefix "gleif-base" ;
+	vann:preferredNamespaceUri "https://www.gleif.org/ontology/Base/" ;
 	owl:imports <https://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ;
 	owl:versionIRI <https://www.gleif.org/ontology/Base-v1.0/Base/> ;
 	.
