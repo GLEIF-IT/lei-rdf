@@ -20,7 +20,7 @@
 		owl:Ontology
 		;
 	rdfs:label "GLEIF Base Ontology"@en ;
-	dct:abstract "This ontology defines generic concepts for reuse by other Global Legal Entity Foundation (GLEIF) ontologies. It defines generic classes for (legal) Entities and their relationships and statuses; and generic properties for different types of name and address."@en ;
+	dct:abstract "Ontology defining generic concepts for reuse by other Global Legal Entity Identifier Foundation (GLEIF) ontologies. It defines generic classes for (legal) Entities and their relationships and statuses; and generic properties for different types of name and address. It makes use of the OMG Languages Countries and Codes (LCC) ontology (based on the ISO 3166 standard) for country and region information."@en ;
 	dct:contributor <https://www.linkedin.com/in/peterivett/> ;
 	dct:creator gleif-base:GLEIF ;
 	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;

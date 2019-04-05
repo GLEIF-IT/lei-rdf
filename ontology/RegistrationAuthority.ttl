@@ -21,7 +21,7 @@
 		owl:Ontology
 		;
 	rdfs:label "GLEIF Registration Authority Ontology" ;
-	dct:abstract "This ontology defines concepts for Registration Authority Code List (RAL) of Business Registries, including the jurisdictions served."@en ;
+	dct:abstract "Ontology defining concepts for Business Registries, including the jurisdictions served. This is based on the Registration Authority Code List (RAL) used for Global Legal Entity Identifier Foundation (GLEIF) registration, but is more broadly applicable."@en ;
 	dct:contributor <https://www.linkedin.com/in/peterivett/> ;
 	dct:creator gleif-base:GLEIF ;
 	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;

@@ -24,7 +24,7 @@
 		owl:Ontology
 		;
 	rdfs:label "GLEIF L1 Ontology" ;
-	dct:abstract """Ontology for GLEIF Level 1 data corresponding to the Common Data Format version 2.1. It covers key reference data that provides the information on a legal entity identifiable with an LEI. The ISO 17442 standard developed by the International Organization for Standardization defines a set of attributes or LEI reference data that comprises the most essential elements of identification. It specifies the minimum reference data, which must be supplied for each LEI:
+	dct:abstract """Ontology for legal entity identifier registration. It was designed for Global Legal Entity Identifier Foundation (GLEIF) Level 1 data corresponding to the Common Data Format version 2.1. It covers key reference data for a legal entity identifiable with an LEI. The ISO 17442 standard developed by the International Organization for Standardization defines a set of attributes or LEI reference data that comprises the most essential elements of identification. It specifies the minimum reference data, which must be supplied for each LEI:
     The official name of the legal entity as recorded in the official registers.
     The registered address of that legal entity.
     The country of formation.

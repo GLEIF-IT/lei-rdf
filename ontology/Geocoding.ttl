@@ -23,7 +23,7 @@
 		owl:Ontology
 		;
 	rdfs:label "GLEIF Geocoding Ontology" ;
-	dct:abstract "This ontology defines concepts for Geocoding of addresses as used in the L1 Golden Copy Data. It makes use of the W3C WGS84 ontology for latitude and longitude." ;
+	dct:abstract "Ontology defining concepts for Geocoding of addresses. It is based on the geocoding  used in the Global Legal Entity Identifier Foundation (GLEIF) Golden Copy Data, but is more broadly applicable." ;
 	dct:contributor <https://www.linkedin.com/in/peterivett/> ;
 	dct:creator gleif-base:GLEIF ;
 	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
@@ -34,7 +34,7 @@
 		"https://developer.here.com/documentation/geocoder/topics/reading-geocoding-response.html"^^xsd:anyURI ,
 		"https://www.gleif.org/en/lei-data/gleif-golden-copy"^^xsd:anyURI
 		;
-	dct:title "Global Legal Entity Identifier Foundation Geocoding Ontology "@en ;
+	dct:title "Global Legal Entity Identifier Foundation Geocoding Ontology"@en ;
 	vann:preferredNamespacePrefix "gleif-geo" ;
 	vann:preferredNamespaceUri "https://www.gleif.org/ontology/Geocoding/" ;
 	owl:imports

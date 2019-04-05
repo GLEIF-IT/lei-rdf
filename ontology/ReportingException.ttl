@@ -23,14 +23,14 @@
 		owl:Ontology
 		;
 	rdfs:label "GLEIF Reporting Exception Ontology" ;
-	dct:abstract """Ontology for GLEIF exceptions for reporting of L2 parent data, corresponding to the Reporting Exceptions Format version 1.1. 
-  Following the LEI-ROC policy document, 'Collecting data on direct and ultimate parents of legal entities in the Global LEI System – Phase 1' (10 March 2016), the Global Legal Identifier System (GLEIS) requires that legal entities with an LEI provide information on their ultimate and direct accounting consolidating parents. Relationship reporting is mandatory with exceptions allowed for certain well-defined reasons. This ontology provides a simple structure for recording reasons for each exception by LEI.""" ;
+	dct:abstract "Ontology for representing exceptions to reporting of parents, for entities registered with a Legal Entity Identifier. The Global Legal Identifier System (GLEIS) requires that legal entities with an LEI provide information on their ultimate and direct accounting consolidating parents. Relationship reporting is mandatory with exceptions allowed for certain well-defined reasons. This ontology provides a simple structure for recording reasons for each exception by LEI." ;
 	dct:contributor <https://www.linkedin.com/in/peterivett/> ;
 	dct:creator gleif-base:GLEIF ;
 	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
 	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
 	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
 	dct:rightsHolder gleif-base:GLEIF ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/level-2-data-reporting-exceptions-format"^^xsd:anyURI ;
 	dct:title "Global Legal Entity Identifier Foundation Reporting Exception Ontology"@en ;
 	vann:preferredNamespacePrefix "gleif-repex" ;
 	vann:preferredNamespaceUri "https://www.gleif.org/ontology/ReportingException/" ;
