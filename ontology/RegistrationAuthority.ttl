@@ -24,6 +24,7 @@
 	dct:abstract "Ontology defining concepts for Business Registries, including the jurisdictions served. This is based on the Registration Authority Code List (RAL) used for Global Legal Entity Identifier Foundation (GLEIF) registration, but is more broadly applicable."@en ;
 	dct:contributor
 		<http://purl.org/bryon> ,
+		<http://www.workingontologist.com> ,
 		<https://www.linkedin.com/in/peterivett/>
 		;
 	dct:creator gleif-base:GLEIF ;

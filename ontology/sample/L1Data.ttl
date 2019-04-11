@@ -26,6 +26,7 @@
 	dct:abstract "Sample data for GLEIF L1 ontology to illustrate and test the ontology"@en ;
 	dct:contributor
 		<http://purl.org/bryon> ,
+		<http://www.workingontologist.com> ,
 		<https://www.linkedin.com/in/peterivett/>
 		;
 	dct:creator gleif-base:GLEIF ;

@@ -26,6 +26,7 @@
 	dct:abstract "Ontology for representing exceptions to reporting of parents, for entities registered with a Legal Entity Identifier. The Global Legal Identifier System (GLEIS) requires that legal entities with an LEI provide information on their ultimate and direct accounting consolidating parents. Relationship reporting is mandatory with exceptions allowed for certain well-defined reasons. This ontology provides a simple structure for recording reasons for each exception by LEI." ;
 	dct:contributor
 		<http://purl.org/bryon> ,
+		<http://www.workingontologist.com> ,
 		<https://www.linkedin.com/in/peterivett/>
 		;
 	dct:creator gleif-base:GLEIF ;

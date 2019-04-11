@@ -26,6 +26,7 @@
 	dct:abstract "Ontology defining concepts for Geocoding of addresses. It is based on the geocoding  used in the Global Legal Entity Identifier Foundation (GLEIF) Golden Copy Data, but is more broadly applicable." ;
 	dct:contributor
 		<http://purl.org/bryon> ,
+		<http://www.workingontologist.com> ,
 		<https://www.linkedin.com/in/peterivett/>
 		;
 	dct:creator gleif-base:GLEIF ;

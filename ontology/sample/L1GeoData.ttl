@@ -27,6 +27,7 @@
 	dct:abstract "Sample data for GLEIF Geocoding. This extends the sample L1Data ontology with additional address information"@en ;
 	dct:contributor
 		<http://purl.org/bryon> ,
+		<http://www.workingontologist.com> ,
 		<https://www.linkedin.com/in/peterivett/>
 		;
 	dct:creator gleif-base:GLEIF ;

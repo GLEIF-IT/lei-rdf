@@ -24,6 +24,7 @@
 	dct:abstract "Ontology for legal entity parent relationships. It was designed for Global Legal Entity Identifier Foundation (GLEIF) Level 2 data corresponding to the Relationship Record format, version 1.1. Legal entities that have or acquire an LEI report their ‘direct accounting consolidating parent’ as well as their ‘ultimate accounting consolidating parent’, or for International Branches ‘is an International Branch of'. Otherwise they must provide a Reporting Exception."@en ;
 	dct:contributor
 		<http://purl.org/bryon> ,
+		<http://www.workingontologist.com> ,
 		<https://www.linkedin.com/in/peterivett/>
 		;
 	dct:creator gleif-base:GLEIF ;

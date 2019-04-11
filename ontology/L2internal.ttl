@@ -24,6 +24,7 @@
 	dct:abstract "Ontology that builds on GLEIF L2 ontology to add information for GLEIF internal maintenance purposes." ;
 	dct:contributor
 		<http://purl.org/bryon> ,
+		<http://www.workingontologist.com> ,
 		<https://www.linkedin.com/in/peterivett/>
 		;
 	dct:creator gleif-base:GLEIF ;

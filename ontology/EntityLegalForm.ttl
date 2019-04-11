@@ -25,6 +25,7 @@
 	dct:abstract "Ontology defining concepts for Entity Legal Forms and their abbreviations by jurisdiction, based on ISO 20275. Though used by Global Legal Entity Identifier Foundation (GLEIF)  for Legal Entity Identifier registration, it is more broadly applicable."@en ;
 	dct:contributor
 		<http://purl.org/bryon> ,
+		<http://www.workingontologist.com> ,
 		<https://www.linkedin.com/in/peterivett/>
 		;
 	dct:creator gleif-base:GLEIF ;

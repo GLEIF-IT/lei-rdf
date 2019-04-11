@@ -23,6 +23,7 @@
 	dct:abstract "Sample data for Entity Legal Form codes to illustrate and test the ontology."@en ;
 	dct:contributor
 		<http://purl.org/bryon> ,
+		<http://www.workingontologist.com> ,
 		<https://www.linkedin.com/in/peterivett/>
 		;
 	dct:creator gleif-base:GLEIF ;
