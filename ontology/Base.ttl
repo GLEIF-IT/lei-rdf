@@ -184,13 +184,13 @@ gleif-base:LegalEntityRelationship
 	rdfs:subClassOf
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasChild ;
+			owl:onProperty gleif-base:hasSource ;
 			owl:onClass gleif-base:Entity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasParent ;
+			owl:onProperty gleif-base:hasTarget ;
 			owl:onClass gleif-base:Entity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
@@ -475,18 +475,6 @@ gleif-base:hasAddressTransliterated
 	skos:definition "An address which has been converted from original to western text." ;
 	.
 
-gleif-base:hasChild
-	a
-		owl:ObjectProperty ,
-		owl:FunctionalProperty
-		;
-	rdfs:label "has child" ;
-	rdfs:domain gleif-base:LegalEntityRelationship ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	rdfs:range gleif-base:Entity ;
-	skos:definition "The entity that plays the child role." ;
-	.
-
 gleif-base:hasCity
 	a owl:DatatypeProperty ;
 	rdfs:label "has city" ;
@@ -767,18 +755,6 @@ gleif-base:hasNextRenewalDate
 	skos:definition "The date by which a specific registration in the registry must be renewed or updated." ;
 	.
 
-gleif-base:hasParent
-	a
-		owl:ObjectProperty ,
-		owl:FunctionalProperty
-		;
-	rdfs:label "has parent" ;
-	rdfs:domain gleif-base:LegalEntityRelationship ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	rdfs:range gleif-base:Entity ;
-	skos:definition "The entity that plays the parent role." ;
-	.
-
 gleif-base:hasPostalCode
 	a owl:DatatypeProperty ;
 	rdfs:label "has postal code" ;
@@ -810,6 +786,18 @@ gleif-base:hasRegistrationStatus
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range gleif-base:RegistrationStatus ;
 	skos:definition "indicates the status of a specific registration, such as for an identifier or license" ;
+	.
+
+gleif-base:hasSource
+	a
+		owl:ObjectProperty ,
+		owl:FunctionalProperty
+		;
+	rdfs:label "has source" ;
+	rdfs:domain gleif-base:LegalEntityRelationship ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	rdfs:range gleif-base:Entity ;
+	skos:definition "The entity that is the source of the directed relationship." ;
 	.
 
 gleif-base:hasStart
@@ -848,6 +836,18 @@ gleif-base:hasTag
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range xsd:string ;
 	skos:definition "Has a unique combination of alphanumeric characters or binary representation corresponding to the identifier, code, or other element to which it applies." ;
+	.
+
+gleif-base:hasTarget
+	a
+		owl:ObjectProperty ,
+		owl:FunctionalProperty
+		;
+	rdfs:label "has target" ;
+	rdfs:domain gleif-base:LegalEntityRelationship ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	rdfs:range gleif-base:Entity ;
+	skos:definition "The entity that plays the target of the directed relationship." ;
 	.
 
 gleif-base:hasWebsite

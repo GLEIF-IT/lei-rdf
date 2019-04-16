@@ -46,9 +46,9 @@
 
 gleif-L2-data:R-097900BHFR0000075034-31570010000000043842-I
 	a gleif-L2:InternationalBranchRelationship ;
-	gleif-base:hasChild gleif-L1-data:L-097900BHFR0000075034 ;
-	gleif-base:hasParent gleif-L1-data:L-31570010000000043842 ;
 	gleif-L2:hasAccountingStandard gleif-L2:AccountingStandardOther ;
+	gleif-L2:hasChild gleif-L1-data:L-097900BHFR0000075034 ;
+	gleif-L2:hasParent gleif-L1-data:L-31570010000000043842 ;
 	gleif-L2:hasRelationshipPeriod [
 		a gleif-base:Period ;
 		gleif-base:hasStart "2005-11-23T00:00:00Z"^^xsd:dateTime ;
@@ -78,9 +78,9 @@ gleif-L2-data:R-097900BHFR0000075034-31570010000000043842-I-REC
 
 gleif-L2-data:R-2138005GBBOTGXJ4Z883-7245003HPQ1HG4CHTL79-D
 	a gleif-L2:DirectConsolidation ;
-	gleif-base:hasChild gleif-L1-data:L-2138005GBBOTGXJ4Z883 ;
-	gleif-base:hasParent gleif-L1-data:L-7245003HPQ1HG4CHTL79 ;
 	gleif-L2:hasAccountingStandard gleif-L2:AccountingStandardIFRS ;
+	gleif-L2:hasChild gleif-L1-data:L-2138005GBBOTGXJ4Z883 ;
+	gleif-L2:hasParent gleif-L1-data:L-7245003HPQ1HG4CHTL79 ;
 	gleif-L2:hasRelationshipPeriod [
 		a gleif-base:Period ;
 		gleif-base:hasStart "2017-11-10T00:00:00Z"^^xsd:dateTime ;
@@ -106,9 +106,9 @@ gleif-L2-data:R-2138005GBBOTGXJ4Z883-7245003HPQ1HG4CHTL79-D-REC
 
 gleif-L2-data:R-4469000001BFFJTJOW39-7245003HPQ1HG4CHTL79-D
 	a gleif-L2:DirectConsolidation ;
-	gleif-base:hasChild gleif-L1-data:L-4469000001BFFJTJOW39 ;
-	gleif-base:hasParent gleif-L1-data:L-7245003HPQ1HG4CHTL79 ;
 	gleif-L2:hasAccountingStandard gleif-L2:AccountingStandardIFRS ;
+	gleif-L2:hasChild gleif-L1-data:L-4469000001BFFJTJOW39 ;
+	gleif-L2:hasParent gleif-L1-data:L-7245003HPQ1HG4CHTL79 ;
 	gleif-L2:hasRelationshipPeriod [
 		a gleif-base:Period ;
 		gleif-base:hasStart "2016-04-01T00:00:00-06:00"^^xsd:dateTime ;
@@ -135,9 +135,9 @@ gleif-L2-data:R-4469000001BFFJTJOW39-7245003HPQ1HG4CHTL79-D-REC
 
 gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-D
 	a gleif-L2:DirectConsolidation ;
-	gleif-base:hasChild gleif-L1-data:L-4469000001BFY38CWR75 ;
-	gleif-base:hasParent gleif-L1-data:L-95980020140006006514 ;
 	gleif-L2:hasAccountingStandard gleif-L2:AccountingStandardIFRS ;
+	gleif-L2:hasChild gleif-L1-data:L-4469000001BFY38CWR75 ;
+	gleif-L2:hasParent gleif-L1-data:L-95980020140006006514 ;
 	gleif-L2:hasRelationshipPeriod [
 		a gleif-base:Period ;
 		gleif-base:hasStart "2016-01-01T00:00:00-06:00"^^xsd:dateTime ;
@@ -164,9 +164,9 @@ gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-D-REC
 
 gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-U
 	a gleif-L2:UltimateConsolidation ;
-	gleif-base:hasChild gleif-L1-data:L-4469000001BFY38CWR75 ;
-	gleif-base:hasParent gleif-L1-data:L-95980020140006006514 ;
 	gleif-L2:hasAccountingStandard gleif-L2:AccountingStandardIFRS ;
+	gleif-L2:hasChild gleif-L1-data:L-4469000001BFY38CWR75 ;
+	gleif-L2:hasParent gleif-L1-data:L-95980020140006006514 ;
 	gleif-L2:hasRelationshipPeriod [
 		a gleif-base:Period ;
 		gleif-base:hasStart "2016-01-01T00:00:00-06:00"^^xsd:dateTime ;
@@ -193,9 +193,9 @@ gleif-L2-data:R-4469000001BFY38CWR75-95980020140006006514-U-REC
 
 gleif-L2-data:R-7245003HPQ1HG4CHTL79-335800LN9THPFUHMGI86-D
 	a gleif-L2:DirectConsolidation ;
-	gleif-base:hasChild gleif-L1-data:L-7245003HPQ1HG4CHTL79 ;
-	gleif-base:hasParent gleif-L1-data:L-335800LN9THPFUHMGI86 ;
 	gleif-L2:hasAccountingStandard gleif-L2:AccountingStandardOther ;
+	gleif-L2:hasChild gleif-L1-data:L-7245003HPQ1HG4CHTL79 ;
+	gleif-L2:hasParent gleif-L1-data:L-335800LN9THPFUHMGI86 ;
 	gleif-L2:hasRelationshipPeriod [
 		a gleif-base:Period ;
 		gleif-base:hasStart "2012-03-31T00:00:00.000+02:00"^^xsd:dateTime ;
@@ -226,9 +226,9 @@ gleif-L2-data:R-7245003HPQ1HG4CHTL79-335800LN9THPFUHMGI86-D-REC
 
 gleif-L2-data:R-7245003HPQ1HG4CHTL79-335800LN9THPFUHMGI86-U
 	a gleif-L2:UltimateConsolidation ;
-	gleif-base:hasChild gleif-L1-data:L-7245003HPQ1HG4CHTL79 ;
-	gleif-base:hasParent gleif-L1-data:L-335800LN9THPFUHMGI86 ;
 	gleif-L2:hasAccountingStandard gleif-L2:AccountingStandardOther ;
+	gleif-L2:hasChild gleif-L1-data:L-7245003HPQ1HG4CHTL79 ;
+	gleif-L2:hasParent gleif-L1-data:L-335800LN9THPFUHMGI86 ;
 	gleif-L2:hasRelationshipPeriod [
 		a gleif-base:Period ;
 		gleif-base:hasStart "2012-03-31T00:00:00.000+02:00"^^xsd:dateTime ;
