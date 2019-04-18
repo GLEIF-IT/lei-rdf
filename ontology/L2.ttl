@@ -11,21 +11,31 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://www.gleif.org/ontology/L2/>
-	a owl:Ontology ;
+	a
+		voaf:Vocabulary ,
+		owl:Ontology
+		;
 	rdfs:label "GLEIF L2 Ontology" ;
-	dct:abstract "Ontology for GLEIF Level 2 data corresponding to the Relationship Record format, version 1.1. Legal entities that have or acquire an LEI report their ‘direct accounting consolidating parent’ as well as their ‘ultimate accounting consolidating parent’ or for International Branches ‘is an International Branch of' or specify a Reporting Exception."@en ;
-	dct:contributor <https://plus.google.com/+PeteRivett> ;
+	dct:abstract "Ontology for legal entity parent relationships. It was designed for Global Legal Entity Identifier Foundation (GLEIF) Level 2 data corresponding to the Relationship Record format, version 1.1. Legal entities that have or acquire an LEI report their ‘direct accounting consolidating parent’ as well as their ‘ultimate accounting consolidating parent’, or for International Branches ‘is an International Branch of'. Otherwise they must provide a Reporting Exception."@en ;
+	dct:contributor
+		<http://purl.org/bryon> ,
+		<http://www.workingontologist.com> ,
+		<https://www.linkedin.com/in/peterivett/>
+		;
+	dct:creator gleif-base:GLEIF ;
 	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
 	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
-	dct:publisher gleif-base:GLEIF ;
 	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
 	dct:rightsHolder gleif-base:GLEIF ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#"^^xsd:anyURI ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format"^^xsd:anyURI ;
 	dct:title "Global Legal Entity Identifier Foundation Level 2 Ontology - Who Owns Whom"@en ;
+	vann:preferredNamespacePrefix "gleif-L2" ;
+	vann:preferredNamespaceUri "https://www.gleif.org/ontology/L2/" ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/>
@@ -44,13 +54,13 @@ gleif-base:LegalEntityRelationship
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasParent ;
+			owl:onProperty gleif-L2:hasParent ;
 			owl:onClass gleif-base:Entity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasChild ;
+			owl:onProperty gleif-L2:hasChild ;
 			owl:onClass gleif-L1:RegisteredEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
@@ -454,6 +464,19 @@ gleif-L2:hasAccountingStandard
 	skos:definition "The accounting standard applied to determine the definition of e.g. ultimate or direct accounting consolidating parent for the relationship. The relevant accounting standard is that applicable to the 'parent' entity." ;
 	.
 
+gleif-L2:hasChild
+	a
+		owl:ObjectProperty ,
+		owl:FunctionalProperty
+		;
+	rdfs:subPropertyOf gleif-base:hasSource ;
+	rdfs:label "has child" ;
+	rdfs:domain gleif-base:LegalEntityRelationship ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
+	rdfs:range gleif-base:Entity ;
+	skos:definition "The entity that plays the child role." ;
+	.
+
 gleif-L2:hasDocumentFilingPeriod
 	a owl:ObjectProperty ;
 	rdfs:label "has document filing period" ;
@@ -461,6 +484,19 @@ gleif-L2:hasDocumentFilingPeriod
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	rdfs:range gleif-base:Period ;
 	skos:definition "The dates in this instance of Period indicate the validity period of a regulatory filing, accounting document, or other document demonstrating the relationship's validity" ;
+	.
+
+gleif-L2:hasParent
+	a
+		owl:ObjectProperty ,
+		owl:FunctionalProperty
+		;
+	rdfs:subPropertyOf gleif-base:hasTarget ;
+	rdfs:label "has parent" ;
+	rdfs:domain gleif-base:LegalEntityRelationship ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
+	rdfs:range gleif-base:Entity ;
+	skos:definition "The entity that plays the parent role." ;
 	.
 
 gleif-L2:hasRelationshipPeriod

@@ -11,25 +11,36 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://www.gleif.org/ontology/Geocoding/>
-	a owl:Ontology ;
+	a
+		voaf:Vocabulary ,
+		owl:Ontology
+		;
 	rdfs:label "GLEIF Geocoding Ontology" ;
-	dct:abstract "This ontology defines concepts for Geocoding of addresses as used in the L1 Golden Copy Data. It makes use of the W3C WGS84 ontology for latitude and longitude." ;
-	dct:contributor <https://plus.google.com/+PeteRivett> ;
+	dct:abstract "Ontology defining concepts for Geocoding of addresses. It is based on the geocoding  used in the Global Legal Entity Identifier Foundation (GLEIF) Golden Copy Data, but is more broadly applicable." ;
+	dct:contributor
+		<http://purl.org/bryon> ,
+		<http://www.workingontologist.com> ,
+		<https://www.linkedin.com/in/peterivett/>
+		;
+	dct:creator gleif-base:GLEIF ;
 	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
 	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
-	dct:publisher gleif-base:GLEIF ;
 	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
 	dct:rightsHolder gleif-base:GLEIF ;
 	dct:source
 		"https://developer.here.com/documentation/geocoder/topics/reading-geocoding-response.html"^^xsd:anyURI ,
 		"https://www.gleif.org/en/lei-data/gleif-golden-copy"^^xsd:anyURI
 		;
-	dct:title "Global Legal Entity Identifier Foundation Geocoding Ontology "@en ;
+	dct:title "Global Legal Entity Identifier Foundation Geocoding Ontology"@en ;
+	vann:preferredNamespacePrefix "gleif-geo" ;
+	vann:preferredNamespaceUri "https://www.gleif.org/ontology/Geocoding/" ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.omg.org/spec/LCC/Countries/CountryRepresentation/>

@@ -20,10 +20,14 @@
 	a owl:Ontology ;
 	rdfs:label "GLEIF Reporting Exception sample data"@en ;
 	dct:abstract "Sample data for GLEIF Reporting Exception ontology to illustrate and test the ontology"@en ;
-	dct:contributor <https://plus.google.com/+PeteRivett> ;
+	dct:contributor
+		<http://purl.org/bryon> ,
+		<http://www.workingontologist.com> ,
+		<https://www.linkedin.com/in/peterivett/>
+		;
+	dct:creator gleif-base:GLEIF ;
 	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
 	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
-	dct:publisher gleif-base:GLEIF ;
 	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
 	dct:rightsHolder gleif-base:GLEIF ;
 	dct:title "Global Legal Entity Identifier Foundation Reporting Exception sample data"@en ;

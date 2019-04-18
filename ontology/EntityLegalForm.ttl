@@ -11,21 +11,32 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://www.gleif.org/ontology/EntityLegalForm/>
-	a owl:Ontology ;
-	rdfs:label "GLEIF Entity Legal Form Ontology" ;
-	dct:abstract "This ontology defines concepts for Entity Legal Forms and their abbreviations, including their applicable jurisdiction. It is based on the ISO 20275 standard."@en ;
-	dct:contributor <https://plus.google.com/+PeteRivett> ;
+	a
+		voaf:Vocabulary ,
+		owl:Ontology
+		;
+	rdfs:label "Entity Legal Form Ontology" ;
+	dct:abstract "Ontology defining concepts for Entity Legal Forms and their abbreviations by jurisdiction, based on ISO 20275. Though used by Global Legal Entity Identifier Foundation (GLEIF)  for Legal Entity Identifier registration, it is more broadly applicable."@en ;
+	dct:contributor
+		<http://purl.org/bryon> ,
+		<http://www.workingontologist.com> ,
+		<https://www.linkedin.com/in/peterivett/>
+		;
+	dct:creator gleif-base:GLEIF ;
 	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
 	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
-	dct:publisher gleif-base:GLEIF ;
 	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
 	dct:rightsHolder gleif-base:GLEIF ;
 	dct:source "https://www.gleif.org/en/about-lei/code-lists/iso-20275-entity-legal-forms-code-list"^^xsd:anyURI ;
-	dct:title "Global Legal Entity Identifier Foundation Entity Legal Form Ontology"@en ;
+	dct:title "Entity Legal Form Ontology"@en ;
+	vann:preferredNamespacePrefix "gleif-elf" ;
+	vann:preferredNamespaceUri "https://www.gleif.org/ontology/EntityLegalForm/" ;
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.omg.org/spec/LCC/Countries/CountryRepresentation/>

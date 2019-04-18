@@ -9,21 +9,32 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://www.gleif.org/ontology/Base/>
-	a owl:Ontology ;
+	a
+		voaf:Vocabulary ,
+		owl:Ontology
+		;
 	rdfs:label "GLEIF Base Ontology"@en ;
-	dct:abstract "This ontology defines generic concepts for reuse by other Global Legal Entity Foundation (GLEIF) ontologies. It defines generic classes for (legal) Entities and their relationships and statuses; and generic properties for different types of name and address."@en ;
-	dct:contributor <https://plus.google.com/+PeteRivett> ;
+	dct:abstract "Ontology defining generic concepts for reuse by other Global Legal Entity Identifier Foundation (GLEIF) ontologies. It defines generic classes for (legal) Entities and their relationships and statuses; and generic properties for different types of name and address. It makes use of the OMG Languages Countries and Codes (LCC) ontology (based on the ISO 3166 standard) for country and region information."@en ;
+	dct:contributor
+		<http://purl.org/bryon> ,
+		<http://www.workingontologist.com> ,
+		<https://www.linkedin.com/in/peterivett/>
+		;
+	dct:creator gleif-base:GLEIF ;
 	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
 	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
-	dct:publisher gleif-base:GLEIF ;
 	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
 	dct:rightsHolder gleif-base:GLEIF ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	dct:title "Global Legal Entity Identifier Foundation Base Ontology"@en ;
+	vann:preferredNamespacePrefix "gleif-base" ;
+	vann:preferredNamespaceUri "https://www.gleif.org/ontology/Base/" ;
 	owl:imports <https://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ;
 	owl:versionIRI <https://www.gleif.org/ontology/Base-v1.0/Base/> ;
 	.
@@ -173,13 +184,13 @@ gleif-base:LegalEntityRelationship
 	rdfs:subClassOf
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasChild ;
+			owl:onProperty gleif-base:hasSource ;
 			owl:onClass gleif-base:Entity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasParent ;
+			owl:onProperty gleif-base:hasTarget ;
 			owl:onClass gleif-base:Entity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
@@ -464,18 +475,6 @@ gleif-base:hasAddressTransliterated
 	skos:definition "An address which has been converted from original to western text." ;
 	.
 
-gleif-base:hasChild
-	a
-		owl:ObjectProperty ,
-		owl:FunctionalProperty
-		;
-	rdfs:label "has child" ;
-	rdfs:domain gleif-base:LegalEntityRelationship ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	rdfs:range gleif-base:Entity ;
-	skos:definition "The entity that plays the child role." ;
-	.
-
 gleif-base:hasCity
 	a owl:DatatypeProperty ;
 	rdfs:label "has city" ;
@@ -756,18 +755,6 @@ gleif-base:hasNextRenewalDate
 	skos:definition "The date by which a specific registration in the registry must be renewed or updated." ;
 	.
 
-gleif-base:hasParent
-	a
-		owl:ObjectProperty ,
-		owl:FunctionalProperty
-		;
-	rdfs:label "has parent" ;
-	rdfs:domain gleif-base:LegalEntityRelationship ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	rdfs:range gleif-base:Entity ;
-	skos:definition "The entity that plays the parent role." ;
-	.
-
 gleif-base:hasPostalCode
 	a owl:DatatypeProperty ;
 	rdfs:label "has postal code" ;
@@ -799,6 +786,18 @@ gleif-base:hasRegistrationStatus
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range gleif-base:RegistrationStatus ;
 	skos:definition "indicates the status of a specific registration, such as for an identifier or license" ;
+	.
+
+gleif-base:hasSource
+	a
+		owl:ObjectProperty ,
+		owl:FunctionalProperty
+		;
+	rdfs:label "has source" ;
+	rdfs:domain gleif-base:LegalEntityRelationship ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	rdfs:range gleif-base:Entity ;
+	skos:definition "The entity that is the source of the directed relationship." ;
 	.
 
 gleif-base:hasStart
@@ -837,6 +836,18 @@ gleif-base:hasTag
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range xsd:string ;
 	skos:definition "Has a unique combination of alphanumeric characters or binary representation corresponding to the identifier, code, or other element to which it applies." ;
+	.
+
+gleif-base:hasTarget
+	a
+		owl:ObjectProperty ,
+		owl:FunctionalProperty
+		;
+	rdfs:label "has target" ;
+	rdfs:domain gleif-base:LegalEntityRelationship ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	rdfs:range gleif-base:Entity ;
+	skos:definition "The entity that plays the target of the directed relationship." ;
 	.
 
 gleif-base:hasWebsite

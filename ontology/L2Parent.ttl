@@ -21,10 +21,14 @@
 	a owl:Ontology ;
 	rdfs:label '''GLEIF L2 Parent Reference Data Format Ontology" ;
 	dct:abstract "Ontology generated from GLEIF L2 Parent Reference Data Format. This data is for internal LOU use and not published by GLEIF. If the direct and / or ultimate parents of an LEI registrant do not have an LEI, the following applies: The child legal entity will be obliged to report reference data on its direct and ultimate parents to the LEI issuing organization in accordance with the document, titled Parent Reference Data Format.''' ;
-	dct:contributor <https://plus.google.com/+PeteRivett> ;
+	dct:contributor
+		<http://purl.org/bryon> ,
+		<http://www.workingontologist.com> ,
+		<https://www.linkedin.com/in/peterivett/>
+		;
+	dct:creator gleif-base:GLEIF ;
 	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
 	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
-	dct:publisher gleif-base:GLEIF ;
 	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
 	dct:rightsHolder gleif-base:GLEIF ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/parent-reference-data-format#"^^xsd:anyURI ;
