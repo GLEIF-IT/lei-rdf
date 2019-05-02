@@ -1,0 +1,57 @@
+L1/
+L1/LegalEntityIdentifier
+L1/LEI
+Base/identifies
+ L1/identifiesAndRecords
+L1/RegisteredEntity
+ L1/LegalEntity
+  L1/FundFamily
+  L1/LocalOperatingUnit
+ L1/Branch
+ L1/Fund 
+L1/identifiesAndRecords
+L1/hasLegalName
+L1/hasOtherEntityNames
+ L1/hasAlternativeLanguageLegalName
+ L1/hasPreviousLegalName
+ L1/hasTradingOrOperatingName
+ L1/hasAlternativeLanguageLegalName
+L1/hasTransliteratedOtherEntityNames
+ L1/hasAutoASCIITransliteratedLegalName
+ L1/hasPreferredASCIITransliteratedLegalName
+L1/hasLegalAddress
+L1/hasHeadquartersAddress
+L1/hasOtherAddresses
+ L1/hasAlternativeLanguageLegalAddress
+  L1/hasAutoASCIITransliteratedLegalAddress
+  L1/hasPreferredASCIITransliteratedLegalAddress
+ L1/hasAlternativeLanguageHeadquartersAddress
+  L1/hasAutoASCIITransliteratedHeadquartersAddress
+  L1/hasPreferredASCIITransliteratedHeadquartersAddress
+L1/hasTransliteratedOtherAddresses
+ L1/hasTransliteratedHeadquartersAddress
+ L1/hasTransliteratedLegalAddress
+L1/hasRegistrationIdentifier
+Base/hasLegalJurisdiction
+L1/hasLegalForm
+L1/hasLegalFormText
+L1/hasAssociatedEntity 
+ L1/hasFundFamily
+L1/hasAssociatedEntityName
+ L1/hasFundFamilyName
+Base/hasEntityStatus
+Base/hasEntityExpirationDate
+Base/hasEntityExpirationReason
+Base/hasSuccessor
+Base/hasSuccessorName
+L1/LegalEntityIdentifierRegistryEntry
+Base/records
+ L1/identifiesAndRecords
+Base/hasInitialRegistrationDate
+Base/hasLastUpdateDate
+Base/hasRegistrationStatus
+Base/hasNextRenewalDate
+L1/hasManagingLOU
+L1/hasValidationSources
+L1/hasValidationIdentifier
+L1/hasOtherValidationIdentifier

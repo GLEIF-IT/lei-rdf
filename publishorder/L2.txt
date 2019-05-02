@@ -1,0 +1,25 @@
+L2/
+Base/LegalEntityRelationship
+ L2/InternationalBranchRelationship
+ L2/AccountingConsolidation
+  L2/DirectConsolidation
+  L2/UltimateConsolidation
+Base/hasChild
+Base/hasParent
+L2/hasRelationshipPeriod
+L2/hasRelationshipStatus
+Base/isQualifiedBy
+ L2/hasAccountingStandard
+Base/isQuantifiedBy
+L2/LegalEntityRelationshipRecord
+Base/records
+Base/hasInitialRegistrationDate
+Base/hasLastUpdateDate
+L2/hasAccountingPeriod
+L2/hasDocumentFilingPeriod
+Base/hasRegistrationStatus
+Base/hasNextRenewalDate
+L1/hasManagingLOU
+L2/hasValidationSources
+L2/hasValidationDocuments
+L2/hasValidationReference
