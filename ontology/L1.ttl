@@ -57,7 +57,7 @@ gleif-L1:Branch
 	rdfs:subClassOf gleif-L1:RegisteredEntity ;
 	rdfs:label "branch" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "The legal entity is a branch of another legal entity." ;
+	skos:definition "The entity is a branch of another legal entity." ;
 	.
 
 gleif-L1:BusinessRegistryIdentifier
