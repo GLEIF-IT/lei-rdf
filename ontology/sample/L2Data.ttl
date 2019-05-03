@@ -69,18 +69,12 @@ gleif-L2-data:R-549300J43MRRHUL8JX64-549300RK1FB0VMTPD087-I-REC
 
 gleif-L2-data:R-549300PSHWOM1D1JVL23-6SHGI4ZSSLCXXQSBB395-D
 	a gleif-L2:DirectConsolidation ;
-	gleif-base:hasChild gleif-L1-data:L-549300PSHWOM1D1JVL23 ;
-	gleif-base:hasParent gleif-L1-data:L-6SHGI4ZSSLCXXQSBB395 ;
-	gleif-L2:hasRelationshipPeriod
-		[
-			a gleif-base:Period ;
-			gleif-base:hasStart "2017-10-02T00:00:00.000Z"^^xsd:dateTime ;
-		] ,
-		[
-			a gleif-base:Period ;
-			gleif-base:hasStart "2017-10-02T19:50:30.804Z"^^xsd:dateTime ;
-		]
-		;
+	gleif-L2:hasChild gleif-L1-data:L-549300PSHWOM1D1JVL23 ;
+	gleif-L2:hasParent gleif-L1-data:L-6SHGI4ZSSLCXXQSBB395 ;
+	gleif-L2:hasRelationshipPeriod [
+		a gleif-base:Period ;
+		gleif-base:hasStart "2017-10-02T19:50:30.804Z"^^xsd:dateTime ;
+	] ;
 	gleif-L2:hasRelationshipStatus gleif-L2:RelationshipStatusActive ;
 	.
 
@@ -92,36 +86,23 @@ gleif-L2-data:R-549300PSHWOM1D1JVL23-6SHGI4ZSSLCXXQSBB395-D-REC
 	gleif-base:hasRegistrationStatus gleif-L2:RegistrationStatusPublished ;
 	gleif-base:records gleif-L2-data:R-549300PSHWOM1D1JVL23-6SHGI4ZSSLCXXQSBB395-D ;
 	gleif-L1:hasManagingLOU gleif-L1-data:L-EVK05KS7XY1DEII3R011 ;
-	gleif-L2:hasAccountingPeriod
-		[
-			a gleif-base:Period ;
-			gleif-base:hasEnd "2018-02-02T00:00:00.000Z"^^xsd:dateTime ;
-			gleif-base:hasStart "2017-02-02T00:00:00.000Z"^^xsd:dateTime ;
-		] ,
-		[
-			a gleif-base:Period ;
-			gleif-base:hasEnd "2018-02-02T00:00:00.000Z"^^xsd:dateTime ;
-			gleif-base:hasStart "2017-02-02T00:00:00.000Z"^^xsd:dateTime ;
-		]
-		;
+	gleif-L2:hasAccountingPeriod [
+		a gleif-base:Period ;
+		gleif-base:hasEnd "2018-02-02T00:00:00.000Z"^^xsd:dateTime ;
+		gleif-base:hasStart "2017-02-02T00:00:00.000Z"^^xsd:dateTime ;
+	] ;
 	gleif-L2:hasValidationDocuments gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments ;
 	gleif-L2:hasValidationSources gleif-L1:ValidationSourceKindPartiallyCorroborated ;
 	.
 
 gleif-L2-data:R-549300PSHWOM1D1JVL23-6SHGI4ZSSLCXXQSBB395-U
 	a gleif-L2:UltimateConsolidation ;
-	gleif-base:hasChild gleif-L1-data:L-549300PSHWOM1D1JVL23 ;
-	gleif-base:hasParent gleif-L1-data:L-6SHGI4ZSSLCXXQSBB395 ;
-	gleif-L2:hasRelationshipPeriod
-		[
-			a gleif-base:Period ;
-			gleif-base:hasStart "2017-10-02T00:00:00.000Z"^^xsd:dateTime ;
-		] ,
-		[
-			a gleif-base:Period ;
-			gleif-base:hasStart "2017-10-02T19:50:31.338Z"^^xsd:dateTime ;
-		]
-		;
+	gleif-L2:hasChild gleif-L1-data:L-549300PSHWOM1D1JVL23 ;
+	gleif-L2:hasParent gleif-L1-data:L-6SHGI4ZSSLCXXQSBB395 ;
+	gleif-L2:hasRelationshipPeriod [
+		a gleif-base:Period ;
+		gleif-base:hasStart "2017-10-02T19:50:31.338Z"^^xsd:dateTime ;
+	] ;
 	gleif-L2:hasRelationshipStatus gleif-L2:RelationshipStatusActive ;
 	.
 
@@ -133,26 +114,19 @@ gleif-L2-data:R-549300PSHWOM1D1JVL23-6SHGI4ZSSLCXXQSBB395-U-REC
 	gleif-base:hasRegistrationStatus gleif-L2:RegistrationStatusPublished ;
 	gleif-base:records gleif-L2-data:R-549300PSHWOM1D1JVL23-6SHGI4ZSSLCXXQSBB395-U ;
 	gleif-L1:hasManagingLOU gleif-L1-data:L-EVK05KS7XY1DEII3R011 ;
-	gleif-L2:hasAccountingPeriod
-		[
-			a gleif-base:Period ;
-			gleif-base:hasEnd "2018-02-02T00:00:00.000Z"^^xsd:dateTime ;
-			gleif-base:hasStart "2017-02-02T00:00:00.000Z"^^xsd:dateTime ;
-		] ,
-		[
-			a gleif-base:Period ;
-			gleif-base:hasEnd "2018-02-02T00:00:00.000Z"^^xsd:dateTime ;
-			gleif-base:hasStart "2017-02-02T00:00:00.000Z"^^xsd:dateTime ;
-		]
-		;
+	gleif-L2:hasAccountingPeriod [
+		a gleif-base:Period ;
+		gleif-base:hasEnd "2018-02-02T00:00:00.000Z"^^xsd:dateTime ;
+		gleif-base:hasStart "2017-02-02T00:00:00.000Z"^^xsd:dateTime ;
+	] ;
 	gleif-L2:hasValidationDocuments gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments ;
 	gleif-L2:hasValidationSources gleif-L1:ValidationSourceKindPartiallyCorroborated ;
 	.
 
 gleif-L2-data:R-549300Z97UQPIB27EY09-6SHGI4ZSSLCXXQSBB395-U
 	a gleif-L2:UltimateConsolidation ;
-	gleif-base:hasChild gleif-L1-data:L-549300Z97UQPIB27EY09 ;
-	gleif-base:hasParent gleif-L1-data:L-6SHGI4ZSSLCXXQSBB395 ;
+	gleif-L2:hasChild gleif-L1-data:L-549300Z97UQPIB27EY09 ;
+	gleif-L2:hasParent gleif-L1-data:L-6SHGI4ZSSLCXXQSBB395 ;
 	gleif-L2:hasRelationshipPeriod [
 		a gleif-base:Period ;
 		gleif-base:hasStart "2017-12-02T00:00:00.000Z"^^xsd:dateTime ;
@@ -179,8 +153,8 @@ gleif-L2-data:R-549300Z97UQPIB27EY09-6SHGI4ZSSLCXXQSBB395-U-REC
 
 gleif-L2-data:R-549300Z97UQPIB27EY09-E57ODZWZ7FF32TWEFA76-D
 	a gleif-L2:DirectConsolidation ;
-	gleif-base:hasChild gleif-L1-data:L-549300Z97UQPIB27EY09 ;
-	gleif-base:hasParent gleif-L1-data:L-E57ODZWZ7FF32TWEFA76 ;
+	gleif-L2:hasChild gleif-L1-data:L-549300Z97UQPIB27EY09 ;
+	gleif-L2:hasParent gleif-L1-data:L-E57ODZWZ7FF32TWEFA76 ;
 	gleif-L2:hasRelationshipPeriod [
 		a gleif-base:Period ;
 		gleif-base:hasStart "2017-12-02T00:00:00.000Z"^^xsd:dateTime ;
@@ -207,18 +181,12 @@ gleif-L2-data:R-549300Z97UQPIB27EY09-E57ODZWZ7FF32TWEFA76-D-REC
 
 gleif-L2-data:R-E57ODZWZ7FF32TWEFA76-549300PSHWOM1D1JVL23-D
 	a gleif-L2:DirectConsolidation ;
-	gleif-base:hasChild gleif-L1-data:L-E57ODZWZ7FF32TWEFA76 ;
-	gleif-base:hasParent gleif-L1-data:L-549300PSHWOM1D1JVL23 ;
-	gleif-L2:hasRelationshipPeriod
-		[
-			a gleif-base:Period ;
-			gleif-base:hasStart "2017-10-02T00:00:00.000Z"^^xsd:dateTime ;
-		] ,
-		[
-			a gleif-base:Period ;
-			gleif-base:hasStart "2017-10-02T00:00:00.000Z"^^xsd:dateTime ;
-		]
-		;
+	gleif-L2:hasChild gleif-L1-data:L-E57ODZWZ7FF32TWEFA76 ;
+	gleif-L2:hasParent gleif-L1-data:L-549300PSHWOM1D1JVL23 ;
+	gleif-L2:hasRelationshipPeriod [
+		a gleif-base:Period ;
+		gleif-base:hasStart "2017-10-02T00:00:00.000Z"^^xsd:dateTime ;
+	] ;
 	gleif-L2:hasRelationshipStatus gleif-L2:RelationshipStatusActive ;
 	.
 
@@ -230,36 +198,23 @@ gleif-L2-data:R-E57ODZWZ7FF32TWEFA76-549300PSHWOM1D1JVL23-D-REC
 	gleif-base:hasRegistrationStatus gleif-L2:RegistrationStatusPublished ;
 	gleif-base:records gleif-L2-data:R-E57ODZWZ7FF32TWEFA76-549300PSHWOM1D1JVL23-D ;
 	gleif-L1:hasManagingLOU gleif-L1-data:L-EVK05KS7XY1DEII3R011 ;
-	gleif-L2:hasAccountingPeriod
-		[
-			a gleif-base:Period ;
-			gleif-base:hasEnd "2017-12-31T00:00:00.000Z"^^xsd:dateTime ;
-			gleif-base:hasStart "2017-01-01T00:00:00.000Z"^^xsd:dateTime ;
-		] ,
-		[
-			a gleif-base:Period ;
-			gleif-base:hasEnd "2018-05-02T00:00:00.000Z"^^xsd:dateTime ;
-			gleif-base:hasStart "2017-05-02T00:00:00.000Z"^^xsd:dateTime ;
-		]
-		;
+	gleif-L2:hasAccountingPeriod [
+		a gleif-base:Period ;
+		gleif-base:hasEnd "2018-05-02T00:00:00.000Z"^^xsd:dateTime ;
+		gleif-base:hasStart "2017-05-02T00:00:00.000Z"^^xsd:dateTime ;
+	] ;
 	gleif-L2:hasValidationDocuments gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments ;
 	gleif-L2:hasValidationSources gleif-L1:ValidationSourceKindPartiallyCorroborated ;
 	.
 
 gleif-L2-data:R-E57ODZWZ7FF32TWEFA76-6SHGI4ZSSLCXXQSBB395-U
 	a gleif-L2:UltimateConsolidation ;
-	gleif-base:hasChild gleif-L1-data:L-E57ODZWZ7FF32TWEFA76 ;
-	gleif-base:hasParent gleif-L1-data:L-6SHGI4ZSSLCXXQSBB395 ;
-	gleif-L2:hasRelationshipPeriod
-		[
-			a gleif-base:Period ;
-			gleif-base:hasStart "2017-10-02T00:00:00.000Z"^^xsd:dateTime ;
-		] ,
-		[
-			a gleif-base:Period ;
-			gleif-base:hasStart "2017-10-02T00:00:00.000Z"^^xsd:dateTime ;
-		]
-		;
+	gleif-L2:hasChild gleif-L1-data:L-E57ODZWZ7FF32TWEFA76 ;
+	gleif-L2:hasParent gleif-L1-data:L-6SHGI4ZSSLCXXQSBB395 ;
+	gleif-L2:hasRelationshipPeriod [
+		a gleif-base:Period ;
+		gleif-base:hasStart "2017-10-02T00:00:00.000Z"^^xsd:dateTime ;
+	] ;
 	gleif-L2:hasRelationshipStatus gleif-L2:RelationshipStatusActive ;
 	.
 
@@ -271,18 +226,11 @@ gleif-L2-data:R-E57ODZWZ7FF32TWEFA76-6SHGI4ZSSLCXXQSBB395-U-REC
 	gleif-base:hasRegistrationStatus gleif-L2:RegistrationStatusPublished ;
 	gleif-base:records gleif-L2-data:R-E57ODZWZ7FF32TWEFA76-6SHGI4ZSSLCXXQSBB395-U ;
 	gleif-L1:hasManagingLOU gleif-L1-data:L-EVK05KS7XY1DEII3R011 ;
-	gleif-L2:hasAccountingPeriod
-		[
-			a gleif-base:Period ;
-			gleif-base:hasEnd "2017-12-31T00:00:00.000Z"^^xsd:dateTime ;
-			gleif-base:hasStart "2017-01-01T00:00:00.000Z"^^xsd:dateTime ;
-		] ,
-		[
-			a gleif-base:Period ;
-			gleif-base:hasEnd "2018-05-02T00:00:00.000Z"^^xsd:dateTime ;
-			gleif-base:hasStart "2017-05-02T00:00:00.000Z"^^xsd:dateTime ;
-		]
-		;
+	gleif-L2:hasAccountingPeriod [
+		a gleif-base:Period ;
+		gleif-base:hasEnd "2018-05-02T00:00:00.000Z"^^xsd:dateTime ;
+		gleif-base:hasStart "2017-05-02T00:00:00.000Z"^^xsd:dateTime ;
+	] ;
 	gleif-L2:hasValidationDocuments gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments ;
 	gleif-L2:hasValidationSources gleif-L1:ValidationSourceKindPartiallyCorroborated ;
 	.
