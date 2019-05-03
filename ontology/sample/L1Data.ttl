@@ -2,8 +2,6 @@
 # imports: https://www.gleif.org/ontology/L1/
 # imports: https://www.gleif.org/ontology/sample/EntityLegalFormData/
 # imports: https://www.gleif.org/ontology/sample/RegistrationAuthorityData/
-# imports: https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/
-# imports: https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/
 
 @base <https://www.gleif.org/ontology/sample/L1Data/> .
 @prefix dct: <http://purl.org/dc/terms/> .
@@ -38,9 +36,7 @@
 	owl:imports
 		<https://www.gleif.org/ontology/L1/> ,
 		<https://www.gleif.org/ontology/sample/EntityLegalFormData/> ,
-		<https://www.gleif.org/ontology/sample/RegistrationAuthorityData/> ,
-		<https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/> ,
-		<https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/>
+		<https://www.gleif.org/ontology/sample/RegistrationAuthorityData/>
 		;
 	owl:versionIRI <https://www.gleif.org/ontology/L1-v1.0/sample/L1Data/> ;
 	skos:note """There are 5 categories of individual:
@@ -52,47 +48,11 @@
     """ ;
 	.
 
-gleif-L1-data:BID-Agenzia_delle_Entrate_via_Cristoforo_Colombo-02653240594
+gleif-L1-data:BID-RA000170-36236183
 	a gleif-L1:BusinessRegistryIdentifier ;
-	gleif-base:identifies gleif-L1-data:L-2138004WRXP5I4MW6417 ;
-	gleif-L1:hasEntityID "02653240594" ;
-	gleif-L1:hasOtherAuthority "Agenzia delle Entrate via Cristoforo Colombo" ;
-	.
-
-gleif-L1-data:BID-RA000163-35964693
-	a gleif-L1:BusinessRegistryIdentifier ;
-	gleif-base:identifies gleif-L1-data:L-097900BHFR0000075034 ;
-	gleif-L1:hasEntityID "35964693" ;
-	gleif-L1:hasRegisteredAuthority gleif-RA-data:RA000163 ;
-	.
-
-gleif-L1-data:BID-RA000163-47115378
-	a gleif-L1:BusinessRegistryIdentifier ;
-	skos:note "Ignored lei:OtherRegistrationAuthorityID Městský soud v Praze-B 1731" ;
-	gleif-base:identifies gleif-L1-data:L-31570010000000043842 ;
-	gleif-L1:hasEntityID "47115378" ;
-	gleif-L1:hasRegisteredAuthority gleif-RA-data:RA000163 ;
-	.
-
-gleif-L1-data:BID-RA000449-AME9806027F9
-	a gleif-L1:BusinessRegistryIdentifier ;
-	gleif-base:identifies gleif-L1-data:L-4469000001AVO26P9X86 ;
-	gleif-L1:hasEntityID "AME9806027F9" ;
-	gleif-L1:hasRegisteredAuthority gleif-RA-data:RA000449 ;
-	.
-
-gleif-L1-data:BID-RA000449-BTM960401DV7
-	a gleif-L1:BusinessRegistryIdentifier ;
-	gleif-base:identifies gleif-L1-data:L-213800PRXJ7WA41AIN67 ;
-	gleif-L1:hasEntityID "BTM960401DV7" ;
-	gleif-L1:hasRegisteredAuthority gleif-RA-data:RA000449 ;
-	.
-
-gleif-L1-data:BID-RA000449-IKM981217SD5
-	a gleif-L1:BusinessRegistryIdentifier ;
-	gleif-base:identifies gleif-L1-data:L-5493007CICYM7A0SZ714 ;
-	gleif-L1:hasEntityID "IKM981217SD5" ;
-	gleif-L1:hasRegisteredAuthority gleif-RA-data:RA000449 ;
+	gleif-base:identifies gleif-L1-data:L-549300NRE2M9GQ3DTH08 ;
+	gleif-L1:hasEntityID "36236183" ;
+	gleif-L1:hasRegisteredAuthority gleif-RA-data:RA000170 ;
 	.
 
 gleif-L1-data:BID-RA000548-CHE115117479
@@ -109,424 +69,31 @@ gleif-L1-data:BID-RA000548-CHE200595965
 	gleif-L1:hasRegisteredAuthority gleif-RA-data:RA000548 ;
 	.
 
-gleif-L1-data:BID-RA000592-01235867
+gleif-L1-data:BID-RA000585-FC025891
 	a gleif-L1:BusinessRegistryIdentifier ;
-	gleif-base:identifies gleif-L1-data:L-213800ICVRLPU57BQ280 ;
-	gleif-L1:hasEntityID "01235867" ;
-	gleif-L1:hasRegisteredAuthority gleif-RA-data:RA000592 ;
+	gleif-base:identifies gleif-L1-data:L-549300J43MRRHUL8JX64 ;
+	gleif-L1:hasEntityID "FC025891" ;
+	gleif-L1:hasRegisteredAuthority gleif-RA-data:RA000585 ;
 	.
 
-gleif-L1-data:BID-RA000592-190775
+gleif-L1-data:BID-RA000602-2154254
 	a gleif-L1:BusinessRegistryIdentifier ;
-	gleif-base:identifies gleif-L1-data:L-2138001FT6OQ9OG5WR43 ;
-	gleif-L1:hasEntityID "190775" ;
-	gleif-L1:hasRegisteredAuthority gleif-RA-data:RA000592 ;
-	.
-
-gleif-L1-data:BID-RA000598-201725900005
-	a gleif-L1:BusinessRegistryIdentifier ;
-	gleif-base:identifies gleif-L1-data:L-25490050856CG53NAC28 ;
-	gleif-L1:hasEntityID "201725900005" ;
-	gleif-L1:hasRegisteredAuthority gleif-RA-data:RA000598 ;
-	.
-
-gleif-L1-data:BID-RA000602-6534941
-	a gleif-L1:BusinessRegistryIdentifier ;
-	gleif-base:identifies gleif-L1-data:L-25490050856CG53NAC28 ;
-	gleif-L1:hasEntityID "6534941" ;
+	gleif-base:identifies gleif-L1-data:L-6SHGI4ZSSLCXXQSBB395 ;
+	gleif-L1:hasEntityID "2154254" ;
 	gleif-L1:hasRegisteredAuthority gleif-RA-data:RA000602 ;
 	.
 
-gleif-L1-data:L-097900BHFR0000075034
-	a gleif-L1:Branch ;
-	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:CZ ;
-	gleif-L1:hasAutoASCIITransliteratedLegalName "J T BANKA, AS, POBOCKA ZAHRANICNEJ BANKY" ;
-	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-097900BHFR0000075034-HQL ;
-	gleif-L1:hasLegalAddress gleif-L1-data:L-097900BHFR0000075034-LAL ;
-	gleif-L1:hasLegalForm gleif-ELF-data:ELF-J8DW ;
-	gleif-L1:hasLegalName "J & T BANKA, a.s., pobočka zahraničnej banky"@sk ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000163-35964693 ;
+gleif-L1-data:BID-RA000602-3911630
+	a gleif-L1:BusinessRegistryIdentifier ;
+	gleif-base:identifies gleif-L1-data:L-549300PSHWOM1D1JVL23 ;
+	gleif-L1:hasEntityID "3911630" ;
+	gleif-L1:hasRegisteredAuthority gleif-RA-data:RA000602 ;
 	.
 
-gleif-L1-data:L-097900BHFR0000075034-HQL
-	a gleif-base:PhysicalAddress ;
-	skos:note "City should be Praha 8 and lang cs - see parent" ;
-	gleif-base:hasAddressLine1 "Pobrežní 297/14"@sk ;
-	gleif-base:hasCity "Bratislava"@sk ;
-	gleif-base:hasCountry lcc-3166-1-adj:CZ ;
-	gleif-base:hasPostalCode "18600" ;
-	.
-
-gleif-L1-data:L-097900BHFR0000075034-LAL
-	a gleif-base:PhysicalAddress ;
-	gleif-base:hasAddressLine1 "Dvořákovo nábrežie 8"@sk ;
-	gleif-base:hasCity "Bratislava"@sk ;
-	gleif-base:hasCountry lcc-3166-1-adj:SK ;
-	gleif-base:hasPostalCode "81102" ;
-	.
-
-gleif-L1-data:L-097900BHFR0000075034-LEI
-	a
-		gleif-L1:LegalEntityIdentifier ,
-		gleif-L1:LegalEntityIdentifierRegistryEntry
-		;
-	gleif-base:hasInitialRegistrationDate "2017-05-17T00:00:00.00Z"^^xsd:dateTime ;
-	gleif-base:hasLastUpdateDate "2018-08-21T00:00:00.00Z"^^xsd:dateTime ;
-	gleif-base:hasNextRenewalDate "2019-05-17T00:00:00.00Z"^^xsd:dateTime ;
-	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
-	gleif-L1:LEI "097900BHFR0000075034" ;
-	gleif-L1:hasManagingLOU gleif-L1-data:L-097900BEFH0000000217 ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000163-35964693 ;
-	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
-	gleif-L1:identifiesAndRecords gleif-L1-data:L-097900BHFR0000075034 ;
-	.
-
-gleif-L1-data:L-2138001FT6OQ9OG5WR43
-	a gleif-L1:Fund ;
-	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:GB ;
-	gleif-L1:hasFundFamily gleif-L1-data:L-213800ICVRLPU57BQ280 ;
-	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-2138001FT6OQ9OG5WR43-LAL ;
-	gleif-L1:hasLegalAddress gleif-L1-data:L-2138001FT6OQ9OG5WR43-LAL ;
-	gleif-L1:hasLegalFormText "SUB_FUND" ;
-	gleif-L1:hasLegalName "PREMIER GROWTH FUNDS ICVC - PREMIER UK GROWTH FUND" ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000592-190775 ;
-	.
-
-gleif-L1-data:L-2138001FT6OQ9OG5WR43-LAL
-	a gleif-base:PhysicalAddress ;
-	gleif-base:hasAddressLine1 "C/O PREMIER PORTFOLIO MANAGERS LIMITED" ;
-	gleif-base:hasAddressLine2 "EASTGATE COURT, HIGH STREET" ;
-	gleif-base:hasCity "GUILDFORD" ;
-	gleif-base:hasCountry lcc-3166-1-adj:GB ;
-	gleif-base:hasPostalCode "GU1 3DE" ;
-	gleif-base:hasRegion lcc-3166-2-adj:GB-SRY ;
-	.
-
-gleif-L1-data:L-2138001FT6OQ9OG5WR43-LEI
-	a
-		gleif-L1:LegalEntityIdentifier ,
-		gleif-L1:LegalEntityIdentifierRegistryEntry
-		;
-	gleif-base:hasInitialRegistrationDate "2013-10-21T00:00:00Z"^^xsd:dateTime ;
-	gleif-base:hasLastUpdateDate "2018-08-22T14:35:09.040Z"^^xsd:dateTime ;
-	gleif-base:hasNextRenewalDate "2019-10-21T00:00:00Z"^^xsd:dateTime ;
-	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
-	gleif-L1:LEI "2138001FT6OQ9OG5WR43" ;
-	gleif-L1:hasManagingLOU gleif-L1-data:L-213800WAVVOPS85N2205 ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000592-190775 ;
-	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
-	gleif-L1:identifiesAndRecords gleif-L1-data:L-2138001FT6OQ9OG5WR43 ;
-	.
-
-gleif-L1-data:L-2138004WRXP5I4MW6417
-	a gleif-L1:SoleProprietor ;
-	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:IT ;
-	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-2138004WRXP5I4MW6417-LAL ;
-	gleif-L1:hasLegalAddress gleif-L1-data:L-2138004WRXP5I4MW6417-LAL ;
-	gleif-L1:hasLegalForm gleif-ELF-data:ELF-P418 ;
-	gleif-L1:hasLegalName "ALLIT SPA" ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-Agenzia_delle_Entrate_via_Cristoforo_Colombo-02653240594 ;
-	gleif-L1:hasTradingOrOperatingName "ALLIT" ;
-	.
-
-gleif-L1-data:L-2138004WRXP5I4MW6417-LAL
-	a gleif-base:PhysicalAddress ;
-	gleif-base:hasAddressLine1 "S.S MONTE LEPINI KM 42/44" ;
-	gleif-base:hasCity "SEZZE" ;
-	gleif-base:hasCountry lcc-3166-1-adj:IT ;
-	gleif-base:hasPostalCode "04018" ;
-	.
-
-gleif-L1-data:L-2138004WRXP5I4MW6417-LEI
-	a
-		gleif-L1:LegalEntityIdentifier ,
-		gleif-L1:LegalEntityIdentifierRegistryEntry
-		;
-	gleif-base:hasInitialRegistrationDate "2016-02-05T00:00:00Z"^^xsd:dateTime ;
-	gleif-base:hasLastUpdateDate "2018-01-09T14:19:08.417Z"^^xsd:dateTime ;
-	gleif-base:hasNextRenewalDate "2019-02-05T00:00:00Z"^^xsd:dateTime ;
-	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
-	gleif-L1:LEI "2138004WRXP5I4MW6417" ;
-	gleif-L1:hasManagingLOU gleif-L1-data:L-213800WAVVOPS85N2205 ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-Agenzia_delle_Entrate_via_Cristoforo_Colombo-02653240594 ;
-	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
-	gleif-L1:identifiesAndRecords gleif-L1-data:L-2138004WRXP5I4MW6417 ;
-	.
-
-gleif-L1-data:L-213800ICVRLPU57BQ280
-	a gleif-L1:LegalEntity ;
-	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:GB ;
-	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-213800ICVRLPU57BQ280-LAL ;
-	gleif-L1:hasLegalAddress gleif-L1-data:L-213800ICVRLPU57BQ280-LAL ;
-	gleif-L1:hasLegalForm gleif-ELF-data:ELF-H0PO ;
-	gleif-L1:hasLegalName "PREMIER PORTFOLIO MANAGERS LIMITED" ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000592-01235867 ;
-	.
-
-gleif-L1-data:L-213800ICVRLPU57BQ280-LAL
-	a gleif-base:PhysicalAddress ;
-	gleif-base:hasAddressLine1 "EASTGATE COURT" ;
-	gleif-base:hasAddressLine2 "HIGH STREET" ;
-	gleif-base:hasCity "GUILDFORD" ;
-	gleif-base:hasCountry lcc-3166-1-adj:GB ;
-	gleif-base:hasPostalCode "GU1 3DE" ;
-	gleif-base:hasRegion lcc-3166-2-adj:GB-SRY ;
-	.
-
-gleif-L1-data:L-213800ICVRLPU57BQ280-LEI
-	a
-		gleif-L1:LegalEntityIdentifier ,
-		gleif-L1:LegalEntityIdentifierRegistryEntry
-		;
-	gleif-base:hasInitialRegistrationDate "2014-08-12T00:00:00.000+01:00"^^xsd:dateTime ;
-	gleif-base:hasLastUpdateDate "2018-06-13T10:30:35.520Z"^^xsd:dateTime ;
-	gleif-base:hasNextRenewalDate "2019-08-12T00:00:00.00Z"^^xsd:dateTime ;
-	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
-	gleif-L1:LEI "213800ICVRLPU57BQ280" ;
-	gleif-L1:hasManagingLOU gleif-L1-data:L-213800WAVVOPS85N2205 ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000592-01235867 ;
-	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
-	gleif-L1:identifiesAndRecords gleif-L1-data:L-213800ICVRLPU57BQ280 ;
-	.
-
-gleif-L1-data:L-213800PRXJ7WA41AIN67
-	a gleif-L1:LegalEntity ;
-	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:MX ;
-	gleif-L1:hasAutoASCIITransliteratedHeadquartersAddress gleif-L1-data:L-213800PRXJ7WA41AIN67-LAT ;
-	gleif-L1:hasAutoASCIITransliteratedLegalAddress gleif-L1-data:L-213800PRXJ7WA41AIN67-LAT ;
-	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-213800PRXJ7WA41AIN67-LAL ;
-	gleif-L1:hasLegalAddress gleif-L1-data:L-213800PRXJ7WA41AIN67-LAL ;
-	gleif-L1:hasLegalFormText "SOCIEDAD ANONIMA" ;
-	gleif-L1:hasLegalName "MUFG BANK MEXICO SOCIEDAD ANONIMA INSTITUCION DE BANCA MULTIPLE FILIAL"@es ;
-	gleif-L1:hasPreviousLegalName "BANK OF TOKYO-MITSUBISHI UFJ (MEXICO) SOCIEDAD ANONIMA INSTITUCION DE BANCA MULTIPLE FILIAL"@es ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000449-BTM960401DV7 ;
-	.
-
-gleif-L1-data:L-213800PRXJ7WA41AIN67-LAL
-	a gleif-base:PhysicalAddress ;
-	gleif-base:hasAddressLine1 "AVENIDA PASEO DE LA REFORMA 250 PISO 11 TORRE A"@es ;
-	gleif-base:hasAddressLine2 "Juárez"@es ;
-	gleif-base:hasAddressLine3 "Cuauhtémoc"@es ;
-	gleif-base:hasAddressNumber "250" ;
-	gleif-base:hasAddressNumberWithinBuilding "PISO 11 TORRE A"@es ;
-	gleif-base:hasCity "Ciudad de Mexico"@es ;
-	gleif-base:hasCountry lcc-3166-1-adj:MX ;
-	gleif-base:hasPostalCode "06600" ;
-	gleif-base:hasRegion lcc-3166-2-adj:MX-CMX ;
-	.
-
-gleif-L1-data:L-213800PRXJ7WA41AIN67-LAT
-	a gleif-base:PhysicalAddressASCII ;
-	gleif-base:hasAddressLine1 "AVENIDA PASEO DE LA REFORMA 250 PISO 11 TORRE A"@es ;
-	gleif-base:hasAddressLine2 "Juarez"@es ;
-	gleif-base:hasAddressLine3 "Cuauhtemoc"@es ;
-	gleif-base:hasAddressNumber "250" ;
-	gleif-base:hasAddressNumberWithinBuilding "PISO 11 TORRE A"@es ;
-	gleif-base:hasCity "Ciudad de México"@es ;
-	gleif-base:hasCountry lcc-3166-1-adj:MX ;
-	gleif-base:hasPostalCode "06600" ;
-	gleif-base:hasRegion lcc-3166-2-adj:MX-CMX ;
-	.
-
-gleif-L1-data:L-213800PRXJ7WA41AIN67-LEI
-	a
-		gleif-L1:LegalEntityIdentifier ,
-		gleif-L1:LegalEntityIdentifierRegistryEntry
-		;
-	gleif-base:hasInitialRegistrationDate "2015-09-23T19:00:00-05:00"^^xsd:dateTime ;
-	gleif-base:hasLastUpdateDate "2018-05-10T16:56:42.829-05:00"^^xsd:dateTime ;
-	gleif-base:hasNextRenewalDate "2019-01-17T18:54:02.53-06:00"^^xsd:dateTime ;
-	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
-	gleif-L1:LEI "213800PRXJ7WA41AIN67" ;
-	gleif-L1:hasManagingLOU gleif-L1-data:L-4469000001AVO26P9X86 ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000449-BTM960401DV7 ;
-	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
-	gleif-L1:identifiesAndRecords gleif-L1-data:L-213800PRXJ7WA41AIN67 ;
-	.
-
-gleif-L1-data:L-213800YK2FEXWNMT3R12
-	a gleif-L1:LegalEntity ;
-	gleif-base:hasEntityExpirationDate "2018-09-28T00:00:00Z"^^xsd:dateTime ;
-	gleif-base:hasEntityExpirationReason gleif-base:EntityExpirationReasonCorporateAction ;
-	gleif-base:hasEntityStatus gleif-base:EntityStatusInactive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:GB ;
-	gleif-base:hasSuccessor gleif-L1-data:L-213800YK2FEXWNMT3R12 ;
-	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-213800YK2FEXWNMT3R12-LAL ;
-	gleif-L1:hasLegalAddress gleif-L1-data:L-213800YK2FEXWNMT3R12-LAL ;
-	gleif-L1:hasLegalForm gleif-ELF-data:ELF-H0PO ;
-	gleif-L1:hasLegalName "LUDLOW (FYLDE) LIMITED"@en ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000585-03193392 ;
-	.
-
-gleif-L1-data:L-213800YK2FEXWNMT3R12-LAL
-	a gleif-base:PhysicalAddress ;
-	gleif-base:hasAddressLine1 "172 LORD STREET" ;
-	gleif-base:hasAddressNumber "172" ;
-	gleif-base:hasCity "SOUTHPORT" ;
-	gleif-base:hasCountry lcc-3166-1-adj:GB ;
-	gleif-base:hasPostalCode "PR9 0QA" ;
-	gleif-base:hasRegion lcc-3166-2-adj:GB-LIV ;
-	.
-
-gleif-L1-data:L-213800YK2FEXWNMT3R12-LEI
-	a
-		gleif-L1:LegalEntityIdentifier ,
-		gleif-L1:LegalEntityIdentifierRegistryEntry
-		;
-	gleif-base:hasInitialRegistrationDate "2017-11-01T00:00:00Z"^^xsd:dateTime ;
-	gleif-base:hasLastUpdateDate "2018-09-14T14:37:15.170Z"^^xsd:dateTime ;
-	gleif-base:hasNextRenewalDate "2019-11-01T00:00:00Z"^^xsd:dateTime ;
-	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusMerged ;
-	gleif-L1:LEI "213800YK2FEXWNMT3R12" ;
-	gleif-L1:hasManagingLOU gleif-L1-data:L-213800WAVVOPS85N2205 ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000585-03193392 ;
-	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
-	gleif-L1:identifiesAndRecords gleif-L1-data:L-213800YK2FEXWNMT3R12 ;
-	.
-
-gleif-L1-data:L-25490050856CG53NAC28
-	a gleif-L1:LegalEntity ;
-	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-2-adj:US-DE ;
-	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-25490050856CG53NAC28-HQL ;
-	gleif-L1:hasLegalAddress gleif-L1-data:L-25490050856CG53NAC28-LAL ;
-	gleif-L1:hasLegalFormText "Limited Partnership"@en ;
-	gleif-L1:hasLegalName "5210 Concourse, LP"@en ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000602-6534941 ;
-	.
-
-gleif-L1-data:L-25490050856CG53NAC28-HQL
-	a gleif-base:PhysicalAddress ;
-	gleif-base:hasAddressLine1 "12011 San Vicente Boulevard" ;
-	gleif-base:hasAddressLine2 "Suite 700" ;
-	gleif-base:hasAddressNumber "12011" ;
-	gleif-base:hasCity "Los Angeles" ;
-	gleif-base:hasCountry lcc-3166-1-adj:US ;
-	gleif-base:hasPostalCode "90049" ;
-	gleif-base:hasRegion lcc-3166-2-adj:US-CA ;
-	.
-
-gleif-L1-data:L-25490050856CG53NAC28-LAL
-	a gleif-base:PhysicalAddress ;
-	gleif-base:hasAddressLine1 "c/o Cogency Global Inc." ;
-	gleif-base:hasAddressLine2 "850 New Burton Road" ;
-	gleif-base:hasAddressLine3 "Suite 201" ;
-	gleif-base:hasAddressNumber "850" ;
-	gleif-base:hasCity "Dover" ;
-	gleif-base:hasCountry lcc-3166-1-adj:US ;
-	gleif-base:hasPostalCode "19904" ;
-	gleif-base:hasRegion lcc-3166-2-adj:US-DE ;
-	.
-
-gleif-L1-data:L-25490050856CG53NAC28-LEI
-	a
-		gleif-L1:LegalEntityIdentifier ,
-		gleif-L1:LegalEntityIdentifierRegistryEntry
-		;
-	gleif-base:hasInitialRegistrationDate "2017-10-30T16:31:12.342Z"^^xsd:dateTime ;
-	gleif-base:hasLastUpdateDate "2018-10-31T13:32:11.732Z"^^xsd:dateTime ;
-	gleif-base:hasNextRenewalDate "2018-10-30T16:31:12.342Z"^^xsd:dateTime ;
-	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusLapsed ;
-	gleif-L1:LEI "25490050856CG53NAC28" ;
-	gleif-L1:hasManagingLOU gleif-L1-data:L-5493001KJTIIGC8Y1R12 ;
-	gleif-L1:hasOtherValidationIdentifier gleif-L1-data:BID-RA000598-201725900005 ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000602-6534941 ;
-	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
-	gleif-L1:identifiesAndRecords gleif-L1-data:L-25490050856CG53NAC28 ;
-	.
-
-gleif-L1-data:L-31570010000000043842
-	a gleif-L1:LegalEntity ;
-	skos:note "Ignored lei:OtherLegalForm Akciová společnost " ;
-	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:CZ ;
-	gleif-L1:hasAutoASCIITransliteratedLegalName "J & T BANKA, a.s." ;
-	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-31570010000000043842-LAL ;
-	gleif-L1:hasLegalAddress gleif-L1-data:L-31570010000000043842-LAL ;
-	gleif-L1:hasLegalForm gleif-ELF-data:ELF-6CON ;
-	gleif-L1:hasLegalName "J & T BANKA, a.s."@cs ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000163-47115378 ;
-	.
-
-gleif-L1-data:L-31570010000000043842-LAL
-	a gleif-base:PhysicalAddress ;
-	gleif-base:hasAddressLine1 "Pobrežní 297/14"@cs ;
-	gleif-base:hasCity "Praha 8"@cs ;
-	gleif-base:hasCountry lcc-3166-1-adj:CZ ;
-	gleif-base:hasPostalCode "18600" ;
-	.
-
-gleif-L1-data:L-31570010000000043842-LEI
-	a
-		gleif-L1:LegalEntityIdentifier ,
-		gleif-L1:LegalEntityIdentifierRegistryEntry
-		;
-	gleif-base:hasInitialRegistrationDate "2014-01-14T00:00:00.000+01:00"^^xsd:dateTime ;
-	gleif-base:hasLastUpdateDate "2018-12-31T00:00:00.000+01:00"^^xsd:dateTime ;
-	gleif-base:hasNextRenewalDate "2019-02-11T00:00:00.000+01:00"^^xsd:dateTime ;
-	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
-	gleif-L1:LEI "31570010000000043842" ;
-	gleif-L1:hasManagingLOU gleif-L1-data:L-315700LK78Z7C0WMIL03 ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000163-47115378 ;
-	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
-	gleif-L1:identifiesAndRecords gleif-L1-data:L-31570010000000043842 ;
-	.
-
-gleif-L1-data:L-4469000001AVO26P9X86
-	a gleif-L1:LocalOperatingUnit ;
-	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:MX ;
-	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-4469000001AVO26P9X86-HQL ;
-	gleif-L1:hasLegalAddress gleif-L1-data:L-4469000001AVO26P9X86-LAL ;
-	gleif-L1:hasLegalFormText "ASOCIACIÓN CIVIL" ;
-	gleif-L1:hasLegalName "ASOCIACION MEXICANA DE ESTANDARES PARA EL COMERCIO ELECTRONICO AC"@es ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000449-AME9806027F9 ;
-	gleif-L1:hasTradingOrOperatingName "GS1 MÉXICO" ;
-	.
-
-gleif-L1-data:L-4469000001AVO26P9X86-HQL
-	a gleif-base:PhysicalAddress ;
-	gleif-base:hasAddressLine1 "BOULEVARD TOLUCA 46" ;
-	gleif-base:hasAddressLine2 "El Conde" ;
-	gleif-base:hasAddressLine3 "Naucalpan de Juárez" ;
-	gleif-base:hasAddressNumber "46" ;
-	gleif-base:hasCity "Naucalpan de Juárez" ;
-	gleif-base:hasCountry lcc-3166-1-adj:MX ;
-	gleif-base:hasPostalCode "53500" ;
-	gleif-base:hasRegion lcc-3166-2-adj:MX-MEX ;
-	.
-
-gleif-L1-data:L-4469000001AVO26P9X86-LAL
-	a gleif-base:PhysicalAddress ;
-	gleif-base:hasAddressLine1 "BOULEVARD TOLUCA 46" ;
-	gleif-base:hasAddressLine2 "El Conde" ;
-	gleif-base:hasAddressLine3 "Naucalpan de Juárez" ;
-	gleif-base:hasAddressNumber "46" ;
-	gleif-base:hasCity "Naucalpan de Juárez" ;
-	gleif-base:hasCountry lcc-3166-1-adj:MX ;
-	gleif-base:hasPostalCode "53500" ;
-	gleif-base:hasRegion lcc-3166-2-adj:MX-MEX ;
-	.
-
-gleif-L1-data:L-4469000001AVO26P9X86-LEI
-	a
-		gleif-L1:LegalEntityIdentifier ,
-		gleif-L1:LegalEntityIdentifierRegistryEntry
-		;
-	gleif-base:hasInitialRegistrationDate "2017-02-01T19:37:30.514-06:00"^^xsd:dateTime ;
-	gleif-base:hasLastUpdateDate "2018-02-28T11:40:04.012-06:00"^^xsd:dateTime ;
-	gleif-base:hasNextRenewalDate "2018-02-01T19:37:30.513-06:00"^^xsd:dateTime ;
-	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusLapsed ;
-	gleif-L1:LEI "4469000001AVO26P9X86" ;
-	gleif-L1:hasManagingLOU gleif-L1-data:L-4469000001AVO26P9X86 ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000449-AME9806027F9 ;
-	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
-	gleif-L1:identifiesAndRecords gleif-L1-data:L-4469000001AVO26P9X86 ;
+gleif-L1-data:BID-RA888888-7213
+	a gleif-L1:BusinessRegistryIdentifier ;
+	gleif-base:identifies gleif-L1-data:L-E57ODZWZ7FF32TWEFA76 ;
+	gleif-L1:hasEntityID "7213" ;
 	.
 
 gleif-L1-data:L-506700GE1G29325QX363
@@ -603,54 +170,305 @@ gleif-L1-data:L-506700LOLO7M6V0E4247-LEI
 	gleif-L1:identifiesAndRecords gleif-L1-data:L-506700LOLO7M6V0E4247 ;
 	.
 
-gleif-L1-data:L-5493007CICYM7A0SZ714
-	a gleif-L1:LegalEntity ;
+gleif-L1-data:L-549300J43MRRHUL8JX64
+	a gleif-L1:Branch ;
 	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
-	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:MX ;
-	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-5493007CICYM7A0SZ714-HQL ;
-	gleif-L1:hasLegalAddress gleif-L1-data:L-5493007CICYM7A0SZ714-LAL ;
-	gleif-L1:hasLegalFormText "SOCIEDAD DE RESPONSABILIDAD LIMITADA DE CAPITAL VARIABLE" ;
-	gleif-L1:hasLegalName "KI MEXICO S DE RL DE CV"@es ;
-	gleif-L1:hasPreviousLegalName "INDUSTRIAS KI DE MEXICO S.R.L. DE C.V." ;
-	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000449-IKM981217SD5 ;
-	gleif-L1:hasTradingOrOperatingName "KI MEXICO" ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:GB ;
+	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-549300J43MRRHUL8JX64-LAL ;
+	gleif-L1:hasLegalAddress gleif-L1-data:L-549300J43MRRHUL8JX64-LAL ;
+	gleif-L1:hasLegalForm gleif-ELF-data:ELF-CDOT ;
+	gleif-L1:hasLegalName "BlackRock Institutional Trust Company, National Association" ;
+	gleif-L1:hasPreviousLegalName "BlackRock Institutional Trust Company, National Association - Branch (GB)" ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000585-FC025891 ;
 	.
 
-gleif-L1-data:L-5493007CICYM7A0SZ714-HQL
+gleif-L1-data:L-549300J43MRRHUL8JX64-LAL
 	a gleif-base:PhysicalAddress ;
-	gleif-base:hasAddressLine1 "ACCESO II 32" ;
-	gleif-base:hasAddressLine2 "Benito Juárez" ;
-	gleif-base:hasAddressNumber "32" ;
-	gleif-base:hasCity "Querétaro" ;
-	gleif-base:hasCountry lcc-3166-1-adj:MX ;
-	gleif-base:hasPostalCode "76120" ;
-	gleif-base:hasRegion lcc-3166-2-adj:MX-QUE ;
+	gleif-base:hasAddressLine1 "12 Throgmorton Avenue" ;
+	gleif-base:hasCity "London" ;
+	gleif-base:hasCountry lcc-3166-1-adj:GB ;
+	gleif-base:hasPostalCode "EC2N 2DL" ;
+	gleif-base:hasSubdivision lcc-3166-2-adj:GB-ENG ;
 	.
 
-gleif-L1-data:L-5493007CICYM7A0SZ714-LAL
-	a gleif-base:PhysicalAddress ;
-	gleif-base:hasAddressLine1 "ACCESO II 32" ;
-	gleif-base:hasAddressLine2 "Benito Juárez" ;
-	gleif-base:hasAddressNumber "32" ;
-	gleif-base:hasCity "Querétaro" ;
-	gleif-base:hasCountry lcc-3166-1-adj:MX ;
-	gleif-base:hasPostalCode "76120" ;
-	gleif-base:hasRegion lcc-3166-2-adj:MX-QUE ;
-	.
-
-gleif-L1-data:L-5493007CICYM7A0SZ714-LEI
+gleif-L1-data:L-549300J43MRRHUL8JX64-LEI
 	a
 		gleif-L1:LegalEntityIdentifier ,
 		gleif-L1:LegalEntityIdentifierRegistryEntry
 		;
-	gleif-base:hasInitialRegistrationDate "2013-03-22T11:07:24.137-06:00"^^xsd:dateTime ;
-	gleif-base:hasLastUpdateDate "2018-02-28T11:40:04.012-06:00"^^xsd:dateTime ;
-	gleif-base:hasNextRenewalDate "2019-01-24T20:16:17.627-06:00"^^xsd:dateTime ;
+	gleif-base:hasInitialRegistrationDate "2017-02-25T02:08:00.000Z"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2018-04-05T15:32:00.000Z"^^xsd:dateTime ;
+	gleif-base:hasNextRenewalDate "2019-03-29T00:38:00.000Z"^^xsd:dateTime ;
 	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
-	gleif-L1:LEI "5493007CICYM7A0SZ714" ;
-	gleif-L1:hasManagingLOU gleif-L1-data:L-4469000001AVO26P9X86 ;
-	gleif-L1:hasValidationIdentifier gleif-L1-data:BID-RA000449-IKM981217SD5 ;
+	gleif-L1:LEI "549300J43MRRHUL8JX64" ;
+	gleif-L1:hasManagingLOU gleif-L1-data:L-EVK05KS7XY1DEII3R011 ;
 	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
-	gleif-L1:identifiesAndRecords gleif-L1-data:L-5493007CICYM7A0SZ714 ;
+	gleif-L1:identifiesAndRecords gleif-L1-data:L-549300J43MRRHUL8JX64 ;
+	.
+
+gleif-L1-data:L-549300NRE2M9GQ3DTH08
+	a gleif-L1:SoleProprietor ;
+	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:DK ;
+	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-549300NRE2M9GQ3DTH08-HQL ;
+	gleif-L1:hasLegalAddress gleif-L1-data:L-549300NRE2M9GQ3DTH08-LAL ;
+	gleif-L1:hasLegalForm gleif-ELF-data:ELF-FUKI ;
+	gleif-L1:hasLegalName "MF Consulting" ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000170-36236183 ;
+	.
+
+gleif-L1-data:L-549300NRE2M9GQ3DTH08-HQL
+	a gleif-base:PhysicalAddress ;
+	gleif-base:hasAddressLine1 "Store Kongensgade 145 st." ;
+	gleif-base:hasCity "København" ;
+	gleif-base:hasCountry lcc-3166-1-adj:DK ;
+	gleif-base:hasPostalCode "1264" ;
+	gleif-base:hasSubdivision lcc-3166-2-adj:DK-84 ;
+	.
+
+gleif-L1-data:L-549300NRE2M9GQ3DTH08-LAL
+	a gleif-base:PhysicalAddress ;
+	gleif-base:hasAddressLine1 "Store Kongensgade 145, st." ;
+	gleif-base:hasCity "København" ;
+	gleif-base:hasCountry lcc-3166-1-adj:DK ;
+	gleif-base:hasPostalCode "1264" ;
+	gleif-base:hasSubdivision lcc-3166-2-adj:DK-84 ;
+	.
+
+gleif-L1-data:L-549300NRE2M9GQ3DTH08-LEI
+	a
+		gleif-L1:LegalEntityIdentifier ,
+		gleif-L1:LegalEntityIdentifierRegistryEntry
+		;
+	gleif-base:hasInitialRegistrationDate "2017-12-27T15:32:00.000Z"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2019-02-14T15:34:00.000Z"^^xsd:dateTime ;
+	gleif-base:hasNextRenewalDate "2020-01-03T16:39:00.000Z"^^xsd:dateTime ;
+	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
+	gleif-L1:LEI "549300NRE2M9GQ3DTH08" ;
+	gleif-L1:hasManagingLOU gleif-L1-data:L-EVK05KS7XY1DEII3R011 ;
+	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
+	gleif-L1:identifiesAndRecords gleif-L1-data:L-549300NRE2M9GQ3DTH08 ;
+	.
+
+gleif-L1-data:L-549300PSHWOM1D1JVL23
+	a gleif-L1:LegalEntity ;
+	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:US ;
+	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-549300PSHWOM1D1JVL23-HQL ;
+	gleif-L1:hasLegalAddress gleif-L1-data:L-549300PSHWOM1D1JVL23-LAL ;
+	gleif-L1:hasLegalFormText "CORPORATION" ;
+	gleif-L1:hasLegalName "Citicorp LLC" ;
+	gleif-L1:hasPreviousLegalName "Citicorp" ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000602-3911630 ;
+	.
+
+gleif-L1-data:L-549300PSHWOM1D1JVL23-HQL
+	a gleif-base:PhysicalAddress ;
+	gleif-base:hasAddressLine1 "388 Greenwich Street" ;
+	gleif-base:hasCity "New York" ;
+	gleif-base:hasCountry lcc-3166-1-adj:US ;
+	gleif-base:hasPostalCode "10013" ;
+	gleif-base:hasSubdivision lcc-3166-2-adj:US-NY ;
+	.
+
+gleif-L1-data:L-549300PSHWOM1D1JVL23-LAL
+	a gleif-base:PhysicalAddress ;
+	gleif-base:hasAddressLine1 "C/O The Corporation Trust Company" ;
+	gleif-base:hasAddressLine2 "Corporation Trust Center" ;
+	gleif-base:hasAddressLine3 "1209 Orange Street" ;
+	gleif-base:hasCity "Wilmington" ;
+	gleif-base:hasCountry lcc-3166-1-adj:US ;
+	gleif-base:hasPostalCode "19801" ;
+	gleif-base:hasSubdivision lcc-3166-2-adj:US-DE ;
+	.
+
+gleif-L1-data:L-549300PSHWOM1D1JVL23-LEI
+	a
+		gleif-L1:LegalEntityIdentifier ,
+		gleif-L1:LegalEntityIdentifierRegistryEntry
+		;
+	gleif-base:hasInitialRegistrationDate "2016-05-05T01:54:00.000Z"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2018-07-18T17:05:00.000Z"^^xsd:dateTime ;
+	gleif-base:hasNextRenewalDate "2019-07-19T00:31:00.000Z"^^xsd:dateTime ;
+	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
+	gleif-L1:LEI "549300PSHWOM1D1JVL23" ;
+	gleif-L1:hasManagingLOU gleif-L1-data:L-EVK05KS7XY1DEII3R011 ;
+	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
+	gleif-L1:identifiesAndRecords gleif-L1-data:L-549300PSHWOM1D1JVL23 ;
+	.
+
+gleif-L1-data:L-549300RK1FB0VMTPD087
+	a gleif-L1:LegalEntity ;
+	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:US ;
+	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-549300RK1FB0VMTPD087-LAL ;
+	gleif-L1:hasLegalAddress gleif-L1-data:L-549300RK1FB0VMTPD087-LAL ;
+	gleif-L1:hasLegalFormText "OTHER" ;
+	gleif-L1:hasLegalName "Blackrock Institutional Trust Company, National Association" ;
+	gleif-L1:hasPreviousLegalName "Barclays Global Investors, National Association" ;
+	.
+
+gleif-L1-data:L-549300RK1FB0VMTPD087-LAL
+	a gleif-base:PhysicalAddress ;
+	gleif-base:hasAddressLine1 "400 Howard Street" ;
+	gleif-base:hasCity "San Francisco" ;
+	gleif-base:hasCountry lcc-3166-1-adj:US ;
+	gleif-base:hasPostalCode "94105" ;
+	gleif-base:hasSubdivision lcc-3166-2-adj:US-CA ;
+	.
+
+gleif-L1-data:L-549300RK1FB0VMTPD087-LEI
+	a
+		gleif-L1:LegalEntityIdentifier ,
+		gleif-L1:LegalEntityIdentifierRegistryEntry
+		;
+	gleif-base:hasInitialRegistrationDate "2014-02-12T12:11:00.000Z"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2018-04-24T21:48:00.000Z"^^xsd:dateTime ;
+	gleif-base:hasNextRenewalDate "2019-03-29T00:35:00.000Z"^^xsd:dateTime ;
+	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
+	gleif-L1:LEI "549300RK1FB0VMTPD087" ;
+	gleif-L1:hasManagingLOU gleif-L1-data:L-EVK05KS7XY1DEII3R011 ;
+	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindEntitySuppliedOnly ;
+	gleif-L1:identifiesAndRecords gleif-L1-data:L-549300RK1FB0VMTPD087 ;
+	.
+
+gleif-L1-data:L-549300RK1GOW1PBTZ848-LAL
+	a gleif-base:PhysicalAddress ;
+	gleif-base:hasAddressLine1 "C/O Jason Ouaknine" ;
+	gleif-base:hasAddressLine2 "9905 Jefferson Boulevard" ;
+	gleif-base:hasCity "Culver City" ;
+	gleif-base:hasCountry lcc-3166-1-adj:US ;
+	gleif-base:hasPostalCode "90232" ;
+	gleif-base:hasSubdivision lcc-3166-2-adj:US-CA ;
+	.
+
+gleif-L1-data:L-549300Z97UQPIB27EY09
+	a gleif-L1:Fund ;
+	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:US ;
+	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-549300Z97UQPIB27EY09-LAL ;
+	gleif-L1:hasLegalAddress gleif-L1-data:L-549300Z97UQPIB27EY09-LAL ;
+	gleif-L1:hasLegalFormText "OTHER" ;
+	gleif-L1:hasLegalName "The Eagle Tax-Exempt Trust Series 20170009" ;
+	.
+
+gleif-L1-data:L-549300Z97UQPIB27EY09-LAL
+	a gleif-base:PhysicalAddress ;
+	gleif-base:hasAddressLine1 "4th Floor" ;
+	gleif-base:hasAddressLine2 "390 Greenwich Street" ;
+	gleif-base:hasCity "New York" ;
+	gleif-base:hasCountry lcc-3166-1-adj:US ;
+	gleif-base:hasPostalCode "10013" ;
+	gleif-base:hasSubdivision lcc-3166-2-adj:US-NY ;
+	.
+
+gleif-L1-data:L-549300Z97UQPIB27EY09-LEI
+	a
+		gleif-L1:LegalEntityIdentifier ,
+		gleif-L1:LegalEntityIdentifierRegistryEntry
+		;
+	gleif-base:hasInitialRegistrationDate "2017-10-06T02:01:00.000Z"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2018-07-18T17:27:00.000Z"^^xsd:dateTime ;
+	gleif-base:hasNextRenewalDate "2019-07-19T00:32:00.000Z"^^xsd:dateTime ;
+	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
+	gleif-L1:LEI "549300Z97UQPIB27EY09" ;
+	gleif-L1:hasManagingLOU gleif-L1-data:L-EVK05KS7XY1DEII3R011 ;
+	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindEntitySuppliedOnly ;
+	gleif-L1:identifiesAndRecords gleif-L1-data:L-549300Z97UQPIB27EY09 ;
+	.
+
+gleif-L1-data:L-6SHGI4ZSSLCXXQSBB395
+	a gleif-L1:LegalEntity ;
+	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:US ;
+	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-6SHGI4ZSSLCXXQSBB395-HQL ;
+	gleif-L1:hasLegalAddress gleif-L1-data:L-6SHGI4ZSSLCXXQSBB395-LAL ;
+	gleif-L1:hasLegalFormText "INCORPORATED" ;
+	gleif-L1:hasLegalName "Citigroup Inc." ;
+	gleif-L1:hasPreviousLegalName
+		"Primerica Corporation" ,
+		"The Travelers Inc." ,
+		"Travelers Group Inc."
+		;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA000602-2154254 ;
+	.
+
+gleif-L1-data:L-6SHGI4ZSSLCXXQSBB395-HQL
+	a gleif-base:PhysicalAddress ;
+	gleif-base:hasAddressLine1 "388 Greenwich Street" ;
+	gleif-base:hasCity "New York" ;
+	gleif-base:hasCountry lcc-3166-1-adj:US ;
+	gleif-base:hasPostalCode "10013" ;
+	gleif-base:hasSubdivision lcc-3166-2-adj:US-NY ;
+	.
+
+gleif-L1-data:L-6SHGI4ZSSLCXXQSBB395-LAL
+	a gleif-base:PhysicalAddress ;
+	gleif-base:hasAddressLine1 "C/O The Corporation Trust Company" ;
+	gleif-base:hasAddressLine2 "Corporation Trust Center" ;
+	gleif-base:hasAddressLine3 "1209 Orange Street" ;
+	gleif-base:hasCity "Wilmington" ;
+	gleif-base:hasCountry lcc-3166-1-adj:US ;
+	gleif-base:hasPostalCode "19801" ;
+	gleif-base:hasSubdivision lcc-3166-2-adj:US-DE ;
+	.
+
+gleif-L1-data:L-6SHGI4ZSSLCXXQSBB395-LEI
+	a
+		gleif-L1:LegalEntityIdentifier ,
+		gleif-L1:LegalEntityIdentifierRegistryEntry
+		;
+	gleif-base:hasInitialRegistrationDate "2012-06-06T15:53:00.000Z"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2018-07-09T17:23:00.000Z"^^xsd:dateTime ;
+	gleif-base:hasNextRenewalDate "2019-07-10T00:32:00.000Z"^^xsd:dateTime ;
+	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
+	gleif-L1:LEI "6SHGI4ZSSLCXXQSBB395" ;
+	gleif-L1:hasManagingLOU gleif-L1-data:L-EVK05KS7XY1DEII3R011 ;
+	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
+	gleif-L1:identifiesAndRecords gleif-L1-data:L-6SHGI4ZSSLCXXQSBB395 ;
+	.
+
+gleif-L1-data:L-E57ODZWZ7FF32TWEFA76
+	a gleif-L1:LegalEntity ;
+	gleif-base:hasEntityStatus gleif-base:EntityStatusActive ;
+	gleif-base:hasLegalJurisdiction lcc-3166-1-adj:US ;
+	gleif-L1:hasHeadquartersAddress gleif-L1-data:L-E57ODZWZ7FF32TWEFA76-HQL ;
+	gleif-L1:hasLegalAddress gleif-L1-data:L-E57ODZWZ7FF32TWEFA76-LAL ;
+	gleif-L1:hasLegalFormText "OTHER" ;
+	gleif-L1:hasLegalName "Citibank, National Association" ;
+	gleif-L1:hasRegistrationIdentifier gleif-L1-data:BID-RA888888-7213 ;
+	.
+
+gleif-L1-data:L-E57ODZWZ7FF32TWEFA76-HQL
+	a gleif-base:PhysicalAddress ;
+	gleif-base:hasAddressLine1 "388 Greenwich Street" ;
+	gleif-base:hasCity "New York" ;
+	gleif-base:hasCountry lcc-3166-1-adj:US ;
+	gleif-base:hasPostalCode "10013" ;
+	gleif-base:hasSubdivision lcc-3166-2-adj:US-NY ;
+	.
+
+gleif-L1-data:L-E57ODZWZ7FF32TWEFA76-LAL
+	a gleif-base:PhysicalAddress ;
+	gleif-base:hasAddressLine1 "701 East 60th Street North" ;
+	gleif-base:hasCity "Sioux Falls" ;
+	gleif-base:hasCountry lcc-3166-1-adj:US ;
+	gleif-base:hasPostalCode "57104-0432" ;
+	gleif-base:hasSubdivision lcc-3166-2-adj:US-SD ;
+	.
+
+gleif-L1-data:L-E57ODZWZ7FF32TWEFA76-LEI
+	a
+		gleif-L1:LegalEntityIdentifier ,
+		gleif-L1:LegalEntityIdentifierRegistryEntry
+		;
+	gleif-base:hasInitialRegistrationDate "2012-06-06T15:53:00.000Z"^^xsd:dateTime ;
+	gleif-base:hasLastUpdateDate "2018-10-23T19:56:00.000Z"^^xsd:dateTime ;
+	gleif-base:hasNextRenewalDate "2019-07-20T10:30:00.000Z"^^xsd:dateTime ;
+	gleif-base:hasRegistrationStatus gleif-L1:RegistrationStatusIssued ;
+	gleif-L1:LEI "E57ODZWZ7FF32TWEFA76" ;
+	gleif-L1:hasManagingLOU gleif-L1-data:L-EVK05KS7XY1DEII3R011 ;
+	gleif-L1:hasValidationSources gleif-L1:ValidationSourceKindFullyCorroborated ;
+	gleif-L1:identifiesAndRecords gleif-L1-data:L-E57ODZWZ7FF32TWEFA76 ;
 	.
 

@@ -82,6 +82,18 @@ gleif-ELF-data:ELF-BF9N
 	gleif-base:identifies gleif-ELF-data:ELF-BF9N ;
 	.
 
+gleif-ELF-data:ELF-CDOT
+	a
+		gleif-elf:EntityLegalForm ,
+		gleif-elf:EntityLegalFormIdentifier
+		;
+	gleif-base:hasAbbreviationLocal "BR"@en ;
+	gleif-base:hasCoverageArea lcc-3166-1-adj:GB ;
+	gleif-base:hasNameLegalLocal "UK Establishment"@en ;
+	gleif-base:hasTag "CDOT" ;
+	gleif-base:identifies gleif-ELF-data:ELF-CDOT ;
+	.
+
 gleif-ELF-data:ELF-EZNQ
 	a
 		gleif-elf:EntityLegalForm ,
@@ -100,6 +112,17 @@ gleif-ELF-data:ELF-EZNQ
 	gleif-base:hasNameTransliterated "Limited Liability Company" ;
 	gleif-base:hasTag "EZNQ" ;
 	gleif-base:identifies gleif-ELF-data:ELF-EZNQ ;
+	.
+
+gleif-ELF-data:ELF-FUKI
+	a
+		gleif-elf:EntityLegalForm ,
+		gleif-elf:EntityLegalFormIdentifier
+		;
+	gleif-base:hasCoverageArea lcc-3166-1-adj:DK ;
+	gleif-base:hasNameLegalLocal "Enkeltmandsvirksomhed"@dk ;
+	gleif-base:hasTag "FUKI" ;
+	gleif-base:identifies gleif-ELF-data:ELF-FUKI ;
 	.
 
 gleif-ELF-data:ELF-H0PO

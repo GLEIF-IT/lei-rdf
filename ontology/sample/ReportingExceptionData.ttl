@@ -41,13 +41,6 @@
     1) The ReportingException. The URI is a prefix of X- followed by LEI of reporting entity - followed by a suffix of one of -D or -U for Direct or Ultimate relationships respectively. """ ;
 	.
 
-gleif-repex-data:X-253400UEEJPNF0G35X65-U
-	a gleif-repex:UltimateConsolidationReportingException ;
-	gleif-repex:hasExceptionReason gleif-repex:ExceptionReasonKindNoKnownPerson ;
-	gleif-repex:hasExceptionReference "Материнские компании, прямо владеющие более 50 % уставного капитала Банка в структуре собственности Банка отсутствуют" ;
-	gleif-repex:hasReportingEntity gleif-L1-data:L-253400UEEJPNF0G35X65 ;
-	.
-
 gleif-repex-data:X-506700GE1G29325QX363-D
 	a gleif-repex:DirectConsolidationReportingException ;
 	gleif-repex:hasExceptionReason gleif-repex:ExceptionReasonKindNoKnownPerson ;
@@ -58,5 +51,11 @@ gleif-repex-data:X-506700GE1G29325QX363-U
 	a gleif-repex:UltimateConsolidationReportingException ;
 	gleif-repex:hasExceptionReason gleif-repex:ExceptionReasonKindNoKnownPerson ;
 	gleif-repex:hasReportingEntity gleif-L1-data:L-506700GE1G29325QX363 ;
+	.
+
+gleif-repex-data:X-6SHGI4ZSSLCXXQSBB395-D
+	a gleif-repex:UltimateConsolidationReportingException ;
+	gleif-repex:hasExceptionReason gleif-repex:ExceptionReasonKindNonConsolidating ;
+	gleif-repex:hasReportingEntity gleif-L1-data:L-6SHGI4ZSSLCXXQSBB395 ;
 	.
 
