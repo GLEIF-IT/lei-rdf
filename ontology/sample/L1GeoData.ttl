@@ -54,11 +54,6 @@ gleif-L1-data:L-506700GE1G29325QX363
 	gleif-geo:hasGeocodedAddress gleif-L1Geo-data:G-NT_.X67rNkRmAT6ZGJg.p482B_1A ;
 	.
 
-gleif-L1-data:L-5493007CICYM7A0SZ714
-	a gleif-L1:LegalEntity ;
-	gleif-geo:hasGeocodedAddress gleif-L1Geo-data:G-NT_VTJ.3trcvUNJcXHy2v1oDC_zID ;
-	.
-
 gleif-L1Geo-data:G-NT_.X67rNkRmAT6ZGJg.p482B_1A
 	a gleif-geo:GeocodedAddress ;
 	wgs:lat "47.5547899"^^xsd:decimal ;
@@ -91,42 +86,5 @@ gleif-L1Geo-data:G-NT_.X67rNkRmAT6ZGJg.p482B_1A
 	gleif-geo:originalAddress gleif-L1-data:L-506700GE1G29325QX363-LAL ;
 	gleif-geo:originalAddressText "St. Alban-Vorstadt 5, 4052, Basel, CH-BS, CH" ;
 	gleif-geo:relevance "0.93"^^xsd:decimal ;
-	.
-
-gleif-L1Geo-data:G-NT_VTJ.3trcvUNJcXHy2v1oDC_zID
-	a gleif-geo:GeocodedAddress ;
-	wgs:lat "20.59156"^^xsd:decimal ;
-	wgs:long "-100.39182"^^xsd:decimal ;
-	gleif-base:hasAddressNumber "32" ;
-	gleif-base:hasCity "Querétaro" ;
-	gleif-base:hasCountry lcc-3166-1-adj:MX ;
-	gleif-base:hasPostalCode "76000" ;
-	gleif-geo:formattedAddressText "Calle Benito Juárez 32, Querétaro Centro, 76000 Querétaro, QRO, México" ;
-	gleif-geo:hasBoundingBox [
-		a gleif-geo:BoundingBox ;
-		gleif-geo:hasBottomRight [
-			a wgs:Point ;
-			wgs:lat "20.5904358"^^xsd:decimal ;
-			wgs:long "-100.3906191"^^xsd:decimal ;
-		] ;
-		gleif-geo:hasTopLeft [
-			a wgs:Point ;
-			wgs:lat "20.5926842"^^xsd:decimal ;
-			wgs:long "-100.3930209"^^xsd:decimal ;
-		] ;
-	] ;
-	gleif-geo:hasDistrict "Querétaro Centro" ;
-	gleif-geo:hasRegionText "QRO" ;
-	gleif-geo:hasStreet "Calle Benito Juárez" ;
-	gleif-geo:locationId "NT_VTJ.3trcvUNJcXHy2v1oDC_zID" ;
-	gleif-geo:matchDate "2018-02-11T11:42:42"^^xsd:dateTime ;
-	gleif-geo:matchLevel gleif-base:hasAddressNumber ;
-	gleif-geo:matchType gleif-geo:MatchTypeInterpolated ;
-	gleif-geo:originalAddress
-		gleif-L1-data:L-5493007CICYM7A0SZ714-HQL ,
-		gleif-L1-data:L-5493007CICYM7A0SZ714-LAL
-		;
-	gleif-geo:originalAddressText "ACCESO II 32, 32, Benito Juárez, Querétaro, 76120, Querétaro, MX-QUE, MX	." ;
-	gleif-geo:relevance "0.77"^^xsd:decimal ;
 	.
 
