@@ -54,13 +54,13 @@ gleif-base:LegalEntityRelationship
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L2:hasParent ;
+			owl:onProperty gleif-base:hasTarget ;
 			owl:onClass gleif-base:Entity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L2:hasChild ;
+			owl:onProperty gleif-L2:hasSource ;
 			owl:onClass gleif-L1:RegisteredEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
@@ -159,18 +159,6 @@ gleif-L2:LegalEntityRelationshipRecord
 	a owl:Class ;
 	rdfs:subClassOf
 		gleif-base:RegistryEntry ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-L2:hasAccountingPeriod ;
-			owl:onClass gleif-base:Period ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-L2:hasDocumentFilingPeriod ;
-			owl:onClass gleif-base:Period ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasNextRenewalDate ;
