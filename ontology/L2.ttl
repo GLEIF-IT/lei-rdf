@@ -161,18 +161,6 @@ gleif-L2:LegalEntityRelationshipRecord
 		gleif-base:RegistryEntry ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L2:hasAccountingPeriod ;
-			owl:onClass gleif-base:Period ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-L2:hasDocumentFilingPeriod ;
-			owl:onClass gleif-base:Period ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
 			owl:onProperty gleif-base:hasNextRenewalDate ;
 			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 			owl:onDataRange xsd:dateTime ;
