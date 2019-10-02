@@ -8,7 +8,8 @@
 
 <xsl:stylesheet  version="3.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
   xmlns:owl="http://www.w3.org/2002/07/owl#"
@@ -45,7 +46,7 @@
   <xsl:variable name="invalid-id-chars" select="' /:,()&gt;&lt;&amp;'"/> <!-- Cannot be used in xmi ids -->
   
   <xsl:variable name="replacement-id-chars" select="'_..._____'"/> <!-- Substitute for above - must match in number -->
-  <xsl:variable name="null-date" as="xsd:dateTime">1970-01-01T00:00:00.00</xsl:variable>
+  <xsl:variable name="null-date" as="xs:dateTime">1970-01-01T00:00:00.00</xsl:variable>
   
   <xsl:template match="/">
      
@@ -71,8 +72,8 @@
     <xsl:variable name="record" as="element()*"> <!-- Keep track of anything interesting -->
       <xsl:copy-of select="."/>
     </xsl:variable>
-    <xsl:variable name="type" as="xsd:string" select="$record/repex:ExceptionCategory"/>
-    <xsl:variable name="lei" as="xsd:string" select="$record/repex:LEI"/>
+    <xsl:variable name="type" as="xs:string" select="$record/repex:ExceptionCategory"/>
+    <xsl:variable name="lei" as="xs:string" select="$record/repex:LEI"/>
     <xsl:variable name="el">
        <xsl:choose>
          <xsl:when test="$type='DIRECT_ACCOUNTING_CONSOLIDATION_PARENT'">gleif-repex:DirectConsolidationReportingException</xsl:when>
@@ -102,7 +103,7 @@
        </xsl:element>
       <!-- It is possible to have more than one reason -->
       <xsl:for-each select="$record/repex:ExceptionReason">
-        <xsl:variable name="reason" as="xsd:string" select="."/>
+        <xsl:variable name="reason" as="xs:string" select="."/>
         <xsl:element name="gleif-repex:hasExceptionReason">
            <xsl:attribute name="rdf:resource">          
              <xsl:text>gleif-repex:ExceptionReasonKind</xsl:text>

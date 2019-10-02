@@ -8,7 +8,8 @@
 
 <xsl:stylesheet  version="3.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
   xmlns:owl="http://www.w3.org/2002/07/owl#"
@@ -45,7 +46,7 @@
   <xsl:variable name="invalid-id-chars" select="' /:,()&gt;&lt;&amp;'"/> <!-- Cannot be used in xmi ids -->
   
   <xsl:variable name="replacement-id-chars" select="'_..._____'"/> <!-- Substitute for above - must match in number -->
-  <xsl:variable name="null-date" as="xsd:dateTime">1970-01-01T00:00:00.00</xsl:variable>
+  <xsl:variable name="null-date" as="xs:dateTime">1970-01-01T00:00:00.00</xsl:variable>
   
   <xsl:variable name="root" select="/rr:RelationshipData"/>
       
@@ -72,10 +73,10 @@
     <xsl:variable name="record" as="element()*"> <!-- Keep track of anything interesting -->
       <xsl:copy-of select="."/>
     </xsl:variable>
-    <xsl:variable name="status" as="xsd:string" select="$record/rr:Relationship/rr:RelationshipStatus"/>
-    <xsl:variable name="type" as="xsd:string" select="$record/rr:Relationship/rr:RelationshipType"/>
-    <xsl:variable name="start" as="xsd:string" select="$record/rr:Relationship/rr:StartNode/rr:NodeID"/>
-    <xsl:variable name="end" as="xsd:string" select="$record/rr:Relationship/rr:EndNode/rr:NodeID"/>
+    <xsl:variable name="status" as="xs:string" select="$record/rr:Relationship/rr:RelationshipStatus"/>
+    <xsl:variable name="type" as="xs:string" select="$record/rr:Relationship/rr:RelationshipType"/>
+    <xsl:variable name="start" as="xs:string" select="$record/rr:Relationship/rr:StartNode/rr:NodeID"/>
+    <xsl:variable name="end" as="xs:string" select="$record/rr:Relationship/rr:EndNode/rr:NodeID"/>
     <xsl:variable name="el">
        <xsl:choose>
          <xsl:when test="$type='IS_DIRECTLY_CONSOLIDATED_BY'">gleif-L2:DirectConsolidation</xsl:when>
@@ -136,7 +137,7 @@
          </xsl:element>
        </xsl:if>
        <xsl:if test="$percentages = 'true' and $record/rr:Relationship/rr:RelationshipQuantifiers/rr:RelationshipQuantifier[rr:QuantifierUnits='PERCENTAGE']">
-         <xsl:variable name="pct" as="xsd:double" select="$record/rr:Relationship/rr:RelationshipQuantifiers/rr:RelationshipQuantifier[rr:QuantifierUnits='PERCENTAGE']/rr:QuantifierAmount"/>
+         <xsl:variable name="pct" as="xs:double" select="$record/rr:Relationship/rr:RelationshipQuantifiers/rr:RelationshipQuantifier[rr:QuantifierUnits='PERCENTAGE']/rr:QuantifierAmount"/>
          <xsl:variable name="adj-pct">
            <xsl:choose>
              <xsl:when test="$pct = 1.00">
