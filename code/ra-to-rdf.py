@@ -12,6 +12,8 @@ from rdflib.namespace import Namespace, NamespaceManager, RDF, XSD, OWL, RDFS, D
 
 # Converts the official Registration Authority list CSV file to RDF
 # Tested with 2018-12-12 version
+# Requires internet access to OMG site for the LCC ontology for country and language data
+
 # Assumes input has following columns:
 # Registration Authority Code, Country, Country Code, Jurisdiction (country or region), 
 # International name of Register, Local name of Register, 
@@ -111,19 +113,20 @@ with open(inputfile, 'rt', encoding='utf8') as f:
             g.add( (this, BASE.tag, Literal(id)) )
             g.add( (this, BASE.identifies, this) )
 
+            # look up the local language
+            countryIdentifier = cgraph.value(predicate=LCCLR.hasTag, object=Literal(countryCode, datatype=XSD.string))
+            country = cgraph.value(subject=countryIdentifier, predicate=LCCLR.identifies)
+            language = cgraph.value(subject=country, predicate=LCCCR.usesAdministrativeLanguage)
+            langId = lgraph.value(predicate=LCCLR.identifies, object=language)
+            ralang = lgraph.value(subject=langId, predicate=LCCLR.hasTag)
+
             if registrarNameInternat != '':
                 g.add( (this, BASE.hasNameTranslatedEnglish, Literal(registrarNameInternat)) )
             if registrarNameLocal != '':
                 locals = re.findall("in ([a-z]+): (.+?)(;|$)", registrarNameLocal, re.IGNORECASE)
                 # locals = re.findall("in ([a-z]+): (.+?)(;|$)", "In French: Registre IDE; in German: UID-Register; in Italian: Registro IDI",re.IGNORECASE)
                 if len(locals) == 0:
-                    # look up the local language
-                    countryIdentifier = cgraph.value(predicate=LCCLR.hasTag, object=Literal(countryCode, datatype=XSD.string))
-                    country = cgraph.value(subject=countryIdentifier, predicate=LCCLR.identifies)
-                    language = cgraph.value(subject=country, predicate=LCCCR.usesAdministrativeLanguage)
-                    langId = lgraph.value(predicate=LCCLR.identifies, object=language)
-                    lang = lgraph.value(subject=langId, predicate=LCCLR.hasTag)
-                    g.add( (this, BASE.hasNameLocal, Literal(registrarNameLocal, lang=lang)) )
+                    g.add( (this, BASE.hasNameLocal, Literal(registrarNameLocal, lang=ralang)) )
                 else:
                     for i, local in enumerate(locals):
                         lang = langTag(local[0])
@@ -173,7 +176,7 @@ with open(inputfile, 'rt', encoding='utf8') as f:
                 if orgNameLocal != '':
                     locals = re.findall("in ([a-z]+): (.+?)(;|$)", orgNameLocal, re.IGNORECASE)
                     if len(locals) == 0:
-                         g.add( (org, BASE.hasNameLocal, Literal(orgNameLocal)) )
+                         g.add( (org, BASE.hasNameLocal, Literal(orgNameLocal, lang=ralang)) )
                     else:
                         for i, local in enumerate(locals):
                             lang = langTag(local[0])
