@@ -12,6 +12,7 @@ from rdflib.namespace import Namespace, NamespaceManager, RDF, XSD, OWL, RDFS, D
 
 # Converts the official Entity Legal Form list CSV file to RDF
 # Tested with 2019-07-19 version
+# There could be many entries for the same code, each with a different language
 # Assumes input has following columns:
 # ELF Code, Country of formation, Country Code (ISO 3166-1, Jurisdiction of formation, Country sub-division code (ISO 3166-2),
 # Entity Legal Form name Local name, Language, Language Code (ISO 639-1),
@@ -73,19 +74,25 @@ with open(inputfile, 'rt', encoding='utf8') as f:
             g.add( (this, BASE.identifies, this) )
 
             if elfNameInternat != '':
-                g.add( (this, BASE.hasNameTransliterated, Literal(elfNameInternat)) )
+                g.add( (this, BASE.hasNameTransliterated, Literal(elfNameInternat, lang=elfNameLangCode)) )
             if elfNameLocal != '':
                 g.add( (this, BASE.hasNameLocal, Literal(elfNameLocal, lang=elfNameLangCode)) )
-            if abbrevInternat != '':
-                g.add( (this, BASE.hasAbbreviationTransliterated, Literal(abbrevInternat)) )
-            if abbrevLocal != '':
-                g.add( (this, BASE.hasAbbreviationLocal, Literal(abbrevLocal, lang=elfNameLangCode)) )
 
             if jurisdictionCode != '':
                 g.add( (this, BASE.hasCoverageArea, LCC2[jurisdictionCode]) )
             elif countryCode != '':
                 g.add( (this, BASE.hasCoverageArea, LCC1[countryCode]) )
         
+            if abbrevLocal != '':
+                abbrevs = re.findall("([\w/\-\.,]+)(;|$)", abbrevLocal)
+                for abbrev in abbrevs:
+                    g.add( (this, BASE.hasAbbreviationLocal, Literal(abbrev[0], lang=elfNameLangCode)) )
+
+            if abbrevInternat != '':
+                abbrevs = re.findall("([\w/\-\.,]+)(;|$)", abbrevInternat)
+                for abbrev in abbrevs:
+                    g.add( (this, BASE.hasAbbreviationTransliterated, Literal(abbrev[0], lang=elfNameLangCode)) )
+
  
     g.serialize(destination=outputfile, format='turtle')
 
