@@ -14,8 +14,8 @@
 
 <https://www.gleif.org/ontology/EntityLegalFormData/>
 	a owl:Ontology ;
-	rdfs:label "GLEIF Entity Legal Forms sample data"@en ;
-	dct:abstract "Sample data for Entity Legal Form codes to illustrate and test the ontology."@en ;
+	rdfs:label "GLEIF Entity Legal Form Data"@en ;
+	dct:abstract "Entity Legal Form Codes."@en ;
 	dct:contributor
 		<http://purl.org/bryon> ,
 		<https://www.linkedin.com/in/peterivett/>
@@ -32,7 +32,7 @@
 		<https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/> ,
 		<https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/>
 		;
-	owl:versionIRI <https://www.gleif.org/ontology/EntityLegalForm-v1.0/sample/EntityLegalFormData/> ;
+	owl:versionIRI <https://www.gleif.org/ontology/EntityLegalForm-v1.1/EntityLegalFormData/> ;
 	skos:note """There is 1 category of individual:
     1) The EntityLegalForm and its Identifier. The URI is the code preceded by ELF-.""" ;
 	.
