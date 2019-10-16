@@ -50,8 +50,8 @@ with open(inputfile, 'rt', encoding='utf8') as f:
     lgraph = Graph().parse(location='https://www.omg.org/spec/LCC/Languages/ISO639-1-LanguageCodes/', format='xml')
     reader = csv.reader(f)
     for r, row in enumerate(reader):
-        if r != 0:
-            id = row[0]
+        id = row[0]
+        if r != 0 and id != '8888' and id != '9999':
             countryName = row[1]
             countryCode = row[2]
             jurisdictionName = row[3]
