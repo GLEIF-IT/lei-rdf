@@ -1,0 +1,40 @@
+
+@base <https://www.gleif.org/ontology/EntityLegalFormData/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix gleif-ELF-data: <https://www.gleif.org/ontology/EntityLegalFormData/> .
+@prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
+@prefix gleif-elf: <https://www.gleif.org/ontology/EntityLegalForm/> .
+@prefix lcc-3166-1-adj: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/> .
+@prefix lcc-3166-2-adj: <https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://www.gleif.org/ontology/EntityLegalFormData/>
+	a owl:Ontology ;
+	rdfs:label "GLEIF Entity Legal Form Data"@en ;
+	dct:abstract "Entity Legal Form Codes."@en ;
+	dct:contributor
+		<http://purl.org/bryon> ,
+		<https://www.linkedin.com/in/peterivett/>
+		;
+	dct:creator gleif-base:GLEIF ;
+	dct:issued "2019-07-19T00:00:00Z"^^xsd:dateTime ;
+	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
+	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
+	dct:rightsHolder gleif-base:GLEIF ;
+	dct:title "Global Legal Entity Identifier Foundation Entity Legal Form Data"@en ;
+	owl:imports
+		<https://www.gleif.org/ontology/Base/> ,
+		<https://www.gleif.org/ontology/EntityLegalForm/> ,
+		<https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/> ,
+		<https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/>
+		;
+	owl:versionIRI <https://www.gleif.org/ontology/EntityLegalForm-v1.1/EntityLegalFormData/> ;
+	skos:note """There is 1 category of individual:
+    1) The EntityLegalForm and its Identifier. The URI is the code preceded by ELF-.""" ;
+	.
+
+
