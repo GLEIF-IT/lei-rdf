@@ -1,0 +1,42 @@
+
+@base <https://www.gleif.org/ontology/BICData/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix gleif-L1-data: <https://www.gleif.org/ontology/L1Data/> .
+@prefix gleif-ra: <https://www.gleif.org/ontology/RegistrationAuthority/> .
+@prefix gleif-BIC-data: <https://www.gleif.org/ontology/BICData/> .
+@prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://www.gleif.org/ontology/BICData/>
+	a owl:Ontology ;
+	rdfs:label "GLEIF BIC to LEI Mapping Data"@en ;
+	dct:abstract "Mappings from BICs (SWIFT Business Identifer Codes) to LEIs."@en ;
+	dct:contributor
+		<http://purl.org/bryon> ,
+		<https://www.linkedin.com/in/peterivett/>
+		;
+	dct:creator gleif-base:GLEIF ;
+	dct:issued "2019-09-27T00:00:00Z"^^xsd:dateTime ;
+	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
+	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
+	dct:rightsHolder gleif-base:GLEIF ;
+	dct:title "Global Legal Entity Identifier Foundation Mappings from SWIFT Business Identifer Codes to Legal Entity Identifiers"@en ;
+	owl:imports
+		<https://www.gleif.org/ontology/Base/> ,
+        <https://www.gleif.org/ontology/RegistrationAuthority/> ,
+		<https://www.gleif.org/ontology/L1Data/>;
+	owl:versionIRI <https://www.gleif.org/ontology/BICData-20190927/BICData/> ;
+	skos:note """The URI for entities is the LEI preceded by L-""" ;
+    .
+
+gleif-BIC-data:BICregistry a gleif-ra:BusinessRegistry ;
+    gleif-base:hasNameTranslatedEnglish "SWIFT Business Identifer Code Registry" ;
+    gleif-base:hasWebsite "https://www.swift.com/standards/data-standards/bic"^^xsd:anyURI ;
+    gleif-base:isManagedBy gleif-L1-data:L-HB7FFAZI0OMZ8PP8OE26 ;
+.
+
+
