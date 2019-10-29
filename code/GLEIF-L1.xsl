@@ -17,10 +17,12 @@
   xmlns:owl="http://www.w3.org/2002/07/owl#"
   xmlns:skos="http://www.w3.org/2004/02/skos/core#" 
   xmlns:dct="http://purl.org/dc/terms/"
-  xmlns:gleif="http://www.gleif.org/concatenated-file/header-extension/2.0" 
+  xmlns:wgs="http://www.w3.org/2003/01/geo/wgs84_pos#"
+  xmlns:gleif="http://www.gleif.org/data/schema/golden-copy/extensions/1.0" 
   xmlns:lei="http://www.gleif.org/data/schema/leidata/2016"
   xmlns:gleif-ELF-data="https://www.gleif.org/ontology/EntityLegalFormData/"
   xmlns:gleif-L1="https://www.gleif.org/ontology/L1/"
+  xmlns:gleif-geo="https://www.gleif.org/ontology/Geocoding/"
   xmlns:gleif-L1-data="https://www.gleif.org/ontology/L1Data/"
   xmlns:gleif-RA-data="https://www.gleif.org/ontology/RegistrationAuthorityData/"
   xmlns:gleif-base="https://www.gleif.org/ontology/Base/"
@@ -44,6 +46,7 @@
   
   
   <xsl:param name="issued-date" select="'2019-01-11T08:46:48Z'"/>
+  <xsl:param name="skip-geo" select="'false'"/> <!-- if true does not output geocoded addresses -->
   
   <xsl:variable name="invalid-id-chars" select="' /:,()&gt;&lt;&amp;'"/> <!-- Cannot be used in xmi ids -->
   <xsl:variable name="replacement-id-chars" select="'_..._____'"/> <!-- Substitute for above - must match in number -->
@@ -72,6 +75,7 @@
           <xsl:value-of select="$issued-date"/>
         </dct:issued>
         <owl:imports rdf:resource="https://www.gleif.org/ontology/L1/"/>
+        <owl:imports rdf:resource="https://www.gleif.org/ontology/Geocoding/"/>
         <owl:imports rdf:resource="https://www.gleif.org/ontology/EntityLegalFormData/"/> 
         <owl:imports rdf:resource="https://www.gleif.org/ontology/RegistrationAuthorityData/"/>
         <owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/"/>
@@ -100,12 +104,12 @@
       </xsl:apply-templates>
     </xsl:if>
     <!-- Other addresses - avoid duplication -->    
-    <xsl:apply-templates select="$record/lei:Entity/lei:OtherAddresses/lei:OtherAddress[@type='ALTERNATIVE_LANGUAGE_LEGAL_ADDRESS']" mode="rec">
+    <xsl:apply-templates select="$record/lei:Entity/lei:OtherAddresses/lei:OtherAddress[@type='ALTERNATIVE_LANGUAGE_LEGAL_ADDRESS'][1]" mode="rec">
       <xsl:with-param name="lei" select="$lei"/>
     </xsl:apply-templates>
-    <xsl:if test="not($record/lei:Entity/lei:OtherAddresses/lei:OtherAddress[@type='ALTERNATIVE_LANGUAGE_HEADQUARTERS_ADDRESS']/lei:FirstAddressLine = 
-      $record/lei:Entity/lei:OtherAddresses/lei:OtherAddress[@type='ALTERNATIVE_LANGUAGE_LEGAL_ADDRESS']/lei:FirstAddressLine)">
-      <xsl:apply-templates select="$record/lei:Entity/lei:OtherAddresses/lei:OtherAddress[@type,'ALTERNATIVE_LANGUAGE_HEADQUARTERS_ADDRESS']" mode="rec">
+    <xsl:if test="not($record/lei:Entity/lei:OtherAddresses/lei:OtherAddress[@type='ALTERNATIVE_LANGUAGE_HEADQUARTERS_ADDRESS'][1]/lei:FirstAddressLine = 
+      $record/lei:Entity/lei:OtherAddresses/lei:OtherAddress[@type='ALTERNATIVE_LANGUAGE_LEGAL_ADDRESS'][1]/lei:FirstAddressLine)">
+      <xsl:apply-templates select="$record/lei:Entity/lei:OtherAddresses/lei:OtherAddress[@type,'ALTERNATIVE_LANGUAGE_HEADQUARTERS_ADDRESS'][1]" mode="rec">
         <xsl:with-param name="lei" select="$lei"/>
       </xsl:apply-templates>
     </xsl:if>
@@ -178,7 +182,6 @@
           <xsl:value-of select="."/>
         </xsl:element>
       </xsl:for-each>
-      <!-- TODO Geocode -->
       <xsl:variable name="la1" select="$record/lei:Entity/lei:LegalAddress/lei:FirstAddressLine"/>
       <xsl:variable name="hq1" select="$record/lei:Entity/lei:HeadquartersAddress/lei:FirstAddressLine"/>
       <xsl:if test="$record/lei:Entity/lei:LegalAddress">
@@ -257,6 +260,15 @@
           </xsl:element>
         </xsl:when>
       </xsl:choose>
+      <!-- Geocoded addresses -->
+      <xsl:if test="$skip-geo != 'true'">
+        <xsl:for-each select="$record/lei:Extension/gleif:Geocoding">
+          <xsl:variable name="gid" select="translate(gleif:mapped_location_id, $invalid-id-chars, $replacement-id-chars)"/>
+          <gleif-geo:hasGeocodedAddress>
+            <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/G-', $gid)"/>              
+          </gleif-geo:hasGeocodedAddress>
+        </xsl:for-each>
+      </xsl:if>
       <!-- Expiration -->    
       <xsl:variable name="reason" select="$record/lei:Entity/lei:EntityExpirationReason"/>
       <xsl:if test="$reason != ''">
@@ -473,6 +485,12 @@
         </gleif-L1:hasOtherValidationIdentifier>
       </xsl:for-each>
     </gleif-L1:LegalEntityIdentifier>
+    <!-- Geocoding -->
+    <xsl:if test="$skip-geo != 'true'">
+      <xsl:apply-templates select="$record/lei:Extension/gleif:Geocoding" mode="rec">
+        <xsl:with-param name="record" as="element()" select="$record"/>
+      </xsl:apply-templates>
+    </xsl:if>
   </xsl:template>
   
   <xsl:template match="lei:Entity | lei:Registration  
@@ -762,7 +780,197 @@
     </gleif-base:hasSubdivision> 
   </xsl:template>
   
+  <!-- Geocoding -->
+  <xsl:template match="gleif:Geocoding[not(gleif:geocoding_failed)]"  mode="rec">
+    <xsl:param name="record" as="element()"/>      
+    <xsl:variable name="gid" select="translate(gleif:mapped_location_id, $invalid-id-chars, $replacement-id-chars)"/>
+    <xsl:variable name="countrycode2" select="substring(gleif:mapped_country, 1, 2)"/>
+    <gleif-geo:GeocodedAddress>
+      <xsl:attribute name="rdf:about" select="concat('https://www.gleif.org/ontology/L1Data/G-', $gid)"/>
+      <wgs:lat>
+        <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#decimal</xsl:attribute>
+        <xsl:value-of select="gleif:lat"/>        
+      </wgs:lat>
+      <wgs:long>
+        <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#decimal</xsl:attribute>
+        <xsl:value-of select="gleif:lng"/>
+      </wgs:long>
+      <xsl:if test="gleif:mapped_housenumber != ''">
+        <gleif-base:hasAddressNumber>
+          <xsl:value-of select="gleif:mapped_housenumber"/>
+        </gleif-base:hasAddressNumber>
+      </xsl:if>
+      <xsl:if test="gleif:mapped_street != ''">
+        <gleif-geo:hasStreet>
+          <xsl:value-of select="gleif:mapped_street"/>
+        </gleif-geo:hasStreet>
+      </xsl:if>
+      <xsl:if test="gleif:mapped_city != ''">
+        <gleif-base:hasCity>
+          <xsl:value-of select="gleif:mapped_city"/>
+        </gleif-base:hasCity>
+      </xsl:if>
+      <xsl:if test="gleif:mapped_district != ''">
+        <gleif-geo:hasDistrict>
+          <xsl:value-of select="gleif:mapped_district"/>
+        </gleif-geo:hasDistrict>
+      </xsl:if>
+      <xsl:if test="gleif:mapped_state != ''">
+        <gleif-geo:hasRegionText>
+          <xsl:value-of select="gleif:mapped_state"/>
+        </gleif-geo:hasRegionText>
+      </xsl:if>
+      <xsl:if test="gleif:mapped_country != ''">
+        <gleif-base:hasCountry>
+          <xsl:attribute name="rdf:resource">
+            <xsl:text>https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/</xsl:text>            
+            <xsl:value-of select="$countrycode2"/>
+          </xsl:attribute>
+        </gleif-base:hasCountry>
+      </xsl:if>
+      <xsl:if test="gleif:mapped_postalcode != ''">
+        <gleif-base:hasPostalCode>
+          <xsl:value-of select="gleif:mapped_postalcode"/>
+        </gleif-base:hasPostalCode>
+      </xsl:if>
+      <xsl:if test="gleif:formatted_address != ''">
+        <gleif-geo:formattedAddressText>
+          <xsl:value-of select="gleif:formatted_address"/>
+        </gleif-geo:formattedAddressText>
+      </xsl:if>
+      <xsl:if test="$gid != ''">
+        <gleif-geo:locationId>
+          <xsl:value-of select="gleif:mapped_location_id"/> <!-- Untranslated -->
+        </gleif-geo:locationId>
+      </xsl:if>
+      <xsl:if test="gleif:geocoding_date!= ''">
+        <gleif-geo:matchDate>
+          <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#dateTime</xsl:attribute>
+          <xsl:value-of select="gleif:geocoding_date"/>
+        </gleif-geo:matchDate>
+      </xsl:if>
+      <xsl:if test="gleif:match_level != ''">
+        <gleif-geo:matchLevel>
+          <xsl:attribute name="rdf:resource">
+            <xsl:text>https://www.gleif.org/ontology/Base/</xsl:text>
+            <xsl:choose>
+              <xsl:when test="gleif:match_level = 'houseNumber'">gleif-base:hasAddressNumber</xsl:when>
+              <xsl:when test="gleif:match_level = 'postalCode'">gleif-base:hasPostalCode</xsl:when>
+              <xsl:when test="gleif:match_level = 'intersection'">gleif-geo:hasStreet</xsl:when>
+              <xsl:when test="gleif:match_level = 'street'">gleif-geo:hasStreet</xsl:when>
+              <xsl:when test="gleif:match_level = 'city'">gleif-base:hasCity</xsl:when>
+              <xsl:when test="gleif:match_level = 'district'">gleif-geo:hasDistrict</xsl:when>
+              <xsl:when test="gleif:match_level = 'county'">gleif-geo:hasRegionText</xsl:when>
+              <xsl:when test="gleif:match_level = 'state'">gleif-geo:hasRegionText</xsl:when>
+              <xsl:when test="gleif:match_level = 'country'">gleif-base:hasCountry</xsl:when>
+              <xsl:otherwise>
+                <xsl:message select="concat('Unexpected match level: ', gleif:match_level) "/>
+                <xsl:text>gleif-base:hasAddress</xsl:text>
+              </xsl:otherwise>
+            </xsl:choose>            
+          </xsl:attribute>
+        </gleif-geo:matchLevel>
+      </xsl:if>
+      <xsl:if test="gleif:match_level != ''">
+        <gleif-geo:matchType>
+          <xsl:attribute name="rdf:resource">
+            <xsl:text>https://www.gleif.org/ontology/Geocoding/MatchType</xsl:text>
+            <xsl:choose>
+              <xsl:when test="gleif:match_type = 'pointAddress'">PointAddress</xsl:when>
+              <xsl:when test="gleif:match_type = 'interpolated'">Interpolated</xsl:when>
+            </xsl:choose>            
+          </xsl:attribute>
+        </gleif-geo:matchType>
+      </xsl:if>
+      <xsl:if test="gleif:original_address != ''">
+        <xsl:variable name="lei" select="$record/lei:LEI"/>
+        <xsl:if test="count(gleif:original_address) != 1">
+          <xsl:message select="concat('More than one original address for LEI ', $lei)"/>
+        </xsl:if>
+        <xsl:variable name="orig" select="gleif:original_address[1]"/>          
+        <xsl:variable name="la1" select="$record/lei:Entity/lei:LegalAddress/lei:FirstAddressLine"/>
+        <xsl:variable name="hq1" select="$record/lei:Entity/lei:HeadquartersAddress/lei:FirstAddressLine"/>
+        <xsl:variable name="ala1" select="$record/lei:Entity/lei:OtherAddresses/lei:OtherAddress[@type='ALTERNATIVE_LANGUAGE_LEGAL_ADDRESS'][1]/lei:FirstAddressLine"/>
+        <xsl:variable name="ahq1" select="$record/lei:Entity/lei:OtherAddresses/lei:OtherAddress[@type='ALTERNATIVE_LANGUAGE_HEADQUARTERS_ADDRESS'][1]/lei:FirstAddressLine"/>
+        <xsl:if test="count($record/lei:Entity/lei:OtherAddresses/lei:OtherAddress[@type='ALTERNATIVE_LANGUAGE_LEGAL_ADDRESS']) &gt;  1">
+          <xsl:message select="concat('Note: more than one alt lang legal address for LEI ', $lei)"/>
+        </xsl:if>
+        <xsl:if test="count($record/lei:Entity/lei:OtherAddresses/lei:OtherAddress[@type='ALTERNATIVE_LANGUAGE_HEADQUARTERS_ADDRESS']) &gt;  1">
+          <xsl:message select="concat('Note: more than one alt lang HQ address for LEI ', $lei)"/>
+        </xsl:if>
+        <xsl:variable name="tlap1" select="$record/lei:Entity/lei:TransliteratedOtherAddresses/lei:TransliteratedOtherAddress[@type='PREFERRED_ASCII_TRANSLITERATED_LEGAL_ADDRESS']/lei:FirstAddressLine"/>
+        <xsl:variable name="tlaa1" select="$record/lei:Entity/lei:TransliteratedOtherAddresses/lei:TransliteratedOtherAddress[@type='AUTO_ASCII_TRANSLITERATED_LEGAL_ADDRESS']/lei:FirstAddressLine"/>
+        <xsl:variable name="thqp1" select="$record/lei:Entity/lei:TransliteratedOtherAddresses/lei:TransliteratedOtherAddress[@type='PREFERRED_ASCII_TRANSLITERATED_HEADQUARTERS_ADDRESS']/lei:FirstAddressLine"/>
+        <xsl:variable name="thqa1" select="$record/lei:Entity/lei:TransliteratedOtherAddresses/lei:TransliteratedOtherAddress[@type='AUTO_ASCII_TRANSLITERATED_HEADQUARTERS_ADDRESS']/lei:FirstAddressLine"/>
+        <xsl:variable name="addSuffix">
+          <xsl:choose>
+            <xsl:when test="$la1 != '' and starts-with($orig, $la1)">-LAL</xsl:when>
+            <xsl:when test="$hq1 != '' and starts-with($orig, $hq1)">-HQL</xsl:when>
+            <!-- Other Addresses with Alternative Language -->
+            <xsl:when test="$ala1 != '' and starts-with($orig, $ala1)">-LAA</xsl:when>
+            <xsl:when test="$ahq1 != '' and starts-with($orig, $ahq1)">-HQA</xsl:when>
+            <!-- Transliterated addresses -->
+            <!-- Assume that the data will not have both an Auto and a Preferred for the same type of address -->
+            <xsl:when test="$tlap1 != '' and starts-with($orig, $tlap1)">-LAT</xsl:when>
+            <xsl:when test="$tlaa1 != '' and starts-with($orig, $tlaa1)">-LAT</xsl:when>
+            <xsl:when test="$thqp1 != '' and starts-with($orig, $thqp1)">-HQT</xsl:when>
+            <xsl:when test="$thqa1 != '' and starts-with($orig, $thqa1)">-HQT</xsl:when>
+            <xsl:otherwise>
+              <xsl:message select="concat('Unable to set original address URI for ', $orig, ' for LEI ', $lei)"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:variable>
+        <xsl:if test="$addSuffix != ''">
+          <gleif-geo:originalAddress>
+            <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/', $lei, $addSuffix)"/>
+          </gleif-geo:originalAddress>
+        </xsl:if>
+      </xsl:if>
+      <xsl:if test="gleif:original_address != ''">
+        <gleif-geo:originalAddressText>
+          <xsl:value-of select="gleif:original_address"/>
+        </gleif-geo:originalAddressText>
+      </xsl:if>
+      <xsl:if test="gleif:relevance != ''">
+        <gleif-geo:relevance>
+          <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#decimal</xsl:attribute>
+          <xsl:value-of select="gleif:relevance"/>
+        </gleif-geo:relevance>
+      </xsl:if>
+      <xsl:if test="gleif:bounding_box != ''">
+        <gleif-geo:hasBoundingBox>
+          <gleif-geo:BoundingBox>
+            <gleif-geo:hasTopLeft>
+              <wgs:Point>
+                <wgs:lat>
+                  <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#decimal</xsl:attribute>
+                  <xsl:value-of select="substring-before(substring-after(gleif:bounding_box, 'TopLeft.Latitude: '), ',')"/>        
+                </wgs:lat>
+                <wgs:long>
+                  <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#decimal</xsl:attribute>
+                  <xsl:value-of select="substring-before(substring-after(gleif:bounding_box, 'TopLeft.Longitude: '), ',')"/>        
+                </wgs:long>
+              </wgs:Point>
+            </gleif-geo:hasTopLeft>
+            <gleif-geo:hasBottomRight>
+              <wgs:Point>
+                <wgs:lat>
+                  <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#decimal</xsl:attribute>
+                  <xsl:value-of select="substring-before(substring-after(gleif:bounding_box, 'BottomRight.Latitude: '), ',')"/>        
+                </wgs:lat>
+                <wgs:long>
+                  <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#decimal</xsl:attribute>
+                  <xsl:value-of select="substring-after(gleif:bounding_box, 'BottomRight.Longitude: ')"/>        
+                </wgs:long>
+               </wgs:Point>
+            </gleif-geo:hasBottomRight>
+          </gleif-geo:BoundingBox>
+        </gleif-geo:hasBoundingBox>
+      </xsl:if>
+     </gleif-geo:GeocodedAddress>
+  </xsl:template>
   
   <xsl:template match="*" priority="-1"/>
+  <xsl:template match="*" priority="-1" mode="rec"/>
   
   </xsl:stylesheet>
