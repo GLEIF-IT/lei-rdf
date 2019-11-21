@@ -6,16 +6,27 @@
 
 echo Processing GLEIF files to dataset $1
 
-L1=2019/10/31/254175/20191031-1600-gleif-goldencopy-lei2-golden-copy
-L2=20191031-1600-gleif-goldencopy-rr-golden-copy
-RepEx=2019/10/31/254265/20191031-1600-gleif-goldencopy-repex-golden-copy
+# Get URIs for latest files
+echo Getting URIs for latest Golden Copy files from GLEIF
+
+curl https://leidata-preview.gleif.org/api/v2/golden-copies/publishes >latest.json
+
+# Extract the latest URI for L1, L2, Repex
+#  jq -r '.data[0]|{lei:.lei2.full_file.xml.url, rr:.rr.full_file.xml.url, repex:.repex.full_file.xml.url}'
+shopt -s lastpipe
+cat latest.json | jq -r '.data[0]|.lei2.full_file.xml.url' | read L1
+#2019/10/31/254175/20191031-1600-gleif-goldencopy-lei2-golden-copy
+cat latest.json | jq -r '.data[0]|.rr.full_file.xml.url' | read L2
+#20191031-1600-gleif-goldencopy-rr-golden-copy
+cat latest.json | jq -r '.data[0]|.repex.full_file.xml.url' | read RepEx
 
 ### L1
 echo L1 processing
 echo Fetching file $L1 from GLEIF site
-curl -O https://leidata-preview.gleif.org/storage/golden-copy-files/$L1.xml.zip
+curl -O $L1
 
-local1=${L1##*/}
+LL1=${L1##*/%.xml.zip}
+local1=${LL1%.xml.zip}
 
 process-L1.sh $local1
 
@@ -29,9 +40,10 @@ mv $local1.rdf L1Data.rdf
 ### L2
 echo L2 processing
 echo Fetching file $L2 from GLEIF site
-curl -O https://leidata-preview.gleif.org/storage/golden-copy-files/$L2.xml.zip
+curl -O $L2
 
-local2=${L2##*/}
+LL2=${L2##*/%.xml.zip}
+local1=${LL2%.xml.zip}
 
 process-L2.sh $local2
 
@@ -45,9 +57,10 @@ mv $local2.rdf L2Data.rdf
 ### RepEx
 echo RepEx processing
 echo Fetching file $RepEx from GLEIF site
-curl -O https://leidata-preview.gleif.org/storage/golden-copy-files/$RepEx.xml.zip
+curl -O $RepEx
 
-localr=${RepEx##*/}
+LRepEx=${RepEx##*/%.xml.zip}
+localr=${LRepEx%.xml.zip}
 
 process-RepEx.sh $localr
 
