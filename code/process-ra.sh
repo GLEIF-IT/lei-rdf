@@ -14,7 +14,7 @@ python3 ra-to-rdf.py $1.csv $1.ttl
 # Upload to GLEIF
 # TBD
 
-# Uses rivettp's API token
+# Upload to GLEIF
 echo uploading $1.ttl to data.world $2/files/RegistrationAuthorityData.ttl
 
 curl -H "Authorization: Bearer $DATAWORLD_TOKEN" \
