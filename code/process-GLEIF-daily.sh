@@ -4,6 +4,8 @@
 
 # Requires shell variable DATAWORLD_TOKEN for registered user API token
 
+set -o errexit
+
 echo Processing GLEIF files to dataset $1
 
 # Get URIs for latest files
@@ -23,12 +25,12 @@ cat latest.json | jq -r '.data[0]|.repex.full_file.xml.url' | read RepEx
 ### L1
 echo L1 processing
 echo Fetching file $L1 from GLEIF site
-curl -O $L1
+curl -v -C- -O $L1
 
-LL1=${L1##*/%.xml.zip}
+LL1=${L1##*/}
 local1=${LL1%.xml.zip}
 
-process-L1.sh $local1
+./process-L1.sh $local1
 
 # Upload to GLEIF
 # zip $local1.zip $local1.rdf 
@@ -42,10 +44,10 @@ echo L2 processing
 echo Fetching file $L2 from GLEIF site
 curl -O $L2
 
-LL2=${L2##*/%.xml.zip}
-local1=${LL2%.xml.zip}
+LL2=${L2##*/}
+local2=${LL2%.xml.zip}
 
-process-L2.sh $local2
+./process-L2.sh $local2
 
 # Upload to GLEIF
 # zip $local2.zip $local2.rdf 
@@ -59,10 +61,10 @@ echo RepEx processing
 echo Fetching file $RepEx from GLEIF site
 curl -O $RepEx
 
-LRepEx=${RepEx##*/%.xml.zip}
+LRepEx=${RepEx##*/}
 localr=${LRepEx%.xml.zip}
 
-process-RepEx.sh $localr
+./process-RepEx.sh $localr
 
 # Upload to GLEIF
 # zip $localr.zip $localr.rdf 
@@ -75,11 +77,11 @@ mv $localr.rdf RepExData.rdf
 echo zipping 3 files
 zip upload.zip L1Data.rdf L2Data.rdf RepExData.rdf
 
-# Upload to GLEIF
+# Upload to data.world
 echo uploading to data.world dataset $1
-curl -H "Authorization: Bearer $DATAWORLD_TOKEN" \
+curl -v -H "Authorization: Bearer $DATAWORLD_TOKEN" \
   -X PUT -H "Content-Type: application/octet-stream" \
-  --data-binary @L2Data.rdf.zip \
+  --data-binary @upload.zip \
   https://api.data.world/v0/uploads/$1/files/upload.zip
 
 
