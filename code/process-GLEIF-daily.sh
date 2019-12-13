@@ -4,16 +4,27 @@
 
 # Requires shell variable DATAWORLD_TOKEN for registered user API token
 
+echo Decrypting secrets
+python3 decrypt-secrets.py
+
 echo Processing GLEIF files to dataset $1
 
-L1=2019/10/31/254175/20191031-1600-gleif-goldencopy-lei2-golden-copy
-L2=20191031-1600-gleif-goldencopy-rr-golden-copy
-RepEx=2019/10/31/254265/20191031-1600-gleif-goldencopy-repex-golden-copy
+leidata=$(curl https://leidata-preview.gleif.org/api/v2/golden-copies/publishes)
+
+L1Path=$($leidata | jq '.data[0].lei2.full_file.xml.url')
+L2Path=$($leidata | jq '.data[0].rr.full_file.xml.url')
+RepExPath=$($leidata | jq '.data[0].repex.full_file.xml.url')
+
+pattern="s;https://leidata-preview.gleif.org/storage/golden-copy-files/\(.*\).xml.zip;\1;"
+
+L1=$(echo $L1Path | sed "$pattern")
+L2=$(echo $L2Path | sed "$pattern")
+RepEx=$(echo $RepExPath | sed "$pattern")
 
 ### L1
 echo L1 processing
 echo Fetching file $L1 from GLEIF site
-curl -O https://leidata-preview.gleif.org/storage/golden-copy-files/$L1.xml.zip
+curl -O $L1Path
 
 local1=${L1##*/}
 
@@ -29,7 +40,7 @@ mv $local1.rdf L1Data.rdf
 ### L2
 echo L2 processing
 echo Fetching file $L2 from GLEIF site
-curl -O https://leidata-preview.gleif.org/storage/golden-copy-files/$L2.xml.zip
+curl -O $L2Path
 
 local2=${L2##*/}
 
@@ -45,7 +56,7 @@ mv $local2.rdf L2Data.rdf
 ### RepEx
 echo RepEx processing
 echo Fetching file $RepEx from GLEIF site
-curl -O https://leidata-preview.gleif.org/storage/golden-copy-files/$RepEx.xml.zip
+curl -O $RepExPath
 
 localr=${RepEx##*/}
 
