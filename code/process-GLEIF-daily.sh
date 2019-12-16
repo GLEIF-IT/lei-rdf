@@ -4,6 +4,8 @@
 
 # Requires shell variable DATAWORLD_TOKEN for registered user API token
 
+set -o errexit
+
 echo Decrypting secrets
 python3 decrypt-secrets.py
 
@@ -11,9 +13,9 @@ echo Processing GLEIF files to dataset $1
 
 leidata=$(curl https://leidata-preview.gleif.org/api/v2/golden-copies/publishes)
 
-L1Path=$($leidata | jq '.data[0].lei2.full_file.xml.url')
-L2Path=$($leidata | jq '.data[0].rr.full_file.xml.url')
-RepExPath=$($leidata | jq '.data[0].repex.full_file.xml.url')
+L1Path=$(echo $leidata | jq '.data[0].lei2.full_file.xml.url')
+L2Path=$(echo $leidata | jq '.data[0].rr.full_file.xml.url')
+RepExPath=$(echo $leidata | jq '.data[0].repex.full_file.xml.url')
 
 pattern="s;https://leidata-preview.gleif.org/storage/golden-copy-files/\(.*\).xml.zip;\1;"
 
