@@ -7,7 +7,7 @@
 set -o errexit -o nounset -o pipefail
 
 echo Decrypting secrets
-python3 decrypt-secrets.py
+`python3 decrypt-secrets.py`
 
 echo Processing GLEIF files to dataset $1
 
