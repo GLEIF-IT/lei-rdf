@@ -4,7 +4,7 @@
 
 # Requires shell variable DATAWORLD_TOKEN for registered user API token
 
-set -o errexit
+set -o xtrace -o errexit -o nounset -o pipefail
 
 echo Decrypting secrets
 python3 decrypt-secrets.py
