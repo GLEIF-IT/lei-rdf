@@ -4,7 +4,7 @@
 
 # Requires shell variable DATAWORLD_TOKEN for registered user API token
 
-set -o xtrace -o errexit -o nounset -o pipefail
+set -o errexit -o nounset -o pipefail
 
 echo Decrypting secrets
 python3 decrypt-secrets.py
@@ -82,6 +82,4 @@ curl -H "Authorization: Bearer $DATAWORLD_TOKEN" \
   --data-binary @L2Data.rdf.zip \
   https://api.data.world/v0/uploads/$1/files/upload.zip
 
-
-echo 
 echo daily processing complete
