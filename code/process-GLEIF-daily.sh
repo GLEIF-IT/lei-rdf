@@ -13,9 +13,9 @@ echo Processing GLEIF files to dataset $1
 
 leidata=$(curl https://leidata-preview.gleif.org/api/v2/golden-copies/publishes)
 
-L1Path=$(echo $leidata | jq '.data[0].lei2.full_file.xml.url')
-L2Path=$(echo $leidata | jq '.data[0].rr.full_file.xml.url')
-RepExPath=$(echo $leidata | jq '.data[0].repex.full_file.xml.url')
+L1Path=$(echo $leidata | jq '.data[0].lei2.full_file.xml.url' | tr -d "\"")
+L2Path=$(echo $leidata | jq '.data[0].rr.full_file.xml.url' | tr -d "\"")
+RepExPath=$(echo $leidata | jq '.data[0].repex.full_file.xml.url' | tr -d "\"")
 
 pattern="s;https://leidata-preview.gleif.org/storage/golden-copy-files/\(.*\).xml.zip;\1;"
 
@@ -30,7 +30,7 @@ curl -O $L1Path
 
 local1=${L1##*/}
 
-process-L1.sh $local1
+./process-L1.sh $local1
 
 # Upload to GLEIF
 # zip $local1.zip $local1.rdf 
@@ -46,7 +46,7 @@ curl -O $L2Path
 
 local2=${L2##*/}
 
-process-L2.sh $local2
+./process-L2.sh $local2
 
 # Upload to GLEIF
 # zip $local2.zip $local2.rdf 
@@ -62,7 +62,7 @@ curl -O $RepExPath
 
 localr=${RepEx##*/}
 
-process-RepEx.sh $localr
+./process-RepEx.sh $localr
 
 # Upload to GLEIF
 # zip $localr.zip $localr.rdf 
