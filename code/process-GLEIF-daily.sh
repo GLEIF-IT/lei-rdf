@@ -79,7 +79,7 @@ zip upload.zip L1Data.rdf L2Data.rdf RepExData.rdf
 echo uploading to data.world dataset $1
 curl -H "Authorization: Bearer $DATAWORLD_TOKEN" \
   -X PUT -H "Content-Type: application/octet-stream" \
-  --data-binary @L2Data.rdf.zip \
+  --data-binary @upload.zip \
   https://api.data.world/v0/uploads/$1/files/upload.zip
 
 echo daily processing complete
