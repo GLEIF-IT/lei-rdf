@@ -1,8 +1,6 @@
 #!/bin/bash
 # Unzips and transforms $1.xml.zip to create RDF version
 
-set -o errexit -o nounset -o pipefail
-
 echo Applying L2 transformation to $1.xml.zip
 echo Unzipping
 unzip -o $1.xml.zip
