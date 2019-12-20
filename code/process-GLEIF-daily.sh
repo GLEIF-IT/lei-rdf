@@ -6,6 +6,11 @@
 
 set -o errexit
 
+echo Decrypting secrets
+if [ -f decrypt-secrets.py ]; then
+	`python3 decrypt-secrets.py`
+fi
+
 echo Processing GLEIF files to dataset $1
 
 # Get URIs for latest files
@@ -82,8 +87,6 @@ echo uploading to data.world dataset $1
 curl -v -H "Authorization: Bearer $DATAWORLD_TOKEN" \
   -X PUT -H "Content-Type: application/octet-stream" \
   --data-binary @upload.zip \
-  https://api.data.world/v0/uploads/$1/files/upload.zip
+  https://api.data.world/v0/uploads/$1/files/upload.zip?expandArchive=true
 
-
-echo 
 echo daily processing complete
