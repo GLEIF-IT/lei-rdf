@@ -7,7 +7,9 @@
 set -o errexit
 
 echo Decrypting secrets
-`python3 decrypt-secrets.py`
+if [ -f decrypt-secrets.py ]; then
+	`python3 decrypt-secrets.py`
+fi
 
 echo Processing GLEIF files to dataset $1
 
