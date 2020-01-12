@@ -944,11 +944,11 @@
               <wgs:Point>
                 <wgs:lat>
                   <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#decimal</xsl:attribute>
-                  <xsl:value-of select="substring-before(substring-after(gleif:bounding_box, 'TopLeft.Latitude: '), ',')"/>        
+                  <xsl:value-of select="number(substring-before(substring-after(gleif:bounding_box, 'TopLeft.Latitude: '), ','))"/>        
                 </wgs:lat>
                 <wgs:long>
                   <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#decimal</xsl:attribute>
-                  <xsl:value-of select="substring-before(substring-after(gleif:bounding_box, 'TopLeft.Longitude: '), ',')"/>        
+                  <xsl:value-of select="number(substring-before(substring-after(gleif:bounding_box, 'TopLeft.Longitude: '), ','))"/>        
                 </wgs:long>
               </wgs:Point>
             </gleif-geo:hasTopLeft>
@@ -956,11 +956,11 @@
               <wgs:Point>
                 <wgs:lat>
                   <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#decimal</xsl:attribute>
-                  <xsl:value-of select="substring-before(substring-after(gleif:bounding_box, 'BottomRight.Latitude: '), ',')"/>        
+                  <xsl:value-of select="number(substring-before(substring-after(gleif:bounding_box, 'BottomRight.Latitude: '), ','))"/>        
                 </wgs:lat>
                 <wgs:long>
                   <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#decimal</xsl:attribute>
-                  <xsl:value-of select="substring-after(gleif:bounding_box, 'BottomRight.Longitude: ')"/>        
+                  <xsl:value-of select="number(substring-after(gleif:bounding_box, 'BottomRight.Longitude: '))"/>        
                 </wgs:long>
                </wgs:Point>
             </gleif-geo:hasBottomRight>
