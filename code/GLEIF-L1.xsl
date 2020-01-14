@@ -45,7 +45,6 @@
   <xsl:strip-space elements="*"/>
   
   
-  <xsl:param name="issued-date" select="'2019-01-11T08:46:48Z'"/>
   <xsl:param name="skip-geo" select="'false'"/> <!-- if true does not output geocoded addresses -->
   
   <xsl:variable name="invalid-id-chars" select="' /:,()&gt;&lt;&amp;'"/> <!-- Cannot be used in xmi ids -->
@@ -65,14 +64,25 @@
   </xsl:character-map> 
   -->
 
-  <xsl:mode streamable="yes"/>
+  <xsl:mode streamable="yes" use-accumulators="#all"/>
   
-  <xsl:template match="/">
+   
+  <xsl:accumulator name="header-date"  as="xs:string" streamable="yes" initial-value="''">
+    <xsl:accumulator-rule match="lei:LEIHeader/lei:ContentDate/text()"
+       select="."/>
+  </xsl:accumulator>
+  
+  <xsl:template match="/lei:LEIData | lei:LeiHeader">
+    <xsl:apply-templates/>
+  </xsl:template>
+  
+  <xsl:template match="/lei:LEIData/lei:LEIRecords">
     <rdf:RDF xml:base="https://www.gleif.org/ontology/L1Data/">
       <owl:Ontology rdf:about="https://www.gleif.org/ontology/L1Data/">
-        <rdfs:label>Ontology data generated from GLEIF L1 data in CDF 2.1 format</rdfs:label>
+        <rdfs:label>GLEIF L1 data</rdfs:label>
+        <dct:title>Ontology data generated from GLEIF L1 Golden Copy data in CDF 2.1 format</dct:title>
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">
-          <xsl:value-of select="$issued-date"/>
+          <xsl:value-of select="accumulator-before('header-date')"/>
         </dct:issued>
         <owl:imports rdf:resource="https://www.gleif.org/ontology/L1/"/>
         <owl:imports rdf:resource="https://www.gleif.org/ontology/Geocoding/"/>
@@ -81,13 +91,12 @@
         <owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/"/>
         <owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/"/>
       </owl:Ontology>
-      <xsl:for-each select="lei:LEIData/lei:LEIRecords/lei:LEIRecord" saxon:threads="32">
+      <xsl:for-each select="lei:LEIRecord" saxon:threads="32">
         <xsl:apply-templates select="."/>
       </xsl:for-each>
     </rdf:RDF>
   </xsl:template>
-
-
+  
   <xsl:template match="lei:LEIRecord">
     <!-- Keep a record of the entry then process it - to allow streaming -->
     <xsl:variable name="record" as="element()*"> <!-- Keep track of anything interesting -->
