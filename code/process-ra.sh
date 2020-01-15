@@ -14,7 +14,7 @@ python3 ra-to-rdf.py $1.csv $1.ttl
 # Upload to GLEIF
 # TBD
 
-# Upload to GLEIF
+# Upload to data.world
 echo uploading $1.ttl to data.world $2/files/RegistrationAuthorityData.ttl
 
 curl -H "Authorization: Bearer $DATAWORLD_TOKEN" \
@@ -22,5 +22,4 @@ curl -H "Authorization: Bearer $DATAWORLD_TOKEN" \
   --data-binary @$1.ttl \
   https://api.data.world/v0/uploads/$2/files/RegistrationAuthorityData.ttl
   
-echo 
 echo RA processing complete

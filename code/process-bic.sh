@@ -24,5 +24,4 @@ curl -H "Authorization: Bearer $DATAWORLD_TOKEN" \
   --data-binary @$1.ttl \
   https://api.data.world/v0/uploads/$2/files/BICData.ttl
   
-echo
 echo BIC processing complete

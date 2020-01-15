@@ -22,5 +22,4 @@ curl -H "Authorization: Bearer $DATAWORLD_TOKEN" \
   --data-binary @$1.ttl \
   https://api.data.world/v0/uploads/$2/files/EntityLegalFormData.ttl
   
-echo
 echo ELF processing complete

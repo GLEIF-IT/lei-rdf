@@ -6,6 +6,8 @@
 
 set -o errexit
 
+pip3 install requirements.txt
+
 echo Decrypting secrets
 if [ -f decrypt-secrets.py ]; then
 	`python3 decrypt-secrets.py`
@@ -89,4 +91,8 @@ curl -v -H "Authorization: Bearer $DATAWORLD_TOKEN" \
   --data-binary @upload.zip \
   https://api.data.world/v0/uploads/$1/files/upload.zip?expandArchive=true
 
-echo daily processing complete
+#./process-bic.sh $localr gleif/lei-reference-data
+#./process-elf.sh $localr gleif/lei-reference-data
+#./process-ra.sh $localr gleif/lei-reference-data
+
+echo processing complete
