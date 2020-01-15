@@ -1,5 +1,5 @@
 #!/bin/bash
-# Param is the full filename with no extension
+# Param 1 is the full filename with no extension
 # e.g. 2018-12-12_ra-list_v1.4
 # Param 2 is the dataset on data.world including username e.g. rivettp/gleif-2019-10-31
 # Requires shell variable DATAWORLD_TOKEN for registered user API token

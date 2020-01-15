@@ -6,7 +6,7 @@
 
 set -o errexit
 
-pip3 install requirements.txt
+pip3 install -r requirements.txt
 
 echo Decrypting secrets
 if [ -f decrypt-secrets.py ]; then
