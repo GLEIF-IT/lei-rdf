@@ -810,11 +810,11 @@
       <xsl:attribute name="rdf:about" select="concat('https://www.gleif.org/ontology/L1Data/G-', $gid)"/>
       <wgs:lat>
         <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#decimal</xsl:attribute>
-        <xsl:value-of select="gleif:lat"/>        
+        <xsl:value-of select="number(gleif:lat)"/>        
       </wgs:lat>
       <wgs:long>
         <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#decimal</xsl:attribute>
-        <xsl:value-of select="gleif:lng"/>
+        <xsl:value-of select="number(gleif:lng)"/>
       </wgs:long>
       <xsl:if test="gleif:mapped_housenumber != ''">
         <gleif-base:hasAddressNumber>
