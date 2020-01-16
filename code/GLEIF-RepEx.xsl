@@ -38,9 +38,8 @@
     doctype-public="rdf:RDF" /> 
   <xsl:strip-space elements="*"/>
   
-  <xsl:mode streamable="yes"/>
-
-  <xsl:param name="issued-date" select="'2019-01-11T08:46:48Z'"/>
+  <xsl:mode streamable="yes" use-accumulators="#all"/>
+  
   <xsl:param name="percentages" select="'true'"/> <!-- Whether to include percentages which are meant to be iunternal only -->
   
   <xsl:variable name="invalid-id-chars" select="' /:,()&gt;&lt;&amp;'"/> <!-- Cannot be used in xmi ids -->
@@ -48,13 +47,22 @@
   <xsl:variable name="replacement-id-chars" select="'_..._____'"/> <!-- Substitute for above - must match in number -->
   <xsl:variable name="null-date" as="xs:dateTime">1970-01-01T00:00:00.00</xsl:variable>
   
-  <xsl:template match="/">
-     
+  <xsl:accumulator name="header-date"  as="xs:string" streamable="yes" initial-value="''">
+    <xsl:accumulator-rule match="repex:Header/repex:ContentDate/text()"
+      select="."/>
+  </xsl:accumulator>
+  
+  <xsl:template match="/repex:ReportingExceptionData | repex:Header">
+    <xsl:apply-templates/>
+  </xsl:template>
+  
+  <xsl:template match="/repex:ReportingExceptionData/repex:ReportingExceptions">    
     <rdf:RDF xml:base="https://www.gleif.org/ontology/ReportingExceptionData/">
       <owl:Ontology rdf:about="https://www.gleif.org/ontology/ReportingExceptionData/">
-        <rdfs:label>Ontology generated from GLEIF RepEx data in RepEx 1.1 format</rdfs:label>
+        <rdfs:label>GLEIF RepEx data</rdfs:label>
+        <dct:abstract>Ontology generated from GLEIF Reporting Exception data in RepEx 1.1 format</rdfs:label>
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">
-          <xsl:value-of select="$issued-date"/>
+          <xsl:value-of select="accumulator-before('header-date')"/>
         </dct:issued>
         <owl:imports rdf:resource="https://www.gleif.org/ontology/L2/"/>
         <owl:imports rdf:resource="https://www.gleif.org/ontology/ReportingException/"/>

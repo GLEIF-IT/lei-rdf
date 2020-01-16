@@ -38,9 +38,9 @@
     doctype-public="rdf:RDF" /> 
   <xsl:strip-space elements="*"/>
   
-  <xsl:mode streamable="yes"/>
-
-  <xsl:param name="issued-date" select="'2019-01-11T08:46:48Z'"/>
+  <xsl:mode streamable="yes" use-accumulators="#all"/>
+  
+  
   <xsl:param name="percentages" select="'true'"/> <!-- Whether to include percentages which are meant to be iunternal only -->
   
   <xsl:variable name="invalid-id-chars" select="' /:,()&gt;&lt;&amp;'"/> <!-- Cannot be used in xmi ids -->
@@ -50,18 +50,27 @@
   
   <xsl:variable name="root" select="/rr:RelationshipData"/>
       
-  <xsl:template match="/">
-     
+  <xsl:accumulator name="header-date"  as="xs:string" streamable="yes" initial-value="''">
+    <xsl:accumulator-rule match="rr:Header/rr:ContentDate/text()"
+      select="."/>
+  </xsl:accumulator>
+  
+  <xsl:template match="/rr:RelationshipData | rr:Header">
+    <xsl:apply-templates/>
+  </xsl:template>
+  
+  <xsl:template match="/rr:RelationshipData/rr:RelationshipRecords">
     <rdf:RDF xml:base="https://www.gleif.org/ontology/L2Data/">
       <owl:Ontology rdf:about="https://www.gleif.org/ontology/L2Data/">
-        <rdfs:label>Ontology generated from GLEIF L2 data in RR 1.1 format</rdfs:label>
+        <rdfs:label>GLEIF L2 data</rdfs:label>
+        <dct:abstract>Ontology generated from GLEIF L2 data in RR 1.1 format</dct:abstract>
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">
-          <xsl:value-of select="$issued-date"/>
+          <xsl:value-of select="accumulator-before('header-date')"/>
         </dct:issued>
         <owl:imports rdf:resource="https://www.gleif.org/ontology/L2/"/>
         <owl:imports rdf:resource="https://www.gleif.org/ontology/L1Data/"/>
       </owl:Ontology>
-      <xsl:for-each select="rr:RelationshipData/rr:RelationshipRecords/rr:RelationshipRecord" saxon:threads="32">
+      <xsl:for-each select="rr:RelationshipRecord" saxon:threads="32">
         <xsl:apply-templates select="."/>
       </xsl:for-each>
     </rdf:RDF>

@@ -80,7 +80,7 @@
     <rdf:RDF xml:base="https://www.gleif.org/ontology/L1Data/">
       <owl:Ontology rdf:about="https://www.gleif.org/ontology/L1Data/">
         <rdfs:label>GLEIF L1 data</rdfs:label>
-        <dct:title>Ontology data generated from GLEIF L1 Golden Copy data in CDF 2.1 format</dct:title>
+        <dct:abstract>Ontology data generated from GLEIF L1 Golden Copy data in CDF 2.1 format</dct:abstract>
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">
           <xsl:value-of select="accumulator-before('header-date')"/>
         </dct:issued>
