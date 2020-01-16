@@ -60,7 +60,7 @@
     <rdf:RDF xml:base="https://www.gleif.org/ontology/ReportingExceptionData/">
       <owl:Ontology rdf:about="https://www.gleif.org/ontology/ReportingExceptionData/">
         <rdfs:label>GLEIF RepEx data</rdfs:label>
-        <dct:abstract>Ontology generated from GLEIF Reporting Exception data in RepEx 1.1 format</rdfs:label>
+        <dct:abstract>Ontology generated from GLEIF Reporting Exception data in RepEx 1.1 format</dct:abstract>
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">
           <xsl:value-of select="accumulator-before('header-date')"/>
         </dct:issued>
