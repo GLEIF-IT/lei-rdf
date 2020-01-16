@@ -72,7 +72,7 @@
             followed by a suffix of one of -D or -U for Direct or Ultimate relationships respectively.
         </skos:note>
       </owl:Ontology>
-      <xsl:for-each select="repex:ReportingExceptionData/repex:ReportingExceptions/repex:Exception" saxon:threads="32">
+      <xsl:for-each select="repex:Exception" saxon:threads="32">
         <xsl:apply-templates select="."/>
       </xsl:for-each>
     </rdf:RDF>
