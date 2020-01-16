@@ -947,17 +947,17 @@
               <xsl:variable name="thqp2" select="$record/lei:Entity/lei:TransliteratedOtherAddresses/lei:TransliteratedOtherAddress[@type='PREFERRED_ASCII_TRANSLITERATED_HEADQUARTERS_ADDRESS']/lei:AdditionalAddressLine[1]"/>
               <xsl:variable name="thqa2" select="$record/lei:Entity/lei:TransliteratedOtherAddresses/lei:TransliteratedOtherAddress[@type='AUTO_ASCII_TRANSLITERATED_HEADQUARTERS_ADDRESS']/lei:AdditionalAddressLine[1]"/>
               <xsl:choose>
-                <xsl:when test="$la2 != '' and starts-with($orig, $la1)">-LAL</xsl:when>
-                <xsl:when test="$hq2 != '' and starts-with($orig, $hq1)">-HQL</xsl:when>
+                <xsl:when test="$la2 != '' and starts-with($orig, $la2)">-LAL</xsl:when>
+                <xsl:when test="$hq2 != '' and starts-with($orig, $hq2)">-HQL</xsl:when>
                 <!-- Other Addresses with Alternative Language -->
-                <xsl:when test="$ala2 != '' and starts-with($orig, $ala1)">-LAA</xsl:when>
-                <xsl:when test="$ahq2 != '' and starts-with($orig, $ahq1)">-HQA</xsl:when>
+                <xsl:when test="$ala2 != '' and starts-with($orig, $ala2)">-LAA</xsl:when>
+                <xsl:when test="$ahq2 != '' and starts-with($orig, $ahq2)">-HQA</xsl:when>
                 <!-- Transliterated addresses -->
                 <!-- Assume that the data will not have both an Auto and a Preferred for the same type of address -->
-                <xsl:when test="$tlap2 != '' and starts-with($orig, $tlap1)">-LAT</xsl:when>
-                <xsl:when test="$tlaa2 != '' and starts-with($orig, $tlaa1)">-LAT</xsl:when>
-                <xsl:when test="$thqp2 != '' and starts-with($orig, $thqp1)">-HQT</xsl:when>
-                <xsl:when test="$thqa2 != '' and starts-with($orig, $thqa1)">-HQT</xsl:when>
+                <xsl:when test="$tlap2 != '' and starts-with($orig, $tlap2)">-LAT</xsl:when>
+                <xsl:when test="$tlaa2 != '' and starts-with($orig, $tlaa2)">-LAT</xsl:when>
+                <xsl:when test="$thqp2 != '' and starts-with($orig, $thqp2)">-HQT</xsl:when>
+                <xsl:when test="$thqa2 != '' and starts-with($orig, $thqa2)">-HQT</xsl:when>
                 <xsl:otherwise>
                   <xsl:message select="concat('Unable to set original address URI for ', $orig, ' for LEI ', $lei)"/>
                 </xsl:otherwise>
