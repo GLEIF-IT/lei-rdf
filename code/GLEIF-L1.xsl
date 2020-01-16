@@ -925,6 +925,8 @@
         <xsl:variable name="thqa1" select="$record/lei:Entity/lei:TransliteratedOtherAddresses/lei:TransliteratedOtherAddress[@type='AUTO_ASCII_TRANSLITERATED_HEADQUARTERS_ADDRESS']/lei:FirstAddressLine"/>
         <xsl:variable name="addSuffix">
           <xsl:choose>
+            <!-- If there's only one address don't need to look for a match -->
+            <xsl:when test="$la1 != '' and $la1 = $hq1 and string($ala1) = '' and string($ahq1) = ''">-LAL</xsl:when>
             <xsl:when test="$la1 != '' and starts-with($orig, $la1)">-LAL</xsl:when>
             <xsl:when test="$hq1 != '' and starts-with($orig, $hq1)">-HQL</xsl:when>
             <!-- Other Addresses with Alternative Language -->
