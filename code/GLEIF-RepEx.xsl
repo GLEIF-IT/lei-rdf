@@ -67,6 +67,10 @@
         <owl:imports rdf:resource="https://www.gleif.org/ontology/L2/"/>
         <owl:imports rdf:resource="https://www.gleif.org/ontology/ReportingException/"/>
         <owl:imports rdf:resource="https://www.gleif.org/ontology/L1Data/"/>
+        <skos:note>There is 1 category of individual:
+          1) The ReportingException. The URI is a prefix of X- followed by LEI of reporting entity - 
+            followed by a suffix of one of -D or -U for Direct or Ultimate relationships respectively.
+        </skos:note>
       </owl:Ontology>
       <xsl:for-each select="repex:ReportingExceptionData/repex:ReportingExceptions/repex:Exception" saxon:threads="32">
         <xsl:apply-templates select="."/>

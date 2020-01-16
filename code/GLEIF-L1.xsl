@@ -90,6 +90,18 @@
         <owl:imports rdf:resource="https://www.gleif.org/ontology/RegistrationAuthorityData/"/>
         <owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/"/>
         <owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/"/>
+        <skos:note>There are 5 categories of individual:
+          1) The LegalEntity. The URI is the LEI itself in the namespace of this ontology preceded by L-.
+          2) The LegalEntityIdentifier and LegalEntityRegistryEntry. The URI is that of the LegalEntity followed by -LE.    
+          3) The PhysicalAddress (ASCII) which is the Legal Address of an entity. 
+              The URI is that of the LegalEntity followed by -LA and one of L, A, T for Local, Alternative, Transliterated respectively.
+          4) The PhysicalAddress (ASCII) which is the Headquarters Address of an entity (ONLY PRESENT IF
+              IT IS DIFFERENT FROM THE LEGAL ADDRESS). 
+              The URI is that of the LegalEntityRegistryEntry followed by -HQ and one of L, A, T for Local, Alternative, Transliterated respectively respectively.
+          5) The RegistryIdentifier of an entity in a business registry. 
+              The URI is BID- followed by the Registry code - and the identifier of the entity within the registry.
+          6) The Geocoded address. The URI is the locationId preceded with G in the namespace of this ontology.
+        </skos:note>
       </owl:Ontology>
       <xsl:for-each select="lei:LEIRecord" saxon:threads="32">
         <xsl:apply-templates select="."/>
