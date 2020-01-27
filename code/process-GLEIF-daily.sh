@@ -93,8 +93,4 @@ curl -v -H "Authorization: Bearer $DATAWORLD_TOKEN" \
   --data-binary @upload.zip \
   https://api.data.world/v0/uploads/$1/files/upload.zip?expandArchive=true
 
-#./process-bic.sh $localr gleif/lei-reference-data
-#./process-elf.sh $localr gleif/lei-reference-data
-#./process-ra.sh $localr gleif/lei-reference-data
-
 echo processing complete
