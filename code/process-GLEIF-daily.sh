@@ -6,8 +6,6 @@
 
 set -o errexit
 
-# TODO push to GLEIF/lei-data instead
-
 pip3 install -r requirements.txt
 
 echo Decrypting secrets
