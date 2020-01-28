@@ -1,5 +1,8 @@
 #!/bin/bash
-# Param is the full filename with no extension
+
+set -o errexit
+
+# Param 1 is the full filename with no extension
 # e.g. 2018-12-12_ra-list_v1.4
 # Param 2 is the dataset on data.world including username e.g. rivettp/gleif-2019-10-31
 # Requires shell variable DATAWORLD_TOKEN for registered user API token
@@ -14,7 +17,7 @@ python3 ra-to-rdf.py $1.csv $1.ttl
 # Upload to GLEIF
 # TBD
 
-# Upload to GLEIF
+# Upload to data.world
 echo uploading $1.ttl to data.world $2/files/RegistrationAuthorityData.ttl
 
 curl -H "Authorization: Bearer $DATAWORLD_TOKEN" \
@@ -22,5 +25,4 @@ curl -H "Authorization: Bearer $DATAWORLD_TOKEN" \
   --data-binary @$1.ttl \
   https://api.data.world/v0/uploads/$2/files/RegistrationAuthorityData.ttl
   
-echo 
 echo RA processing complete

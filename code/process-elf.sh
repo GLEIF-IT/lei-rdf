@@ -1,4 +1,7 @@
 #!/bin/bash
+
+set -o errexit
+
 # Param 1 is the full filename with no extension
 # e.g. 2019-07-19_elf-code-list-publication-version-1.1
 # Param 2 is the dataset on data.world including username e.g. rivettp/gleif-2019-10-31
@@ -22,5 +25,4 @@ curl -H "Authorization: Bearer $DATAWORLD_TOKEN" \
   --data-binary @$1.ttl \
   https://api.data.world/v0/uploads/$2/files/EntityLegalFormData.ttl
   
-echo
 echo ELF processing complete

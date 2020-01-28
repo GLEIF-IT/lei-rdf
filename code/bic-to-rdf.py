@@ -1,9 +1,8 @@
 #!/opt/python3/bin/python3
 import sys
 import csv
-import string
 from rdflib import Graph, URIRef, Literal
-from rdflib.namespace import Namespace, NamespaceManager, RDF, XSD, OWL, RDFS, DC
+from rdflib.namespace import Namespace, RDF
 
 # Copyright (c) Data.world, 2019
 # Author Pete Rivett
@@ -50,4 +49,3 @@ with open(inputfile, 'rt', encoding='utf8') as f:
 
   
     g.serialize(destination=outputfile, format='turtle')
-
