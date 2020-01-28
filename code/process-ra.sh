@@ -1,4 +1,7 @@
 #!/bin/bash
+
+set -o errexit
+
 # Param 1 is the full filename with no extension
 # e.g. 2018-12-12_ra-list_v1.4
 # Param 2 is the dataset on data.world including username e.g. rivettp/gleif-2019-10-31

@@ -1,4 +1,7 @@
 #!/bin/bash
+
+set -o errexit
+
 # Unzips and transforms $1.xml.zip to create RDF version
 
 echo Applying RepEx transformation to $1.xml.zip

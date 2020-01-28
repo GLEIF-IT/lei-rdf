@@ -1,4 +1,7 @@
 #!/bin/bash
+
+set -o errexit
+
 # Unzips and transforms $1.xml.zip to create RDF version
 
 echo Applying L2 transformation to $1.xml.zip
