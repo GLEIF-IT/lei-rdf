@@ -28,7 +28,7 @@
 		<https://www.linkedin.com/in/peterivett/>
 		;
 	dct:creator gleif-base:GLEIF ;
-	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
+	dct:issued "2020-01-22T00:00:00Z"^^xsd:dateTime ;
 	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
 	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
 	dct:rightsHolder gleif-base:GLEIF ;
@@ -40,7 +40,8 @@
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/>
 		;
-	owl:versionIRI <https://www.gleif.org/ontology/L2-v1.0/L2/> ;
+	owl:versionIRI <https://www.gleif.org/ontology/L2-v1.0.1/L2/> ;
+	skos:changeNote "Version 1.0.1 made a minor fix to 2 restrictions on LegalEntityRelationship"@en ;
 	.
 
 gleif-base:LegalEntityRelationship
@@ -54,13 +55,13 @@ gleif-base:LegalEntityRelationship
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-base:hasTarget ;
+			owl:onProperty gleif-L2:hasParent ;
 			owl:onClass gleif-base:Entity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L2:hasSource ;
+			owl:onProperty gleif-L2:hasChild ;
 			owl:onClass gleif-L1:RegisteredEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
