@@ -1,3 +1,7 @@
 .idea
 .DS_Store
 slog
+code/*.json
+code/*.rdf
+code/*.xml
+code/*.zip
