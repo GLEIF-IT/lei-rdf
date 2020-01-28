@@ -45,7 +45,6 @@
   <xsl:strip-space elements="*"/>
   
   
-  <xsl:param name="issued-date" select="'2019-01-11T08:46:48Z'"/>
   <xsl:param name="skip-geo" select="'false'"/> <!-- if true does not output geocoded addresses -->
   
   <xsl:variable name="invalid-id-chars" select="' /:,()&gt;&lt;&amp;'"/> <!-- Cannot be used in xmi ids -->
@@ -65,14 +64,25 @@
   </xsl:character-map> 
   -->
 
-  <xsl:mode streamable="yes"/>
+  <xsl:mode streamable="yes" use-accumulators="#all"/>
   
-  <xsl:template match="/">
+   
+  <xsl:accumulator name="header-date"  as="xs:string" streamable="yes" initial-value="''">
+    <xsl:accumulator-rule match="lei:LEIHeader/lei:ContentDate/text()"
+       select="."/>
+  </xsl:accumulator>
+  
+  <xsl:template match="/lei:LEIData | lei:LeiHeader">
+    <xsl:apply-templates/>
+  </xsl:template>
+  
+  <xsl:template match="/lei:LEIData/lei:LEIRecords">
     <rdf:RDF xml:base="https://www.gleif.org/ontology/L1Data/">
       <owl:Ontology rdf:about="https://www.gleif.org/ontology/L1Data/">
-        <rdfs:label>Ontology data generated from GLEIF L1 data in CDF 2.1 format</rdfs:label>
+        <rdfs:label>GLEIF L1 data</rdfs:label>
+        <dct:abstract>Ontology data generated from GLEIF L1 Golden Copy data in CDF 2.1 format</dct:abstract>
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">
-          <xsl:value-of select="$issued-date"/>
+          <xsl:value-of select="accumulator-before('header-date')"/>
         </dct:issued>
         <owl:imports rdf:resource="https://www.gleif.org/ontology/L1/"/>
         <owl:imports rdf:resource="https://www.gleif.org/ontology/Geocoding/"/>
@@ -80,14 +90,25 @@
         <owl:imports rdf:resource="https://www.gleif.org/ontology/RegistrationAuthorityData/"/>
         <owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/"/>
         <owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/"/>
+        <skos:note>There are 5 categories of individual:
+          1) The LegalEntity. The URI is the LEI itself in the namespace of this ontology preceded by L-.
+          2) The LegalEntityIdentifier and LegalEntityRegistryEntry. The URI is that of the LegalEntity followed by -LE.    
+          3) The PhysicalAddress (ASCII) which is the Legal Address of an entity. 
+              The URI is that of the LegalEntity followed by -LA and one of L, A, T for Local, Alternative, Transliterated respectively.
+          4) The PhysicalAddress (ASCII) which is the Headquarters Address of an entity (ONLY PRESENT IF
+              IT IS DIFFERENT FROM THE LEGAL ADDRESS). 
+              The URI is that of the LegalEntityRegistryEntry followed by -HQ and one of L, A, T for Local, Alternative, Transliterated respectively respectively.
+          5) The RegistryIdentifier of an entity in a business registry. 
+              The URI is BID- followed by the Registry code - and the identifier of the entity within the registry.
+          6) The Geocoded address. The URI is the locationId preceded with G in the namespace of this ontology.
+        </skos:note>
       </owl:Ontology>
-      <xsl:for-each select="lei:LEIData/lei:LEIRecords/lei:LEIRecord" saxon:threads="32">
+      <xsl:for-each select="lei:LEIRecord" saxon:threads="32">
         <xsl:apply-templates select="."/>
       </xsl:for-each>
     </rdf:RDF>
   </xsl:template>
-
-
+  
   <xsl:template match="lei:LEIRecord">
     <!-- Keep a record of the entry then process it - to allow streaming -->
     <xsl:variable name="record" as="element()*"> <!-- Keep track of anything interesting -->
@@ -789,11 +810,11 @@
       <xsl:attribute name="rdf:about" select="concat('https://www.gleif.org/ontology/L1Data/G-', $gid)"/>
       <wgs:lat>
         <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#decimal</xsl:attribute>
-        <xsl:value-of select="gleif:lat"/>        
+        <xsl:value-of select="number(gleif:lat)"/>        
       </wgs:lat>
       <wgs:long>
         <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#decimal</xsl:attribute>
-        <xsl:value-of select="gleif:lng"/>
+        <xsl:value-of select="number(gleif:lng)"/>
       </wgs:long>
       <xsl:if test="gleif:mapped_housenumber != ''">
         <gleif-base:hasAddressNumber>
@@ -904,6 +925,8 @@
         <xsl:variable name="thqa1" select="$record/lei:Entity/lei:TransliteratedOtherAddresses/lei:TransliteratedOtherAddress[@type='AUTO_ASCII_TRANSLITERATED_HEADQUARTERS_ADDRESS']/lei:FirstAddressLine"/>
         <xsl:variable name="addSuffix">
           <xsl:choose>
+            <!-- If there's only one address don't need to look for a match -->
+            <xsl:when test="$la1 != '' and $la1 = $hq1 and string($ala1) = '' and string($ahq1) = ''">-LAL</xsl:when>
             <xsl:when test="$la1 != '' and starts-with($orig, $la1)">-LAL</xsl:when>
             <xsl:when test="$hq1 != '' and starts-with($orig, $hq1)">-HQL</xsl:when>
             <!-- Other Addresses with Alternative Language -->
@@ -916,7 +939,31 @@
             <xsl:when test="$thqp1 != '' and starts-with($orig, $thqp1)">-HQT</xsl:when>
             <xsl:when test="$thqa1 != '' and starts-with($orig, $thqa1)">-HQT</xsl:when>
             <xsl:otherwise>
-              <xsl:message select="concat('Unable to set original address URI for ', $orig, ' for LEI ', $lei)"/>
+              <!-- First address line did not produce a match - try the second -->
+              <xsl:variable name="la2" select="$record/lei:Entity/lei:LegalAddress/lei:AdditionalAddressLine[1]"/>
+              <xsl:variable name="hq2" select="$record/lei:Entity/lei:HeadquartersAddress/lei:AdditionalAddressLine[1]"/>
+              <xsl:variable name="ala2" select="$record/lei:Entity/lei:OtherAddresses/lei:OtherAddress[@type='ALTERNATIVE_LANGUAGE_LEGAL_ADDRESS'][1]/lei:AdditionalAddressLine[1]"/>
+              <xsl:variable name="ahq2" select="$record/lei:Entity/lei:OtherAddresses/lei:OtherAddress[@type='ALTERNATIVE_LANGUAGE_HEADQUARTERS_ADDRESS'][1]/lei:AdditionalAddressLine[1]"/>
+              <xsl:variable name="tlap2" select="$record/lei:Entity/lei:TransliteratedOtherAddresses/lei:TransliteratedOtherAddress[@type='PREFERRED_ASCII_TRANSLITERATED_LEGAL_ADDRESS']/lei:AdditionalAddressLine[1]"/>
+              <xsl:variable name="tlaa2" select="$record/lei:Entity/lei:TransliteratedOtherAddresses/lei:TransliteratedOtherAddress[@type='AUTO_ASCII_TRANSLITERATED_LEGAL_ADDRESS']/lei:AdditionalAddressLine[1]"/>
+              <xsl:variable name="thqp2" select="$record/lei:Entity/lei:TransliteratedOtherAddresses/lei:TransliteratedOtherAddress[@type='PREFERRED_ASCII_TRANSLITERATED_HEADQUARTERS_ADDRESS']/lei:AdditionalAddressLine[1]"/>
+              <xsl:variable name="thqa2" select="$record/lei:Entity/lei:TransliteratedOtherAddresses/lei:TransliteratedOtherAddress[@type='AUTO_ASCII_TRANSLITERATED_HEADQUARTERS_ADDRESS']/lei:AdditionalAddressLine[1]"/>
+              <xsl:choose>
+                <xsl:when test="$la2 != '' and starts-with($orig, $la2)">-LAL</xsl:when>
+                <xsl:when test="$hq2 != '' and starts-with($orig, $hq2)">-HQL</xsl:when>
+                <!-- Other Addresses with Alternative Language -->
+                <xsl:when test="$ala2 != '' and starts-with($orig, $ala2)">-LAA</xsl:when>
+                <xsl:when test="$ahq2 != '' and starts-with($orig, $ahq2)">-HQA</xsl:when>
+                <!-- Transliterated addresses -->
+                <!-- Assume that the data will not have both an Auto and a Preferred for the same type of address -->
+                <xsl:when test="$tlap2 != '' and starts-with($orig, $tlap2)">-LAT</xsl:when>
+                <xsl:when test="$tlaa2 != '' and starts-with($orig, $tlaa2)">-LAT</xsl:when>
+                <xsl:when test="$thqp2 != '' and starts-with($orig, $thqp2)">-HQT</xsl:when>
+                <xsl:when test="$thqa2 != '' and starts-with($orig, $thqa2)">-HQT</xsl:when>
+                <xsl:otherwise>
+                  <xsl:message select="concat('Unable to set original address URI for ', $orig, ' for LEI ', $lei)"/>
+                </xsl:otherwise>
+              </xsl:choose>
             </xsl:otherwise>
           </xsl:choose>
         </xsl:variable>
@@ -944,11 +991,11 @@
               <wgs:Point>
                 <wgs:lat>
                   <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#decimal</xsl:attribute>
-                  <xsl:value-of select="substring-before(substring-after(gleif:bounding_box, 'TopLeft.Latitude: '), ',')"/>        
+                  <xsl:value-of select="number(substring-before(substring-after(gleif:bounding_box, 'TopLeft.Latitude: '), ','))"/>        
                 </wgs:lat>
                 <wgs:long>
                   <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#decimal</xsl:attribute>
-                  <xsl:value-of select="substring-before(substring-after(gleif:bounding_box, 'TopLeft.Longitude: '), ',')"/>        
+                  <xsl:value-of select="number(substring-before(substring-after(gleif:bounding_box, 'TopLeft.Longitude: '), ','))"/>        
                 </wgs:long>
               </wgs:Point>
             </gleif-geo:hasTopLeft>
@@ -956,11 +1003,11 @@
               <wgs:Point>
                 <wgs:lat>
                   <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#decimal</xsl:attribute>
-                  <xsl:value-of select="substring-before(substring-after(gleif:bounding_box, 'BottomRight.Latitude: '), ',')"/>        
+                  <xsl:value-of select="number(substring-before(substring-after(gleif:bounding_box, 'BottomRight.Latitude: '), ','))"/>        
                 </wgs:lat>
                 <wgs:long>
                   <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#decimal</xsl:attribute>
-                  <xsl:value-of select="substring-after(gleif:bounding_box, 'BottomRight.Longitude: ')"/>        
+                  <xsl:value-of select="number(substring-after(gleif:bounding_box, 'BottomRight.Longitude: '))"/>        
                 </wgs:long>
                </wgs:Point>
             </gleif-geo:hasBottomRight>
