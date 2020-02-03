@@ -10,7 +10,7 @@ from rdflib.namespace import Namespace, RDF, XSD, RDFS
 # Licensed under MIT License
 
 # Converts the official Registration Authority list CSV file to RDF
-# Tested with 2018-12-12 version
+# Tested with 2019-12-05 1.5 version which now has comments in column 9
 # Requires internet access to OMG site for the LCC ontology for country and language data
 
 # Assumes input has following columns:
@@ -35,6 +35,8 @@ inputfile = sys.argv[1]
 outputfile = sys.argv[2]
 
 BASE = Namespace("https://www.gleif.org/ontology/Base/")
+DCT = Namespace("http://purl.org/dc/terms/")
+OWL = Namespace("http://www.w3.org/2002/07/owl#")
 RA = Namespace("https://www.gleif.org/ontology/RegistrationAuthority/")
 RADATA = Namespace("https://www.gleif.org/ontology/RegistrationAuthorityData/")
 LCCLR = Namespace("https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/")
@@ -55,6 +57,8 @@ def langTag(langName):
 def regionException(regionName):
     if regionName == 'Republic of Srpska':
         code = 'BA-SRP' # Republika Srpska
+    elif regionName == 'Sint Eustatius and Saba':
+        code = 'BQ-SE' # Sint Eustatius - note that really need a separate row for Saba 
     elif regionName == 'Mato Grosso du Sul':
         code = 'BR-MS' # Mato Grosso do Sul
     elif regionName == 'Amman':
@@ -67,12 +71,26 @@ def regionException(regionName):
         code = 'AE-AJ' # 'Ajman
     elif regionName == 'Dubai':
         code = 'AE-DU' # Abu Dubayy
-    elif regionName == 'Ras al-Khamaih':
+    elif regionName == 'Ras Al Khaimah':
+        code = 'AE-RK' # Ra’s al Khaymah
+    elif regionName == 'Ras Al Khamaih':
         code = 'AE-RK' # Ra’s al Khaymah
     elif regionName == 'Fujairah':
         code = 'AE-FU' # Al Fujayrah
     elif regionName == 'Umm al-Quwain':
         code = 'AE-UQ' # Umm al Qaywayn
+    elif regionName == 'Catalonia':
+        code = 'ES-CT' # Catalunya
+    elif regionName == 'Bavaria':
+        code = 'DE-BY' # Bayern 
+    elif regionName == 'Mecklenburg-Western Pomerania':
+        code = 'DE-MV' # Mecklenburg-Vorpommern 
+    elif regionName == 'North Rhine-Westphalia':
+        code = 'DE-NW' # Nordrhein-Westfalen 
+    elif regionName == 'Rhineland-Palatinate':
+        code = 'DE-RP' # Rheinland-Pfalz 
+    elif regionName == 'Thuringia':
+        code = 'DE-TH' # Thuringen 
     elif regionName == 'Labuan':
         code = 'MY-15' # Wilayah Persekutuan Labuan 
     elif regionName == 'Santiago':
@@ -86,6 +104,12 @@ def regionException(regionName):
 
 with open(inputfile, 'rt', encoding='utf8') as f:
     g = Graph().parse(source='RegistrationAuthoritySkeleton.ttl', format='turtle')
+    # Use the filename for metadata since it's not in the file itself
+    dateFromName = inputfile.partition('_')[0] + "T00:00:00Z"
+    vsnFromName = inputfile.partition('ra-list-v')[2].partition('.csv')[0]
+    ont = RADATA['']
+    g.add( (ont, DCT.issued, Literal(dateFromName, datatype=XSD.dateTime)) )
+    g.add( (ont, OWL.versionIRI, RADATA['v'+vsnFromName+'/']) )
     cgraph = Graph().parse(location='https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/', format='xml')
     lgraph = Graph().parse(location='https://www.omg.org/spec/LCC/Languages/ISO639-1-LanguageCodes/', format='xml')
     reader = csv.reader(f)
@@ -100,9 +124,7 @@ with open(inputfile, 'rt', encoding='utf8') as f:
             orgNameInternat = row[6]
             orgNameLocal = row[7]
             website = row[8]
-            # skip disclaimer date
-            comments = row[10]
-            # skip (due to no values) endDate = row[11]
+            comments = row[9]
             
             this = RADATA[id]
             org = RADATA[id + '-ORG']
