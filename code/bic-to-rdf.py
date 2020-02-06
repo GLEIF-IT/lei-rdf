@@ -2,7 +2,7 @@
 import sys
 import csv
 from rdflib import Graph, URIRef, Literal
-from rdflib.namespace import Namespace, RDF
+from rdflib.namespace import Namespace, RDF, XSD
 
 # Copyright (c) Data.world, 2019
 # Author Pete Rivett
@@ -28,12 +28,18 @@ inputfile = sys.argv[1]
 outputfile = sys.argv[2]
 
 BASE = Namespace("https://www.gleif.org/ontology/Base/")
+DCT = Namespace("http://purl.org/dc/terms/")
+OWL = Namespace("http://www.w3.org/2002/07/owl#")
 BICDATA = Namespace("https://www.gleif.org/ontology/BICData/")
 L1DATA = Namespace("https://www.gleif.org/ontology/L1Data/")
 
 
 with open(inputfile, 'rt', encoding='utf8') as f:
     g = Graph().parse(source='BICSkeleton.ttl', format='turtle')
+    dateFromName = inputfile.partition('full_')[2].partition('.csv')[0]
+    ont = BICDATA['']
+    g.add( (ont, DCT.issued, Literal(dateFromName+ "T00:00:00Z", datatype=XSD.dateTime)) )
+    g.add( (ont, OWL.versionIRI, BICDATA['v'+dateFromName+'/']) )
     reader = csv.reader(f)
     for r, row in enumerate(reader):
         if r != 0:
