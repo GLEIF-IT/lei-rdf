@@ -3,7 +3,7 @@ import sys
 import csv
 import re
 from rdflib import Graph, Literal
-from rdflib.namespace import Namespace, RDF
+from rdflib.namespace import Namespace, RDF, XSD
 
 # Copyright (c) Data.world, 2019
 # Author Pete Rivett
@@ -35,6 +35,8 @@ inputfile = sys.argv[1]
 outputfile = sys.argv[2]
 
 BASE = Namespace("https://www.gleif.org/ontology/Base/")
+DCT = Namespace("http://purl.org/dc/terms/")
+OWL = Namespace("http://www.w3.org/2002/07/owl#")
 ELF = Namespace("https://www.gleif.org/ontology/EntityLegalForm/")
 ELFDATA = Namespace("https://www.gleif.org/ontology/EntityLegalFormData/")
 LCCLR = Namespace("https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/")
@@ -45,6 +47,12 @@ LCC2 = Namespace("https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCo
 
 with open(inputfile, 'rt', encoding='utf8') as f:
     g = Graph().parse(source='EntityLegalFormSkeleton.ttl', format='turtle')
+    # Use the filename for metadata since it's not in the file itself
+    dateFromName = inputfile.partition('_')[0] + "T00:00:00Z"
+    vsnFromName = inputfile.partition('version-')[2].partition('.csv')[0]
+    ont = ELFDATA['']
+    g.add( (ont, DCT.issued, Literal(dateFromName, datatype=XSD.dateTime)) )
+    g.add( (ont, OWL.versionIRI, ELFDATA['v'+vsnFromName+'/']) )
     cgraph = Graph().parse(location='https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/', format='xml')
     lgraph = Graph().parse(location='https://www.omg.org/spec/LCC/Languages/ISO639-1-LanguageCodes/', format='xml')
     reader = csv.reader(f)
