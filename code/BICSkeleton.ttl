@@ -20,7 +20,6 @@
 		<https://www.linkedin.com/in/peterivett/>
 		;
 	dct:creator gleif-base:GLEIF ;
-	dct:issued "2019-09-27T00:00:00Z"^^xsd:dateTime ;
 	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
 	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
 	dct:rightsHolder gleif-base:GLEIF ;
@@ -29,7 +28,6 @@
 		<https://www.gleif.org/ontology/Base/> ,
         <https://www.gleif.org/ontology/RegistrationAuthority/> ,
 		<https://www.gleif.org/ontology/L1Data/>;
-	owl:versionIRI <https://www.gleif.org/ontology/BICData-20190927/BICData/> ;
 	skos:note """The URI for entities is the LEI preceded by L-""" ;
     .
 

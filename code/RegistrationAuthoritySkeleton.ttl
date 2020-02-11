@@ -21,7 +21,6 @@
 		<https://www.linkedin.com/in/peterivett/>
 		;
 	dct:creator gleif-base:GLEIF ;
-	dct:issued "2018-12-12T00:00:00Z"^^xsd:dateTime ;
 	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
 	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
 	dct:rightsHolder gleif-base:GLEIF ;
@@ -32,7 +31,6 @@
 		<https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/> ,
 		<https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/>
 		;
-	owl:versionIRI <https://www.gleif.org/ontology/RegistrationAuthority-v1.4/RegistrationAuthorityData/> ;
 	skos:note """There are 2 categories of individual:
     1) The BusinessRegistry and RACode. The URI is the RA code.
     2) The RegistrationAuthority organization. The URI is that of the BusinessRegistry followed by -ORG.""" ;
