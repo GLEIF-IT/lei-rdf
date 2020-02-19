@@ -40,7 +40,7 @@ local1=${LL1%.xml.zip}
 ./process-L1.sh $local1
 
 # Upload to GLEIF
-# zip $local1.zip $local1.rdf 
+# zip $local1.zip $local1.rdf
 # FTP $local1.rdf to GLEIF
 
 # rename to predictable name
@@ -57,7 +57,7 @@ local2=${LL2%.xml.zip}
 ./process-L2.sh $local2
 
 # Upload to GLEIF
-# zip $local2.zip $local2.rdf 
+# zip $local2.zip $local2.rdf
 # FTP $local2.rdf to GLEIF
 
 # rename to predictable name
@@ -74,7 +74,7 @@ localr=${LRepEx%.xml.zip}
 ./process-RepEx.sh $localr
 
 # Upload to GLEIF
-# zip $localr.zip $localr.rdf 
+# zip $localr.zip $localr.rdf
 # FTP $localr.rdf to GLEIF
 
 # rename to predictable name
@@ -90,5 +90,38 @@ curl -H "Authorization: Bearer $DATAWORLD_TOKEN" \
   -X PUT -H "Content-Type: application/octet-stream" \
   --data-binary @upload.zip \
   https://api.data.world/v0/uploads/$1/files/upload.zip?expandArchive=true
+
+echo Getting URI for latest Registration Authorities List
+`python3 latest-ra.py`
+
+RRA1=${RA##*/}
+RRA1=${RRA1%.csv}
+
+echo Fetching file $RRA1 from GLEIF site
+curl -C- -O $RA
+
+./process-ra.sh $RRA1 $1
+
+echo Getting URI for latest Entity Legal Forms
+`python3 latest-elf.py`
+
+ELF1=${ELF##*/}
+ELF1=${ELF1%.csv}
+
+echo Fetching file $ELF1 from GLEIF site
+curl -C- -O $ELF
+
+./process-elf.sh $ELF1 $1
+
+echo Getting URI for latest Business Identifier Codes
+`python3 latest-bic.py`
+
+BIC1=${BIC##*/}
+BIC1=${BIC1%.csv}
+
+echo Fetching file $BIC1 from GLEIF site
+curl -C- -O $BIC
+
+./process-bic.sh $BIC1 $1
 
 echo processing complete

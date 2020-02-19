@@ -7,8 +7,6 @@
 set -o errexit
 
 echo Processing BIC file $1 to dataset $2
-echo Fetching file $1 from GLEIF site
-curl -O https://www.gleif.org/content/4-lei-data/7-lei-mapping/1-download-bic-to-lei-relationship-files/$1.csv
 
 echo Converting to $1.ttl
 python3 bic-to-rdf.py $1.csv $1.ttl
