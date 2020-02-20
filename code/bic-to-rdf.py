@@ -1,7 +1,7 @@
 #!/opt/python3/bin/python3
 import sys
 import csv
-from rdflib import Graph, URIRef, Literal
+from rdflib import Graph, Literal
 from rdflib.namespace import Namespace, RDF, XSD
 
 # Copyright (c) Data.world, 2019

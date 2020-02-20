@@ -8,8 +8,6 @@ set -o errexit
 # Requires shell variable DATAWORLD_TOKEN for registered user API token
 
 echo Processing ELF file $1 to dataset $2
-echo Fetching file $1 from GLEIF site
-curl -O https://www.gleif.org/content/2-about-lei/7-code-lists/2-iso-20275-entity-legal-forms-code-list/$1.csv
 
 echo Converting to $1.ttl
 python3 elf-to-rdf.py $1.csv $1.ttl
