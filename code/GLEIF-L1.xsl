@@ -969,7 +969,7 @@
         </xsl:variable>
         <xsl:if test="$addSuffix != ''">
           <gleif-geo:originalAddress>
-            <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/', $lei, $addSuffix)"/>
+            <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei, $addSuffix)"/>
           </gleif-geo:originalAddress>
         </xsl:if>
       </xsl:if>
