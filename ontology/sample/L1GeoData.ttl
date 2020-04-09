@@ -1,15 +1,15 @@
-# baseURI: https://www.gleif.org/ontology/sample/L1GeoData/
+# baseURI: https://linked.opendata.gleif.org/sample/L1Geo/
 # imports: https://www.gleif.org/ontology/Geocoding/
 # imports: https://www.gleif.org/ontology/L1/
-# imports: https://www.gleif.org/ontology/sample/L1Data/
+# imports: https://linked.opendata.gleif.org/sample/L1/
 # imports: https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/
 # imports: https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/
 
-@base <https://www.gleif.org/ontology/sample/L1GeoData/> .
+@base <https://linked.opendata.gleif.org/sample/L1Geo/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix gleif-L1: <https://www.gleif.org/ontology/L1/> .
-@prefix gleif-L1-data: <https://www.gleif.org/ontology/sample/L1Data/> .
-@prefix gleif-L1Geo-data: <https://www.gleif.org/ontology/sample/L1GeoData/> .
+@prefix gleif-L1-data: <https://linked.opendata.gleif.org/sample/L1/> .
+@prefix gleif-L1Geo-data: <https://linked.opendata.gleif.org/sample/L1Geo/> .
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
 @prefix gleif-geo: <https://www.gleif.org/ontology/Geocoding/> .
 @prefix lcc-3166-1-adj: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/> .
@@ -21,7 +21,7 @@
 @prefix wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://www.gleif.org/ontology/sample/L1GeoData/>
+<https://linked.opendata.gleif.org/sample/L1Geo/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF geocoding sample data"@en ;
 	dct:abstract "Sample data for GLEIF Geocoding. This extends the sample L1Data ontology with additional address information"@en ;
@@ -39,11 +39,11 @@
 	owl:imports
 		<https://www.gleif.org/ontology/Geocoding/> ,
 		<https://www.gleif.org/ontology/L1/> ,
-		<https://www.gleif.org/ontology/sample/L1Data/> ,
+		<https://linked.opendata.gleif.org/sample/L1/> ,
 		<https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/> ,
 		<https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/>
 		;
-	owl:versionIRI <https://www.gleif.org/ontology/Geocoding-v1.0/sample/L1GeoData/> ;
+	owl:versionIRI <https://linked.opendata.gleif.org/Geocoding-v1.0/sample/L1Geo/> ;
 	skos:note """This adds triples to the existing L1Data ontology and adds 1 additional category of individual:
     1) The Geocoded address. The URI is the locationId preceded with G in the namespace of this ontology.
     """ ;

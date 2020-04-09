@@ -18,10 +18,10 @@
   xmlns:repex="http://www.gleif.org/data/schema/repex/2016"
   xmlns:gleif="http://www.gleif.org/concatenated-file/header-extension/2.0" 
   xmlns:gleif-L1="https://www.gleif.org/ontology/L1/"
-  xmlns:gleif-L1-data="https://www.gleif.org/ontology/L1Data/"
+  xmlns:gleif-L1-data="https://linked.opendata.gleif.org/L1/"
   xmlns:gleif-L2="https://www.gleif.org/ontology/L2/"
   xmlns:gleif-repex="https://www.gleif.org/ontology/ReportingException/"
-  xmlns:gleif-repex-data="https://www.gleif.org/ontology/ReportingExceptionData/"
+  xmlns:gleif-repex-data="https://linked.opendata.gleif.org/ReportingException/"
   xmlns:gleif-base="https://www.gleif.org/ontology/Base/"
   xmlns:saxon="http://saxon.sf.net/"
   
@@ -57,8 +57,8 @@
   </xsl:template>
   
   <xsl:template match="/repex:ReportingExceptionData/repex:ReportingExceptions">    
-    <rdf:RDF xml:base="https://www.gleif.org/ontology/ReportingExceptionData/">
-      <owl:Ontology rdf:about="https://www.gleif.org/ontology/ReportingExceptionData/">
+    <rdf:RDF xml:base="https://linked.opendata.gleif.org/ReportingException/">
+      <owl:Ontology rdf:about="https://linked.opendata.gleif.org/ReportingException/">
         <rdfs:label>GLEIF RepEx data</rdfs:label>
         <dct:abstract>Ontology generated from GLEIF Reporting Exception data in RepEx 1.1 format</dct:abstract>
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">
@@ -66,7 +66,7 @@
         </dct:issued>
         <owl:imports rdf:resource="https://www.gleif.org/ontology/L2/"/>
         <owl:imports rdf:resource="https://www.gleif.org/ontology/ReportingException/"/>
-        <owl:imports rdf:resource="https://www.gleif.org/ontology/L1Data/"/>
+        <owl:imports rdf:resource="https://linked.opendata.gleif.org/L1/"/>
         <skos:note>There is 1 category of individual:
           1) The ReportingException. The URI is a prefix of X- followed by LEI of reporting entity - 
             followed by a suffix of one of -D or -U for Direct or Ultimate relationships respectively.
@@ -106,10 +106,10 @@
       </xsl:choose>
     </xsl:variable>
     <xsl:element name="{$el}">
-       <xsl:attribute name="rdf:about" select="concat('https://www.gleif.org/ontology/ReportingExceptionData/X-', $lei, '-', $type-char)"/>
+       <xsl:attribute name="rdf:about" select="concat('https://linked.opendata.gleif.org/ReportingException/X-', $lei, '-', $type-char)"/>
       <xsl:element name="gleif-repex:hasReportingEntity">
          <xsl:attribute name="rdf:resource">
-           <xsl:text>https://www.gleif.org/ontology/L1Data/L-</xsl:text>
+           <xsl:text>https://linked.opendata.gleif.org/L1/L-</xsl:text>
            <xsl:value-of select="$lei"/>
          </xsl:attribute>
        </xsl:element>

@@ -1,8 +1,8 @@
 # baseURI: https://www.gleif.org/ontology/sample/DataWithInferences/
 # imports: https://www.gleif.org/ontology/L1inferences/
 # imports: https://www.gleif.org/ontology/L2inferences/
-# imports: https://www.gleif.org/ontology/sample/L1GeoData/
-# imports: https://www.gleif.org/ontology/sample/L2Data/
+# imports: https://linked.opendata.gleif.org/sample/L1Geo/
+# imports: https://linked.opendata.gleif.org/sample/L2/
 
 @base <https://www.gleif.org/ontology/sample/DataWithInferences/> .
 @prefix dct: <http://purl.org/dc/terms/> .
@@ -24,8 +24,8 @@
 	owl:imports
 		<https://www.gleif.org/ontology/L1inferences/> ,
 		<https://www.gleif.org/ontology/L2inferences/> ,
-		<https://www.gleif.org/ontology/sample/L1GeoData/> ,
-		<https://www.gleif.org/ontology/sample/L2Data/>
+		<https://linked.opendata.gleif.org/sample/L1Geo/> ,
+		<https://linked.opendata.gleif.org/sample/L2/>
 		;
 	.
 

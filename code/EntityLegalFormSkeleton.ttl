@@ -1,7 +1,7 @@
 
-@base <https://www.gleif.org/ontology/EntityLegalFormData/> .
+@base <https://linked.opendata.gleif.org/EntityLegalForm/> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix gleif-ELF-data: <https://www.gleif.org/ontology/EntityLegalFormData/> .
+@prefix gleif-ELF-data: <https://linked.opendata.gleif.org/EntityLegalForm/> .
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
 @prefix gleif-elf: <https://www.gleif.org/ontology/EntityLegalForm/> .
 @prefix lcc-3166-1-adj: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/> .
@@ -12,7 +12,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://www.gleif.org/ontology/EntityLegalFormData/>
+<https://linked.opendata.gleif.org/EntityLegalForm/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF Entity Legal Form Data"@en ;
 	dct:abstract "Entity Legal Form Codes."@en ;

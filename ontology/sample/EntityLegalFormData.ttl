@@ -1,12 +1,12 @@
-# baseURI: https://www.gleif.org/ontology/sample/EntityLegalFormData/
+# baseURI: https://linked.opendata.gleif.org/sample/EntityLegalForm/
 # imports: https://www.gleif.org/ontology/Base/
 # imports: https://www.gleif.org/ontology/EntityLegalForm/
 # imports: https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/
 # imports: https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/
 
-@base <https://www.gleif.org/ontology/sample/EntityLegalFormData/> .
+@base <https://linked.opendata.gleif.org/sample/EntityLegalForm/> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix gleif-ELF-data: <https://www.gleif.org/ontology/sample/EntityLegalFormData/> .
+@prefix gleif-ELF-data: <https://linked.opendata.gleif.org/sample/EntityLegalForm/> .
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
 @prefix gleif-elf: <https://www.gleif.org/ontology/EntityLegalForm/> .
 @prefix lcc-3166-1-adj: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/> .
@@ -17,7 +17,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://www.gleif.org/ontology/sample/EntityLegalFormData/>
+<https://linked.opendata.gleif.org/sample/EntityLegalForm/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF Entity Legal Forms sample data"@en ;
 	dct:abstract "Sample data for Entity Legal Form codes to illustrate and test the ontology."@en ;
@@ -38,7 +38,7 @@
 		<https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/> ,
 		<https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/>
 		;
-	owl:versionIRI <https://www.gleif.org/ontology/EntityLegalForm-v1.0/sample/EntityLegalFormData/> ;
+	owl:versionIRI <https://linked.opendata.gleif.org/EntityLegalForm-v1.0/sample/EntityLegalForm/> ;
 	skos:note """There is 1 category of individual:
     1) The EntityLegalForm and its Identifier. The URI is the code preceded by ELF-.""" ;
 	.
