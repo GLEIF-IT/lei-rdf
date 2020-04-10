@@ -18,10 +18,10 @@
   xmlns:rr="http://www.gleif.org/data/schema/rr/2016"
   xmlns:gleif="http://www.gleif.org/concatenated-file/header-extension/2.0" 
   xmlns:gleif-L1="https://www.gleif.org/ontology/L1/"
-  xmlns:gleif-L1-data="https://www.gleif.org/ontology/L1Data/"
+  xmlns:gleif-L1-data="https://linked.opendata.gleif.org/L1/"
   xmlns:gleif-L2="https://www.gleif.org/ontology/L2/"
   xmlns:gleif-L2internal="https://www.gleif.org/ontology/L2internal/"
-  xmlns:gleif-L2-data="https://www.gleif.org/ontology/L2Data/"
+  xmlns:gleif-L2-data="https://linked.opendata.gleif.org/L2/"
   xmlns:gleif-base="https://www.gleif.org/ontology/Base/"
   xmlns:saxon="http://saxon.sf.net/"
   
@@ -60,15 +60,15 @@
   </xsl:template>
   
   <xsl:template match="/rr:RelationshipData/rr:RelationshipRecords">
-    <rdf:RDF xml:base="https://www.gleif.org/ontology/L2Data/">
-      <owl:Ontology rdf:about="https://www.gleif.org/ontology/L2Data/">
+    <rdf:RDF xml:base="https://linked.opendata.gleif.org/L2/">
+      <owl:Ontology rdf:about="https://linked.opendata.gleif.org/L2/">
         <rdfs:label>GLEIF L2 data</rdfs:label>
         <dct:abstract>Ontology generated from GLEIF L2 data in RR 1.1 format</dct:abstract>
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">
           <xsl:value-of select="accumulator-before('header-date')"/>
         </dct:issued>
         <owl:imports rdf:resource="https://www.gleif.org/ontology/L2/"/>
-        <owl:imports rdf:resource="https://www.gleif.org/ontology/L1Data/"/>
+        <owl:imports rdf:resource="https://linked.opendata.gleif.org/L1/"/>
         <skos:note>There are 2 categories of individual:
           1) The LegalEntityRelationship (or a subclass). 
             The URI is a prefix of R- followed by LEIs of child then parent separated by - followed 
@@ -110,16 +110,16 @@
       </xsl:choose>
     </xsl:variable>
     <xsl:element name="{$el}">
-       <xsl:attribute name="rdf:about" select="concat('https://www.gleif.org/ontology/L2Data/R-', $start, '-', $end, '-' , $type-char)"/>
+       <xsl:attribute name="rdf:about" select="concat('https://linked.opendata.gleif.org/L2/R-', $start, '-', $end, '-' , $type-char)"/>
       <xsl:element name="gleif-L2:hasChild">
          <xsl:attribute name="rdf:resource">
-           <xsl:text>https://www.gleif.org/ontology/L1Data/L-</xsl:text>
+           <xsl:text>https://linked.opendata.gleif.org/L1/L-</xsl:text>
            <xsl:value-of select="$start"/>
          </xsl:attribute>
        </xsl:element>
       <xsl:element name="gleif-L2:hasParent">
          <xsl:attribute name="rdf:resource">
-           <xsl:text>https://www.gleif.org/ontology/L1Data/L-</xsl:text>
+           <xsl:text>https://linked.opendata.gleif.org/L1/L-</xsl:text>
            <xsl:value-of select="$end"/>
          </xsl:attribute>
        </xsl:element>
@@ -178,9 +178,9 @@
      </xsl:element>
     
     <gleif-L2:LegalEntityRelationshipRecord>
-      <xsl:attribute name="rdf:about" select="concat('https://www.gleif.org/ontology/L2Data/R-', $start, '-', $end, '-' , $type-char, '-REC')"/>
+      <xsl:attribute name="rdf:about" select="concat('https://linked.opendata.gleif.org/L2/R-', $start, '-', $end, '-' , $type-char, '-REC')"/>
       <gleif-base:records>
-        <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L2Data/R-', $start, '-', $end, '-' , $type-char)"/>
+        <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/L2/R-', $start, '-', $end, '-' , $type-char)"/>
       </gleif-base:records>
       <xsl:if test="$record/rr:Registration/rr:InitialRegistrationDate">
          <gleif-base:hasInitialRegistrationDate rdf:datatype="&xsd;dateTime">
@@ -227,7 +227,7 @@
       </xsl:for-each>
       <!-- Management -->
       <gleif-L1:hasManagingLOU>
-        <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/L-', $record/rr:Registration/rr:ManagingLOU)"/>
+        <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/L1/L-', $record/rr:Registration/rr:ManagingLOU)"/>
       </gleif-L1:hasManagingLOU>
       <xsl:for-each select="$record/rr:Registration/rr:ValidationSources">
         <gleif-L2:hasValidationSources>

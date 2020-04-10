@@ -1,9 +1,9 @@
 
-@base <https://www.gleif.org/ontology/BICData/> .
+@base <https://linked.opendata.gleif.org/BIC/> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix gleif-L1-data: <https://www.gleif.org/ontology/L1Data/> .
+@prefix gleif-L1-data: <https://linked.opendata.gleif.org/L1/> .
 @prefix gleif-ra: <https://www.gleif.org/ontology/RegistrationAuthority/> .
-@prefix gleif-BIC-data: <https://www.gleif.org/ontology/BICData/> .
+@prefix gleif-BIC-data: <https://linked.opendata.gleif.org/BIC/> .
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -11,7 +11,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://www.gleif.org/ontology/BICData/>
+<https://linked.opendata.gleif.org/BIC/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF BIC to LEI Mapping Data"@en ;
 	dct:abstract "Mappings from BICs (SWIFT Business Identifer Codes) to LEIs."@en ;
@@ -27,7 +27,7 @@
 	owl:imports
 		<https://www.gleif.org/ontology/Base/> ,
         <https://www.gleif.org/ontology/RegistrationAuthority/> ,
-		<https://www.gleif.org/ontology/L1Data/>;
+		<https://linked.opendata.gleif.org/L1/>;
 	skos:note """The URI for entities is the LEI preceded by L-""" ;
     .
 

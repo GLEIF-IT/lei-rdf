@@ -20,11 +20,11 @@
   xmlns:wgs="http://www.w3.org/2003/01/geo/wgs84_pos#"
   xmlns:gleif="http://www.gleif.org/data/schema/golden-copy/extensions/1.0" 
   xmlns:lei="http://www.gleif.org/data/schema/leidata/2016"
-  xmlns:gleif-ELF-data="https://www.gleif.org/ontology/EntityLegalFormData/"
+  xmlns:gleif-ELF-data="https://linked.opendata.gleif.org/EntityLegalForm/"
   xmlns:gleif-L1="https://www.gleif.org/ontology/L1/"
   xmlns:gleif-geo="https://www.gleif.org/ontology/Geocoding/"
-  xmlns:gleif-L1-data="https://www.gleif.org/ontology/L1Data/"
-  xmlns:gleif-RA-data="https://www.gleif.org/ontology/RegistrationAuthorityData/"
+  xmlns:gleif-L1-data="https://linked.opendata.gleif.org/L1/"
+  xmlns:gleif-RA-data="https://linked.opendata.gleif.org/RegistrationAuthority/"
   xmlns:gleif-base="https://www.gleif.org/ontology/Base/"
   xmlns:lcc-3166-1-adj="https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/"
   xmlns:lcc-3166-2-adj="https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/"
@@ -77,8 +77,8 @@
   </xsl:template>
   
   <xsl:template match="/lei:LEIData/lei:LEIRecords">
-    <rdf:RDF xml:base="https://www.gleif.org/ontology/L1Data/">
-      <owl:Ontology rdf:about="https://www.gleif.org/ontology/L1Data/">
+    <rdf:RDF xml:base="https://linked.opendata.gleif.org/L1/">
+      <owl:Ontology rdf:about="https://linked.opendata.gleif.org/L1/">
         <rdfs:label>GLEIF L1 data</rdfs:label>
         <dct:abstract>Ontology data generated from GLEIF L1 Golden Copy data in CDF 2.1 format</dct:abstract>
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">
@@ -86,8 +86,8 @@
         </dct:issued>
         <owl:imports rdf:resource="https://www.gleif.org/ontology/L1/"/>
         <owl:imports rdf:resource="https://www.gleif.org/ontology/Geocoding/"/>
-        <owl:imports rdf:resource="https://www.gleif.org/ontology/EntityLegalFormData/"/> 
-        <owl:imports rdf:resource="https://www.gleif.org/ontology/RegistrationAuthorityData/"/>
+        <owl:imports rdf:resource="https://linked.opendata.gleif.org/EntityLegalForm/"/>
+        <owl:imports rdf:resource="https://linked.opendata.gleif.org/RegistrationAuthority/"/>
         <owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/"/>
         <owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/"/>
         <skos:note>There are 5 categories of individual:
@@ -168,7 +168,7 @@
       </xsl:choose>
     </xsl:variable>
     <xsl:element name="{$el}">
-      <xsl:attribute name="rdf:about" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei)"/>
+      <xsl:attribute name="rdf:about" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei)"/>
       <xsl:element name="gleif-L1:hasLegalName">
         <xsl:copy-of select="$record/lei:Entity/lei:LegalName/@xml:lang"/>
         <xsl:value-of select="$record/lei:Entity/lei:LegalName"/>
@@ -207,18 +207,18 @@
       <xsl:variable name="hq1" select="$record/lei:Entity/lei:HeadquartersAddress/lei:FirstAddressLine"/>
       <xsl:if test="$record/lei:Entity/lei:LegalAddress">
         <xsl:element name="gleif-L1:hasLegalAddress">
-          <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei, '-LAL')"/>
+          <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei, '-LAL')"/>
         </xsl:element>
       </xsl:if>
       <xsl:choose>
         <xsl:when test="$hq1 != '' and $hq1 = $la1">
           <xsl:element name="gleif-L1:hasHeadquartersAddress">
-            <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei, '-LAL')"/>
+            <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei, '-LAL')"/>
           </xsl:element>              
         </xsl:when>
         <xsl:when test="$hq1 != ''">
           <xsl:element name="gleif-L1:hasHeadquartersAddress">
-            <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei, '-HQL')"/>
+            <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei, '-HQL')"/>
           </xsl:element>
         </xsl:when>
       </xsl:choose>
@@ -228,18 +228,18 @@
       <xsl:variable name="ahq1" select="$record/lei:Entity/lei:OtherAddresses/lei:OtherAddress[@type='ALTERNATIVE_LANGUAGE_HEADQUARTERS_ADDRESS']/lei:FirstAddressLine"/>
       <xsl:if test="$ala1 != ''">
         <xsl:element name="gleif-L1:hasAlternativeLanguageLegalAddress">
-          <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei, '-LAA')"/>
+          <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei, '-LAA')"/>
         </xsl:element>
       </xsl:if>
       <xsl:choose>
         <xsl:when test="$ahq1 != '' and $ahq1 = $ala1">
           <xsl:element name="gleif-L1:hasAlternativeLanguageHeadquartersAddress">
-            <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei, '-LAA')"/>
+            <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei, '-LAA')"/>
           </xsl:element>              
         </xsl:when>
         <xsl:when test="$ahq1 != ''">
           <xsl:element name="gleif-L1:hasAlternativeLanguageHeadquartersAddress">
-            <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei, '-HQA')"/>
+            <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei, '-HQA')"/>
           </xsl:element>
         </xsl:when>
       </xsl:choose>
@@ -251,33 +251,33 @@
       <xsl:variable name="thqp1" select="$record/lei:Entity/lei:TransliteratedOtherAddresses/lei:TransliteratedOtherAddress[@type='PREFERRED_ASCII_TRANSLITERATED_HEADQUARTERS_ADDRESS']/lei:FirstAddressLine"/>
       <xsl:if test="$tlap1 != ''">
         <xsl:element name="gleif-L1:hasPreferredASCIITransliteratedLegalAddress">
-          <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei, '-LAT')"/>
+          <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei, '-LAT')"/>
         </xsl:element>
       </xsl:if>
       <xsl:if test="$tlaa1 != ''">
         <xsl:element name="gleif-L1:hasAutoASCIITransliteratedLegalAddress">
-          <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei, '-LAT')"/>
+          <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei, '-LAT')"/>
         </xsl:element>
       </xsl:if>
       <xsl:choose>
         <xsl:when test="$thqp1 != '' and ($thqp1 = $tlap1 or $thqp1 = $tlaa1)">
           <xsl:element name="gleif-L1:hasPreferredASCIITransliteratedHeadquartersAddress">
-            <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei, '-LAT')"/>
+            <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei, '-LAT')"/>
           </xsl:element>              
         </xsl:when>
         <xsl:when test="$thqp1 != ''">
           <xsl:element name="gleif-L1:hasPreferredASCIITransliteratedHeadquartersAddress">
-            <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei, '-HQT')"/>
+            <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei, '-HQT')"/>
           </xsl:element>
         </xsl:when>
         <xsl:when test="$thqa1 != '' and ($thqa1 = $tlap1 or $thqa1 = $tlaa1)">
           <xsl:element name="gleif-L1:hasAutoASCIITransliteratedHeadquartersAddress">
-            <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei, '-LAT')"/>
+            <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei, '-LAT')"/>
           </xsl:element>              
         </xsl:when>
         <xsl:when test="$thqa1 != ''">
           <xsl:element name="gleif-L1:hasAutoASCIITranslitratedHeadquartersAddress">
-            <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei, '-HQT')"/>
+            <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei, '-HQT')"/>
           </xsl:element>
         </xsl:when>
       </xsl:choose>
@@ -286,7 +286,7 @@
         <xsl:for-each select="$record/lei:Extension/gleif:Geocoding">
           <xsl:variable name="gid" select="translate(gleif:mapped_location_id, $invalid-id-chars, $replacement-id-chars)"/>
           <gleif-geo:hasGeocodedAddress>
-            <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/G-', $gid)"/>              
+            <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/L1/G-', $gid)"/>
           </gleif-geo:hasGeocodedAddress>
         </xsl:for-each>
       </xsl:if>
@@ -328,7 +328,7 @@
         </xsl:variable>
         <gleif-L1:hasRegistrationIdentifier>
           <xsl:attribute name="rdf:resource">
-            <xsl:text>https://www.gleif.org/ontology/L1Data/BID-</xsl:text>
+            <xsl:text>https://linked.opendata.gleif.org/L1/BID-</xsl:text>
             <xsl:value-of select="$reg-id"/>
             <xsl:text>-</xsl:text>
             <xsl:value-of select="translate(string($bus-reg-ent-id), $invalid-id-chars, $replacement-id-chars)"/>
@@ -352,7 +352,7 @@
       <xsl:variable name="succ" select="$record/lei:Entity/lei:SuccessorEntity/lei:SuccessorLEI"/>
       <xsl:if test="$succ != ''">
         <gleif-base:hasSuccessor>
-          <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/L-',  $succ)"/>
+          <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/L1/L-',  $succ)"/>
         </gleif-base:hasSuccessor>
       </xsl:if>
       <xsl:variable name="succ-name" select="$record/lei:Entity/lei:SuccessorEntity/lei:SuccessorEntityName"/>
@@ -368,7 +368,7 @@
       <xsl:variable name="other-form" select="$record/lei:Entity/lei:LegalForm/lei:OtherLegalForm"/>
       <xsl:if test="$legal-form-code != '' and $legal-form-code != '8888' and $legal-form-code != '9999'">
         <xsl:element name="gleif-L1:hasLegalForm">
-          <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/ELFData/ELF-', $legal-form-code)"/>
+          <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/ELF/ELF-', $legal-form-code)"/>
         </xsl:element>            
       </xsl:if>
       <xsl:if test="$other-form != ''">
@@ -382,7 +382,7 @@
         <xsl:variable name="assoc" select="$record/lei:Entity/lei:AssociatedEntity/lei:AssociatedLEI"/>
         <xsl:if test="$assoc != ''">
           <xsl:element name="gleif-L1:hasFundFamily">
-            <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/L-',  $assoc)"/>
+            <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/L1/L-',  $assoc)"/>
           </xsl:element>
         </xsl:if>
         <xsl:variable name="assoc-name" select="$record/lei:Entity/lei:AssociatedEntity/lei:AssociatedEntityName"/>
@@ -405,13 +405,13 @@
     </xsl:element>
         
     <gleif-L1:LegalEntityIdentifier>
-      <xsl:attribute name="rdf:about" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei, '-LEI')"/>
+      <xsl:attribute name="rdf:about" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei, '-LEI')"/>
       <rdf:type rdf:resource="https://www.gleif.org/ontology/L1/LegalEntityIdentifierRegistryEntry"/>
       <gleif-L1:LEI>
         <xsl:value-of select="$lei"/>
       </gleif-L1:LEI>
       <gleif-L1:identifiesAndRecords>
-        <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei)"/>
+        <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei)"/>
       </gleif-L1:identifiesAndRecords>
       <gleif-base:hasInitialRegistrationDate rdf:datatype="&xsd;dateTime">
         <xsl:value-of select="$record/lei:Registration/lei:InitialRegistrationDate"/>
@@ -442,7 +442,7 @@
         <xsl:value-of select="$record/lei:Registration/lei:NextRenewalDate"/>
       </gleif-base:hasNextRenewalDate>
       <gleif-L1:hasManagingLOU>
-        <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/L-', $record/lei:Registration/lei:ManagingLOU)"/>
+        <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/L1/L-', $record/lei:Registration/lei:ManagingLOU)"/>
       </gleif-L1:hasManagingLOU>
       <!-- TODO cope with multiple values for validationSources (very rare) -->
       <xsl:variable name="valsource" select="$record/lei:Registration/lei:ValidationSources"/>
@@ -474,7 +474,7 @@
         </xsl:variable>
         <gleif-L1:hasValidationIdentifier>
           <xsl:attribute name="rdf:resource">
-            <xsl:text>https://www.gleif.org/ontology/L1Data/BID-</xsl:text>
+            <xsl:text>https://linked.opendata.gleif.org/L1/BID-</xsl:text>
             <xsl:value-of select="$val-id"/>
             <xsl:text>-</xsl:text>
             <xsl:value-of select="translate(string($val-reg-ent-id), $invalid-id-chars, $replacement-id-chars)"/>
@@ -498,7 +498,7 @@
         </xsl:variable>
         <gleif-L1:hasOtherValidationIdentifier>
           <xsl:attribute name="rdf:resource">
-            <xsl:text>https://www.gleif.org/ontology/L1Data/BID-</xsl:text>
+            <xsl:text>https://linked.opendata.gleif.org/L1/BID-</xsl:text>
             <xsl:value-of select="$val-id"/>
             <xsl:text>-</xsl:text>
             <xsl:value-of select="translate(string($val-reg-ent-id), $invalid-id-chars, $replacement-id-chars)"/>
@@ -523,7 +523,7 @@
     <xsl:param name="lei"/>
     <xsl:variable name="lang" select="@xml:lang"/>
     <gleif-base:PhysicalAddress>
-      <xsl:attribute name="rdf:about" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei, '-LAL')"/>
+      <xsl:attribute name="rdf:about" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei, '-LAL')"/>
       <xsl:call-template name="do-address">
         <xsl:with-param name="lang" select="$lang"/>
       </xsl:call-template>
@@ -534,7 +534,7 @@
     <xsl:param name="lei"/>
     <xsl:variable name="lang" select="@xml:lang"/>
     <gleif-base:PhysicalAddress>
-      <xsl:attribute name="rdf:about" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei, '-HQL')"/>
+      <xsl:attribute name="rdf:about" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei, '-HQL')"/>
       <xsl:apply-templates>
         <xsl:with-param name="lang" select="$lang"/>
       </xsl:apply-templates>
@@ -545,7 +545,7 @@
     <xsl:param name="lei"/>
     <xsl:variable name="lang" select="@xml:lang"/>
     <gleif-base:PhysicalAddress>
-      <xsl:attribute name="rdf:about" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei, '-LAA')"/>
+      <xsl:attribute name="rdf:about" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei, '-LAA')"/>
       <xsl:call-template name="do-address">
         <xsl:with-param name="lang" select="$lang"/>
       </xsl:call-template>
@@ -556,7 +556,7 @@
     <xsl:param name="lei"/>
     <xsl:variable name="lang" select="@xml:lang"/>
     <gleif-base:PhysicalAddress>
-      <xsl:attribute name="rdf:about" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei, '-HQA')"/>
+      <xsl:attribute name="rdf:about" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei, '-HQA')"/>
       <xsl:call-template name="do-address">
         <xsl:with-param name="lang" select="$lang"/>
       </xsl:call-template>
@@ -567,7 +567,7 @@
     <xsl:param name="lei"/>
     <xsl:variable name="lang" select="@xml:lang"/>
     <gleif-L1:PhysicalAddressASCII>
-      <xsl:attribute name="rdf:about" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei, '-LAT')"/>
+      <xsl:attribute name="rdf:about" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei, '-LAT')"/>
       <xsl:call-template name="do-address">
         <xsl:with-param name="lang" select="$lang"/>
       </xsl:call-template>
@@ -578,7 +578,7 @@
     <xsl:param name="lei"/>
     <xsl:variable name="lang" select="@xml:lang"/>
     <gleif-L1:PhysicalAddressASCII>
-      <xsl:attribute name="rdf:about" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei, '-HQT')"/>
+      <xsl:attribute name="rdf:about" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei, '-HQT')"/>
       <xsl:call-template name="do-address">
         <xsl:with-param name="lang" select="$lang"/>
       </xsl:call-template>
@@ -589,7 +589,7 @@
     <xsl:param name="lei"/>
     <xsl:variable name="lang" select="@xml:lang"/>
     <gleif-L1:PhysicalAddressASCII>
-      <xsl:attribute name="rdf:about" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei, '-LAT')"/>
+      <xsl:attribute name="rdf:about" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei, '-LAT')"/>
       <xsl:call-template name="do-address">
         <xsl:with-param name="lang" select="$lang"/>
       </xsl:call-template>
@@ -600,7 +600,7 @@
     <xsl:param name="lei"/>
     <xsl:variable name="lang" select="@xml:lang"/>
     <gleif-L1:PhysicalAddressASCII>
-      <xsl:attribute name="rdf:about" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei, '-HQT')"/>
+      <xsl:attribute name="rdf:about" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei, '-HQT')"/>
       <xsl:call-template name="do-address">
         <xsl:with-param name="lang" select="$lang"/>
       </xsl:call-template>
@@ -662,7 +662,7 @@
       </xsl:variable>
       <gleif-L1:BusinessRegistryIdentifier>
         <xsl:attribute name="rdf:about">
-          <xsl:text>https://www.gleif.org/ontology/L1Data/BID-</xsl:text>
+          <xsl:text>https://linked.opendata.gleif.org/L1/BID-</xsl:text>
           <xsl:value-of select="$reg-id"/>
           <xsl:text>-</xsl:text>
           <xsl:value-of select="translate(string($bus-reg-ent-id), $invalid-id-chars, $replacement-id-chars)"/>
@@ -671,12 +671,12 @@
           <xsl:value-of select="string($bus-reg-ent-id)"/>
         </gleif-L1:hasEntityID>
         <gleif-base:identifies>
-          <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei)"/>
+          <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei)"/>
         </gleif-base:identifies>
         <xsl:if test="$bus-reg != 'RA888888' and $bus-reg != 'RA999999'">
           <gleif-L1:hasRegisteredAuthority>
             <!-- Possible TODO coin a URI for registries with no code -->
-            <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/RegistrationAuthorityData/', $bus-reg)"/>
+            <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/RegistrationAuthority/', $bus-reg)"/>
           </gleif-L1:hasRegisteredAuthority>
         </xsl:if>
         <xsl:if test="$bus-reg-text != ''">
@@ -710,7 +710,7 @@
           </xsl:choose>
         </xsl:variable>
         <xsl:attribute name="rdf:about">
-          <xsl:text>https://www.gleif.org/ontology/L1Data/BID-</xsl:text>
+          <xsl:text>https://linked.opendata.gleif.org/L1/BID-</xsl:text>
           <xsl:value-of select="$reg-id"/>
           <xsl:text>-</xsl:text>
           <xsl:value-of select="translate(string($bus-reg-ent-id), $invalid-id-chars, $replacement-id-chars)"/>
@@ -719,12 +719,12 @@
           <xsl:value-of select="string($bus-reg-ent-id)"/>
         </gleif-L1:hasEntityID>
         <gleif-base:identifies>
-          <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei)"/>
+          <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei)"/>
         </gleif-base:identifies>
         <xsl:if test="$bus-reg != 'RA888888' and $bus-reg != 'RA999999'">
           <gleif-L1:hasRegisteredAuthority>
             <!-- Possible TODO coin a URI for registries with no code -->
-            <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/RegistrationAuthorityData/', $bus-reg)"/>
+            <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/RegistrationAuthority/', $bus-reg)"/>
           </gleif-L1:hasRegisteredAuthority>
         </xsl:if>
         <xsl:if test="$bus-reg-text != ''">
@@ -807,7 +807,7 @@
     <xsl:variable name="gid" select="translate(gleif:mapped_location_id, $invalid-id-chars, $replacement-id-chars)"/>
     <xsl:variable name="countrycode2" select="substring(gleif:mapped_country, 1, 2)"/>
     <gleif-geo:GeocodedAddress>
-      <xsl:attribute name="rdf:about" select="concat('https://www.gleif.org/ontology/L1Data/G-', $gid)"/>
+      <xsl:attribute name="rdf:about" select="concat('https://linked.opendata.gleif.org/L1/G-', $gid)"/>
       <wgs:lat>
         <xsl:attribute name="rdf:datatype">http://www.w3.org/2001/XMLSchema#decimal</xsl:attribute>
         <xsl:value-of select="number(gleif:lat)"/>        
@@ -969,7 +969,7 @@
         </xsl:variable>
         <xsl:if test="$addSuffix != ''">
           <gleif-geo:originalAddress>
-            <xsl:attribute name="rdf:resource" select="concat('https://www.gleif.org/ontology/L1Data/L-', $lei, $addSuffix)"/>
+            <xsl:attribute name="rdf:resource" select="concat('https://linked.opendata.gleif.org/L1/L-', $lei, $addSuffix)"/>
           </gleif-geo:originalAddress>
         </xsl:if>
       </xsl:if>
