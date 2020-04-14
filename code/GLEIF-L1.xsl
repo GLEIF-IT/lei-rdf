@@ -47,8 +47,8 @@
   
   <xsl:param name="skip-geo" select="'false'"/> <!-- if true does not output geocoded addresses -->
   
-  <xsl:variable name="invalid-id-chars" select="' /:,()|&gt;&lt;&amp;&quot;&quot;&apos;&apos;'"/> <!-- Cannot be used in xmi ids -->
-  <xsl:variable name="replacement-id-chars" select="'_...______..'"/> <!-- Substitute for above - must match in number -->
+  <xsl:variable name="invalid-id-chars" select="' /;:,`()[]\|&gt;&lt;&amp;&quot;&quot;&apos;&apos;'"/> <!-- Cannot be used in xmi ids -->
+  <xsl:variable name="replacement-id-chars" select="'_....._________..'"/> <!-- Substitute for above - must match in number -->
   <xsl:variable name="null-date" as="xs:dateTime">1970-01-01T00:00:00.00</xsl:variable>
   
   <!-- This is no longer needed since Stardog does not support large numbers of XML entities 
