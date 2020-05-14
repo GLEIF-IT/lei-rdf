@@ -47,8 +47,8 @@
   
   <xsl:param name="skip-geo" select="'false'"/> <!-- if true does not output geocoded addresses -->
   
-  <xsl:variable name="invalid-id-chars" select="' /:,()&gt;&lt;&amp;'"/> <!-- Cannot be used in xmi ids -->
-  <xsl:variable name="replacement-id-chars" select="'_..._____'"/> <!-- Substitute for above - must match in number -->
+  <xsl:variable name="invalid-id-chars" select="' /;:,`()[]\|&gt;&lt;&amp;&quot;&quot;&apos;&apos;'"/> <!-- Cannot be used in xmi ids -->
+  <xsl:variable name="replacement-id-chars" select="'_....._________..'"/> <!-- Substitute for above - must match in number -->
   <xsl:variable name="null-date" as="xs:dateTime">1970-01-01T00:00:00.00</xsl:variable>
   
   <!-- This is no longer needed since Stardog does not support large numbers of XML entities 
@@ -336,18 +336,20 @@
         </gleif-L1:hasRegistrationIdentifier>
       </xsl:if>
       <!-- Jurisdiction -->
-      <xsl:element name="gleif-base:hasLegalJurisdiction">
-        <!-- ASSUMES that a) countries are also classified as Jurisdictions (which this will do) 
-          and b) they have URIs corresponding to their code -->
-        <xsl:variable name="jurisdiction" select="$record/lei:Entity/lei:LegalJurisdiction"/>
-        <xsl:attribute name="rdf:resource">
-          <xsl:choose>
-            <xsl:when test="contains($jurisdiction, '-')">https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/</xsl:when>
-            <xsl:otherwise>https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/</xsl:otherwise>
-          </xsl:choose>
-          <xsl:value-of select="$jurisdiction"/>
-        </xsl:attribute>
-      </xsl:element>
+      <xsl:variable name="jurisdiction" select="$record/lei:Entity/lei:LegalJurisdiction"/>
+      <xsl:if test="$jurisdiction != ''">
+        <xsl:element name="gleif-base:hasLegalJurisdiction">
+          <!-- ASSUMES that a) countries are also classified as Jurisdictions (which this will do) 
+            and b) they have URIs corresponding to their code -->
+          <xsl:attribute name="rdf:resource">
+            <xsl:choose>
+              <xsl:when test="contains($jurisdiction, '-')">https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/</xsl:when>
+              <xsl:otherwise>https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/</xsl:otherwise>
+            </xsl:choose>
+            <xsl:value-of select="$jurisdiction"/>
+          </xsl:attribute>
+        </xsl:element>
+      </xsl:if>
       <!-- Successor -->
       <xsl:variable name="succ" select="$record/lei:Entity/lei:SuccessorEntity/lei:SuccessorLEI"/>
       <xsl:if test="$succ != ''">
