@@ -44,7 +44,7 @@ local1=${LL1%.xml.zip}
 # FTP $local1.rdf to GLEIF
 
 # rename to predictable name
-mv $local1.rdf L1Data.rdf
+mv $local1.ttl L1Data.ttl
 
 ### L2
 echo L2 processing
@@ -61,7 +61,7 @@ local2=${LL2%.xml.zip}
 # FTP $local2.rdf to GLEIF
 
 # rename to predictable name
-mv $local2.rdf L2Data.rdf
+mv $local2.ttl L2Data.ttl
 
 ### RepEx
 echo RepEx processing
@@ -78,11 +78,11 @@ localr=${LRepEx%.xml.zip}
 # FTP $localr.rdf to GLEIF
 
 # rename to predictable name
-mv $localr.rdf RepExData.rdf
+mv $localr.ttl RepExData.ttl
 
 # Combine all files
 echo zipping 3 files
-zip upload.zip L1Data.rdf L2Data.rdf RepExData.rdf
+zip upload.zip L1Data.ttl L2Data.ttl RepExData.ttl
 
 # Upload to data.world
 echo uploading to data.world dataset $1

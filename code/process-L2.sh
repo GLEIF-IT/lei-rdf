@@ -10,5 +10,7 @@ unzip -o $1.xml.zip
 
 echo Applying GLEIF-L2.xsl to $1.xml to produce $1.rdf
 java -Xmx512M -cp ~/saxon/saxon9ee.jar net.sf.saxon.Transform -s:$1.xml -xsl:GLEIF-L2.xsl -o:$1.rdf
-  
+
+cat $1.rdf | ~/jena/bin/riot -q --syntax=RDFXML --stream=TURTLE > $1.ttl
+
 echo L2 transformation complete
