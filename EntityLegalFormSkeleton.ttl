@@ -1,9 +1,3 @@
-# baseURI: https://www.gleif.org/ontology/EntityLegalFormData/
-# imports: https://www.gleif.org/ontology/Base/
-# imports: https://www.gleif.org/ontology/EntityLegalForm/
-# imports: https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/
-# imports: https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/
-
 @base <https://www.gleif.org/ontology/EntityLegalFormData/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix gleif-ELF-data: <https://www.gleif.org/ontology/EntityLegalFormData/> .
