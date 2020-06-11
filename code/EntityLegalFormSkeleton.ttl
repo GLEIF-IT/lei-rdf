@@ -22,7 +22,7 @@
 		;
 	dct:creator gleif-base:GLEIF ;
 	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
-	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
+	dct:rights "Copyright (c) 2020 Global Legal Entity Identifier Foundation (GLEIF)" ;
 	dct:rightsHolder gleif-base:GLEIF ;
 	dct:title "Global Legal Entity Identifier Foundation Entity Legal Form Data"@en ;
 	owl:imports
