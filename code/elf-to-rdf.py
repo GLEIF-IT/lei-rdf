@@ -49,10 +49,10 @@ with open(inputfile, 'rt', encoding='utf8') as f:
     g = Graph().parse(source='EntityLegalFormSkeleton.ttl', format='turtle')
     # Use the filename for metadata since it's not in the file itself
     dateFromName = inputfile.partition('_')[0] + "T00:00:00Z"
-    vsnFromName = inputfile.partition('version-')[2].partition('.csv')[0]
+    vsnFromName = inputfile.partition('list-')[2].partition('.csv')[0]
     ont = ELFDATA['']
     g.add( (ont, DCT.issued, Literal(dateFromName, datatype=XSD.dateTime)) )
-    g.add( (ont, OWL.versionIRI, ELFDATA['v'+vsnFromName+'/']) )
+    g.add( (ont, OWL.versionIRI, ELFDATA[vsnFromName+'/']) )
     cgraph = Graph().parse(location='https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/', format='xml')
     lgraph = Graph().parse(location='https://www.omg.org/spec/LCC/Languages/ISO639-1-LanguageCodes/', format='xml')
     reader = csv.reader(f)
