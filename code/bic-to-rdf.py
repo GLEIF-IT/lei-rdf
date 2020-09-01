@@ -30,8 +30,8 @@ outputfile = sys.argv[2]
 BASE = Namespace("https://www.gleif.org/ontology/Base/")
 DCT = Namespace("http://purl.org/dc/terms/")
 OWL = Namespace("http://www.w3.org/2002/07/owl#")
-BICDATA = Namespace("https://linked.opendata.gleif.org/BIC/")
-L1DATA = Namespace("https://linked.opendata.gleif.org/L1/")
+BICDATA = Namespace("https://rdf.gleif.org/BIC/")
+L1DATA = Namespace("https://rdf.gleif.org/L1/")
 
 
 with open(inputfile, 'rt', encoding='utf8') as f:
