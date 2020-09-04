@@ -1,15 +1,15 @@
-# baseURI: https://linked.opendata.gleif.org/sample/L2/
+# baseURI: https://rdf.gleif.org/sample/L2/
 # imports: https://www.gleif.org/ontology/Base/
 # imports: https://www.gleif.org/ontology/L1/
 # imports: https://www.gleif.org/ontology/L2/
-# imports: https://linked.opendata.gleif.org/sample/L1/
+# imports: https://rdf.gleif.org/sample/L1/
 
-@base <https://linked.opendata.gleif.org/sample/L2/> .
+@base <https://rdf.gleif.org/sample/L2/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix gleif-L1: <https://www.gleif.org/ontology/L1/> .
-@prefix gleif-L1-data: <https://linked.opendata.gleif.org/sample/L1/> .
+@prefix gleif-L1-data: <https://rdf.gleif.org/sample/L1/> .
 @prefix gleif-L2: <https://www.gleif.org/ontology/L2/> .
-@prefix gleif-L2-data: <https://linked.opendata.gleif.org/sample/L2/> .
+@prefix gleif-L2-data: <https://rdf.gleif.org/sample/L2/> .
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -17,7 +17,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://linked.opendata.gleif.org/sample/L2/>
+<https://rdf.gleif.org/sample/L2/>
 	a owl:Ontology ;
 	rdfs:label "GLEIF L2 sample data"@en ;
 	dct:abstract "Sample data for GLEIF L2 ontology to illustrate and test the ontology"@en ;
@@ -36,9 +36,9 @@
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/> ,
 		<https://www.gleif.org/ontology/L2/> ,
-		<https://linked.opendata.gleif.org/sample/L1/>
+		<https://rdf.gleif.org/sample/L1/>
 		;
-	owl:versionIRI <https://linked.opendata.gleif.org/L2-v1.0/sample/L2/> ;
+	owl:versionIRI <https://rdf.gleif.org/L2-v1.0/sample/L2/> ;
 	skos:note """There are 2 categories of individual:
     1) The LegalEntityRelationship (or a subclass). The URI is a prefix of R- followed by LEIs of child then parent separated by - followed by a suffix of one of -D, -U or -I for Direct, Ultimate or International Branch relationships respectively.
     2) The LegalEntityRelationshipRecord. The URI is that of the LegalEntityRelationship followed by -REC.""" ;
