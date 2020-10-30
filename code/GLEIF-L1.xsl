@@ -370,7 +370,7 @@
       <xsl:variable name="other-form" select="$record/lei:Entity/lei:LegalForm/lei:OtherLegalForm"/>
       <xsl:if test="$legal-form-code != '' and $legal-form-code != '8888' and $legal-form-code != '9999'">
         <xsl:element name="gleif-L1:hasLegalForm">
-          <xsl:attribute name="rdf:resource" select="concat('https://rdf.gleif.org/ELF/ELF-', $legal-form-code)"/>
+          <xsl:attribute name="rdf:resource" select="concat('https://rdf.gleif.org/EntityLegalForm/ELF-', $legal-form-code)"/>
         </xsl:element>            
       </xsl:if>
       <xsl:if test="$other-form != ''">
