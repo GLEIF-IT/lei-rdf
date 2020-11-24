@@ -100,5 +100,7 @@ with open(inputfile, 'rt', encoding='utf8') as f:
                 for abbrev in abbrevs:
                     g.add( (this, BASE.hasAbbreviationTransliterated, Literal(abbrev[0], lang=elfNameLangCode)) )
 
+            if status == 'INAC':
+                    g.add( (this, OWL.deprecated, Literal(True, datatype=XSD.boolean)) )
  
     g.serialize(destination=outputfile, format='turtle')

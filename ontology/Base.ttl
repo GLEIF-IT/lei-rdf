@@ -155,7 +155,7 @@ gleif-base:EntityStatusInactive
 gleif-base:GLEIF
 	a gleif-base:RegistrationAuthority ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	gleif-base:hasLegalName "Global Legal Entity Identifier Foundation" ;
+	gleif-base:hasNameLegal "Global Legal Entity Identifier Foundation" ;
 	gleif-base:hasNameLegalLocal "Global Legal Entity Identifier Foundation"@en ;
 	.
 

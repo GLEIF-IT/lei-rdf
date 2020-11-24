@@ -808,7 +808,7 @@ gleif-L1:hasOtherAddresses
 gleif-L1:hasOtherAuthority
 	a owl:DatatypeProperty ;
 	rdfs:label "has other authority" ;
-	rdfs:domain gleif-ra:BusinessRegistryIdentifier ;
+	rdfs:domain gleif-L1:BusinessRegistryIdentifier ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "A legacy / historical reference code of a registration authority which is not yet entered in the Registration Authorities Code List (RAL) maintained by GLEIF, or the designation of an interim register until such time as an entry from RAL can be delivered. " ;
 	.
@@ -874,7 +874,7 @@ gleif-L1:hasRegisteredAuthority
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf gleif-base:isRegisteredIn ;
 	rdfs:label "has registered authority" ;
-	rdfs:domain gleif-ra:BusinessRegistryIdentifier ;
+	rdfs:domain gleif-L1:BusinessRegistryIdentifier ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	rdfs:range gleif-ra:BusinessRegistry ;
 	skos:definition "The reference of the registration authority, taken from the Registration Authorities Code List (RAL) maintained by GLEIF." ;
