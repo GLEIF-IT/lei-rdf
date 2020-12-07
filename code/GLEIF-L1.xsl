@@ -696,7 +696,7 @@
     <xsl:variable name="bus-reg-text" select="lei:OtherValidationAuthorityID"/>
     <xsl:variable name="bus-reg-ent-id" select="lei:ValidationAuthorityEntityID"/>
     <xsl:if test="$bus-reg != 'RA999999'">
-      <gleif-L1:BusinessRegistryIdentifie>
+      <gleif-L1:BusinessRegistryIdentifier>
         <xsl:variable name="reg-id">
           <xsl:choose>
             <xsl:when test="$bus-reg = 'RA888888'  and $bus-reg-text != ''">
@@ -734,7 +734,7 @@
             <xsl:value-of select="$bus-reg-text"/>
           </gleif-L1:hasOtherAuthority>
         </xsl:if>
-      </gleif-L1:BusinessRegistryIdentifie>
+      </gleif-L1:BusinessRegistryIdentifier>
     </xsl:if>
   </xsl:template>
 
