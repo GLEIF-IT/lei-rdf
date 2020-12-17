@@ -27,7 +27,7 @@
 		<https://www.linkedin.com/in/peterivett/>
 		;
 	dct:creator gleif-base:GLEIF ;
-	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
+	dct:issued "2020-12-07T00:00:00Z"^^xsd:dateTime ;
 	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
 	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
 	dct:rightsHolder gleif-base:GLEIF ;
@@ -36,7 +36,7 @@
 	vann:preferredNamespacePrefix "gleif-base" ;
 	vann:preferredNamespaceUri "https://www.gleif.org/ontology/Base/" ;
 	owl:imports <https://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ;
-	owl:versionIRI <https://www.gleif.org/ontology/Base-v1.0/Base/> ;
+	owl:versionIRI <https://www.gleif.org/ontology/Base-v1.0.1/Base/> ;
 	.
 
 gleif-base:Entity
@@ -155,7 +155,7 @@ gleif-base:EntityStatusInactive
 gleif-base:GLEIF
 	a gleif-base:RegistrationAuthority ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	gleif-base:hasLegalName "Global Legal Entity Identifier Foundation" ;
+	gleif-base:hasNameLegal "Global Legal Entity Identifier Foundation" ;
 	gleif-base:hasNameLegalLocal "Global Legal Entity Identifier Foundation"@en ;
 	.
 
