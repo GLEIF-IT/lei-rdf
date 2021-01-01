@@ -5,12 +5,12 @@ import re
 from rdflib import Graph, Literal
 from rdflib.namespace import Namespace, RDF, XSD
 
-# Copyright (c) Data.world, 2019
+# Copyright (c) Data.world, 2019-2020
 # Author Pete Rivett
 # Licensed under MIT License
 
 # Converts the official Entity Legal Form list CSV file to RDF
-# Tested with 2019-07-19 version
+# Tested with 2020-11-19 version
 # There could be many entries for the same code, each with a different language
 # Assumes input has following columns:
 # ELF Code, Country of formation, Country Code (ISO 3166-1, Jurisdiction of formation, Country sub-division code (ISO 3166-2),
@@ -100,5 +100,7 @@ with open(inputfile, 'rt', encoding='utf8') as f:
                 for abbrev in abbrevs:
                     g.add( (this, BASE.hasAbbreviationTransliterated, Literal(abbrev[0], lang=elfNameLangCode)) )
 
+            if status == 'INAC':
+                    g.add( (this, OWL.deprecated, Literal(True, datatype=XSD.boolean)) )
  
     g.serialize(destination=outputfile, format='turtle')
