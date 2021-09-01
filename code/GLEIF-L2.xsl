@@ -34,7 +34,7 @@
   
   <!--#########################################################################-->
   
-  <xsl:output method="xml" indent="yes" media-type="application/xml" 
+  <xsl:output method="xml" indent="yes" media-type="application/xml"  encoding="UTF-8"
     doctype-public="rdf:RDF" /> 
   <xsl:strip-space elements="*"/>
   
