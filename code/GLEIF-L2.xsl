@@ -259,7 +259,7 @@
       <xsl:for-each select="$record/rr:Registration/rr:ValidationReference">
         <gleif-L2:hasValidationReference>
           <xsl:copy-of select="xml:lang"/>
-          <xsl:value-of select="."/>
+          <xsl:value-of select="normalize-unicode(string(.), 'NFKC')"/>
         </gleif-L2:hasValidationReference>
       </xsl:for-each>
     </gleif-L2:LegalEntityRelationshipRecord>

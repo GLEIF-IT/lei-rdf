@@ -45,6 +45,8 @@ local1=${LL1%.xml.zip}
 
 # rename to predictable name
 mv $local1.rdf L1Data.rdf
+riot --output=TTL L1Data.rdf > L1Data.ttl
+
 
 ### L2
 echo L2 processing
@@ -62,6 +64,7 @@ local2=${LL2%.xml.zip}
 
 # rename to predictable name
 mv $local2.rdf L2Data.rdf
+riot  --output=TTL L2Data.rdf > L2Data.ttl
 
 ### RepEx
 echo RepEx processing
@@ -82,7 +85,7 @@ mv $localr.rdf RepExData.rdf
 
 # Combine all files
 echo zipping 3 files
-zip upload.zip L1Data.rdf L2Data.rdf RepExData.rdf
+zip upload.zip L1Data.rdf L2Data.rdf L1Data.ttl L2Data.ttl RepExData.rdf
 
 # Upload to data.world
 echo uploading to data.world dataset $1
