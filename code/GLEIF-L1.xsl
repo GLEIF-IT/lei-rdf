@@ -40,7 +40,7 @@
   
   <!--#########################################################################-->
   
-  <xsl:output method="xml" indent="yes" media-type="application/xml" 
+  <xsl:output method="xml" indent="yes" media-type="application/xml" encoding="UTF-8"
     doctype-public="rdf:RDF" /> 
   <xsl:strip-space elements="*"/>
   
@@ -619,7 +619,7 @@
         <xsl:if test="$lang != ''">
           <xsl:attribute name="xml:lang" select="$lang"/>
         </xsl:if>
-        <xsl:value-of select="string(.)"/>
+        <xsl:value-of select="normalize-unicode(string(.), 'NFKC')"/>
       </xsl:element>
     </xsl:for-each>
     <xsl:apply-templates select="*[not(local-name()='AdditionalAddressLine' or local-name()='FirstAddressLine')]"/>
@@ -745,7 +745,7 @@
       <xsl:if test="$lang != ''">
         <xsl:attribute name="xml:lang" select="$lang"/>
       </xsl:if>
-      <xsl:value-of select="string(.)"/>
+      <xsl:value-of select="normalize-unicode(string(.), 'NFKC')"/>
     </gleif-base:hasAddressLine1> 
   </xsl:template>
   <xsl:template match="lei:AdditionalAddressLine"/> <!-- Handled inline -->
@@ -755,12 +755,12 @@
       <xsl:if test="$lang != ''">
         <xsl:attribute name="xml:lang" select="$lang"/>
       </xsl:if>
-      <xsl:value-of select="string(.)"/>
+      <xsl:value-of select="normalize-unicode(string(.),'NFKC')"/>
     </gleif-base:hasCity> 
   </xsl:template>
   <xsl:template match="lei:AddressNumber">
     <gleif-base:hasAddressNumber>
-      <xsl:value-of select="string(.)"/>
+      <xsl:value-of select="normalize-unicode(string(.), 'NFKC')"/>
     </gleif-base:hasAddressNumber> 
   </xsl:template>
   <xsl:template match="lei:AddressNumberWithinBuilding">
@@ -769,7 +769,7 @@
       <xsl:if test="$lang != ''">
         <xsl:attribute name="xml:lang" select="$lang"/>
       </xsl:if>
-      <xsl:value-of select="string(.)"/>
+      <xsl:value-of select="normalize-unicode(string(.), 'NFKC')"/>
     </gleif-base:hasAddressNumberWithinBuilding> 
   </xsl:template>
   <xsl:template match="lei:MailRouting">
@@ -778,19 +778,19 @@
       <xsl:if test="$lang != ''">
         <xsl:attribute name="xml:lang" select="$lang"/>
       </xsl:if>
-      <xsl:value-of select="string(.)"/>
+      <xsl:value-of select="normalize-unicode(string(.), 'NFKC')"/>
     </gleif-base:hasMailRouting> 
   </xsl:template>
   <xsl:template match="lei:PostalCode">
     <gleif-base:hasPostalCode>
-      <xsl:value-of select="string(.)"/>
+      <xsl:value-of select="normalize-unicode(string(.), 'NFKC')"/>
     </gleif-base:hasPostalCode> 
   </xsl:template>
   <xsl:template match="lei:Country">
     <gleif-base:hasCountry>
       <xsl:attribute name="rdf:resource">
         <xsl:text>https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/</xsl:text>
-        <xsl:value-of select="string(.)"/>
+        <xsl:value-of select="normalize-unicode(string(.), 'NFKC')"/>
        </xsl:attribute>
     </gleif-base:hasCountry> 
   </xsl:template>
@@ -798,7 +798,7 @@
     <gleif-base:hasSubdivision>
       <xsl:attribute name="rdf:resource">
         <xsl:text>https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/</xsl:text>
-        <xsl:value-of select="string(.)"/>
+        <xsl:value-of select="normalize-unicode(string(.), 'NFKC')"/>
       </xsl:attribute>
     </gleif-base:hasSubdivision> 
   </xsl:template>
