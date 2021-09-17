@@ -118,7 +118,7 @@
         <xsl:variable name="reason" as="xs:string" select="."/>
         <xsl:element name="gleif-repex:hasExceptionReason">
            <xsl:attribute name="rdf:resource">          
-             <xsl:text>gleif-repex:ExceptionReasonKind</xsl:text>
+             <xsl:text>https://www.gleif.org/ontology/ReportingException/ExceptionReasonKind</xsl:text>
              <xsl:choose>
                <xsl:when test="$reason = 'BINDING_LEGAL_COMMITMENTS'">BindingLegalCommitments</xsl:when>
                <xsl:when test="$reason = 'CONSENT_NOT_OBTAINED'">ConsentNotObtained</xsl:when>
