@@ -160,7 +160,7 @@ with open(inputfile, 'rt', encoding='utf8') as f:
                 g.add( (this, BASE.isManagedBy, org) )
                 
             if website != '':
-                g.add( (this, BASE.hasWebsite, Literal(website, datatype=XSD.anyURI)) )
+                g.add( (this, BASE.hasWebsite, Literal(str(website).strip(), datatype=XSD.anyURI)) )
 
             if comments != '':
                 g.add( (this, RDFS.comment, Literal(comments)) )

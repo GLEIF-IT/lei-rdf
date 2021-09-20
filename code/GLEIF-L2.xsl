@@ -34,7 +34,7 @@
   
   <!--#########################################################################-->
   
-  <xsl:output method="xml" indent="yes" media-type="application/xml" 
+  <xsl:output method="xml" indent="yes" media-type="application/xml"  encoding="UTF-8"
     doctype-public="rdf:RDF" /> 
   <xsl:strip-space elements="*"/>
   
@@ -259,7 +259,7 @@
       <xsl:for-each select="$record/rr:Registration/rr:ValidationReference">
         <gleif-L2:hasValidationReference>
           <xsl:copy-of select="xml:lang"/>
-          <xsl:value-of select="."/>
+          <xsl:value-of select="normalize-unicode(string(.), 'NFKC')"/>
         </gleif-L2:hasValidationReference>
       </xsl:for-each>
     </gleif-L2:LegalEntityRelationshipRecord>
