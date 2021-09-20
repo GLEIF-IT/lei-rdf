@@ -283,7 +283,7 @@
       </xsl:choose>
       <!-- Geocoded addresses -->
       <xsl:if test="$skip-geo != 'true'">
-        <xsl:for-each select="$record/lei:Extension/gleif:Geocoding">
+        <xsl:for-each select="$record/lei:Extension/gleif:Geocoding[not(gleif:geocoding_failed)]">
           <xsl:variable name="gid" select="translate(gleif:mapped_location_id, $invalid-id-chars, $replacement-id-chars)"/>
           <gleif-geo:hasGeocodedAddress>
             <xsl:attribute name="rdf:resource" select="concat('https://rdf.gleif.org/L1/G-', $gid)"/>
