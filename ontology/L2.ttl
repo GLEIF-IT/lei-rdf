@@ -31,6 +31,7 @@
 	dct:issued "2020-01-22T00:00:00Z"^^xsd:dateTime ;
 	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
 	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
+	dct:rights "Copyright (c) 2021 agnos.ai UK Ltd." ;
 	dct:rightsHolder gleif-base:GLEIF ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format"^^xsd:anyURI ;
 	dct:title "Global Legal Entity Identifier Foundation Level 2 Ontology - Who Owns Whom"@en ;
@@ -40,8 +41,9 @@
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/>
 		;
-	owl:versionIRI <https://www.gleif.org/ontology/L2-v1.0.1/L2/> ;
+	owl:versionIRI <https://www.gleif.org/ontology/L2-v1.1/L2/> ;
 	skos:changeNote "Version 1.0.1 made a minor fix to 2 restrictions on LegalEntityRelationship"@en ;
+	skos:changeNote "Version 1.1 reflects GLEIF RR-CDF version 2.1 and refactors RelationshipValidationDocuments to the Base ontology"@en ;
 	.
 
 gleif-base:LegalEntityRelationship
@@ -173,8 +175,8 @@ gleif-L2:LegalEntityRelationshipRecord
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L2:hasValidationDocuments ;
-			owl:onClass gleif-L2:RelationshipValidationDocumentsKind ;
+			owl:onProperty gleif-base:hasValidationDocuments ;
+			owl:onClass gleif-base:ValidationDocumentsKind ;
 			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -367,6 +369,7 @@ gleif-L2:RelationshipValidationDocumentsKind
 		gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments
 	) ;
 	skos:definition "Type of source document(s) used for validating the relationship." ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-L2:RelationshipValidationDocumentsKindAccountsFiling
@@ -378,6 +381,7 @@ gleif-L2:RelationshipValidationDocumentsKindAccountsFiling
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:definition "A consolidated financial (accounting) statement, prepared and submitted to the relevant authority." ;
 	gleif-base:hasTag "ACCOUNTS_FILING" ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-L2:RelationshipValidationDocumentsKindContracts
@@ -389,6 +393,7 @@ gleif-L2:RelationshipValidationDocumentsKindContracts
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:definition "Other documents supporting the preparation of consolidated financial statements." ;
 	gleif-base:hasTag "CONTRACTS" ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-L2:RelationshipValidationDocumentsKindOtherOfficialDocuments
@@ -400,6 +405,7 @@ gleif-L2:RelationshipValidationDocumentsKindOtherOfficialDocuments
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:definition "Other official document(s) attesting to the validity of the relationship." ;
 	gleif-base:hasTag "OTHER_OFFICIAL_DOCUMENTS" ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-L2:RelationshipValidationDocumentsKindRegulatoryFiling
@@ -411,6 +417,7 @@ gleif-L2:RelationshipValidationDocumentsKindRegulatoryFiling
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:definition "An annual regulatory filing providing public information on parent relationships" ;
 	gleif-base:hasTag "REGULATORY_FILING" ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments
@@ -422,6 +429,7 @@ gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:definition "Other documents supporting the preparation of consolidated financial statements." ;
 	gleif-base:hasTag "SUPPORTING_DOCUMENTS" ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-L2:UltimateConsolidation
@@ -513,6 +521,7 @@ gleif-L2:hasValidationDocuments
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	rdfs:range gleif-L2:RelationshipValidationDocumentsKind ;
 	skos:definition "Type of source document(s) used for validating the relationship." ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-L2:hasValidationReference
