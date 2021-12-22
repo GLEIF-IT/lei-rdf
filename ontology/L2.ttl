@@ -147,6 +147,56 @@ gleif-L2:DirectConsolidation
 	skos:prefLabel "direct consolidation" ;
 	.
 
+gleif-L2:FundRelationship
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:LegalEntityRelationship ;
+	rdfs:label "fund relationship" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
+	skos:altLabel "is fund managed by" ;
+	skos:definition "The 'child' entity is a fund managed by a main management entity. The <code>EndNode</code> is legally responsible for the constitution and operation of the fund." ;
+	skos:note "A non-incorporated establishment of a head office legal entity, when this establishment is located in a separate jurisdiction from the jurisdiction in which the head office legal entity is located, i.e., in a host jurisdiction outside of its home jurisdiction. Under this definition, an establishment may consist of a single office or other business premises, or of several offices (i.e., a branch network) in different locations of the same host jurisdiction: even in the latter case, only one LEI would be issued per host jurisdiction, essentially amounting to, “one country-one LEI.” Unlike foreign subsidiaries of a parent entity, which are separately incorporated or organised under the laws of the host jurisdictions, an international branch, as defined here, is legally dependent on the head office legal entity and cannot exist without its head office legal entity " ;
+	skos:prefLabel "fund relationship" ;
+	.
+
+gleif-L2:FundManagementRelationship
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:FundRelationship ;
+	rdfs:label "fund management relationship" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
+	skos:altLabel "is fund managed by" ;
+	skos:definition "The 'child' entity is a fund managed by a main management entity. The 'parent' is legally responsible for the constitution and operation of the fund." ;
+	skos:note """A legal entity is considered as the main management entity of a fund when it is legally responsible for the constitution and operation of the fund. 
+Such responsibility will include the day-to-day management of a fund's investments and management of a fund’s risks, or the appointment of others for that purpose. 
+In the latter case, the entity to which these functions may have been delegated is not considered to be a Fund Management Entity.""" ;
+	skos:prefLabel "fund management relationship" ;
+	.
+
+gleif-L2:SubFundRelationship
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:FundRelationship ;
+	rdfs:label "sub-fund relationship" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
+	skos:altLabel "is sub-fund of" ;
+	skos:definition "The 'child' entity is a sub-fund to an umbrella fund. The 'parent' is a legal entity with one or more than one sub-funds/compartments where each sub-fund/compartment has its own investment objectives, separate investment policies and strategies, segregation of assets, separate investors and which has segregated liability between sub-funds/compartments." ;
+	skos:note """A legal entity with one or more than one sub-funds/compartments where each sub-fund/compartment has its own investment
+objectives, separate investment policies and strategies, segregation of assets, separate investors and which has segregated liability between sub-funds/compartments.""" ;
+	skos:prefLabel "sub-fund relationship" ;
+	.
+
+gleif-L2:FeederMasterFundRelationship
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:FundRelationship ;
+	rdfs:label "feeder-master fund relationship" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
+	skos:altLabel "is feeder to" ;
+	skos:altLabel "master-feeder relationship" ;
+	skos:definition "The 'child' entity is a Feeder Fund, that is (almost) exclusively invested in a single other fund. The 'parent'' is the Master Fund that has identical investment strategies." ;
+	skos:note """a Feeder Fund is exclusively, or almost exclusively, invested in a single other fund,
+or several funds that have identical investment strategies (provided this is qualified as a Master-Feeder relationship under the applicable laws and
+regulations).""" ;
+	skos:prefLabel "feeder-master fund relationship" ;
+	.
+
 gleif-L2:InternationalBranchRelationship
 	a owl:Class ;
 	rdfs:subClassOf gleif-base:LegalEntityRelationship ;
@@ -331,6 +381,7 @@ gleif-L2:RelationshipStatus
 	owl:oneOf (
 		gleif-L2:RelationshipStatusActive
 		gleif-L2:RelationshipStatusInactive
+		gleif-L2:RelationshipStatusNull
 	) ;
 	skos:definition "The status of the legal entities' relationship itself: active or inactive." ;
 	.
@@ -355,6 +406,17 @@ gleif-L2:RelationshipStatusInactive
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:definition "It has been determined that the relationship ended, e.g. because entity that reported this relationship is no longer legally registered and/or operating; or the relationship is no longer valid for other reasons" ;
 	gleif-base:hasTag "INACTIVE" ;
+	.
+
+gleif-L2:RelationshipStatusNull
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipStatus
+		;
+	rdfs:label "null" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
+	skos:definition "The relationship status is not applicable." ;
+	gleif-base:hasTag "NULL" ;
 	.
 
 gleif-L2:RelationshipValidationDocumentsKind
@@ -568,7 +630,7 @@ gleif-L2:hasValidationSources
 	owl:members (
 		gleif-L2:RelationshipStatusActive
 		gleif-L2:RelationshipStatusInactive
-	) ;
+		gleif-L2:RelationshipStatusNull	) ;
 	.
 
 []
