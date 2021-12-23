@@ -30,9 +30,10 @@
 		<https://www.linkedin.com/in/peterivett/>
 		;
 	dct:creator gleif-base:GLEIF ;
-	dct:issued "2019-02-01T00:00:00Z"^^xsd:dateTime ;
+	dct:issued "2021-12-xxT00:00:00Z"^^xsd:dateTime ;
 	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
-	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
+	dct:rights "Copyright (c) 2019-2021 Global Legal Entity Identifier Foundation (GLEIF)" ;
+	dct:rights "Copyright (c) 2021 agnos.ai UK Ltd." ;
 	dct:rightsHolder gleif-base:GLEIF ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/level-2-data-reporting-exceptions-format"^^xsd:anyURI ;
 	dct:title "Global Legal Entity Identifier Foundation Reporting Exception Ontology"@en ;
@@ -42,7 +43,8 @@
 		<https://www.gleif.org/ontology/L1/> ,
 		<https://www.gleif.org/ontology/L2/>
 		;
-	owl:versionIRI <https://www.gleif.org/ontology/ReportingException-v1.0/ReportingException/> ;
+	owl:versionIRI <https://www.gleif.org/ontology/ReportingException-v1.1/ReportingException/> ;
+	skos:changeNote "Version 1.1 reflects GLEIF RepEx version 2.1 by changing the set of Exceptionreasons."@en ;
 	.
 
 gleif-repex:DirectConsolidationReportingException
@@ -63,11 +65,7 @@ gleif-repex:ExceptionReasonKind
 		gleif-repex:ExceptionReasonKindNaturalPersons
 		gleif-repex:ExceptionReasonKindNonConsolidating
 		gleif-repex:ExceptionReasonKindNoKnownPerson
-		gleif-repex:ExceptionReasonKindLegalObstacles
-		gleif-repex:ExceptionReasonKindConsentNotObtained
-		gleif-repex:ExceptionReasonKindLegalCommitments
-		gleif-repex:ExceptionReasonKindDetrimentNotExcluded
-		gleif-repex:ExceptionReasonKindDisclosureDetrimental
+		gleif-repex:ExceptionReasonKindNonPublic
 	) ;
 	skos:definition "A single reason provided by the legal entity for declining to provide the mandatory report of a specified type of information (beyond the minimum reference data needed purely for identification of the legal entity). " ;
 	.
@@ -81,6 +79,7 @@ gleif-repex:ExceptionReasonKindBindingLegalCommitments
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
 	skos:definition "Binding legal commitments (other than the laws or regulations of a jurisdiction), such as articles governing the legal entity or a contract, prevent providing or publishing this information. The LOU is not expected to verify or analyze whether the legal framework constitutes a legal obstacle." ;
 	gleif-base:hasTag "BINDING_LEGAL_COMMITMENTS" ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-repex:ExceptionReasonKindConsentNotObtained
@@ -92,6 +91,7 @@ gleif-repex:ExceptionReasonKindConsentNotObtained
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
 	skos:definition "There is no parent according to the definition used, because there is no known person controlling the entity (e.g., diversified shareholding)." ;
 	gleif-base:hasTag "CONSENT_NOT_OBTAINED" ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-repex:ExceptionReasonKindDetrimentNotExcluded
@@ -104,6 +104,7 @@ gleif-repex:ExceptionReasonKindDetrimentNotExcluded
 	skos:definition """The child entity has sought to consult the parent entity about the reporting of the parent information to the GLEIS but could not confirm the absence of detriment in a way that can appropriately prevent liability risks for the child entity (or those acting on its behalf) under the applicable legal framework. The disclosure of this information would be detrimental to the legal entity or the relevant parent. This will include reasons generally accepted by public authorities in similar circumstances, based on a declaration by the entity. 
   This reason may be used only when all following cumulative circumstances apply: [i) the parent could not be informed via the GLEIS and have the possibility to correct the relationship information before publication (including raising a cause for opt out, either because the parent does not have an LEI, or it has an LEI but the GLEIS has not yet implemented such system;] ii) the relationship is not already in the public domain (information being in the public domain assumes here that the way the information came into the public domain did not infringe the applicable legal framework); iii) the child entity has reasons to believe that the parent may consider disclosure to be detrimental; (iv) the child entity has sought to consult the parent entity of the reporting of the parent information to the GLEIS but could not confirm the absence of detriment in a way that can appropriately prevent liability risks for the child entity (or those acting on its behalf) under the applicable legal framework.""" ;
 	gleif-base:hasTag "DETRIMENT_NOT_EXCLUDED" ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-repex:ExceptionReasonKindDisclosureDetrimental
@@ -115,6 +116,7 @@ gleif-repex:ExceptionReasonKindDisclosureDetrimental
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
 	skos:definition "The disclosure of this information would be detrimental to the legal entity or the relevant parent. This will include reasons generally accepted by public authorities in similar circumstances, based on a declaration by the entity." ;
 	gleif-base:hasTag "DISCLOSURE_DETRIMENTAL" ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-repex:ExceptionReasonKindLegalObstacles
@@ -126,6 +128,7 @@ gleif-repex:ExceptionReasonKindLegalObstacles
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
 	skos:definition "Obstacles in the laws or regulations of a jurisdiction prevent providing or publishing this information. This does not include cases where, under the applicable legal framework disclosing the parent relationship would require the consent of one of the entities in the relationship, or both, and such consent could not be obtained (in these cases 'CONSENT_NOT_OBTAINED' is the applicable code). The LOU is not expected to verify or analyze whether the legal framework constitutes a legal obstacle." ;
 	gleif-base:hasTag "LEGAL_OBSTACLES" ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-repex:ExceptionReasonKindNaturalPersons
@@ -172,6 +175,19 @@ gleif-repex:ExceptionReasonKindNonConsolidating
 	gleif-base:hasTag "NON_CONSOLIDATING" ;
 	.
 
+gleif-repex:ExceptionReasonKindNonPublic
+	a
+		owl:NamedIndividual ,
+		gleif-repex:ExceptionReasonKind
+		;
+	rdfs:label "non public" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
+	skos:definition """Relationship information must not be disclosed publicly. Examples are
+                        'Binding Legal Commitment', 'Legal Obstacles', 'Disclosure Detrimental',
+                        'Detriment Not Excluded' and 'Consent Not Obtained'.""" ;
+	gleif-base:hasTag "NON_PUBLIC" ;
+	.
+	
 gleif-repex:ReportingException
 	a owl:Class ;
 	rdfs:subClassOf
@@ -240,11 +256,7 @@ gleif-repex:hasReportingEntity
 		gleif-repex:ExceptionReasonKindNaturalPersons
 		gleif-repex:ExceptionReasonKindNonConsolidating
 		gleif-repex:ExceptionReasonKindNoKnownPerson
-		gleif-repex:ExceptionReasonKindLegalObstacles
-		gleif-repex:ExceptionReasonKindConsentNotObtained
-		gleif-repex:ExceptionReasonKindLegalCommitments
-		gleif-repex:ExceptionReasonKindDetrimentNotExcluded
-		gleif-repex:ExceptionReasonKindDisclosureDetrimental
+		gleif-repex:ExceptionReasonKindNonPublic
 	) ;
 	.
 
