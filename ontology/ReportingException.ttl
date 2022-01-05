@@ -58,7 +58,7 @@ gleif-repex:DirectConsolidationReportingException
 
 gleif-repex:ExceptionReasonKind
 	a owl:Class ;
-	rdfs:label "exception reason" ;
+	rdfs:label "exception reason kind" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
 	owl:oneOf (
 		gleif-repex:ExceptionReasonKindNoLEI
