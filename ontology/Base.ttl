@@ -74,21 +74,7 @@ gleif-base:Entity
 					) ;
 			] ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasEntityExpirationReason ;
-			owl:OnClass [
-				a owl:Class ;
-				owl:oneOf (
-					gleif-base:EntityExpirationReasonCorporateAction
-					gleif-base:EntityExpirationReasonDissolved
-					gleif-base:EntityExpirationReasonOther
-				) ;
-
-			] ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		]
+		] 
 		;
 	rdfs:label "entity" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
