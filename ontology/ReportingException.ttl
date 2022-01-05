@@ -30,10 +30,10 @@
 		<https://www.linkedin.com/in/peterivett/>
 		;
 	dct:creator gleif-base:GLEIF ;
-	dct:issued "2021-12-xxT00:00:00Z"^^xsd:dateTime ;
+	dct:issued "2022-01-06T00:00:00Z"^^xsd:dateTime ;
 	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
-	dct:rights "Copyright (c) 2019-2021 Global Legal Entity Identifier Foundation (GLEIF)" ;
-	dct:rights "Copyright (c) 2021 agnos.ai UK Ltd." ;
+	dct:rights "Copyright (c) 2019-2022 Global Legal Entity Identifier Foundation (GLEIF)" ;
+	dct:rights "Copyright (c) 2021-2022 agnos.ai UK Ltd." ;
 	dct:rightsHolder gleif-base:GLEIF ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/level-2-data-reporting-exceptions-format"^^xsd:anyURI ;
 	dct:title "Global Legal Entity Identifier Foundation Reporting Exception Ontology"@en ;
