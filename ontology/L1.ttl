@@ -492,6 +492,14 @@ gleif-L1:LegalEntityEventKindDissolution
 	gleif-base:hasTag "DISSOLUTION" ;
 .
 
+gleif-L1:LegalEntityEventStatus
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:EventStatus ;
+	rdfs:label "legal entity event status" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "The status of the legal entity event with regard to event timeline."
+.
+
 gleif-L1:LegalEntityEventStatusInProgress
 	a
 		owl:NamedIndividual ,
@@ -750,8 +758,8 @@ gleif-L1:RegisteredEntity
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasEvent ;
-			owl:onClass gleif-L1:Event ;
+			owl:onProperty gleif-base:hasEvent ;
+			owl:onClass gleif-base:Event ;
 			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
 		[
