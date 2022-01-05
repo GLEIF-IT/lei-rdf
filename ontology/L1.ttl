@@ -166,7 +166,7 @@ gleif-L1:FundFamily
 gleif-L1:GeneralEntity
 	a owl:Class ;
 	rdfs:subClassOf gleif-L1:RegisteredEntity ;
-	rdfs:label "gneral entity" ;
+	rdfs:label "general entity" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "The legal entity is a general legal entity." ;
 	.
