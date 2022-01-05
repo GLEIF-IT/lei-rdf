@@ -70,7 +70,14 @@ gleif-base:LegalEntityRelationship
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L2:hasRelationshipStatus ;
-			owl:onClass gleif-L2:RelationshipStatus ;
+			owl:onClass [
+				a owl:Classs ;
+				owl:oneOf (
+					gleif-L2:RelationshipStatusActive
+					gleif-L2:RelationshipStatusInactive
+					gleif-L2:RelationshipStatusNull
+				) ;
+			] ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
 		;
@@ -83,7 +90,14 @@ gleif-L2:AccountingConsolidation
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L2:hasAccountingStandard ;
-			owl:onClass gleif-L2:AccountingStandard ;
+			owl:onClass [
+				a owl:Class ;
+				owl:oneOf (
+					gleif-L2:AccountingStandardIFRS
+					gleif-L2:AccountingStandardOtherAccountingStandard
+					gleif-L2:AccountingStandardUSGAAP
+				) ;
+			] ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
 		;
@@ -96,11 +110,6 @@ gleif-L2:AccountingStandard
 	a owl:Class ;
 	rdfs:label "accounting standard" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	owl:oneOf (
-		gleif-L2:AccountingStandardIFRS
-		gleif-L2:AccountingStandardOtherAccountingStandard
-		gleif-L2:AccountingStandardUSGAAP
-	) ;
 	skos:definition "the type of accounting standard used to source consolidation information, which is based on reported accounting roll-ups" ;
 	.
 
@@ -226,7 +235,16 @@ gleif-L2:LegalEntityRelationshipRecord
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasValidationDocuments ;
-			owl:onClass gleif-base:ValidationDocumentsKind ;
+			owl:onClass [
+				a owl:Class ;
+				owl:oneOf (
+					gleif-L2:RelationshipValidationDocumentsKindAccountsFiling
+					gleif-L2:RelationshipValidationDocumentsKindContracts
+					gleif-L2:RelationshipValidationDocumentsKindOtherOfficialDocuments
+					gleif-L2:RelationshipValidationDocumentsKindRegulatoryFiling
+					gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments
+				) ;
+			] ;
 			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -378,11 +396,6 @@ gleif-L2:RelationshipStatus
 	a owl:Class ;
 	rdfs:label "relationship status" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	owl:oneOf (
-		gleif-L2:RelationshipStatusActive
-		gleif-L2:RelationshipStatusInactive
-		gleif-L2:RelationshipStatusNull
-	) ;
 	skos:definition "The status of the legal entities' relationship itself: active or inactive." ;
 	.
 
@@ -423,13 +436,6 @@ gleif-L2:RelationshipValidationDocumentsKind
 	a owl:Class ;
 	rdfs:label "relationship validation documents kind" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	owl:oneOf (
-		gleif-L2:RelationshipValidationDocumentsKindAccountsFiling
-		gleif-L2:RelationshipValidationDocumentsKindContracts
-		gleif-L2:RelationshipValidationDocumentsKindOtherOfficialDocuments
-		gleif-L2:RelationshipValidationDocumentsKindRegulatoryFiling
-		gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments
-	) ;
 	skos:definition "Type of source document(s) used for validating the relationship." ;
 	owl:deprecated "true"^^xsd:boolean ;
 	.

@@ -65,8 +65,29 @@ gleif-base:Entity
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasEntityStatus ;
-			owl:onClass gleif-base:EntityStatus ;
+			owl:onClass [
+					a owl:Class ;
+					owl:oneOf (
+						gleif-base:EntityStatusActive
+						gleif-base:EntityStatusInactive
+						gleif-base:EntityStatusNull
+					) ;
+			] ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEntityExpirationReason ;
+			owl:OnClass [
+				a owl:Class ;
+				owl:oneOf (
+					gleif-base:EntityExpirationReasonCorporateAction
+					gleif-base:EntityExpirationReasonDissolved
+					gleif-base:EntityExpirationReasonOther
+				) ;
+
+			] ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
 		;
 	rdfs:label "entity" ;
@@ -79,11 +100,6 @@ gleif-base:EntityExpirationReason
 	rdfs:label "entity expiration reason" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	owl:deprecated "true"^^xsd:boolean ;
-	owl:oneOf (
-		gleif-base:EntityExpirationReasonCorporateAction
-		gleif-base:EntityExpirationReasonDissolved
-		gleif-base:EntityExpirationReasonOther
-	) ;
 	skos:definition "The reason that an entity ceased to exist and/or operate." ;
 	.
 
@@ -118,11 +134,6 @@ gleif-base:EntityStatus
 	a owl:Class ;
 	rdfs:label "entity status" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	owl:oneOf (
-		gleif-base:EntityStatusActive
-		gleif-base:EntityStatusInactive
-		gleif-base:EntityStatusNull
-	) ;
 	skos:definition "The operational and/or legal registration status of the entity (may be ACTIVE or INACTIVE)" ;
 	.
 
@@ -189,7 +200,16 @@ gleif-base:Event
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasValidationDocuments ;
-			owl:onClass gleif-base:ValidationDocumentsKind ;
+			owl:onClass [
+				a owl:Class ;
+				owl:oneOf (
+					gleif-base:ValidationDocumentsKindAccountsFiling
+					gleif-base:ValidationDocumentsKindContracts
+					gleif-base:ValidationDocumentsKindOtherOfficialDocuments
+					gleif-base:ValidationDocumentsKindRegulatoryFiling
+					gleif-base:ValidationDocumentsKindSupportingDocuments
+				) ;
+			] ;
 			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -427,13 +447,6 @@ gleif-base:ValidationDocumentsKind
 	a owl:Class ;
 	rdfs:label "validation documents kind" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	owl:oneOf (
-		gleif-base:ValidationDocumentsKindAccountsFiling
-		gleif-base:ValidationDocumentsKindContracts
-		gleif-base:ValidationDocumentsKindOtherOfficialDocuments
-		gleif-base:ValidationDocumentsKindRegulatoryFiling
-		gleif-base:ValidationDocumentsKindSupportingDocuments
-	) ;
 	skos:definition "Type of source document(s) used for validation." ;
 	.
 
@@ -1138,6 +1151,7 @@ gleif-base:records
 	owl:members (
 		gleif-base:EntityStatusActive
 		gleif-base:EntityStatusInactive
+		gleif-base:EntityStatusNull
 	) ;
 	.
 

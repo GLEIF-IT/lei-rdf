@@ -60,13 +60,6 @@ gleif-repex:ExceptionReasonKind
 	a owl:Class ;
 	rdfs:label "exception reason kind" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
-	owl:oneOf (
-		gleif-repex:ExceptionReasonKindNoLEI
-		gleif-repex:ExceptionReasonKindNaturalPersons
-		gleif-repex:ExceptionReasonKindNonConsolidating
-		gleif-repex:ExceptionReasonKindNoKnownPerson
-		gleif-repex:ExceptionReasonKindNonPublic
-	) ;
 	skos:definition "A single reason provided by the legal entity for declining to provide the mandatory report of a specified type of information (beyond the minimum reference data needed purely for identification of the legal entity). " ;
 	.
 
@@ -199,7 +192,16 @@ gleif-repex:ReportingException
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-repex:hasExceptionReason ;
-			owl:onClass gleif-repex:ExceptionReasonKind ;
+			owl:onClass [
+				a owl:Class ;
+				owl:oneOf (
+					gleif-repex:ExceptionReasonKindNoLEI
+					gleif-repex:ExceptionReasonKindNaturalPersons
+					gleif-repex:ExceptionReasonKindNonConsolidating
+					gleif-repex:ExceptionReasonKindNoKnownPerson
+					gleif-repex:ExceptionReasonKindNonPublic
+				) ;
+			] ;
 			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
