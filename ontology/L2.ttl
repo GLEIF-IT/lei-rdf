@@ -71,7 +71,7 @@ gleif-base:LegalEntityRelationship
 			a owl:Restriction ;
 			owl:onProperty gleif-L2:hasRelationshipStatus ;
 			owl:onClass [
-				a owl:Classs ;
+				a owl:Class ;
 				owl:oneOf (
 					gleif-L2:RelationshipStatusActive
 					gleif-L2:RelationshipStatusInactive

@@ -1,11 +1,9 @@
 # baseURI: https://www.gleif.org/ontology/ReportingException/
 # imports: https://www.gleif.org/ontology/L1/
-# imports: https://www.gleif.org/ontology/L2/
 
 @base <https://www.gleif.org/ontology/ReportingException/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix gleif-L1: <https://www.gleif.org/ontology/L1/> .
-@prefix gleif-L2: <https://www.gleif.org/ontology/L1/> .
 @prefix gleif-base: <https://www.gleif.org/ontology/Base/> .
 @prefix gleif-repex: <https://www.gleif.org/ontology/ReportingException/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -40,8 +38,7 @@
 	vann:preferredNamespacePrefix "gleif-repex" ;
 	vann:preferredNamespaceUri "https://www.gleif.org/ontology/ReportingException/" ;
 	owl:imports
-		<https://www.gleif.org/ontology/L1/> ,
-		<https://www.gleif.org/ontology/L2/>
+		<https://www.gleif.org/ontology/L1/> 
 		;
 	owl:versionIRI <https://www.gleif.org/ontology/ReportingException-v1.1/ReportingException/> ;
 	skos:changeNote "Version 1.1 reflects GLEIF RepEx version 2.1 by changing the set of Exceptionreasons."@en ;
@@ -206,7 +203,7 @@ gleif-repex:ReportingException
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-repex:hasReportingEntity ;
-			owl:onClass gleif-L2:RegisteredEntity ;
+			owl:onClass gleif-L1:RegisteredEntity ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
 		;
@@ -245,7 +242,7 @@ gleif-repex:hasReportingEntity
 	rdfs:label "has reporting entity" ;
 	rdfs:domain gleif-repex:ReportingException ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
-	rdfs:range gleif-L2:RegisteredEntity ;
+	rdfs:range gleif-L1:RegisteredEntity ;
 	skos:definition "The LEI-registered legal entity which raised this exception." ;
 	.
 
