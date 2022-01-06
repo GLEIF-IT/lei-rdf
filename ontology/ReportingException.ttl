@@ -53,7 +53,6 @@ gleif-repex:DirectConsolidationReportingException
 	rdfs:label "direct consolidation reporting exception" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
 	skos:definition "The legal entity has declined to report a direct accounting consolidation parent, based on applicable accounting standards." ;
-	gleif-base:hasTag "DIRECT_ACCOUNTING_CONSOLIDATION_PARENT" ;
 	.
 
 gleif-repex:ExceptionReasonKind
@@ -222,7 +221,6 @@ gleif-repex:UltimateConsolidationReportingException
 	rdfs:label "ultimate consolidation reporting exception" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/ReportingException/> ;
 	skos:definition "The legal entity has declined to report an ultimate accounting consolidation parent, based on applicable accounting standards." ;
-	gleif-base:hasTag "ULTIMATE_ACCOUNTING_CONSOLIDATION_PARENT" ;
 	.
 
 gleif-repex:hasExceptionReason
