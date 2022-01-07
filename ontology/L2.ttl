@@ -158,18 +158,33 @@ gleif-L2:DirectConsolidation
 
 gleif-L2:FundRelationship
 	a owl:Class ;
-	rdfs:subClassOf gleif-base:LegalEntityRelationship ;
+	rdfs:subClassOf 
+		gleif-base:LegalEntityRelationship ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L2:hasChild ;
+			owl:onClass gleif-L1:Fund ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
 	rdfs:label "fund relationship" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:altLabel "is fund managed by" ;
-	skos:definition "The 'child' entity is a fund managed by a main management entity. The <code>EndNode</code> is legally responsible for the constitution and operation of the fund." ;
-	skos:note "A non-incorporated establishment of a head office legal entity, when this establishment is located in a separate jurisdiction from the jurisdiction in which the head office legal entity is located, i.e., in a host jurisdiction outside of its home jurisdiction. Under this definition, an establishment may consist of a single office or other business premises, or of several offices (i.e., a branch network) in different locations of the same host jurisdiction: even in the latter case, only one LEI would be issued per host jurisdiction, essentially amounting to, “one country-one LEI.” Unlike foreign subsidiaries of a parent entity, which are separately incorporated or organised under the laws of the host jurisdictions, an international branch, as defined here, is legally dependent on the head office legal entity and cannot exist without its head office legal entity " ;
+	skos:definition "A relationship where the 'child' entity is a fund." ;
 	skos:prefLabel "fund relationship" ;
 	.
 
 gleif-L2:FundManagementRelationship
 	a owl:Class ;
-	rdfs:subClassOf gleif-L2:FundRelationship ;
+	rdfs:subClassOf
+		gleif-L2:FundRelationship ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L2:hasParent ;
+			owl:onClass gleif-L1:LegalEntity ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
 	rdfs:label "fund management relationship" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:altLabel "is fund managed by" ;
@@ -182,7 +197,15 @@ In the latter case, the entity to which these functions may have been delegated 
 
 gleif-L2:SubFundRelationship
 	a owl:Class ;
-	rdfs:subClassOf gleif-L2:FundRelationship ;
+	rdfs:subClassOf
+		gleif-L2:FundRelationship ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L2:hasParent ;
+			owl:onClass gleif-L1:Fund ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
 	rdfs:label "sub-fund relationship" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:altLabel "is sub-fund of" ;
@@ -194,7 +217,15 @@ objectives, separate investment policies and strategies, segregation of assets, 
 
 gleif-L2:FeederMasterFundRelationship
 	a owl:Class ;
-	rdfs:subClassOf gleif-L2:FundRelationship ;
+	rdfs:subClassOf
+		gleif-L2:FundRelationship ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L2:hasParent ;
+			owl:onClass gleif-L1:Fund ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
 	rdfs:label "feeder-master fund relationship" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:altLabel "is feeder to" ;
