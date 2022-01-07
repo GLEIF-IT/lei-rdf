@@ -169,7 +169,7 @@ gleif-L2:FundRelationship
 
 gleif-L2:FundManagementRelationship
 	a owl:Class ;
-	rdfs:subClassOf gleif-base:FundRelationship ;
+	rdfs:subClassOf gleif-L2:FundRelationship ;
 	rdfs:label "fund management relationship" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:altLabel "is fund managed by" ;
@@ -182,7 +182,7 @@ In the latter case, the entity to which these functions may have been delegated 
 
 gleif-L2:SubFundRelationship
 	a owl:Class ;
-	rdfs:subClassOf gleif-base:FundRelationship ;
+	rdfs:subClassOf gleif-L2:FundRelationship ;
 	rdfs:label "sub-fund relationship" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:altLabel "is sub-fund of" ;
@@ -194,7 +194,7 @@ objectives, separate investment policies and strategies, segregation of assets, 
 
 gleif-L2:FeederMasterFundRelationship
 	a owl:Class ;
-	rdfs:subClassOf gleif-base:FundRelationship ;
+	rdfs:subClassOf gleif-L2:FundRelationship ;
 	rdfs:label "feeder-master fund relationship" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:altLabel "is feeder to" ;
