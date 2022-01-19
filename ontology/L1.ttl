@@ -695,7 +695,7 @@ gleif-L1:RegisteredEntity
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasSuccessorName ;
-			owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:minCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
@@ -713,7 +713,7 @@ gleif-L1:RegisteredEntity
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasSuccessor ;
 			owl:onClass gleif-L1:LegalEntity ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
