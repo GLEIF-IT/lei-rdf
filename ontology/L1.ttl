@@ -294,6 +294,53 @@ gleif-L1:LegalEntityEvent
 	skos:definition "A single event specified by the LEI ROC in the life of a legal entity that would impact the Reference Data in the Global LEI System."
 .
 
+gleif-L1:LegalEntityEventGroup
+	a owl:Class ;
+	rdfs:subClassOf
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasGroupedEvents ;
+			owl:someValuesFrom gleif-L1:LegalEntityEvent ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasLegalEntityEventGroupKind ;
+			owl:onClass [
+				a owl:Class ;
+				owl:oneOf (
+					gleif-L1:LegalEntityEventGroupKindReverseTakeover
+					gleif-L1:LegalEntityEventGroupKindChangeLegalFormAndName
+					gleif-L1:LegalEntityEventGroupKindComplexChangeLegalForm
+				) ;
+			] ;
+			owl:cardinality "1"^^xsd:nonNegativeInteger ;
+		] ;
+	rdfs:label "legal entity event group" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "A complex event." ;
+.
+
+gleif-L1:LegalEntitySequencedEvent 
+	a owl:Class ;
+	rdfs:subClassOf 
+			[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasGroupedEvents ;
+			owl:onClass gleif-L1:LegalEntityEvent ;
+			owl:cardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+			[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasSequenceNumber ;
+			owl:onDataRange xsd:positiveInteger ;
+			owl:cardinality "1"^^xsd:nonNegativeInteger ;
+		] 
+ 	;
+	rdfs:label "legal entity sequenced event" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "An event in a group where the sequence is significant."
+.
+
 gleif-L1:LegalEntityEventKind
 	a owl:Class ;
 	rdfs:subClassOf gleif-base:EventKind ;
@@ -490,6 +537,43 @@ gleif-L1:LegalEntityEventKindDissolution
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "(i) A voluntary termination of operations, (ii) a general assignment for the benefit of the legal entity’s creditors or (iii) any other liquidation, dissolution or winding up of the legal entity (excluding a Liquidity Event), whether voluntary or involuntary (event completed)." ;
 	gleif-base:hasTag "DISSOLUTION" ;
+.
+
+gleif-L1:LegalEntityEventGroupKind
+	a owl:Class ;
+	rdfs:label "legal entity event group kind" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "A complex event specified by the LEI ROC in the life of a legal entity that would impact the Reference Data in the Global LEI System."
+.
+
+gleif-L1:LegalEntityEventGroupKindReverseTakeover
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventGroupKind ;
+	rdfs:label "reverse takeover" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "A reverse takeover event" ;
+	gleif-base:hasTag "REVERSE_TAKEOVER" ;
+.
+
+gleif-L1:LegalEntityEventGroupKindChangeLegalFormAndName
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventGroupKind ;
+	rdfs:label "change legal form and name" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Legal entity event including change of the legal name triggered by change of the legal form." ;
+	gleif-base:hasTag "CHANGE_LEGAL_FORM_AND_NAME" ;
+.
+
+gleif-L1:LegalEntityEventGroupKindComplexChangeLegalForm
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventGroupKind ;
+	rdfs:label "complex change legal form" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Legal entity event including change of the legal entity status triggered by change of the legal form." ;
+	gleif-base:hasTag "COMPLEX_CHANGE_LEGAL_FORM" ;
 .
 
 gleif-L1:LegalEntityEventStatus
@@ -1076,6 +1160,15 @@ gleif-L1:hasEntityID
 	skos:definition "The identifier of the entity at the indicated registration authority. Typically, the identifier of the legal entity as maintained by a business registry in the jurisdiction of legal registration, or if the entity is one that is not recorded in a business registry (e.g. one of the varieties of funds registered instead with financial regulators), the identifier of the entity in the appropriate registration authority." ;
 	.
 
+gleif-L1:hasLegalEntityEventGroupKind
+	a owl:ObjectProperty ;
+	rdfs:label "has legal entity event group kind" ;
+	rdfs:domain gleif-L1:EventGroup ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	rdfs:range gleif-L1:LegalEntityEventGroupKind ;
+	skos:definition "The category of the legal entity event group." ;
+	.
+	
 gleif-L1:hasFundFamily
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf
@@ -1099,6 +1192,47 @@ gleif-L1:hasFundFamilyName
 	skos:definition "The name of an entity that is the manager of the fund." ;
 	owl:deprecated "true"^^xsd:boolean ;
 	.
+
+gleif-L1:hasGroupedEvents
+	a owl:ObjectProperty ;
+	owl:propertyChainAxiom (
+		gleif-L1:hasGroupedSequencedEvents
+		gleif-L1:hasSequencedEvent
+	) ;
+	rdfs:label "has grouped events" ;
+	rdfs:domain gleif-L1:LegalEntityEventGroup ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	rdfs:range gleif-L1:LegalEntityEvent ;
+	skos:definition "The legal entity events that are part of a group of multiple or a complex event." ;
+	skos:note "The events may linked direct or via sequenced events." ;
+.
+
+gleif-L1:hasGroupedSequencedEvents
+	a owl:ObjectProperty ;
+	rdfs:label "has grouped sequenced events" ;
+	rdfs:domain gleif-L1:LegalEntityEventGroup ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	rdfs:range gleif-L1:LegalEntitySequencedEvent ;
+	skos:definition "The legal entity events in sequence that are part of a group of multiple or a complex event."
+.
+
+gleif-L1:hasSequencedEvent
+	a owl:ObjectProperty ;
+	rdfs:label "has sequenced event" ;
+	rdfs:domain gleif-L1:LegalEntitySequencedEvent ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	rdfs:range gleif-L1:LegalEntityEvent ;
+	skos:definition "The legal entity events in sequence that are part of a group of multiple or a complex event."
+.
+
+gleif-L1:hasSequenceNumber
+	a owl:DatatypeProperty ;
+	rdfs:label "has sequence number" ;
+	rdfs:domain gleif-L1:LegalEntitySequencedEvent ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	rdfs:range xsd:positiveInteger ;
+	skos:definition "The sequence of one event within a group of multiple or a complex event."
+.
 
 gleif-L1:hasHeadquartersAddress
 	a owl:ObjectProperty ;
@@ -1367,6 +1501,15 @@ gleif-L1:identifiesAndRecords
 		gleif-L1:LegalEntityEventVoluntaryArrangement
 		gleif-L1:LegalEntityEventInsolvency
 		gleif-L1:LegalEntityEventDissolution
+	) ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-L1:LegalEntityEventGroupKindReverseTakeover
+		gleif-L1:LegalEntityEventGroupKindChangeLegalFormAndName
+		gleif-L1:LegalEntityEventGroupKindComplexChangeLegalForm
 	) ;
 	.
 
