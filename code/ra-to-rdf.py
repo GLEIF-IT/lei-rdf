@@ -65,16 +65,14 @@ def regionException(regionName):
         code = 'GG-1012-Territory' # Alderney Island, has no ISO code
     elif regionName == 'Mato Grosso du Sul':
         code = 'BR-MS' # Mato Grosso do Sul
-    elif regionName == 'Amman':
-        code = 'JO-AM' # Al 'A simah
     elif regionName == 'Abu Dhabi':
-        code = 'AE-AZ' # Abu Z.aby
+        code = 'AE-AZ' # Abū Z̧aby
     elif regionName == 'Sharjah':
-        code = 'AE-SH' # Ash Shariqah
+        code = 'AE-SH' # Ash Shāriqah
     elif regionName == 'Ajman':
-        code = 'AE-AJ' # 'Ajman
+        code = 'AE-AJ' # ‘Ajmān
     elif regionName == 'Dubai':
-        code = 'AE-DU' # Abu Dubayy
+        code = 'AE-DU' # Dubayy
     elif regionName == 'Ras Al Khaimah':
         code = 'AE-RK' # Ra’s al Khaymah
     elif regionName == 'Ras Al Khamaih':
@@ -83,10 +81,14 @@ def regionException(regionName):
         code = 'AE-FU' # Al Fujayrah
     elif regionName == 'Umm al-Quwain':
         code = 'AE-UQ' # Umm al Qaywayn
-    elif regionName == 'Catalonia':
-        code = 'ES-CT' # Catalunya
+    elif regionName == 'Santiago':
+        code = 'CL-RM' # Region Metropolita de Santiago
+    elif regionName == 'San Andrés Islas':
+        code = 'CO-SAP' # San Andrés, Providencia y Santa Catalina
     elif regionName == 'Bavaria':
         code = 'DE-BY' # Bayern 
+    elif regionName == 'Hesse':
+        code = 'DE-HE' # Hessen 
     elif regionName == 'Mecklenburg-Western Pomerania':
         code = 'DE-MV' # Mecklenburg-Vorpommern 
     elif regionName == 'North Rhine-Westphalia':
@@ -95,12 +97,12 @@ def regionException(regionName):
         code = 'DE-RP' # Rheinland-Pfalz 
     elif regionName == 'Thuringia':
         code = 'DE-TH' # Thuringen 
+    elif regionName == 'Catalonia':
+        code = 'ES-CT' # Catalunya
+    elif regionName == 'Amman':
+        code = 'JO-AM' # Al 'A simah
     elif regionName == 'Labuan':
         code = 'MY-15' # Wilayah Persekutuan Labuan 
-    elif regionName == 'Santiago':
-        code = 'CL-RM' # Region Metropolita de Santiago
-    elif regionName == 'Fujairah':
-        code = 'AE-FU' # Al Fujayrah
     else:
         return ''
     return LCC2[code]
@@ -175,7 +177,7 @@ with open(inputfile, 'rt', encoding='utf8') as f:
             if jurisdictionName == countryName:
                 g.add( (this, BASE.hasCoverageArea, LCC1[countryCode]) )
             else:
-                # Apply exceptions where RA name does not match the official name in LCC
+                # Apply exceptions where RA name does not match the official name in LCC (incl as comment)
                 regionOverride = regionException(jurisdictionName)
                 if regionOverride != '':
                     g.add( (this, BASE.hasCoverageArea, regionOverride) )
