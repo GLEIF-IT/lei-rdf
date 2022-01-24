@@ -57,8 +57,12 @@ def langTag(langName):
 def regionException(regionName):
     if regionName == 'Republic of Srpska':
         code = 'BA-SRP' # Republika Srpska
+    elif regionName == 'Bonaire':
+        code = 'BQ-BO' # To distinguish from the special territory of the same name
     elif regionName == 'Sint Eustatius and Saba':
         code = 'BQ-SE' # Sint Eustatius - note that really need a separate row for Saba 
+    elif regionName == 'Alderney':
+        code = 'GG-1012-Territory' # Alderney Island, has no ISO code
     elif regionName == 'Mato Grosso du Sul':
         code = 'BR-MS' # Mato Grosso do Sul
     elif regionName == 'Amman':
@@ -113,18 +117,19 @@ with open(inputfile, 'rt', encoding='utf8') as f:
     cgraph = Graph().parse(location='https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/', format='xml')
     lgraph = Graph().parse(location='https://www.omg.org/spec/LCC/Languages/ISO639-1-LanguageCodes/', format='xml')
     reader = csv.reader(f)
+    # need to normalize spaces since the CSV files has some oddities. Pattern is to use join.split
     for r, row in enumerate(reader):
         if r != 0:
             id = row[0]
-            countryName = row[1]
-            countryCode = row[2]
-            jurisdictionName = row[3]
-            registrarNameInternat = row[4]
-            registrarNameLocal = row[5]
-            orgNameInternat = row[6]
-            orgNameLocal = row[7]
-            website = row[8]
-            comments = row[9]
+            countryName = " ".join(row[1].split())
+            countryCode = " ".join(row[2].split())
+            jurisdictionName = " ".join(row[3].split())
+            registrarNameInternat = " ".join(row[4].split())
+            registrarNameLocal = " ".join(row[5].split())
+            orgNameInternat = " ".join(row[6].split())
+            orgNameLocal = " ".join(row[7].split())
+            website = " ".join(row[8].split())
+            comments = " ".join(row[9].split())
             
             this = RADATA[id]
             org = RADATA[id + '-ORG']
@@ -137,7 +142,9 @@ with open(inputfile, 'rt', encoding='utf8') as f:
             # look up the local language
             countryIdentifier = cgraph.value(predicate=LCCLR.hasTag, object=Literal(countryCode, datatype=XSD.string))
             country = cgraph.value(subject=countryIdentifier, predicate=LCCLR.identifies)
+            # in theory there could be more than one language
             language = cgraph.value(subject=country, predicate=LCCCR.usesAdministrativeLanguage)
+
             langId = lgraph.value(predicate=LCCLR.identifies, object=language)
             ralang = lgraph.value(subject=langId, predicate=LCCLR.hasTag)
 
@@ -175,7 +182,7 @@ with open(inputfile, 'rt', encoding='utf8') as f:
                 else:    
                     # Remote lookup
                     c = Graph().parse(location='https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-'+countryCode+'/', format='xml')
-                    regions = list(c.subjects(RDFS.label, Literal(jurisdictionName)))
+                    regions = list(c.subjects(RDFS.label, Literal(jurisdictionName, ralang)))
                     if len(regions) == 1:
                         # get the code for it
                         region = regions[0]
@@ -183,11 +190,13 @@ with open(inputfile, 'rt', encoding='utf8') as f:
                         tag = c.value(subject=identifier, predicate=LCCLR.hasTag)
                         g.add( (this, BASE.hasCoverageArea, LCC2[tag]) )
                     elif len(regions) == 0:
-                        print('In country: ', countryCode, ' could not find region: ', jurisdictionName)
+                        print('In country: ', countryCode, ' could not find region: ', jurisdictionName + '@' + ralang)
                         g.add( (this, BASE.hasCoverageArea, LCC1[countryCode]) )
-                        g.add( (this, RDFS.comment, Literal('Jurisdiction, which could not be mapped to an official region: ' + jurisdictionName)) )
+                        g.add( (this, RDFS.comment, Literal('Jurisdiction, which could not be mapped to an official region: ' + jurisdictionName+ '@' + ralang)) )
                     else:
-                        print('In country: ', countryCode, ' found more than one match for region: ', jurisdictionName)
+                        print('In country: ', countryCode, ' found more than one match for region: ', jurisdictionName + '@' + ralang, ': ')
+                        for i, reg in enumerate(regions):
+                            print('    ', reg, '|')
                         g.add( (this, BASE.hasCoverageArea, LCC1[countryCode]) )
 
             if orgNameInternat != '' or orgNameLocal !='':
