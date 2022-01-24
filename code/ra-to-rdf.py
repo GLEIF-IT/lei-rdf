@@ -59,8 +59,6 @@ def regionException(regionName):
         code = 'BA-SRP' # Republika Srpska
     elif regionName == 'Bonaire':
         code = 'BQ-BO' # To distinguish from the special territory of the same name
-    elif regionName == 'Sint Eustatius and Saba':
-        code = 'BQ-SE' # Sint Eustatius - note that really need a separate row for Saba 
     elif regionName == 'Alderney':
         code = 'GG-1012-Territory' # Alderney Island, has no ISO code
     elif regionName == 'Mato Grosso du Sul':
