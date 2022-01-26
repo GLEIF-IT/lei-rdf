@@ -269,7 +269,7 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 					gleif-L1:ValidationSourceKindPartiallyCorroborated
 				) ;
 			] ;
-			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
