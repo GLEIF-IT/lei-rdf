@@ -58,19 +58,20 @@ with open(inputfile, 'rt', encoding='utf8') as f:
     reader = csv.reader(f)
     for r, row in enumerate(reader):
         id = row[0]
+        # need to normalize spaces since the CSV files has some oddities. Pattern is to use join.split
         if r != 0 and id != '8888' and id != '9999':
-            countryName = row[1]
-            countryCode = row[2]
-            jurisdictionName = row[3]
-            jurisdictionCode = row[4]          
-            elfNameLocal = row[5]
+            countryName = " ".join(row[1].split())
+            countryCode = " ".join(row[2].split())
+            jurisdictionName = " ".join(row[3].split())
+            jurisdictionCode = " ".join(row[4].split())          
+            elfNameLocal = " ".join(row[5].split())
             # elfNameLang = row[6]
-            elfNameLangCode = row[7]
-            elfNameInternat = row[8]
-            abbrevLocal = row[9]
-            abbrevInternat = row[10]
+            elfNameLangCode = " ".join(row[7].split())
+            elfNameInternat = " ".join(row[8].split())
+            abbrevLocal = " ".join(row[9].split())
+            abbrevInternat = " ".join(row[10].split())
             # skip  date = row[11]
-            status = row[12]
+            status = " ".join(row[12].split())
             # skip modifications
             
             this = ELFDATA['ELF-'+id]
