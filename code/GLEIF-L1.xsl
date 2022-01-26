@@ -1,10 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE stylesheet [
   <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
-  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
-  <!ENTITY dct "http://purl.org/dc/terms/" >
-  <!ENTITY lcc-3166-1-adj "https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/">
-  <!ENTITY lcc-3166-2-adj "https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCode-Adjunct/">
   
 ]>
 
@@ -437,6 +433,9 @@
             <xsl:when test="$regstat = 'PENDING_VALIDATION'">L1internal/RegistrationStatusPendingValidation</xsl:when>
             <xsl:when test="$regstat = 'RETIRED'">L1/RegistrationStatusRetired</xsl:when>
             <xsl:when test="$regstat = 'TRANSFERRED'">L1internal/RegistrationStatusTransferred</xsl:when>
+            <xsl:otherwise>
+              <xsl:message select="concat('Unrecognized value for RegistrationStatus: ', $regstat, ' for LEI ', $lei)"/>                
+            </xsl:otherwise>
           </xsl:choose>
         </xsl:attribute>
       </gleif-base:hasRegistrationStatus>
@@ -448,17 +447,22 @@
       </gleif-L1:hasManagingLOU>
       <!-- TODO cope with multiple values for validationSources (very rare) -->
       <xsl:variable name="valsource" select="$record/lei:Registration/lei:ValidationSources"/>
-      <gleif-L1:hasValidationSources>
-        <xsl:attribute name="rdf:resource">
-          <xsl:text>https://www.gleif.org/ontology/</xsl:text>
-          <xsl:choose>
-            <xsl:when test="$valsource = 'ENTITY_SUPPLIED_ONLY'">L1/ValidationSourceKindEntitySuppliedOnly</xsl:when>
-            <xsl:when test="$valsource = 'FULLY_CORROBORATED'">L1/ValidationSourceKindFullyCorroborated</xsl:when>
-            <xsl:when test="$valsource = 'PARTIALLY_CORROBORATED'">L1/ValidationSourceKindPartiallyCorroborated</xsl:when>
-            <xsl:when test="$valsource = 'PENDING'">L1internal/ValidationSourceKindPending</xsl:when>
-          </xsl:choose>
-        </xsl:attribute>
-      </gleif-L1:hasValidationSources>
+      <xsl:if test="$valsource != ''">
+        <gleif-L1:hasValidationSources>
+          <xsl:attribute name="rdf:resource">
+            <xsl:text>https://www.gleif.org/ontology/</xsl:text>
+            <xsl:choose>
+              <xsl:when test="$valsource = 'ENTITY_SUPPLIED_ONLY'">L1/ValidationSourceKindEntitySuppliedOnly</xsl:when>
+              <xsl:when test="$valsource = 'FULLY_CORROBORATED'">L1/ValidationSourceKindFullyCorroborated</xsl:when>
+              <xsl:when test="$valsource = 'PARTIALLY_CORROBORATED'">L1/ValidationSourceKindPartiallyCorroborated</xsl:when>
+              <xsl:when test="$valsource = 'PENDING'">L1internal/ValidationSourceKindPending</xsl:when>
+              <xsl:otherwise>
+                <xsl:message select="concat('Unrecognized value for ValidationSources: ', $valsource, ' for LEI ', $lei)"/>                
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:attribute>
+        </gleif-L1:hasValidationSources>
+      </xsl:if>
       <!-- Validation identifier -->
       <xsl:variable name="val-reg" select="$record/lei:Registration/lei:ValidationAuthority/lei:ValidationAuthorityID"/>
       <xsl:if test="$record/lei:Registration/lei:ValidationAuthority and $val-reg != 'RA999999'">
