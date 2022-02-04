@@ -151,9 +151,13 @@
                     <!-- Default is a (string) literal DatatypeProperty, possibly with lang tag -->
                     <!-- Special treatment for multi-line strings -->
                     <xsl:choose>
-                        <xsl:when test="contains(., '&#x0A;')">
+                        <xsl:when test="contains(., '&#x0A;') or contains(., '&quot;')">
                             <xsl:text> """</xsl:text>
-                            <xsl:value-of select="."/>       
+                            <xsl:value-of select="."/>
+                            <xsl:if test="ends-with(., '&quot;')">
+                                <!-- Add an extra space before final quotes due to Riot complaining -->
+                                <xsl:text> </xsl:text>                            
+                            </xsl:if>
                             <xsl:text>"""</xsl:text>                            
                         </xsl:when>
                         <xsl:otherwise>
