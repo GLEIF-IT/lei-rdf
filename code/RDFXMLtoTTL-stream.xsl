@@ -30,6 +30,9 @@
     <xsl:mode streamable="yes"/>
     
 
+    <xsl:variable name="ttl-syntax-chars" select="'~.-!$&amp;&apos;&apos;()*+,;=/?#@%_'"/> <!-- Cannot be used in xmi ids -->
+    <xsl:variable name="replacement-id-chars" select="'_....._________..'"/> <!-- Substitute for above - must match in number -->
+
     <xsl:variable name="indent" as="xs:integer" select="2"/> <!-- each level of indentation -->
     <xsl:variable name="raw-prefixes" as="xs:string" select="unparsed-text('prefixes.ttl')"/>
 
@@ -51,18 +54,30 @@
                     <xsl:value-of select="$url"/>
                 </xsl:when>
                 <xsl:otherwise>
+                    <!-- strip off anything after last # or / -->
                     <xsl:value-of select="replace($url,'(.+[/#])(.*)', '$1')"/>
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable> 
+        <xsl:variable name="clean-url">
+            <!-- Check the url does not end with TTL syntax char -->
+            <xsl:choose>
+                <xsl:when test="contains($ttl-syntax-chars, substring($url, string-length($url), 1))">
+                    <xsl:value-of select="substring($url, 1, string-length($url) - 1)"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="$url"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
         <xsl:variable name="prefix" select="$prefix-map($namespace)"/>
         <xsl:choose>
             <xsl:when test="$prefix != ''">
-                <xsl:value-of select="concat($prefix, ':', substring-after($url, $namespace))"/>                            
+                <xsl:value-of select="concat($prefix, ':', substring-after($clean-url, $namespace))"/>                            
             </xsl:when>
             <xsl:otherwise>
                 <xsl:message select="concat('Warning: no prefix found for ', $url, ' - full URI used ')"/>
-                <xsl:value-of select="concat('&lt;', $url, '&gt;')"/>                       
+                <xsl:value-of select="concat('&lt;', $clean-url, '&gt;')"/>                       
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>  
@@ -128,7 +143,7 @@
                 <xsl:when test="@rdf:datatype">
                     <!-- DatatypeProperty with explicit datatype -->
                     <xsl:text> "</xsl:text>
-                    <xsl:value-of select="."/>       
+                    <xsl:value-of select="replace(replace(., '\\', '\\\\'), '&quot;+', '\\&quot;')"/>
                     <xsl:text>"</xsl:text>
                     <xsl:text>^^</xsl:text>
                     <xsl:value-of select="loc:create-uri(@rdf:datatype, $prefix-map)"/>
@@ -150,19 +165,16 @@
                 <xsl:otherwise>
                     <!-- Default is a (string) literal DatatypeProperty, possibly with lang tag -->
                     <!-- Special treatment for multi-line strings -->
+                    <!-- Escape \ and convert any number of consecutive " to a single \" -->
                     <xsl:choose>
-                        <xsl:when test="contains(., '&#x0A;') or contains(., '&quot;')">
+                        <xsl:when test="contains(., '&#x0A;')">
                             <xsl:text> """</xsl:text>
-                            <xsl:value-of select="."/>
-                            <xsl:if test="ends-with(., '&quot;')">
-                                <!-- Add an extra space before final quotes due to Riot complaining -->
-                                <xsl:text> </xsl:text>                            
-                            </xsl:if>
+                            <xsl:value-of select="replace(replace(., '\\', '\\\\'), '&quot;+', '\\&quot;')"/>
                             <xsl:text>"""</xsl:text>                            
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:text> "</xsl:text>
-                            <xsl:value-of select="."/>       
+                            <xsl:value-of select="replace(replace(., '\\', '\\\\'), '&quot;+', '\\&quot;')"/>
                             <xsl:text>"</xsl:text>                                
                         </xsl:otherwise>
                     </xsl:choose>                        
