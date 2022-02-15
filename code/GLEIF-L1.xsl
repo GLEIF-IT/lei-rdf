@@ -31,7 +31,7 @@
   extension-element-prefixes="gleif lei saxon loc">
   
   <!--#########################################################################-->
-  <!-- Converts LEI CDF format Level 1 version 2.1 data to RDF-->
+  <!-- Converts LEI CDF format Level 1 version 3.1 data to RDF-->
   <!-- Uses XSLT 3.0 streaming for large data manipulation -->
   <!-- 
   -->
@@ -44,6 +44,7 @@
   
   
   <xsl:param name="skip-geo" select="'false'"/> <!-- if true does not output geocoded addresses -->
+  <xsl:param name="geo-warnings" select="'false'"/> <!-- whether to warn about inability to link from geocoded to original address -->
   
   <xsl:variable name="invalid-id-chars" select="'–‑ /;:,`’()[]\|&gt;&lt;&amp;&quot;&quot;&apos;&apos; '"/> <!-- Cannot be used in xmi ids -->
   <xsl:variable name="replacement-id-chars" select="'--_....._________.._'"/> <!-- Substitute for above - must match in number -->
@@ -51,7 +52,7 @@
   <!-- Used for ignoring values with n.a., n.a, n/a or caps -->
   <xsl:variable name="not-applicable-regex" select="'^[nN][/\.][aA]\.?$'"/>
   
-  <!-- This is no longer needed since Stardog does not support large numbers of XML entities 
+  <!-- This is no longer needed since many triple stores do not support large numbers of XML entities 
     It would be needed to allow use of XML entities such as &lcc-cr; in the output 
   For genuine use of & e.g. in names we first translate to ^ then convert back to entity in character map >
   <xsl:character-map name="ampersand">
@@ -197,11 +198,26 @@
     </xsl:apply-templates>
     <xsl:variable name="status" select="$record/lei:Entity/lei:EntityStatus"/>
     <xsl:variable name="category" select="$record/lei:Entity/lei:EntityCategory"/>
+    <xsl:variable name="subcategory" select="$record/lei:Entity/lei:EntitySubCategory"/>
     <xsl:variable name="el">
       <xsl:choose>
         <xsl:when test="$category='SOLE_PROPRIETOR'">gleif-L1:SoleProprietor</xsl:when>
         <xsl:when test="$category='BRANCH'">gleif-L1:Branch</xsl:when>
         <xsl:when test="$category='FUND'">gleif-L1:Fund</xsl:when>
+        <xsl:when test="$category='INTERNATIONAL_ORGANIZATION'">gleif-L1:InternationalOrganization</xsl:when>
+        <xsl:when test="$category='GENERAL'">gleif-L1:GeneralEntity</xsl:when>
+        <xsl:when test="$category='RESIDENT_GOVERNMENT_ENTITY'">
+          <xsl:choose>
+            <xsl:when test="$subcategory='CENTRAL_GOVERNMENT'">gleif-L1:CentralGovernment</xsl:when>
+            <xsl:when test="$subcategory='STATE_GOVERNMENT'">gleif-L1:StateGovernment</xsl:when>
+            <xsl:when test="$subcategory='LOCAL_GOVERNMENT'">gleif-L1:LocalGovernment</xsl:when>
+            <xsl:when test="$subcategory='SOCIAL_SECURITY'">gleif-L1:SocialSecurity</xsl:when>
+            <xsl:otherwise>
+              <xsl:message select="concat('Expected subcategory of RESIDENT_GOVERNMENT for LEI: ', $lei)"/>
+              <xsl:text>gleif-L1:ResidentGovernmentEntity</xsl:text>              
+            </xsl:otherwise>
+          </xsl:choose>          
+        </xsl:when>
         <xsl:otherwise>gleif-L1:LegalEntity</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
@@ -340,9 +356,17 @@
           </gleif-geo:hasGeocodedAddress>
         </xsl:for-each>
       </xsl:if>
+      <!-- Creation -->    
+      <xsl:variable name="credate" select="$record/lei:Entity/lei:EntityCreationDate"/>
+      <xsl:if test="$credate != ''">
+        <gleif-base:hasEntityCreationDate rdf:datatype="&xsd;dateTime">
+          <xsl:value-of select="$credate"/>
+        </gleif-base:hasEntityCreationDate>
+      </xsl:if>
       <!-- Expiration -->    
       <xsl:variable name="reason" select="$record/lei:Entity/lei:EntityExpirationReason"/>
       <xsl:if test="$reason != ''">
+        <xsl:message select="concat('Deprecated property EntityExpirationReason used for LEI: ', $lei)"/>
         <gleif-base:hasEntityExpirationReason>
           <xsl:attribute name="rdf:resource">
             <xsl:text>https://www.gleif.org/ontology/Base/EntityExpirationReason</xsl:text>
@@ -357,6 +381,7 @@
       </xsl:if>
       <xsl:variable name="expdate" select="$record/lei:Entity/lei:EntityExpirationDate"/>
       <xsl:if test="$expdate != ''">
+        <xsl:message select="concat('Deprecated property EntityExpirationDate used for LEI: ', $lei)"/>
         <gleif-base:hasEntityExpirationDate rdf:datatype="&xsd;dateTime">
           <xsl:value-of select="$expdate"/>
         </gleif-base:hasEntityExpirationDate>
@@ -388,20 +413,22 @@
         </xsl:element>
       </xsl:if>
       <!-- Successor -->
-      <xsl:variable name="succ" select="$record/lei:Entity/lei:SuccessorEntity/lei:SuccessorLEI"/>
-      <xsl:if test="$succ != ''">
-        <gleif-base:hasSuccessor>
-          <xsl:attribute name="rdf:resource" select="concat('https://rdf.gleif.org/L1/L-',  $succ)"/>
-        </gleif-base:hasSuccessor>
-      </xsl:if>
-      <xsl:variable name="succ-name" select="$record/lei:Entity/lei:SuccessorEntity/lei:SuccessorEntityName"/>
-      <xsl:variable name="val" select="string($succ-name)"/>
-      <xsl:if test="$succ-name != '' and not(matches($val, $not-applicable-regex))">
-        <gleif-L1:hasSuccessorName>
-          <xsl:copy-of select="$succ-name/@xml:lang"/>
-          <xsl:value-of select="$succ-name"/>
-        </gleif-L1:hasSuccessorName> 
-      </xsl:if>
+      <xsl:for-each select="$record/lei:Entity/lei:SuccessorEntity">
+        <xsl:variable name="succ" select="lei:SuccessorLEI"/>
+        <xsl:if test="$succ != ''">
+          <gleif-base:hasSuccessor>
+            <xsl:attribute name="rdf:resource" select="concat('https://rdf.gleif.org/L1/L-',  $succ)"/>
+          </gleif-base:hasSuccessor>
+        </xsl:if>
+        <xsl:variable name="succ-name" select="lei:SuccessorEntityName"/>
+        <xsl:variable name="val" select="string($succ-name)"/>
+        <xsl:if test="$succ-name != '' and not(matches($val, $not-applicable-regex))">
+          <gleif-L1:hasSuccessorName>
+            <xsl:copy-of select="$succ-name/@xml:lang"/>
+            <xsl:value-of select="$succ-name"/>
+          </gleif-L1:hasSuccessorName> 
+        </xsl:if>
+      </xsl:for-each>
       <!-- Legal form -->
       <!-- TODO check if legalFormCode is 8888 or 9999 that LegalFormText is provided, and if not log a message -->
       <xsl:variable name="legal-form-code" select="$record/lei:Entity/lei:LegalForm/lei:EntityLegalFormCode"/>
@@ -417,8 +444,9 @@
           <xsl:value-of select="$other-form"/>
         </xsl:element>            
       </xsl:if>
-      <!-- Associated entity -->
-      <xsl:if test="$category='FUND'">
+      <!-- Associated entity - obsolete -->
+      <xsl:if test="$category='FUND' and $record/lei:Entity/lei:AssociatedEntity">
+        <xsl:message select="concat('Deprecated property AssociatedEntity used for LEI: ', $lei)"/>
         <xsl:variable name="assoc" select="$record/lei:Entity/lei:AssociatedEntity/lei:AssociatedLEI"/>
         <xsl:if test="$assoc != ''">
           <xsl:element name="gleif-L1:hasFundFamily">
@@ -439,7 +467,11 @@
         <xsl:attribute name="rdf:resource">          
           <xsl:choose>
             <xsl:when test="$status = 'ACTIVE'">https://www.gleif.org/ontology/Base/EntityStatusActive</xsl:when>
-            <xsl:otherwise>https://www.gleif.org/ontology/Base/EntityStatusInactive</xsl:otherwise>
+            <xsl:when test="$status = 'INACTIVE'">https://www.gleif.org/ontology/Base/EntityStatusInactive</xsl:when>
+            <xsl:when test="$status = 'NULL'">https://www.gleif.org/ontology/Base/EntityStatusNull</xsl:when>
+            <xsl:otherwise>
+              <xsl:message select="concat('Unrecognized value for EntityStatus: ', $status, ' for LEI ', $lei)"/>                
+            </xsl:otherwise>
           </xsl:choose>
         </xsl:attribute>
       </xsl:element>
@@ -470,12 +502,15 @@
             <xsl:when test="$regstat = 'DUPLICATE'">L1/RegistrationStatusDuplicate</xsl:when>
             <xsl:when test="$regstat = 'ISSUED'">L1/RegistrationStatusIssued</xsl:when>
             <xsl:when test="$regstat = 'LAPSED'">L1/RegistrationStatusLapsed</xsl:when>
-            <xsl:when test="$regstat = 'MERGED'">L1/RegistrationStatusMerged</xsl:when>
             <xsl:when test="$regstat = 'PENDING_ARCHIVAL'">L1/RegistrationStatusPendingArchival</xsl:when>
             <xsl:when test="$regstat = 'PENDING_TRANSFER'">L1/RegistrationStatusPendingTransfer</xsl:when>
             <xsl:when test="$regstat = 'PENDING_VALIDATION'">L1internal/RegistrationStatusPendingValidation</xsl:when>
             <xsl:when test="$regstat = 'RETIRED'">L1/RegistrationStatusRetired</xsl:when>
             <xsl:when test="$regstat = 'TRANSFERRED'">L1internal/RegistrationStatusTransferred</xsl:when>
+            <xsl:when test="$regstat = 'MERGED'">
+              <xsl:message select="concat('Deprecated value for RegistrationStatus: ', $regstat, ' for LEI ', $lei)"/>
+              <xsl:text>L1/RegistrationStatusMerged</xsl:text>
+            </xsl:when>
             <xsl:otherwise>
               <xsl:message select="concat('Unrecognized value for RegistrationStatus: ', $regstat, ' for LEI ', $lei)"/>                
             </xsl:otherwise>
@@ -971,7 +1006,9 @@
                 <xsl:when test="$thqp2 != '' and starts-with($orig, $thqp2)">-HQT</xsl:when>
                 <xsl:when test="$thqa2 != '' and starts-with($orig, $thqa2)">-HQT</xsl:when>
                 <xsl:otherwise>
-                  <xsl:message select="concat('Unable to set original address URI for ', $orig, ' for LEI ', $lei)"/>
+                  <xsl:if test="$geo-warnings != 'false'">
+                    <xsl:message select="concat('Unable to set original address URI for ', $orig, ' for LEI ', $lei)"/>
+                  </xsl:if>
                 </xsl:otherwise>
               </xsl:choose>
             </xsl:otherwise>
