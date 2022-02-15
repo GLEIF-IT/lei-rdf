@@ -29,7 +29,7 @@
 
 
   <!--#########################################################################-->
-  <!-- Converts LEI CDF format Level 2 version 1.1 data to RDF-->
+  <!-- Converts LEI RR CDF format version 2.1 data to RDF-->
   <!-- Uses XSLT 3.0 streaming for large data manipulation -->
   
   <!--#########################################################################-->
@@ -72,7 +72,8 @@
         <skos:note>There are 2 categories of individual:
           1) The LegalEntityRelationship (or a subclass). 
             The URI is a prefix of R- followed by LEIs of child then parent separated by - followed 
-              by a suffix of one of -D, -U or -I for Direct, Ultimate or International Branch relationships respectively.
+              by a suffix of one of -D, -U or -I for Direct, Ultimate or International Branch accounting consolidation relationships respectively;
+              or one of -M, -S, -F for Managed-by, Sub-fund or Feeder-master fund relationships respectively.
           2) The LegalEntityRelationshipRecord. The URI is that of the LegalEntityRelationship followed by -REC.
         </skos:note>
       </owl:Ontology>
@@ -97,6 +98,9 @@
          <xsl:when test="$type='IS_DIRECTLY_CONSOLIDATED_BY'">gleif-L2:DirectConsolidation</xsl:when>
          <xsl:when test="$type='IS_ULTIMATELY_CONSOLIDATED_BY'">gleif-L2:UltimateConsolidation</xsl:when>
          <xsl:when test="$type='IS_INTERNATIONAL_BRANCH_OF'">gleif-L2:InternationalBranchRelationship</xsl:when>
+         <xsl:when test="$type='IS_FUND-MANAGED_BY'">gleif-L2:FundManagementRelationship</xsl:when>
+         <xsl:when test="$type='IS_SUBFUND_OF'">gleif-L2:SubFundRelationship</xsl:when>
+         <xsl:when test="$type='IS_FEEDER_TO'">gleif-L2:FeederMasterFundRelationship</xsl:when>
          <xsl:otherwise>
            <xsl:message select="concat('Unknown relationship type: ', $type)"/>
          </xsl:otherwise>
@@ -107,6 +111,9 @@
         <xsl:when test="$type='IS_DIRECTLY_CONSOLIDATED_BY'">D</xsl:when>
         <xsl:when test="$type='IS_ULTIMATELY_CONSOLIDATED_BY'">U</xsl:when>
         <xsl:when test="$type='IS_INTERNATIONAL_BRANCH_OF'">I</xsl:when>
+        <xsl:when test="$type='IS_FUND-MANAGED_BY'">M</xsl:when>
+        <xsl:when test="$type='IS_SUBFUND_OF'">S</xsl:when>
+        <xsl:when test="$type='IS_FEEDER_TO'">F</xsl:when>
       </xsl:choose>
     </xsl:variable>
     <xsl:element name="{$el}">
@@ -129,7 +136,8 @@
            <xsl:choose>
               <xsl:when test="$status = 'ACTIVE'">Active</xsl:when>
               <xsl:when test="$status = 'INACTIVE'">Inactive</xsl:when>
-              <xsl:otherwise>
+              <xsl:when test="$status = 'NULL'">Null</xsl:when>
+             <xsl:otherwise>
                 <xsl:message select="concat('Unknown status: ', $status)"/>
               </xsl:otherwise>
            </xsl:choose>
@@ -143,9 +151,10 @@
              <xsl:choose>
                <xsl:when test="$cat='IFRS'">IFRS</xsl:when>
                <xsl:when test="$cat='US_GAAP'">USGAAP</xsl:when>
-               <xsl:when test="$cat='OTHER_ACCOUNTING_STANDARD'">Other</xsl:when>
+               <xsl:when test="$cat='GOVERNMENT_ACCOUNTING_STANDARD'">GovernmentAccountingStandard</xsl:when>
+               <xsl:when test="$cat='OTHER_ACCOUNTING_STANDARD'">OtherAccountingStandard</xsl:when>
                <xsl:otherwise>
-                 <xsl:message select="concat('Unknown relationship type: ', $cat)"/>
+                 <xsl:message select="concat('Unknown accounting standard: ', $cat)"/>
                </xsl:otherwise>
              </xsl:choose>
            </xsl:attribute>
@@ -206,6 +215,9 @@
             <xsl:when test="$regstat = 'PENDING_VALIDATION'">L2internal/RegistrationStatusPendingValidation</xsl:when>
             <xsl:when test="$regstat = 'RETIRED'">L2/RegistrationStatusRetired</xsl:when>
             <xsl:when test="$regstat = 'TRANSFERRED'">L2internal/RegistrationStatusTransferred</xsl:when>
+            <xsl:otherwise>
+              <xsl:message select="concat('Unknown relationship registration status: ', $regstat)"/>
+            </xsl:otherwise>
           </xsl:choose>
         </xsl:attribute>
       </gleif-base:hasRegistrationStatus>
@@ -237,13 +249,15 @@
               <xsl:when test=". = 'ENTITY_SUPPLIED_ONLY'">L1/ValidationSourceKindEntitySuppliedOnly</xsl:when>
               <xsl:when test=". = 'FULLY_CORROBORATED'">L1/ValidationSourceKindFullyCorroborated</xsl:when>
               <xsl:when test=". = 'PARTIALLY_CORROBORATED'">L1/ValidationSourceKindPartiallyCorroborated</xsl:when>
-              <xsl:when test=". = 'PENDING'">L1internal/ValidationSourceKindPending</xsl:when>
+              <xsl:otherwise>
+                <xsl:message select="concat('Unknown validation sources: ', .)"/>
+              </xsl:otherwise>
             </xsl:choose>
           </xsl:attribute>
         </gleif-L2:hasValidationSources>
       </xsl:for-each>
       <xsl:for-each select="$record/rr:Registration/rr:ValidationDocuments">
-        <gleif-L2:hasValidationDocuments>
+        <gleif-base:hasValidationDocuments>
           <xsl:attribute name="rdf:resource">
             <xsl:text>https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKind</xsl:text>
             <xsl:choose>
@@ -252,15 +266,18 @@
               <xsl:when test=". = 'OTHER_OFFICIAL_DOCUMENTS'">OtherOfficialDocuments</xsl:when>
               <xsl:when test=". = 'REGULATORY_FILING'">RegulatoryFiling</xsl:when>
               <xsl:when test=". = 'SUPPORTING_DOCUMENTS'">SupportingDocuments</xsl:when>
+              <xsl:otherwise>
+                <xsl:message select="concat('Unknown validation documents: ', .)"/>
+              </xsl:otherwise>
             </xsl:choose>
           </xsl:attribute>
-        </gleif-L2:hasValidationDocuments>
+        </gleif-base:hasValidationDocuments>
       </xsl:for-each>
       <xsl:for-each select="$record/rr:Registration/rr:ValidationReference">
-        <gleif-L2:hasValidationReference>
+        <gleif-base:hasValidationReference>
           <xsl:copy-of select="xml:lang"/>
           <xsl:value-of select="normalize-unicode(string(.), 'NFKC')"/>
-        </gleif-L2:hasValidationReference>
+        </gleif-base:hasValidationReference>
       </xsl:for-each>
     </gleif-L2:LegalEntityRelationshipRecord>
   </xsl:template>
