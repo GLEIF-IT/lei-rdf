@@ -130,7 +130,8 @@
                  or $reason = 'BINDING_LEGAL_COMMITMENTS'
                  or $reason = 'DETRIMENT_NOT_EXCLUDED'
                  or $reason = 'DISCLOSURE_DETRIMENTAL'">
-                 <xsl:message select="concat('Deprecated reason: ', $reason, ' for LEI: ', $lei)"/>
+                 <xsl:message select="concat('Deprecated reason: ', $reason, ' for LEI: ', $lei, ' treated as NON_PUBLIC')"/>
+                 <xsl:text>NonPublic</xsl:text>
                </xsl:when>
                <xsl:otherwise>
                   <xsl:message select="concat('Unknown reason: ', $reason, ' for LEI: ', $lei)"/>

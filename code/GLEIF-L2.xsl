@@ -41,7 +41,7 @@
   <xsl:mode streamable="yes" use-accumulators="#all"/>
   
   
-  <xsl:param name="percentages" select="'true'"/> <!-- Whether to include percentages which are meant to be iunternal only -->
+  <xsl:param name="percentages" select="'true'"/> <!-- Whether to include percentages which are meant to be internal only -->
   
   <xsl:variable name="invalid-id-chars" select="' /:,()&gt;&lt;&amp;'"/> <!-- Cannot be used in xmi ids -->
   
@@ -161,7 +161,10 @@
          </xsl:element>
        </xsl:if>
        <xsl:if test="$percentages = 'true' and $record/rr:Relationship/rr:RelationshipQuantifiers/rr:RelationshipQuantifier[rr:QuantifierUnits='PERCENTAGE']">
-         <xsl:variable name="pct" as="xs:double" select="$record/rr:Relationship/rr:RelationshipQuantifiers/rr:RelationshipQuantifier[rr:QuantifierUnits='PERCENTAGE']/rr:QuantifierAmount"/>
+         <xsl:variable name="pct" as="xs:double" select="$record/rr:Relationship/rr:RelationshipQuantifiers/rr:RelationshipQuantifier[rr:QuantifierUnits='PERCENTAGE'][1]/rr:QuantifierAmount"/>
+         <xsl:if test="count($record/rr:Relationship/rr:RelationshipQuantifiers/rr:RelationshipQuantifier[rr:QuantifierUnits='PERCENTAGE']) &gt; 1">
+          <xsl:message select="concat($type, ' relationship from ', $start, ' to ', $end, 'has 2 percentages')"/>
+         </xsl:if>
          <xsl:variable name="adj-pct">
            <xsl:choose>
              <xsl:when test="$pct = 1.00">

@@ -213,12 +213,19 @@
             <xsl:when test="$subcategory='LOCAL_GOVERNMENT'">gleif-L1:LocalGovernment</xsl:when>
             <xsl:when test="$subcategory='SOCIAL_SECURITY'">gleif-L1:SocialSecurity</xsl:when>
             <xsl:otherwise>
-              <xsl:message select="concat('Expected subcategory of RESIDENT_GOVERNMENT for LEI: ', $lei)"/>
+              <xsl:message select="concat('Expected to find a specific subcategory of RESIDENT_GOVERNMENT for LEI: ', $lei)"/>
               <xsl:text>gleif-L1:ResidentGovernmentEntity</xsl:text>              
             </xsl:otherwise>
           </xsl:choose>          
         </xsl:when>
-        <xsl:otherwise>gleif-L1:LegalEntity</xsl:otherwise>
+        <xsl:when test="not($category)">
+          <xsl:message select="concat('Warning: though it is optional, there is no category present for LEI: ', $lei)"/>
+          <xsl:text>gleif-L1:LegalEntity</xsl:text>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:message select="concat('Unexpected category of: ', $category, ' for LEI: ', $lei)"/>
+          <xsl:text>gleif-L1:LegalEntity</xsl:text>
+        </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
     <xsl:element name="{$el}">
