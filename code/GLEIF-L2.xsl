@@ -262,7 +262,7 @@
       <xsl:for-each select="$record/rr:Registration/rr:ValidationDocuments">
         <gleif-base:hasValidationDocuments>
           <xsl:attribute name="rdf:resource">
-            <xsl:text>https://www.gleif.org/ontology/L2/RelationshipValidationDocumentsKind</xsl:text>
+            <xsl:text>https://www.gleif.org/ontology/Base/ValidationDocumentsKind</xsl:text>
             <xsl:choose>
               <xsl:when test=". = 'ACCOUNTS_FILING'">AccountsFiling</xsl:when>
               <xsl:when test=". = 'CONTRACTS'">Contracts</xsl:when>
