@@ -28,9 +28,10 @@
 		<https://www.linkedin.com/in/peterivett/>
 		;
 	dct:creator gleif-base:GLEIF ;
-	dct:issued "2020-01-22T00:00:00Z"^^xsd:dateTime ;
+	dct:issued "2022-01-06T00:00:00Z"^^xsd:dateTime ;
 	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
-	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
+	dct:rights "Copyright (c) 2019-2022 Global Legal Entity Identifier Foundation (GLEIF)" ;
+	dct:rights "Copyright (c) 2021-2022 agnos.ai UK Ltd." ;
 	dct:rightsHolder gleif-base:GLEIF ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format"^^xsd:anyURI ;
 	dct:title "Global Legal Entity Identifier Foundation Level 2 Ontology - Who Owns Whom"@en ;
@@ -40,8 +41,9 @@
 		<https://www.gleif.org/ontology/Base/> ,
 		<https://www.gleif.org/ontology/L1/>
 		;
-	owl:versionIRI <https://www.gleif.org/ontology/L2-v1.0.1/L2/> ;
+	owl:versionIRI <https://www.gleif.org/ontology/L2-v1.1/L2/> ;
 	skos:changeNote "Version 1.0.1 made a minor fix to 2 restrictions on LegalEntityRelationship"@en ;
+	skos:changeNote "Version 1.1 reflects GLEIF RR-CDF version 2.1 and refactors RelationshipValidationDocuments to the Base ontology"@en ;
 	.
 
 gleif-base:LegalEntityRelationship
@@ -68,7 +70,14 @@ gleif-base:LegalEntityRelationship
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L2:hasRelationshipStatus ;
-			owl:onClass gleif-L2:RelationshipStatus ;
+			owl:onClass [
+				a owl:Class ;
+				owl:oneOf (
+					gleif-L2:RelationshipStatusActive
+					gleif-L2:RelationshipStatusInactive
+					gleif-L2:RelationshipStatusNull
+				) ;
+			] ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
 		;
@@ -81,7 +90,14 @@ gleif-L2:AccountingConsolidation
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-L2:hasAccountingStandard ;
-			owl:onClass gleif-L2:AccountingStandard ;
+			owl:onClass [
+				a owl:Class ;
+				owl:oneOf (
+					gleif-L2:AccountingStandardIFRS
+					gleif-L2:AccountingStandardOtherAccountingStandard
+					gleif-L2:AccountingStandardUSGAAP
+				) ;
+			] ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
 		;
@@ -94,11 +110,6 @@ gleif-L2:AccountingStandard
 	a owl:Class ;
 	rdfs:label "accounting standard" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	owl:oneOf (
-		gleif-L2:AccountingStandardIFRS
-		gleif-L2:AccountingStandardOtherAccountingStandard
-		gleif-L2:AccountingStandardUSGAAP
-	) ;
 	skos:definition "the type of accounting standard used to source consolidation information, which is based on reported accounting roll-ups" ;
 	.
 
@@ -145,6 +156,87 @@ gleif-L2:DirectConsolidation
 	skos:prefLabel "direct consolidation" ;
 	.
 
+gleif-L2:FundRelationship
+	a owl:Class ;
+	rdfs:subClassOf 
+		gleif-base:LegalEntityRelationship ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L2:hasChild ;
+			owl:onClass gleif-L1:Fund ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
+	rdfs:label "fund relationship" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
+	skos:altLabel "is fund managed by" ;
+	skos:definition "A relationship where the 'child' entity is a fund." ;
+	skos:prefLabel "fund relationship" ;
+	.
+
+gleif-L2:FundManagementRelationship
+	a owl:Class ;
+	rdfs:subClassOf
+		gleif-L2:FundRelationship ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L2:hasParent ;
+			owl:onClass gleif-L1:LegalEntity ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
+	rdfs:label "fund management relationship" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
+	skos:altLabel "is fund managed by" ;
+	skos:definition "The 'child' entity is a fund managed by a main management entity. The 'parent' is legally responsible for the constitution and operation of the fund." ;
+	skos:note """A legal entity is considered as the main management entity of a fund when it is legally responsible for the constitution and operation of the fund. 
+Such responsibility will include the day-to-day management of a fund's investments and management of a fund’s risks, or the appointment of others for that purpose. 
+In the latter case, the entity to which these functions may have been delegated is not considered to be a Fund Management Entity.""" ;
+	skos:prefLabel "fund management relationship" ;
+	.
+
+gleif-L2:SubFundRelationship
+	a owl:Class ;
+	rdfs:subClassOf
+		gleif-L2:FundRelationship ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L2:hasParent ;
+			owl:onClass gleif-L1:Fund ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
+	rdfs:label "sub-fund relationship" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
+	skos:altLabel "is sub-fund of" ;
+	skos:definition "The 'child' entity is a sub-fund to an umbrella fund. The 'parent' is a legal entity with one or more than one sub-funds/compartments where each sub-fund/compartment has its own investment objectives, separate investment policies and strategies, segregation of assets, separate investors and which has segregated liability between sub-funds/compartments." ;
+	skos:note """A legal entity with one or more than one sub-funds/compartments where each sub-fund/compartment has its own investment
+objectives, separate investment policies and strategies, segregation of assets, separate investors and which has segregated liability between sub-funds/compartments.""" ;
+	skos:prefLabel "sub-fund relationship" ;
+	.
+
+gleif-L2:FeederMasterFundRelationship
+	a owl:Class ;
+	rdfs:subClassOf
+		gleif-L2:FundRelationship ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L2:hasParent ;
+			owl:onClass gleif-L1:Fund ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
+	rdfs:label "feeder-master fund relationship" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
+	skos:altLabel "is feeder to" ;
+	skos:altLabel "master-feeder relationship" ;
+	skos:definition "The 'child' entity is a Feeder Fund, that is (almost) exclusively invested in a single other fund. The 'parent'' is the Master Fund that has identical investment strategies." ;
+	skos:note """a Feeder Fund is exclusively, or almost exclusively, invested in a single other fund,
+or several funds that have identical investment strategies (provided this is qualified as a Master-Feeder relationship under the applicable laws and
+regulations).""" ;
+	skos:prefLabel "feeder-master fund relationship" ;
+	.
+
 gleif-L2:InternationalBranchRelationship
 	a owl:Class ;
 	rdfs:subClassOf gleif-base:LegalEntityRelationship ;
@@ -173,8 +265,17 @@ gleif-L2:LegalEntityRelationshipRecord
 		] ,
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L2:hasValidationDocuments ;
-			owl:onClass gleif-L2:RelationshipValidationDocumentsKind ;
+			owl:onProperty gleif-base:hasValidationDocuments ;
+			owl:onClass [
+				a owl:Class ;
+				owl:oneOf (
+					gleif-L2:RelationshipValidationDocumentsKindAccountsFiling
+					gleif-L2:RelationshipValidationDocumentsKindContracts
+					gleif-L2:RelationshipValidationDocumentsKindOtherOfficialDocuments
+					gleif-L2:RelationshipValidationDocumentsKindRegulatoryFiling
+					gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments
+				) ;
+			] ;
 			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
@@ -326,10 +427,6 @@ gleif-L2:RelationshipStatus
 	a owl:Class ;
 	rdfs:label "relationship status" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	owl:oneOf (
-		gleif-L2:RelationshipStatusActive
-		gleif-L2:RelationshipStatusInactive
-	) ;
 	skos:definition "The status of the legal entities' relationship itself: active or inactive." ;
 	.
 
@@ -355,18 +452,23 @@ gleif-L2:RelationshipStatusInactive
 	gleif-base:hasTag "INACTIVE" ;
 	.
 
+gleif-L2:RelationshipStatusNull
+	a
+		owl:NamedIndividual ,
+		gleif-L2:RelationshipStatus
+		;
+	rdfs:label "null" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
+	skos:definition "The relationship status is not applicable." ;
+	gleif-base:hasTag "NULL" ;
+	.
+
 gleif-L2:RelationshipValidationDocumentsKind
 	a owl:Class ;
 	rdfs:label "relationship validation documents kind" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	owl:oneOf (
-		gleif-L2:RelationshipValidationDocumentsKindAccountsFiling
-		gleif-L2:RelationshipValidationDocumentsKindContracts
-		gleif-L2:RelationshipValidationDocumentsKindOtherOfficialDocuments
-		gleif-L2:RelationshipValidationDocumentsKindRegulatoryFiling
-		gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments
-	) ;
 	skos:definition "Type of source document(s) used for validating the relationship." ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-L2:RelationshipValidationDocumentsKindAccountsFiling
@@ -378,6 +480,7 @@ gleif-L2:RelationshipValidationDocumentsKindAccountsFiling
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:definition "A consolidated financial (accounting) statement, prepared and submitted to the relevant authority." ;
 	gleif-base:hasTag "ACCOUNTS_FILING" ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-L2:RelationshipValidationDocumentsKindContracts
@@ -389,6 +492,7 @@ gleif-L2:RelationshipValidationDocumentsKindContracts
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:definition "Other documents supporting the preparation of consolidated financial statements." ;
 	gleif-base:hasTag "CONTRACTS" ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-L2:RelationshipValidationDocumentsKindOtherOfficialDocuments
@@ -400,6 +504,7 @@ gleif-L2:RelationshipValidationDocumentsKindOtherOfficialDocuments
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:definition "Other official document(s) attesting to the validity of the relationship." ;
 	gleif-base:hasTag "OTHER_OFFICIAL_DOCUMENTS" ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-L2:RelationshipValidationDocumentsKindRegulatoryFiling
@@ -411,6 +516,7 @@ gleif-L2:RelationshipValidationDocumentsKindRegulatoryFiling
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:definition "An annual regulatory filing providing public information on parent relationships" ;
 	gleif-base:hasTag "REGULATORY_FILING" ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments
@@ -422,6 +528,7 @@ gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:definition "Other documents supporting the preparation of consolidated financial statements." ;
 	gleif-base:hasTag "SUPPORTING_DOCUMENTS" ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-L2:UltimateConsolidation
@@ -513,6 +620,7 @@ gleif-L2:hasValidationDocuments
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	rdfs:range gleif-L2:RelationshipValidationDocumentsKind ;
 	skos:definition "Type of source document(s) used for validating the relationship." ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-L2:hasValidationReference
@@ -559,7 +667,7 @@ gleif-L2:hasValidationSources
 	owl:members (
 		gleif-L2:RelationshipStatusActive
 		gleif-L2:RelationshipStatusInactive
-	) ;
+		gleif-L2:RelationshipStatusNull	) ;
 	.
 
 []

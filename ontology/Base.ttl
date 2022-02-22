@@ -27,16 +27,19 @@
 		<https://www.linkedin.com/in/peterivett/>
 		;
 	dct:creator gleif-base:GLEIF ;
-	dct:issued "2020-12-07T00:00:00Z"^^xsd:dateTime ;
+	dct:issued "2022-01-06T00:00:00Z"^^xsd:dateTime ;
 	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
-	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
+	dct:rights "Copyright (c) 2019-2022 Global Legal Entity Identifier Foundation (GLEIF)" ;
+	dct:rights "Copyright (c) 2021-2022 agnos.ai UK Ltd." ;
 	dct:rightsHolder gleif-base:GLEIF ;
 	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
 	dct:title "Global Legal Entity Identifier Foundation Base Ontology"@en ;
 	vann:preferredNamespacePrefix "gleif-base" ;
 	vann:preferredNamespaceUri "https://www.gleif.org/ontology/Base/" ;
 	owl:imports <https://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ;
-	owl:versionIRI <https://www.gleif.org/ontology/Base-v1.0.1/Base/> ;
+	owl:versionIRI <https://www.gleif.org/ontology/Base-v1.1/Base/> ;
+	skos:changeNote "Version 1.0.1 fixed a typo in hasNameLegal property name for the GLEIF individual"@en ;
+	skos:changeNote "Version 1.1 generalizes ValidationDocuments from the L2 ontology, allowing additional use for Event"@en ;
 	.
 
 gleif-base:Entity
@@ -46,18 +49,6 @@ gleif-base:Entity
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasNameLegalLocal ;
 			owl:cardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasEntityExpirationReason ;
-			owl:onClass gleif-base:EntityExpirationReason ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasEntityExpirationDate ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-			owl:onDataRange xsd:dateTime ;
 		] ,
 		[
 			a owl:Restriction ;
@@ -74,9 +65,16 @@ gleif-base:Entity
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasEntityStatus ;
-			owl:onClass gleif-base:EntityStatus ;
+			owl:onClass [
+					a owl:Class ;
+					owl:oneOf (
+						gleif-base:EntityStatusActive
+						gleif-base:EntityStatusInactive
+						gleif-base:EntityStatusNull
+					) ;
+			] ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		]
+		] 
 		;
 	rdfs:label "entity" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
@@ -87,11 +85,7 @@ gleif-base:EntityExpirationReason
 	a owl:Class ;
 	rdfs:label "entity expiration reason" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	owl:oneOf (
-		gleif-base:EntityExpirationReasonCorporateAction
-		gleif-base:EntityExpirationReasonDissolved
-		gleif-base:EntityExpirationReasonOther
-	) ;
+	owl:deprecated "true"^^xsd:boolean ;
 	skos:definition "The reason that an entity ceased to exist and/or operate." ;
 	.
 
@@ -100,6 +94,7 @@ gleif-base:EntityExpirationReasonCorporateAction
 	rdfs:label "corporate action" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	skos:definition "The entity was acquired or merged with another entity." ;
+	owl:deprecated "true"^^xsd:boolean ;
 	gleif-base:hasTag "CORPORATE_ACTION" ;
 	.
 
@@ -108,6 +103,7 @@ gleif-base:EntityExpirationReasonDissolved
 	rdfs:label "dissolved" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	skos:definition "The entity ceased to operate." ;
+	owl:deprecated "true"^^xsd:boolean ;
 	gleif-base:hasTag "DISSOLVED" ;
 	.
 
@@ -116,6 +112,7 @@ gleif-base:EntityExpirationReasonOther
 	rdfs:label "other" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	skos:definition "The reason for expiry is neither of dissolved nor corporate action." ;
+	owl:deprecated "true"^^xsd:boolean ;
 	gleif-base:hasTag "OTHER" ;
 	.
 
@@ -123,10 +120,6 @@ gleif-base:EntityStatus
 	a owl:Class ;
 	rdfs:label "entity status" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
-	owl:oneOf (
-		gleif-base:EntityStatusActive
-		gleif-base:EntityStatusInactive
-	) ;
 	skos:definition "The operational and/or legal registration status of the entity (may be ACTIVE or INACTIVE)" ;
 	.
 
@@ -151,6 +144,85 @@ gleif-base:EntityStatusInactive
 	skos:definition "It has been determined that the entity that was assigned the LEI is no longer legally registered and/or operating, whether as a result of business closure, acquisition by or merger with another (or new) entity, or determination of illegitimacy." ;
 	gleif-base:hasTag "INACTIVE" ;
 	.
+
+gleif-base:EntityStatusNull
+	a
+		owl:NamedIndividual ,
+		gleif-base:EntityStatus
+		;
+	rdfs:label "null" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:definition "The entity status is not applicable." ;
+	gleif-base:hasTag "NULL" ;
+	.
+
+gleif-base:Event
+	a owl:Class ;
+	rdfs:subClassOf
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEventKind ;
+			owl:onClass gleif-base:EventKind ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEventStatus ;
+			owl:onClass gleif-base:EventStatus ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEffectiveDate ;
+			owl:maxQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+			owl:onDataRange xsd:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasRecordedDate ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:onDataRange xsd:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasValidationDocuments ;
+			owl:onClass [
+				a owl:Class ;
+				owl:oneOf (
+					gleif-base:ValidationDocumentsKindAccountsFiling
+					gleif-base:ValidationDocumentsKindContracts
+					gleif-base:ValidationDocumentsKindOtherOfficialDocuments
+					gleif-base:ValidationDocumentsKindRegulatoryFiling
+					gleif-base:ValidationDocumentsKindSupportingDocuments
+				) ;
+			] ;
+			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasValidationReference ;
+			owl:onDataRange xsd:string ;
+			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+		]
+	;
+	rdfs:label "event" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:definition "A single event."
+.
+
+gleif-base:EventKind
+	a owl:Class ;
+	rdfs:label "event kind" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:definition "The type of legal entity event."
+.
+
+gleif-base:EventStatus
+	a owl:Class ;
+	rdfs:label "event status" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:definition "The status of the legal entity event with regard to event timeline."
+.
 
 gleif-base:GLEIF
 	a gleif-base:RegistrationAuthority ;
@@ -214,14 +286,14 @@ gleif-base:Period
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasEnd ;
-			owl:maxQualifiedCardinality "1" ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 			owl:onDataRange xsd:dateTime ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasStart ;
 			owl:onDataRange xsd:dateTime ;
-			owl:qualifiedCardinality "1" ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
 		;
 	rdfs:label "period"@en ;
@@ -235,59 +307,59 @@ gleif-base:PhysicalAddress
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasAddressLine1 ;
-			owl:cardinality "1" ;
+			owl:cardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasCity ;
-			owl:cardinality "1" ;
+			owl:cardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasAddressLine2 ;
-			owl:maxCardinality "1" ;
+			owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasAddressLine3 ;
-			owl:maxCardinality "1" ;
+			owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasAddressLine4 ;
-			owl:maxCardinality "1" ;
+			owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasAddressNumber ;
-			owl:maxCardinality "1" ;
+			owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasAddressNumberWithinBuilding ;
-			owl:maxCardinality "1" ;
+			owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasMailRouting ;
-			owl:maxCardinality "1" ;
+			owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasPostalCode ;
-			owl:maxCardinality "1" ;
+			owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasRegion ;
 			owl:onClass lcc-cr:Region ;
-			owl:maxQualifiedCardinality "1" ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasCountry ;
 			owl:onClass lcc-cr:Country ;
-			owl:qualifiedCardinality "1" ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		]
 		;
 	rdfs:label "physical address"@en ;
@@ -354,6 +426,69 @@ gleif-base:RegistryIdentifier
 	rdfs:label "registry identifier" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	skos:definition "An identifier associated with an entry in a registry, i.e., one that provides an index to the registry for the recorded item." ;
+	.
+
+
+gleif-base:ValidationDocumentsKind
+	a owl:Class ;
+	rdfs:label "validation documents kind" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:definition "Type of source document(s) used for validation." ;
+	.
+
+gleif-base:ValidationDocumentsKindAccountsFiling
+	a
+		owl:NamedIndividual ,
+		gleif-base:ValidationDocumentsKind
+		;
+	rdfs:label "accounts filing" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:definition "A consolidated financial (accounting) statement, prepared and submitted to the relevant authority." ;
+	gleif-base:hasTag "ACCOUNTS_FILING" ;
+	.
+
+gleif-base:ValidationDocumentsKindContracts
+	a
+		owl:NamedIndividual ,
+		gleif-base:ValidationDocumentsKind
+		;
+	rdfs:label "contracts" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:definition "Contract(s) attesting to the validity of legal entities and/or their relationships." ;
+	gleif-base:hasTag "CONTRACTS" ;
+	.
+
+gleif-base:ValidationDocumentsKindOtherOfficialDocuments
+	a
+		owl:NamedIndividual ,
+		gleif-base:ValidationDocumentsKind
+		;
+	rdfs:label "other official documents" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:definition "Other official document(s) attesting to the validity of legal entities and/or their relationships." ;
+	gleif-base:hasTag "OTHER_OFFICIAL_DOCUMENTS" ;
+	.
+
+gleif-base:ValidationDocumentsKindRegulatoryFiling
+	a
+		owl:NamedIndividual ,
+		gleif-base:ValidationDocumentsKind
+		;
+	rdfs:label "regulatory filing" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:definition "A regulatory filing providing public information on legal entities and/or their relationships." ;
+	gleif-base:hasTag "REGULATORY_FILING" ;
+	.
+
+gleif-base:ValidationDocumentsKindSupportingDocuments
+	a
+		owl:NamedIndividual ,
+		gleif-base:ValidationDocumentsKind
+		;
+	rdfs:label "supporting documents" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	skos:definition "Other documents supporting the validation of legal entities and/or their relationships." ;
+	gleif-base:hasTag "SUPPORTING_DOCUMENTS" ;
 	.
 
 gleif-base:hasAbbreviation
@@ -510,6 +645,15 @@ gleif-base:hasEnd
 	skos:definition "The end time of a period." ;
 	.
 
+gleif-base:hasEntityCreationDate
+	a owl:DatatypeProperty ;
+	rdfs:label "has entity creation date" ;
+	rdfs:domain gleif-base:Entity ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	rdfs:range xsd:dateTime ;
+	skos:definition "The date on which the legal entity was first established, as represented by ISO 8601 (as defined in ISO 17442)." ;
+	.
+
 gleif-base:hasEntityExpirationDate
 	a owl:DatatypeProperty ;
 	rdfs:label "has entity expiration date" ;
@@ -517,6 +661,7 @@ gleif-base:hasEntityExpirationDate
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range xsd:dateTime ;
 	skos:definition "The date that the entity ceased to operate, whether due to dissolution, merger or acquisition." ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-base:hasEntityExpirationReason
@@ -526,6 +671,7 @@ gleif-base:hasEntityExpirationReason
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range gleif-base:EntityExpirationReason ;
 	skos:definition "The reason that an entity ceased to exist and/or operate." ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-base:hasEntityStatus
@@ -538,6 +684,56 @@ gleif-base:hasEntityStatus
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range gleif-base:EntityStatus ;
 	skos:definition "Indicates the status of the entity (i.e., active, inactive)." ;
+	.
+
+gleif-base:hasEvent
+	a owl:ObjectProperty ;
+	rdfs:label "has event" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	rdfs:range gleif-base:Event ;
+	skos:definition "A finite number of events specified by the LEI ROC in the life of a legal entity that would impact the Reference Data in the Global LEI System." ;
+.
+
+gleif-base:hasEventKind
+	a
+		owl:ObjectProperty ,
+		owl:FunctionalProperty
+		;
+	rdfs:label "has event kind" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	rdfs:domain gleif-base:Event ;
+	rdfs:range gleif-base:EventKind ;
+	skos:definition "The type of the event." ;
+	.
+
+gleif-base:hasEventStatus
+	a
+		owl:ObjectProperty ,
+		owl:FunctionalProperty
+		;
+	rdfs:label "has event status" ;
+	rdfs:domain gleif-base:Event ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	rdfs:range gleif-base:EventStatus ;
+	skos:definition "Describes the status of the legal entity event with regard to event timeline." ;
+	.
+
+gleif-base:hasEffectiveDate
+	a owl:DatatypeProperty ;
+	rdfs:label "has event effective date" ;
+	rdfs:domain gleif-base:Event ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	rdfs:range xsd:dateTime ;
+	skos:definition "The date when the legal entity event becomes legally effective." ;
+	.
+
+gleif-base:hasRecordedDate
+	a owl:DatatypeProperty ;
+	rdfs:label "has event recorded date" ;
+	rdfs:domain gleif-base:Event ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	rdfs:range xsd:dateTime ;
+	skos:definition "The date when the legal entity event was recorded in the Global LEI System." ;
 	.
 
 gleif-base:hasFirstAddressLine
@@ -698,7 +894,7 @@ gleif-base:hasNamePreviousLegal
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasNameAdditional ;
 	rdfs:label "has name previous legal" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/base/> ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	skos:definition "A primary legal name previously used by this entity." ;
 	.
 
@@ -706,7 +902,7 @@ gleif-base:hasNameTradingOrOperating
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf gleif-base:hasNameAdditional ;
 	rdfs:label "has name trading or operating" ;
-	rdfs:isDefinedBy <https://www.gleif.org/ontology/base/> ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	skos:altLabel
 		"brand name" ,
 		"doing business as" ,
@@ -815,7 +1011,7 @@ gleif-base:hasSuccessor
 	rdfs:domain gleif-base:Entity ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range gleif-base:Entity ;
-	skos:definition "The surviving/new entity which continues/replaces this registration." ;
+	skos:definition "One or more Legal Entities that continue or replace this." ;
 	.
 
 gleif-base:hasSuccessorName
@@ -848,6 +1044,22 @@ gleif-base:hasTarget
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
 	rdfs:range gleif-base:Entity ;
 	skos:definition "The entity that plays the target of the directed relationship." ;
+	.
+
+gleif-base:hasValidationDocuments
+	a owl:ObjectProperty ;
+	rdfs:label "has validation documents" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	rdfs:range gleif-base:ValidationDocumentsKind ;
+	skos:definition "Type of source document(s) used for validating the information." ;
+	.
+
+gleif-base:hasValidationReference
+	a owl:DatatypeProperty ;
+	rdfs:label "has validation reference" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/Base/> ;
+	rdfs:range xsd:string ;
+	skos:definition "A reference to a specific document or other source used as the basis of validation for this information." ;
 	.
 
 gleif-base:hasWebsite
@@ -925,6 +1137,17 @@ gleif-base:records
 	owl:members (
 		gleif-base:EntityStatusActive
 		gleif-base:EntityStatusInactive
+		gleif-base:EntityStatusNull
 	) ;
 	.
 
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-base:ValidationDocumentsKindAccountsFiling
+		gleif-base:ValidationDocumentsKindContracts
+		gleif-base:ValidationDocumentsKindOtherOfficialDocuments
+		gleif-base:ValidationDocumentsKindRegulatoryFiling
+		gleif-base:ValidationDocumentsKindSupportingDocuments
+	) ;
+	.

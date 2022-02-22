@@ -36,11 +36,12 @@
 		<https://www.linkedin.com/in/peterivett/>
 		;
 	dct:creator gleif-base:GLEIF ;
-	dct:issued "2020-12-07T00:00:00Z"^^xsd:dateTime ;
+	dct:issued "2022-01-06T00:00:00Z"^^xsd:dateTime ;
 	dct:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI ;
-	dct:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)" ;
+	dct:rights "Copyright (c) 2019-2022 Global Legal Entity Identifier Foundation (GLEIF)" ;
+	dct:rights "Copyright (c) 2021-2022 agnos.ai UK Ltd." ;
 	dct:rightsHolder gleif-base:GLEIF ;
-	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	dct:source "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-3-1"^^xsd:anyURI ;
 	dct:title "Global Legal Entity Identifier Foundation Level 1 Ontology - Who Is Who"@en ;
 	vann:preferredNamespacePrefix "gleif-L1" ;
 	vann:preferredNamespaceUri "https://www.gleif.org/ontology/L1/" ;
@@ -49,7 +50,9 @@
 		<https://www.gleif.org/ontology/EntityLegalForm/> ,
 		<https://www.gleif.org/ontology/RegistrationAuthority/>
 		;
-	owl:versionIRI <https://www.gleif.org/ontology/L1-v1.0.1/L1/> ;
+	owl:versionIRI <https://www.gleif.org/ontology/L1-v1.1/L1/> ;
+	skos:changeNote "Version 1.0.1 made a minor fix to 2 restrictions on LegalEntityRelationship"@en ;
+	skos:changeNote "Version 1.1 reflects GLEIF LEI-CDF version 3.1, and removes wrong superclass of ValidationSourceKind"@en ;
 	.
 
 gleif-L1:Branch
@@ -131,43 +134,24 @@ gleif-L1:BusinessRegistryIdentifier
 	skos:definition "The legal entity is a branch of another legal entity." ;
 	.
 
+gleif-L1:CentralGovernment
+	a owl:Class ;
+	rdfs:subClassOf gleif-L1:ResidentGovernmentEntity ;
+	rdfs:label "central government" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:altLabel
+		"central government entity" 
+		;
+	skos:definition "The legal entity is in a central government subsector which consists of the institutional units plus non-profit institutions (NPI) controlled by the central government institutions." ;
+	skos:prefLabel "central government" ;
+	.
+
 gleif-L1:Fund
 	a owl:Class ;
-	rdfs:subClassOf
-		gleif-L1:RegisteredEntity ,
-		[
-			a owl:Class ;
-			owl:complementOf [
-				a owl:Class ;
-				owl:intersectionOf (
-					[
-						a owl:Restriction ;
-						owl:onProperty gleif-L1:hasFundFamily ;
-						owl:someValuesFrom gleif-L1:FundFamily ;
-					]
-					[
-						a owl:Restriction ;
-						owl:onProperty gleif-L1:hasFundFamilyName ;
-						owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-					]
-				) ;
-			] ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasFundFamilyName ;
-			owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasFundFamily ;
-			owl:onClass gleif-L1:FundFamily ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		]
-		;
+	rdfs:subClassOf gleif-L1:RegisteredEntity ;
 	rdfs:label "fund" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "The legal entity is a fund." ;
+	skos:definition "The legal entity is an investment fund defined as a collective investment scheme (or pooled investment) beneficially owned by multiple investors and managed on behalf of those investors by an asset manager or by the fund itself." ;
 	.
 
 gleif-L1:FundFamily
@@ -176,6 +160,15 @@ gleif-L1:FundFamily
 	rdfs:label "fund family" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "The entity that is the manager of one or more funds." ;
+	owl:deprecated "true"^^xsd:boolean ;
+	.
+
+gleif-L1:GeneralEntity
+	a owl:Class ;
+	rdfs:subClassOf gleif-L1:RegisteredEntity ;
+	rdfs:label "general entity" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "The legal entity is a general legal entity." ;
 	.
 
 gleif-L1:GlobalLegalEntityIdentifierSystem
@@ -187,6 +180,18 @@ gleif-L1:GlobalLegalEntityIdentifierSystem
 	skos:prefLabel "Global Legal Entity Identifier System" ;
 	gleif-base:hasWebsite "https://www.gleif.org/en/about-lei/gleif-management-of-the-global-lei-system"^^xsd:anyURI ;
 	gleif-base:isManagedBy gleif-base:GLEIF ;
+	.
+
+gleif-L1:InternationalOrganization
+	a owl:Class ;
+	rdfs:subClassOf gleif-L1:LegalEntity ;
+	rdfs:label "international organization" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:altLabel
+		"intergovernmental organization" 
+		;
+	skos:definition "The legal entity is a non-resident unit created by international agreements or other arrangements for the provision of non-market services or financial intermediation at the international level." ;
+	skos:prefLabel "international organization" ;
 	.
 
 gleif-L1:LEI
@@ -213,6 +218,401 @@ gleif-L1:LegalEntity
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "LEI-registered entities that are legally or financially responsible for the performance of financial transactions or have the legal right in their jurisdiction to enter independently into legal contracts, regardless of whether they are incorporated or constituted in some other way (e.g. trust, partnership, contractual). It excludes natural persons, but includes governmental organizations and supranationals." ;
 	.
+
+gleif-L1:LegalEntityEvent
+	a owl:Class ;
+	rdfs:subClassOf
+		gleif-base:Event ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEventKind ;
+			owl:onClass [
+				a owl:Class ;
+				owl:oneOf (
+					gleif-L1:LegalEntityEventKindChangeLegalName
+					gleif-L1:LegalEntityEventKindChangeOtherNames
+					gleif-L1:LegalEntityEventKindChangeLegalAddress
+					gleif-L1:LegalEntityEventKindChangeHQAddress
+					gleif-L1:LegalEntityEventKindChangeLegalForm
+					gleif-L1:LegalEntityEventKindDemerger
+					gleif-L1:LegalEntityEventKindSpinoff
+					gleif-L1:LegalEntityEventKindAbsorption
+					gleif-L1:LegalEntityEventKindAcquisitionBranch
+					gleif-L1:LegalEntityEventKindTransformationBranchToSubsidiary
+					gleif-L1:LegalEntityEventKindTransformationSubsidiaryToBranch
+					gleif-L1:LegalEntityEventKindTransformationUmbrellaToStandalone
+					gleif-L1:LegalEntityEventKindBreakup
+					gleif-L1:LegalEntityEventKindMergersAndAcquisitions
+					gleif-L1:LegalEntityEventKindBankruptcy
+					gleif-L1:LegalEntityEventKindLiquidation
+					gleif-L1:LegalEntityEventKindVoluntaryArrangement
+					gleif-L1:LegalEntityEventKindInsolvency
+					gleif-L1:LegalEntityEventKindDissolution
+				) ;
+			] ;
+			owl:cardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEventStatus ;
+			owl:onClass [
+				a owl:Class ;
+				owl:oneOf (
+					gleif-L1:LegalEntityEventStatusInProgress
+					gleif-L1:LegalEntityEventStatusWithdrawnCancelled
+					gleif-L1:LegalEntityEventStatusCompleted
+				) ;
+			] ;
+			owl:cardinality "1"^^xsd:nonNegativeInteger ;
+		] ,[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEffectiveDate ;
+			owl:maxQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+			owl:onDataRange xsd:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasRecordedDate ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:onDataRange xsd:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasValidationDocuments ;
+			owl:onClass gleif-base:ValidationDocumentsKind ;
+			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasValidationReference ;
+			owl:onDataRange xsd:string ;
+			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+		]
+	;
+	rdfs:label "legal entity event" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "A single event specified by the LEI ROC in the life of a legal entity that would impact the Reference Data in the Global LEI System."
+.
+
+gleif-L1:LegalEntityEventGroup
+	a owl:Class ;
+	rdfs:subClassOf
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasGroupedEvents ;
+			owl:someValuesFrom gleif-L1:LegalEntityEvent ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasLegalEntityEventGroupKind ;
+			owl:onClass [
+				a owl:Class ;
+				owl:oneOf (
+					gleif-L1:LegalEntityEventGroupKindReverseTakeover
+					gleif-L1:LegalEntityEventGroupKindChangeLegalFormAndName
+					gleif-L1:LegalEntityEventGroupKindComplexChangeLegalForm
+				) ;
+			] ;
+			owl:cardinality "1"^^xsd:nonNegativeInteger ;
+		] ;
+	rdfs:label "legal entity event group" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "A complex event." ;
+.
+
+gleif-L1:LegalEntitySequencedEvent 
+	a owl:Class ;
+	rdfs:subClassOf 
+			[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasGroupedEvents ;
+			owl:onClass gleif-L1:LegalEntityEvent ;
+			owl:cardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+			[
+			a owl:Restriction ;
+			owl:onProperty gleif-L1:hasSequenceNumber ;
+			owl:onDataRange xsd:positiveInteger ;
+			owl:cardinality "1"^^xsd:nonNegativeInteger ;
+		] 
+ 	;
+	rdfs:label "legal entity sequenced event" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "An event in a group where the sequence is significant."
+.
+
+gleif-L1:LegalEntityEventKind
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:EventKind ;
+	rdfs:label "legal entity event kind" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "A single event specified by the LEI ROC in the life of a legal entity that would impact the Reference Data in the Global LEI System."
+.
+
+gleif-L1:LegalEntityEventKindChangeLegalName
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventKind ;
+	rdfs:label "change legal name" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Change in the legal name of the legal entity." ;
+	gleif-base:hasTag "CHANGE_LEGAL_NAME" ;
+.
+
+gleif-L1:LegalEntityEventKindChangeOtherNames
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventKind ;
+	rdfs:label "change other names" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Change in the trade- or doing business name of the legal entity." ;
+	gleif-base:hasTag "CHANGE_OTHER_NAMES" ;
+.
+
+gleif-L1:LegalEntityEventKindChangeLegalAddress
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventKind ;
+	rdfs:label "change legal address" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Change in the legal address of the legal entity." ;
+	gleif-base:hasTag "CHANGE_LEGAL_ADDRESS" ;
+.
+
+gleif-L1:LegalEntityEventKindChangeHQAddress
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventKind ;
+	rdfs:label "change HQ address" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Change in the headquarters address of the legal entity." ;
+	gleif-base:hasTag "CHANGE_HQ_ADDRESS" ;
+.
+
+gleif-L1:LegalEntityEventKindChangeLegalForm
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventKind ;
+	rdfs:label "change legal form" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Change in the legal form of the legal entity." ;
+	gleif-base:hasTag "CHANGE_LEGAL_FORM" ;
+.
+
+gleif-L1:LegalEntityEventKindDemerger
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventKind ;
+	rdfs:label "demerger" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Distribution of securities issued by another legal entity. The distributed securities may either be of a newly created or of an existing legal entity. For example, spin-off, demerger, unbundling, divestment." ;
+	gleif-base:hasTag "DEMERGER" ;
+.
+
+gleif-L1:LegalEntityEventKindSpinoff
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventKind ;
+	rdfs:label "spinoff" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "A special case of demerger where the shareholders of the original entity are compensated for the value loss of the original entity via shares of the new entity or via dividend." ;
+	gleif-base:hasTag "SPINOFF" ;
+.
+
+gleif-L1:LegalEntityEventKindAbsorption
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventKind ;
+	rdfs:label "absorption" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Absorption is a form of merger where there is a combination of two or more companies into an 'existing company'. In the case of absorption, only one company survives and all others lose their identity." ;
+	gleif-base:hasTag "ABSORPTION" ;
+.
+
+gleif-L1:LegalEntityEventKindAcquisitionBranch
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventKind ;
+	rdfs:label "acquisition branch" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "The acquiring legal entity purchases an international branch entity." ;
+	gleif-base:hasTag "ACQUISITION_BRANCH" ;
+.
+
+gleif-L1:LegalEntityEventKindTransformationBranchToSubsidiary
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventKind ;
+	rdfs:label "transformation branch to subsidiary" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "The transfer of all of the assets and liabilities of an International Branch to the new subsidiary entity in exchange for the transfer of securities representing the capital of the subsidiary entity receiving the transfer." ;
+	gleif-base:hasTag "TRANSFORMATION_BRANCH_TO_SUBSIDIARY" ;
+.
+
+gleif-L1:LegalEntityEventKindTransformationSubsidiaryToBranch
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventKind ;
+	rdfs:label "transformation subsidiary to branch" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "The transfer of all of the assets and liabilities of a subsidiary to an International Branch entity in exchange for the transfer of securities representing the capital of the International Branch entity receiving the transfer." ;
+	gleif-base:hasTag "TRANSFORMATION_SUBSIDIARY_TO_BRANCH" ;
+.
+
+gleif-L1:LegalEntityEventKindTransformationUmbrellaToStandalone
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventKind ;
+	rdfs:label "transformation umbrella to standalone" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Change in legal form from a Fund legal entity structure with one or more than one sub-funds/compartments to a Fund legal entity structure without sub-funds/compartments." ;
+	gleif-base:hasTag "TRANSFORMATION_UMBRELLA_TO_STANDALONE" ;
+.
+
+gleif-L1:LegalEntityEventKindBreakup
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventKind ;
+	rdfs:label "break-up" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "A break-up is a corporate action in which a single company splits into two or more independent, separately-run companies.  Regulators also can mandate break-ups of companies for anti-trust reasons." ;
+	gleif-base:hasTag "BREAKUP" ;
+.
+
+gleif-L1:LegalEntityEventKindMergersAndAcquisitions
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventKind ;
+	rdfs:label "mergers and acquisitions" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "The consolidation of Legal Entities or assets through various types of financial transactions, including mergers, acquisitions, consolidations, tender offers, purchase of assets and management acquisitions." ;
+	gleif-base:hasTag "MERGERS_AND_ACQUISITIONS" ;
+.
+
+gleif-L1:LegalEntityEventKindBankruptcy
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventKind ;
+	rdfs:label "bankruptcy" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Legal status of a legal entity unable to pay creditors. Bankruptcy usually involves a formal court ruling. Securities may become valueless (event completed)." ;
+	gleif-base:hasTag "BANKRUPTCY" ;
+.
+
+gleif-L1:LegalEntityEventKindLiquidation
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventKind ;
+	rdfs:label "liquidation" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Distribution of cash, assets or both of a legal entity. Debt may be paid in order of priority based on preferred claims to assets specified by the security (event completed)." ;
+	gleif-base:hasTag "LIQUIDATION" ;
+.
+
+gleif-L1:LegalEntityEventKindVoluntaryArrangement
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventKind ;
+	rdfs:label "voluntary arrangement" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "A procedure that allows a legal entity to settle debts by paying only a proportion of the amount that it owes to creditors or to come to some other arrangement with its creditors over the payment of its debts (event completed)." ;
+	gleif-base:hasTag "VOLUNTARY_ARRANGEMENT" ;
+.
+
+gleif-L1:LegalEntityEventKindInsolvency
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventKind ;
+	rdfs:label "insolvency" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "The entry of a decree or order by a court or agency or supervisory authority having jurisdiction in the premises the appointment of a trustee-in-bankruptcy or similar official for such party in any insolvency, readjustment of debt, marshalling of assets and liabilities, or similar proceedings, or for the winding up or liquidation of their respective affairs (event completed)." ;
+	gleif-base:hasTag "INSOLVENCY" ;
+.
+
+gleif-L1:LegalEntityEventKindDissolution
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventKind ;
+	rdfs:label "dissolution" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "(i) A voluntary termination of operations, (ii) a general assignment for the benefit of the legal entity’s creditors or (iii) any other liquidation, dissolution or winding up of the legal entity (excluding a Liquidity Event), whether voluntary or involuntary (event completed)." ;
+	gleif-base:hasTag "DISSOLUTION" ;
+.
+
+gleif-L1:LegalEntityEventGroupKind
+	a owl:Class ;
+	rdfs:label "legal entity event group kind" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "A complex event specified by the LEI ROC in the life of a legal entity that would impact the Reference Data in the Global LEI System."
+.
+
+gleif-L1:LegalEntityEventGroupKindReverseTakeover
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventGroupKind ;
+	rdfs:label "reverse takeover" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "A reverse takeover event" ;
+	gleif-base:hasTag "REVERSE_TAKEOVER" ;
+.
+
+gleif-L1:LegalEntityEventGroupKindChangeLegalFormAndName
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventGroupKind ;
+	rdfs:label "change legal form and name" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Legal entity event including change of the legal name triggered by change of the legal form." ;
+	gleif-base:hasTag "CHANGE_LEGAL_FORM_AND_NAME" ;
+.
+
+gleif-L1:LegalEntityEventGroupKindComplexChangeLegalForm
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventGroupKind ;
+	rdfs:label "complex change legal form" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "Legal entity event including change of the legal entity status triggered by change of the legal form." ;
+	gleif-base:hasTag "COMPLEX_CHANGE_LEGAL_FORM" ;
+.
+
+gleif-L1:LegalEntityEventStatus
+	a owl:Class ;
+	rdfs:subClassOf gleif-base:EventStatus ;
+	rdfs:label "legal entity event status" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "The status of the legal entity event with regard to event timeline."
+.
+
+gleif-L1:LegalEntityEventStatusInProgress
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventStatus ;
+	rdfs:label "in progress" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "The legal entity event activity and processing is in progress." ;
+	gleif-base:hasTag "IN_PROGRESS" ;
+.
+
+gleif-L1:LegalEntityEventStatusWithdrawnCancelled
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventStatus ;
+	rdfs:label "withdrawn cancelled" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "The legal entity event as announced will not occur." ;
+	gleif-base:hasTag "WITHDRAWN_CANCELLED" ;
+.
+
+gleif-L1:LegalEntityEventStatusCompleted
+	a
+		owl:NamedIndividual ,
+		gleif-L1:LegalEntityEventStatus ;
+	rdfs:label "completed" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:definition "The legal entity event activity and processing have been completed as of the LegalEntityEventEffectiveDate." ;
+	gleif-base:hasTag "COMPLETED" ;
+.
 
 gleif-L1:LegalEntityIdentifier
 	a owl:Class ;
@@ -269,7 +669,7 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 					gleif-L1:ValidationSourceKindPartiallyCorroborated
 				) ;
 			] ;
-			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
@@ -293,7 +693,6 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 					gleif-L1:RegistrationStatusDuplicate
 					gleif-L1:RegistrationStatusIssued
 					gleif-L1:RegistrationStatusLapsed
-					gleif-L1:RegistrationStatusMerged
 					gleif-L1:RegistrationStatusPendingArchival
 					gleif-L1:RegistrationStatusPendingTransfer
 					gleif-L1:RegistrationStatusRetired
@@ -323,6 +722,18 @@ gleif-L1:LegalEntityIdentifierRegistryEntry
 	rdfs:label "legal entity identifier registry entry" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "The Registration container element which contains all information on the legal entity's LEI registration with the Managing LOU." ;
+	.
+
+gleif-L1:LocalGovernment
+	a owl:Class ;
+	rdfs:subClassOf gleif-L1:ResidentGovernmentEntity ;
+	rdfs:label "local government" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:altLabel
+		"local government entity" 
+		;
+	skos:definition "The legal entity is a local government subsector which consists of local governments that are separate institutional units." ;
+	skos:prefLabel "local government" ;
 	.
 
 gleif-L1:LocalOperatingUnit
@@ -368,13 +779,7 @@ gleif-L1:RegisteredEntity
 		[
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasSuccessorName ;
-			owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasEntityExpirationReason ;
-			owl:onClass gleif-base:EntityExpirationReason ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+			owl:minCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
@@ -392,13 +797,7 @@ gleif-L1:RegisteredEntity
 			a owl:Restriction ;
 			owl:onProperty gleif-base:hasSuccessor ;
 			owl:onClass gleif-L1:LegalEntity ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-		] ,
-		[
-			a owl:Restriction ;
-			owl:onProperty gleif-base:hasEntityExpirationDate ;
-			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-			owl:onDataRange xsd:dateTime ;
+			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			a owl:Restriction ;
@@ -440,6 +839,12 @@ gleif-L1:RegisteredEntity
 			owl:onProperty gleif-base:hasLegalJurisdiction ;
 			owl:onClass lcc-cr:GeographicRegion ;
 			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty gleif-base:hasEvent ;
+			owl:onClass gleif-base:Event ;
+			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
 		] ,
 		[
 			owl:intersectionOf (
@@ -546,6 +951,7 @@ gleif-L1:RegistrationStatusMerged
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "An LEI registration for an entity that has been merged into another legal entity, such that this legal entity no longer exists as an operating entity." ;
 	gleif-base:hasTag "MERGED" ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-L1:RegistrationStatusPendingArchival
@@ -581,6 +987,30 @@ gleif-L1:RegistrationStatusRetired
 	gleif-base:hasTag "RETIRED" ;
 	.
 
+gleif-L1:ResidentGovernmentEntity
+	a owl:Class ;
+	rdfs:subClassOf gleif-L1:LegalEntity ;
+	rdfs:label "resident government entity" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:altLabel
+		"government entity" 
+		;
+	skos:definition "The legal entity is a non-market producer, part of a central, state or local government, social security funds or a non-profit institution (NPI) controlled by government units." ;
+	skos:prefLabel "resident government entity" ;
+	.
+
+gleif-L1:SocialSecurity
+	a owl:Class ;
+	rdfs:subClassOf gleif-L1:ResidentGovernmentEntity ;
+	rdfs:label "social security" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:altLabel
+		"national insurance" 
+		;
+	skos:definition "The legal entity is a social security scheme which covers a wide variety of programmes, providing benefits in cash or in kind for old age, invalidity or death, survivors, sickness and maternity, work injury, unemployment, family allowance, health care, etc." ;
+	skos:prefLabel "social security" ;
+	.
+
 gleif-L1:SoleProprietor
 	a owl:Class ;
 	rdfs:subClassOf gleif-L1:LegalEntity ;
@@ -589,9 +1019,20 @@ gleif-L1:SoleProprietor
 	skos:definition "The legal entity represents an individual acting in a business capacity" ;
 	.
 
+gleif-L1:StateGovernment
+	a owl:Class ;
+	rdfs:subClassOf gleif-L1:ResidentGovernmentEntity ;
+	rdfs:label "state government" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	skos:altLabel
+		"state government entity" 
+		;
+	skos:definition "The legal entity is a state government subsector which consists of the institutional units that exercise some government functions at a level below that of the central government and above that of the government institutional units existing at a local level." ;
+	skos:prefLabel "state government" ;
+	.
+
 gleif-L1:ValidationSourceKind
 	a owl:Class ;
-	rdfs:subClassOf gleif-base:RegistrationStatus ;
 	rdfs:label "LEI validation source kind" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "The level of validation of the reference data provided by the registrant." ;
@@ -670,6 +1111,7 @@ gleif-L1:hasAssociatedEntity
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	rdfs:range gleif-L1:RegisteredEntity ;
 	skos:definition "Another entity associated with this entity if needed to fully identify this entity or to place it in an appropriate context." ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-L1:hasAssociatedEntityName
@@ -678,6 +1120,7 @@ gleif-L1:hasAssociatedEntityName
 	rdfs:domain gleif-L1:RegisteredEntity ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "The name of another entity associated with this entity if needed to fully identify this entity or to place it in an appropriate context." ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-L1:hasAutoASCIITransliteratedHeadquartersAddress
@@ -717,6 +1160,15 @@ gleif-L1:hasEntityID
 	skos:definition "The identifier of the entity at the indicated registration authority. Typically, the identifier of the legal entity as maintained by a business registry in the jurisdiction of legal registration, or if the entity is one that is not recorded in a business registry (e.g. one of the varieties of funds registered instead with financial regulators), the identifier of the entity in the appropriate registration authority." ;
 	.
 
+gleif-L1:hasLegalEntityEventGroupKind
+	a owl:ObjectProperty ;
+	rdfs:label "has legal entity event group kind" ;
+	rdfs:domain gleif-L1:EventGroup ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	rdfs:range gleif-L1:LegalEntityEventGroupKind ;
+	skos:definition "The category of the legal entity event group." ;
+	.
+	
 gleif-L1:hasFundFamily
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf
@@ -728,6 +1180,7 @@ gleif-L1:hasFundFamily
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	rdfs:range gleif-L1:FundFamily ;
 	skos:definition "The entity that is the manager of the fund." ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
 
 gleif-L1:hasFundFamilyName
@@ -737,7 +1190,49 @@ gleif-L1:hasFundFamilyName
 	rdfs:domain gleif-L1:Fund ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	skos:definition "The name of an entity that is the manager of the fund." ;
+	owl:deprecated "true"^^xsd:boolean ;
 	.
+
+gleif-L1:hasGroupedEvents
+	a owl:ObjectProperty ;
+	owl:propertyChainAxiom (
+		gleif-L1:hasGroupedSequencedEvents
+		gleif-L1:hasSequencedEvent
+	) ;
+	rdfs:label "has grouped events" ;
+	rdfs:domain gleif-L1:LegalEntityEventGroup ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	rdfs:range gleif-L1:LegalEntityEvent ;
+	skos:definition "The legal entity events that are part of a group of multiple or a complex event." ;
+	skos:note "The events may linked direct or via sequenced events." ;
+.
+
+gleif-L1:hasGroupedSequencedEvents
+	a owl:ObjectProperty ;
+	rdfs:label "has grouped sequenced events" ;
+	rdfs:domain gleif-L1:LegalEntityEventGroup ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	rdfs:range gleif-L1:LegalEntitySequencedEvent ;
+	skos:definition "The legal entity events in sequence that are part of a group of multiple or a complex event."
+.
+
+gleif-L1:hasSequencedEvent
+	a owl:ObjectProperty ;
+	rdfs:label "has sequenced event" ;
+	rdfs:domain gleif-L1:LegalEntitySequencedEvent ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	rdfs:range gleif-L1:LegalEntityEvent ;
+	skos:definition "The legal entity events in sequence that are part of a group of multiple or a complex event."
+.
+
+gleif-L1:hasSequenceNumber
+	a owl:DatatypeProperty ;
+	rdfs:label "has sequence number" ;
+	rdfs:domain gleif-L1:LegalEntitySequencedEvent ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
+	rdfs:range xsd:positiveInteger ;
+	skos:definition "The sequence of one event within a group of multiple or a complex event."
+.
 
 gleif-L1:hasHeadquartersAddress
 	a owl:ObjectProperty ;
@@ -810,7 +1305,7 @@ gleif-L1:hasOtherAuthority
 	rdfs:label "has other authority" ;
 	rdfs:domain gleif-L1:BusinessRegistryIdentifier ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
-	skos:definition "A legacy / historical reference code of a registration authority which is not yet entered in the Registration Authorities Code List (RAL) maintained by GLEIF, or the designation of an interim register until such time as an entry from RAL can be delivered. " ;
+	skos:definition "A legacy / historical reference code of a registration authority which is not yet entered in the Registration Authorities List (RAL) maintained by GLEIF, or the designation of an interim register until such time as an entry from RAL can be delivered. " ;
 	.
 
 gleif-L1:hasOtherEntityNames
@@ -987,13 +1482,55 @@ gleif-L1:identifiesAndRecords
 []
 	a owl:AllDifferent ;
 	owl:members (
+		gleif-L1:LegalEntityEventChangeLegalName
+		gleif-L1:LegalEntityEventChangeOtherNames
+		gleif-L1:LegalEntityEventChangeLegalAddress
+		gleif-L1:LegalEntityEventChangeHQAddress
+		gleif-L1:LegalEntityEventChangeLegalForm
+		gleif-L1:LegalEntityEventDemerger
+		gleif-L1:LegalEntityEventSpinoff
+		gleif-L1:LegalEntityEventAbsorption
+		gleif-L1:LegalEntityEventAcquisitionBranch
+		gleif-L1:LegalEntityEventTransformationBranchToSubsidiary
+		gleif-L1:LegalEntityEventTransformationSubsidiaryToBranch
+		gleif-L1:LegalEntityEventTransformationUmbrellaToStandalone
+		gleif-L1:LegalEntityEventBreakup
+		gleif-L1:LegalEntityEventMergersAndAcquisitions
+		gleif-L1:LegalEntityEventBankruptcy
+		gleif-L1:LegalEntityEventLiquidation
+		gleif-L1:LegalEntityEventVoluntaryArrangement
+		gleif-L1:LegalEntityEventInsolvency
+		gleif-L1:LegalEntityEventDissolution
+	) ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-L1:LegalEntityEventGroupKindReverseTakeover
+		gleif-L1:LegalEntityEventGroupKindChangeLegalFormAndName
+		gleif-L1:LegalEntityEventGroupKindComplexChangeLegalForm
+	) ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:members (
+		gleif-L1:LegalEntityEventStatusInProgress
+		gleif-L1:LegalEntityEventStatusWithdrawnCancelled
+		gleif-L1:LegalEntityEventStatusCompleted
+	) ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:members (
 		gleif-L1:RegistrationStatusAnnulled
 		gleif-L1:RegistrationStatusDuplicate
 		gleif-L1:RegistrationStatusIssued
 		gleif-L1:RegistrationStatusLapsed
 		gleif-L1:RegistrationStatusPendingArchival
 		gleif-L1:RegistrationStatusPendingTransfer
-		gleif-L1:RegistrationStatusMerged
 		gleif-L1:RegistrationStatusRetired
 	) ;
 	.
