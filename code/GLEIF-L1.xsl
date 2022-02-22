@@ -25,8 +25,10 @@
   xmlns:lcc-3166-1-adj="https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes-Adjunct/"
   xmlns:lcc-3166-2-adj="https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/"
   xmlns:saxon="http://saxon.sf.net/"
-  
-  extension-element-prefixes="gleif lei saxon">
+  xmlns:codec="java:org.apache.commons.codec.digest.DigestUtils"
+  xmlns:loc="http://my.local"
+   
+  extension-element-prefixes="gleif lei saxon loc">
   
   <!--#########################################################################-->
   <!-- Converts LEI CDF format Level 1 version 2.1 data to RDF-->
@@ -43,9 +45,11 @@
   
   <xsl:param name="skip-geo" select="'false'"/> <!-- if true does not output geocoded addresses -->
   
-  <xsl:variable name="invalid-id-chars" select="' /;:,`()[]\|&gt;&lt;&amp;&quot;&quot;&apos;&apos;'"/> <!-- Cannot be used in xmi ids -->
-  <xsl:variable name="replacement-id-chars" select="'_....._________..'"/> <!-- Substitute for above - must match in number -->
+  <xsl:variable name="invalid-id-chars" select="'–‑ /;:,`’()[]\|&gt;&lt;&amp;&quot;&quot;&apos;&apos; '"/> <!-- Cannot be used in xmi ids -->
+  <xsl:variable name="replacement-id-chars" select="'--_....._________.._'"/> <!-- Substitute for above - must match in number -->
   <xsl:variable name="null-date" as="xs:dateTime">1970-01-01T00:00:00.00</xsl:variable>
+  <!-- Used for ignoring values with n.a., n.a, n/a or caps -->
+  <xsl:variable name="not-applicable-regex" select="'^[nN][/\.][aA]\.?$'"/>
   
   <!-- This is no longer needed since Stardog does not support large numbers of XML entities 
     It would be needed to allow use of XML entities such as &lcc-cr; in the output 
@@ -67,6 +71,44 @@
     <xsl:accumulator-rule match="lei:LEIHeader/lei:ContentDate/text()"
        select="."/>
   </xsl:accumulator>
+  
+  
+  <!-- create a MD5 hash for the complete element (including sub-elements) supplied -->
+  <xsl:function name="loc:hash" as="xs:string">
+    <xsl:param name="val" as="xs:string"/>
+    <xsl:value-of select="codec:md5Hex($val)"/>
+  </xsl:function>
+  
+  <!-- creates a uri for Business Registry Identifier -->
+  <xsl:function name="loc:create-BID-uri">
+    <xsl:param name="bus-reg"/>
+    <xsl:param name="bus-reg-text"/> <!-- disjoint with registry-id -->
+    <xsl:param name="bus-reg-ent-id"/>
+    <xsl:variable name="reg-id">
+      <xsl:choose>
+        <xsl:when test="$bus-reg = 'RA888888' and $bus-reg-text != ''">
+<!--          <xsl:value-of select="translate($bus-reg-text, $invalid-id-chars, $replacement-id-chars)"/> -->
+          <!-- Cannot rely on the content of the text, so hash it -->
+          <xsl:value-of select="loc:hash($bus-reg-text)"/>          
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="$bus-reg"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:text>https://rdf.gleif.org/L1/BID-</xsl:text>
+    <xsl:value-of select="$reg-id"/>
+    <xsl:text>-</xsl:text>
+    <xsl:choose>
+      <xsl:when test="string(number($bus-reg-ent-id)) != 'NaN'">
+        <xsl:value-of select="$bus-reg-ent-id"/>             
+      </xsl:when>
+      <xsl:otherwise>
+        <!-- Cannot rely on the content of the text, so hash it -->
+        <xsl:value-of select="loc:hash($bus-reg-ent-id)"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:function>    
   
   <xsl:template match="/lei:LEIData | lei:LeiHeader">
     <xsl:apply-templates/>
@@ -176,28 +218,40 @@
         </xsl:element>
       </xsl:for-each>
       <xsl:for-each select="$record/lei:Entity/lei:OtherEntityNames/lei:OtherEntityName[@type='TRADING_OR_OPERATING_NAME']">
-        <xsl:element name="gleif-L1:hasTradingOrOperatingName">
-          <xsl:copy-of select="@xml:lang"/>
-          <xsl:value-of select="."/>
-        </xsl:element>
+        <xsl:variable name="val" select="string(.)"/>
+        <xsl:if test="not(matches($val, $not-applicable-regex))">
+          <xsl:element name="gleif-L1:hasTradingOrOperatingName">
+            <xsl:copy-of select="@xml:lang"/>
+            <xsl:value-of select="$val"/>
+          </xsl:element>
+        </xsl:if>
       </xsl:for-each>
       <xsl:for-each select="$record/lei:Entity/lei:OtherEntityNames/lei:OtherEntityName[@type='ALTERNATIVE_LANGUAGE_LEGAL_NAME']">
-        <xsl:element name="gleif-L1:hasAlternativeLanguageLegalName">
-          <xsl:copy-of select="@xml:lang"/>
-          <xsl:value-of select="."/>
-        </xsl:element>
+        <xsl:variable name="val" select="string(.)"/>
+        <xsl:if test="not(matches($val, $not-applicable-regex))">
+          <xsl:element name="gleif-L1:hasAlternativeLanguageLegalName">
+            <xsl:copy-of select="@xml:lang"/>
+            <xsl:value-of select="$val"/>
+          </xsl:element>
+        </xsl:if>
       </xsl:for-each>
       <xsl:for-each select="$record/lei:Entity/lei:TransliteratedOtherEntityNames/lei:TransliteratedOtherEntityName[@type='PREFERRED_ASCII_TRANSLITERATED_LEGAL_NAME']">
-        <xsl:element name="gleif-L1:hasPreferredASCIITransliteratedName">
-          <xsl:copy-of select="@xml:lang"/>
-          <xsl:value-of select="."/>
-        </xsl:element>
+        <xsl:variable name="val" select="string(.)"/>
+        <xsl:if test="not(matches($val, $not-applicable-regex))">
+          <xsl:element name="gleif-L1:hasPreferredASCIITransliteratedName">
+            <xsl:copy-of select="@xml:lang"/>
+            <xsl:value-of select="$val"/>
+          </xsl:element>
+        </xsl:if>
       </xsl:for-each>
       <xsl:for-each select="$record/lei:Entity/lei:TransliteratedOtherEntityNames/lei:TransliteratedOtherEntityName[@type='AUTO_ASCII_TRANSLITERATED_LEGAL_NAME']">
-        <xsl:element name="gleif-L1:hasAutoASCIITransliteratedName">
-          <xsl:copy-of select="@xml:lang"/>
-          <xsl:value-of select="."/>
-        </xsl:element>
+        <xsl:variable name="val" select="string(.)"/>
+        <xsl:if test="not(matches($val, $not-applicable-regex))">
+          <xsl:element name="gleif-L1:hasAutoASCIITransliteratedName">
+            <xsl:copy-of select="@xml:lang"/>
+            <xsl:value-of select="$val"/>
+          </xsl:element>
+        </xsl:if>
       </xsl:for-each>
       <xsl:variable name="la1" select="$record/lei:Entity/lei:LegalAddress/lei:FirstAddressLine"/>
       <xsl:variable name="hq1" select="$record/lei:Entity/lei:HeadquartersAddress/lei:FirstAddressLine"/>
@@ -312,24 +366,11 @@
       <xsl:if test="$bus-reg != 'RA999999'">
         <xsl:variable name="bus-reg-text" select="$record/lei:Entity/lei:RegistrationAuthority/lei:OtherRegistrationAuthorityID"/>
         <xsl:variable name="bus-reg-ent-id" select="$record/lei:Entity/lei:RegistrationAuthority/lei:RegistrationAuthorityEntityID"/>
-        <xsl:variable name="reg-id">
-          <xsl:choose>
-            <xsl:when test="$bus-reg = 'RA888888' and $bus-reg-text != ''">
-              <xsl:value-of select="translate($bus-reg-text, $invalid-id-chars, $replacement-id-chars)"/>
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:value-of select="$bus-reg"/>
-            </xsl:otherwise>
-          </xsl:choose>
-        </xsl:variable>
-        <gleif-L1:hasRegistrationIdentifier>
-          <xsl:attribute name="rdf:resource">
-            <xsl:text>https://rdf.gleif.org/L1/BID-</xsl:text>
-            <xsl:value-of select="$reg-id"/>
-            <xsl:text>-</xsl:text>
-            <xsl:value-of select="translate(string($bus-reg-ent-id), $invalid-id-chars, $replacement-id-chars)"/>
-          </xsl:attribute>
-        </gleif-L1:hasRegistrationIdentifier>
+        <xsl:if test="$bus-reg-ent-id != '' and not(matches($bus-reg-ent-id, $not-applicable-regex))">         
+          <gleif-L1:hasRegistrationIdentifier>
+            <xsl:attribute name="rdf:resource" select="loc:create-BID-uri($bus-reg, $bus-reg-text, $bus-reg-ent-id)"/>
+          </gleif-L1:hasRegistrationIdentifier>
+        </xsl:if>
       </xsl:if>
       <!-- Jurisdiction -->
       <xsl:variable name="jurisdiction" select="$record/lei:Entity/lei:LegalJurisdiction"/>
@@ -354,7 +395,8 @@
         </gleif-base:hasSuccessor>
       </xsl:if>
       <xsl:variable name="succ-name" select="$record/lei:Entity/lei:SuccessorEntity/lei:SuccessorEntityName"/>
-      <xsl:if test="$succ-name != ''">
+      <xsl:variable name="val" select="string($succ-name)"/>
+      <xsl:if test="$succ-name != '' and not(matches($val, $not-applicable-regex))">
         <gleif-L1:hasSuccessorName>
           <xsl:copy-of select="$succ-name/@xml:lang"/>
           <xsl:value-of select="$succ-name"/>
@@ -384,7 +426,8 @@
           </xsl:element>
         </xsl:if>
         <xsl:variable name="assoc-name" select="$record/lei:Entity/lei:AssociatedEntity/lei:AssociatedEntityName"/>
-        <xsl:if test="$assoc-name != ''">
+        <xsl:variable name="val" select="string($assoc-name)"/>
+        <xsl:if test="$assoc-name != '' and not(matches($val, $not-applicable-regex))">
           <xsl:element name="gleif-L1:hasFundFamilyName">
             <xsl:copy-of select="$assoc-name/@xml:lang"/>
             <xsl:value-of select="$assoc-name"/>
@@ -468,48 +511,22 @@
       <xsl:if test="$record/lei:Registration/lei:ValidationAuthority and $val-reg != 'RA999999'">
         <xsl:variable name="val-reg-text" select="$record/lei:Registration/lei:ValidationAuthority/lei:OtherValidationAuthorityID"/>
         <xsl:variable name="val-reg-ent-id" select="$record/lei:Registration/lei:ValidationAuthority/lei:ValidationAuthorityEntityID"/>
-        <xsl:variable name="val-id">
-          <xsl:choose>
-            <xsl:when test="$val-reg = 'RA888888' and $val-reg-text !=''">
-              <xsl:value-of select="translate($val-reg-text, $invalid-id-chars, $replacement-id-chars)"/>
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:value-of select="$val-reg"/>
-            </xsl:otherwise>
-          </xsl:choose>
-        </xsl:variable>
-        <gleif-L1:hasValidationIdentifier>
-          <xsl:attribute name="rdf:resource">
-            <xsl:text>https://rdf.gleif.org/L1/BID-</xsl:text>
-            <xsl:value-of select="$val-id"/>
-            <xsl:text>-</xsl:text>
-            <xsl:value-of select="translate(string($val-reg-ent-id), $invalid-id-chars, $replacement-id-chars)"/>
-          </xsl:attribute>
-        </gleif-L1:hasValidationIdentifier>
+        <xsl:if test="$val-reg-ent-id != '' and not(matches($val-reg-ent-id, $not-applicable-regex))">
+          <gleif-L1:hasValidationIdentifier>
+            <xsl:attribute name="rdf:resource" select="loc:create-BID-uri($val-reg, $val-reg-text, $val-reg-ent-id)"/>
+          </gleif-L1:hasValidationIdentifier>
+        </xsl:if>
       </xsl:if>
       <!-- Other validation identifiers -->
       <xsl:for-each select="$record/lei:Registration/lei:OtherValidationAuthorities/lei:OtherValidationAuthority">
         <xsl:variable name="val-reg" select="lei:ValidationAuthorityID"/>
         <xsl:variable name="val-reg-text" select="lei:OtherValidationAuthorityID"/>
         <xsl:variable name="val-reg-ent-id" select="lei:ValidationAuthorityEntityID"/>
-        <xsl:variable name="val-id">
-          <xsl:choose>
-            <xsl:when test="$val-reg = 'RA888888' and $val-reg-text !=''">
-              <xsl:value-of select="translate($val-reg-text, $invalid-id-chars, $replacement-id-chars)"/>
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:value-of select="$val-reg"/>
-            </xsl:otherwise>
-          </xsl:choose>
-        </xsl:variable>
-        <gleif-L1:hasOtherValidationIdentifier>
-          <xsl:attribute name="rdf:resource">
-            <xsl:text>https://rdf.gleif.org/L1/BID-</xsl:text>
-            <xsl:value-of select="$val-id"/>
-            <xsl:text>-</xsl:text>
-            <xsl:value-of select="translate(string($val-reg-ent-id), $invalid-id-chars, $replacement-id-chars)"/>
-          </xsl:attribute>
-        </gleif-L1:hasOtherValidationIdentifier>
+        <xsl:if test="$val-reg-ent-id != '' and not(matches($val-reg-ent-id, $not-applicable-regex))">
+          <gleif-L1:hasOtherValidationIdentifier>
+            <xsl:attribute name="rdf:resource" select="loc:create-BID-uri($val-reg, $val-reg-text, $val-reg-ent-id)"/>
+          </gleif-L1:hasOtherValidationIdentifier>
+        </xsl:if>
       </xsl:for-each>
     </gleif-L1:LegalEntityIdentifier>
     <!-- Geocoding -->
@@ -618,13 +635,15 @@
     <xsl:param name="lang"/>
     <xsl:apply-templates select="lei:FirstAddressLine"/>
     <xsl:for-each select="lei:AdditionalAddressLine">
-      <xsl:variable name="pos-el" select="concat('gleif-base:hasAddressLine', position() + 1)"/>
-      <xsl:element name="{$pos-el}">
-        <xsl:if test="$lang != ''">
-          <xsl:attribute name="xml:lang" select="$lang"/>
-        </xsl:if>
-        <xsl:value-of select="normalize-unicode(string(.), 'NFKC')"/>
-      </xsl:element>
+      <xsl:if test="not(matches(., $not-applicable-regex))">
+        <xsl:variable name="pos-el" select="concat('gleif-base:hasAddressLine', position() + 1)"/>
+        <xsl:element name="{$pos-el}">
+          <xsl:if test="$lang != ''">
+            <xsl:attribute name="xml:lang" select="$lang"/>
+          </xsl:if>
+          <xsl:value-of select="normalize-unicode(string(.), 'NFKC')"/>
+        </xsl:element>
+      </xsl:if>
     </xsl:for-each>
     <xsl:apply-templates select="*[not(local-name()='AdditionalAddressLine' or local-name()='FirstAddressLine')]"/>
   </xsl:template>
@@ -652,45 +671,28 @@
     <xsl:if test="$bus-reg != 'RA999999'">
       <xsl:variable name="bus-reg-text" select="lei:OtherRegistrationAuthorityID"/>
       <xsl:variable name="bus-reg-ent-id" select="lei:RegistrationAuthorityEntityID"/>
-      <xsl:variable name="reg-id">
-        <xsl:choose>
-          <xsl:when test="$bus-reg = 'RA888888' and $bus-reg-text != ''">
-<!--            <xsl:call-template name="camelCase">
-              <xsl:with-param name="inString" select="$bus-reg-text"/>
-            </xsl:call-template> -->
-            <xsl:value-of select="translate($bus-reg-text, $invalid-id-chars, $replacement-id-chars)"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <!-- This will use RA888888 when there is no alternative name -->
-            <xsl:value-of select="$bus-reg"/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:variable>
-      <gleif-L1:BusinessRegistryIdentifier>
-        <xsl:attribute name="rdf:about">
-          <xsl:text>https://rdf.gleif.org/L1/BID-</xsl:text>
-          <xsl:value-of select="$reg-id"/>
-          <xsl:text>-</xsl:text>
-          <xsl:value-of select="translate(string($bus-reg-ent-id), $invalid-id-chars, $replacement-id-chars)"/>
-        </xsl:attribute>
-        <gleif-L1:hasEntityID>
-          <xsl:value-of select="string($bus-reg-ent-id)"/>
-        </gleif-L1:hasEntityID>
-        <gleif-base:identifies>
-          <xsl:attribute name="rdf:resource" select="concat('https://rdf.gleif.org/L1/L-', $lei)"/>
-        </gleif-base:identifies>
-        <xsl:if test="$bus-reg != 'RA888888' and $bus-reg != 'RA999999'">
-          <gleif-L1:hasRegisteredAuthority>
-            <!-- Possible TODO coin a URI for registries with no code -->
-            <xsl:attribute name="rdf:resource" select="concat('https://rdf.gleif.org/RegistrationAuthority/', $bus-reg)"/>
-          </gleif-L1:hasRegisteredAuthority>
-        </xsl:if>
-        <xsl:if test="$bus-reg-text != ''">
-          <gleif-L1:hasOtherAuthority>
-            <xsl:value-of select="$bus-reg-text"/>
-          </gleif-L1:hasOtherAuthority>
-        </xsl:if>
-      </gleif-L1:BusinessRegistryIdentifier>
+      <xsl:if test="$bus-reg-ent-id != '' and  not(matches($bus-reg-ent-id, $not-applicable-regex))">
+        <gleif-L1:BusinessRegistryIdentifier>
+          <xsl:attribute name="rdf:about" select="loc:create-BID-uri($bus-reg, $bus-reg-text, $bus-reg-ent-id)"/>
+          <gleif-L1:hasEntityID>
+            <xsl:value-of select="string($bus-reg-ent-id)"/>
+          </gleif-L1:hasEntityID>
+          <gleif-base:identifies>
+            <xsl:attribute name="rdf:resource" select="concat('https://rdf.gleif.org/L1/L-', $lei)"/>
+          </gleif-base:identifies>
+          <xsl:if test="$bus-reg != 'RA888888' and $bus-reg != 'RA999999'">
+            <gleif-L1:hasRegisteredAuthority>
+              <!-- Possible TODO coin a URI for registries with no code -->
+              <xsl:attribute name="rdf:resource" select="concat('https://rdf.gleif.org/RegistrationAuthority/', $bus-reg)"/>
+            </gleif-L1:hasRegisteredAuthority>
+          </xsl:if>
+          <xsl:if test="$bus-reg-text != ''">
+            <gleif-L1:hasOtherAuthority>
+              <xsl:value-of select="$bus-reg-text"/>
+            </gleif-L1:hasOtherAuthority>
+          </xsl:if>
+        </gleif-L1:BusinessRegistryIdentifier>
+      </xsl:if>
     </xsl:if>
   </xsl:template>
     
@@ -699,28 +701,9 @@
     <xsl:variable name="bus-reg" select="lei:ValidationAuthorityID"/>
     <xsl:variable name="bus-reg-text" select="lei:OtherValidationAuthorityID"/>
     <xsl:variable name="bus-reg-ent-id" select="lei:ValidationAuthorityEntityID"/>
-    <xsl:if test="$bus-reg != 'RA999999'">
+    <xsl:if test="$bus-reg != 'RA999999' and $bus-reg-ent-id != '' and not(matches($bus-reg-ent-id, $not-applicable-regex))">
       <gleif-L1:BusinessRegistryIdentifier>
-        <xsl:variable name="reg-id">
-          <xsl:choose>
-            <xsl:when test="$bus-reg = 'RA888888'  and $bus-reg-text != ''">
-              <!--            <xsl:call-template name="camelCase">
-              <xsl:with-param name="inString" select="$bus-reg-text"/>
-            </xsl:call-template> -->
-              <xsl:value-of select="translate($bus-reg-text, $invalid-id-chars, $replacement-id-chars)"/>
-            </xsl:when>
-            <xsl:otherwise>
-              <!-- This will use RA888888 when there is no alternative name -->
-              <xsl:value-of select="$bus-reg"/>
-            </xsl:otherwise>
-          </xsl:choose>
-        </xsl:variable>
-        <xsl:attribute name="rdf:about">
-          <xsl:text>https://rdf.gleif.org/L1/BID-</xsl:text>
-          <xsl:value-of select="$reg-id"/>
-          <xsl:text>-</xsl:text>
-          <xsl:value-of select="translate(string($bus-reg-ent-id), $invalid-id-chars, $replacement-id-chars)"/>
-        </xsl:attribute>
+        <xsl:attribute name="rdf:about" select="loc:create-BID-uri($bus-reg, $bus-reg-text, $bus-reg-ent-id)"/>
         <gleif-L1:hasEntityID>
           <xsl:value-of select="string($bus-reg-ent-id)"/>
         </gleif-L1:hasEntityID>
@@ -745,50 +728,68 @@
 
   <xsl:template match="lei:FirstAddressLine">
     <xsl:param name="lang"/>
-    <gleif-base:hasAddressLine1>
-      <xsl:if test="$lang != ''">
-        <xsl:attribute name="xml:lang" select="$lang"/>
-      </xsl:if>
-      <xsl:value-of select="normalize-unicode(string(.), 'NFKC')"/>
-    </gleif-base:hasAddressLine1> 
+    <xsl:variable name="val" select="string(.)"/>
+    <xsl:if test="not(matches($val, $not-applicable-regex))">
+      <gleif-base:hasAddressLine1>
+        <xsl:if test="$lang != ''">
+          <xsl:attribute name="xml:lang" select="$lang"/>
+        </xsl:if>
+        <xsl:value-of select="normalize-unicode($val, 'NFKC')"/>
+      </gleif-base:hasAddressLine1>
+    </xsl:if>
   </xsl:template>
   <xsl:template match="lei:AdditionalAddressLine"/> <!-- Handled inline -->
   <xsl:template match="lei:City">
     <xsl:param name="lang"/>
-    <gleif-base:hasCity>
-      <xsl:if test="$lang != ''">
-        <xsl:attribute name="xml:lang" select="$lang"/>
-      </xsl:if>
-      <xsl:value-of select="normalize-unicode(string(.),'NFKC')"/>
-    </gleif-base:hasCity> 
+    <xsl:variable name="val" select="string(.)"/>
+    <xsl:if test="not(matches($val, $not-applicable-regex))">
+      <gleif-base:hasCity>
+        <xsl:if test="$lang != ''">
+          <xsl:attribute name="xml:lang" select="$lang"/>
+        </xsl:if>
+        <xsl:value-of select="normalize-unicode($val,'NFKC')"/>
+      </gleif-base:hasCity> 
+    </xsl:if>
   </xsl:template>
   <xsl:template match="lei:AddressNumber">
-    <gleif-base:hasAddressNumber>
-      <xsl:value-of select="normalize-unicode(string(.), 'NFKC')"/>
-    </gleif-base:hasAddressNumber> 
+    <xsl:variable name="val" select="string(.)"/>
+    <xsl:if test="not(matches($val, $not-applicable-regex))">
+      <gleif-base:hasAddressNumber>
+        <xsl:value-of select="normalize-unicode($val, 'NFKC')"/>
+      </gleif-base:hasAddressNumber> 
+    </xsl:if>
   </xsl:template>
   <xsl:template match="lei:AddressNumberWithinBuilding">
     <xsl:param name="lang"/>
-    <gleif-base:hasAddressNumberWithinBuilding>
-      <xsl:if test="$lang != ''">
-        <xsl:attribute name="xml:lang" select="$lang"/>
-      </xsl:if>
-      <xsl:value-of select="normalize-unicode(string(.), 'NFKC')"/>
-    </gleif-base:hasAddressNumberWithinBuilding> 
+    <xsl:variable name="val" select="string(.)"/>
+    <xsl:if test="not(matches($val, $not-applicable-regex))">
+      <gleif-base:hasAddressNumberWithinBuilding>
+        <xsl:if test="$lang != ''">
+          <xsl:attribute name="xml:lang" select="$lang"/>
+        </xsl:if>
+        <xsl:value-of select="normalize-unicode($val, 'NFKC')"/>
+      </gleif-base:hasAddressNumberWithinBuilding>
+    </xsl:if>
   </xsl:template>
   <xsl:template match="lei:MailRouting">
     <xsl:param name="lang"/>
-    <gleif-base:hasMailRouting>
-      <xsl:if test="$lang != ''">
-        <xsl:attribute name="xml:lang" select="$lang"/>
-      </xsl:if>
-      <xsl:value-of select="normalize-unicode(string(.), 'NFKC')"/>
-    </gleif-base:hasMailRouting> 
+    <xsl:variable name="val" select="string(.)"/>
+    <xsl:if test="not(matches($val, $not-applicable-regex))">
+      <gleif-base:hasMailRouting>
+        <xsl:if test="$lang != ''">
+          <xsl:attribute name="xml:lang" select="$lang"/>
+        </xsl:if>
+        <xsl:value-of select="normalize-unicode($val, 'NFKC')"/>
+      </gleif-base:hasMailRouting>
+    </xsl:if>
   </xsl:template>
   <xsl:template match="lei:PostalCode">
-    <gleif-base:hasPostalCode>
-      <xsl:value-of select="normalize-unicode(string(.), 'NFKC')"/>
-    </gleif-base:hasPostalCode> 
+    <xsl:variable name="val" select="string(.)"/>
+    <xsl:if test="not(matches($val, $not-applicable-regex))">
+      <gleif-base:hasPostalCode>
+        <xsl:value-of select="normalize-unicode($val, 'NFKC')"/>
+      </gleif-base:hasPostalCode>
+    </xsl:if>
   </xsl:template>
   <xsl:template match="lei:Country">
     <gleif-base:hasCountry>
@@ -799,12 +800,15 @@
     </gleif-base:hasCountry> 
   </xsl:template>
   <xsl:template match="lei:Region">
-    <gleif-base:hasSubdivision>
-      <xsl:attribute name="rdf:resource">
-        <xsl:text>https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/</xsl:text>
-        <xsl:value-of select="normalize-unicode(string(.), 'NFKC')"/>
-      </xsl:attribute>
-    </gleif-base:hasSubdivision> 
+    <xsl:variable name="val" select="string(.)"/>
+    <xsl:if test="not(matches($val, $not-applicable-regex))">
+      <gleif-base:hasSubdivision>
+        <xsl:attribute name="rdf:resource">
+          <xsl:text>https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes-Adjunct/</xsl:text>
+          <xsl:value-of select="normalize-unicode($val, 'NFKC')"/>
+        </xsl:attribute>
+      </gleif-base:hasSubdivision>
+    </xsl:if>
   </xsl:template>
   
   <!-- Geocoding -->
