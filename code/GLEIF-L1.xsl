@@ -228,7 +228,7 @@
           </xsl:choose>          
         </xsl:when>
         <xsl:when test="not($category)">
-          <xsl:message select="concat('Warning: though it is optional, there is no category present for LEI: ', $lei)"/>
+<!--          <xsl:message select="concat('Warning: though it is optional, there is no category present for LEI: ', $lei)"/> -->
           <xsl:text>gleif-L1:LegalEntity</xsl:text>
         </xsl:when>
         <xsl:otherwise>
