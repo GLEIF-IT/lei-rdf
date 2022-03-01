@@ -43,6 +43,8 @@ local1=${LL1%.xml.zip}
 # zip $local1.zip $local1.rdf
 # FTP $local1.rdf to GLEIF
 
+export JVM_ARGS="-Xmx512M"
+
 # rename to predictable name
 mv $local1.rdf L1Data.rdf
 riot --output=TTL L1Data.rdf > L1Data.ttl
