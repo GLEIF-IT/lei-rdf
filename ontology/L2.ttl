@@ -93,6 +93,7 @@ gleif-L2:AccountingConsolidation
 			owl:onClass [
 				a owl:Class ;
 				owl:oneOf (
+					gleif-L2:AccountingStandardGovernmentAccountingStandard
 					gleif-L2:AccountingStandardIFRS
 					gleif-L2:AccountingStandardOtherAccountingStandard
 					gleif-L2:AccountingStandardUSGAAP
@@ -111,6 +112,17 @@ gleif-L2:AccountingStandard
 	rdfs:label "accounting standard" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
 	skos:definition "the type of accounting standard used to source consolidation information, which is based on reported accounting roll-ups" ;
+	.
+
+gleif-L2:AccountingStandardGovernmentAccountingStandard
+	a
+		owl:NamedIndividual ,
+		gleif-L2:AccountingStandard
+		;
+	rdfs:label "government accounting standard" ;
+	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
+	skos:definition "Used for entities consolidated under the International Public Sector Accounting Standard (IPSAS 35) or National Government or Federal Government accounting standards specifically developed for Government entities in their state or local jurisdiction." ;
+	gleif-base:hasTag "GOVERNMENT_ACCOUNTING_STANDARD" ;
 	.
 
 gleif-L2:AccountingStandardIFRS
@@ -169,7 +181,6 @@ gleif-L2:FundRelationship
 		;
 	rdfs:label "fund relationship" ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L2/> ;
-	skos:altLabel "is fund managed by" ;
 	skos:definition "A relationship where the 'child' entity is a fund." ;
 	skos:prefLabel "fund relationship" ;
 	.
@@ -643,6 +654,7 @@ gleif-L2:hasValidationSources
 []
 	a owl:AllDifferent ;
 	owl:members (
+		gleif-L2:AccountingStandardGovernmentAccountingStandard
 		gleif-L2:AccountingStandardIFRS
 		gleif-L2:AccountingStandardOtherAccountingStandard
 		gleif-L2:AccountingStandardUSGAAP

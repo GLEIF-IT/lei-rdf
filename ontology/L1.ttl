@@ -299,7 +299,7 @@ gleif-L1:LegalEntityEventGroup
 	rdfs:subClassOf
 		[
 			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasGroupedEvents ;
+			owl:onProperty gleif-L1:hasGroupedEvent ;
 			owl:someValuesFrom gleif-L1:LegalEntityEvent ;
 		] ,
 		[
@@ -325,7 +325,7 @@ gleif-L1:LegalEntitySequencedEvent
 	rdfs:subClassOf 
 			[
 			a owl:Restriction ;
-			owl:onProperty gleif-L1:hasGroupedEvents ;
+			owl:onProperty gleif-L1:hasGroupedEvent ;
 			owl:onClass gleif-L1:LegalEntityEvent ;
 			owl:cardinality "1"^^xsd:nonNegativeInteger ;
 		] ,
@@ -1193,13 +1193,13 @@ gleif-L1:hasFundFamilyName
 	owl:deprecated "true"^^xsd:boolean ;
 	.
 
-gleif-L1:hasGroupedEvents
+gleif-L1:hasGroupedEvent
 	a owl:ObjectProperty ;
 	owl:propertyChainAxiom (
-		gleif-L1:hasGroupedSequencedEvents
+		gleif-L1:hasGroupedSequencedEvent
 		gleif-L1:hasSequencedEvent
 	) ;
-	rdfs:label "has grouped events" ;
+	rdfs:label "has grouped event" ;
 	rdfs:domain gleif-L1:LegalEntityEventGroup ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	rdfs:range gleif-L1:LegalEntityEvent ;
@@ -1207,9 +1207,9 @@ gleif-L1:hasGroupedEvents
 	skos:note "The events may linked direct or via sequenced events." ;
 .
 
-gleif-L1:hasGroupedSequencedEvents
+gleif-L1:hasGroupedSequencedEvent
 	a owl:ObjectProperty ;
-	rdfs:label "has grouped sequenced events" ;
+	rdfs:label "has grouped sequenced event" ;
 	rdfs:domain gleif-L1:LegalEntityEventGroup ;
 	rdfs:isDefinedBy <https://www.gleif.org/ontology/L1/> ;
 	rdfs:range gleif-L1:LegalEntitySequencedEvent ;

@@ -29,7 +29,7 @@
 
 
   <!--#########################################################################-->
-  <!-- Converts LEI RepEx 1.1 format data to RDF-->
+  <!-- Converts LEI RepEx 2.1 format data to RDF-->
   <!-- Uses XSLT 3.0 streaming for large data manipulation -->
   
   <!--#########################################################################-->
@@ -120,15 +120,19 @@
            <xsl:attribute name="rdf:resource">          
              <xsl:text>https://www.gleif.org/ontology/ReportingException/ExceptionReasonKind</xsl:text>
              <xsl:choose>
-               <xsl:when test="$reason = 'BINDING_LEGAL_COMMITMENTS'">BindingLegalCommitments</xsl:when>
-               <xsl:when test="$reason = 'CONSENT_NOT_OBTAINED'">ConsentNotObtained</xsl:when>
-               <xsl:when test="$reason = 'DETRIMENT_NOT_EXCLUDED'">DetrimentNotExcluded</xsl:when>
-               <xsl:when test="$reason = 'DISCLOSURE_DETRIMENTAL'">DisclosureDetrimental</xsl:when>
-               <xsl:when test="$reason = 'LEGAL_OBSTACLES'">LegalObstacles</xsl:when>
                <xsl:when test="$reason = 'NATURAL_PERSONS'">NaturalPersons</xsl:when>
                <xsl:when test="$reason = 'NO_KNOWN_PERSON'">NoKnownPerson</xsl:when>
                <xsl:when test="$reason = 'NO_LEI'">NoLEI</xsl:when>
                <xsl:when test="$reason = 'NON_CONSOLIDATING'">NonConsolidating</xsl:when>
+               <xsl:when test="$reason = 'NON_PUBLIC'">NonPublic</xsl:when>
+               <xsl:when test="$reason = 'LEGAL_OBSTACLES'
+                 or $reason = 'CONSENT_NOT_OBTAINED'
+                 or $reason = 'BINDING_LEGAL_COMMITMENTS'
+                 or $reason = 'DETRIMENT_NOT_EXCLUDED'
+                 or $reason = 'DISCLOSURE_DETRIMENTAL'">
+                 <xsl:message select="concat('Deprecated reason: ', $reason, ' for LEI: ', $lei, ' treated as NON_PUBLIC')"/>
+                 <xsl:text>NonPublic</xsl:text>
+               </xsl:when>
                <xsl:otherwise>
                   <xsl:message select="concat('Unknown reason: ', $reason, ' for LEI: ', $lei)"/>
                 </xsl:otherwise>
