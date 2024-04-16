@@ -93,9 +93,9 @@ zip upload.zip L1Data.ttl L2Data.ttl RepExData.ttl
 # Upload to data.world
 echo uploading to data.world dataset $1
 curl -H "Authorization: Bearer $DATAWORLD_TOKEN" \
-  -X PUT -H "Content-Type: application/octet-stream" \
-  --data-binary @upload.zip \
-  https://api.data.world/v0/uploads/$1/files/upload.zip?expandArchive=true
+  -X POST -H "Content-Type: multipart/form-data" \
+  --form file='@upload.zip' \
+  https://api.data.world/v0/uploads/$1/files?expandArchives=true
 
 echo Getting URI for latest Registration Authorities List
 `python3 latest-ra.py`
